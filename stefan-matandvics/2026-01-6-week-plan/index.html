@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-Week Plan — Mat & Vic's</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #af1f25;
+            --red-light: #c94a4f;
+            --dark: #1a1a1a;
+            --gray: #666;
+            --cream: #f8f5f0;
+            --cream-dark: #ebe6de;
+            --green: #2d6a4f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--dark);
+            background: var(--cream);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 60px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--cream);
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .header .meta {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 26px;
+            color: var(--dark);
+            margin: 50px 0 25px 0;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
+            color: var(--red);
+            margin: 35px 0 20px 0;
+            font-weight: 400;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        .metaphor-section {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 30px 0 50px 0;
+            border-left: 4px solid var(--dark);
+        }
+
+        .metaphor-section p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            line-height: 2;
+            color: var(--dark);
+        }
+
+        .metaphor-section p.emphasis {
+            font-style: italic;
+            color: var(--red);
+        }
+
+        .callout {
+            background: var(--cream);
+            padding: 25px 30px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .callout.warning {
+            border-left: 4px solid var(--red);
+        }
+
+        .callout.success {
+            border-left: 4px solid var(--green);
+        }
+
+        .callout.neutral {
+            border-left: 4px solid var(--dark);
+        }
+
+        ul {
+            margin: 15px 0 25px 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+
+        th {
+            background: var(--dark);
+            color: white;
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        tr:nth-child(even) {
+            background: var(--cream);
+        }
+
+        tr:hover {
+            background: var(--cream-dark);
+        }
+
+        .highlight-row {
+            background: rgba(45, 106, 79, 0.1) !important;
+            font-weight: 700;
+        }
+
+        .warning-row {
+            background: rgba(175, 31, 37, 0.1) !important;
+        }
+
+        strong {
+            color: var(--dark);
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cream-dark), transparent);
+            margin: 50px 0;
+        }
+
+        /* Schedule table styling */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .schedule-table th {
+            background: var(--dark);
+            color: white;
+            padding: 16px 20px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            width: 120px;
+        }
+
+        .schedule-table th:last-child {
+            text-align: left;
+        }
+
+        .schedule-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--cream-dark);
+            vertical-align: top;
+        }
+
+        .schedule-table td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: var(--gray);
+            white-space: nowrap;
+        }
+
+        .schedule-table ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .schedule-table li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .context-bridge {
+            background: var(--cream);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .context-bridge p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 50px;
+            border-top: 2px solid var(--cream);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .bottom-line {
+            background: var(--dark);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        .bottom-line h2 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .bottom-line p {
+            font-size: 18px;
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 25px;">
+                <img src="https://matandvics.com/cdn/shop/files/MatAndVics4_3747x2160_b57dfee4-4de6-4d40-9b4d-f85bcd167c13.jpg?v=1755119735&width=180" alt="Mat & Vic's" style="max-width: 140px; height: auto;">
+                <img src="https://tutorials.theprompted.co/cdn/shop/files/The_Prompted-With_BrandName-HD-300.png?v=1715363493&width=340" alt="The Prompted" style="max-width: 140px; height: auto;">
+            </div>
+            <h1>6-Week Plan</h1>
+            <div class="meta">January – February 2026 &bull; For Stefan Illwitzer / Mat & Vic's</div>
+        </div>
+
+        <p>Mat & Vic's has the potential to become the default choice for German-speaking consumers who want quality socks without overpaying.</p>
+
+        <p>Not a commodity brand. Not an "Amazon sock seller."</p>
+
+        <p>A brand people trust and return to because they've seen through the noise.</p>
+
+        <p>The path forward isn't complicated.</p>
+
+        <p>But it does require the right sequence.</p>
+
+        <p>Your Plan for January & February is below.</p>
+
+        <p>These are your major "rocks" to accomplish each phase.</p>
+
+        <p>These are not the only things that will happen, but the non-negotiables.</p>
+
+        <!-- THE SCHEDULE FIRST -->
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>When</th>
+                    <th>What</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Weeks 1-2</td>
+                    <td>
+                        <ol>
+                            <li>Lock in Thesis and messaging direction</li>
+                            <li>Align on unit economics and realistic targets</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Weeks 3-6</td>
+                    <td>
+                        <ol>
+                            <li>Build ads and funnels based on Thesis</li>
+                            <li>Launch and test Meta campaigns</li>
+                            <li>Review and plug conversion leaks (Week 4)</li>
+                            <li>Iterate based on data</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Weeks 6+ (until €100k/mo)</td>
+                    <td>
+                        <ol>
+                            <li>Build ads and funnels based on Thesis</li>
+                            <li>Launch and test Meta campaigns</li>
+                            <li>Iterate based on data</li>
+                        </ol>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>About The Priorities</h3>
+
+        <p><strong>1. Fixed shop</strong> — Your shop is technically sound. It's a strong container with weak components inside. The components that need work are the messaging and Thesis, not the infrastructure. We'll address this in Weeks 3-6 through funnels, not a traditional "shop audit."</p>
+
+        <p><strong>2. Viable ad strategy for ongoing and seasonal sales</strong> — That's what this plan delivers. But viable ads require viable unit economics. The strategy starts with Thesis and margins, then builds ads and funnels on top.</p>
+
+        <p><strong>3. Q1 targets (€15K/month, AOV >€55, CPA <€20)</strong> — The €20 CPA target is where we need to talk. At your current margins, €20 CPA only works at €80+ AOV. At €55 AOV, your allowable CPA to hit 20% contribution margin is closer to €12-15. The math is explained below.</p>
+
+        <div class="context-bridge">
+            <p>More context on each of these below.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- NOW UNPACK EVERYTHING -->
+
+        <h2>Two Numbers That Determine Everything</h2>
+
+        <p>Before we talk about ads, funnels, or creative — we need to talk about math.</p>
+        <p>There are two numbers that determine whether paid acquisition will work for you:</p>
+
+        <h3>Number 1: Gross Margin</h3>
+
+        <p>Gross margin is what's left after you pay for the product and get it to the customer.</p>
+        <p>It's revenue minus COGS, shipping, payment fees, and fulfillment.</p>
+        <p>This is what you have available to spend on ads and still make money.</p>
+
+        <div class="callout neutral">
+            <p><strong>The benchmarks:</strong></p>
+            <p>50% gross margin — minimum to make paid ads viable</p>
+            <p>60% gross margin — healthy, gives you room to compete</p>
+            <p>70%+ gross margin — ideal, lets you outbid competitors and still profit</p>
+        </div>
+
+        <p>Your current gross margin on a single 10-pack is about 49%.</p>
+        <p>Here's the breakdown:</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>Gross Sales (incl. VAT)</td>
+                    <td style="text-align: right;">€27.99</td>
+                </tr>
+                <tr>
+                    <td>VAT (19%)</td>
+                    <td style="text-align: right;">−€4.47</td>
+                </tr>
+                <tr>
+                    <td>COGS</td>
+                    <td style="text-align: right;">−€6.10</td>
+                </tr>
+                <tr>
+                    <td>Shopify Fees (4%)</td>
+                    <td style="text-align: right;">−€1.12</td>
+                </tr>
+                <tr>
+                    <td>Shipping/Pick/Pack (net of customer contribution)</td>
+                    <td style="text-align: right;">−€2.38</td>
+                </tr>
+                <tr>
+                    <td>JTL Fee</td>
+                    <td style="text-align: right;">−€0.20</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Gross Margin</strong></td>
+                    <td style="text-align: right;"><strong>€13.72 (49%)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="metaphor-section">
+            <p>Imagine you signed up for a swim race.</p>
+            <p>You trained hard. You studied technique. You optimized your nutrition.</p>
+            <p>And every race, you're still coming in last.</p>
+            <p>So you train harder. Wake up earlier. Refine your stroke.</p>
+            <p>Still last.</p>
+            <p>At some point, someone pulls you aside and says:</p>
+            <p class="emphasis">"Hey... you know you're wearing ankle weights, right?"</p>
+            <p>And you look down, and there they are.</p>
+            <p>No amount of training fixes ankle weights.</p>
+            <p>You can have perfect technique. You can want it more than anyone else in the pool.</p>
+            <p>The weights don't care.</p>
+            <p>The answer isn't to swim harder.</p>
+            <p><strong>The answer is to take off the weights.</strong></p>
+        </div>
+
+        <p>A 49% gross margin on a single-pack order is ankle weights.</p>
+        <p>You can optimize your ads. You can build better funnels. You can test more creatives.</p>
+        <p>But the math is the math.</p>
+
+        <h3>Number 2: Allowable CPA</h3>
+
+        <p>Allowable CPA is how much you can spend to acquire a customer and still hit your profit target.</p>
+        <p>This is different from break-even CPA — it's what you can afford while keeping 20% contribution margin.</p>
+
+        <div class="callout warning">
+            <p><strong>The reality of ad auctions:</strong></p>
+            <p>Meta and Google are auctions. The brands that can afford to pay more for a customer get more impressions, more clicks, more conversions.</p>
+            <p>If your allowable CPA is €12 and your competitor's is €30, they will outbid you for every valuable impression.</p>
+            <p>You don't just lose some auctions. You lose most of them.</p>
+        </div>
+
+        <p>I want your allowable CPA to be <strong>€30 or higher</strong>.</p>
+        <p>Not because I want you to spend more.</p>
+        <p>Because I want you to be competitive in the auction.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>The Vision: Where We Need To Get</h2>
+
+        <p>Three numbers need to work together:</p>
+
+        <!-- Three circles visual -->
+        <div style="display: flex; justify-content: center; gap: 30px; margin: 40px 0; flex-wrap: wrap;">
+            <div style="text-align: center; width: 180px;">
+                <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--green) 0%, #3d8b6a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; color: white;">
+                    <div style="font-size: 28px; font-weight: 700;">€30+</div>
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">Allowable CPA</div>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px; color: var(--gray);">Competitive in ad auctions</p>
+            </div>
+            <div style="text-align: center; width: 180px;">
+                <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--green) 0%, #3d8b6a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; color: white;">
+                    <div style="font-size: 28px; font-weight: 700;">20%+</div>
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">Contribution Margin</div>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px; color: var(--gray);">Profitable after ad spend</p>
+            </div>
+            <div style="text-align: center; width: 180px;">
+                <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--green) 0%, #3d8b6a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; color: white;">
+                    <div style="font-size: 28px; font-weight: 700;">60%+</div>
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">Gross Margin</div>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px; color: var(--gray);">Healthy unit economics</p>
+            </div>
+        </div>
+
+        <p>When all three are working, you can acquire customers profitably while outbidding competitors in the auction.</p>
+        <p>When any one of them is broken, the whole system struggles.</p>
+
+        <p>This is what the Thesis, the offer structure, and the funnel design need to accomplish.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>Why We're Not Starting With The Shop Audit</h2>
+
+        <div class="metaphor-section">
+            <p>A shop audit first makes sense when you're doing 20-100 orders a day.</p>
+            <p>At that volume, a 5% conversion rate improvement is meaningful. You have traffic. You have data. Small fixes compound into real money.</p>
+            <p>When you're not there yet, optimizing the shop is like polishing the cash register before customers walk in the door.</p>
+            <p class="emphasis">It feels productive. But it's not the bottleneck.</p>
+        </div>
+
+        <p>Your website is technically sound.</p>
+        <p>It's a strong container with weak components inside.</p>
+        <p>The container doesn't need rebuilding.</p>
+        <p>The components — the messaging, the Thesis, the reason to buy — need strengthening.</p>
+
+        <p>The bottleneck isn't a better site.</p>
+        <p>The bottleneck is unit economics and Thesis that let you drive traffic profitably.</p>
+        <p>That's where we start.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>You're Not in the Sock Business</h2>
+
+        <p>Mat & Vic's is not a sock company.</p>
+        <p>You're not selling fabric, elasticity, or thread count.</p>
+        <p>You're not here to convince people the cotton is soft or the seam won't irritate.</p>
+        <p>That's commodity talk.</p>
+        <p>That's how people sell when they don't have a perspective.</p>
+
+        <p>Every brand that competes on specs ends up in the same fight: who can say "premium quality" louder, who can offer a better bundle, who can slash prices first.</p>
+        <p>That race has no winners.</p>
+
+        <p>What you're actually selling is a <strong>reframe</strong>.</p>
+        <p>A new way for someone to think about a decision they've already made a hundred times.</p>
+        <p>That's what a Thesis does.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>What Is a Thesis?</h2>
+
+        <p>A Thesis is the core perspective or belief that underlies everything your brand says.</p>
+        <p>It's not a tagline.</p>
+        <p>It's not a slogan.</p>
+        <p>It's the answer to: <em>"What does this brand believe about the world that changes how someone sees their options?"</em></p>
+
+        <p>When a Thesis is strong, it shifts how the customer evaluates their choices.</p>
+        <p>They stop comparing you to competitors on the same criteria.</p>
+        <p>They start seeing you as the obvious choice for a different reason entirely.</p>
+
+        <p>Without a Thesis, you're left competing on features.</p>
+        <p>And features are a race to the bottom.</p>
+
+        <div class="section-divider"></div>
+
+        <h3>Why Thesis Beats Specs</h3>
+
+        <p>If you don't go the Thesis route, here's what happens:</p>
+        <p>You fall into Alibaba-style marketing.</p>
+
+        <p>You end up saying things like:</p>
+        <ul>
+            <li>"Premium European cotton!"</li>
+            <li>"Öko-Tex certified!"</li>
+            <li>"10-pack value bundle!"</li>
+        </ul>
+
+        <p>None of that is a real edge.</p>
+        <p>It's generic. It's forgettable.</p>
+        <p>It puts you in the same bucket as every other sock brand scrambling for attention in a crowded feed.</p>
+
+        <p>When brands lean into specs, margins thin, growth slows, and customers don't stick.</p>
+        <p>But when a brand shifts to Thesis-driven marketing, everything accelerates.</p>
+
+        <p>Because people aren't buying the product.</p>
+        <p>They're buying the perspective.</p>
+
+        <div class="callout neutral">
+            <p>Quantity per order goes up — once someone sees themselves in your worldview, they want more of it.</p>
+            <p>Ad performance improves — the messaging is magnetic, not transactional.</p>
+            <p>Specs are a race to the bottom. Thesis is how you win without playing someone else's game.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3>How Thesis Informs Everything Downstream</h3>
+
+        <p>Here's what changes when you have a Thesis locked in:</p>
+
+        <p><strong>Ads become easier.</strong></p>
+        <p>You're no longer guessing at angles. Every ad is an expression of the same core belief. Some are louder, some are softer — but they all pull from the same source.</p>
+
+        <p><strong>Website copy writes itself.</strong></p>
+        <p>Headlines, product descriptions, about pages — all flow from the same perspective. No more staring at a blank page wondering what to say.</p>
+
+        <p><strong>Creative direction gets clearer.</strong></p>
+        <p>Every design decision has a filter. You're not guessing at what "on-brand" means — the Thesis defines it.</p>
+
+        <p><strong>Upsells and bundles make sense.</strong></p>
+        <p>You're not just offering "more socks." You're offering more of the identity the customer already bought into.</p>
+
+        <div class="section-divider"></div>
+
+        <h2>What a Thesis Looks Like</h2>
+
+        <p>A Thesis is a core perspective or belief that underlies all your marketing.</p>
+        <p>It's not a tagline or a slogan.</p>
+        <p>It's the answer to: "What does this brand believe about the world that changes how someone sees their options?"</p>
+
+        <p>Here are examples from other brands:</p>
+
+        <div class="callout neutral">
+            <p><strong>Jones Road Beauty ($100M+/year):</strong></p>
+            <p>Commodity: Wax-based balms, castor oil, jojoba seed oil</p>
+            <p>Thesis: "Makeup should enhance your face, not cover it up."</p>
+            <p style="font-size: 14px; color: var(--gray); margin-top: 10px;">Suddenly the product isn't just "clean makeup." It's rebellion against heavy filters, full coverage, and overdone beauty standards.</p>
+        </div>
+
+        <div class="callout neutral">
+            <p><strong>HexClad ($100M+/year):</strong></p>
+            <p>Commodity: Nonstick pans with stainless steel layer</p>
+            <p>Thesis: "You don't need to choose between convenience and performance."</p>
+            <p style="font-size: 14px; color: var(--gray); margin-top: 10px;">The idea turns a shiny piece of cookware into a category of one. They resolved a hidden tension people didn't know they were allowed to challenge.</p>
+        </div>
+
+        <div class="callout neutral">
+            <p><strong>Jolie Showerhead:</strong></p>
+            <p>Commodity: Filtered showerhead</p>
+            <p>Thesis: "Your shower water is the hidden enemy of your skin and hair."</p>
+            <p style="font-size: 14px; color: var(--gray); margin-top: 10px;">The problem wasn't your moisturizer. It was your plumbing. A complete reframe of what's causing the problem.</p>
+        </div>
+
+        <div class="callout neutral">
+            <p><strong>DadGang ($10M+/year, team of 3):</strong></p>
+            <p>Commodity: Baseball caps with prints</p>
+            <p>Thesis: "Dads deserve better than the dad-joke stuff you find on Etsy."</p>
+            <p style="font-size: 14px; color: var(--gray); margin-top: 10px;">They aren't selling hats. They're selling dignity and identity for a forgotten segment of men. A movement disguised as merch.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2>Thesis Examples For Mat & Vic's</h2>
+
+        <p>Below are Thesis directions to jumpstart our thinking together.</p>
+        <p>These aren't finished positions to pick from.</p>
+        <p>They're starting points for the back-and-forth we'll do in Weeks 1-2 to land on something that feels right for you and the brand.</p>
+
+        <h3>Option 1: The Engineered Blend</h3>
+        <p><strong>Common belief:</strong> "Natural is better than synthetic."</p>
+        <p><strong>Reframe:</strong> Natural fibers evolved for animals. Polyamide was engineered for humans.</p>
+        <div class="callout neutral">
+            <p>"Alpaca fiber evolved to keep alpacas warm at 15,000 feet. Merino wool evolved to protect sheep from Scottish rain. Neither was designed for your feet.</p>
+            <p>Polyamide was invented specifically to solve human problems: durability under stress, rapid moisture transfer, resistance to wear.</p>
+            <p>Our 78% cotton / 20% polyamide blend isn't a compromise—it's a collaboration."</p>
+        </div>
+
+        <h3>Option 2: The Washing Machine Truth</h3>
+        <p><strong>Common belief:</strong> "Premium socks are worth the investment."</p>
+        <p><strong>Reframe:</strong> A sock you can't throw in any wash isn't premium—it's a liability.</p>
+        <div class="callout neutral">
+            <p>"Here's what alpaca sock companies don't mention: special washing instructions.</p>
+            <p>Cold water only. Gentle cycle. Lay flat to dry. No fabric softener. Miss one step? Your €50 socks felt into slippers.</p>
+            <p>Our cotton-polyamide blend goes in with your jeans, your towels, your whatever. Hot water. Cold water. Tumble dry. It doesn't care."</p>
+        </div>
+
+        <h3>Option 3: The Daily Driver</h3>
+        <p><strong>Common belief:</strong> "I should invest in quality socks."</p>
+        <p><strong>Reframe:</strong> The sock you wear every day matters more than the one you save for special occasions.</p>
+        <div class="callout neutral">
+            <p>"You don't drive a Ferrari to the grocery store. You don't wear a tuxedo to your kid's soccer game.</p>
+            <p>So why would you wear €50 alpaca socks to the office?</p>
+            <p>Your daily life needs socks designed for reality. Socks that perform under pressure, wash without drama, and cost little enough that you own plenty of them.</p>
+            <p>Alpaca is an event. Cotton-polyamide is a lifestyle."</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2>Why Funnels Matter More Than Your Product Page</h2>
+
+        <p>The schedule shows "Build ads and funnels" in Weeks 3-6.</p>
+        <p>Here's why funnels are central to the plan.</p>
+
+        <p>Your Shopify product page does one thing: show the product and let people buy it.</p>
+        <p>It doesn't teach.</p>
+        <p>It doesn't reframe.</p>
+        <p>It doesn't do the Thesis work.</p>
+
+        <p>A funnel — sometimes called a landing page or advertorial — is different.</p>
+        <p>It's a dedicated page built for one purpose: to shift how someone thinks before they see the price.</p>
+
+        <div class="metaphor-section">
+            <p>Think of it this way.</p>
+            <p>A product page is like a shelf in a store.</p>
+            <p>It displays what you're selling. It assumes people already want it.</p>
+            <p>A funnel is like a conversation with a trusted friend.</p>
+            <p>It explains why this matters. It answers the objections they haven't voiced yet. It earns the right to ask for the sale.</p>
+            <p class="emphasis">The shelf converts browsers. The conversation creates buyers.</p>
+        </div>
+
+        <h3>Hollow Socks: The Model That Works</h3>
+
+        <p>Hollow Socks is a US-based alpaca sock brand.</p>
+        <p>They've sold over 2 million pairs. They have 10,000+ five-star reviews.</p>
+        <p>They compete at $34-70 per pair — 10-20x the price of commodity socks.</p>
+
+        <p>Here's what's notable:</p>
+        <p>They didn't initially build their business with fancy video ads or viral UGC content.</p>
+        <p>They built it with static image ads that drive to landing pages.</p>
+
+        <p>Their landing pages do the heavy lifting.</p>
+        <p>They explain why alpaca fiber is different.</p>
+        <p>They create a worldview where premium pricing makes sense.</p>
+        <p>They handle objections before the customer reaches checkout.</p>
+
+        <p>By the time someone sees the product page, the sale is already 80% made.</p>
+        <p>The page just closes it.</p>
+
+        <div class="callout success">
+            <p><strong>The lesson:</strong> You don't need expensive video production or influencer content to scale on Meta.</p>
+            <p>You need a Thesis that lands — and a funnel that teaches it.</p>
+        </div>
+
+        <h3>What This Means For Mat & Vic's</h3>
+
+        <p>Your Thesis — whether it's the 78/20 Formula, the Washing Machine Truth, or another direction — needs a home.</p>
+        <p>That home is a funnel.</p>
+
+        <p>The funnel will:</p>
+        <ul>
+            <li>Introduce the reframe (why "natural" isn't better)</li>
+            <li>Educate on the Thesis (what makes this blend different)</li>
+            <li>Handle objections (price comparison to alpaca, durability concerns)</li>
+            <li>Drive to the product page or a bundle offer</li>
+        </ul>
+
+        <p>Weeks 3-6 of this plan are dedicated to building and testing this asset.</p>
+        <p>Once the Thesis is locked in Weeks 1-2, everything flows downstream.</p>
+        <p>The funnel expresses the Thesis.</p>
+        <p>The ads drive to the funnel.</p>
+        <p>The product page closes the sale.</p>
+
+        <div class="callout neutral">
+            <p><strong>Work in progress:</strong> A landing page for Mat & Vic's is already in development.</p>
+            <p>It follows the 78/20 Formula Thesis direction and will be ready for testing when we launch Meta campaigns.</p>
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
