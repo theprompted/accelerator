@@ -498,95 +498,144 @@
 
         <h2>How To Hit These Numbers</h2>
 
-        <p>Your unit economics spreadsheet shows several cart scenarios.</p>
-        <p>Here's what the data reveals:</p>
+        <p>Here's what actually happens when you sell a single 10-pack at €27.99:</p>
 
         <table>
-            <thead>
-                <tr>
-                    <th>Cart</th>
-                    <th>Contents</th>
-                    <th>Gross Sales</th>
-                    <th>Gross Margin %</th>
-                    <th>Allowable CPA</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
-                    <td>Cart 1</td>
-                    <td>1× Classic 10-pack</td>
-                    <td>€27.99</td>
-                    <td><strong>49%</strong></td>
-                    <td>€9.02</td>
+                    <td>Customer pays</td>
+                    <td style="text-align: right;"><strong>€27.99</strong></td>
                 </tr>
                 <tr>
-                    <td>Cart 2</td>
-                    <td>2× Classic 10-pack (15% off)</td>
-                    <td>€47.58</td>
-                    <td>40%</td>
-                    <td>€11.19</td>
+                    <td>VAT (19%)</td>
+                    <td style="text-align: right;">−€4.47</td>
                 </tr>
                 <tr>
-                    <td>Cart 3</td>
-                    <td>3× Classic 10-pack (20% off)</td>
-                    <td>€67.18</td>
-                    <td>43%</td>
-                    <td>€17.47</td>
+                    <td>COGS (product cost)</td>
+                    <td style="text-align: right;">−€6.10</td>
+                </tr>
+                <tr>
+                    <td>Shopify fees (4%)</td>
+                    <td style="text-align: right;">−€1.12</td>
+                </tr>
+                <tr>
+                    <td>Shipping/Pick/Pack (net of €4.12 customer pays)</td>
+                    <td style="text-align: right;">−€2.38</td>
+                </tr>
+                <tr>
+                    <td>JTL fee</td>
+                    <td style="text-align: right;">−€0.20</td>
                 </tr>
                 <tr class="highlight-row">
-                    <td>Cart 5</td>
-                    <td>5× Classic 10-pack</td>
-                    <td>€111.96</td>
-                    <td>47%</td>
-                    <td><strong>€33.59 ✓</strong></td>
+                    <td><strong>What's left (before ad spend)</strong></td>
+                    <td style="text-align: right;"><strong>€13.72</strong></td>
                 </tr>
             </tbody>
         </table>
 
-        <p>Notice something counterintuitive.</p>
-        <p>Cart 1 (single pack) has a <strong>higher margin percentage</strong> than Cart 2 (two packs).</p>
-        <p>The tiered discounts — 15% off at 2 packs, 20% off at 3 packs — are eating the margin gains from larger orders.</p>
+        <p>€13.72 is what you have to spend on ads and still make money.</p>
+        <p>If you want 20% profit margin, you can spend about €9 to acquire that customer.</p>
 
-        <p>The only scenario that hits €30+ allowable CPA is Cart 5: five 10-packs (50 pairs) at €112.</p>
-        <p>That's a big ask for cold traffic.</p>
+        <h3>What Happens When Someone Buys Two Packs</h3>
 
-        <h3>Paths To Better Unit Economics</h3>
+        <p>With your current 15% tiered discount, here's the math on a 2-pack order:</p>
 
-        <p>There are several levers to pull. These aren't mutually exclusive.</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Customer pays (15% off €55.98)</td>
+                    <td style="text-align: right;"><strong>€47.58</strong></td>
+                </tr>
+                <tr>
+                    <td>VAT</td>
+                    <td style="text-align: right;">−€7.60</td>
+                </tr>
+                <tr>
+                    <td>COGS (2× product)</td>
+                    <td style="text-align: right;">−€12.20</td>
+                </tr>
+                <tr>
+                    <td>Shopify fees</td>
+                    <td style="text-align: right;">−€1.90</td>
+                </tr>
+                <tr class="warning-row">
+                    <td>Shipping (free shipping kicks in — you pay full cost)</td>
+                    <td style="text-align: right;">−€6.50</td>
+                </tr>
+                <tr>
+                    <td>JTL fee</td>
+                    <td style="text-align: right;">−€0.20</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>What's left</strong></td>
+                    <td style="text-align: right;"><strong>€19.18</strong></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <div class="callout neutral">
-            <p><strong>Path 1: Restructure the discounts</strong></p>
-            <p>The current 15%/20% tiered discounts work against you. Options:</p>
+        <p>You sold twice the product but only gained €5.46 in margin.</p>
+
+        <p>Two things ate the gains:</p>
+        <ul>
+            <li><strong>The 15% discount</strong> cost you €8.40 in lost revenue</li>
+            <li><strong>Free shipping threshold</strong> cost you €4.12 (the customer contribution you lost)</li>
+        </ul>
+
+        <p>Combined: €12.52 in margin erosion.</p>
+
+        <h3>Tactics To Improve The Math</h3>
+
+        <p>There are concrete moves that can shift these numbers.</p>
+
+        <div class="callout success">
+            <p><strong>Tactic 1: Gift-with-purchase instead of discount</strong></p>
+            <p>Instead of "Buy 2, get 15% off" → "Buy 2, get a free pair of sneaker socks"</p>
+            <p>Your cost: €4.50 (COGS on sneaker socks) vs €8.40 (the 15% discount)</p>
+            <p>You save €3.90 per order — and customers perceive "free gift" as higher value than a percentage off.</p>
+        </div>
+
+        <div class="callout success">
+            <p><strong>Tactic 2: Pre-built bundles at fixed prices</strong></p>
+            <p>Instead of tiered discounts, create named bundles:</p>
             <ul>
-                <li>Reduce to 5%/10% — smaller discount, better margin retention</li>
-                <li>Cap the discount — "20% off" but only on the 3rd pack, not the whole order</li>
-                <li>Remove entirely — use value-adds instead of price cuts</li>
+                <li><strong>"The Drawer Refresh"</strong> — 30 pairs for €74.99 (vs €83.97 at full price = 11% off instead of 20%)</li>
+                <li><strong>"The Starter Kit"</strong> — 20 pairs (mix of classic + sneaker) for €44.99</li>
+                <li><strong>"His & Hers"</strong> — 2× 10-packs in different sizes for €52.99</li>
             </ul>
+            <p>Bundles feel like a deal without the same margin hit. And they're easier to advertise.</p>
         </div>
 
-        <div class="callout neutral">
-            <p><strong>Path 2: Value-add instead of discount</strong></p>
-            <p>"Buy 3, get a free pair of sneaker socks" maintains full margin while increasing perceived value.</p>
-            <p>The cost of the free item is less than a 20% discount on the whole order.</p>
-            <p>And customers perceive "free gift" as more valuable than "20% off."</p>
+        <div class="callout success">
+            <p><strong>Tactic 3: Raise the free shipping threshold</strong></p>
+            <p>Currently: Free shipping at €39. Customer pays €4.12 under that.</p>
+            <p>If you raise it to €55:</p>
+            <ul>
+                <li>Single pack buyers still pay shipping contribution (€4.12)</li>
+                <li>2-pack buyers are nudged to add a 3rd item to hit threshold</li>
+                <li>"Add €7.01 for free shipping" messaging drives upsells</li>
+            </ul>
+            <p>This alone could add €3-5 to average margin per order.</p>
         </div>
 
-        <div class="callout neutral">
-            <p><strong>Path 3: Price repositioning</strong></p>
-            <p>This is where Thesis work pays off.</p>
-            <p>If Mat & Vic's shifts from "value socks" to "engineered socks," the price anchor changes.</p>
-            <p>Moving from €27.99 to €32.99 or €34.99 per 10-pack — even with existing discounts — dramatically improves allowable CPA.</p>
+        <div class="callout success">
+            <p><strong>Tactic 4: Funnel-specific offer</strong></p>
+            <p>Instead of site-wide discounting, create a landing page offer:</p>
+            <p><strong>"The 78/20 Starter Pack"</strong> — 20 pairs for €49.99 (first-time customers only)</p>
+            <p>This is your acquisition offer. It's separate from your main site pricing.</p>
+            <p>Margin is tighter, but it's designed to bring in new customers who then buy at full price on repeat.</p>
         </div>
 
-        <div class="callout neutral">
-            <p><strong>Path 4: Free shipping threshold</strong></p>
-            <p>Currently set at €39. Customers under that threshold pay €4.12.</p>
-            <p>Raising to €50 or €55 nudges customers to add more to cart — without discounting.</p>
-            <p>Combined with Path 2 (value-add at threshold), this can meaningfully lift AOV.</p>
+        <div class="callout success">
+            <p><strong>Tactic 5: Subscription play</strong></p>
+            <p><strong>"Fresh Socks Club"</strong> — 10 pairs every 3 months, auto-shipped.</p>
+            <p>Price: €24.99/shipment (10% off) with free shipping included.</p>
+            <p>Why it works: You can afford a lower margin on the first shipment because you're locking in repeat purchases without additional ad spend.</p>
+            <p>A subscription customer with 4 shipments/year is worth €100+ in revenue — with only one acquisition cost.</p>
         </div>
 
-        <p>The right combination depends on positioning, competitive landscape, and what feels authentic to the brand.</p>
-        <p>This is part of what we align on in Weeks 1-2.</p>
+        <p>These aren't mutually exclusive.</p>
+        <p>The right combination depends on what fits the brand and what you're willing to test.</p>
+        <p>This is part of what we'll align on in Weeks 1-2.</p>
 
         <div class="section-divider"></div>
 
