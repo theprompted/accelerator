@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Their Alarm - CBDog Calming Treats</title>
+    <meta name="description" content="Give your dog's nervous system what it needs to finally calm down. Full-spectrum CBD treats with real deboned lamb. Made in USA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* GVN Brand Colors - matching Education Page */
+            --font-primary: 'Montserrat', 'Questrial', Arial, sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-bold: 700;
+            --font-weight-extra-bold: 800;
+            --color-text-primary: #2e2e2e;
+            --color-text-headline: #0e1b4d;
+            --color-text-secondary: #1f2555;
+            --color-text-muted: #666666;
+            --color-accent-green: #449344;
+            --color-accent-green-light: #d4e8d4;
+            --color-header-green: #357535;
+            --color-midnight: #0e1b4d;
+            --color-midnight-light: #1f2555;
+            --color-cta-start: #449344;
+            --color-cta-end: #357535;
+            --color-cta-hover: #2a5a2a;
+            --color-success: #449344;
+            --color-urgency: #e32402;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #f8f8f8;
+            --color-bg-navy: #0e1b4d;
+            --color-gold: #f9dc4b;
+            --shadow-card: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+            --shadow-card-hover: 0 8px 30px rgba(93, 93, 93, 0.25);
+            --shadow-button: 0 4px 15px rgba(68, 147, 68, 0.25);
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.8rem;
+            --radius-pill: 40px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background: var(--color-bg-white);
+        }
+
+        /* Sticky Promo Banner */
+        .promo-banner {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-midnight-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .promo-banner span { color: var(--color-gold); font-weight: 700; }
+
+        /* Testimonials Strip */
+        .testimonials-strip {
+            background: var(--color-bg-light);
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .testimonials-strip-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .strip-testimonial { text-align: center; }
+
+        .strip-testimonial .quote {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .strip-testimonial .author {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .strip-testimonial .stars { color: var(--color-gold); font-size: 1.125rem; }
+
+        .strip-disclaimer {
+            text-align: center;
+            font-size: 0.6875rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #e8f5e8 0%, #FFFFFF 100%);
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 em { color: var(--color-accent-green); font-style: normal; }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-product {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-wrapper { position: relative; }
+
+        .hero-product img {
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.2));
+        }
+
+        .urgency-badge {
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(68, 147, 68, 0.4);
+            transform: rotate(12deg);
+        }
+
+        .urgency-badge .percent { font-size: 1.5rem; line-height: 1; }
+        .urgency-badge .off { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .hero-pricing {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .hero-pricing .limited {
+            color: var(--color-accent-green);
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-pricing .as-low {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-pricing .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-accent-green);
+            line-height: 1;
+        }
+
+        .hero-pricing .shipping {
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .hero-right {
+            text-align: left;
+            max-width: 420px;
+        }
+
+        .hero-intro {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .hero-intro strong { color: var(--color-text-headline); }
+
+        .hero-benefits {
+            list-style: disc;
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-benefits li {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(180deg, var(--color-cta-start) 0%, var(--color-cta-end) 100%);
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 1.125rem 2.5rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(68, 147, 68, 0.4);
+        }
+
+        .hero-cta:hover {
+            background: linear-gradient(180deg, var(--color-cta-hover) 0%, #1a4a1a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42, 90, 42, 0.4);
+        }
+
+        .hero-reassurance {
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Credibility Grid */
+        .credibility-section {
+            background: var(--color-bg-navy);
+            padding: 2rem 1.5rem;
+        }
+
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .credibility-item {
+            text-align: center;
+            color: white;
+        }
+
+        .credibility-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .credibility-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .credibility-desc {
+            font-size: 0.8125rem;
+            opacity: 0.8;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--color-accent-green);
+            line-height: 1;
+        }
+
+        .stat-item .label {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.25rem;
+            background: var(--color-bg-light);
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .trust-icon { font-size: 1.25rem; }
+
+        /* Who This Is For Section */
+        .who-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .who-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 2rem;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .who-check {
+            color: var(--color-success);
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .who-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-primary);
+        }
+
+        /* Expert Section */
+        .expert-section {
+            background: linear-gradient(135deg, var(--color-accent-green-light) 0%, #b8d4b8 100%);
+            padding: 2.5rem 1.5rem;
+        }
+
+        .expert-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .expert-photo {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .expert-text h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin-bottom: 0.25rem;
+        }
+
+        .expert-text .credentials {
+            font-size: 0.875rem;
+            color: var(--color-accent-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .expert-text p {
+            font-size: 0.9375rem;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table {
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            background: var(--color-bg-navy);
+            color: white;
+            font-weight: 700;
+            font-size: 0.9375rem;
+        }
+
+        .comparison-header div {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .comparison-header div:first-child { text-align: left; }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .comparison-row:last-child { border-bottom: none; }
+
+        .comparison-row div {
+            padding: 0.875rem 1rem;
+            font-size: 0.9375rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comparison-row div:first-child {
+            text-align: left;
+            justify-content: flex-start;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .comparison-row:nth-child(even) { background: var(--color-bg-light); }
+
+        .check { color: var(--color-success); font-size: 1.25rem; }
+        .cross { color: var(--color-urgency); font-size: 1.25rem; }
+
+        .comparison-row .cbdog-col {
+            background: rgba(68, 147, 68, 0.1);
+            font-weight: 600;
+        }
+
+        /* What's Inside Section */
+        .ingredients-section {
+            background: var(--color-bg-light);
+            padding: 3rem 1.5rem;
+        }
+
+        .ingredients-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+        }
+
+        .ingredients-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ingredient-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .ingredient-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-accent-green-light) 0%, var(--color-accent-green) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .ingredient-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+        }
+
+        .ingredient-card p {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Pre-Bundle Persuasion Section */
+        .stock-up-section {
+            background: linear-gradient(135deg, var(--color-midnight) 0%, #0d1a2d 100%);
+            padding: 3rem 1.5rem;
+            color: white;
+        }
+
+        .stock-up-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .stock-up-section h2 span { color: var(--color-gold); }
+
+        .stock-up-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .stock-up-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .stock-up-content p { margin-bottom: 1rem; }
+        .stock-up-content strong { color: white; }
+
+        /* Bundle Section */
+        .bundle-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .bundle-section .container { max-width: 1150px; }
+
+        .bundle-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .bundle-card {
+            background: white;
+            border: 2px solid #E0E0E0;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bundle-card:hover {
+            border-color: var(--color-accent-green);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .bundle-card.popular {
+            border-color: var(--color-accent-green);
+            border-width: 3px;
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            color: white;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.375rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .bundle-badge.best-value {
+            background: linear-gradient(135deg, var(--color-success) 0%, #1E6B3A 100%);
+        }
+
+        .bundle-quantity {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bundle-image-wrapper {
+            position: relative;
+            display: block;
+            width: 280px;
+            height: 200px;
+            margin: 0 auto 1rem;
+        }
+
+        .bundle-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-savings-badge {
+            position: absolute;
+            bottom: 0;
+            left: -10px;
+            background: linear-gradient(135deg, var(--color-gold) 0%, #FFA500 100%);
+            color: #333;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            line-height: 1.1;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .bundle-savings-badge .amount {
+            font-size: 0.9375rem;
+            font-weight: 800;
+        }
+
+        .bundle-supply {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .bundle-price-main { margin-bottom: 0.25rem; }
+
+        .bundle-price-main .amount {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            line-height: 1;
+        }
+
+        .bundle-price-main .each {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            vertical-align: middle;
+        }
+
+        .bundle-total {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .bundle-total .strikethrough {
+            text-decoration: line-through;
+            margin-left: 0.25rem;
+        }
+
+        .bundle-shipping {
+            font-size: 0.8125rem;
+            color: var(--color-success);
+            margin-top: 0.75rem;
+            font-weight: 600;
+        }
+
+        .bundle-cta {
+            display: block;
+            background: linear-gradient(180deg, var(--color-cta-start) 0%, var(--color-cta-end) 100%);
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(68, 147, 68, 0.3);
+        }
+
+        .bundle-cta:hover {
+            background: linear-gradient(180deg, var(--color-cta-hover) 0%, #1a4a1a 100%);
+            box-shadow: 0 6px 20px rgba(42, 90, 42, 0.4);
+        }
+
+        /* Bonus Callout Bar */
+        .bonus-callout-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            border: 2px solid var(--color-accent-green);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 2rem;
+            margin: 2.5rem auto 0;
+            max-width: 900px;
+        }
+
+        .bonus-callout-icon {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(68, 147, 68, 0.3);
+        }
+
+        .bonus-callout-content { text-align: left; }
+
+        .bonus-callout-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .bonus-callout-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin-bottom: 0.25rem;
+        }
+
+        .bonus-callout-desc {
+            font-size: 0.9375rem;
+            color: var(--color-text-primary);
+            line-height: 1.4;
+        }
+
+        .bonus-callout-value {
+            color: var(--color-success);
+            font-weight: 700;
+        }
+
+        /* Bundle Trust Badges */
+        .bundle-trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .trust-badge-item { text-align: center; }
+
+        .trust-badge-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-success) 0%, #1E6B3A 100%);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(46, 133, 75, 0.3);
+        }
+
+        .trust-badge-text {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Bonus Section */
+        .bonus-section {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            padding: 3rem 1.5rem;
+            border-top: 4px solid var(--color-accent-green);
+            border-bottom: 4px solid var(--color-accent-green);
+        }
+
+        .bonus-badge {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bonus-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .bonus-section h2 em {
+            color: var(--color-accent-green);
+            font-style: normal;
+        }
+
+        .bonus-value {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--color-accent-green);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .bonus-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+        }
+
+        .bonus-content p { margin-bottom: 1rem; }
+
+        .bonus-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin: 2rem 0 1rem;
+        }
+
+        .bonus-features {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-card);
+        }
+
+        .bonus-features h3 { margin-top: 0; }
+
+        .bonus-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bonus-features li {
+            padding-left: 1.75rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .bonus-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+        }
+
+        /* Why CBDog Section */
+        .why-section {
+            background: var(--color-bg-light);
+            padding: 3rem 1.5rem;
+        }
+
+        .why-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 2rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--color-accent-green-light) 0%, var(--color-accent-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .why-text h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin-bottom: 0.25rem;
+        }
+
+        .why-text p {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+        }
+
+        .testimonial-stars {
+            color: var(--color-gold);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent-green-light), var(--color-accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .testimonial-placeholder {
+            background: #fff8e7;
+            border: 2px dashed var(--color-gold);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--color-accent-green-light) 0%, #b8d4b8 100%);
+            padding: 3rem 1.5rem;
+        }
+
+        .guarantee-badge {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, var(--color-success) 0%, #1E6B3A 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 6px 20px rgba(46, 133, 75, 0.4);
+            border: 5px solid var(--color-gold);
+        }
+
+        .guarantee-badge .days {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .guarantee-badge .label {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .guarantee-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .guarantee-section p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-text-primary);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 2rem;
+        }
+
+        .faq-list { max-width: 700px; margin: 0 auto; }
+
+        .faq-item {
+            border-bottom: 1px solid #E0E0E0;
+            padding: 1.25rem 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--color-text-headline);
+            margin-bottom: 0.5rem;
+            font-size: 1.0625rem;
+        }
+
+        .faq-answer {
+            color: var(--color-text-primary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            background: linear-gradient(135deg, var(--color-midnight) 0%, #0d1a2d 100%);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .final-cta-section h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .final-cta-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .final-cta-button {
+            display: inline-block;
+            background: linear-gradient(180deg, var(--color-cta-start) 0%, var(--color-cta-end) 100%);
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 1.375rem;
+            font-weight: 700;
+            padding: 1.25rem 3rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(68, 147, 68, 0.5);
+        }
+
+        .final-cta-button:hover {
+            background: linear-gradient(180deg, #5aa35a 0%, var(--color-cta-start) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(68, 147, 68, 0.6);
+        }
+
+        .final-trust {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .final-trust span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .footer p { max-width: 800px; margin: 0 auto 1rem; }
+
+        /* Image placeholders */
+        .image-placeholder {
+            background: linear-gradient(135deg, #d4e8d4 0%, #b8d4b8 100%);
+            border-radius: var(--radius-md);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 400px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .image-placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder .description {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            body { font-size: 1rem; }
+            h2 { font-size: 1.5rem; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero-product { flex-direction: column; gap: 1.5rem; }
+            .hero-product img { max-width: 100%; width: 280px; }
+            .hero-right { text-align: center; }
+            .hero-benefits { text-align: left; display: inline-block; }
+            .credibility-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .who-grid { grid-template-columns: 1fr; }
+            .expert-content { flex-direction: column; text-align: center; }
+            .comparison-header, .comparison-row { font-size: 0.8125rem; }
+            .comparison-header div, .comparison-row div { padding: 0.625rem 0.5rem; }
+            .ingredients-grid { grid-template-columns: 1fr; }
+            .bundle-grid { grid-template-columns: 1fr; max-width: 350px; }
+            .bundle-card.popular { order: -1; }
+            .why-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr !important; }
+            .testimonials-strip-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
+            .trust-bar { gap: 1rem; }
+            .trust-item { font-size: 0.75rem; }
+            .bundle-trust-badges { flex-direction: column; gap: 1.5rem; }
+            .bonus-callout-bar {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+            .bonus-callout-content { text-align: center; }
+            .final-cta-section h2 { font-size: 1.5rem; }
+            .final-cta-button { display: block; font-size: 1.125rem; padding: 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 23: STICKY PROMO BANNER -->
+    <div class="promo-banner">
+        &#128054; <span>ANXIOUS DOG RESCUE:</span> Save Up to 27% + Free Shipping
+    </div>
+
+    <!-- SECTION 23: HERO SECTION -->
+    <div class="hero">
+        <div class="container">
+            <h1>Stop Managing Anxiety. Start <em>Resetting</em> It.</h1>
+            <p class="hero-subtitle">The missing support your dog's Alarm System needs — so it can finally turn off</p>
+
+            <div class="hero-product">
+                <div class="hero-image-wrapper">
+                    <img src="cbdog-lamb-1-bottle.webp" alt="CBDog Calming Treats" style="max-width: 350px; height: auto;">
+                    <div class="urgency-badge">
+                        <div class="percent">27%</div>
+                        <div class="off">Off</div>
+                    </div>
+
+                    <div class="hero-pricing">
+                        <div class="limited">Anxious Dog Rescue Price:</div>
+                        <div class="as-low">AS LOW AS</div>
+                        <div class="price">$36</div>
+                        <div class="shipping">+ FREE SHIPPING</div>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <p class="hero-intro"><strong>Exercise wasn't the problem. Their nervous system was.</strong> CBDog gives your dog's Alarm System what it's been missing:</p>
+
+                    <ul class="hero-benefits">
+                        <li>Support the system that resets after stress</li>
+                        <li>No sedation — they stay alert and present</li>
+                        <li>Real deboned lamb — dogs actually love it</li>
+                        <li>Full-spectrum CBD at therapeutic doses</li>
+                        <li>Third-party lab tested, Made in USA</li>
+                    </ul>
+
+                    <a href="#bundles" class="hero-cta">Reset Their Alarm</a>
+                    <p class="hero-reassurance">(No monthly subscription required. No strings attached.)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 24: TESTIMONIAL STRIP -->
+    <div class="testimonials-strip">
+        <div class="container">
+            <div class="testimonials-strip-grid">
+                <div class="strip-testimonial">
+                    <div class="quote">"This product makes my dog so relaxed. I give him one when there is thunder and when other days seem stressful for him from noises."</div>
+                    <div class="author">Michael — Verified Buyer</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+                <div class="strip-testimonial">
+                    <div class="quote">"A must for anxious pups! A few drops in my dog's food bowl and I can actually leave the house without him howling restlessly."</div>
+                    <div class="author">Denise K.</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                </div>
+            </div>
+            <div class="strip-disclaimer">Individual results may vary. These statements have not been evaluated by the FDA.</div>
+        </div>
+    </div>
+
+    <!-- SECTION 25: CREDIBILITY GRID -->
+    <div class="credibility-section">
+        <div class="container">
+            <div class="credibility-grid">
+                <div class="credibility-item">
+                    <div class="credibility-icon">&#128267;</div>
+                    <div class="credibility-title">Alarm-Focused</div>
+                    <div class="credibility-desc">Supports your dog's natural reset mechanism</div>
+                </div>
+                <div class="credibility-item">
+                    <div class="credibility-icon">&#128300;</div>
+                    <div class="credibility-title">Lab-Tested</div>
+                    <div class="credibility-desc">Third-party verified for purity and potency</div>
+                </div>
+                <div class="credibility-item">
+                    <div class="credibility-icon">&#127830;</div>
+                    <div class="credibility-title">Real Lamb First</div>
+                    <div class="credibility-desc">Deboned lamb is the first ingredient</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 26: STATS SECTION -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="number">Full</div>
+                    <div class="label">Spectrum CBD</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">30</div>
+                    <div class="label">Treats Per Jar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">USA</div>
+                    <div class="label">Made in America</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">0</div>
+                    <div class="label">Artificial Colors</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <span class="trust-icon">&#127482;&#127480;</span>
+            Made in USA
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">&#128230;</span>
+            Free Shipping
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">&#128274;</span>
+            Secure Checkout
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">&#9989;</span>
+            30-Day Guarantee
+        </div>
+    </div>
+
+    <!-- SECTION 27: WHO THIS IS FOR SECTION -->
+    <div class="who-section">
+        <div class="container">
+            <h2>CBDog Is For Dog Owners Who...</h2>
+
+            <div class="who-grid">
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Have an anxious dog despite trying everything</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Are tired of adjusting their whole life around triggers</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Have tried calming products that didn't work</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Don't want to sedate their dog with medication</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Want their dog to feel calm, not drugged</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">Are ready to address the root cause</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 28: EXPERT SECTION -->
+    <div class="expert-section">
+        <div class="container">
+            <div class="expert-content">
+                <div class="expert-photo">&#128054;</div>
+                <div class="expert-text">
+                    <h3>The Science Behind the Alarm</h3>
+                    <div class="credentials">[Veterinarian/Expert Name] | [Credentials]</div>
+                    <p>"Most anxious dog owners think the problem is behavior. It's not.</p>
+                    <p>The problem is the Endocannabinoid System — the built-in mechanism that's supposed to reset after stress.</p>
+                    <p>When that system is under-supported, the alarm stays stuck on.</p>
+                    <p><strong>CBD gives that system what it's been missing.</strong> It doesn't sedate. It doesn't mask. It supports the natural reset mechanism that should have been working all along."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 29: COMPARISON SECTION -->
+    <div class="comparison-section">
+        <div class="container">
+            <h2>CBDog vs. What You've Already Tried</h2>
+            <p class="comparison-subtitle">Five things that matter. Only one calming treat checks every box.</p>
+
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div>What Matters</div>
+                    <div>CBDog</div>
+                    <div>Others</div>
+                </div>
+                <div class="comparison-row">
+                    <div>Full-Spectrum CBD (not hemp seed oil)</div>
+                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
+                    <div><span class="cross">&#10007;</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div>Therapeutic Dosing (not trace amounts)</div>
+                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
+                    <div><span class="cross">&#10007;</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div>Addresses Root Cause (not symptoms)</div>
+                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
+                    <div><span class="cross">&#10007;</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div>Dogs Actually Eat It (real lamb)</div>
+                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
+                    <div><span class="cross">&#10007;</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div>Third-Party Lab Tested</div>
+                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
+                    <div><span class="cross">&#10007;</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 30: WHAT'S INSIDE SECTION -->
+    <div class="ingredients-section">
+        <div class="container">
+            <h2>What's Inside Every Treat</h2>
+            <p class="ingredients-subtitle">The raw materials your dog's Alarm System needs. Nothing else.</p>
+
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">&#129505;</div>
+                    <h3>Full-Spectrum CBD</h3>
+                    <p>The compound that supports your dog's Endocannabinoid System — the reset mechanism.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">&#127830;</div>
+                    <h3>Real Deboned Lamb</h3>
+                    <p>First ingredient. Real meat your dog will actually want to eat, every time.</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">&#128230;</div>
+                    <h3>Flaxseed Oil</h3>
+                    <p>The carrier that helps CBD absorb into your dog's system instead of passing through.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--color-text-muted); font-size: 0.9375rem;">
+                <strong>Full Ingredients:</strong> Deboned Lamb, Ground Brown Rice, Ground Yellow Peas, Lamb Meal, Glycerin, Cane Molasses, Gelatin, Flaxseed Oil, Lactic Acid, Dried Cultured Skim Milk, Flaxseed Meal, Dried Egg Product, Salt, Natural Smoke Flavor, Rosemary Extract, Minerals.
+            </p>
+        </div>
+    </div>
+
+    <!-- SECTION 31: STOCK UP SECTION -->
+    <div class="stock-up-section">
+        <div class="container">
+            <h2>RESET THEIR ALARM — <span>SAVE MORE</span></h2>
+            <p class="stock-up-subtitle">Stock up on CBDog and save with multi-jar discounts</p>
+
+            <div class="stock-up-content">
+                <p><strong>Choose your 6, 3, or 1-jar supply below.</strong></p>
+
+                <p>Your dog's Alarm System doesn't reset overnight.</p>
+
+                <p>It's been stuck on for months — maybe years.</p>
+
+                <p>People who see the best results give CBDog at least 4-8 weeks to fully support the system.</p>
+
+                <p>That's why the 3-jar option makes the most sense — it locks in your lowest price and keeps the support coming.</p>
+
+                <p><strong>Stock up now so their Alarm System stays supported — and the reset can finally happen.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 32: BUNDLE SECTION -->
+    <div class="bundle-section" id="bundles">
+        <div class="container">
+            <h2>Choose Your Package</h2>
+            <p class="bundle-subtitle">The longer you support the Alarm System, the better it works. Stock up and save.</p>
+
+            <div class="bundle-grid">
+
+                <!-- 1 Jar - Trial -->
+                <div class="bundle-card">
+                    <div class="bundle-quantity">1 Jar</div>
+                    <div class="bundle-supply">30-Day Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-lamb-1-bottle.webp" alt="CBDog 1 Jar" class="bundle-image">
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$49</span>
+                    </div>
+                    <div class="bundle-total">&nbsp;</div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">TRY CBDOG</a>
+                </div>
+
+                <!-- 6 Jars - CENTER, BEST VALUE -->
+                <div class="bundle-card popular">
+                    <div class="bundle-badge best-value">Best Value</div>
+                    <div class="bundle-quantity">6 Jars</div>
+                    <div class="bundle-supply">6-Month Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-6-bottles.png" alt="CBDog 6 Jars" class="bundle-image">
+                        <div class="bundle-savings-badge">
+                            <span class="amount">$78</span>
+                            <span>Savings!</span>
+                        </div>
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$36</span><span class="each"> each</span>
+                    </div>
+                    <div class="bundle-total">TOTAL $216 <span class="strikethrough">$294</span></div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">RESET THEIR ALARM — 27% OFF</a>
+                </div>
+
+                <!-- 3 Jars - Most Popular -->
+                <div class="bundle-card">
+                    <div class="bundle-badge">Most Popular</div>
+                    <div class="bundle-quantity">3 Jars</div>
+                    <div class="bundle-supply">90-Day Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-3-bottles.png" alt="CBDog 3 Jars" class="bundle-image">
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$39</span><span class="each"> each</span>
+                    </div>
+                    <div class="bundle-total">TOTAL $117 <span class="strikethrough">$147</span></div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">RESET THEIR ALARM — 20% OFF</a>
+                </div>
+
+            </div>
+
+            <!-- SECTION 33: Bonus Callout Bar -->
+            <div class="bonus-callout-bar">
+                <div class="bonus-callout-icon">&#128218;</div>
+                <div class="bonus-callout-content">
+                    <div class="bonus-callout-label">FREE BONUS with every order</div>
+                    <div class="bonus-callout-title">The Anxious Dog Reset Guide</div>
+                    <div class="bonus-callout-desc">A complete guide to supporting your dog's calm while CBDog does the heavy lifting. <span class="bonus-callout-value">$47 value — yours FREE.</span></div>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="bundle-trust-badges">
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128176;</div>
+                    <div class="trust-badge-text">30-Day Money<br>Back Guarantee</div>
+                </div>
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128274;</div>
+                    <div class="trust-badge-text">Safe & Secure<br>Checkout</div>
+                </div>
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128666;</div>
+                    <div class="trust-badge-text">FREE Shipping<br>On All Orders</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION 34: WHY CBDOG SECTION -->
+    <div class="why-section">
+        <div class="container">
+            <h2>Why CBDog Works When Others Don't</h2>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">&#129505;</div>
+                    <div class="why-text">
+                        <h3>Full-Spectrum, Not Isolate</h3>
+                        <p>Contains the complete range of beneficial compounds. Isolate is stripped down. Full-spectrum is complete.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">&#128200;</div>
+                    <div class="why-text">
+                        <h3>Therapeutic Dosing</h3>
+                        <p>Enough to actually move the needle. Not trace amounts printed on a label for marketing.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">&#128267;</div>
+                    <div class="why-text">
+                        <h3>Addresses Root Cause</h3>
+                        <p>Supports the Endocannabinoid System — the reset mechanism. Not a sedative that masks symptoms.</p>
+                    </div>
+                </div>
+
+                <div class="why-item">
+                    <div class="why-icon">&#127830;</div>
+                    <div class="why-text">
+                        <h3>Dogs Actually Eat It</h3>
+                        <p>Real deboned lamb as the first ingredient. No wrestling. No hiding pills. They look forward to it.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS SECTION -->
+    <div class="testimonials-section">
+        <div class="container">
+            <h2>What Owners Notice After Starting CBDog</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">
+                        "Prescription meds only worked for a while before my dog started suffering from side effects.<br><br>
+                        I was exhausted from trying everything — the trainers, the thunder shirts, adjusting our whole life around her triggers.<br><br>
+                        I've been using CBDog for over 3 months now, and the improvement is so clear. She's calmer during storms, calmer when I leave, calmer at the vet.<br><br>
+                        And because all ingredients are herbal, no side effects. Her alarm finally turns off."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DJ</div>
+                        <div>
+                            <div class="testimonial-name">Delilah J.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">
+                        "Every vet visit used to be chaos because of his nerves.<br><br>
+                        The panting would start in the car. By the time we got to the waiting room, he was a wreck. I dreaded it as much as he did.<br><br>
+                        Since trying CBDog, he's calmer. He actually lets the vet check him out without a fuss.<br><br>
+                        I used to have to reschedule appointments because he was too worked up. Now we just... go. It's like having a different dog."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">OP</div>
+                        <div>
+                            <div class="testimonial-name">Oliver P.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECOND BUNDLE SECTION -->
+    <div class="bundle-section" id="bundles-2">
+        <div class="container">
+            <h2>This Up To 27% DISCOUNT with FREE SHIPPING<br>Is Only Available While Supplies Last</h2>
+            <p class="bundle-subtitle">Reset their Alarm now before we sell out.</p>
+
+            <div class="bundle-grid">
+
+                <!-- 1 Jar - Trial -->
+                <div class="bundle-card">
+                    <div class="bundle-quantity">1 Jar</div>
+                    <div class="bundle-supply">30-Day Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-lamb-1-bottle.webp" alt="CBDog 1 Jar" class="bundle-image">
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$49</span>
+                    </div>
+                    <div class="bundle-total">&nbsp;</div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">TRY CBDOG</a>
+                </div>
+
+                <!-- 6 Jars - CENTER, BEST VALUE -->
+                <div class="bundle-card popular">
+                    <div class="bundle-badge best-value">Best Value</div>
+                    <div class="bundle-quantity">6 Jars</div>
+                    <div class="bundle-supply">6-Month Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-6-bottles.png" alt="CBDog 6 Jars" class="bundle-image">
+                        <div class="bundle-savings-badge">
+                            <span class="amount">$78</span>
+                            <span>Savings!</span>
+                        </div>
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$36</span><span class="each"> each</span>
+                    </div>
+                    <div class="bundle-total">TOTAL $216 <span class="strikethrough">$294</span></div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">RESET THEIR ALARM — 27% OFF</a>
+                </div>
+
+                <!-- 3 Jars - Most Popular -->
+                <div class="bundle-card">
+                    <div class="bundle-badge">Most Popular</div>
+                    <div class="bundle-quantity">3 Jars</div>
+                    <div class="bundle-supply">90-Day Supply</div>
+                    <div class="bundle-image-wrapper">
+                        <img src="cbdog-3-bottles.png" alt="CBDog 3 Jars" class="bundle-image">
+                    </div>
+                    <div class="bundle-price-main">
+                        <span class="amount">$39</span><span class="each"> each</span>
+                    </div>
+                    <div class="bundle-total">TOTAL $117 <span class="strikethrough">$147</span></div>
+                    <div class="bundle-shipping">+ FREE SHIPPING</div>
+                    <a href="#" class="bundle-cta">RESET THEIR ALARM — 20% OFF</a>
+                </div>
+
+            </div>
+
+            <!-- Bonus Callout Bar -->
+            <div class="bonus-callout-bar">
+                <div class="bonus-callout-icon">&#128218;</div>
+                <div class="bonus-callout-content">
+                    <div class="bonus-callout-label">FREE BONUS with every order</div>
+                    <div class="bonus-callout-title">The Anxious Dog Reset Guide</div>
+                    <div class="bonus-callout-desc">A complete guide to supporting your dog's calm while CBDog does the heavy lifting. <span class="bonus-callout-value">$47 value — yours FREE.</span></div>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="bundle-trust-badges">
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128176;</div>
+                    <div class="trust-badge-text">30-Day Money<br>Back Guarantee</div>
+                </div>
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128274;</div>
+                    <div class="trust-badge-text">Safe & Secure<br>Checkout</div>
+                </div>
+                <div class="trust-badge-item">
+                    <div class="trust-badge-icon">&#128666;</div>
+                    <div class="trust-badge-text">FREE Shipping<br>On All Orders</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION 20: GUARANTEE SECTION -->
+    <div class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-badge">
+                <div class="days">30</div>
+                <div class="label">Day Money<br>Back Guarantee</div>
+            </div>
+            <h2>Reset Their Alarm — Completely Risk-Free</h2>
+            <p style="margin-bottom: 1rem;">We know you've been burned before.</p>
+            <p style="margin-bottom: 1rem;">The pet store treats that did nothing.</p>
+            <p style="margin-bottom: 1rem;">The trainer who promised results and delivered excuses.</p>
+            <p style="margin-bottom: 1rem;">The medication that turned your dog into someone you didn't recognize.</p>
+            <p style="margin-bottom: 1rem;"><strong>We're asking you to trust one more time.</strong></p>
+            <p style="margin-bottom: 1rem;">So we're making it easy.</p>
+            <p style="margin-bottom: 1rem;">Try CBDog for a full 30 days.</p>
+            <p style="margin-bottom: 1rem;">If your dog isn't calmer — if the alarm doesn't start resetting — just tell us.</p>
+            <p style="margin-bottom: 1rem;"><strong>We'll refund every penny. No questions asked.</strong></p>
+            <p style="color: var(--color-text-muted); font-style: italic;">The only risk is doing nothing — and losing another month to anxiety you could have helped.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 35: FAQ SECTION -->
+    <div class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Will CBDog help with my dog's specific type of anxiety?</div>
+                    <div class="faq-answer">CBDog supports the Endocannabinoid System — the built-in mechanism that regulates stress response. Whether your dog struggles with separation anxiety, noise phobias, general restlessness, or situational stress, they all run through the same system. CBDog gives that system what it needs to reset.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I give CBDog to my dog?</div>
+                    <div class="faq-answer">CBDog treats are made with real deboned lamb as the first ingredient. Most dogs eat them happily as a treat. For best results, give the recommended dose daily — consistency is key. For known stressors like thunderstorms or car rides, give 1-2 hours before the event.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How quickly will I see results?</div>
+                    <div class="faq-answer">Some dogs show subtle changes within the first week. Most owners see noticeable shifts by weeks 2-3 — calmer during triggers, faster recovery after stress. For full results, give CBDog 4-8 weeks to fully support the system. Remember: the alarm has been stuck for a long time. It takes time to reset.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is CBD safe for dogs?</div>
+                    <div class="faq-answer">Yes. CBD works through your dog's Endocannabinoid System — a natural system every mammal has. Multiple peer-reviewed studies have found CBD side effects in dogs to be "mild or unremarkable" at therapeutic doses. CBDog is third-party lab tested for purity and potency.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Will CBDog make my dog sleepy or drugged?</div>
+                    <div class="faq-answer">No. CBDog is not a sedative. It doesn't suppress your dog's nervous system. It supports the natural calming mechanism that should have been working all along. Your dog stays alert, present, and themselves — just without the constant alarm screaming in the background.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I use CBDog with my dog's current medication?</div>
+                    <div class="faq-answer">Always consult your veterinarian before combining supplements with medication. CBD can interact with some drugs. Your vet can advise on the best approach for your dog's specific situation.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What if CBDog doesn't work for my dog?</div>
+                    <div class="faq-answer">You're protected by our 30-day money-back guarantee. If your dog isn't calmer — if you don't see the difference — just tell us. We'll refund every penny, no questions asked. You have nothing to lose except another month of anxiety.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 36: FINAL CTA SECTION -->
+    <div class="final-cta-section">
+        <div class="container">
+            <h2>&#128054; Stop Managing Anxiety. Start Resetting It.</h2>
+            <p>Give your dog's Alarm System what it's been missing — and watch the panic finally stop.</p>
+
+            <a href="#bundles" class="final-cta-button">Reset Their Alarm</a>
+
+            <div class="final-trust">
+                <span>&#128274; Secure Checkout</span>
+                <span>&#128230; Free Shipping</span>
+                <span>&#9989; 30-Day Guarantee</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <p><strong>Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Consult your veterinarian before starting any new supplement regimen.</p>
+            <p>&copy; 2025 Green Valley Nutrition. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html>
