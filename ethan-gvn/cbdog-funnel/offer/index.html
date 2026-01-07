@@ -1468,6 +1468,305 @@
             color: var(--color-accent-green);
             text-decoration: underline;
         }
+
+        .solution-reveal .meet-product {
+            background: white;
+            padding: 2rem 0;
+        }
+
+        .solution-reveal .meet-product h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            color: var(--color-accent-green);
+        }
+
+        .solution-reveal .product-intro {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .solution-reveal .product-intro .nickname {
+            display: block;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 1.25rem 0;
+            color: var(--color-text-headline);
+        }
+
+        .solution-reveal .product-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .solution-reveal .product-features li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .solution-reveal .product-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent-green);
+            font-weight: 700;
+        }
+
+        .solution-reveal .section-beige {
+            background: var(--color-bg-light);
+            margin: 0 -1.5rem;
+            padding: 3rem;
+        }
+
+        .solution-reveal .ingredient-section {
+            background: white;
+            border: 1px solid var(--color-accent-green-light);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+        }
+
+        .solution-reveal .ingredient-section h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--color-text-headline);
+        }
+
+        .solution-reveal .three-benefits {
+            margin: 2.5rem 0;
+        }
+
+        .solution-reveal .benefit-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+            border-left: 4px solid var(--color-accent-green);
+        }
+
+        .solution-reveal .benefit-item .number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--color-accent-green);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        .solution-reveal .benefit-item strong {
+            font-size: 1.25rem;
+            color: var(--color-text-headline);
+        }
+
+        .solution-reveal .benefit-item p {
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+            padding-left: 3.5rem;
+        }
+
+        .solution-reveal .timeline {
+            position: relative;
+            margin: 2.5rem 0;
+            padding-left: 0;
+        }
+
+        .solution-reveal .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--color-accent-green), var(--color-header-green));
+            border-radius: 3px;
+        }
+
+        .solution-reveal .timeline-item {
+            position: relative;
+            padding-left: 5.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .solution-reveal .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .solution-reveal .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-header-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(68, 147, 68, 0.4);
+        }
+
+        .solution-reveal .timeline-marker .week-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .solution-reveal .timeline-marker .week-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .solution-reveal .timeline-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+        }
+
+        .solution-reveal .timeline-content h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.25rem;
+            color: var(--color-text-headline);
+        }
+
+        .solution-reveal .comparison-grid-inline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .solution-reveal .comparison-column-bad {
+            background: #FFF5F5;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid #FFCCCC;
+        }
+
+        .solution-reveal .comparison-column-good {
+            background: #F0FFF0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid var(--color-accent-green);
+        }
+
+        .solution-reveal .comparison-column-bad h3 {
+            color: #AE0C13;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .solution-reveal .comparison-column-good h3 {
+            color: var(--color-accent-green);
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .solution-reveal .comparison-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-reveal .comparison-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solution-reveal .comparison-list li::before {
+            content: none;
+        }
+
+        .solution-reveal .comparison-list li .icon {
+            position: absolute;
+            left: 0;
+        }
+
+        .solution-reveal .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .solution-reveal .testimonial-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+            border-left: 4px solid var(--color-accent-green);
+        }
+
+        .solution-reveal .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-reveal .testimonial-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent-green-light), var(--color-accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            border: 2px solid var(--color-accent-green);
+        }
+
+        .solution-reveal .testimonial-info .name {
+            font-weight: 700;
+            color: var(--color-text-secondary);
+        }
+
+        .solution-reveal .testimonial-stars {
+            color: #f9dc4b;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-reveal .testimonial-quote {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .solution-reveal .comparison-grid-inline {
+                grid-template-columns: 1fr;
+            }
+            .solution-reveal .timeline::before {
+                left: 1.5rem;
+            }
+            .solution-reveal .timeline-item {
+                padding-left: 4.5rem;
+            }
+            .solution-reveal .timeline-marker {
+                width: 3rem;
+                height: 3rem;
+            }
+            .solution-reveal .timeline-marker .week-number {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1813,6 +2112,241 @@
             <p><strong>One type of CBD treat sits in the stomach and does nothing. The other reaches the nervous system and delivers the reset signal. Same category. Different results. Only one actually helps.</strong></p>
         </div>
 
+        <div class="section-divider"></div>
+
+        <!-- SECTION 12: MEET CBDOG SECTION -->
+        <div class="meet-product">
+            <h2>Meet CBDog</h2>
+
+            <div class="product-intro">
+                <p>Remember the alarm that won't stop ringing.</p>
+                <p>The reset button that has nothing to work with.</p>
+                <p>The system that's stuck because it's starving.</p>
+                <span class="nickname">This is what it's been waiting for.</span>
+            </div>
+
+            <p>CBDog doesn't mask your dog's anxiety.</p>
+            <p>It doesn't sedate them into silence.</p>
+            <p>It doesn't promise miracles and deliver nothing.</p>
+            <p><strong>It gives the Alarm System what it needs to finally reset.</strong></p>
+
+            <p>Here's what makes CBDog different from everything else you've tried:</p>
+
+            <ul class="product-features">
+                <li><strong>Full-Spectrum CBD</strong> — not hemp seed oil, not isolate, the actual compound your dog's Endocannabinoid System can use</li>
+                <li><strong>Therapeutic Dosing</strong> — enough to actually move the needle, not just enough to print on a label</li>
+                <li><strong>Third-Party Lab Tested</strong> — verified purity and potency, no guessing</li>
+                <li><strong>Real Deboned Lamb</strong> — first ingredient, not a flavoring — something your dog will actually want to eat</li>
+                <li><strong>Clean Formula</strong> — no artificial colors, no mystery ingredients, just nutrition designed to support calm</li>
+                <li><strong>Made in USA</strong> — quality you can trace</li>
+            </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 13: HOW CBDOG WORKS -->
+        <div class="section-beige">
+            <h2>How CBDog Works</h2>
+
+            <p>Think of CBDog like a delivery system for your dog's stuck alarm.</p>
+            <p>Every ingredient has a job. And they work together to give your dog's Endocannabinoid System what it's been missing.</p>
+
+            <div class="ingredient-section">
+                <h3>Full-Spectrum CBD — The Reset Signal</h3>
+                <p>This is the heart of CBDog. Full-spectrum CBD contains the complete range of beneficial compounds from the hemp plant.</p>
+                <p>It finds the Endocannabinoid System — the same system that's supposed to reset the alarm after a threat passes. And it gives that system fuel.</p>
+                <p><strong>It's like finally connecting the reset button to a power source.</strong></p>
+            </div>
+
+            <div class="ingredient-section">
+                <h3>Flaxseed Oil — The Delivery Vehicle</h3>
+                <p>CBD is only useful if it actually reaches your dog's system.</p>
+                <p>Flaxseed oil acts as the carrier — helping the CBD absorb into your dog's bloodstream instead of passing through unused.</p>
+            </div>
+
+            <div class="ingredient-section">
+                <h3>Real Deboned Lamb — The Acceptance Factor</h3>
+                <p>The best supplement in the world is worthless if your dog won't eat it.</p>
+                <p>CBDog is made with real deboned lamb as the first ingredient. Dogs don't just tolerate it. <strong>They look forward to it.</strong></p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 14: WHAT CBDOG DOES - 3 BENEFITS -->
+        <h2>What CBDog Does For Dogs Stuck in Anxiety Mode</h2>
+
+        <div class="three-benefits">
+            <div class="benefit-item">
+                <span class="number">1</span>
+                <strong>Gives Their Nervous System What It Needs to Reset</strong>
+                <p>Thunder rolls in. Your dog's ears go up. But instead of spiraling, they lift their head... and settle back down. The alarm fired. And then it turned off.</p>
+                <p class="research-citation"><em>In a Cornell University study, 83% of dogs showed decreased stress or anxiety-related behaviors when given CBD chews prior to a stress-triggering event.</em></p>
+            </div>
+
+            <div class="benefit-item">
+                <span class="number">2</span>
+                <strong>Supports Natural Calm Without Sedation</strong>
+                <p>CBDog doesn't suppress your dog's nervous system. It supports the natural calming mechanism that should have been working all along.</p>
+                <p>Your dog stays alert. Stays present. Stays themselves. Just without the constant alarm screaming in the background.</p>
+            </div>
+
+            <div class="benefit-item">
+                <span class="number">3</span>
+                <strong>Builds Calmer Baselines Over Time</strong>
+                <p>Week one, you notice they're settling faster. Week two, the triggers that used to cause meltdowns... don't. Week four, you realize you've stopped bracing for the panic.</p>
+                <p><strong>Not because they're sedated. Because they're finally supported.</strong></p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 15: TIMELINE SECTION -->
+        <h2>What to Expect Over Time</h2>
+
+        <p><strong>CBDog doesn't flip a switch. It resets a system.</strong></p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="week-label">Week</span>
+                    <span class="week-number">1</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>First Signs</h3>
+                    <p>Less pacing during usual trigger times. More willingness to settle and rest. Brief moments of calm that weren't there before.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="week-label">Week</span>
+                    <span class="week-number">2-3</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Noticeable Shift</h3>
+                    <p>The doorbell rings. You brace yourself. And the meltdown... doesn't come. Recovery time after stress is shorter.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="week-label">Week</span>
+                    <span class="week-number">4-6</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>New Baseline</h3>
+                    <p>You forget to be worried. You leave the house and don't think about what you'll come home to. Calm isn't an event anymore — it's just how things are.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <span class="week-label">Week</span>
+                    <span class="week-number">8+</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Full Support</h3>
+                    <p>Stressful events happen. The alarm fires. And then it resets — like it's supposed to. This is just who they are now.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 16: COMPARISON TABLE -->
+        <h2>CBDog vs. What You've Already Tried</h2>
+
+        <div class="comparison-grid-inline">
+            <div class="comparison-column-bad">
+                <h3>What You've Tried</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon" style="color: #AE0C13;">✗</span> More exercise hoping exhaustion = calm</li>
+                    <li><span class="icon" style="color: #AE0C13;">✗</span> Pet store "calming" treats with trace CBD</li>
+                    <li><span class="icon" style="color: #AE0C13;">✗</span> Thunder shirts that might help mild cases</li>
+                    <li><span class="icon" style="color: #AE0C13;">✗</span> Training for a chemistry problem</li>
+                    <li><span class="icon" style="color: #AE0C13;">✗</span> Adjusting your entire life around triggers</li>
+                </ul>
+            </div>
+            <div class="comparison-column-good">
+                <h3>CBDog</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon" style="color: #449344;">✓</span> Full-spectrum CBD at therapeutic doses</li>
+                    <li><span class="icon" style="color: #449344;">✓</span> Addresses root cause — the nervous system</li>
+                    <li><span class="icon" style="color: #449344;">✓</span> Supports natural calm without sedation</li>
+                    <li><span class="icon" style="color: #449344;">✓</span> Real deboned lamb — dogs love it</li>
+                    <li><span class="icon" style="color: #449344;">✓</span> Third-party lab tested for purity</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 17: TESTIMONIALS -->
+        <h2>What Owners Notice After Meeting CBDog</h2>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-photo">DJ</div>
+                    <div class="testimonial-info">
+                        <div class="name">Delilah J.</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-quote">
+                    "Prescription meds only worked for a while before my dog started suffering from side effects. I've been using CBDog for over 3 months now, and the improvement is so clear. She still notices when something stressful happens — she's not sedated. But instead of spiraling for hours, she settles back down. <strong>Her alarm finally turns off.</strong>"
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-photo">OP</div>
+                    <div class="testimonial-info">
+                        <div class="name">Oliver P.</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-quote">
+                    "Every vet visit used to be chaos. The panting would start in the car. Since trying CBDog, he's calmer. He still notices we're at the vet — he's not zoned out. But he lets them check him out without a fuss. <strong>I used to have to reschedule appointments because he was too worked up. Now we just... go.</strong>"
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 18: FUTURE PACING -->
+        <h2>Stop Managing Anxiety. Start Living with a Calm Dog.</h2>
+
+        <p>Picture this. A few weeks from now.</p>
+        <p>A thunderstorm rolls through. You hear the rumble and your body tenses — old habit.</p>
+        <p>You look over at your dog. They lift their head. Look at you. And go back to sleep.</p>
+        <p>You wait for the panic. It doesn't come.</p>
+        <p><strong>You realize you forgot to be worried.</strong></p>
+
+        <p>Now picture leaving for work. You grab your keys. Your dog watches you go.</p>
+        <p>No pacing. No whimpering. No pit in your stomach wondering what you'll come home to.</p>
+        <p>You come home eight hours later. The house is intact. Your dog greets you — calm, happy, whole.</p>
+
+        <p class="big-reveal">The alarm finally stopped ringing. The reset button works.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 19: THIS IS YOUR MOMENT -->
+        <h2>This Is Your Chance to Finally Help Them</h2>
+
+        <p>You didn't find this page by accident.</p>
+        <p>If you've spent months — maybe years — trying to help your dog with their anxiety...</p>
+        <p>If you've tried the calming treats from the pet store and felt nothing...</p>
+        <p>If you've been given medication that turned your dog into a zombie...</p>
+        <p>If you're exhausted from caring so much and seeing so little progress...</p>
+        <p><strong>This is your chance to try something different.</strong></p>
+
+        <p>You now know what most dog owners never learn.</p>
+        <p>You know exercise was never designed for biochemical anxiety.</p>
+        <p>You know your dog's nervous system needs support, not correction.</p>
+        <p><strong>You know what your dog actually needs.</strong></p>
+
         </div>
     </div>
 
@@ -1858,25 +2392,6 @@
                     <p class="hero-reassurance">(No monthly subscription required. No strings attached.)</p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- SECTION 24: TESTIMONIAL STRIP -->
-    <div class="testimonials-strip">
-        <div class="container">
-            <div class="testimonials-strip-grid">
-                <div class="strip-testimonial">
-                    <div class="quote">"This product makes my dog so relaxed. I give him one when there is thunder and when other days seem stressful for him from noises."</div>
-                    <div class="author">Michael — Verified Buyer</div>
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="strip-testimonial">
-                    <div class="quote">"A must for anxious pups! A few drops in my dog's food bowl and I can actually leave the house without him howling restlessly."</div>
-                    <div class="author">Denise K.</div>
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-            </div>
-            <div class="strip-disclaimer">Individual results may vary. These statements have not been evaluated by the FDA.</div>
         </div>
     </div>
 
@@ -1993,47 +2508,6 @@
                     <p>The problem is the Endocannabinoid System — the built-in mechanism that's supposed to reset after stress.</p>
                     <p>When that system is under-supported, the alarm stays stuck on.</p>
                     <p><strong>CBD gives that system what it's been missing.</strong> It doesn't sedate. It doesn't mask. It supports the natural reset mechanism that should have been working all along."</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECTION 29: COMPARISON SECTION -->
-    <div class="comparison-section">
-        <div class="container">
-            <h2>CBDog vs. What You've Already Tried</h2>
-            <p class="comparison-subtitle">Five things that matter. Only one calming treat checks every box.</p>
-
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div>What Matters</div>
-                    <div>CBDog</div>
-                    <div>Others</div>
-                </div>
-                <div class="comparison-row">
-                    <div>Full-Spectrum CBD (not hemp seed oil)</div>
-                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
-                    <div><span class="cross">&#10007;</span></div>
-                </div>
-                <div class="comparison-row">
-                    <div>Therapeutic Dosing (not trace amounts)</div>
-                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
-                    <div><span class="cross">&#10007;</span></div>
-                </div>
-                <div class="comparison-row">
-                    <div>Addresses Root Cause (not symptoms)</div>
-                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
-                    <div><span class="cross">&#10007;</span></div>
-                </div>
-                <div class="comparison-row">
-                    <div>Dogs Actually Eat It (real lamb)</div>
-                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
-                    <div><span class="cross">&#10007;</span></div>
-                </div>
-                <div class="comparison-row">
-                    <div>Third-Party Lab Tested</div>
-                    <div class="cbdog-col"><span class="check">&#10003;</span></div>
-                    <div><span class="cross">&#10007;</span></div>
                 </div>
             </div>
         </div>
@@ -2220,46 +2694,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <!-- TESTIMONIALS SECTION -->
-    <div class="testimonials-section">
-        <div class="container">
-            <h2>What Owners Notice After Starting CBDog</h2>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <div class="testimonial-quote">
-                        "Prescription meds only worked for a while before my dog started suffering from side effects.<br><br>
-                        I was exhausted from trying everything — the trainers, the thunder shirts, adjusting our whole life around her triggers.<br><br>
-                        I've been using CBDog for over 3 months now, and the improvement is so clear. She's calmer during storms, calmer when I leave, calmer at the vet.<br><br>
-                        And because all ingredients are herbal, no side effects. Her alarm finally turns off."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">DJ</div>
-                        <div>
-                            <div class="testimonial-name">Delilah J.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <div class="testimonial-quote">
-                        "Every vet visit used to be chaos because of his nerves.<br><br>
-                        The panting would start in the car. By the time we got to the waiting room, he was a wreck. I dreaded it as much as he did.<br><br>
-                        Since trying CBDog, he's calmer. He actually lets the vet check him out without a fuss.<br><br>
-                        I used to have to reschedule appointments because he was too worked up. Now we just... go. It's like having a different dog."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">OP</div>
-                        <div>
-                            <div class="testimonial-name">Oliver P.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
