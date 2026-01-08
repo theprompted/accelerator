@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 Option A: Two-Column Layout</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .section-map {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-map-header {
+            background: var(--bg-blue);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .section-map-header.green {
+            background: var(--bg-green);
+        }
+
+        .section-map-header h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-map-content {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+        }
+
+        .section-map-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-map-item:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .section-map-item strong {
+            color: var(--accent-purple);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .section-map-item span {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION A: Two-Column Layout</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Splits items into two columns to reduce vertical height. Easier to scan, less scrolling.</p>
+
+    <div class="section-map">
+        <div class="section-map-header">
+            <h4>Education Page (Sections 1-7)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <strong>Section 1: Hero + Opening Violation</strong>
+                <span>Challenges their core belief. "A tired dog is a calm dog" is wrong.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 2: The Science Origin Story</strong>
+                <span>Explains where the bad advice came from. Made in 1970.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 3: Research Evidence</strong>
+                <span>Provides proof. Cortisol studies show the alarm is still blaring.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 4: Wild Dogs Comparison</strong>
+                <span>Uses nature as evidence. Wolves rest 16 hours, aren't anxious.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 5: The Mop vs Leak Analogy</strong>
+                <span>Validates their effort. Wrong tool, not lazy.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 6: The Biochemical Gap</strong>
+                <span>Completes the alarm metaphor. Starved, not broken.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 7: Cliffhanger + CTA</strong>
+                <span>Creates the open loop. Click to learn the solution.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-map">
+        <div class="section-map-header green">
+            <h4>Offer Page (Sections 8-13)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <strong>Section 8: Solution Reveal</strong>
+                <span>Names the Endocannabinoid System. This resets the alarm.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 9: Bridge + CBD Introduction</strong>
+                <span>Introduces CBD, handles objections immediately.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 10: Most Calming Treats Fail</strong>
+                <span>Explains why past treats didn't work. Wrong ingredients.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 11: Meet CBDog + Ingredients</strong>
+                <span>Introduces the product. Every feature answers a seeded problem.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 12: Three Benefits + Timeline</strong>
+                <span>Future-paces the result. Week 1, Week 2-3, Week 4-6.</span>
+            </div>
+            <div class="section-map-item">
+                <strong>Section 13: Bundles + Guarantee</strong>
+                <span>Removes risk with 365-day guarantee. Drives purchase.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 Option C: Titles Only</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .section-map {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-map-header {
+            background: var(--bg-blue);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .section-map-header.green {
+            background: var(--bg-green);
+        }
+
+        .section-map-header h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-map-content {
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 2rem;
+        }
+
+        .section-map-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-map-item span.title {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION C: Titles Only (No Descriptions)</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Strips to just titles. This is a MAP - Part 3 has all the details. Maximum scannability, minimum cognitive load.</p>
+
+    <div class="section-map">
+        <div class="section-map-header">
+            <h4>Education Page (Sections 1-7)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <span class="section-num">1</span>
+                <span class="title">Hero + Opening Violation</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">2</span>
+                <span class="title">Reason 1 - The Science Origin Story</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">3</span>
+                <span class="title">Reason 2 - Research Evidence</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">4</span>
+                <span class="title">Reason 3 - Wild Dogs Comparison</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">5</span>
+                <span class="title">Reason 4 - The Mop vs Leak Analogy</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">6</span>
+                <span class="title">Reason 5 - The Biochemical Gap</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">7</span>
+                <span class="title">Cliffhanger + CTA</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-map">
+        <div class="section-map-header green">
+            <h4>Offer Page (Sections 8-13)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <span class="section-num">8</span>
+                <span class="title">Solution Reveal</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">9</span>
+                <span class="title">Bridge + CBD Introduction</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">10</span>
+                <span class="title">Most Calming Treats Fail</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">11</span>
+                <span class="title">Meet CBDog + Ingredients</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">12</span>
+                <span class="title">Three Benefits + Timeline</span>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">13</span>
+                <span class="title">Bundles + Guarantee + Final CTA</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

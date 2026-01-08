@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 Option E: Visual Flow</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-green: #E8F5E9;
+            --bg-yellow: #FFFDE7;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .section-map {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-map-header {
+            background: var(--bg-blue);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .section-map-header.green {
+            background: var(--bg-green);
+        }
+
+        .section-map-header h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-map-content {
+            padding: 1.5rem;
+        }
+
+        /* Flow visualization */
+        .flow-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .flow-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-card {
+            background: var(--bg-page);
+            border: var(--border);
+            padding: 0.75rem 1rem;
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+        }
+
+        .flow-card.highlight {
+            background: var(--bg-yellow);
+        }
+
+        .flow-card.cta {
+            background: var(--accent-teal);
+        }
+
+        .flow-card .num {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .flow-card .title {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-top: 0.125rem;
+        }
+
+        .flow-arrow {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        /* Reasons grid */
+        .reasons-container {
+            border: var(--border);
+            background: var(--bg-yellow);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .reasons-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+        }
+
+        .reason-item {
+            background: var(--bg-white);
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .reason-item .num {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--accent-purple);
+            font-size: 0.875rem;
+        }
+
+        .reason-item .title {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            line-height: 1.2;
+        }
+
+        /* Offer page - horizontal flow */
+        .offer-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .offer-phase {
+            border: var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .offer-phase-header {
+            background: var(--bg-page);
+            padding: 0.5rem 0.75rem;
+            border-bottom: var(--border);
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .offer-phase-content {
+            background: var(--bg-white);
+            padding: 0.75rem;
+        }
+
+        .offer-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0;
+            font-size: 0.875rem;
+        }
+
+        .offer-item .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.625rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION E: Visual Flow</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Shows the funnel as a visual journey. Hook → Reasons (as a unit) → CTA. Emphasizes the strategic flow, not just a list.</p>
+
+    <div class="section-map">
+        <div class="section-map-header">
+            <h4>Education Page (Sections 1-7)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="flow-row">
+                <div class="flow-card">
+                    <div class="num">Section 1</div>
+                    <div class="title">Hero + Opening Violation</div>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div style="flex: 2;">
+                    <div class="reasons-container">
+                        <div class="reasons-label">Sections 2-6: The 5 Reasons</div>
+                        <div class="reasons-grid">
+                            <div class="reason-item">
+                                <div class="num">2</div>
+                                <div class="title">Origin Story</div>
+                            </div>
+                            <div class="reason-item">
+                                <div class="num">3</div>
+                                <div class="title">Research</div>
+                            </div>
+                            <div class="reason-item">
+                                <div class="num">4</div>
+                                <div class="title">Wild Dogs</div>
+                            </div>
+                            <div class="reason-item">
+                                <div class="num">5</div>
+                                <div class="title">Mop/Leak</div>
+                            </div>
+                            <div class="reason-item">
+                                <div class="num">6</div>
+                                <div class="title">Biochemical</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-card cta">
+                    <div class="num">Section 7</div>
+                    <div class="title">Cliffhanger + CTA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-map">
+        <div class="section-map-header green">
+            <h4>Offer Page (Sections 8-13)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="offer-flow">
+                <div class="offer-phase">
+                    <div class="offer-phase-header">Introduce Solution</div>
+                    <div class="offer-phase-content">
+                        <div class="offer-item"><span class="num">8</span> Solution Reveal</div>
+                        <div class="offer-item"><span class="num">9</span> CBD Introduction</div>
+                        <div class="offer-item"><span class="num">10</span> Why Others Fail</div>
+                    </div>
+                </div>
+                <div class="offer-phase">
+                    <div class="offer-phase-header">Present Product</div>
+                    <div class="offer-phase-content">
+                        <div class="offer-item"><span class="num">11</span> Meet CBDog</div>
+                        <div class="offer-item"><span class="num">12</span> Benefits + Timeline</div>
+                    </div>
+                </div>
+                <div class="offer-phase">
+                    <div class="offer-phase-header">Close</div>
+                    <div class="offer-phase-content">
+                        <div class="offer-item"><span class="num">13</span> Bundles + Guarantee</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

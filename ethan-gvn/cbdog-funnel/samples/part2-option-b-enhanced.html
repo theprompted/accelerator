@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 Option B Enhanced: Badges + Rich Descriptions</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .section-map {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-map-header {
+            background: var(--bg-blue);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .section-map-header.green {
+            background: var(--bg-green);
+        }
+
+        .section-map-header h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-map-content {
+            padding: 1.5rem;
+        }
+
+        .section-map-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .section-map-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .section-map-item:first-child {
+            padding-top: 0;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.25rem;
+            height: 2.25rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-map-item-content {
+            flex: 1;
+        }
+
+        .section-map-item-content strong {
+            color: var(--accent-purple);
+            display: block;
+            font-size: 1.0625rem;
+            margin-bottom: 0.375rem;
+        }
+
+        .section-map-item-content p {
+            font-size: 0.9375rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .section-map-item-content .technique {
+            display: inline-block;
+            background: var(--bg-page);
+            padding: 0.125rem 0.5rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION B ENHANCED: Badges + Rich Descriptions</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Each section has 3 lines: what it does, why it matters, and the key technique. Substantial enough to be useful as a reference.</p>
+
+    <div class="section-map">
+        <div class="section-map-header">
+            <h4>Education Page (Sections 1-7)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <span class="section-num">1</span>
+                <div class="section-map-item-content">
+                    <strong>Hero + Opening Violation</strong>
+                    <p>Challenges their core belief: "A tired dog is a calm dog" is wrong - you're making it worse.<br>
+                    Creates cognitive tension that demands resolution.<br>
+                    The reader must either dismiss you or keep reading.</p>
+                    <span class="technique">Opening Violation</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">2</span>
+                <div class="section-map-item-content">
+                    <strong>Reason 1 - The Science Origin Story</strong>
+                    <p>Explains <em>where</em> the bad advice came from.<br>
+                    It was made in 1970 for excess energy, not chemical panic.<br>
+                    The reader feels informed rather than stupid - they weren't wrong, the advice was outdated.</p>
+                    <span class="technique">Origin Story Reframe</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">3</span>
+                <div class="section-map-item-content">
+                    <strong>Reason 2 - Research Evidence</strong>
+                    <p>Provides scientific proof.<br>
+                    Cortisol studies show exhausted dogs still have anxiety - the alarm is still blaring.<br>
+                    Data convinces the logical readers, then a relatable metaphor makes it stick.</p>
+                    <span class="technique">Research + Metaphor</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">4</span>
+                <div class="section-map-item-content">
+                    <strong>Reason 3 - Wild Dogs Comparison</strong>
+                    <p>Uses nature as evidence.<br>
+                    Wolves rest 16 hours a day and aren't anxious - same species, different results.<br>
+                    If calm came from exhaustion, wild dogs would be anxiety-ridden. They're not.</p>
+                    <span class="technique">Argument from Nature</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">5</span>
+                <div class="section-map-item-content">
+                    <strong>Reason 4 - The Mop vs Leak Analogy</strong>
+                    <p>Validates their effort and removes guilt.<br>
+                    You're not lazy - you've been using the wrong tool. Exercise is the mop, not the fix.<br>
+                    No amount of mopping fixes a leak. This is the emotional turning point.</p>
+                    <span class="technique">Wrong Tool Analogy</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">6</span>
+                <div class="section-map-item-content">
+                    <strong>Reason 5 - The Biochemical Gap</strong>
+                    <p>Completes the alarm metaphor.<br>
+                    The reset mechanism isn't broken - it's <em>starved</em> of what it needs.<br>
+                    "Depleted" implies something that can be refilled. This reframe makes the solution feel obvious.</p>
+                    <span class="technique">Problem Completion</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">7</span>
+                <div class="section-map-item-content">
+                    <strong>Cliffhanger + CTA</strong>
+                    <p>Creates the open loop.<br>
+                    You know the problem - click to learn the solution.<br>
+                    The brain hates incomplete patterns. You've built the question; the offer page answers it.</p>
+                    <span class="technique">Open Loop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-map">
+        <div class="section-map-header green">
+            <h4>Offer Page (Sections 8-13)</h4>
+        </div>
+        <div class="section-map-content">
+            <div class="section-map-item">
+                <span class="section-num">8</span>
+                <div class="section-map-item-content">
+                    <strong>Solution Reveal</strong>
+                    <p>Names what they've never heard of: the Endocannabinoid System.<br>
+                    This is what resets the alarm.<br>
+                    Naming creates power - "ECS" sounds scientific and specific, more credible than vague promises.</p>
+                    <span class="technique">Mechanism Reveal</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">9</span>
+                <div class="section-map-item-content">
+                    <strong>Bridge + CBD Introduction</strong>
+                    <p>Introduces CBD and immediately handles objections.<br>
+                    It's not marijuana. It's not a sedative. It won't get them high.<br>
+                    Address the biggest concern in the same breath as the reveal - before skepticism crystallizes.</p>
+                    <span class="technique">Objection at Reveal</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">10</span>
+                <div class="section-map-item-content">
+                    <strong>Most Calming Treats Fail</strong>
+                    <p>Explains why past "calming treats" didn't work.<br>
+                    Wrong ingredients (hemp seed oil ≠ CBD), wrong dose (not therapeutic), no verification.<br>
+                    Creates a checklist the reader uses to evaluate your product.</p>
+                    <span class="technique">Pre-Answer Objections</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">11</span>
+                <div class="section-map-item-content">
+                    <strong>Meet CBDog + Ingredients</strong>
+                    <p>Introduces the product.<br>
+                    Every feature directly answers a problem seeded in Section 10.<br>
+                    Full-spectrum CBD? Check. Therapeutic dose? Check. The product feels inevitable, not pitched.</p>
+                    <span class="technique">Feature-Benefit Match</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">12</span>
+                <div class="section-map-item-content">
+                    <strong>Three Benefits + Timeline</strong>
+                    <p>Future-paces the result.<br>
+                    Week 1: subtle shifts. Week 2-3: the doorbell rings and the meltdown doesn't come.<br>
+                    Week 4-6: you realize you've stopped bracing for panic. Specificity creates believability.</p>
+                    <span class="technique">Timeline Future Pacing</span>
+                </div>
+            </div>
+            <div class="section-map-item">
+                <span class="section-num">13</span>
+                <div class="section-map-item-content">
+                    <strong>Bundles + Guarantee + Final CTA</strong>
+                    <p>Removes risk with 365-day guarantee.<br>
+                    Your dog gets calmer, or you get your money back.<br>
+                    A guarantee this long signals confidence. Bundle options create a value decision, not a yes/no decision.</p>
+                    <span class="technique">Risk Reversal</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
