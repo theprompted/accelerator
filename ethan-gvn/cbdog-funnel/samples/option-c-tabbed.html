@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option C: Tabbed Analysis</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-green: #E8F5E9;
+            --bg-yellow: #FFFDE7;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sample-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* Section Card */
+        .section-card {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .section-header h3 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+
+        /* Preview iframe */
+        .section-preview {
+            border-bottom: var(--border);
+        }
+
+        .section-preview-header {
+            background: var(--bg-page);
+            border-bottom: var(--border);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-preview-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .section-preview-link {
+            font-family: ui-monospace, monospace;
+            font-size: 0.6875rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .section-preview iframe {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Belief State - Compact */
+        .belief-state-compact {
+            background: var(--bg-green);
+            padding: 0.875rem 1.5rem;
+            border-bottom: var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .belief-state-compact .label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-gray);
+        }
+
+        .belief-state-compact .before {
+            color: var(--accent-red);
+            text-decoration: line-through;
+            opacity: 0.85;
+            font-size: 0.9375rem;
+        }
+
+        .belief-state-compact .arrow {
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .belief-state-compact .after {
+            color: #2e7d32;
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        /* TABS - The key feature */
+        .tabs-container {
+            padding: 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-right: var(--border);
+            transition: all 0.2s;
+        }
+
+        .tab-btn:last-child {
+            border-right: none;
+        }
+
+        .tab-btn:hover {
+            background: #fff;
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            background: var(--bg-white);
+            color: var(--text-black);
+            position: relative;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-teal);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tab content styling */
+        .technique-highlight {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .technique-highlight .label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 0.375rem;
+        }
+
+        .technique-highlight p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .content-block {
+            margin-bottom: 1.25rem;
+        }
+
+        .content-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-block h4 {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Lines Box */
+        .lines-box {
+            background: var(--bg-yellow);
+            border: var(--border);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lines-box h4 {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-bottom: 0.75rem;
+        }
+
+        .lines-box ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .lines-box li {
+            margin-bottom: 0.625rem;
+        }
+
+        .lines-box code {
+            background: var(--bg-white);
+            border: 1px solid #ccc;
+            padding: 0.125rem 0.5rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sample-label">OPTION C: TABBED ANALYSIS</div>
+
+    <h1>Tabbed Interface</h1>
+    <p class="description">Replace vertical stacking with tabs. Click between Overview, Psychology, Application. Dramatically reduces scroll - all content is there, but organized horizontally.</p>
+
+    <!-- Section 1 -->
+    <div class="section-card">
+        <div class="section-header">
+            <h3><span class="section-num">1</span> Hero + Opening Violation</h3>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-preview-header">
+                <span class="section-preview-label">Live Preview</span>
+                <a href="#" class="section-preview-link">Open in new tab &rarr;</a>
+            </div>
+            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
+        </div>
+
+        <div class="belief-state-compact">
+            <span class="label">Belief Shift:</span>
+            <span class="before">"Exercise helps my dog's anxiety"</span>
+            <span class="arrow">&rarr;</span>
+            <span class="after">"Wait... could I be making this worse?"</span>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab(this, 'overview-1')">Overview</button>
+                <button class="tab-btn" onclick="showTab(this, 'psychology-1')">Psychology</button>
+                <button class="tab-btn" onclick="showTab(this, 'application-1')">Application</button>
+                <button class="tab-btn" onclick="showTab(this, 'lines-1')">Key Lines</button>
+            </div>
+
+            <div id="overview-1" class="tab-content active">
+                <div class="technique-highlight">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Opening Violation</strong> - Challenge the core belief instead of validating it.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>What This Does</h4>
+                    <p>Immediately violates what the reader believes to be true. They arrived thinking exercise helps - you tell them it makes things worse. Creates cognitive tension that demands resolution.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>Connection to Funnel Arc</h4>
+                    <p>This section creates the "crack" in their belief system. Every section after this widens that crack until the old belief collapses.</p>
+                </div>
+            </div>
+
+            <div id="psychology-1" class="tab-content">
+                <div class="content-block">
+                    <h4>Why This Works</h4>
+                    <p>Cognitive dissonance. When you contradict a deeply held belief with confidence, the brain can't ignore it. The reader must either dismiss you or keep reading to resolve the tension.</p>
+                </div>
+
+                <div class="content-block">
+                    <p>The specificity ("every extra walk, every game of fetch") makes it personal and impossible to dismiss as generic advice. You're describing <em>their</em> behavior, not abstract concepts.</p>
+                </div>
+
+                <div class="content-block">
+                    <p>The line "That's not an insult. That's the science." preempts the defensive response that naturally arises when someone feels attacked.</p>
+                </div>
+            </div>
+
+            <div id="application-1" class="tab-content">
+                <div class="content-block">
+                    <h4>How to Adapt This</h4>
+                    <p>Identify the "common wisdom" in your niche that's either wrong or incomplete. Lead with the contradiction.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>Formula</h4>
+                    <p><code>"[Thing everyone believes] is [strong negative framing: lie, myth, making it worse]."</code></p>
+                </div>
+
+                <div class="content-block">
+                    <h4>Critical Point</h4>
+                    <p>The key is confidence - if you hedge, the violation doesn't land. Don't say "might not work." Say "is making it worse."</p>
+                </div>
+            </div>
+
+            <div id="lines-1" class="tab-content">
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"That's not an insult. That's the science."</code> - Preempts defensiveness before it forms.</li>
+                        <li><code>"You didn't fail your dog. You followed advice that was never designed for what's actually wrong."</code> - Guilt removal. Shifts blame from reader to the advice.</li>
+                        <li><code>"You can't outrun a chemical imbalance."</code> - Simple, memorable, quotable. Perfect for a belief shift.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section-card">
+        <div class="section-header">
+            <h3><span class="section-num">2</span> Reason 1 - The Science Origin Story</h3>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-preview-header">
+                <span class="section-preview-label">Live Preview</span>
+                <a href="#" class="section-preview-link">Open in new tab &rarr;</a>
+            </div>
+            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
+        </div>
+
+        <div class="belief-state-compact">
+            <span class="label">Belief Shift:</span>
+            <span class="before">"The advice must be right"</span>
+            <span class="arrow">&rarr;</span>
+            <span class="after">"Oh, the advice is outdated."</span>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab(this, 'overview-2')">Overview</button>
+                <button class="tab-btn" onclick="showTab(this, 'psychology-2')">Psychology</button>
+                <button class="tab-btn" onclick="showTab(this, 'application-2')">Application</button>
+                <button class="tab-btn" onclick="showTab(this, 'lines-2')">Key Lines</button>
+            </div>
+
+            <div id="overview-2" class="tab-content active">
+                <div class="technique-highlight">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Origin Story Reframe</strong> - Explain where bad advice came from.</p>
+                </div>
+
+                <div class="content-block">
+                    <h4>What This Does</h4>
+                    <p>Explains <em>why</em> the old advice exists. Instead of just saying "it's wrong," you show <em>when</em> it was created and what it was designed for.</p>
+                </div>
+            </div>
+
+            <div id="psychology-2" class="tab-content">
+                <p>People don't like feeling dumb for following advice. By explaining "here's why smart people believed this," you give them an off-ramp. They weren't stupid - they were working with outdated information.</p>
+            </div>
+
+            <div id="application-2" class="tab-content">
+                <p>Find the origin of your market's "common knowledge." When was it created? What was it designed for? Formula: "This advice comes from [era]. Back then, we didn't know [new information]."</p>
+            </div>
+
+            <div id="lines-2" class="tab-content">
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"The first studies on canine cortisol wouldn't come for another two decades."</code> - Specific detail creates credibility.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function showTab(btn, tabId) {
+    // Find parent section
+    const section = btn.closest('.section-card');
+
+    // Deactivate all buttons in this section
+    section.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+    // Activate clicked button
+    btn.classList.add('active');
+
+    // Hide all tab content in this section
+    section.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    // Show selected tab
+    document.getElementById(tabId).classList.add('active');
+}
+</script>
+
+</body>
+</html>

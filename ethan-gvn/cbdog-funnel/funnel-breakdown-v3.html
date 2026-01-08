@@ -395,12 +395,64 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Belief Shift Grid */
-        .belief-shift-container {
+        /* Simple Section Card (Part 1 style - with header bar) */
+        .simple-card {
             background: var(--bg-white);
             border: var(--border);
-            padding: 1.25rem;
-            margin: 1.25rem 0;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .simple-card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .simple-card-header h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .simple-card-content {
+            padding: 1.5rem;
+        }
+
+        /* Explanation Grid (for The Flow section) */
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+
+        @media (max-width: 700px) {
+            .explanation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .explanation-item {
+            padding: 1rem 1.25rem;
+            background: var(--bg-page);
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .explanation-item strong {
+            display: block;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Belief Shift Grid (no container box) */
+        .belief-shift-container {
+            margin: 0;
         }
 
         .belief-shift {
@@ -650,50 +702,71 @@
     </div>
 
     <!-- The Flow -->
-    <div class="section-card">
-        <h3>The Flow</h3>
-
-        <div class="flow-diagram">
-            Education Page (5 Reasons) &rarr; Offer Page &rarr; Checkout
+    <div class="simple-card">
+        <div class="simple-card-header">
+            <h3>The Flow</h3>
         </div>
+        <div class="simple-card-content">
+            <div class="flow-diagram">
+                Education Page (5 Reasons) &rarr; Offer Page &rarr; Checkout
+            </div>
 
-        <p><strong>Education Page:</strong> Destroys the old belief ("exercise fixes anxiety"), establishes the new frame ("it's a nervous system problem, not an energy problem"), creates curiosity about the solution.</p>
-
-        <p style="margin-top: 1rem;"><strong>Offer Page:</strong> Reveals the solution (CBD/Endocannabinoid System), addresses objections to CBD, introduces the product, stacks proof, presents bundles.</p>
+            <div class="explanation-grid">
+                <div class="explanation-item">
+                    <strong>Education Page</strong>
+                    Destroys the old belief ("exercise fixes anxiety"), establishes the new frame ("it's a nervous system problem, not an energy problem"), creates curiosity about the solution.
+                </div>
+                <div class="explanation-item">
+                    <strong>Offer Page</strong>
+                    Reveals the solution (CBD/Endocannabinoid System), addresses objections to CBD, introduces the product, stacks proof, presents bundles.
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Why This Order -->
-    <div class="section-card">
-        <h3>Why This Order</h3>
-        <p>You can't sell a CBD product to someone who still believes exercise is the answer. The Education Page does belief demolition before product introduction. By the time they see the product, they already <em>need</em> what it does.</p>
+    <div class="simple-card">
+        <div class="simple-card-header">
+            <h3>Why This Order</h3>
+        </div>
+        <div class="simple-card-content">
+            <p>You can't sell a CBD product to someone who still believes exercise is the answer. The Education Page does belief demolition before product introduction. By the time they see the product, they already <em>need</em> what it does.</p>
+        </div>
     </div>
 
     <!-- The Unifying Thread -->
-    <div class="section-card">
-        <h3>The Unifying Thread: The Alarm Metaphor</h3>
-        <p>The entire funnel uses one metaphor: <strong>your dog's nervous system is an alarm stuck on</strong>. Exercise can't turn it off. The alarm isn't broken - it's <em>starving</em> for what it needs to reset. CBD feeds the reset mechanism.</p>
-        <p style="margin-top: 1rem;">This metaphor carries from the Education Page through the Offer Page. Every section reinforces it. When you build your next funnel, find one metaphor that explains the whole problem-solution arc.</p>
+    <div class="simple-card">
+        <div class="simple-card-header">
+            <h3>The Unifying Thread: The Alarm Metaphor</h3>
+        </div>
+        <div class="simple-card-content">
+            <p>The entire funnel uses one metaphor: <strong>your dog's nervous system is an alarm stuck on</strong>. Exercise can't turn it off. The alarm isn't broken - it's <em>starving</em> for what it needs to reset. CBD feeds the reset mechanism.</p>
+            <p style="margin-top: 1rem;">This metaphor carries from the Education Page through the Offer Page. Every section reinforces it. When you build your next funnel, find one metaphor that explains the whole problem-solution arc.</p>
+        </div>
     </div>
 
     <!-- The 3 Core Belief Shifts -->
-    <div class="section-card">
-        <h3>The 3 Core Belief Shifts</h3>
-
-        <div class="belief-shift-container">
-            <div class="belief-shift">
-                <span class="belief-old">"A tired dog is a calm dog"</span>
-                <span class="belief-arrow">&rarr;</span>
-                <span class="belief-new">"Exhaustion and calm are different systems"</span>
-            </div>
-            <div class="belief-shift">
-                <span class="belief-old">"My dog has a behavior problem"</span>
-                <span class="belief-arrow">&rarr;</span>
-                <span class="belief-new">"My dog has a biochemistry problem"</span>
-            </div>
-            <div class="belief-shift">
-                <span class="belief-old">"I haven't tried hard enough"</span>
-                <span class="belief-arrow">&rarr;</span>
-                <span class="belief-new">"I was using the wrong tool"</span>
+    <div class="simple-card">
+        <div class="simple-card-header">
+            <h3>The 3 Core Belief Shifts</h3>
+        </div>
+        <div class="simple-card-content">
+            <div class="belief-shift-container">
+                <div class="belief-shift">
+                    <span class="belief-old">"A tired dog is a calm dog"</span>
+                    <span class="belief-arrow">&rarr;</span>
+                    <span class="belief-new">"Exhaustion and calm are different systems"</span>
+                </div>
+                <div class="belief-shift">
+                    <span class="belief-old">"My dog has a behavior problem"</span>
+                    <span class="belief-arrow">&rarr;</span>
+                    <span class="belief-new">"My dog has a biochemistry problem"</span>
+                </div>
+                <div class="belief-shift">
+                    <span class="belief-old">"I haven't tried hard enough"</span>
+                    <span class="belief-arrow">&rarr;</span>
+                    <span class="belief-new">"I was using the wrong tool"</span>
+                </div>
             </div>
         </div>
     </div>

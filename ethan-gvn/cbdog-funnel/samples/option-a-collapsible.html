@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option A: Collapsible Sections</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-green: #E8F5E9;
+            --bg-yellow: #FFFDE7;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sample-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* Collapsible Section Card */
+        .section-card {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .section-header:hover {
+            background: #fafafa;
+        }
+
+        .section-header h3 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .section-card.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Summary always visible */
+        .section-summary {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .belief-state-mini {
+            background: var(--bg-green);
+            border: var(--border);
+            padding: 0.875rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9375rem;
+        }
+
+        .belief-state-mini .before {
+            color: var(--accent-red);
+            text-decoration: line-through;
+            opacity: 0.85;
+        }
+
+        .belief-state-mini .arrow {
+            color: var(--accent-teal);
+            font-weight: 700;
+            margin: 0 0.5rem;
+        }
+
+        .belief-state-mini .after {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        /* Collapsible content */
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .section-card.open .section-content {
+            max-height: 3000px;
+        }
+
+        .section-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: var(--border);
+        }
+
+        /* Preview iframe */
+        .section-preview {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.25rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-preview-header {
+            background: var(--bg-page);
+            border-bottom: var(--border);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-preview-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .section-preview-link {
+            font-family: ui-monospace, monospace;
+            font-size: 0.6875rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .section-preview iframe {
+            display: block;
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        /* Subsections */
+        .subsection {
+            margin: 1.25rem 0;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .subsection-title {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .technique-label {
+            display: inline-block;
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.375rem 0.875rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-sm);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .lines-box {
+            background: var(--bg-yellow);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.25rem 0 0 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lines-box h4 {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin-bottom: 0.75rem;
+        }
+
+        .lines-box ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .lines-box li {
+            margin-bottom: 0.625rem;
+        }
+
+        .lines-box code {
+            background: var(--bg-white);
+            border: 1px solid #ccc;
+            padding: 0.125rem 0.5rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sample-label">OPTION A: COLLAPSIBLE SECTIONS</div>
+
+    <h1>Collapsible Sections</h1>
+    <p class="description">Each section shows only the header + belief state by default. Click to expand the full analysis. Reduces overwhelm, lets you focus on one section at a time.</p>
+
+    <!-- Section 1 - Collapsed by default -->
+    <div class="section-card" onclick="this.classList.toggle('open')">
+        <div class="section-header">
+            <h3><span class="section-num">1</span> Hero + Opening Violation</h3>
+            <span class="toggle-icon">&#9660;</span>
+        </div>
+
+        <div class="section-summary">
+            <div class="belief-state-mini">
+                <span class="before">"Exercise helps my dog's anxiety"</span>
+                <span class="arrow">&rarr;</span>
+                <span class="after">"Wait... could I be making this worse?"</span>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <div class="section-content-inner">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="#" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Immediately violates what the reader believes to be true. They arrived thinking exercise helps - you tell them it makes things worse. Creates cognitive tension that demands resolution.</p>
+                </div>
+
+                <span class="technique-label">Key Technique</span>
+                <p><strong>The Opening Violation</strong> - Challenge the core belief instead of validating it.</p>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Cognitive dissonance. When you contradict a deeply held belief with confidence, the brain can't ignore it. The reader must either dismiss you or keep reading to resolve the tension.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Identify the "common wisdom" in your niche that's either wrong or incomplete. Lead with the contradiction. Formula: "[Thing everyone believes] is [strong negative framing]."</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"That's not an insult. That's the science."</code> - Preempts defensiveness.</li>
+                        <li><code>"You didn't fail your dog."</code> - Guilt removal.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2 - Open by default to show contrast -->
+    <div class="section-card open" onclick="this.classList.toggle('open')">
+        <div class="section-header">
+            <h3><span class="section-num">2</span> Reason 1 - The Science Origin Story</h3>
+            <span class="toggle-icon">&#9660;</span>
+        </div>
+
+        <div class="section-summary">
+            <div class="belief-state-mini">
+                <span class="before">"The advice must be right"</span>
+                <span class="arrow">&rarr;</span>
+                <span class="after">"Oh, the advice is outdated."</span>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <div class="section-content-inner">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="#" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Explains <em>why</em> the old advice exists. Instead of just saying "it's wrong," you show <em>when</em> it was created and what it was designed for.</p>
+                </div>
+
+                <span class="technique-label">Key Technique</span>
+                <p><strong>The Origin Story Reframe</strong> - Explain where bad advice came from to make the reader feel informed, not stupid.</p>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>People don't like feeling dumb for following advice. If you explain "here's why smart people believed this, and here's what changed," you give them an off-ramp.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"The first studies on canine cortisol wouldn't come for another two decades."</code> - Specific detail creates credibility.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3 - Collapsed -->
+    <div class="section-card" onclick="this.classList.toggle('open')">
+        <div class="section-header">
+            <h3><span class="section-num">3</span> Reason 2 - Research Evidence</h3>
+            <span class="toggle-icon">&#9660;</span>
+        </div>
+
+        <div class="section-summary">
+            <div class="belief-state-mini">
+                <span class="before">"Maybe exercise does help"</span>
+                <span class="arrow">&rarr;</span>
+                <span class="after">"The calm I'm seeing is exhaustion, not relief."</span>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <div class="section-content-inner">
+                <p style="padding: 1rem; color: var(--text-muted); font-style: italic;">[Full content would appear here when expanded]</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

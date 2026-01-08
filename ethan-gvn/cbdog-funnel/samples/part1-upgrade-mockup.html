@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1 Upgrade Mockup</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --accent-teal: #53DBC9;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sample-label {
+            background: #9D4EDD;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* OLD STYLE - What it looks like now */
+        .section-card-old {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-card-old h3 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* NEW STYLE - With header bar like Part 3 */
+        .section-card-new {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .section-card-header h3 {
+            font-family: ui-monospace, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-card-content {
+            padding: 1.5rem;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 1.25rem 1.5rem;
+            font-family: ui-monospace, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: -0.19rem 0.19rem 0 0 #383838;
+        }
+
+        /* Belief Shift - OLD */
+        .belief-shift-container-old {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        /* Belief Shift - NEW (full width, better spacing) */
+        .belief-shift-container-new {
+            margin-top: 0;
+        }
+
+        .belief-shift {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .belief-shift:last-child {
+            border-bottom: none;
+        }
+
+        .belief-old {
+            color: var(--accent-red);
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .belief-arrow {
+            color: var(--accent-teal);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .belief-new {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        /* Subsection styling for explanations */
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .explanation-item {
+            padding: 1rem;
+            background: var(--bg-page);
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .explanation-item strong {
+            display: block;
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: #ddd;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            .explanation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sample-label">PART 1 UPGRADE MOCKUP</div>
+    <h1 style="font-family: ui-monospace, monospace; font-size: 1.5rem; margin-bottom: 2rem;">Before & After Comparison</h1>
+
+    <!-- THE FLOW -->
+    <div class="comparison">
+        <div>
+            <div class="comparison-label">Before (Current)</div>
+            <div class="section-card-old">
+                <h3>The Flow</h3>
+                <div class="flow-diagram">
+                    Education Page (5 Reasons) &rarr; Offer Page &rarr; Checkout
+                </div>
+                <p><strong>Education Page:</strong> Destroys the old belief ("exercise fixes anxiety"), establishes the new frame ("it's a nervous system problem, not an energy problem"), creates curiosity about the solution.</p>
+                <p style="margin-top: 1rem;"><strong>Offer Page:</strong> Reveals the solution (CBD/Endocannabinoid System), addresses objections to CBD, introduces the product, stacks proof, presents bundles.</p>
+            </div>
+        </div>
+        <div>
+            <div class="comparison-label">After (Upgraded)</div>
+            <div class="section-card-new">
+                <div class="section-card-header">
+                    <h3>The Flow</h3>
+                </div>
+                <div class="section-card-content">
+                    <div class="flow-diagram">
+                        Education Page (5 Reasons) &rarr; Offer Page &rarr; Checkout
+                    </div>
+                    <div class="explanation-grid">
+                        <div class="explanation-item">
+                            <strong>Education Page</strong>
+                            Destroys the old belief ("exercise fixes anxiety"), establishes the new frame ("it's a nervous system problem, not an energy problem"), creates curiosity about the solution.
+                        </div>
+                        <div class="explanation-item">
+                            <strong>Offer Page</strong>
+                            Reveals the solution (CBD/Endocannabinoid System), addresses objections to CBD, introduces the product, stacks proof, presents bundles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- WHY THIS ORDER -->
+    <div class="comparison">
+        <div>
+            <div class="comparison-label">Before (Current)</div>
+            <div class="section-card-old">
+                <h3>Why This Order</h3>
+                <p>You can't sell a CBD product to someone who still believes exercise is the answer. The Education Page does belief demolition before product introduction. By the time they see the product, they already <em>need</em> what it does.</p>
+            </div>
+        </div>
+        <div>
+            <div class="comparison-label">After (Upgraded)</div>
+            <div class="section-card-new">
+                <div class="section-card-header">
+                    <h3>Why This Order</h3>
+                </div>
+                <div class="section-card-content">
+                    <p>You can't sell a CBD product to someone who still believes exercise is the answer. The Education Page does belief demolition before product introduction. By the time they see the product, they already <em>need</em> what it does.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- THE 3 CORE BELIEF SHIFTS - The big one -->
+    <div class="comparison">
+        <div>
+            <div class="comparison-label">Before (Current) - Nested box, empty space</div>
+            <div class="section-card-old">
+                <h3>The 3 Core Belief Shifts</h3>
+                <div class="belief-shift-container-old">
+                    <div class="belief-shift">
+                        <span class="belief-old">"A tired dog is a calm dog"</span>
+                        <span class="belief-arrow">&rarr;</span>
+                        <span class="belief-new">"Exhaustion and calm are different systems"</span>
+                    </div>
+                    <div class="belief-shift">
+                        <span class="belief-old">"My dog has a behavior problem"</span>
+                        <span class="belief-arrow">&rarr;</span>
+                        <span class="belief-new">"My dog has a biochemistry problem"</span>
+                    </div>
+                    <div class="belief-shift">
+                        <span class="belief-old">"I haven't tried hard enough"</span>
+                        <span class="belief-arrow">&rarr;</span>
+                        <span class="belief-new">"I was using the wrong tool"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="comparison-label">After (Upgraded) - Full width, no nesting</div>
+            <div class="section-card-new">
+                <div class="section-card-header">
+                    <h3>The 3 Core Belief Shifts</h3>
+                </div>
+                <div class="section-card-content">
+                    <div class="belief-shift-container-new">
+                        <div class="belief-shift">
+                            <span class="belief-old">"A tired dog is a calm dog"</span>
+                            <span class="belief-arrow">&rarr;</span>
+                            <span class="belief-new">"Exhaustion and calm are different systems"</span>
+                        </div>
+                        <div class="belief-shift">
+                            <span class="belief-old">"My dog has a behavior problem"</span>
+                            <span class="belief-arrow">&rarr;</span>
+                            <span class="belief-new">"My dog has a biochemistry problem"</span>
+                        </div>
+                        <div class="belief-shift">
+                            <span class="belief-old">"I haven't tried hard enough"</span>
+                            <span class="belief-arrow">&rarr;</span>
+                            <span class="belief-new">"I was using the wrong tool"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
