@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBDog Funnel Breakdown v3 - Ethan (GVN)</title>
+    <style>
+        :root {
+            --accent: #449344;
+            --accent-light: #d4e8d4;
+            --navy: #0e1b4d;
+            --text: #2e2e2e;
+            --muted: #666;
+            --bg-light: #f8f8f8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--text);
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .section-card h3 {
+            margin-top: 0;
+            color: var(--navy);
+        }
+
+        blockquote {
+            background: #fff;
+            border-left: 4px solid var(--navy);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text);
+            border-radius: 0 8px 8px 0;
+        }
+
+        blockquote strong {
+            color: var(--navy);
+            font-style: normal;
+        }
+
+        .meta {
+            font-size: 0.9375rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .meta strong {
+            color: var(--text);
+        }
+
+        .flow-diagram {
+            background: var(--navy);
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .belief-shift {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.5rem;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .belief-shift:last-child {
+            border-bottom: none;
+        }
+
+        .belief-old {
+            color: #ae0c13;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .belief-arrow {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .belief-new {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .technique-label {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .lines-box {
+            background: #fff8e7;
+            border-left: 3px solid #f9dc4b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .lines-box h4 {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lines-box ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .lines-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .lines-box code {
+            background: #fff;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.9375rem;
+        }
+
+        .pattern-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pattern-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pattern-list li:before {
+            content: counter(pattern);
+            counter-increment: pattern;
+            position: absolute;
+            left: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pattern-list {
+            counter-reset: pattern;
+        }
+
+        .pattern-list li strong {
+            color: var(--navy);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #eee;
+            margin: 2rem 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #b8d4b8 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-box p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .belief-shift {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>CBDog Funnel Breakdown v3</h1>
+
+<div class="meta">
+    <strong>For:</strong> Ethan (GVN)<br>
+    <strong>Purpose:</strong> Understand the patterns so you can apply them to future funnels<br>
+    <strong>Live funnel:</strong> <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/5-reasons/" target="_blank">5-reasons page</a>
+</div>
+
+<hr>
+
+<h2>Part 1: Funnel Architecture</h2>
+
+<h3>The Flow</h3>
+
+<div class="flow-diagram">
+    Education Page (5 Reasons) &rarr; Offer Page &rarr; Checkout
+</div>
+
+<p><strong>Education Page:</strong> Destroys the old belief ("exercise fixes anxiety"), establishes the new frame ("it's a nervous system problem, not an energy problem"), creates curiosity about the solution.</p>
+
+<p><strong>Offer Page:</strong> Reveals the solution (CBD/Endocannabinoid System), addresses objections to CBD, introduces the product, stacks proof, presents bundles.</p>
+
+<h3>Why This Order</h3>
+
+<p>You can't sell a CBD product to someone who still believes exercise is the answer. The Education Page does belief demolition before product introduction. By the time they see the product, they already <em>need</em> what it does.</p>
+
+<h3>The Unifying Thread: The Alarm Metaphor</h3>
+
+<p>The entire funnel uses one metaphor: <strong>your dog's nervous system is an alarm stuck on</strong>. Exercise can't turn it off. The alarm isn't broken - it's <em>starving</em> for what it needs to reset. CBD feeds the reset mechanism.</p>
+
+<p>This metaphor carries from the Education Page through the Offer Page. Every section reinforces it. When you build your next funnel, find one metaphor that explains the whole problem-solution arc.</p>
+
+<h3>The 3 Core Belief Shifts</h3>
+
+<div class="belief-shift">
+    <span class="belief-old">"A tired dog is a calm dog"</span>
+    <span class="belief-arrow">&rarr;</span>
+    <span class="belief-new">"Exhaustion and calm are different systems"</span>
+</div>
+<div class="belief-shift">
+    <span class="belief-old">"My dog has a behavior problem"</span>
+    <span class="belief-arrow">&rarr;</span>
+    <span class="belief-new">"My dog has a biochemistry problem"</span>
+</div>
+<div class="belief-shift">
+    <span class="belief-old">"I haven't tried hard enough"</span>
+    <span class="belief-arrow">&rarr;</span>
+    <span class="belief-new">"I was using the wrong tool"</span>
+</div>
+
+<hr>
+
+<h2>Part 2: Section-by-Section Breakdown</h2>
+
+<!-- Section 1 -->
+<div class="section-card">
+    <h3>Section 1: Hero + Opening Violation</h3>
+
+    <blockquote>
+        <strong>5 Reasons Why Exercise Won't Fix Your Dog's Anxiety</strong><br><br>
+        <em>"A tired dog is a calm dog" is the biggest lie in pet ownership</em><br><br>
+        <strong>You're making your dog's anxiety worse.</strong><br><br>
+        Every extra walk.<br><br>
+        Every game of fetch until your arm gives out.<br><br>
+        Every time you think "if I just tire them out enough..."<br><br>
+        You're running them straight into the ground - and the anxiety stays.<br><br>
+        That's not an insult.<br><br>
+        That's the science.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Immediately violates what the reader believes to be true. They arrived thinking exercise helps - you tell them it makes things worse. This creates cognitive tension that demands resolution.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>The Opening Violation.</strong> Instead of validating their current approach, you challenge it directly. The reader can't scroll past because they need to know if you're right.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"That's not an insult. That's the science."</code> — Preempts defensiveness. You're not attacking them personally.</li>
+            <li><code>"You didn't fail your dog. You followed advice that was never designed for what's actually wrong."</code> — Guilt removal. Makes them feel smart for reading further.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 2 -->
+<div class="section-card">
+    <h3>Section 2: Reason 1 - The Science Origin Story</h3>
+
+    <blockquote>
+        <strong>"A Tired Dog Is a Calm Dog" Was Never Based on Science</strong><br><br>
+        Think about what we knew about dog anxiety in 1970.<br><br>
+        Almost nothing.<br><br>
+        We didn't know dogs had stress hormones. We didn't know their brains could get stuck in panic mode...<br><br>
+        "A tired dog is a calm dog" comes from the same era as shock collars and dominance theory.<br><br>
+        The advice wasn't wrong for its time. It was made for a different problem - excess energy, not chemical panic.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Explains <em>why</em> the old advice exists. Instead of just saying "it's wrong," you show <em>when</em> it was created and what it was designed for. This makes the reader feel like they're getting insider knowledge.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>The Origin Story Reframe.</strong> When you explain where bad advice came from, you turn enemies into misguided friends. The reader doesn't feel stupid for following it - they feel informed for learning better.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"The first studies on canine cortisol wouldn't come for another two decades."</code> — Specific detail creates credibility.</li>
+            <li><code>"One approach exhausts the body and hopes the mind follows. The other asks: is the nervous system capable of calming down at all?"</code> — The Wise Distinction pattern.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 3 -->
+<div class="section-card">
+    <h3>Section 3: Reason 2 - Research Evidence</h3>
+
+    <blockquote>
+        <strong>What Happens Inside Your Dog After a 2-Hour Walk</strong><br><br>
+        When researchers finally measured what happens inside an anxious dog after a two-hour walk, they expected to find calm.<br><br>
+        They didn't.<br><br>
+        They found cortisol levels that hadn't budged...<br><br>
+        <strong>The dog was exhausted. The anxiety was untouched.</strong><br><br>
+        It's like turning up the radio to drown out engine noise. The music gets louder. The engine still knocks.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Provides scientific proof for the belief shift. "Don't trust me - trust the research." This section converts skeptics who need evidence, not just logic.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Research-backed claims with relatable metaphors.</strong> The cortisol research is dry - the radio/engine metaphor makes it stick.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"Physical fatigue and nervous system regulation run on completely different tracks."</code> — The core insight, stated simply.</li>
+            <li><code>"Exercise makes your dog too tired to show the anxiety as visibly. But inside? The alarm is still blaring."</code> — Connects to the alarm metaphor.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 4 -->
+<div class="section-card">
+    <h3>Section 4: Reason 3 - Wild Dogs Comparison</h3>
+
+    <blockquote>
+        <strong>Wild Dogs Don't Run Marathons to Stay Calm</strong><br><br>
+        If exhaustion created calm, wolves would need to run all day.<br><br>
+        They don't.<br><br>
+        Wolves rest up to 16 hours a day...<br><br>
+        <strong>Wild canids don't have a word for anxiety.</strong> Because they don't need one.<br><br>
+        Their alarm fires when there's danger. The danger passes. The alarm resets. They go back to lounging in the sun.<br><br>
+        Your dog's reset mechanism isn't broken. It's starved of what it needs to work.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Uses nature as proof. If calm came from exhaustion, wild dogs would be anxiety-ridden. They're not. This forces the reader to question their assumptions.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Argument from Nature.</strong> People trust what's "natural." Wild dogs are the control group that proves the point.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"Same species. Same nervous system design. Different results."</code> — Isolates the variable.</li>
+            <li><code>"One animal has the raw materials to recover from stress. The other is running the same system on empty."</code> — Sets up the solution.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 5 -->
+<div class="section-card">
+    <h3>Section 5: Reason 4 - The Mop vs Leak Analogy</h3>
+
+    <blockquote>
+        <strong>You Can Walk Miles Every Day and Still Have an Anxious Dog</strong><br><br>
+        Water is pooling on your kitchen floor.<br><br>
+        You grab a mop. You clean it up.<br><br>
+        An hour later - wet again...<br><br>
+        <strong>And the floor is still wet.</strong><br><br>
+        Because there's a leak in the pipes. You could mop for the rest of your life and never fix it.<br><br>
+        Exercise is the mop. Your dog's nervous system is the leak.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Validates the reader's effort while explaining why it failed. You're not lazy - you're using the wrong tool. This is guilt removal that builds trust.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>The Wrong Tool Analogy.</strong> Effort isn't the problem - the tool is. This reframes failure as misdirection, not inadequacy.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"You're exhausted from trying so hard. And they're still anxious."</code> — Empathy before education.</li>
+            <li><code>"You can mop forever and lose. Or you can fix the leak once."</code> — Stakes the contrast clearly.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 6 -->
+<div class="section-card">
+    <h3>Section 6: Reason 5 - The Biochemical Gap</h3>
+
+    <blockquote>
+        <strong>Your Dog Isn't Anxious - They're Running Low on Something</strong><br><br>
+        Imagine a smoke alarm in your house...<br><br>
+        Now imagine the alarm never stops.<br><br>
+        <strong>Nothing is wrong with the alarm. Something is wrong with the reset mechanism.</strong><br><br>
+        That's your dog.<br><br>
+        Their nervous system isn't broken. It's depleted.<br><br>
+        Every mammal has a built-in system for regulating stress. And there's a way to give it what it needs.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Introduces the core insight without naming the solution yet. The alarm metaphor reaches full form here. Reader now understands the <em>mechanism</em> of the problem.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Problem Completion Before Solution.</strong> You've fully explained what's wrong. The reader is primed to hear the fix. Ending with "there's a way" creates the cliffhanger.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"Nothing is wrong with the alarm. Something is wrong with the reset mechanism."</code> — The reframe that carries the whole funnel.</li>
+            <li><code>"Their nervous system isn't broken. It's depleted."</code> — Hopeful framing. Depleted can be refilled.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 7 -->
+<div class="section-card">
+    <h3>Section 7: Cliffhanger + CTA</h3>
+
+    <blockquote>
+        <strong>Your Dog's Alarm Has Been Stuck On Long Enough</strong><br><br>
+        You now know the truth.<br><br>
+        Exercise was never designed to fix this...<br><br>
+        Your dog's nervous system needs something else entirely.<br><br>
+        On the next page, you'll learn exactly what it needs — and how to give it to them.<br><br>
+        <strong>[See What Actually Works &gt;&gt;]</strong>
+    </blockquote>
+
+    <p><strong>What this does:</strong> Summarizes the belief shift and creates urgency to continue. The reader has been educated but not satisfied - they need the solution.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>The Open Loop.</strong> You've created a gap (problem identified, solution promised) that can only be closed by clicking through.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"There's a built-in reset mechanism that's supposed to turn off the alarm when danger passes. In your dog, that mechanism is starving."</code> — Reinforces the metaphor one more time before transition.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 8 -->
+<div class="section-card">
+    <h3>Section 8: Solution Reveal (Offer Page)</h3>
+
+    <blockquote>
+        <strong>The Missing Piece Behind Your Dog's Anxiety</strong><br><br>
+        It's called the Endocannabinoid System.<br><br>
+        When this system has what it needs, something simple happens:<br><br>
+        Threat appears. Alarm fires. Threat passes. Alarm resets. Dog goes back to normal.<br><br>
+        <strong>But when the Endocannabinoid System is under-supported, the alarm never resets.</strong><br><br>
+        Same alarm. Same design. Different fuel.
+    </blockquote>
+
+    <p><strong>What this does:</strong> Names the mechanism (Endocannabinoid System) and completes the alarm metaphor. The reader now understands what's missing and why.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Mechanism Reveal.</strong> You've been building to this. The payoff is naming what they didn't know existed.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"Threat appears. Alarm fires. Threat passes. Alarm resets."</code> — The simple version of how it should work.</li>
+            <li><code>"Your dog's anxiety isn't a personality flaw. It's not a training failure."</code> — Continued guilt removal.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 9 -->
+<div class="section-card">
+    <h3>Section 9: Bridge + CBD Introduction</h3>
+
+    <blockquote>
+        <strong>Exercise Was Always the Wrong Target</strong><br><br>
+        [Recaps all 5 reasons]<br><br>
+        There's a pattern here. Every reason points the same way.<br><br>
+        <strong>The dogs who are calm aren't more exercised. They have something in their system that anxious dogs don't.</strong><br><br>
+        The compound is CBD.<br><br>
+        CBD is not marijuana. It won't get your dog high. It's not a sedative...<br><br>
+        <strong>It gives the reset mechanism what it's been starving for.</strong>
+    </blockquote>
+
+    <p><strong>What this does:</strong> Bridges from education to solution. Addresses the immediate objection to CBD (it's marijuana, it's drugs) before it can form.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Objection Handling at the Moment of Reveal.</strong> You name the solution and immediately address the biggest concern.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"And before you scroll past, let's talk about what that actually means."</code> — Acknowledges hesitation.</li>
+            <li><code>"This isn't about drugging your dog into submission. This is about supporting a biological system."</code> — Reframes CBD from "drug" to "support."</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 10 -->
+<div class="section-card">
+    <h3>Section 10: Most Calming Treats Fail</h3>
+
+    <blockquote>
+        <strong>Most Calming Treats Fail Before They Help</strong><br><br>
+        <strong>Problem 1:</strong> They don't actually contain CBD (hemp seed oil &ne; CBD)<br><br>
+        <strong>Problem 2:</strong> The dose is too low to matter<br><br>
+        <strong>Problem 3:</strong> Wrong form, wrong delivery<br><br>
+        <strong>Problem 4:</strong> No proof it's real<br><br>
+        <strong>The treat reached their dog's stomach. The calm never reached their dog's nervous system.</strong>
+    </blockquote>
+
+    <p><strong>What this does:</strong> Addresses why past attempts with "calming treats" failed. This prevents the objection "I've tried calming treats, they don't work."</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Pre-Answer Objections.</strong> Before they can think "this won't work either," you explain why the others failed and why this is different.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"Hemp seed oil is not CBD. It's like ordering a coffee and getting decaf without being told."</code> — Analogy makes the distinction memorable.</li>
+            <li><code>"If the dose isn't clinical, the result won't be either."</code> — Sets up the product's USP.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 11 -->
+<div class="section-card">
+    <h3>Section 11: Meet CBDog + Ingredients</h3>
+
+    <blockquote>
+        <strong>Meet CBDog</strong><br><br>
+        Remember the alarm that won't stop ringing. The reset button that has nothing to work with.<br><br>
+        <strong>This is what it's been waiting for.</strong><br><br>
+        &bull; Full-Spectrum CBD — not hemp seed oil, not isolate<br>
+        &bull; Therapeutic Dosing — enough to actually move the needle<br>
+        &bull; Third-Party Lab Tested — verified purity<br>
+        &bull; Real Deboned Lamb — first ingredient<br><br>
+        <strong>Full-Spectrum CBD — The Reset Signal</strong><br>
+        <strong>Flaxseed Oil — The Delivery Vehicle</strong><br>
+        <strong>Real Deboned Lamb — The Acceptance Factor</strong>
+    </blockquote>
+
+    <p><strong>What this does:</strong> Introduces the product as the answer to everything that came before. Each feature directly addresses a problem established earlier.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Feature-Benefit Match.</strong> Every product feature connects to a problem already seeded in the funnel.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"This is what it's been waiting for."</code> — Product as the satisfying conclusion to the alarm metaphor.</li>
+            <li><code>"The Acceptance Factor"</code> — Even the lamb ingredient has a role in the narrative.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 12 -->
+<div class="section-card">
+    <h3>Section 12: Three Benefits + Timeline</h3>
+
+    <blockquote>
+        <strong>What CBDog Does For Dogs Stuck in Anxiety Mode</strong><br><br>
+        1. <strong>Gives Their Nervous System What It Needs to Reset</strong><br>
+        2. <strong>Supports Natural Calm Without Sedation</strong><br>
+        3. <strong>Builds Calmer Baselines Over Time</strong><br><br>
+        <strong>Week 1:</strong> Less pacing, more willingness to settle<br>
+        <strong>Week 2-3:</strong> The doorbell rings... and the meltdown doesn't come<br>
+        <strong>Week 4-6:</strong> New baseline — calmer even without triggers
+    </blockquote>
+
+    <p><strong>What this does:</strong> Future-paces the transformation. Reader can visualize what their life looks like after using the product.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>The Timeline Pattern.</strong> Specific timeframes make results feel achievable and real.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li><code>"CBDog doesn't flip a switch. It resets a system."</code> — Sets realistic expectations while maintaining hope.</li>
+            <li><code>"You realize you've stopped bracing for the panic."</code> — Emotional benefit, not just functional.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 13 -->
+<div class="section-card">
+    <h3>Section 13: Bundles + Guarantee + Final CTA</h3>
+
+    <blockquote>
+        <strong>[Bundle Section with 1-bottle, 3-bottle, 6-bottle options]</strong><br><br>
+        <strong>365-Day Money-Back Guarantee</strong><br><br>
+        "Your dog gets calmer, or you get your money back."<br><br>
+        <strong>[Choose Your Bundle]</strong>
+    </blockquote>
+
+    <p><strong>What this does:</strong> Removes purchase risk and creates urgency through bundle savings. The guarantee reverses risk completely.</p>
+
+    <span class="technique-label">Key Technique</span>
+    <p><strong>Risk Reversal.</strong> A 365-day guarantee signals confidence and removes the "what if it doesn't work" objection.</p>
+
+    <div class="lines-box">
+        <h4>Lines Worth Studying</h4>
+        <ul>
+            <li>Guarantee framing should focus on the outcome ("your dog gets calmer") not the product.</li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+
+<h2>Key Patterns to Reuse</h2>
+
+<ol class="pattern-list">
+    <li><strong>Opening Violation</strong> — Challenge what they believe, don't validate it</li>
+    <li><strong>The Alarm Metaphor</strong> — One metaphor that carries the entire funnel</li>
+    <li><strong>Origin Story Reframe</strong> — Explain <em>why</em> bad advice exists</li>
+    <li><strong>Research + Relatable Metaphor</strong> — Data for credibility, metaphor for memorability</li>
+    <li><strong>Guilt Removal</strong> — You weren't failing, you were misdirected</li>
+    <li><strong>Objection Handling at Reveal</strong> — Address concerns the moment they form</li>
+    <li><strong>Feature-Benefit Match</strong> — Every product feature solves a seeded problem</li>
+    <li><strong>Timeline Future Pacing</strong> — Show what life looks like week by week</li>
+    <li><strong>Risk Reversal</strong> — Remove purchase anxiety with guarantee</li>
+</ol>
+
+<hr>
+
+<div class="cta-box">
+    <p><strong>Next step for your funnel:</strong> Identify the one belief you need to shift, find a metaphor that explains it, and structure your education page around destroying the old frame before introducing the product.</p>
+</div>
+
+</body>
+</html>
