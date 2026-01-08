@@ -623,37 +623,55 @@
             margin-bottom: 24px;
         }
 
-        .legend-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .legend-item {
             display: flex;
-            gap: 14px;
-            padding: 16px;
-            background: var(--gray-50);
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 2px;
             transition: all 0.15s ease;
         }
 
         .legend-item:hover {
             border-color: var(--border-dark);
-            background: white;
+            box-shadow: -3px 3px 0 0 #383838;
+            transform: translate(1px, -1px);
         }
 
-        .legend-icon {
-            width: 40px;
-            height: 40px;
+        .legend-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gray-900);
             border: 2px solid var(--border-dark);
             border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .legend-icon {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
         }
 
         .legend-icon.blue { background: var(--pastel-blue); }
@@ -663,24 +681,23 @@
         .legend-icon.peach { background: var(--pastel-peach); }
         .legend-icon.teal { background: var(--accent-teal); }
 
+        .legend-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+
         .legend-content h4 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
         .legend-content p {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
             margin-bottom: 0;
             line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .legend-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Footer */
@@ -748,8 +765,9 @@
             <h2>What's In This Document</h2>
             <p>This plan covers the foundational work we need to do together. Here's what you'll find:</p>
 
-            <div class="legend-grid">
+            <div class="legend-list">
                 <div class="legend-item">
+                    <div class="legend-number">1</div>
                     <div class="legend-icon blue">📅</div>
                     <div class="legend-content">
                         <h4>The Schedule</h4>
@@ -758,6 +776,7 @@
                 </div>
 
                 <div class="legend-item">
+                    <div class="legend-number">2</div>
                     <div class="legend-icon yellow">📊</div>
                     <div class="legend-content">
                         <h4>Unit Economics</h4>
@@ -766,6 +785,7 @@
                 </div>
 
                 <div class="legend-item">
+                    <div class="legend-number">3</div>
                     <div class="legend-icon teal">💰</div>
                     <div class="legend-content">
                         <h4>Offer Structures</h4>
@@ -774,6 +794,7 @@
                 </div>
 
                 <div class="legend-item">
+                    <div class="legend-number">4</div>
                     <div class="legend-icon purple">💡</div>
                     <div class="legend-content">
                         <h4>The Thesis</h4>
@@ -782,6 +803,7 @@
                 </div>
 
                 <div class="legend-item">
+                    <div class="legend-number">5</div>
                     <div class="legend-icon peach">🎯</div>
                     <div class="legend-content">
                         <h4>Funnels</h4>
@@ -790,6 +812,7 @@
                 </div>
 
                 <div class="legend-item">
+                    <div class="legend-number">6</div>
                     <div class="legend-icon green">✅</div>
                     <div class="legend-content">
                         <h4>Your Next Steps</h4>
