@@ -464,29 +464,30 @@
             font-weight: 600;
         }
 
-        /* Metaphor Box */
+        /* Metaphor Box - now uses callout style instead of dark */
         .metaphor-box {
-            background: var(--gray-900);
-            color: white;
-            padding: 32px;
+            background: var(--pastel-peach);
+            border: 2px solid var(--border-dark);
             border-radius: 2px;
+            padding: 32px;
             margin: 28px 0;
-            box-shadow: -4px 4px 0 0 #666;
+            box-shadow: -4px 4px 0 0 #383838;
         }
 
         .metaphor-box p {
-            color: rgba(255,255,255,0.9);
+            color: var(--text);
             font-size: 16px;
             line-height: 1.9;
         }
 
         .metaphor-box .emphasis {
-            color: var(--accent-blue);
+            color: #0369a1;
             font-style: italic;
+            font-weight: 500;
         }
 
         .metaphor-box strong {
-            color: white;
+            color: var(--text);
         }
 
         /* Browser Mockup */
@@ -695,6 +696,54 @@
             margin-left: 6px;
         }
 
+        /* Major Section Wrappers - 3-tier hierarchy */
+        .major-section {
+            background: var(--bg-card);
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: -4px 4px 0 0 #383838;
+        }
+
+        .major-section.blue { background: var(--pastel-blue); }
+        .major-section.yellow { background: var(--pastel-yellow); }
+        .major-section.green { background: var(--pastel-green); }
+        .major-section.purple { background: var(--pastel-purple); }
+        .major-section.peach { background: var(--pastel-peach); }
+
+        /* Subsections within major sections - transparent, flow naturally */
+        .major-section .subsection {
+            background: rgba(255,255,255,0.6);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .major-section .subsection:first-of-type {
+            margin-top: 28px;
+        }
+
+        /* Remove heavy styling from section-cards inside major-sections */
+        .major-section .section-card {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .major-section .section-card:hover {
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        /* Section divider between major sections */
+        .section-break {
+            height: 48px;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -811,8 +860,8 @@
             </div>
         </div>
 
-        <!-- Schedule -->
-        <div class="section-card emphasis blue">
+        <!-- SECTION 1: The Schedule -->
+        <div class="major-section blue">
             <h2><span class="section-num">1</span> The Schedule <span class="badge">ROADMAP</span></h2>
             <table>
                 <thead>
@@ -854,144 +903,142 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div class="subsection">
+                <h3>About The Priorities</h3>
+
+                <p><strong>1. Fixed shop</strong></p>
+                <p>Your shop is technically sound. It's a strong container with weak components inside. We'll do a Conversion Leaks Review in Week 4, but not before locking in Thesis and unit economics first. Those decisions inform what we're optimizing toward.</p>
+
+                <p><strong>2. Viable ad strategy</strong></p>
+                <p>Viable ads require viable unit economics. Running ads on weak margins and generic messaging is like fishing with $20 bait in a lake with no fish. Best case, nothing bites. Worst case, something bites and you spent more catching it than it's worth.</p>
+
+                <p><strong>3. Q1 targets (€15K/month, AOV >€55, CPA <€20)</strong></p>
+                <p>These are the right things to measure. There's nuance to how CPA, AOV, and margins interact — and a few levers that can shift what's achievable.</p>
+            </div>
         </div>
 
-        <!-- Priorities -->
-        <div class="section-card">
-            <h2>About The Priorities</h2>
+        <div class="section-break"></div>
 
-            <h3>1. Fixed shop</h3>
-            <p>Your shop is technically sound. It's a strong container with weak components inside. We'll do a Conversion Leaks Review in Week 4, but not before locking in Thesis and unit economics first. Those decisions inform what we're optimizing toward.</p>
-
-            <h3>2. Viable ad strategy</h3>
-            <p>Viable ads require viable unit economics. Running ads on weak margins and generic messaging is like fishing with $20 bait in a lake with no fish. Best case, nothing bites. Worst case, something bites and you spent more catching it than it's worth.</p>
-
-            <h3>3. Q1 targets (€15K/month, AOV >€55, CPA <€20)</h3>
-            <p>These are the right things to measure. There's nuance to how CPA, AOV, and margins interact — and a few levers that can shift what's achievable.</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Two Numbers -->
-        <div class="section-card">
-            <h2><span class="section-num">2</span> Two Numbers That Determine Everything</h2>
+        <!-- SECTION 2: Unit Economics -->
+        <div class="major-section peach">
+            <h2><span class="section-num">2</span> Two Numbers That Determine Everything <span class="badge">UNIT ECONOMICS</span></h2>
             <p>Before we talk about ads, funnels, or creative — we need to talk about math.</p>
             <p>There are two numbers that determine whether paid acquisition will work for you:</p>
 
-            <h3>Number 1: Gross Margin</h3>
-            <p>Gross margin is what's left after you pay for the product and get it to the customer.</p>
-            <p>It's revenue minus COGS, shipping, payment fees, and fulfillment.</p>
-            <p>This is what you have available to spend on ads and still make money.</p>
+            <div class="subsection">
+                <h3>Number 1: Gross Margin</h3>
+                <p>Gross margin is what's left after you pay for the product and get it to the customer.</p>
+                <p>It's revenue minus COGS, shipping, payment fees, and fulfillment.</p>
+                <p>This is what you have available to spend on ads and still make money.</p>
 
-            <div class="callout neutral">
-                <div class="callout-label">Benchmarks</div>
-                <p><strong>50%</strong> — minimum to make paid ads viable</p>
-                <p><strong>60%</strong> — healthy, gives you room to compete</p>
-                <p><strong>70%+</strong> — ideal, lets you outbid competitors and still profit</p>
+                <div class="callout neutral">
+                    <div class="callout-label">Benchmarks</div>
+                    <p><strong>50%</strong> — minimum to make paid ads viable</p>
+                    <p><strong>60%</strong> — healthy, gives you room to compete</p>
+                    <p><strong>70%+</strong> — ideal, lets you outbid competitors and still profit</p>
+                </div>
+
+                <p>Your current gross margin on a single 10-pack is about <strong>49%</strong>.</p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Gross Sales (incl. VAT)</td>
+                            <td style="text-align: right;">€27.99</td>
+                        </tr>
+                        <tr>
+                            <td>VAT (19%)</td>
+                            <td style="text-align: right;">−€4.47</td>
+                        </tr>
+                        <tr>
+                            <td>COGS</td>
+                            <td style="text-align: right;">−€6.10</td>
+                        </tr>
+                        <tr>
+                            <td>Shopify Fees (4%)</td>
+                            <td style="text-align: right;">−€1.12</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping/Pick/Pack</td>
+                            <td style="text-align: right;">−€2.38</td>
+                        </tr>
+                        <tr>
+                            <td>JTL Fee</td>
+                            <td style="text-align: right;">−€0.20</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Gross Margin</strong></td>
+                            <td style="text-align: right;"><strong>€13.72 (49%)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <p>Your current gross margin on a single 10-pack is about <strong>49%</strong>.</p>
-
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Gross Sales (incl. VAT)</td>
-                        <td style="text-align: right;">€27.99</td>
-                    </tr>
-                    <tr>
-                        <td>VAT (19%)</td>
-                        <td style="text-align: right;">−€4.47</td>
-                    </tr>
-                    <tr>
-                        <td>COGS</td>
-                        <td style="text-align: right;">−€6.10</td>
-                    </tr>
-                    <tr>
-                        <td>Shopify Fees (4%)</td>
-                        <td style="text-align: right;">−€1.12</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping/Pick/Pack</td>
-                        <td style="text-align: right;">−€2.38</td>
-                    </tr>
-                    <tr>
-                        <td>JTL Fee</td>
-                        <td style="text-align: right;">−€0.20</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td><strong>Gross Margin</strong></td>
-                        <td style="text-align: right;"><strong>€13.72 (49%)</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Ankle Weights Metaphor -->
-        <div class="metaphor-box">
-            <p>Imagine you signed up for a swim race.</p>
-            <p>You trained hard. You studied technique. You optimized your nutrition.</p>
-            <p>And every race, you're still coming in last.</p>
-            <p>So you train harder. Wake up earlier. Refine your stroke.</p>
-            <p>Still last.</p>
-            <p>At some point, someone pulls you aside and says:</p>
-            <p class="emphasis">"Hey... you know you're wearing ankle weights, right?"</p>
-            <p>And you look down, and there they are.</p>
-            <p>No amount of training fixes ankle weights.</p>
-            <p><strong>The answer is to take off the weights.</strong></p>
-        </div>
-
-        <!-- Allowable CPA -->
-        <div class="section-card">
-            <h3>Number 2: Allowable CPA</h3>
-            <p>Allowable CPA is how much you can spend to acquire a customer and still hit your profit target.</p>
-            <p>This is different from break-even CPA — it's what you can afford while keeping 20% contribution margin.</p>
-
-            <div class="callout warning">
-                <div class="callout-label warning">The reality of ad auctions</div>
-                <p>Meta and Google are auctions. The brands that can afford to pay more for a customer get more impressions, more clicks, more conversions.</p>
-                <p>If your allowable CPA is €12 and your competitor's is €30, they will outbid you for every valuable impression.</p>
-                <p>You don't just lose some auctions. You lose most of them.</p>
+            <!-- Ankle Weights Metaphor -->
+            <div class="metaphor-box">
+                <p>Imagine you signed up for a swim race.</p>
+                <p>You trained hard. You studied technique. You optimized your nutrition.</p>
+                <p>And every race, you're still coming in last.</p>
+                <p>So you train harder. Wake up earlier. Refine your stroke.</p>
+                <p>Still last.</p>
+                <p>At some point, someone pulls you aside and says:</p>
+                <p class="emphasis">"Hey... you know you're wearing ankle weights, right?"</p>
+                <p>And you look down, and there they are.</p>
+                <p>No amount of training fixes ankle weights.</p>
+                <p><strong>The answer is to take off the weights.</strong></p>
             </div>
 
-            <p>I want your allowable CPA to be <strong>€30 or higher</strong>.</p>
-            <p>Not because I want you to spend more.</p>
-            <p>Because I want you to be competitive in the auction.</p>
-        </div>
+            <div class="subsection">
+                <h3>Number 2: Allowable CPA</h3>
+                <p>Allowable CPA is how much you can spend to acquire a customer and still hit your profit target.</p>
+                <p>This is different from break-even CPA — it's what you can afford while keeping 20% contribution margin.</p>
 
-        <div class="divider"></div>
+                <div class="callout warning">
+                    <div class="callout-label warning">The reality of ad auctions</div>
+                    <p>Meta and Google are auctions. The brands that can afford to pay more for a customer get more impressions, more clicks, more conversions.</p>
+                    <p>If your allowable CPA is €12 and your competitor's is €30, they will outbid you for every valuable impression.</p>
+                    <p>You don't just lose some auctions. You lose most of them.</p>
+                </div>
 
-        <!-- The Vision -->
-        <div class="section-card emphasis yellow">
-            <h2>The Vision: Where We Need To Get</h2>
-            <p>Three numbers need to work together:</p>
-
-            <div class="metrics-grid">
-                <div class="metric-card teal">
-                    <div class="metric-value">€30+</div>
-                    <div class="metric-label">Allowable CPA</div>
-                    <div class="metric-desc">Competitive in ad auctions</div>
-                </div>
-                <div class="metric-card green">
-                    <div class="metric-value">20%+</div>
-                    <div class="metric-label">Contribution Margin</div>
-                    <div class="metric-desc">Profitable after ad spend</div>
-                </div>
-                <div class="metric-card blue">
-                    <div class="metric-value">60%+</div>
-                    <div class="metric-label">Gross Margin</div>
-                    <div class="metric-desc">Healthy unit economics</div>
-                </div>
+                <p>I want your allowable CPA to be <strong>€30 or higher</strong>.</p>
+                <p>Not because I want you to spend more.</p>
+                <p>Because I want you to be competitive in the auction.</p>
             </div>
 
-            <p>When all three are working, you can acquire customers profitably while outbidding competitors in the auction.</p>
-            <p>When any one of them is broken, the whole system struggles.</p>
+            <!-- The Vision -->
+            <div class="subsection" style="background: var(--pastel-yellow); border: 2px solid var(--border-dark);">
+                <h3>The Vision: Where We Need To Get</h3>
+                <p>Three numbers need to work together:</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card teal">
+                        <div class="metric-value">€30+</div>
+                        <div class="metric-label">Allowable CPA</div>
+                        <div class="metric-desc">Competitive in ad auctions</div>
+                    </div>
+                    <div class="metric-card green">
+                        <div class="metric-value">20%+</div>
+                        <div class="metric-label">Contribution Margin</div>
+                        <div class="metric-desc">Profitable after ad spend</div>
+                    </div>
+                    <div class="metric-card blue">
+                        <div class="metric-value">60%+</div>
+                        <div class="metric-label">Gross Margin</div>
+                        <div class="metric-desc">Healthy unit economics</div>
+                    </div>
+                </div>
+
+                <p>When all three are working, you can acquire customers profitably while outbidding competitors in the auction.</p>
+                <p>When any one of them is broken, the whole system struggles.</p>
+            </div>
         </div>
 
-        <div class="divider"></div>
+        <div class="section-break"></div>
 
-        <!-- Offer Structures -->
-        <div class="section-card">
-            <h2><span class="section-num">3</span> Offer Structures To Consider <span class="badge">UNIT ECONOMICS</span></h2>
+        <!-- SECTION 3: Offer Structures -->
+        <div class="major-section yellow">
+            <h2><span class="section-num">3</span> Offer Structures To Consider <span class="badge">OFFERS</span></h2>
 
             <p>Offer structure is the primary lever for raising AOV.</p>
             <p>And AOV is the primary lever for raising allowable CPA.</p>
@@ -1001,168 +1048,172 @@
             <p>That's what unlocks healthy margins at competitive prices.</p>
             <p>Below are two example structures to spark ideation.</p>
 
-            <h3>Option A: Large Packs (6-12-18-24)</h3>
-            <p>Modeled after Hollow Socks — anchored at 6-packs with "Buy X Get X Free" psychology:</p>
+            <div class="subsection">
+                <h3>Option A: Large Packs (6-12-18-24)</h3>
+                <p>Modeled after Hollow Socks — anchored at 6-packs with "Buy X Get X Free" psychology:</p>
 
-            <div class="tier-grid">
-                <div class="tier-card">
-                    <div class="tier-name">6-Pack</div>
-                    <div class="tier-price">€79.99</div>
-                    <div class="tier-per-pack">€13.33/pack</div>
-                    <div class="tier-tag muted">Starter</div>
+                <div class="tier-grid">
+                    <div class="tier-card">
+                        <div class="tier-name">6-Pack</div>
+                        <div class="tier-price">€79.99</div>
+                        <div class="tier-per-pack">€13.33/pack</div>
+                        <div class="tier-tag muted">Starter</div>
+                    </div>
+                    <div class="tier-card">
+                        <div class="tier-name">12-Pack</div>
+                        <div class="tier-price">€119.99</div>
+                        <div class="tier-per-pack">€10.00/pack</div>
+                        <div class="tier-tag green">Save 25%</div>
+                    </div>
+                    <div class="tier-card featured">
+                        <div class="tier-badge red">BUY 9 GET 9 FREE</div>
+                        <div class="tier-name" style="margin-top: 8px; color: var(--accent-red);">18-Pack</div>
+                        <div class="tier-price strike">€179.99</div>
+                        <div class="tier-price" style="color: var(--accent-red);">€119.99</div>
+                        <div class="tier-per-pack" style="font-weight: 600;">€6.67/pack</div>
+                        <div class="tier-tag red">MOST POPULAR</div>
+                    </div>
+                    <div class="tier-card best-value">
+                        <div class="tier-badge green">BUY 12 GET 12 FREE</div>
+                        <div class="tier-name" style="margin-top: 8px; color: var(--accent-green);">24-Pack</div>
+                        <div class="tier-price">€149.99</div>
+                        <div class="tier-per-pack" style="font-weight: 600;">€6.25/pack</div>
+                        <div class="tier-tag green">Save 53%</div>
+                    </div>
                 </div>
-                <div class="tier-card">
-                    <div class="tier-name">12-Pack</div>
-                    <div class="tier-price">€119.99</div>
-                    <div class="tier-per-pack">€10.00/pack</div>
-                    <div class="tier-tag green">Save 25%</div>
-                </div>
-                <div class="tier-card featured">
-                    <div class="tier-badge red">BUY 9 GET 9 FREE</div>
-                    <div class="tier-name" style="margin-top: 8px; color: var(--accent-red);">18-Pack</div>
-                    <div class="tier-price strike">€179.99</div>
-                    <div class="tier-price" style="color: var(--accent-red);">€119.99</div>
-                    <div class="tier-per-pack" style="font-weight: 600;">€6.67/pack</div>
-                    <div class="tier-tag red">MOST POPULAR</div>
-                </div>
-                <div class="tier-card best-value">
-                    <div class="tier-badge green">BUY 12 GET 12 FREE</div>
-                    <div class="tier-name" style="margin-top: 8px; color: var(--accent-green);">24-Pack</div>
-                    <div class="tier-price">€149.99</div>
-                    <div class="tier-per-pack" style="font-weight: 600;">€6.25/pack</div>
-                    <div class="tier-tag green">Save 53%</div>
+
+                <div class="callout success">
+                    <div class="callout-label success">The psychology at work</div>
+                    <p>The 6-pack at €13.33/pack sets the anchor.</p>
+                    <p>It's not meant to sell — it's meant to make everything else look reasonable by comparison.</p>
+                    <p>The 18-pack at €119.99 is the same price as buying 9 packs at the anchor rate.</p>
+                    <p>"Buy 9 Get 9 FREE" isn't a discount — it's a reframe that makes <em>not</em> buying feel like leaving money on the table.</p>
+                    <p>The per-pack price drops from €13.33 to €6.67 — a 50% reduction that only unlocks at the higher-AOV tier.</p>
+                    <p>The structure makes the bigger order the "smart" choice.</p>
                 </div>
             </div>
 
-            <div class="callout success">
-                <div class="callout-label success">The psychology at work</div>
-                <p>The 6-pack at €13.33/pack sets the anchor.</p>
-                <p>It's not meant to sell — it's meant to make everything else look reasonable by comparison.</p>
-                <p>The 18-pack at €119.99 is the same price as buying 9 packs at the anchor rate.</p>
-                <p>"Buy 9 Get 9 FREE" isn't a discount — it's a reframe that makes <em>not</em> buying feel like leaving money on the table.</p>
-                <p>The per-pack price drops from €13.33 to €6.67 — a 50% reduction that only unlocks at the higher-AOV tier.</p>
-                <p>The structure makes the bigger order the "smart" choice.</p>
+            <div class="subsection">
+                <h3>Option B: Mid-Size Packs (4-8-16-24)</h3>
+                <p>Lower entry point, clean "Buy X Get X Free" on both deal tiers:</p>
+
+                <div class="tier-grid">
+                    <div class="tier-card">
+                        <div class="tier-name">4-Pack</div>
+                        <div class="tier-price">€69.99</div>
+                        <div class="tier-per-pack">€17.50/pack</div>
+                        <div class="tier-tag muted">Starter</div>
+                    </div>
+                    <div class="tier-card">
+                        <div class="tier-name">8-Pack</div>
+                        <div class="tier-price">€79.99</div>
+                        <div class="tier-per-pack">€10.00/pack</div>
+                        <div class="tier-tag green">Save 43%</div>
+                    </div>
+                    <div class="tier-card featured">
+                        <div class="tier-badge red">BUY 8 GET 8 FREE</div>
+                        <div class="tier-name" style="margin-top: 8px; color: var(--accent-red);">16-Pack</div>
+                        <div class="tier-price strike">€159.98</div>
+                        <div class="tier-price" style="color: var(--accent-red);">€79.99</div>
+                        <div class="tier-per-pack" style="font-weight: 600;">€5.00/pack</div>
+                        <div class="tier-tag red">MOST POPULAR</div>
+                    </div>
+                    <div class="tier-card best-value">
+                        <div class="tier-badge green">BUY 12 GET 12 FREE</div>
+                        <div class="tier-name" style="margin-top: 8px; color: var(--accent-green);">24-Pack</div>
+                        <div class="tier-price">€119.99</div>
+                        <div class="tier-per-pack" style="font-weight: 600;">€5.00/pack</div>
+                        <div class="tier-tag green">Family Pack</div>
+                    </div>
+                </div>
+
+                <div class="callout success">
+                    <div class="callout-label success">The psychology at work</div>
+                    <p>The 4-pack at €17.50/pack sets the anchor.</p>
+                    <p>It's not meant to sell — it's meant to make the larger packs look like obvious value.</p>
+                    <p>The 16-pack at €79.99 is the same price as buying 8 packs at the 8-pack rate.</p>
+                    <p>"Buy 8 Get 8 FREE" reframes the decision — not buying feels like walking away from free socks.</p>
+                    <p>The per-pack price drops from €17.50 to €5.00 — a 71% reduction that only unlocks at the higher-AOV tier.</p>
+                    <p>The structure makes the bigger order the "smart" choice.</p>
+                </div>
             </div>
 
-            <h3>Option B: Mid-Size Packs (4-8-16-24)</h3>
-            <p>Lower entry point, clean "Buy X Get X Free" on both deal tiers:</p>
+            <!-- Comparison Table -->
+            <div class="subsection" style="background: rgba(255,255,255,0.85);">
+                <h3>Current vs Proposed: The Comparison</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Current</th>
+                            <th>Option A</th>
+                            <th>Option B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Base unit</strong></td>
+                            <td>10-pack</td>
+                            <td>6-pack</td>
+                            <td>4-pack</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entry price</strong></td>
+                            <td>€27.99</td>
+                            <td>€79.99</td>
+                            <td>€69.99</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entry margin</strong></td>
+                            <td>34%</td>
+                            <td>67%</td>
+                            <td>63%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>"Deal" tier</strong></td>
+                            <td>20-pack @ €47.58</td>
+                            <td>18-pack @ €119.99</td>
+                            <td>16-pack @ €79.99</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deal margin</strong></td>
+                            <td>~38%</td>
+                            <td>65%</td>
+                            <td>59%</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Allowable CPA</strong></td>
+                            <td>€9-€11</td>
+                            <td>€37-€69</td>
+                            <td>€30-€52</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <div class="tier-grid">
-                <div class="tier-card">
-                    <div class="tier-name">4-Pack</div>
-                    <div class="tier-price">€69.99</div>
-                    <div class="tier-per-pack">€17.50/pack</div>
-                    <div class="tier-tag muted">Starter</div>
-                </div>
-                <div class="tier-card">
-                    <div class="tier-name">8-Pack</div>
-                    <div class="tier-price">€79.99</div>
-                    <div class="tier-per-pack">€10.00/pack</div>
-                    <div class="tier-tag green">Save 43%</div>
-                </div>
-                <div class="tier-card featured">
-                    <div class="tier-badge red">BUY 8 GET 8 FREE</div>
-                    <div class="tier-name" style="margin-top: 8px; color: var(--accent-red);">16-Pack</div>
-                    <div class="tier-price strike">€159.98</div>
-                    <div class="tier-price" style="color: var(--accent-red);">€79.99</div>
-                    <div class="tier-per-pack" style="font-weight: 600;">€5.00/pack</div>
-                    <div class="tier-tag red">MOST POPULAR</div>
-                </div>
-                <div class="tier-card best-value">
-                    <div class="tier-badge green">BUY 12 GET 12 FREE</div>
-                    <div class="tier-name" style="margin-top: 8px; color: var(--accent-green);">24-Pack</div>
-                    <div class="tier-price">€119.99</div>
-                    <div class="tier-per-pack" style="font-weight: 600;">€5.00/pack</div>
-                    <div class="tier-tag green">Family Pack</div>
+                <div class="callout success">
+                    <div class="callout-label success">The shift</div>
+                    <p>Higher allowable CPA means you can enter ad auctions competitively — without making sales that lose money.</p>
+                    <p>You're not choosing between profitability and scale. You get both.</p>
                 </div>
             </div>
 
-            <div class="callout success">
-                <div class="callout-label success">The psychology at work</div>
-                <p>The 4-pack at €17.50/pack sets the anchor.</p>
-                <p>It's not meant to sell — it's meant to make the larger packs look like obvious value.</p>
-                <p>The 16-pack at €79.99 is the same price as buying 8 packs at the 8-pack rate.</p>
-                <p>"Buy 8 Get 8 FREE" reframes the decision — not buying feels like walking away from free socks.</p>
-                <p>The per-pack price drops from €17.50 to €5.00 — a 71% reduction that only unlocks at the higher-AOV tier.</p>
-                <p>The structure makes the bigger order the "smart" choice.</p>
+            <!-- Metaphor Box -->
+            <div class="metaphor-box">
+                <p>Most brands try to solve acquisition by lowering their CPA targets.</p>
+                <p>They optimize ads. They tighten audiences. They chase cheaper clicks.</p>
+                <p>This is backwards.</p>
+                <p>The real solution is raising your allowable CPA so you can outspend the competition.</p>
+                <p>And your competition isn't just other sock brands.</p>
+                <p>It's every brand bidding for that consumer's attention — supplements, skincare, kitchenware, clothing.</p>
+                <p class="emphasis">The brand that can afford to pay the most for a customer wins the most auctions. Full stop.</p>
+                <p>Unit economics isn't a back-office concern. It's the primary lever for acquisition.</p>
             </div>
         </div>
 
-        <!-- Comparison Table -->
-        <div class="section-card emphasis">
-            <h2>Current vs Proposed: The Comparison</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Current</th>
-                        <th>Option A</th>
-                        <th>Option B</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Base unit</strong></td>
-                        <td>10-pack</td>
-                        <td>6-pack</td>
-                        <td>4-pack</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Entry price</strong></td>
-                        <td>€27.99</td>
-                        <td>€79.99</td>
-                        <td>€69.99</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Entry margin</strong></td>
-                        <td>34%</td>
-                        <td>67%</td>
-                        <td>63%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>"Deal" tier</strong></td>
-                        <td>20-pack @ €47.58</td>
-                        <td>18-pack @ €119.99</td>
-                        <td>16-pack @ €79.99</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Deal margin</strong></td>
-                        <td>~38%</td>
-                        <td>65%</td>
-                        <td>59%</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td><strong>Allowable CPA</strong></td>
-                        <td>€9-€11</td>
-                        <td>€37-€69</td>
-                        <td>€30-€52</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="section-break"></div>
 
-            <div class="callout success">
-                <div class="callout-label success">The shift</div>
-                <p>Higher allowable CPA means you can enter ad auctions competitively — without making sales that lose money.</p>
-                <p>You're not choosing between profitability and scale. You get both.</p>
-            </div>
-        </div>
-
-        <!-- Metaphor Box -->
-        <div class="metaphor-box">
-            <p>Most brands try to solve acquisition by lowering their CPA targets.</p>
-            <p>They optimize ads. They tighten audiences. They chase cheaper clicks.</p>
-            <p>This is backwards.</p>
-            <p>The real solution is raising your allowable CPA so you can outspend the competition.</p>
-            <p>And your competition isn't just other sock brands.</p>
-            <p>It's every brand bidding for that consumer's attention — supplements, skincare, kitchenware, clothing.</p>
-            <p class="emphasis">The brand that can afford to pay the most for a customer wins the most auctions. Full stop.</p>
-            <p>Unit economics isn't a back-office concern. It's the primary lever for acquisition.</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Thesis Section -->
-        <div class="section-card">
+        <!-- SECTION 4: Thesis -->
+        <div class="major-section purple">
             <h2><span class="section-num">4</span> You're Not in the Sock Business <span class="badge">THESIS</span></h2>
 
             <p>Mat & Vic's is not a sock company.</p>
@@ -1174,70 +1225,72 @@
             <p>A new way for someone to think about a decision they've already made a hundred times.</p>
             <p>That's what a Thesis does.</p>
 
-            <h3>What Is a Thesis?</h3>
-            <p>A Thesis is the core perspective or belief that underlies everything your brand says.</p>
-            <p>It's not a tagline. It's not a slogan.</p>
-            <p>It's the answer to: <em>"What does this brand believe about the world that changes how someone sees their options?"</em></p>
+            <div class="subsection">
+                <h3>What Is a Thesis?</h3>
+                <p>A Thesis is the core perspective or belief that underlies everything your brand says.</p>
+                <p>It's not a tagline. It's not a slogan.</p>
+                <p>It's the answer to: <em>"What does this brand believe about the world that changes how someone sees their options?"</em></p>
 
-            <div class="callout info">
-                <div class="callout-label info">Jones Road Beauty ($100M+/year)</div>
-                <p><strong>Commodity:</strong> Wax-based balms, castor oil, jojoba seed oil</p>
-                <p><strong>Thesis:</strong> "Makeup should enhance your face, not cover it up."</p>
+                <div class="callout info">
+                    <div class="callout-label info">Jones Road Beauty ($100M+/year)</div>
+                    <p><strong>Commodity:</strong> Wax-based balms, castor oil, jojoba seed oil</p>
+                    <p><strong>Thesis:</strong> "Makeup should enhance your face, not cover it up."</p>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-label info">HexClad ($100M+/year)</div>
+                    <p><strong>Commodity:</strong> Nonstick pans with stainless steel layer</p>
+                    <p><strong>Thesis:</strong> "You don't need to choose between convenience and performance."</p>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-label info">Jolie Showerhead</div>
+                    <p><strong>Commodity:</strong> Filtered showerhead</p>
+                    <p><strong>Thesis:</strong> "Your shower water is the hidden enemy of your skin and hair."</p>
+                </div>
             </div>
 
-            <div class="callout info">
-                <div class="callout-label info">HexClad ($100M+/year)</div>
-                <p><strong>Commodity:</strong> Nonstick pans with stainless steel layer</p>
-                <p><strong>Thesis:</strong> "You don't need to choose between convenience and performance."</p>
-            </div>
+            <!-- Thesis Examples -->
+            <div class="subsection">
+                <h3>Thesis Examples For Mat & Vic's</h3>
+                <p>Below are Thesis directions to jumpstart our thinking together.</p>
+                <p>These aren't finished positions to pick from.</p>
+                <p>They're starting points for the back-and-forth we'll do in Weeks 1-2.</p>
 
-            <div class="callout info">
-                <div class="callout-label info">Jolie Showerhead</div>
-                <p><strong>Commodity:</strong> Filtered showerhead</p>
-                <p><strong>Thesis:</strong> "Your shower water is the hidden enemy of your skin and hair."</p>
+                <p style="margin-top: 24px;"><strong>Option 1: The Nature Fallacy</strong></p>
+                <p><strong>Common belief:</strong> "Natural fibers are better than synthetic."</p>
+                <p><strong>Reframe:</strong> Natural fibers evolved to solve animal problems, not human ones.</p>
+                <p>Alpaca fiber evolved to keep alpacas warm at 15,000 feet in the Andes—standing still, in freezing temperatures, for hours.</p>
+                <p>These fibers are "natural" solutions to problems you don't have.</p>
+                <p>The premium sock industry sells you "nature." What you actually need is engineering—fibers designed for how humans actually live.</p>
+
+                <div class="callout success">
+                    <div class="callout-label success">The bridge to product</div>
+                    <p>78% cotton for natural breathability and softness against your skin.</p>
+                    <p>20% polyamide—a fiber literally invented to solve human durability problems—for moisture control and shape retention.</p>
+                    <p>2% elastane for all-day fit.</p>
+                    <p>Mat & Vic's calls it <strong>The 78/20 Formula</strong>.</p>
+                    <p>Not fibers borrowed from animals. Fibers engineered for humans.</p>
+                </div>
+
+                <p style="margin-top: 24px;"><strong>Option 2: The Purity Trap</strong></p>
+                <p><strong>Common belief:</strong> "100% natural materials are worth paying more for."</p>
+                <p><strong>Reframe:</strong> "100% pure" sounds premium—it's actually a limitation.</p>
+                <p>When a sock is 100% anything, it inherits all the weaknesses of that single material with no way to compensate.</p>
+                <p>The best buildings use multiple materials—each one doing what it does best. The same principle applies to socks.</p>
+
+                <p style="margin-top: 24px;"><strong>Option 3: The Durability Illusion</strong></p>
+                <p><strong>Common belief:</strong> "Expensive socks last longer because they cost more."</p>
+                <p><strong>Reframe:</strong> Premium fibers wear out faster than cheap ones—they just do it more elegantly.</p>
+                <p>Natural fibers like wool, alpaca, and cashmere are structurally fragile. They weren't designed for repeated stress, friction, and washing.</p>
+                <p>"Premium" is a price signal, not a performance guarantee.</p>
             </div>
         </div>
 
-        <!-- Thesis Examples -->
-        <div class="section-card">
-            <h2>Thesis Examples For Mat & Vic's</h2>
-            <p>Below are Thesis directions to jumpstart our thinking together.</p>
-            <p>These aren't finished positions to pick from.</p>
-            <p>They're starting points for the back-and-forth we'll do in Weeks 1-2.</p>
+        <div class="section-break"></div>
 
-            <h3>Option 1: The Nature Fallacy</h3>
-            <p><strong>Common belief:</strong> "Natural fibers are better than synthetic."</p>
-            <p><strong>Reframe:</strong> Natural fibers evolved to solve animal problems, not human ones.</p>
-            <p>Alpaca fiber evolved to keep alpacas warm at 15,000 feet in the Andes—standing still, in freezing temperatures, for hours.</p>
-            <p>These fibers are "natural" solutions to problems you don't have.</p>
-            <p>The premium sock industry sells you "nature." What you actually need is engineering—fibers designed for how humans actually live.</p>
-
-            <div class="callout success">
-                <div class="callout-label success">The bridge to product</div>
-                <p>78% cotton for natural breathability and softness against your skin.</p>
-                <p>20% polyamide—a fiber literally invented to solve human durability problems—for moisture control and shape retention.</p>
-                <p>2% elastane for all-day fit.</p>
-                <p>Mat & Vic's calls it <strong>The 78/20 Formula</strong>.</p>
-                <p>Not fibers borrowed from animals. Fibers engineered for humans.</p>
-            </div>
-
-            <h3>Option 2: The Purity Trap</h3>
-            <p><strong>Common belief:</strong> "100% natural materials are worth paying more for."</p>
-            <p><strong>Reframe:</strong> "100% pure" sounds premium—it's actually a limitation.</p>
-            <p>When a sock is 100% anything, it inherits all the weaknesses of that single material with no way to compensate.</p>
-            <p>The best buildings use multiple materials—each one doing what it does best. The same principle applies to socks.</p>
-
-            <h3>Option 3: The Durability Illusion</h3>
-            <p><strong>Common belief:</strong> "Expensive socks last longer because they cost more."</p>
-            <p><strong>Reframe:</strong> Premium fibers wear out faster than cheap ones—they just do it more elegantly.</p>
-            <p>Natural fibers like wool, alpaca, and cashmere are structurally fragile. They weren't designed for repeated stress, friction, and washing.</p>
-            <p>"Premium" is a price signal, not a performance guarantee.</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Funnel Section -->
-        <div class="section-card">
+        <!-- SECTION 5: Funnels -->
+        <div class="major-section blue">
             <h2><span class="section-num">5</span> Why Funnels Matter More Than Your Product Page <span class="badge">FUNNEL</span></h2>
 
             <p>Your Shopify product page does one thing: show the product and let people buy it.</p>
@@ -1251,25 +1304,27 @@
                 <p>You need a Thesis that lands — and a funnel that teaches it.</p>
             </div>
 
-            <h3>A Draft Funnel For Mat & Vic's</h3>
-            <p>Here's a working example of what this looks like for you:</p>
+            <div class="subsection">
+                <h3>A Draft Funnel For Mat & Vic's</h3>
+                <p>Here's a working example of what this looks like for you:</p>
 
-            <div class="browser-mockup">
-                <div class="browser-chrome">
-                    <div class="traffic-lights">
-                        <div class="traffic-light red"></div>
-                        <div class="traffic-light yellow"></div>
-                        <div class="traffic-light green"></div>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">matandvics.com/discover</div>
                     </div>
-                    <div class="url-bar">matandvics.com/discover</div>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/stefan-matandvics/sample-funnel/presell/"></iframe>
+                    </div>
                 </div>
-                <div class="browser-content">
-                    <iframe src="https://theprompted.github.io/accelerator/stefan-matandvics/sample-funnel/presell/"></iframe>
-                </div>
-            </div>
 
-            <div class="cta-center">
-                <a href="https://theprompted.github.io/accelerator/stefan-matandvics/sample-funnel/presell/" target="_blank" class="cta-button">View Full Funnel in New Tab →</a>
+                <div class="cta-center">
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/sample-funnel/presell/" target="_blank" class="cta-button">View Full Funnel in New Tab →</a>
+                </div>
             </div>
 
             <p>This page does the Thesis work before asking for the sale.</p>
@@ -1283,29 +1338,33 @@
             <p>Simple. Repeatable. Scalable.</p>
         </div>
 
-        <div class="divider"></div>
+        <div class="section-break"></div>
 
-        <!-- Next Steps -->
-        <div class="section-card emphasis green">
+        <!-- SECTION 6: Next Steps -->
+        <div class="major-section green">
             <h2><span class="section-num">6</span> Your Next Steps</h2>
 
-            <h3>1. Go Through The Million Dollar Thesis Training</h3>
-            <p>The training walks through how to develop a Thesis that shifts how customers see their options.</p>
-            <p>Come back with Thesis ideas for Mat & Vic's that we can refine together.</p>
-            <p>The three examples in this document (Nature Fallacy, Purity Trap, Durability Illusion) are starting points — not finished positions.</p>
-
-            <h3>2. Review The Offer Structures</h3>
-            <p>The two offer examples (Option A and Option B) show what's possible.</p>
-            <p>Come back with offer ideas and pricing that hit the trifecta:</p>
-
-            <div class="callout success">
-                <p><strong>60%+ gross margin</strong> — healthy unit economics that give you room to compete</p>
-                <p><strong>€30+ allowable CPA</strong> — enough to enter ad auctions without getting outbid</p>
-                <p><strong>20%+ contribution margin</strong> — profitable after ad spend, not just break-even</p>
+            <div class="subsection">
+                <h3>1. Go Through The Million Dollar Thesis Training</h3>
+                <p>The training walks through how to develop a Thesis that shifts how customers see their options.</p>
+                <p>Come back with Thesis ideas for Mat & Vic's that we can refine together.</p>
+                <p>The three examples in this document (Nature Fallacy, Purity Trap, Durability Illusion) are starting points — not finished positions.</p>
             </div>
 
-            <p>These three numbers working together is what makes paid acquisition viable.</p>
-            <p>Get these right and the rest becomes execution.</p>
+            <div class="subsection">
+                <h3>2. Review The Offer Structures</h3>
+                <p>The two offer examples (Option A and Option B) show what's possible.</p>
+                <p>Come back with offer ideas and pricing that hit the trifecta:</p>
+
+                <div class="callout success">
+                    <p><strong>60%+ gross margin</strong> — healthy unit economics that give you room to compete</p>
+                    <p><strong>€30+ allowable CPA</strong> — enough to enter ad auctions without getting outbid</p>
+                    <p><strong>20%+ contribution margin</strong> — profitable after ad spend, not just break-even</p>
+                </div>
+
+                <p>These three numbers working together is what makes paid acquisition viable.</p>
+                <p>Get these right and the rest becomes execution.</p>
+            </div>
         </div>
 
         <!-- Footer -->
