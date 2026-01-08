@@ -46,7 +46,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -159,19 +159,54 @@
             margin: 0;
         }
 
-        /* Section Cards */
+        /* Section Cards - Two Column Layout */
         .section-card {
             background: var(--bg-white);
             border: var(--border);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
             box-shadow: var(--shadow-lg);
         }
 
-        .section-card h3 {
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
+        .section-card-header {
+            padding: 1.25rem 1.5rem;
             border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .section-card-header h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0;
+        }
+
+        /* Two Column Body */
+        .section-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 900px) {
+            .section-body {
+                grid-template-columns: 1fr;
+            }
+            .section-left {
+                border-right: none !important;
+                border-bottom: var(--border);
+            }
+        }
+
+        .section-left {
+            border-right: var(--border);
+        }
+
+        .section-right {
+            padding: 1.5rem;
+            max-height: 650px;
+            overflow-y: auto;
         }
 
         /* Section number badge */
@@ -179,24 +214,20 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 1.75rem;
-            height: 1.75rem;
+            width: 2rem;
+            height: 2rem;
             background: var(--accent-teal);
             border: var(--border);
             border-radius: 50%;
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             font-weight: 700;
-            margin-right: 0.5rem;
         }
 
-        /* Belief State Box */
+        /* Belief State Box - For left column */
         .belief-state-box {
             background: var(--bg-green);
-            border: var(--border);
-            padding: 1rem 1.25rem;
-            margin: 1.25rem 0;
-            box-shadow: var(--shadow-sm);
+            padding: 1.25rem 1.5rem;
         }
 
         .belief-state-box .label {
@@ -205,35 +236,60 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--text-gray);
+            color: #2e7d32;
             margin-bottom: 0.75rem;
         }
 
         .belief-state-box .before-after {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-            flex-wrap: wrap;
+            display: block;
         }
 
         .belief-state-box .before {
             color: var(--accent-red);
             text-decoration: line-through;
             opacity: 0.85;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .belief-state-box .arrow {
             font-weight: 700;
             color: var(--accent-teal);
             font-size: 1.25rem;
+            display: block;
+            margin: 0.5rem 0;
         }
 
         .belief-state-box .after {
             color: #2e7d32;
             font-weight: 600;
+            display: block;
         }
 
-        /* Technique Label */
+        /* Technique Box - For right column */
+        .technique-box {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .technique-box .label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 0.375rem;
+        }
+
+        .technique-box p {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Legacy technique-label support */
         .technique-label {
             display: inline-block;
             background: var(--accent-teal);
@@ -463,12 +519,9 @@
             border-bottom: var(--border);
         }
 
-        /* Section Preview Iframe */
+        /* Section Preview Iframe - For left column */
         .section-preview {
-            background: var(--bg-white);
-            border: var(--border);
-            margin: 1rem 0 1.5rem 0;
-            box-shadow: var(--shadow-sm);
+            border-bottom: var(--border);
         }
 
         .section-preview-header {
@@ -503,7 +556,7 @@
         .section-preview iframe {
             display: block;
             width: 100%;
-            height: 400px;
+            height: 450px;
             border: none;
         }
 
@@ -661,690 +714,828 @@
 
     <!-- Section 1 -->
     <div class="section-card">
-        <h3><span class="section-num">1</span> Hero + Opening Violation</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">1</span> Hero + Opening Violation</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <!-- Left: Preview + Belief -->
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Exercise helps my dog's anxiety - I just need to do more of it"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Wait... could I be making this worse?"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Exercise helps my dog's anxiety - I just need to do more of it"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "Wait... could I be making this worse?"</span>
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Opening Violation</strong> - Challenge the core belief instead of validating it.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Immediately violates what the reader believes to be true. They arrived thinking exercise helps - you tell them it makes things worse. Creates cognitive tension that demands resolution.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Cognitive dissonance. When you contradict a deeply held belief with confidence, the brain can't ignore it. The reader must either dismiss you or keep reading to resolve the tension. The specificity ("every extra walk, every game of fetch") makes it personal and impossible to dismiss as generic advice.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Identify the "common wisdom" in your niche that's either wrong or incomplete. Lead with the contradiction. Formula: "[Thing everyone believes] is [strong negative framing: lie, myth, making it worse]." The key is confidence - if you hedge, the violation doesn't land.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>This section creates the "crack" in their belief system. Every section after this widens that crack until the old belief collapses. Without this opening violation, the rest of the funnel feels like unsolicited advice to someone who thinks they already know the answer.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"That's not an insult. That's the science."</code> - Preempts defensiveness before it forms.</li>
+                        <li><code>"You didn't fail your dog. You followed advice that was never designed for what's actually wrong."</code> - Guilt removal. Shifts blame from reader to the advice.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Immediately violates what the reader believes to be true. They arrived thinking exercise helps - you tell them it makes things worse. Creates cognitive tension that demands resolution.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>The Opening Violation</strong> - Challenge the core belief instead of validating it.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Cognitive dissonance. When you contradict a deeply held belief with confidence, the brain can't ignore it. The reader must either dismiss you or keep reading to resolve the tension. The specificity ("every extra walk, every game of fetch") makes it personal and impossible to dismiss as generic advice.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Identify the "common wisdom" in your niche that's either wrong or incomplete. Lead with the contradiction. Formula: "[Thing everyone believes] is [strong negative framing: lie, myth, making it worse]." The key is confidence - if you hedge, the violation doesn't land.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>This section creates the "crack" in their belief system. Every section after this widens that crack until the old belief collapses. Without this opening violation, the rest of the funnel feels like unsolicited advice to someone who thinks they already know the answer.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"That's not an insult. That's the science."</code> - Preempts defensiveness before it forms.</li>
-                <li><code>"You didn't fail your dog. You followed advice that was never designed for what's actually wrong."</code> - Guilt removal. Shifts blame from reader to the advice.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 2 -->
     <div class="section-card">
-        <h3><span class="section-num">2</span> Reason 1 - The Science Origin Story</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">2</span> Reason 1 - The Science Origin Story</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "The advice must be right - everyone says it"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Oh, the advice is outdated. It was made before we understood the real problem."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "The advice must be right - everyone says it"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "Oh, the advice is outdated. It was made before we understood the real problem."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Origin Story Reframe</strong> - Explain where bad advice came from to make the reader feel informed, not stupid.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Explains <em>why</em> the old advice exists. Instead of just saying "it's wrong," you show <em>when</em> it was created and what it was designed for. The reader feels like they're getting insider knowledge rather than being told they're wrong.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>People don't like feeling dumb for following advice. If you just say "you're wrong," they get defensive. But if you explain "here's why smart people believed this, and here's what changed," you give them an off-ramp. They weren't stupid - they were working with outdated information. This preserves their self-image while changing their mind.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Find the origin of your market's "common knowledge." When was it created? What was it designed for? What's changed since then? Formula: "This advice comes from [era/context]. Back then, we didn't know [new information]. It was made for [original problem], not [the real problem you solve]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 1 cracked the belief. This section explains <em>why</em> the belief existed - which prevents the reader from snapping back to it. You're not just saying "exercise doesn't work," you're explaining why they thought it would. This makes the crack permanent.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"The first studies on canine cortisol wouldn't come for another two decades."</code> - Specific detail creates credibility.</li>
+                        <li><code>"One approach exhausts the body and hopes the mind follows. The other asks: is the nervous system capable of calming down at all?"</code> - The Wise Distinction. Shows sophisticated understanding.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Explains <em>why</em> the old advice exists. Instead of just saying "it's wrong," you show <em>when</em> it was created and what it was designed for. The reader feels like they're getting insider knowledge rather than being told they're wrong.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>The Origin Story Reframe</strong> - Explain where bad advice came from to make the reader feel informed, not stupid.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>People don't like feeling dumb for following advice. If you just say "you're wrong," they get defensive. But if you explain "here's why smart people believed this, and here's what changed," you give them an off-ramp. They weren't stupid - they were working with outdated information. This preserves their self-image while changing their mind.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Find the origin of your market's "common knowledge." When was it created? What was it designed for? What's changed since then? Formula: "This advice comes from [era/context]. Back then, we didn't know [new information]. It was made for [original problem], not [the real problem you solve]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 1 cracked the belief. This section explains <em>why</em> the belief existed - which prevents the reader from snapping back to it. You're not just saying "exercise doesn't work," you're explaining why they thought it would. This makes the crack permanent.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"The first studies on canine cortisol wouldn't come for another two decades."</code> - Specific detail creates credibility.</li>
-                <li><code>"One approach exhausts the body and hopes the mind follows. The other asks: is the nervous system capable of calming down at all?"</code> - The Wise Distinction. Shows sophisticated understanding.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 3 -->
     <div class="section-card">
-        <h3><span class="section-num">3</span> Reason 2 - Research Evidence</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">3</span> Reason 2 - Research Evidence</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Maybe exercise does help - I've seen my dog calmer after walks"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "The calm I'm seeing is exhaustion, not actual anxiety relief. The research proves it."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Maybe exercise does help - I've seen my dog calmer after walks"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "The calm I'm seeing is exhaustion, not actual anxiety relief. The research proves it."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Research + Relatable Metaphor</strong> - Use data for credibility, then translate it into an image that sticks.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Provides scientific proof for the belief shift. "Don't trust me - trust the research." This section converts the skeptics who need evidence, not just logic.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Two types of readers: emotional (convinced by stories) and logical (convinced by evidence). Section 1-2 worked on emotional readers. This section catches logical readers who are thinking "but where's the proof?" The radio/engine metaphor then makes the research <em>memorable</em> - data convinces, metaphors stick.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Find one piece of research that proves your point. Don't overload with studies - one strong finding beats five weak ones. Then translate it into a sensory metaphor the reader can visualize. Formula: "When researchers measured [thing], they found [surprising result]. It's like [everyday metaphor that makes it visceral]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Sections 1-2 made emotional arguments. This section adds logical proof. Now both the heart and the head agree: exercise doesn't fix anxiety. The reader has no escape route back to their old belief.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Physical fatigue and nervous system regulation run on completely different tracks."</code> - The core insight, stated simply.</li>
+                        <li><code>"Exercise makes your dog too tired to show the anxiety as visibly. But inside? The alarm is still blaring."</code> - Connects to the alarm metaphor that carries the whole funnel.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Provides scientific proof for the belief shift. "Don't trust me - trust the research." This section converts the skeptics who need evidence, not just logic.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Research + Relatable Metaphor</strong> - Use data for credibility, then translate it into an image that sticks.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Two types of readers: emotional (convinced by stories) and logical (convinced by evidence). Section 1-2 worked on emotional readers. This section catches logical readers who are thinking "but where's the proof?" The radio/engine metaphor then makes the research <em>memorable</em> - data convinces, metaphors stick.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Find one piece of research that proves your point. Don't overload with studies - one strong finding beats five weak ones. Then translate it into a sensory metaphor the reader can visualize. Formula: "When researchers measured [thing], they found [surprising result]. It's like [everyday metaphor that makes it visceral]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Sections 1-2 made emotional arguments. This section adds logical proof. Now both the heart and the head agree: exercise doesn't fix anxiety. The reader has no escape route back to their old belief.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Physical fatigue and nervous system regulation run on completely different tracks."</code> - The core insight, stated simply.</li>
-                <li><code>"Exercise makes your dog too tired to show the anxiety as visibly. But inside? The alarm is still blaring."</code> - Connects to the alarm metaphor that carries the whole funnel.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 4 -->
     <div class="section-card">
-        <h3><span class="section-num">4</span> Reason 3 - Wild Dogs Comparison</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">4</span> Reason 3 - Wild Dogs Comparison</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Dogs need lots of exercise - it's natural"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Wild dogs don't exercise to stay calm. There must be something else."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Dogs need lots of exercise - it's natural"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "Wild dogs don't exercise to stay calm. There must be something else."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Argument from Nature</strong> - Use wild/ancestral examples as a control group that disproves the assumption.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Uses nature as proof. If calm came from exhaustion, wild dogs would be anxiety-ridden. They're not. Forces the reader to question what they thought was "natural."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>People have deep trust in "what's natural." When you show that wild dogs - same species, same nervous system - don't need exhaustion to be calm, it creates a powerful "wait, what?" moment. The reader can't argue with nature. And the phrase "raw materials" plants a seed for the solution without naming it yet.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Find a "natural state" comparison for your market. How did the ancestral/wild/original version handle this problem? If your solution is addressing something that didn't exist in the natural state, that's your proof point. Formula: "If [common advice] were true, [natural example] would [do something they don't do]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 3 used science. This section uses nature. Together, they create an air-tight case: both researchers AND evolution say exercise doesn't fix anxiety. The reader is now fully primed for "then what DOES work?" - which you'll answer on the offer page.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Same species. Same nervous system design. Different results."</code> - Isolates the variable cleanly.</li>
+                        <li><code>"One animal has the raw materials to recover from stress. The other is running the same system on empty."</code> - Seeds the solution without revealing it.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Uses nature as proof. If calm came from exhaustion, wild dogs would be anxiety-ridden. They're not. Forces the reader to question what they thought was "natural."</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Argument from Nature</strong> - Use wild/ancestral examples as a control group that disproves the assumption.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>People have deep trust in "what's natural." When you show that wild dogs - same species, same nervous system - don't need exhaustion to be calm, it creates a powerful "wait, what?" moment. The reader can't argue with nature. And the phrase "raw materials" plants a seed for the solution without naming it yet.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Find a "natural state" comparison for your market. How did the ancestral/wild/original version handle this problem? If your solution is addressing something that didn't exist in the natural state, that's your proof point. Formula: "If [common advice] were true, [natural example] would [do something they don't do]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 3 used science. This section uses nature. Together, they create an air-tight case: both researchers AND evolution say exercise doesn't fix anxiety. The reader is now fully primed for "then what DOES work?" - which you'll answer on the offer page.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Same species. Same nervous system design. Different results."</code> - Isolates the variable cleanly.</li>
-                <li><code>"One animal has the raw materials to recover from stress. The other is running the same system on empty."</code> - Seeds the solution without revealing it.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 5 -->
     <div class="section-card">
-        <h3><span class="section-num">5</span> Reason 4 - The Mop vs Leak Analogy</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">5</span> Reason 4 - The Mop vs Leak Analogy</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Maybe I'm just not trying hard enough"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I've been using the wrong tool. No amount of effort would have worked."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Maybe I'm just not trying hard enough"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "I've been using the wrong tool. No amount of effort would have worked."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Wrong Tool Analogy</strong> - Reframe failure as misdirection, not inadequacy.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Validates the reader's effort while explaining why it failed. You're not lazy - you're using the wrong tool. This is the emotional turning point where guilt transforms into relief.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Guilt is one of the biggest objections in any market. The reader is thinking "maybe I just didn't try hard enough." If you don't address this, they'll blame themselves instead of the old approach - and they won't be ready for a new solution. The mop/leak analogy makes it viscerally clear: effort in the wrong direction never adds up to progress.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Identify what your reader has been doing that doesn't work. Find an analogy where effort is clearly useless without the right approach. Formula: "You're not failing because you're not trying. You're failing because [wrong tool] can never fix [real problem]. It's like [everyday analogy where more effort doesn't help]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Sections 1-4 demolished the belief intellectually. This section handles the emotional residue - the guilt. Now the reader's head AND heart are clear. They don't feel stupid, they don't feel lazy, they feel <em>misdirected</em>. This is the ideal state to receive a new solution.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"You're exhausted from trying so hard. And they're still anxious."</code> - Empathy before education.</li>
+                        <li><code>"You can mop forever and lose. Or you can fix the leak once."</code> - Stakes the contrast: endless effort vs. one-time fix.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Validates the reader's effort while explaining why it failed. You're not lazy - you're using the wrong tool. This is the emotional turning point where guilt transforms into relief.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>The Wrong Tool Analogy</strong> - Reframe failure as misdirection, not inadequacy.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Guilt is one of the biggest objections in any market. The reader is thinking "maybe I just didn't try hard enough." If you don't address this, they'll blame themselves instead of the old approach - and they won't be ready for a new solution. The mop/leak analogy makes it viscerally clear: effort in the wrong direction never adds up to progress.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Identify what your reader has been doing that doesn't work. Find an analogy where effort is clearly useless without the right approach. Formula: "You're not failing because you're not trying. You're failing because [wrong tool] can never fix [real problem]. It's like [everyday analogy where more effort doesn't help]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Sections 1-4 demolished the belief intellectually. This section handles the emotional residue - the guilt. Now the reader's head AND heart are clear. They don't feel stupid, they don't feel lazy, they feel <em>misdirected</em>. This is the ideal state to receive a new solution.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"You're exhausted from trying so hard. And they're still anxious."</code> - Empathy before education.</li>
-                <li><code>"You can mop forever and lose. Or you can fix the leak once."</code> - Stakes the contrast: endless effort vs. one-time fix.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 6 -->
     <div class="section-card">
-        <h3><span class="section-num">6</span> Reason 5 - The Biochemical Gap</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">6</span> Reason 5 - The Biochemical Gap</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "My dog has an anxiety problem"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "My dog has a depletion problem - and depletion can be fixed"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "My dog has an anxiety problem"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "My dog has a depletion problem - and depletion can be fixed"</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Problem Completion Before Solution</strong> - Fully explain what's wrong before introducing the fix. Create hope by framing the problem as solvable.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Introduces the core insight without naming the solution yet. The alarm metaphor reaches its full form. The reader now understands the <em>mechanism</em> of the problem - which makes them ready to understand the mechanism of the solution.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>"Depleted" is more hopeful than "broken." Something broken might be unfixable. Something depleted just needs to be refilled. This word choice matters - it pre-frames the solution as obvious and achievable. The line "there's a way to give it what it needs" opens a loop that can only be closed by continuing to the offer page.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Name the mechanism behind the problem in a way that implies the solution. Use language that suggests the fix is possible: "depleted" not "damaged," "missing" not "broken," "starving" not "failing." Formula: "Your [subject] isn't [negative label]. They're [reframe that implies a solvable problem]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>This is the final "reason" - and it completes the belief shift by giving the reader a new mental model. They came in thinking "behavior problem." They now think "biochemistry problem." This reframe is what makes the product make sense. Without it, CBD is just another random supplement. With it, CBD is <em>the obvious answer</em>.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Nothing is wrong with the alarm. Something is wrong with the reset mechanism."</code> - The reframe that carries the whole funnel.</li>
+                        <li><code>"Their nervous system isn't broken. It's depleted."</code> - Hopeful framing. Depleted can be refilled.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Introduces the core insight without naming the solution yet. The alarm metaphor reaches its full form. The reader now understands the <em>mechanism</em> of the problem - which makes them ready to understand the mechanism of the solution.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Problem Completion Before Solution</strong> - Fully explain what's wrong before introducing the fix. Create hope by framing the problem as solvable.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>"Depleted" is more hopeful than "broken." Something broken might be unfixable. Something depleted just needs to be refilled. This word choice matters - it pre-frames the solution as obvious and achievable. The line "there's a way to give it what it needs" opens a loop that can only be closed by continuing to the offer page.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Name the mechanism behind the problem in a way that implies the solution. Use language that suggests the fix is possible: "depleted" not "damaged," "missing" not "broken," "starving" not "failing." Formula: "Your [subject] isn't [negative label]. They're [reframe that implies a solvable problem]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>This is the final "reason" - and it completes the belief shift by giving the reader a new mental model. They came in thinking "behavior problem." They now think "biochemistry problem." This reframe is what makes the product make sense. Without it, CBD is just another random supplement. With it, CBD is <em>the obvious answer</em>.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Nothing is wrong with the alarm. Something is wrong with the reset mechanism."</code> - The reframe that carries the whole funnel.</li>
-                <li><code>"Their nervous system isn't broken. It's depleted."</code> - Hopeful framing. Depleted can be refilled.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 7 -->
     <div class="section-card">
-        <h3><span class="section-num">7</span> Cliffhanger + CTA</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">7</span> Cliffhanger + CTA</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I understand the problem now"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I NEED to know the solution" (curiosity at peak)</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "I understand the problem now"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "I NEED to know the solution" (curiosity at peak)</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Open Loop</strong> - Create a gap (problem identified, solution promised) that can only be closed by clicking through.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Summarizes the belief shift and creates urgency to continue. The reader has been educated but not satisfied - they understand the problem, now they need the solution. This is the hinge between education and offer.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>The brain hates incomplete patterns. You've spent 6 sections building a complete picture of the problem - but you've deliberately left the solution unnamed. This creates cognitive tension that the reader will pay (with a click) to resolve. The cliffhanger isn't manipulation - it's respecting the reader's journey by not dumping everything at once.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Your education content should end with a clear "and here's what actually works" transition. Don't reveal the product yet - just promise the answer. Formula: "You now understand [the problem]. On the next page, you'll learn [the solution]." Keep the CTA action-oriented and curiosity-driven.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>This is the bridge between the two pages. Education is complete. The reader's old belief is demolished. Their guilt is removed. They understand the mechanism. Now they're primed to receive the solution. If this section doesn't create urgency, the reader might leave satisfied with the education but never see the product.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"There's a built-in reset mechanism that's supposed to turn off the alarm when danger passes. In your dog, that mechanism is starving."</code> - Reinforces the metaphor one final time before transition.</li>
+                        <li><code>"See What Actually Works >>"</code> - CTA focuses on outcome, not product.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Summarizes the belief shift and creates urgency to continue. The reader has been educated but not satisfied - they understand the problem, now they need the solution. This is the hinge between education and offer.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>The Open Loop</strong> - Create a gap (problem identified, solution promised) that can only be closed by clicking through.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>The brain hates incomplete patterns. You've spent 6 sections building a complete picture of the problem - but you've deliberately left the solution unnamed. This creates cognitive tension that the reader will pay (with a click) to resolve. The cliffhanger isn't manipulation - it's respecting the reader's journey by not dumping everything at once.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Your education content should end with a clear "and here's what actually works" transition. Don't reveal the product yet - just promise the answer. Formula: "You now understand [the problem]. On the next page, you'll learn [the solution]." Keep the CTA action-oriented and curiosity-driven.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>This is the bridge between the two pages. Education is complete. The reader's old belief is demolished. Their guilt is removed. They understand the mechanism. Now they're primed to receive the solution. If this section doesn't create urgency, the reader might leave satisfied with the education but never see the product.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"There's a built-in reset mechanism that's supposed to turn off the alarm when danger passes. In your dog, that mechanism is starving."</code> - Reinforces the metaphor one final time before transition.</li>
-                <li><code>"See What Actually Works >>"</code> - CTA focuses on outcome, not product.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 8 -->
     <div class="section-card">
-        <h3><span class="section-num">8</span> Solution Reveal (Offer Page)</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">8</span> Solution Reveal (Offer Page)</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I know exercise doesn't work, but I don't know what does"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "There's a specific system (Endocannabinoid System) that controls this - and it can be supported"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "I know exercise doesn't work, but I don't know what does"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "There's a specific system (Endocannabinoid System) that controls this - and it can be supported"</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Mechanism Reveal</strong> - Name the biological system responsible, then show how it connects to everything you've been teaching.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Names the mechanism and completes the alarm metaphor. The reader now has a specific answer to "why is my dog anxious?" - and that answer points directly to a solution. This is the "aha" moment of the funnel.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Naming creates power. "The Endocannabinoid System" sounds scientific and specific - which is more credible than vague promises. The reader feels like they're learning something real, not being sold something. And because the alarm metaphor already makes sense, connecting it to a named system feels like the missing puzzle piece clicking into place.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Find the underlying mechanism behind your solution. Name it specifically. Then connect it to the metaphor you've been using throughout. Formula: "It's called [specific mechanism]. When [mechanism] works properly, [desired outcome]. When it doesn't, [problem you've been describing]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>This is the payoff for the open loop. The reader clicked through to learn "what actually works" - and you deliver immediately. You don't make them wait or tease further. The education page built the question; this section answers it. Trust is built by delivering on promises quickly.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Threat appears. Alarm fires. Threat passes. Alarm resets."</code> - The simple version of how it should work.</li>
+                        <li><code>"Your dog's anxiety isn't a personality flaw. It's not a training failure."</code> - Continued guilt removal even into the offer page.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Names the mechanism and completes the alarm metaphor. The reader now has a specific answer to "why is my dog anxious?" - and that answer points directly to a solution. This is the "aha" moment of the funnel.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Mechanism Reveal</strong> - Name the biological system responsible, then show how it connects to everything you've been teaching.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Naming creates power. "The Endocannabinoid System" sounds scientific and specific - which is more credible than vague promises. The reader feels like they're learning something real, not being sold something. And because the alarm metaphor already makes sense, connecting it to a named system feels like the missing puzzle piece clicking into place.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Find the underlying mechanism behind your solution. Name it specifically. Then connect it to the metaphor you've been using throughout. Formula: "It's called [specific mechanism]. When [mechanism] works properly, [desired outcome]. When it doesn't, [problem you've been describing]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>This is the payoff for the open loop. The reader clicked through to learn "what actually works" - and you deliver immediately. You don't make them wait or tease further. The education page built the question; this section answers it. Trust is built by delivering on promises quickly.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Threat appears. Alarm fires. Threat passes. Alarm resets."</code> - The simple version of how it should work.</li>
-                <li><code>"Your dog's anxiety isn't a personality flaw. It's not a training failure."</code> - Continued guilt removal even into the offer page.</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 9 -->
     <div class="section-card">
-        <h3><span class="section-num">9</span> Bridge + CBD Introduction</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">9</span> Bridge + CBD Introduction</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "CBD? Isn't that marijuana? That sounds sketchy..."</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Oh, CBD is just the compound that supports this system. That makes sense."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "CBD? Isn't that marijuana? That sounds sketchy..."</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "Oh, CBD is just the compound that supports this system. That makes sense."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Objection Handling at the Moment of Reveal</strong> - Name the solution and immediately address the biggest concern, in the same breath.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Bridges from mechanism to solution. Names CBD and immediately handles the biggest objection (it's marijuana/drugs) before it can crystallize. The recap reminds them of the journey, then the reveal feels like a natural conclusion.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>CBD has baggage. If you just say "the answer is CBD" and move on, you lose everyone who has negative associations. By addressing the objection immediately ("not marijuana, won't get them high, not a sedative"), you prevent the reader from checking out. The reframe from "drug" to "biological support" changes the entire frame.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Identify the #1 objection to your solution. Address it immediately after naming the solution - don't wait for them to think it. Formula: "[Solution] is not [common misconception]. It's not [another misconception]. It's [accurate reframe that sounds helpful, not scary]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 8 named the system. This section names what supports the system. The logic chain is complete: problem &rarr; mechanism &rarr; solution. But you can't just drop "CBD" without context, so the objection handling is critical. Without this section, skeptics drop off before seeing the product.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"And before you scroll past, let's talk about what that actually means."</code> - Acknowledges hesitation directly.</li>
+                        <li><code>"This isn't about drugging your dog into submission. This is about supporting a biological system."</code> - Reframes CBD from "drug" to "support."</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Bridges from mechanism to solution. Names CBD and immediately handles the biggest objection (it's marijuana/drugs) before it can crystallize. The recap reminds them of the journey, then the reveal feels like a natural conclusion.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Objection Handling at the Moment of Reveal</strong> - Name the solution and immediately address the biggest concern, in the same breath.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>CBD has baggage. If you just say "the answer is CBD" and move on, you lose everyone who has negative associations. By addressing the objection immediately ("not marijuana, won't get them high, not a sedative"), you prevent the reader from checking out. The reframe from "drug" to "biological support" changes the entire frame.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Identify the #1 objection to your solution. Address it immediately after naming the solution - don't wait for them to think it. Formula: "[Solution] is not [common misconception]. It's not [another misconception]. It's [accurate reframe that sounds helpful, not scary]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 8 named the system. This section names what supports the system. The logic chain is complete: problem &rarr; mechanism &rarr; solution. But you can't just drop "CBD" without context, so the objection handling is critical. Without this section, skeptics drop off before seeing the product.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"And before you scroll past, let's talk about what that actually means."</code> - Acknowledges hesitation directly.</li>
-                <li><code>"This isn't about drugging your dog into submission. This is about supporting a biological system."</code> - Reframes CBD from "drug" to "support."</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 10 -->
     <div class="section-card">
-        <h3><span class="section-num">10</span> Most Calming Treats Fail</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">10</span> Most Calming Treats Fail</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I've tried calming treats before - they didn't work"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Those weren't real CBD products. No wonder they failed."</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "I've tried calming treats before - they didn't work"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "Those weren't real CBD products. No wonder they failed."</span>
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Pre-Answer Objections</strong> - Before they can think "this won't work either," explain why the others failed and why this is different.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Addresses the "I've tried this before" objection. Many readers have bought calming treats that did nothing. If you don't explain why those failed, they'll assume yours will fail too. This section differentiates before the product is even introduced.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Past failure creates skepticism. The reader is thinking "I've tried calming treats, they're all scams." If you don't address this, they'll lump your product with everything else. By naming the specific reasons other products fail (wrong ingredients, wrong dose, no verification), you create a checklist the reader will use to evaluate your product - and you're about to check every box.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>List the reasons competing solutions fail. Be specific - vague claims don't land. Then make sure your product addresses each point. Formula: "Most [category] fail because: [Problem 1], [Problem 2], [Problem 3]. [Your product] is different because [you solve each problem]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 9 got them interested in CBD. This section prevents them from dismissing it based on past experience. You're clearing the "yeah but I've tried that" objection so the product introduction lands clean. Without this, past failures poison the well.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Hemp seed oil is not CBD. It's like ordering a coffee and getting decaf without being told."</code> - Analogy makes the technical distinction memorable.</li>
+                        <li><code>"If the dose isn't clinical, the result won't be either."</code> - Sets up the product's USP (therapeutic dosing).</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Addresses the "I've tried this before" objection. Many readers have bought calming treats that did nothing. If you don't explain why those failed, they'll assume yours will fail too. This section differentiates before the product is even introduced.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Pre-Answer Objections</strong> - Before they can think "this won't work either," explain why the others failed and why this is different.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Past failure creates skepticism. The reader is thinking "I've tried calming treats, they're all scams." If you don't address this, they'll lump your product with everything else. By naming the specific reasons other products fail (wrong ingredients, wrong dose, no verification), you create a checklist the reader will use to evaluate your product - and you're about to check every box.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>List the reasons competing solutions fail. Be specific - vague claims don't land. Then make sure your product addresses each point. Formula: "Most [category] fail because: [Problem 1], [Problem 2], [Problem 3]. [Your product] is different because [you solve each problem]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 9 got them interested in CBD. This section prevents them from dismissing it based on past experience. You're clearing the "yeah but I've tried that" objection so the product introduction lands clean. Without this, past failures poison the well.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Hemp seed oil is not CBD. It's like ordering a coffee and getting decaf without being told."</code> - Analogy makes the technical distinction memorable.</li>
-                <li><code>"If the dose isn't clinical, the result won't be either."</code> - Sets up the product's USP (therapeutic dosing).</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 11 -->
     <div class="section-card">
-        <h3><span class="section-num">11</span> Meet CBDog + Ingredients</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">11</span> Meet CBDog + Ingredients</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <!-- Left: Preview + Belief -->
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Okay, I'm interested in CBD - but which product?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "This specific product checks every box from the problems I just learned about"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Okay, I'm interested in CBD - but which product?"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "This specific product checks every box from the problems I just learned about"</span>
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Feature-Benefit Match</strong> - Every product feature connects to a problem already seeded in the funnel.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Introduces the product as the answer to everything that came before. Each feature directly addresses a problem established in Section 10. The reader doesn't have to evaluate the product from scratch - they just check it against the criteria you've already given them.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>You've already told them what makes a CBD product fail (wrong ingredients, wrong dose, no verification). Now every feature of CBDog is framed as solving those exact problems. The reader isn't evaluating blindly - they're checking boxes. "Full-spectrum CBD? Check. Therapeutic dose? Check. Lab tested? Check." This feels like logical decision-making, not emotional buying.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Before introducing your product, seed the criteria for evaluation (Section 10). Then frame every feature as meeting those criteria. Formula: For each problem you listed, show how your product solves it. Don't introduce new features that weren't set up - everything should feel like a payoff.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 10 created the evaluation checklist. This section checks every box. The product introduction isn't "here's what we sell" - it's "here's the solution to everything we just discussed." This makes the product feel inevitable, not pitched.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"This is what it's been waiting for."</code> - Product as the satisfying conclusion to the alarm metaphor.</li>
+                        <li><code>"The Acceptance Factor"</code> - Even the lamb ingredient has a role in the narrative (dogs will actually eat it).</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Introduces the product as the answer to everything that came before. Each feature directly addresses a problem established in Section 10. The reader doesn't have to evaluate the product from scratch - they just check it against the criteria you've already given them.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Feature-Benefit Match</strong> - Every product feature connects to a problem already seeded in the funnel.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>You've already told them what makes a CBD product fail (wrong ingredients, wrong dose, no verification). Now every feature of CBDog is framed as solving those exact problems. The reader isn't evaluating blindly - they're checking boxes. "Full-spectrum CBD? Check. Therapeutic dose? Check. Lab tested? Check." This feels like logical decision-making, not emotional buying.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Before introducing your product, seed the criteria for evaluation (Section 10). Then frame every feature as meeting those criteria. Formula: For each problem you listed, show how your product solves it. Don't introduce new features that weren't set up - everything should feel like a payoff.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 10 created the evaluation checklist. This section checks every box. The product introduction isn't "here's what we sell" - it's "here's the solution to everything we just discussed." This makes the product feel inevitable, not pitched.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"This is what it's been waiting for."</code> - Product as the satisfying conclusion to the alarm metaphor.</li>
-                <li><code>"The Acceptance Factor"</code> - Even the lamb ingredient has a role in the narrative (dogs will actually eat it).</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 12 -->
     <div class="section-card">
-        <h3><span class="section-num">12</span> Three Benefits + Timeline</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">12</span> Three Benefits + Timeline</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <!-- Left: Preview + Belief -->
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Will this actually work? How long does it take?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I can see exactly what to expect week by week - this seems achievable"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "Will this actually work? How long does it take?"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "I can see exactly what to expect week by week - this seems achievable"</span>
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>The Timeline Pattern</strong> - Show specific timeframes with concrete milestones so results feel achievable and real.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Future-paces the transformation. The reader can visualize what their life looks like after using the product. The timeline sets realistic expectations while building hope.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>Vague promises create doubt. "Your dog will be calmer" could mean anything. But "Week 2-3: The doorbell rings and the meltdown doesn't come" is specific enough to visualize. The reader can imagine that exact moment. Specificity creates believability. And the progressive timeline (Week 1 &rarr; Week 2-3 &rarr; Week 4-6) shows this is a process, not a magic pill - which is more credible.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Map out the transformation your product creates over time. What happens first? What happens after a week? A month? Be specific about the <em>observable</em> changes, not just the internal ones. Formula: "[Time period 1]: [Specific observable change]. [Time period 2]: [Bigger observable change]. [Time period 3]: [Transformation complete]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>Section 11 introduced the product. This section answers "but what will actually happen?" The reader knows what to buy - now they know what to expect. This reduces purchase anxiety by making the outcome concrete and measurable.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"CBDog doesn't flip a switch. It resets a system."</code> - Sets realistic expectations while maintaining hope.</li>
+                        <li><code>"You realize you've stopped bracing for the panic."</code> - Emotional benefit (relief), not just functional benefit (calm dog).</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Future-paces the transformation. The reader can visualize what their life looks like after using the product. The timeline sets realistic expectations while building hope.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>The Timeline Pattern</strong> - Show specific timeframes with concrete milestones so results feel achievable and real.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>Vague promises create doubt. "Your dog will be calmer" could mean anything. But "Week 2-3: The doorbell rings and the meltdown doesn't come" is specific enough to visualize. The reader can imagine that exact moment. Specificity creates believability. And the progressive timeline (Week 1 &rarr; Week 2-3 &rarr; Week 4-6) shows this is a process, not a magic pill - which is more credible.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Map out the transformation your product creates over time. What happens first? What happens after a week? A month? Be specific about the <em>observable</em> changes, not just the internal ones. Formula: "[Time period 1]: [Specific observable change]. [Time period 2]: [Bigger observable change]. [Time period 3]: [Transformation complete]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>Section 11 introduced the product. This section answers "but what will actually happen?" The reader knows what to buy - now they know what to expect. This reduces purchase anxiety by making the outcome concrete and measurable.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"CBDog doesn't flip a switch. It resets a system."</code> - Sets realistic expectations while maintaining hope.</li>
-                <li><code>"You realize you've stopped bracing for the panic."</code> - Emotional benefit (relief), not just functional benefit (calm dog).</li>
-            </ul>
         </div>
     </div>
 
     <!-- Section 13 -->
     <div class="section-card">
-        <h3><span class="section-num">13</span> Bundles + Guarantee + Final CTA</h3>
+        <div class="section-card-header">
+            <h3><span class="section-num">13</span> Bundles + Guarantee + Final CTA</h3>
+        </div>
 
-        <div class="section-preview">
-            <div class="section-preview-header">
-                <span class="section-preview-label">Live Preview</span>
-                <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+        <div class="section-body">
+            <!-- Left: Preview + Belief -->
+            <div class="section-left">
+                <div class="section-preview">
+                    <div class="section-preview-header">
+                        <span class="section-preview-label">Live Preview</span>
+                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                    </div>
+                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html"></iframe>
+                </div>
+
+                <div class="belief-state-box">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "This sounds good but what if it doesn't work for my dog?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "There's no risk - I can get my money back if it doesn't work"</span>
+                    </div>
+                </div>
             </div>
-            <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html"></iframe>
-        </div>
 
-        <div class="belief-state-box">
-            <div class="label">Belief State</div>
-            <div class="before-after">
-                <span class="before">Before: "This sounds good but what if it doesn't work for my dog?"</span>
-                <span class="arrow">&rarr;</span>
-                <span class="after">After: "There's no risk - I can get my money back if it doesn't work"</span>
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="technique-box">
+                    <div class="label">Key Technique</div>
+                    <p><strong>Risk Reversal</strong> - Remove purchase anxiety by putting the risk on yourself, not the customer.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">What This Does</div>
+                    <p>Removes the final purchase barrier: risk. The reader is convinced the product could work - but "what if it doesn't work for MY dog?" The guarantee eliminates this objection. Bundle options create a value decision rather than a yes/no decision.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Why This Works</div>
+                    <p>At the point of purchase, fear takes over. Even a convinced reader will hesitate if there's risk. A 365-day guarantee is so confident it signals "we know this works." The reader thinks: "If they're willing to give me a full year to decide, it must work." And framing the guarantee around the outcome ("your dog gets calmer") rather than the product keeps the focus on what they actually want.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">How to Adapt This</div>
+                    <p>Make your guarantee outcome-focused, not product-focused. Don't say "if you don't like the product" - say "if you don't get [the result they want]." The longer the guarantee, the more confident you appear. Formula: "[Desired outcome], or [what you'll do to make it right]."</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Connection to Funnel Arc</div>
+                    <p>This is the final section. Every objection has been handled: wrong belief (education page), wrong solution (CBD objections), wrong product (why others fail), wrong timing (timeline). The only objection left is "what if it doesn't work?" The guarantee eliminates it. Now there's no reason not to buy.</p>
+                </div>
+
+                <div class="lines-box">
+                    <h4>Lines Worth Studying</h4>
+                    <ul>
+                        <li><code>"Your dog gets calmer, or you get your money back."</code> - Outcome-focused guarantee, not product-focused.</li>
+                        <li>Bundle structure should make the multi-bottle option feel like the smart choice (better value per bottle).</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">What This Does</div>
-            <p>Removes the final purchase barrier: risk. The reader is convinced the product could work - but "what if it doesn't work for MY dog?" The guarantee eliminates this objection. Bundle options create a value decision rather than a yes/no decision.</p>
-        </div>
-
-        <span class="technique-label">Key Technique</span>
-        <p><strong>Risk Reversal</strong> - Remove purchase anxiety by putting the risk on yourself, not the customer.</p>
-
-        <div class="subsection">
-            <div class="subsection-title">Why This Works</div>
-            <p>At the point of purchase, fear takes over. Even a convinced reader will hesitate if there's risk. A 365-day guarantee is so confident it signals "we know this works." The reader thinks: "If they're willing to give me a full year to decide, it must work." And framing the guarantee around the outcome ("your dog gets calmer") rather than the product keeps the focus on what they actually want.</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">How to Adapt This</div>
-            <p>Make your guarantee outcome-focused, not product-focused. Don't say "if you don't like the product" - say "if you don't get [the result they want]." The longer the guarantee, the more confident you appear. Formula: "[Desired outcome], or [what you'll do to make it right]."</p>
-        </div>
-
-        <div class="subsection">
-            <div class="subsection-title">Connection to Funnel Arc</div>
-            <p>This is the final section. Every objection has been handled: wrong belief (education page), wrong solution (CBD objections), wrong product (why others fail), wrong timing (timeline). The only objection left is "what if it doesn't work?" The guarantee eliminates it. Now there's no reason not to buy.</p>
-        </div>
-
-        <div class="lines-box">
-            <h4>Lines Worth Studying</h4>
-            <ul>
-                <li><code>"Your dog gets calmer, or you get your money back."</code> - Outcome-focused guarantee, not product-focused.</li>
-                <li>Bundle structure should make the multi-bottle option feel like the smart choice (better value per bottle).</li>
-            </ul>
         </div>
     </div>
 
