@@ -3,48 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBDog Funnel - Ethan Pompeo</title>
+    <title>CBDog Funnel - Ethan (GVN)</title>
     <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 60px auto;
-            padding: 20px;
-            background: #f5f5f5;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
-        h1 { color: #2c5530; margin-bottom: 10px; }
-        p { color: #666; margin-bottom: 30px; }
-        .links { display: flex; flex-direction: column; gap: 15px; }
-        a {
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
             display: block;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            border: var(--border);
             text-decoration: none;
-            color: #333;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            box-shadow: -4px 4px 0 0 #383838;
         }
-        a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+        .btn:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -2px 2px 0 0 #383838;
         }
-        .label { font-weight: 600; font-size: 18px; }
-        .desc { color: #888; font-size: 14px; margin-top: 5px; }
+
+        .btn:active {
+            transform: translate(-4px, 4px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-teal);
+            color: var(--text-black);
+        }
+
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--text-black);
+        }
+
+        .btn-purple {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .btn-label {
+            display: block;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .btn-title {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>CBDog Funnel</h1>
-    <p>Green Valley Nutrition - Ethan Pompeo</p>
-    <div class="links">
-        <a href="5-reasons/">
-            <div class="label">5 Reasons (Education Page)</div>
-            <div class="desc">The story-driven page that educates before the offer</div>
-        </a>
-        <a href="offer/">
-            <div class="label">Offer Page</div>
-            <div class="desc">The conversion page with bundles and guarantee</div>
-        </a>
+
+<div class="container">
+    <div class="card">
+        <div class="icon">&#128054;</div>
+        <h1>CBDog Funnel</h1>
+        <p class="subtitle">For Ethan (GVN)</p>
+
+        <div class="buttons">
+            <a href="5-reasons/" class="btn btn-primary">
+                <span class="btn-label">Page 1</span>
+                <span class="btn-title">Education Page (5 Reasons)</span>
+            </a>
+
+            <a href="offer/" class="btn btn-secondary">
+                <span class="btn-label">Page 2</span>
+                <span class="btn-title">Offer Page</span>
+            </a>
+
+            <a href="funnel-breakdown/" class="btn btn-purple">
+                <span class="btn-label">Breakdown</span>
+                <span class="btn-title">Full Funnel Analysis</span>
+            </a>
+        </div>
     </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
 </body>
 </html>
