@@ -209,6 +209,31 @@
             overflow-y: auto;
         }
 
+        /* Custom Scrollbar */
+        .section-right::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .section-right::-webkit-scrollbar-track {
+            background: var(--bg-page);
+            border-left: 1px solid #ddd;
+        }
+
+        .section-right::-webkit-scrollbar-thumb {
+            background: var(--accent-teal);
+            border-radius: 4px;
+        }
+
+        .section-right::-webkit-scrollbar-thumb:hover {
+            background: #3fc9b7;
+        }
+
+        /* Firefox scrollbar */
+        .section-right {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-teal) var(--bg-page);
+        }
+
         /* Section number badge */
         .section-num {
             display: inline-flex;
