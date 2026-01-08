@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 13: Bundles + Guarantee + Final CTA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; line-height: 1.65; color: #2e2e2e; background: #0e1b4d; padding: 2rem 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.3; color: white; text-align: center; }
+        .subtitle { text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+        .bundles { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .bundle { background: white; border-radius: 1rem; padding: 1.25rem; text-align: center; flex: 1; min-width: 140px; max-width: 180px; }
+        .bundle.popular { border: 3px solid #449344; position: relative; }
+        .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #449344; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+        .qty { font-size: 1.5rem; font-weight: 800; color: #0e1b4d; }
+        .supply { font-size: 0.8rem; color: #666; margin-bottom: 0.75rem; }
+        .price { font-size: 1.75rem; font-weight: 800; color: #449344; }
+        .each { font-size: 0.9rem; color: #666; }
+        .cta-btn { display: block; background: linear-gradient(135deg, #449344 0%, #357535 100%); color: white; padding: 0.75rem; border-radius: 25px; font-weight: 700; font-size: 0.8rem; text-decoration: none; margin-top: 1rem; }
+
+        .guarantee { background: white; border-radius: 1rem; padding: 1.5rem; margin-top: 1.5rem; text-align: center; }
+        .guarantee h2 { color: #0e1b4d; }
+        .guarantee p { color: #2e2e2e; margin-bottom: 0.75rem; }
+        strong { font-weight: 700; color: #1f2555; }
+        .days-badge { display: inline-block; background: #449344; color: white; padding: 1rem; border-radius: 50%; font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <h2>Choose Your Package</h2>
+    <p class="subtitle">The longer you support the Alarm System, the better it works. Stock up and save.</p>
+
+    <div class="bundles">
+        <div class="bundle">
+            <div class="qty">1 Jar</div>
+            <div class="supply">30-Day Supply</div>
+            <div class="price">$49</div>
+            <div class="each">&nbsp;</div>
+            <a href="#" class="cta-btn">TRY CBDOG</a>
+        </div>
+
+        <div class="bundle popular">
+            <div class="badge">Best Value</div>
+            <div class="qty">6 Jars</div>
+            <div class="supply">6-Month Supply</div>
+            <div class="price">$36</div>
+            <div class="each">each (Save $78!)</div>
+            <a href="#" class="cta-btn">RESET THEIR ALARM</a>
+        </div>
+
+        <div class="bundle">
+            <div class="badge" style="background: #1f2555;">Most Popular</div>
+            <div class="qty">3 Jars</div>
+            <div class="supply">90-Day Supply</div>
+            <div class="price">$39</div>
+            <div class="each">each (Save 20%)</div>
+            <a href="#" class="cta-btn">RESET THEIR ALARM</a>
+        </div>
+    </div>
+
+    <div class="guarantee">
+        <div class="days-badge">30</div>
+        <h2>Reset Their Alarm — Completely Risk-Free</h2>
+        <p>We know you've been burned before.</p>
+        <p>The pet store treats that did nothing.</p>
+        <p>The trainer who promised results and delivered excuses.</p>
+        <p><strong>We're asking you to trust one more time.</strong></p>
+        <p>Try CBDog for a full 30 days.</p>
+        <p>If your dog isn't calmer — if the alarm doesn't start resetting — just tell us.</p>
+        <p><strong>We'll refund every penny. No questions asked.</strong></p>
+    </div>
+</body>
+</html>
