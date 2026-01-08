@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Package - Mat & Vic's</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Typography */
+            --font-primary: 'Assistant', Arial, sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extra-bold: 800;
+
+            /* Colors - Brand (Mat & Vic's) */
+            --color-primary: #108474;
+            --color-primary-light: #E8F5F3;
+            --color-primary-dark: #0A5C50;
+
+            /* Colors - Text */
+            --color-text-primary: #121212;
+            --color-text-secondary: #333333;
+            --color-text-muted: #666666;
+
+            /* Colors - CTA */
+            --color-cta-primary: #108474;
+            --color-cta-hover: #0A5C50;
+            --color-cta-orange: #ff6201;
+            --color-cta-orange-hover: #e55800;
+
+            /* Colors - Status */
+            --color-success: #108474;
+            --color-urgency: #d32f2f;
+
+            /* Colors - Backgrounds */
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #f9fafb;
+            --color-bg-gray: #f3f3f3;
+            --color-bg-dark: #121212;
+
+            /* Shadows */
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-button: 0 4px 15px rgba(16, 132, 116, 0.3);
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background: var(--color-bg-white);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Sticky Promo Banner */
+        .promo-banner {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .promo-banner span {
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--color-bg-light) 0%, var(--color-bg-white) 100%);
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 em {
+            color: var(--color-primary);
+            font-style: normal;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-product {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            width: 350px;
+            height: 280px;
+            background: var(--color-bg-gray);
+            border: 2px dashed #ccc;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        .hero-specs {
+            text-align: left;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero-specs h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-specs ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .hero-specs li {
+            padding-left: 1.75rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .hero-specs li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+        }
+
+        /* Testimonials Strip */
+        .testimonials-strip {
+            background: var(--color-bg-light);
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .testimonials-strip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .strip-testimonial {
+            text-align: center;
+        }
+
+        .strip-testimonial .quote {
+            font-size: 0.9375rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .strip-testimonial .author {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .strip-testimonial .stars {
+            color: #FFB71E;
+            font-size: 1.125rem;
+        }
+
+        /* Credibility Section */
+        .credibility-section {
+            background: var(--color-bg-dark);
+            padding: 2rem 1.5rem;
+        }
+
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .credibility-item {
+            text-align: center;
+            color: white;
+        }
+
+        .credibility-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .credibility-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .credibility-desc {
+            font-size: 0.8125rem;
+            opacity: 0.8;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 1.25rem;
+            background: var(--color-primary-light);
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .trust-icon {
+            color: var(--color-success);
+            font-size: 1.25rem;
+        }
+
+        /* Bundle Section */
+        .bundle-section {
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .bundle-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .bundle-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bundle-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .bundle-card.popular {
+            border-color: var(--color-primary);
+            border-width: 3px;
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.375rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .bundle-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .bundle-description {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .bundle-contents {
+            text-align: left;
+            font-size: 0.8125rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            padding: 0 0.5rem;
+            list-style: none;
+        }
+
+        .bundle-contents li {
+            margin-bottom: 0.375rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .bundle-contents li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .bundle-price-main {
+            margin-bottom: 0.25rem;
+        }
+
+        .bundle-price-main .amount {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            line-height: 1;
+        }
+
+        .bundle-per-pair {
+            font-size: 0.875rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .bundle-cta {
+            display: block;
+            background: var(--color-cta-primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.875rem 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .bundle-cta:hover {
+            background: var(--color-cta-hover);
+        }
+
+        /* Trust signals row (below bundles) */
+        .bundle-trust-signals {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .bundle-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .bundle-trust-item .icon {
+            color: var(--color-success);
+            font-size: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            background: var(--color-bg-light);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .faq-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1.25rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .faq-answer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer ul {
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        .faq-answer ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-answer ul li::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        .coined-term {
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            background: var(--color-bg-dark);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .final-cta-section h2 {
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        .final-cta-section p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta-section .coined-term {
+            color: var(--color-primary);
+        }
+
+        .cta-wrapper {
+            text-align: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-cta-orange);
+            color: #fff;
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 0;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 98, 1, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--color-cta-orange-hover);
+            transform: translateY(-2px);
+        }
+
+        .final-cta-trust {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .final-cta-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .final-cta-trust-item .icon {
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-bg-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bundle-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .credibility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .bundle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-strip-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .credibility-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .hero-product {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .trust-bar {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Promo Banner -->
+    <div class="promo-banner">
+        <span>&#9733;</span> FREE SHIPPING on orders over €39 <span>&#9733;</span> 30-Day Money-Back Guarantee
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Choose Your <em>78/20 Formula</em> Package</h1>
+        <p class="hero-subtitle">The longer you wear Mat & Vic's, the better your drawer becomes.</p>
+
+        <div class="hero-product">
+            <div class="hero-image">
+                PRODUCT IMAGE: Mat & Vic's sock collection
+            </div>
+
+            <div class="hero-specs">
+                <h3>Every Package Includes:</h3>
+                <ul>
+                    <li>78% Human-Engineered Cotton</li>
+                    <li>20% Performance Polyamide</li>
+                    <li>All-Wash Construction</li>
+                    <li>360-Day Engineering</li>
+                    <li>30-Day Money-Back Guarantee</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Strip -->
+    <section class="testimonials-strip">
+        <div class="testimonials-strip-grid">
+            <div class="strip-testimonial">
+                <div class="quote">"I throw them in with everything else. They come out perfect every time."</div>
+                <div class="author">- Thomas K.</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="strip-testimonial">
+                <div class="quote">"8 months later, they still look like we bought them yesterday."</div>
+                <div class="author">- Maria S.</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="strip-testimonial">
+                <div class="quote">"The Intelligent Choice, indeed. We've bought 4 more packs."</div>
+                <div class="author">- Verified Customer</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section class="credibility-section">
+        <div class="credibility-grid">
+            <div class="credibility-item">
+                <div class="credibility-icon">&#128101;</div>
+                <div class="credibility-title">600,000+</div>
+                <div class="credibility-desc">Satisfied Customers</div>
+            </div>
+            <div class="credibility-item">
+                <div class="credibility-icon">&#9733;</div>
+                <div class="credibility-title">4.8/5 Stars</div>
+                <div class="credibility-desc">Average Rating</div>
+            </div>
+            <div class="credibility-item">
+                <div class="credibility-icon">&#128230;</div>
+                <div class="credibility-title">1-3 Day</div>
+                <div class="credibility-desc">Fast Delivery</div>
+            </div>
+            <div class="credibility-item">
+                <div class="credibility-icon">&#128274;</div>
+                <div class="credibility-title">30-Day</div>
+                <div class="credibility-desc">Money-Back Guarantee</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-item"><span class="trust-icon">&#10003;</span> 30-Day Money-Back Guarantee</div>
+        <div class="trust-item"><span class="trust-icon">&#10003;</span> Free Shipping Over €39</div>
+        <div class="trust-item"><span class="trust-icon">&#10003;</span> 1-3 Day Delivery</div>
+        <div class="trust-item"><span class="trust-icon">&#10003;</span> 600,000+ Happy Customers</div>
+    </div>
+
+    <!-- Bundle Section -->
+    <section class="bundle-section">
+        <div class="container">
+            <h2>Select Your Package</h2>
+            <p class="bundle-subtitle">Pick the package that fits your life. Every option delivers The 78/20 Formula.</p>
+
+            <div class="bundle-grid">
+                <!-- Starter -->
+                <div class="bundle-card">
+                    <div class="bundle-name">&#129510; The Trial</div>
+                    <div class="bundle-description">Try The 78/20 Formula</div>
+                    <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;"><em>Perfect for first-time buyers</em></p>
+                    <ul class="bundle-contents">
+                        <li>10 pairs Cotton Classic crew socks</li>
+                        <li>78% Human-Engineered Cotton</li>
+                        <li>20% Performance Polyamide</li>
+                        <li>All-Wash Construction</li>
+                    </ul>
+                    <div class="bundle-price-main">
+                        <span class="amount">€29.99</span>
+                    </div>
+                    <div class="bundle-per-pair">€3.00 per pair</div>
+                    <a href="#checkout-cotton-classic" class="bundle-cta">Add to Cart &#8594;</a>
+                </div>
+
+                <!-- Most Popular - Drawer Upgrade -->
+                <div class="bundle-card popular">
+                    <div class="bundle-badge">&#9733; Most Popular</div>
+                    <div class="bundle-name">The Drawer Upgrade</div>
+                    <div class="bundle-description">Variety for Every Occasion</div>
+                    <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;"><em>Most customers choose this</em></p>
+                    <ul class="bundle-contents">
+                        <li>10x Cotton Classic (crew)</li>
+                        <li>10x Sneaker Socks (ankle)</li>
+                        <li>6x Work Socks (thermal)</li>
+                        <li><strong>26 total pairs</strong></li>
+                        <li style="color: var(--color-primary); font-weight: 600;">Save €6 vs buying separately</li>
+                        <li><strong>FREE SHIPPING included</strong></li>
+                    </ul>
+                    <div class="bundle-price-main">
+                        <span class="amount">€69.99</span>
+                    </div>
+                    <div class="bundle-per-pair">Just €2.69 per pair</div>
+                    <a href="#checkout-drawer-upgrade" class="bundle-cta">Add to Cart &#8594;</a>
+                </div>
+
+                <!-- Best Value - Complete Reset -->
+                <div class="bundle-card">
+                    <div class="bundle-badge" style="background: #FFB71E;">Best Value</div>
+                    <div class="bundle-name">The Complete Reset</div>
+                    <div class="bundle-description">Never Think About Socks Again</div>
+                    <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 0.75rem;"><em>Full drawer transformation</em></p>
+                    <ul class="bundle-contents">
+                        <li>10x Cotton Classic (black)</li>
+                        <li>10x Cotton Classic (colors)</li>
+                        <li>10x Sneaker Socks</li>
+                        <li><strong>30 total pairs</strong></li>
+                        <li style="color: var(--color-primary); font-weight: 600;">Save €5 + FREE premium soap</li>
+                        <li><strong>FREE SHIPPING included</strong></li>
+                    </ul>
+                    <div class="bundle-price-main">
+                        <span class="amount">€84.99</span>
+                    </div>
+                    <div class="bundle-per-pair">Just €2.83 per pair</div>
+                    <a href="#checkout-complete-reset" class="bundle-cta">Add to Cart &#8594;</a>
+                </div>
+            </div>
+
+            <div class="bundle-trust-signals">
+                <div class="bundle-trust-item"><span class="icon">&#10003;</span> 30-Day Money-Back Guarantee</div>
+                <div class="bundle-trust-item"><span class="icon">&#10003;</span> Free Shipping Over €39</div>
+                <div class="bundle-trust-item"><span class="icon">&#10003;</span> 1-3 Day Delivery</div>
+                <div class="bundle-trust-item"><span class="icon">&#10003;</span> 600,000+ Satisfied Customers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">What's the difference between Mat & Vic's and regular cotton socks?</div>
+                <div class="faq-answer">
+                    <p>Most cotton socks use 60-70% cotton padded with cheap polyester.</p>
+                    <p>Mat & Vic's uses 78% cotton - nearly 80% - combined with <span class="coined-term">Performance Polyamide</span> instead of polyester.</p>
+                    <p>That means more natural softness, better moisture management, and durability that actually lasts.</p>
+                    <p>It's not just cotton socks. It's <span class="coined-term">The 78/20 Formula</span>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I really wash them any way I want?</div>
+                <div class="faq-answer">
+                    <p>Yes.</p>
+                    <p>Hot water, cold water, whatever temperature you use for everything else.</p>
+                    <p>Tumble dry, air dry, your choice.</p>
+                    <p>Throw them in with your jeans, towels, and t-shirts.</p>
+                    <p>That's what <span class="coined-term">All-Wash Construction</span> means - socks that survive your life without special treatment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do they compare to alpaca or merino wool socks?</div>
+                <div class="faq-answer">
+                    <p>Premium fiber socks require special care - gentle cycles, air drying, reshaping while damp.</p>
+                    <p>Miss one step and they shrink, felt, or lose their shape.</p>
+                    <p>Mat & Vic's was engineered for real life.</p>
+                    <p>You get comparable comfort with zero maintenance drama.</p>
+                    <p>Plus, you can buy 10+ pairs for the price of one alpaca sock.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why is The 78/20 Formula better than 100% cotton?</div>
+                <div class="faq-answer">
+                    <p>100% cotton socks wear out fast.</p>
+                    <p>They stretch, lose shape, and develop holes at the heel.</p>
+                    <p>The 20% polyamide in Mat & Vic's provides the durability and shape retention that cotton alone can't deliver.</p>
+                    <p>It's the combination that makes the difference.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long do Mat & Vic's socks last?</div>
+                <div class="faq-answer">
+                    <p>With <span class="coined-term">The 78/20 Formula</span> and normal use, most customers report 1-2+ years of regular wear before any noticeable degradation.</p>
+                    <p>That's significantly longer than commodity socks and comparable to (or better than) premium fiber socks - without the special care requirements.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if they don't work for me?</div>
+                <div class="faq-answer">
+                    <p>We offer a 30-day money-back guarantee.</p>
+                    <p>Wear them. Wash them. Put them through your normal routine.</p>
+                    <p>If they don't deliver what we promised, contact our customer service team for a prompt, polite refund.</p>
+                    <p>No questions asked.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What sizes are available?</div>
+                <div class="faq-answer">
+                    <p>Mat & Vic's comes in four size ranges:</p>
+                    <ul>
+                        <li>35-38</li>
+                        <li>39-42</li>
+                        <li>43-46</li>
+                        <li>47-50</li>
+                    </ul>
+                    <p>Most adults find their perfect fit within these ranges.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Where do you ship?</div>
+                <div class="faq-answer">
+                    <p>We ship throughout Germany and Austria with 1-3 day delivery.</p>
+                    <p>Orders over €39 qualify for free shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <h2>Ready to Upgrade Your Sock Drawer?</h2>
+
+        <p>Join 600,000+ customers who've already discovered <span class="coined-term">The 78/20 Formula</span>.</p>
+
+        <p><strong><span class="coined-term">The Intelligent Choice</span> is obvious.</strong></p>
+
+        <div class="cta-wrapper">
+            <a href="#bundle-section" class="cta-button">Choose Your Package &#8594;</a>
+        </div>
+
+        <div class="final-cta-trust">
+            <div class="final-cta-trust-item"><span class="icon">&#10003;</span> 30-Day Money-Back Guarantee</div>
+            <div class="final-cta-trust-item"><span class="icon">&#10003;</span> Free Shipping Over €39</div>
+            <div class="final-cta-trust-item"><span class="icon">&#10003;</span> 1-3 Day Delivery</div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Mat & Vic's</strong> is a brand of Illwitzer Service & Consulting GmbH</p>
+        <p>Adamgasse 30/35, 6020 Innsbruck, Austria</p>
+        <p><a href="mailto:customerservice@iscbrands.com">customerservice@iscbrands.com</a></p>
+    </footer>
+
+</body>
+</html>
