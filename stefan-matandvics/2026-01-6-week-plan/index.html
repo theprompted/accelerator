@@ -18,10 +18,33 @@
             --accent-green: #66BB6A;
             --accent-red: #DC2626;
             --accent-amber: #F59E0B;
+            --accent-yellow: #FFDE00;
+            --accent-teal: #53DBC9;
             --gray-50: #fafafa;
             --gray-100: #f5f5f5;
             --gray-200: #e5e5e5;
             --gray-900: #171717;
+            /* Pastel backgrounds */
+            --pastel-blue: #EBF9FF;
+            --pastel-green: #E8F5E9;
+            --pastel-yellow: #FFFDE7;
+            --pastel-purple: #F7F1FF;
+            --pastel-peach: #FDEDDA;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out;
         }
 
         * {
@@ -105,6 +128,18 @@
             border-radius: 2px;
         }
 
+        .section-card.emphasis.blue {
+            background: var(--pastel-blue);
+        }
+
+        .section-card.emphasis.yellow {
+            background: var(--pastel-yellow);
+        }
+
+        .section-card.emphasis.green {
+            background: var(--pastel-green);
+        }
+
         h2 {
             font-family: 'JetBrains Mono', monospace;
             font-size: 20px;
@@ -138,6 +173,13 @@
         }
 
         /* Intro text */
+        .intro-text {
+            background: var(--pastel-purple);
+            border: 2px solid var(--border-dark);
+            box-shadow: -4px 4px 0 0 #383838;
+            border-radius: 2px;
+        }
+
         .intro-text p {
             font-size: 16px;
             line-height: 1.8;
@@ -146,26 +188,27 @@
         /* Callouts */
         .callout {
             background: var(--gray-50);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
             padding: 20px 24px;
             margin: 20px 0;
+            box-shadow: -3px 3px 0 0 #383838;
         }
 
         .callout.success {
-            border-left: 3px solid var(--accent-green);
+            background: var(--pastel-green);
         }
 
         .callout.warning {
-            border-left: 3px solid var(--accent-red);
+            background: #FFEBE9;
         }
 
         .callout.info {
-            border-left: 3px solid var(--accent-blue);
+            background: var(--pastel-blue);
         }
 
         .callout.neutral {
-            border-left: 3px solid var(--gray-900);
+            background: var(--pastel-yellow);
         }
 
         .callout-label {
@@ -174,15 +217,16 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 6px;
+            color: var(--text);
         }
 
-        .callout-label.success { color: var(--accent-green); }
+        .callout-label.success { color: #2E7D32; }
         .callout-label.warning { color: var(--accent-red); }
-        .callout-label.info { color: var(--accent-blue); }
+        .callout-label.info { color: #0369a1; }
 
         .callout p {
             margin-bottom: 8px;
@@ -237,11 +281,11 @@
             font-weight: 600;
         }
 
-        /* Metric Circles */
+        /* Metric Cards */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 16px;
             margin: 32px 0;
         }
 
@@ -249,16 +293,34 @@
             background: var(--bg-card);
             border: 2px solid var(--border-dark);
             border-radius: 2px;
-            padding: 24px;
+            padding: 24px 20px;
             text-align: center;
-            box-shadow: -3px 3px 0 0 #383838;
+            box-shadow: -4px 4px 0 0 #383838;
+            transition: all 0.15s ease;
+        }
+
+        .metric-card:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -2px 2px 0 0 #383838;
+        }
+
+        .metric-card.teal {
+            border-top: 4px solid var(--accent-teal);
+        }
+
+        .metric-card.green {
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .metric-card.blue {
+            border-top: 4px solid var(--accent-blue);
         }
 
         .metric-value {
             font-family: 'JetBrains Mono', monospace;
             font-size: 32px;
             font-weight: 700;
-            color: var(--accent-green);
+            color: var(--text);
         }
 
         .metric-label {
@@ -295,8 +357,9 @@
         }
 
         .tier-card:hover {
-            border-color: var(--gray-200);
-            transform: translateY(-2px);
+            border-color: var(--border-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
 
         .tier-card.featured {
@@ -468,18 +531,23 @@
             font-size: 13px;
             font-weight: 600;
             padding: 14px 28px;
-            background: var(--gray-900);
-            color: white;
+            background: var(--accent-yellow);
+            color: var(--text);
             border: 2px solid var(--border-dark);
             border-radius: 2px;
             text-decoration: none;
-            transition: all 0.15s ease;
-            box-shadow: -3px 3px 0 0 #383838;
+            transition: all 0.1s ease;
+            box-shadow: -4px 4px 0 0 #383838;
         }
 
         .cta-button:hover {
             transform: translate(-2px, 2px);
-            box-shadow: -1px 1px 0 0 #383838;
+            box-shadow: -2px 2px 0 0 #383838;
+        }
+
+        .cta-button:active {
+            transform: translate(-4px, 4px);
+            box-shadow: none;
         }
 
         .cta-center {
@@ -503,6 +571,39 @@
             margin: 40px 0;
         }
 
+        /* Icon Container */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon-box.teal { background: var(--accent-teal); }
+        .icon-box.yellow { background: var(--accent-yellow); }
+        .icon-box.blue { background: var(--accent-blue); }
+
+        .icon-box svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -510,7 +611,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             color: var(--text-muted);
-            border-top: 1px solid var(--border);
+            border-top: 2px solid var(--border-dark);
             margin-top: 40px;
         }
 
@@ -564,7 +665,7 @@
         </div>
 
         <!-- Schedule -->
-        <div class="section-card emphasis">
+        <div class="section-card emphasis blue">
             <h2>The Schedule <span class="badge">ROADMAP</span></h2>
             <table>
                 <thead>
@@ -713,22 +814,22 @@
         <div class="divider"></div>
 
         <!-- The Vision -->
-        <div class="section-card emphasis">
+        <div class="section-card emphasis yellow">
             <h2>The Vision: Where We Need To Get</h2>
             <p>Three numbers need to work together:</p>
 
             <div class="metrics-grid">
-                <div class="metric-card">
+                <div class="metric-card teal">
                     <div class="metric-value">€30+</div>
                     <div class="metric-label">Allowable CPA</div>
                     <div class="metric-desc">Competitive in ad auctions</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card green">
                     <div class="metric-value">20%+</div>
                     <div class="metric-label">Contribution Margin</div>
                     <div class="metric-desc">Profitable after ad spend</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card blue">
                     <div class="metric-value">60%+</div>
                     <div class="metric-label">Gross Margin</div>
                     <div class="metric-desc">Healthy unit economics</div>
@@ -1038,7 +1139,7 @@
         <div class="divider"></div>
 
         <!-- Next Steps -->
-        <div class="section-card emphasis">
+        <div class="section-card emphasis green">
             <h2>Your Next Steps</h2>
 
             <h3>1. Go Through The Million Dollar Thesis Training</h3>
