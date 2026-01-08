@@ -604,6 +604,85 @@
             margin-bottom: 0;
         }
 
+        /* Legend / Document Guide */
+        .legend {
+            background: var(--bg-card);
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: -4px 4px 0 0 #383838;
+        }
+
+        .legend h2 {
+            margin-bottom: 8px;
+        }
+
+        .legend > p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px;
+            background: var(--gray-50);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .legend-item:hover {
+            border-color: var(--border-dark);
+            background: white;
+        }
+
+        .legend-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-dark);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .legend-icon.blue { background: var(--pastel-blue); }
+        .legend-icon.yellow { background: var(--pastel-yellow); }
+        .legend-icon.green { background: var(--pastel-green); }
+        .legend-icon.purple { background: var(--pastel-purple); }
+        .legend-icon.peach { background: var(--pastel-peach); }
+        .legend-icon.teal { background: var(--accent-teal); }
+
+        .legend-content h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .legend-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .legend-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -662,6 +741,62 @@
             <p>Not replacing Amazon. Leveraging it.</p>
             <p>The path forward isn't complicated.</p>
             <p>But it does require the right sequence.</p>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h2>What's In This Document</h2>
+            <p>This plan covers the foundational work we need to do together. Here's what you'll find:</p>
+
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon blue">📅</div>
+                    <div class="legend-content">
+                        <h4>The Schedule</h4>
+                        <p>The 6-week roadmap and sequence of work — what happens when, and why the order matters.</p>
+                    </div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-icon yellow">📊</div>
+                    <div class="legend-content">
+                        <h4>Unit Economics</h4>
+                        <p>The two numbers that determine whether paid ads will work — and where Mat & Vic's stands today.</p>
+                    </div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-icon teal">💰</div>
+                    <div class="legend-content">
+                        <h4>Offer Structures</h4>
+                        <p>Two example offer structures that raise AOV and unlock competitive ad spend. Starting points for ideation.</p>
+                    </div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-icon purple">💡</div>
+                    <div class="legend-content">
+                        <h4>The Thesis</h4>
+                        <p>Why you're not in the sock business — and how a core belief creates differentiation that features can't.</p>
+                    </div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-icon peach">🎯</div>
+                    <div class="legend-content">
+                        <h4>Funnels</h4>
+                        <p>Why dedicated landing pages outperform product pages — with a working draft funnel for Mat & Vic's.</p>
+                    </div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-icon green">✅</div>
+                    <div class="legend-content">
+                        <h4>Your Next Steps</h4>
+                        <p>The homework — what to review and come back with so we can hit the ground running in Week 1.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Schedule -->
