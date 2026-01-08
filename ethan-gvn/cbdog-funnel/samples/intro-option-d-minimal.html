@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Option D: Minimal + Stats</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-yellow: #FFDE00;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .intro-card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .intro-header {
+            background: var(--bg-page);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .intro-header h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .intro-content {
+            padding: 1.5rem;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.75rem 1.25rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dark);
+        }
+
+        .distinction-box {
+            background: var(--bg-page);
+            padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--accent-purple);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .structure-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .structure-chip {
+            background: var(--bg-page);
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .structure-chip .num {
+            background: var(--accent-teal);
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION D: Minimal + Stats</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Quick stats at top, distinction box, compact structure chips. More visual, less text.</p>
+
+    <div class="intro-card">
+        <div class="intro-header">
+            <h3>About This Breakdown</h3>
+        </div>
+        <div class="intro-content">
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="number">13</span>
+                    <span class="label">Sections</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">9</span>
+                    <span class="label">Techniques</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">2</span>
+                    <span class="label">Pages</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">3</span>
+                    <span class="label">Belief Shifts</span>
+                </div>
+            </div>
+
+            <div class="distinction-box">
+                Most funnel breakdowns tell you <em>what</em> the copy says.<br>
+                This one shows you <em>why</em> it works.<br><br>
+                One gives you something to read.<br>
+                The other gives you a system to reverse-engineer.
+            </div>
+
+            <div class="structure-row">
+                <div class="structure-chip">
+                    <span class="num">1</span>
+                    Architecture <em style="color: var(--text-muted); margin-left: 0.25rem;">(blueprint)</em>
+                </div>
+                <div class="structure-chip">
+                    <span class="num">2</span>
+                    Section Map <em style="color: var(--text-muted); margin-left: 0.25rem;">(legend)</em>
+                </div>
+                <div class="structure-chip">
+                    <span class="num">3</span>
+                    Breakdown <em style="color: var(--text-muted); margin-left: 0.25rem;">(dissection)</em>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

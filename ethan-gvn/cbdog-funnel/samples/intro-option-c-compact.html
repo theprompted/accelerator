@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Option C: Compact Two-Column</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .intro-card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .intro-header {
+            background: var(--bg-page);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .intro-header h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .intro-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .intro-left {
+            padding: 1.5rem;
+            border-right: var(--border);
+        }
+
+        .intro-left p {
+            line-height: 1.9;
+        }
+
+        .intro-right {
+            padding: 1.5rem;
+            background: var(--bg-page);
+        }
+
+        .structure-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .structure-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .structure-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .structure-item strong {
+            color: var(--accent-purple);
+            font-size: 0.9375rem;
+        }
+
+        .structure-item span {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.125rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION C: Compact Two-Column</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Left side: context + distinction. Right side: structure. More visual balance.</p>
+
+    <div class="intro-card">
+        <div class="intro-header">
+            <h3>About This Breakdown</h3>
+        </div>
+        <div class="intro-body">
+            <div class="intro-left">
+                <p>A complete breakdown of your CBDog anxiety funnel.</p>
+                <p style="margin-top: 1rem;">
+                    Most funnel breakdowns tell you <em>what</em> the copy says.<br>
+                    This one shows you <em>why</em> it works.
+                </p>
+                <p style="margin-top: 1rem;">
+                    The difference matters.<br>
+                    One gives you something to read.<br>
+                    The other gives you a system to reverse-engineer.
+                </p>
+            </div>
+            <div class="intro-right">
+                <div class="structure-label">How This Is Structured</div>
+                <div class="structure-item">
+                    <strong>Part 1: Funnel Architecture</strong>
+                    <span>The blueprint - structure before words</span>
+                </div>
+                <div class="structure-item">
+                    <strong>Part 2: The Section Map</strong>
+                    <span>The legend - what each piece does</span>
+                </div>
+                <div class="structure-item">
+                    <strong>Part 3: Section Breakdown</strong>
+                    <span>The dissection - how each is built</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

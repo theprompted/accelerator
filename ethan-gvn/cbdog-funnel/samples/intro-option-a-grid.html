@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Option A: Horizontal Grid</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .option-label {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .intro-card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .intro-header {
+            background: var(--bg-page);
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+        }
+
+        .intro-header h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .intro-content {
+            padding: 1.5rem;
+        }
+
+        .intro-top {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .intro-top p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-top p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-distinction {
+            background: var(--bg-page);
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-teal);
+            margin-top: 1rem;
+        }
+
+        .intro-distinction p {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .structure-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .structure-item {
+            background: var(--bg-page);
+            padding: 1.25rem;
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .structure-item strong {
+            display: block;
+            color: var(--accent-purple);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .structure-item p {
+            font-size: 0.9375rem;
+            color: var(--text-gray);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .structure-item .metaphor {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option-label">OPTION A: Horizontal Grid for Structure</div>
+    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">3 parts side-by-side with teal left borders. Merged "What This Is" + "What It's For" into one section.</p>
+
+    <div class="intro-card">
+        <div class="intro-header">
+            <h3>About This Breakdown</h3>
+        </div>
+        <div class="intro-content">
+            <div class="intro-top">
+                <p>A complete breakdown of your CBDog anxiety funnel - from education page through offer page.</p>
+
+                <div class="intro-distinction">
+                    <p>Most funnel breakdowns tell you <em>what</em> the copy says.<br>
+                    This one shows you <em>why</em> it works.</p>
+                    <p style="margin-top: 0.75rem;">The difference matters.<br>
+                    One gives you something to read.<br>
+                    The other gives you a system to reverse-engineer.</p>
+                </div>
+            </div>
+
+            <div class="structure-label">How This Is Structured</div>
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <strong>Part 1: Funnel Architecture</strong>
+                    <p>The flow, belief shifts, and strategic logic behind the page order.</p>
+                    <span class="metaphor">The blueprint.</span>
+                </div>
+                <div class="structure-item">
+                    <strong>Part 2: The Section Map</strong>
+                    <p>Quick-reference of all 13 sections with the technique each uses.</p>
+                    <span class="metaphor">The legend.</span>
+                </div>
+                <div class="structure-item">
+                    <strong>Part 3: Breakdown</strong>
+                    <p>Live previews, belief states, techniques, and lines worth studying.</p>
+                    <span class="metaphor">The dissection.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

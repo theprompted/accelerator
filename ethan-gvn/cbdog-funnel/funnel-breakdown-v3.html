@@ -420,56 +420,69 @@
             padding: 1.5rem;
         }
 
-        /* Intro Sections */
-        .intro-section {
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.25rem;
-            border-bottom: 1px solid #e5e5e5;
+        /* Intro Two-Column Layout */
+        .intro-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
 
-        .intro-section h4 {
+        @media (max-width: 800px) {
+            .intro-body {
+                grid-template-columns: 1fr;
+            }
+            .intro-left {
+                border-right: none !important;
+                border-bottom: var(--border);
+            }
+        }
+
+        .intro-left {
+            padding: 1.5rem;
+            border-right: var(--border);
+        }
+
+        .intro-left p {
+            line-height: 1.9;
+        }
+
+        .intro-right {
+            padding: 1.5rem;
+            background: var(--bg-page);
+        }
+
+        .structure-label {
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.8125rem;
+            font-size: 0.6875rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             color: var(--text-muted);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
-        /* Structure Items (for intro) */
         .structure-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
         }
 
         .structure-item:last-child {
-            border-bottom: none;
+            margin-bottom: 0;
             padding-bottom: 0;
-        }
-
-        .structure-item:first-child {
-            padding-top: 0;
+            border-bottom: none;
         }
 
         .structure-item strong {
-            display: block;
             color: var(--accent-purple);
-            font-size: 1.0625rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .structure-item p {
-            margin: 0;
-            color: var(--text-gray);
-        }
-
-        .structure-metaphor {
-            display: block;
-            margin-top: 0.5rem;
-            font-style: italic;
-            color: var(--text-muted);
             font-size: 0.9375rem;
+        }
+
+        .structure-item span {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.125rem;
+            font-style: italic;
         }
 
         /* Explanation Grid (for The Flow section) */
@@ -814,41 +827,32 @@
         <div class="simple-card-header">
             <h3>About This Breakdown</h3>
         </div>
-        <div class="simple-card-content">
-            <div class="intro-section">
-                <h4>What This Is</h4>
-                <p>A complete breakdown of your CBDog anxiety funnel - from education page through offer page.</p>
-            </div>
-
-            <div class="intro-section">
-                <h4>What It's For</h4>
-                <p style="line-height: 1.9;">
+        <div class="intro-body">
+            <div class="intro-left">
+                <p>A complete breakdown of your CBDog anxiety funnel.</p>
+                <p style="margin-top: 1rem;">
                     Most funnel breakdowns tell you <em>what</em> the copy says.<br>
                     This one shows you <em>why</em> it works.
                 </p>
-                <p style="margin-top: 0.75rem; line-height: 1.9;">
+                <p style="margin-top: 1rem;">
                     The difference matters.<br>
                     One gives you something to read.<br>
                     The other gives you a system to reverse-engineer.
                 </p>
             </div>
-
-            <div class="intro-section" style="border-bottom: none; padding-bottom: 0;">
-                <h4>How This Is Structured</h4>
+            <div class="intro-right">
+                <div class="structure-label">How This Is Structured</div>
                 <div class="structure-item">
                     <strong>Part 1: Funnel Architecture</strong>
-                    <p>The flow, the belief shifts, and the strategic logic behind the page order.</p>
-                    <span class="structure-metaphor">The blueprint - the structure before the words.</span>
+                    <span>The blueprint - structure before words</span>
                 </div>
                 <div class="structure-item">
                     <strong>Part 2: The Section Map</strong>
-                    <p>Quick-reference of all 13 sections with the copywriting technique each one uses.</p>
-                    <span class="structure-metaphor">The legend - what each piece does at a glance.</span>
+                    <span>The legend - what each piece does</span>
                 </div>
-                <div class="structure-item" style="border-bottom: none; padding-bottom: 0;">
-                    <strong>Part 3: Section-by-Section Breakdown</strong>
-                    <p>Live previews, belief state changes, technique explanations, and lines worth studying.</p>
-                    <span class="structure-metaphor">The dissection - seeing exactly how each section is built.</span>
+                <div class="structure-item">
+                    <strong>Part 3: Section Breakdown</strong>
+                    <span>The dissection - how each is built</span>
                 </div>
             </div>
         </div>
