@@ -725,44 +725,77 @@
             border-bottom: var(--border);
         }
 
-        /* Section Preview Iframe - For left column */
-        .section-preview {
-            border-bottom: var(--border);
-        }
-
-        .section-preview-header {
-            background: var(--bg-page);
-            border-bottom: var(--border);
-            padding: 0.5rem 1rem;
+        /* Browser Mockup - For iframe previews */
+        .browser-mockup {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .browser-chrome {
+            background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+            padding: 10px 14px;
+            display: flex;
             align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #ccc;
         }
 
-        .section-preview-label {
-            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
+        .traffic-lights {
+            display: flex;
+            gap: 6px;
         }
 
-        .section-preview-link {
+        .traffic-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .traffic-light.red { background: #ff5f57; }
+        .traffic-light.yellow { background: #ffbd2e; }
+        .traffic-light.green { background: #28ca41; }
+
+        .url-bar {
+            flex: 1;
+            background: white;
+            border-radius: 5px;
+            padding: 6px 12px;
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
             font-size: 0.6875rem;
+            color: var(--text-muted);
+            border: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .browser-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .browser-actions a {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.625rem;
             color: var(--accent-purple);
             text-decoration: none;
         }
 
-        .section-preview-link:hover {
+        .browser-actions a:hover {
             text-decoration: underline;
         }
 
-        .section-preview iframe {
+        .browser-content {
+            flex: 1;
+            min-height: 450px;
+        }
+
+        .browser-content iframe {
             display: block;
             width: 100%;
-            height: 450px;
+            height: 100%;
+            min-height: 450px;
             border: none;
         }
 
@@ -1106,15 +1139,27 @@
         <div class="section-body">
             <!-- Left: Preview + Belief -->
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-1.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Exercise helps my dog's anxiety - I just need to do more of it"</span>
@@ -1122,10 +1167,7 @@
                         <span class="after">After: "Wait... could I be making this worse?"</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right: Analysis -->
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>The Opening Violation</strong> - Challenge the core belief instead of validating it.</p>
@@ -1170,15 +1212,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-2.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "The advice must be right - everyone says it"</span>
@@ -1186,9 +1239,7 @@
                         <span class="after">After: "Oh, the advice is outdated. It was made before we understood the real problem."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>The Origin Story Reframe</strong> - Explain where bad advice came from to make the reader feel informed, not stupid.</p>
@@ -1233,15 +1284,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-3.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Maybe exercise does help - I've seen my dog calmer after walks"</span>
@@ -1249,9 +1311,7 @@
                         <span class="after">After: "The calm I'm seeing is exhaustion, not actual anxiety relief. The research proves it."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Research + Relatable Metaphor</strong> - Use data for credibility, then translate it into an image that sticks.</p>
@@ -1296,15 +1356,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-4.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Dogs need lots of exercise - it's natural"</span>
@@ -1312,9 +1383,7 @@
                         <span class="after">After: "Wild dogs don't exercise to stay calm. There must be something else."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Argument from Nature</strong> - Use wild/ancestral examples as a control group that disproves the assumption.</p>
@@ -1359,15 +1428,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-5.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Maybe I'm just not trying hard enough"</span>
@@ -1375,9 +1455,7 @@
                         <span class="after">After: "I've been using the wrong tool. No amount of effort would have worked."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>The Wrong Tool Analogy</strong> - Reframe failure as misdirection, not inadequacy.</p>
@@ -1422,15 +1500,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-6.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "My dog has an anxiety problem"</span>
@@ -1438,9 +1527,7 @@
                         <span class="after">After: "My dog has a depletion problem - and depletion can be fixed"</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Problem Completion Before Solution</strong> - Fully explain what's wrong before introducing the fix. Create hope by framing the problem as solvable.</p>
@@ -1485,15 +1572,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-7.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "I understand the problem now"</span>
@@ -1501,9 +1599,7 @@
                         <span class="after">After: "I NEED to know the solution" (curiosity at peak)</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>The Open Loop</strong> - Create a gap (problem identified, solution promised) that can only be closed by clicking through.</p>
@@ -1548,15 +1644,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-8.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "I know exercise doesn't work, but I don't know what does"</span>
@@ -1564,9 +1671,7 @@
                         <span class="after">After: "There's a specific system (Endocannabinoid System) that controls this - and it can be supported"</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Mechanism Reveal</strong> - Name the biological system responsible, then show how it connects to everything you've been teaching.</p>
@@ -1611,15 +1716,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-9.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "CBD? Isn't that marijuana? That sounds sketchy..."</span>
@@ -1627,9 +1743,7 @@
                         <span class="after">After: "Oh, CBD is just the compound that supports this system. That makes sense."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Objection Handling at the Moment of Reveal</strong> - Name the solution and immediately address the biggest concern, in the same breath.</p>
@@ -1674,15 +1788,26 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-10.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "I've tried calming treats before - they didn't work"</span>
@@ -1690,9 +1815,7 @@
                         <span class="after">After: "Those weren't real CBD products. No wonder they failed."</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Pre-Answer Objections</strong> - Before they can think "this won't work either," explain why the others failed and why this is different.</p>
@@ -1738,15 +1861,27 @@
         <div class="section-body">
             <!-- Left: Preview + Belief -->
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-11.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Okay, I'm interested in CBD - but which product?"</span>
@@ -1754,10 +1889,7 @@
                         <span class="after">After: "This specific product checks every box from the problems I just learned about"</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right: Analysis -->
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Feature-Benefit Match</strong> - Every product feature connects to a problem already seeded in the funnel.</p>
@@ -1803,15 +1935,27 @@
         <div class="section-body">
             <!-- Left: Preview + Belief -->
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-12.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "Will this actually work? How long does it take?"</span>
@@ -1819,10 +1963,7 @@
                         <span class="after">After: "I can see exactly what to expect week by week - this seems achievable"</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right: Analysis -->
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>The Timeline Pattern</strong> - Show specific timeframes with concrete milestones so results feel achievable and real.</p>
@@ -1868,15 +2009,27 @@
         <div class="section-body">
             <!-- Left: Preview + Belief -->
             <div class="section-left">
-                <div class="section-preview">
-                    <div class="section-preview-header">
-                        <span class="section-preview-label">Live Preview</span>
-                        <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html" target="_blank" class="section-preview-link">Open in new tab &rarr;</a>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">cbdog.com/offer</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                    <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html"></iframe>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/ethan-gvn/cbdog-funnel/section-previews/section-13.html"></iframe>
+                    </div>
                 </div>
+            </div>
 
-                <div class="belief-state-box">
+            <!-- Right: Analysis -->
+            <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
                     <div class="label">Belief State</div>
                     <div class="before-after">
                         <span class="before">Before: "This sounds good but what if it doesn't work for my dog?"</span>
@@ -1884,10 +2037,7 @@
                         <span class="after">After: "There's no risk - I can get my money back if it doesn't work"</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Right: Analysis -->
-            <div class="section-right">
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Risk Reversal</strong> - Remove purchase anxiety by putting the risk on yourself, not the customer.</p>
@@ -1941,11 +2091,6 @@
             <li><strong>Timeline Future Pacing</strong> - Show what life looks like week by week</li>
             <li><strong>Risk Reversal</strong> - Remove purchase anxiety with guarantee</li>
         </ol>
-    </div>
-
-    <!-- Final CTA -->
-    <div class="cta-box">
-        <p><strong>Next step for your funnel:</strong> Identify the one belief you need to shift, find a metaphor that explains it, and structure your education page around destroying the old frame before introducing the product.</p>
     </div>
 
 </div>
