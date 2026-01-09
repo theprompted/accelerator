@@ -3,17 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strawesome Ad Mockups | The Prompted</title>
+    <title>Strawesome - Violate Then Elevate Drafts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --fb-bg: #f0f2f5;
-            --fb-card: #ffffff;
-            --fb-text: #050505;
-            --fb-secondary: #65676b;
-            --fb-link: #0064d1;
-            --fb-border: #dddfe2;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -21,492 +13,647 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: var(--fb-bg);
-            padding: 2rem;
-            line-height: 1.4;
+            background: #FF6700;
+            font-family: 'Comic Neue', cursive;
+            padding: 20px;
+            min-height: 100vh;
         }
 
-        .page-header {
-            max-width: 1400px;
-            margin: 0 auto 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .page-header h1 {
-            font-size: 1.75rem;
-            color: var(--fb-text);
-            margin-bottom: 0.5rem;
-        }
-
-        .page-header p {
-            color: var(--fb-secondary);
-            font-size: 0.9375rem;
-        }
-
-        .section-header {
-            max-width: 1400px;
-            margin: 2.5rem auto 1rem;
-            padding: 0 0.5rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.25rem;
-            color: var(--fb-text);
-            font-weight: 600;
-        }
-
-        .section-header p {
-            color: var(--fb-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        .ads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-            max-width: 1400px;
+        .container {
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .fb-post {
-            background: var(--fb-card);
-            border-radius: 8px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .fb-post-header {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            gap: 10px;
-        }
-
-        .fb-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #FF6700 0%, #E55A00 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .fb-page-info {
-            flex: 1;
-        }
-
-        .fb-page-name {
-            font-weight: 600;
-            font-size: 0.9375rem;
-            color: var(--fb-text);
-        }
-
-        .fb-sponsored {
-            font-size: 0.8125rem;
-            color: var(--fb-secondary);
-        }
-
-        .fb-sponsored::before {
-            content: "Sponsored · ";
-        }
-
-        .fb-post-content {
-            padding: 0 16px 12px;
-        }
-
-        .fb-post-text {
-            font-size: 0.9375rem;
-            color: var(--fb-text);
-            white-space: pre-wrap;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .fb-post-text.expanded {
-            max-height: none;
-        }
-
-        .fb-see-more {
-            color: var(--fb-secondary);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9375rem;
-        }
-
-        .fb-image-container {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: #e4e6eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fb-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .placeholder-image {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--fb-secondary);
-            font-size: 0.875rem;
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 3.5rem;
+            color: #000;
             text-align: center;
-            padding: 2rem;
+            text-shadow: 4px 4px 0 #fff, 6px 6px 0 #000;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
-        .placeholder-image .icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.5;
-        }
-
-        .fb-link-preview {
-            border-top: 1px solid var(--fb-border);
-            padding: 12px 16px;
-            background: #f0f2f5;
-        }
-
-        .fb-link-domain {
-            font-size: 0.8125rem;
-            color: var(--fb-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .fb-link-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--fb-text);
-            margin: 4px 0;
-        }
-
-        .fb-link-description {
-            font-size: 0.875rem;
-            color: var(--fb-secondary);
-        }
-
-        .fb-cta-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            border-top: 1px solid var(--fb-border);
-        }
-
-        .fb-cta-button {
-            background: #e4e6eb;
-            color: var(--fb-text);
-            font-weight: 600;
-            font-size: 0.9375rem;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .draft-label {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .angle-tag {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #FF6700;
-            color: white;
-            font-size: 0.6875rem;
+        .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #1A7D65;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 10px 20px;
+            border: 4px solid #000;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
+        .methodology-box {
+            background: #1A7D65;
+            color: #fff;
+            padding: 25px;
+            border: 5px solid #000;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 8px 8px 0 #000;
+        }
 
-            .ads-grid {
-                grid-template-columns: 1fr;
-            }
+        .methodology-box h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .methodology-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            background: #FF6700;
+            color: #000;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        .formula span {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .draft-card {
+            background: #fff;
+            border: 5px solid #000;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 10px 10px 0 #000;
+            transition: transform 0.2s;
+        }
+
+        .draft-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 13px 13px 0 #000;
+        }
+
+        .draft-header {
+            background: #1A7D65;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+        }
+
+        .draft-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #FF6700;
+            color: #000;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            padding: 5px 20px;
+            border: 4px solid #000;
+            border-radius: 10px;
+            transform: rotate(-3deg);
+        }
+
+        .draft-header h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .violation-line {
+            background: #000;
+            color: #FF6700;
+            padding: 15px 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .draft-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 15px 20px;
+            background: #f0f0f0;
+            border-bottom: 3px dashed #000;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .meta-value {
+            font-size: 0.9rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .draft-body {
+            padding: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .draft-body p {
+            margin-bottom: 0.8em;
+        }
+
+        .draft-body .turn {
+            background: #E8F4F8;
+            padding: 15px;
+            border-left: 5px solid #1A7D65;
+            margin: 15px 0;
+        }
+
+        .draft-body .elevate {
+            background: #FFF3CD;
+            padding: 15px;
+            border-left: 5px solid #FF6700;
+            margin: 15px 0;
+        }
+
+        .placeholder-copy {
+            background: #f5f5f5;
+            border: 3px dashed #ccc;
+            padding: 30px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            border-radius: 10px;
+        }
+
+        .cta-line {
+            background: #1A7D65;
+            color: #fff;
+            padding: 15px 20px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .rating-section {
+            padding: 20px;
+            background: #f9f9f9;
+            border-top: 3px solid #000;
+        }
+
+        .rating-label {
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .rating-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rating-btn {
+            padding: 10px 20px;
+            border: 3px solid #000;
+            border-radius: 10px;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .rating-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-yes {
+            background: #2ECC71;
+            color: #fff;
+        }
+
+        .btn-close {
+            background: #F39C12;
+            color: #fff;
+        }
+
+        .btn-no {
+            background: #E74C3C;
+            color: #fff;
+        }
+
+        .btn-maybe {
+            background: #9B59B6;
+            color: #fff;
+        }
+
+        .straw-icon {
+            text-align: center;
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: #1A7D65;
+            margin: 40px 0 20px;
+            padding: 15px;
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 15px;
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .cloud-thought {
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 50px;
+            padding: 15px 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            font-style: italic;
+        }
+
+        .cloud-thought::before {
+            content: "💭";
+            position: absolute;
+            bottom: -25px;
+            left: 30px;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            color: #000;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>🥤 STRAWESOME 🥤</h1>
+        <div class="subtitle">Violate Then Elevate - Ad Copy Drafts</div>
 
-    <header class="page-header">
-        <h1>Strawesome — Facebook Ad Mockups</h1>
-        <p>6 ad drafts exploring contrarian angles. Thesis: "Glass Is Safer Than Metal"</p>
-    </header>
+        <div class="straw-icon">🧊</div>
 
-    <!-- SECTION 1: ATTACK METAL -->
-    <div class="section-header">
-        <h2>Attack Metal (The "Safe" Choice)</h2>
-        <p>Challenge the assumption that metal straws are the safer/better option</p>
-    </div>
+        <div class="methodology-box">
+            <h2>📺 THE THESIS</h2>
+            <p><strong>Brand Thesis:</strong> "Reusable Should Mean Forever"</p>
+            <p><strong>Funnel Thesis:</strong> "Glass Straws Are Safer Than Metal"</p>
+            <div class="formula">
+                <span><strong>The Contradiction:</strong> The "safe" choice (metal) is actually dangerous</span>
+                <span><strong>The Flip:</strong> The "fragile" choice (glass) is actually safer</span>
+                <span><strong>The Proof:</strong> 16 years, 1.5% replacement rate, lifetime warranty</span>
+            </div>
+        </div>
 
-    <div class="ads-grid">
+        <div class="cloud-thought">
+            "The reader should think 'wait - glass is safer than metal?' and keep reading"
+        </div>
+
+        <div class="section-divider">🔥 ATTACK METAL 🔥</div>
 
         <!-- DRAFT 1 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 1</div>
+                <h3>Attack "Unbreakable = Safe" Belief</h3>
+            </div>
+            <div class="violation-line">
+                "Your 'safe' metal straw has a documented fatality. Glass doesn't."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Attack Belief</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"wait - metal is dangerous?"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Metal Straw Users</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 1]
-
-Hook: Attack the "unbreakable = safe" belief
-
-Body copy goes here...
-
-CTA: Learn more about glass straws</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 1</div>
-                <div class="angle-tag">Attack Belief</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: Attack the "unbreakable = safe" assumption<br>
+                    Turn: Unbreakable means unforgiving on impact<br>
+                    Elevate: Safety isn't about surviving - it's about failing safely
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">The Safer Switch to Glass</div>
-                <div class="fb-link-description">Handmade in Michigan since 2009. Lifetime warranty.</div>
+            <div class="cta-line">
+                Make the safer switch: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Learn More</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
         <!-- DRAFT 2 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 2</div>
+                <h3>Attack Hidden Dangers</h3>
+            </div>
+            <div class="violation-line">
+                "You can't see what's growing inside your metal straw."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Attack Hidden</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"is my straw dirty?"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Health-Conscious Users</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 2]
-
-Hook: Attack the hidden dangers (bacteria, leaching, temperature)
-
-Body copy goes here...
-
-CTA: See why thousands switched</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 2</div>
-                <div class="angle-tag">Attack Hidden</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: Bacteria, biofilm, invisible contamination<br>
+                    Turn: Opaque = trust. Transparent = verify.<br>
+                    Elevate: Restaurant kitchen metaphor - you can't inspect what you can't see
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">5 Problems With Metal Straws</div>
-                <div class="fb-link-description">What the product listing doesn't mention.</div>
+            <div class="cta-line">
+                See what you're drinking through: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Learn More</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
         <!-- DRAFT 3 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 3</div>
+                <h3>Attack Teeth/Injury Risk</h3>
+            </div>
+            <div class="violation-line">
+                "Metal doesn't give. Your teeth do."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Attack Safety</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"I've clinked my teeth before"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Daily Straw Users</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 3]
-
-Hook: Attack the injury/teeth risk
-
-Body copy goes here...
-
-CTA: Make the safer switch</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 3</div>
-                <div class="angle-tag">Attack Safety</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: Starbucks recalled 2.5M straws for mouth lacerations<br>
+                    Turn: Concrete wall vs guardrail metaphor<br>
+                    Elevate: One accidental bite costs more than every straw you'll ever buy
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">Glass Straws | Lifetime Warranty</div>
-                <div class="fb-link-description">The last straw you'll ever need to buy.</div>
+            <div class="cta-line">
+                Straws that don't fight back: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Shop Now</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
-    </div>
-
-    <!-- SECTION 2: FLIP GLASS -->
-    <div class="section-header">
-        <h2>Flip Glass (The Fear)</h2>
-        <p>Reframe the "glass breaks" objection into a feature</p>
-    </div>
-
-    <div class="ads-grid">
+        <div class="section-divider">🔄 FLIP GLASS 🔄</div>
 
         <!-- DRAFT 4 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 4</div>
+                <h3>Flip "Glass Breaks" Fear</h3>
+            </div>
+            <div class="violation-line">
+                "Glass straws don't shatter. Cheap glass does."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Flip Fear</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"but glass breaks?"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Glass-Skeptics</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 4]
-
-Hook: Flip the "glass breaks" fear
-
-Body copy goes here...
-
-CTA: See the 1.5% replacement rate</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 4</div>
-                <div class="angle-tag">Flip Fear</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: Address the objection head-on<br>
+                    Turn: Annealing process - proper vs cheap glass<br>
+                    Elevate: 16 years, 1.5% replacement rate. That's not fragile.
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">16 Years. 1.5% Replacement Rate.</div>
-                <div class="fb-link-description">Properly annealed glass doesn't shatter.</div>
+            <div class="cta-line">
+                16 years. 1.5% replacement rate: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Learn More</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
         <!-- DRAFT 5 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 5</div>
+                <h3>Flip "Fragile" Into Feature</h3>
+            </div>
+            <div class="violation-line">
+                "The 'fragile' material is the only one you can actually trust."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Flip Fragile</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"fragile = weak?"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Quality Seekers</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 5]
-
-Hook: Flip "fragile" into "transparent" (you can see it's clean)
-
-Body copy goes here...
-
-CTA: Crystal clear. No hiding spots.</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 5</div>
-                <div class="angle-tag">Flip Fragile</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: Transparency = trust, not weakness<br>
+                    Turn: You can see it's clean. You can verify.<br>
+                    Elevate: Non-reactive, non-conductive, non-leaching. Glass hides nothing.
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">See What You're Drinking Through</div>
-                <div class="fb-link-description">No guessing. No mystery. Just clean.</div>
+            <div class="cta-line">
+                Crystal clear. No hiding spots: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Shop Now</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
         <!-- DRAFT 6 -->
-        <article class="fb-post">
-            <div class="fb-post-header">
-                <div class="fb-avatar">S</div>
-                <div class="fb-page-info">
-                    <div class="fb-page-name">Strawesome</div>
-                    <div class="fb-sponsored">🌍</div>
+        <div class="draft-card">
+            <div class="draft-header">
+                <div class="draft-number">DRAFT 6</div>
+                <h3>Flip Purpose (Forever)</h3>
+            </div>
+            <div class="violation-line">
+                "You keep buying 'reusable' straws. That word doesn't mean what you think."
+            </div>
+            <div class="draft-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Pattern</div>
+                    <div class="meta-value">Flip Purpose</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Trigger</div>
+                    <div class="meta-value">"I already have reusable straws"</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Target</div>
+                    <div class="meta-value">Sustainability-Minded</div>
                 </div>
             </div>
-            <div class="fb-post-content">
-                <p class="fb-post-text">[PLACEHOLDER COPY - DRAFT 6]
-
-Hook: "Reusable should mean forever" — the sustainability angle
-
-Body copy goes here...
-
-CTA: The last straw you'll ever buy</p>
-            </div>
-            <div class="fb-image-container">
-                <div class="draft-label">Draft 6</div>
-                <div class="angle-tag">Flip Purpose</div>
-                <div class="placeholder-image">
-                    <div class="icon">🖼️</div>
-                    <div>Placeholder Image<br><small>1080 x 1080</small></div>
+            <div class="draft-body">
+                <div class="placeholder-copy">
+                    [PLACEHOLDER - COPY TO BE WRITTEN]<br><br>
+                    Hook: "Reusable" became "replace less often"<br>
+                    Turn: True reusable = never buy another one<br>
+                    Elevate: Lifetime warranty. Handmade in Michigan since 2009. The last straw you'll ever buy.
                 </div>
             </div>
-            <div class="fb-link-preview">
-                <div class="fb-link-domain">strawesome.com</div>
-                <div class="fb-link-title">Reusable Should Mean Forever</div>
-                <div class="fb-link-description">Handmade in Michigan. Lifetime warranty.</div>
+            <div class="cta-line">
+                Reusable should mean forever: strawesome.com
             </div>
-            <div class="fb-cta-row">
-                <div></div>
-                <button class="fb-cta-button">Shop Now</button>
+            <div class="rating-section">
+                <div class="rating-label">How does this land? 🎯</div>
+                <div class="rating-buttons">
+                    <button class="rating-btn btn-yes">✓ This one hits</button>
+                    <button class="rating-btn btn-close">◐ Getting closer</button>
+                    <button class="rating-btn btn-no">✗ Doesn't land</button>
+                    <button class="rating-btn btn-maybe">? Need to think</button>
+                </div>
             </div>
-        </article>
+        </div>
 
+        <div class="methodology-box">
+            <h2>📋 QUICK COMPARISON</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <tr style="border-bottom: 2px solid #FF6700;">
+                    <th style="text-align: left; padding: 10px; color: #FF6700;">Draft</th>
+                    <th style="text-align: left; padding: 10px; color: #FF6700;">Violation</th>
+                    <th style="text-align: left; padding: 10px; color: #FF6700;">Pattern</th>
+                </tr>
+                <tr style="border-top: 3px solid #FF6700; background: rgba(255,255,255,0.1);">
+                    <td colspan="3" style="padding: 10px; font-weight: bold; color: #FF6700;">ATTACK METAL</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #FF670044;">
+                    <td style="padding: 10px;">1</td>
+                    <td style="padding: 10px;">"Your 'safe' metal straw has a documented fatality."</td>
+                    <td style="padding: 10px;">Attack Belief</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #FF670044;">
+                    <td style="padding: 10px;">2</td>
+                    <td style="padding: 10px;">"You can't see what's growing inside your metal straw."</td>
+                    <td style="padding: 10px;">Attack Hidden</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #FF670044;">
+                    <td style="padding: 10px;">3</td>
+                    <td style="padding: 10px;">"Metal doesn't give. Your teeth do."</td>
+                    <td style="padding: 10px;">Attack Safety</td>
+                </tr>
+                <tr style="border-top: 3px solid #FF6700; background: rgba(255,255,255,0.1);">
+                    <td colspan="3" style="padding: 10px; font-weight: bold; color: #FF6700;">FLIP GLASS</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #FF670044;">
+                    <td style="padding: 10px;">4</td>
+                    <td style="padding: 10px;">"Glass straws don't shatter. Cheap glass does."</td>
+                    <td style="padding: 10px;">Flip Fear</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #FF670044;">
+                    <td style="padding: 10px;">5</td>
+                    <td style="padding: 10px;">"The 'fragile' material is the only one you can trust."</td>
+                    <td style="padding: 10px;">Flip Fragile</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">6</td>
+                    <td style="padding: 10px;">"You keep buying 'reusable' straws."</td>
+                    <td style="padding: 10px;">Flip Purpose</td>
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <p>🥤 PICK YOUR ANGLES! 🥤</p>
+            <p style="font-size: 1rem; margin-top: 10px;">Created: January 9, 2026 | Phase 1: Structure</p>
+        </footer>
     </div>
-
 </body>
 </html>
