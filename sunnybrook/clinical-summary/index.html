@@ -1,0 +1,2929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Clinical Summary - Patient</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #fff;
+            padding: 20px;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        @media print {
+            body { padding: 0; font-size: 10pt; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 3px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .header-title {
+            font-size: 18pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-subtitle {
+            color: #666;
+            font-size: 10pt;
+        }
+
+        /* Patient Info Grid */
+        .patient-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .info-group h3 {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-group p {
+            font-size: 11pt;
+            font-weight: 600;
+        }
+
+        .info-group .highlight {
+            color: #c00;
+            font-weight: bold;
+        }
+
+        /* Alert Boxes */
+        .alert-box {
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid;
+            background: #fff;
+        }
+
+        .alert-critical {
+            border-color: #c00;
+            background: #fff5f5;
+        }
+
+        .alert-warning {
+            border-color: #f90;
+            background: #fffaf0;
+        }
+
+        .alert-info {
+            border-color: #069;
+            background: #f0f8ff;
+        }
+
+        .alert-box h4 {
+            font-size: 10pt;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .alert-critical h4 { color: #c00; }
+        .alert-warning h4 { color: #b36b00; }
+        .alert-info h4 { color: #069; }
+
+        /* Medication Table */
+        .med-section {
+            margin-bottom: 20px;
+        }
+
+        .med-section h2 {
+            font-size: 12pt;
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .med-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+
+        .med-table th {
+            background: #e9e9e9;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 9pt;
+            text-transform: uppercase;
+            border: 1px solid #ccc;
+            font-weight: 600;
+        }
+
+        .med-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+
+        .med-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .med-name {
+            font-weight: bold;
+        }
+
+        .med-generic {
+            color: #666;
+            font-size: 9pt;
+            font-style: italic;
+        }
+
+        .dose-highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            color: #080;
+            font-weight: bold;
+        }
+
+        .status-discontinued {
+            color: #c00;
+            font-weight: bold;
+        }
+
+        .status-prn {
+            color: #069;
+            font-weight: bold;
+        }
+
+        .critical-timing {
+            background: #ffebee;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #c00;
+        }
+
+        /* Lab Values */
+        .lab-section {
+            margin-bottom: 15px;
+        }
+
+        .lab-section h2 {
+            font-size: 12pt;
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            text-transform: uppercase;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+
+        .lab-table th, .lab-table td {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .lab-table th {
+            background: #e9e9e9;
+            font-size: 9pt;
+            text-transform: uppercase;
+        }
+
+        .lab-abnormal {
+            background: #fff3e0;
+            font-weight: bold;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .notes-section h3 {
+            font-size: 10pt;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .notes-section ul {
+            margin-left: 18px;
+        }
+
+        .notes-section li {
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #000;
+            font-size: 9pt;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 12pt;
+            border-radius: 5px;
+        }
+
+        .print-btn:hover {
+            background: #555;
+        }
+
+        /* Event Timeline */
+        .timeline-section {
+            margin-bottom: 20px;
+            border: 2px solid #333;
+        }
+
+        .timeline-section h2 {
+            font-size: 12pt;
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline {
+            padding: 15px;
+            background: #fafafa;
+        }
+
+        .timeline-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr 220px;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* For Mom Column - Simple Summary */
+        .timeline-mom {
+            background: #f3e5f5;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12pt;
+            line-height: 1.5;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .timeline-mom .mom-label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: #7b1fa2;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .timeline-mom p {
+            margin: 0;
+            color: #333;
+        }
+
+        .timeline-entry:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            text-align: right;
+            padding-right: 15px;
+            border-right: 3px solid #333;
+        }
+
+        .timeline-date .date {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #333;
+        }
+
+        .timeline-date .time {
+            font-size: 9pt;
+            color: #666;
+        }
+
+        .timeline-date .badge {
+            display: inline-block;
+            font-size: 8pt;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .badge-critical { background: #c00; color: #fff; }
+        .badge-warning { background: #f90; color: #fff; }
+        .badge-update { background: #069; color: #fff; }
+        .badge-info { background: #666; color: #fff; }
+
+        .timeline-content h4 {
+            margin: 0 0 8px 0;
+            font-size: 11pt;
+            color: #1a1a1a;
+        }
+
+        .timeline-content ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+        }
+
+        .timeline-content li {
+            margin-bottom: 4px;
+            font-size: 10pt;
+        }
+
+        .timeline-content .staff {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .current-status {
+            background: #fff3e0;
+            padding: 10px 12px;
+            margin: 10px 15px 15px 15px;
+            border-left: 4px solid #f90;
+            font-weight: 600;
+        }
+
+        .current-status .label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: #b36b00;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn no-print" onclick="window.print()">Print / Save PDF</button>
+
+    <div class="header">
+        <div class="header-title">Patient Clinical Summary</div>
+        <div class="header-subtitle">Comprehensive Healthcare Handoff Document</div>
+    </div>
+
+    <div class="patient-info">
+        <div class="info-group">
+            <h3>Patient Name</h3>
+            <p>Patient</p>
+        </div>
+        <div class="info-group">
+            <h3>Date of Birth / Age</h3>
+            <p>Age 75</p>
+        </div>
+        <div class="info-group">
+            <h3>Primary Diagnoses</h3>
+            <p>
+                Atrial Fibrillation (new dx Sept 2025)<br>
+                Mitral Valve Regurgitation (severe)<br>
+                Rheumatoid Arthritis<br>
+                Fibromyalgia<br>
+                Osteoporosis<br>
+                <span class="highlight">CKD Stage 3a (eGFR 56)</span>
+            </p>
+        </div>
+        <div class="info-group">
+            <h3>Primary Care / Cardiologist</h3>
+            <p>
+                Cardiologist: Dr. Myers<br>
+                <span class="highlight">MitraClip Procedure: Jan 7, 2026</span>
+            </p>
+        </div>
+        <div class="info-group">
+            <h3>Height / Weight (Est.)</h3>
+            <p>~4'11" - 5'0" / ~115 lbs (52 kg)</p>
+        </div>
+        <div class="info-group">
+            <h3>Document Last Updated</h3>
+            <p>January 10, 2026 — 5:01pm</p>
+        </div>
+    </div>
+
+    <div class="alert-box alert-critical">
+        <h4>⚠️ Critical Medication Alert</h4>
+        <strong>Apixaban 5mg BID</strong> — Patient is anticoagulated for AFib stroke prevention.
+        <strong>Do NOT hold</strong> for routine dental procedures. For surgical procedures, consult cardiology.
+        CHA₂DS₂-VASc stroke risk ~4-6%/year without anticoagulation.
+    </div>
+
+    <div class="alert-box alert-warning">
+        <h4>⚠️ Renal Function Alert</h4>
+        <strong>eGFR 56 (Sept 3, 2025)</strong> — Stage 3a CKD. Dose adjustments may be required for renally-cleared medications.
+        Current Apixaban 5mg BID appropriate (reduce only if eGFR &lt;25 or meets dose reduction criteria).
+        <strong>Avoid nephrotoxic agents</strong> (NSAIDs sparingly). Contrast dye precautions apply.
+    </div>
+
+    <!-- EVENT TIMELINE - Newest First -->
+    <div class="timeline-section">
+        <h2>Event Timeline — Cardiac History</h2>
+
+        <div class="current-status" style="background: #e8f5e9; border-color: #4caf50;">
+            <div class="label" style="color: #2e7d32;">Current Status (Jan 10, 5:01pm)</div>
+            ON WARD — Room D347 Bed 2 — <strong style="color: #2e7d32;">DISCHARGE LIKELY MONDAY</strong> — Metoprolol ↑ to 50mg BID — Creatinine improved (96) — K still low (3.3) — Diltiazem/Amio infusions stopped — "Asymptomatic, vitally compensated"
+        </div>
+
+        <div class="timeline">
+            <!-- Jan 10, 5:01pm - Dr. Moustafa Staff Weekend Note -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">5:01pm</div>
+                    <div class="badge badge-update">CLINICAL NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Staff Weekend Note — Dr. Moustafa</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 5:01pm Jan 10) · Assessment 12:32pm · Signed 4:38pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Status:</strong>
+                        "Asymptomatic, vitally compensated" — stable, no symptoms
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Labs:</h5>
+                    <ul>
+                        <li><strong>Creatinine: 96</strong> — improved (was 120 on Jan 9)</li>
+                        <li><strong>Potassium: 3.3</strong> — still low (needs &gt;4)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Plan by Issue:</h5>
+
+                    <div style="background: #fafafa; padding: 10px; border-radius: 5px; margin-bottom: 8px;">
+                        <strong>1. Post-TEER Hematemesis:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>On Apixaban (blood thinner restarted)</li>
+                            <li>GI says stable, no endoscopy needed</li>
+                            <li>Continue PPI twice daily × 2 weeks</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #fafafa; padding: 10px; border-radius: 5px; margin-bottom: 8px;">
+                        <strong>2. Mod-Severe MR:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>Still volume overloaded</li>
+                            <li>Continue Lasix 80mg IV BID in hospital → 40mg PO daily at home</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-bottom: 8px;">
+                        <strong>3. Atrial Fibrillation:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>Diltiazem and Amiodarone infusions <strong>STOPPED</strong></li>
+                            <li>Still tachycardic (fast heart rate)</li>
+                            <li><strong style="color: #e65100;">Metoprolol increased: 37.5mg → 50mg BID</strong></li>
+                            <li>Keep K &gt; 4, Mg &gt; 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Amr Moustafa, MD (Cardiology)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>The doctor's official note says you're stable. Your kidney number improved (good!). They stopped two IV medicines and increased your heart pill instead (Metoprolol now 50mg twice a day). Still working on getting your potassium up and your heart rate down.</p>
+                </div>
+            </div>
+
+            <!-- Jan 10, 4:45pm - Dr. Moustafa Update to Son -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">4:45pm</div>
+                    <div class="badge badge-update">DOCTOR</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Dr. Moustafa Update — Discharge Likely Monday</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Son spoke with Dr. Moustafa while mom was sleeping</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Good News:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li><strong>Unlikely to need surgery before discharge</strong></li>
+                            <li><strong>Discharge likely Monday</strong></li>
+                        </ul>
+                    </div>
+
+                    <ul>
+                        <li><strong>Metoprolol dose being increased</strong> — to help get heart rate down</li>
+                        <li><strong>Shortness of breath is normal</strong> — expected given what she's been through, even just walking on flat surface</li>
+                        <li><strong>Getting back to pre-clip baseline:</strong> Not certain, but doctor's demeanor suggests not a major concern</li>
+                    </ul>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #1565c0;">Bottom line:</strong>
+                        Everything is "pretty normal-ish" per Dr. Moustafa. Focus is on medication optimization before discharge.
+                    </div>
+
+                    <div class="staff">
+                        <strong>Physician:</strong> Dr. Moustafa (Ward Cardiology)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Great news! Dr. Moustafa says you probably DON'T need surgery before going home. You could go home as early as Monday! They're increasing your heart medicine to slow down your heart rate. Being short of breath right now is normal — your body has been through a lot. You're doing well.</p>
+                </div>
+            </div>
+
+            <!-- Jan 10, 2:25pm - Michelle Clarified with Dr. Moustafa -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">2:25pm</div>
+                    <div class="badge badge-update">CLARIFICATION</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Michelle Clarified with Dr. Moustafa — Medication Management Phase</h4>
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Clarified:</strong>
+                        Right now is <strong>medication management before any surgery decision</strong>. "Waiting for surgery" on whiteboard was a misread. No imminent surgery — focus is on optimizing meds first.
+                    </div>
+                    <ul>
+                        <li><strong>Tylenol given:</strong> Finally approved and administered</li>
+                        <li><strong>Potassium given:</strong> K level was 3.1 (needs to be &gt;4 per care plan) — this explains why they're monitoring electrolytes closely</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Nurse:</strong> Michelle · <strong>Clarified with:</strong> Dr. Moustafa (Ward Cardiology)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Good news — you got Tylenol for your pain and potassium because your levels were low. The nurse confirmed with the doctor: no surgery is planned right now. They're focusing on getting your medicines right first. Dr. Bowers will talk about surgery options when you see him in 1 month.</p>
+                </div>
+            </div>
+
+            <!-- Jan 10, 1:50pm - Son Visit Update -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">1:50pm</div>
+                    <div class="badge badge-update">VISIT</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Son Visit — Update from Nurse Michelle</h4>
+                    <ul>
+                        <li><strong>Nurse today:</strong> Michelle (morning shift)</li>
+                        <li><strong>Pain:</strong> Mom had some pain — Michelle put in an order for Tylenol (needs physician approval first)</li>
+                        <li><strong>Bladder:</strong> Wanted to empty but catheter bag was empty — collector was full. <strong>Outputting well</strong> (good sign — fluid is leaving)</li>
+                    </ul>
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #c00;">Heart Rate Concern — Spiking to 160:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>Heart rate getting as high as <strong>160 bpm</strong> — poorly controlled AFib</li>
+                            <li><strong>Can't just increase Metoprolol</strong> — would drop her blood pressure too low</li>
+                            <li>This is a clinical challenge: need to slow heart without tanking BP</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #e65100;">"Waiting for Surgery" on whiteboard — Unclear if accurate:</strong>
+                        Michelle mentioned this, but may have misread the notes. <strong>Dr. Bowers said to come back in 1 month to DISCUSS MVR options</strong> — no surgery is imminent or scheduled. This could be a misinterpretation. Clarify with the ward team.
+                    </div>
+                    <div class="staff">
+                        <strong>Nurse:</strong> Michelle (morning shift Jan 10)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Son visited. You're peeing well — the water pill is working. Your heart is beating too fast (up to 160). They can't give you more heart medicine because it would make your blood pressure too low. No surgery is planned right now — Dr. Bowers will see you in 1 month to talk about options.</p>
+                </div>
+            </div>
+
+            <!-- Jan 10, 12:45am - Cardiology Consult Note from Jan 9 10pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">12:45am</div>
+                    <div class="badge badge-update">CARDIO</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Cardiology Consult Note — Dr. Amr Moustafa</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 12:45am Jan 10) · Assessment Jan 9 at 10pm · Signed Jan 9 at 10:07pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Good News:</strong>
+                        "Asymptomatic, vitally compensated" — She's stable and not showing symptoms. Heart rhythm controlled (AFib with CVR).
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Key Findings:</h5>
+                    <ul>
+                        <li><strong>PSM on Apex:</strong> Pansystolic murmur at apex — the sound of the leaky mitral valve (expected)</li>
+                        <li><strong>AFib with CVR:</strong> Atrial fibrillation with Controlled Ventricular Rate — heart rate under control</li>
+                        <li><strong>Telemetry reviewed:</strong> No concerning rhythms since admission</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Plan (Same as Before):</h5>
+                    <ul>
+                        <li>Continue Apixaban (blood thinner restarted)</li>
+                        <li>PPI twice daily for 2 weeks (stomach protection)</li>
+                        <li>Lasix 80mg IV BID in hospital → 40mg PO daily at home</li>
+                        <li>Metoprolol 37.5mg BID (for heart rate)</li>
+                        <li>Keep K &gt; 4, Mg &gt; 1 (electrolytes)</li>
+                    </ul>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #e65100;">Still No Mention of Angiogram:</strong>
+                        Son was told on Jan 8 that an angiogram might be done before discharge. Not mentioned in this note either. Ask the team.
+                    </div>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Amr Moustafa (Cardiology)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You're doing well. Your heart rhythm is under control and you're stable. No changes to the plan — keep taking your pills and resting.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9 - ECG/Cardiac Testing Note -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">ECG</div>
+                    <div class="badge badge-warning">TEST</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>ECG (Electrocardiogram) — Abnormal</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart cardiac testing note</em></p>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #e65100;">Interpretation:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li><strong>Atrial fibrillation</strong> — Confirms she's still in AFib (known)</li>
+                            <li><strong>Consider RVH or posterior infarct</strong> — See explanation below</li>
+                            <li><strong>Borderline T abnormalities, diffuse leads</strong> — T wave changes across multiple leads</li>
+                            <li><strong style="color: #c00;">ABNORMAL ECG</strong></li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">What This Means:</h5>
+                    <ul>
+                        <li><strong>RVH (Right Ventricular Hypertrophy):</strong> Right side of heart thickened — would make sense given her severe MR backs up into lungs → pulmonary hypertension → right heart works harder</li>
+                        <li><strong>Posterior infarct:</strong> ECG pattern COULD suggest old heart attack on back wall — "consider" means needs clinical correlation, not a diagnosis</li>
+                        <li><strong>T abnormalities:</strong> Can be from electrolytes (she's on heavy Lasix), ischemia, medications, or non-specific</li>
+                    </ul>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #1565c0;">Question to ask the team:</strong>
+                        What do they make of the "consider posterior infarct" language? Is this new or old? Does this change anything?
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>They did a heart tracing (ECG). It shows your irregular rhythm (AFib) which we already knew. Some other findings they'll look into — nothing that changes the plan right now.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 1:30pm - Transferred to Ward -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">1:30pm</div>
+                    <div class="badge badge-update">TRANSFER</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Transferred Out of ICU to Regular Ward</h4>
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Good Sign:</strong>
+                        Moving from CICU to regular ward means she's stable enough to not need intensive monitoring.
+                    </div>
+                    <ul>
+                        <li><strong>New Location:</strong> Room D347, Bed 2</li>
+                        <li><strong>Nurse:</strong> Lemlem</li>
+                        <li>No longer in Cardiac ICU — regular cardiac ward</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Ward Nurse:</strong> Lemlem
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Good news! You moved out of intensive care to a regular room. This means you're stable enough that you don't need as much monitoring.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 4:30pm - Echocardiogram Post-MitraClip from Jan 8 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">4:30pm</div>
+                    <div class="badge badge-update">ECHO</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Echocardiogram (Post-MitraClip) — Jan 8 at 2:01pm</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 4:30pm Jan 9) · Study performed Jan 8 at 2:01pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Good News:</strong>
+                        Heart pumping strength is EXCELLENT (61% — normal is 55-70%). Both ventricles normal size and function. No fluid around heart.
+                    </div>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c00;">Key Finding — Mitral Valve:</strong>
+                        Both clips ARE in place (XTW and XT clips). But still has <strong>moderate to severe mitral regurgitation</strong> — same as before procedure. The leak is "eccentric" (spraying to the side), which is harder to fix with clips.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Key Measurements:</h5>
+                    <table style="width: 100%; font-size: 9pt; border-collapse: collapse; margin-bottom: 10px;">
+                        <tr style="background: #f5f5f5;">
+                            <th style="padding: 4px; text-align: left; border: 1px solid #ddd;">Measurement</th>
+                            <th style="padding: 4px; text-align: left; border: 1px solid #ddd;">Value</th>
+                            <th style="padding: 4px; text-align: left; border: 1px solid #ddd;">Normal</th>
+                            <th style="padding: 4px; text-align: left; border: 1px solid #ddd;">Status</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 4px; border: 1px solid #ddd;">Ejection Fraction</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>61%</strong></td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">55-70%</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #2e7d32;">✓ Normal</td>
+                        </tr>
+                        <tr style="background: #fff3e0;">
+                            <td style="padding: 4px; border: 1px solid #ddd;">RVSP</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>50 mmHg</strong></td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">&lt;35 mmHg</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #e65100;">↑ Elevated</td>
+                        </tr>
+                        <tr style="background: #fff3e0;">
+                            <td style="padding: 4px; border: 1px solid #ddd;">Left Atrium</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>4.3 cm</strong> (52 ml/m²)</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">&lt;4.1 cm</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #c00;">Severely dilated</td>
+                        </tr>
+                        <tr style="background: #fff3e0;">
+                            <td style="padding: 4px; border: 1px solid #ddd;">IV Septum</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>1.4 cm</strong></td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">&lt;1.2 cm</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #e65100;">↑ Thickened (LVH)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 4px; border: 1px solid #ddd;">MV Mean Gradient</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>5.2 mmHg</strong></td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">—</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #2e7d32;">✓ No stenosis</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 4px; border: 1px solid #ddd;">Ascending Aorta</td>
+                            <td style="padding: 4px; border: 1px solid #ddd;"><strong>4.0 cm</strong></td>
+                            <td style="padding: 4px; border: 1px solid #ddd;">&lt;4.1 cm</td>
+                            <td style="padding: 4px; border: 1px solid #ddd; color: #e65100;">Borderline</td>
+                        </tr>
+                    </table>
+
+                    <h5 style="margin: 10px 0 5px 0;">What the Numbers Mean:</h5>
+                    <ul>
+                        <li><strong>Ejection Fraction 61%:</strong> Heart pumps out 61% of blood each beat — this is NORMAL and good</li>
+                        <li><strong>Left Atrium "severely dilated" (4.3cm):</strong> The waiting room before the leaky valve is stretched out from years of backup — expected</li>
+                        <li><strong>RVSP 50 mmHg:</strong> Pressure in lung arteries is elevated (normal &lt;35) — this is from the valve leak backing up into lungs. <em>This explains the ECG finding "consider RVH" — right heart is working harder.</em></li>
+                        <li><strong>Mild LV hypertrophy (septum 1.4cm):</strong> Heart muscle slightly thicker than normal — heart working harder to compensate</li>
+                        <li><strong>Mean mitral gradient 5 mmHg:</strong> The clips aren't blocking flow — no stenosis (blockage), just leak</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Other Findings:</h5>
+                    <ul>
+                        <li><strong>Small atrial septal defect (ASD):</strong> EXPECTED — they poke through the septum to do MitraClip. Small L→R shunt is normal post-procedure.</li>
+                        <li><strong>Mild-moderate tricuspid regurgitation:</strong> Right-side valve also leaking a bit</li>
+                        <li><strong>Mild aortic regurgitation:</strong> Aortic valve leaking slightly (minor)</li>
+                        <li><strong>Mildly dilated ascending aorta (4cm):</strong> Main artery slightly wider than normal — monitor but not urgent</li>
+                        <li><strong>Still in Atrial Fibrillation:</strong> Irregular rhythm continues</li>
+                    </ul>
+
+                    <div style="background: #f3e5f5; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #7b1fa2;">What This Confirms:</strong>
+                        The echo confirms what Dr. Bowers said — both clips are in place but the leak is still moderate-to-severe. Her heart muscle is healthy and pumping well, but the valve problem wasn't fixed. This is why MVR (open heart valve replacement) is being discussed for follow-up.
+                    </div>
+
+                    <div class="staff">
+                        <strong>Study performed:</strong> Sunnybrook Echocardiography
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Your heart muscle is strong and pumping well (61% — that's normal). The clips are still in place but the valve is still leaking. This is why they'll talk about surgery options at your follow-up.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 4:20pm - CICU Progress Note AM from Jan 8 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">4:20pm</div>
+                    <div class="badge badge-info">EARLIER NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>CICU Progress Note (Morning) — Dr. Ko / Dr. Rehman</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 4:20pm) · Written Jan 8 at 10:32am — EARLIER than the Jan 9 note</em></p>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #1565c0;">Why This Matters:</strong>
+                        This is the MORNING snapshot from Jan 8. Comparing to the Jan 9 note shows what changed over 24 hours.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Status on Jan 8 Morning:</h5>
+                    <ul>
+                        <li><strong>Heart rate:</strong> 90s (better than the 110 on Jan 9)</li>
+                        <li><strong>Blood pressure:</strong> 100s</li>
+                        <li><strong style="color: #2e7d32;">Creatinine: 86</strong> (BEFORE it jumped to 120 on Jan 9)</li>
+                        <li><strong>Fluid balance:</strong> -600cc (peeing out more than taking in — good)</li>
+                        <li>On Amiodarone infusion at 0.5</li>
+                        <li>Femoral sheath sites clean, no hematoma (groin access healing well)</li>
+                        <li>Mild pitting edema (some fluid)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Plan at That Time:</h5>
+                    <ul>
+                        <li><strong>HOLD Apixaban</strong> (blood thinner held due to bleeding)</li>
+                        <li><strong>Start DVT prophylaxis</strong> (prevent leg clots)</li>
+                        <li>NPO, GI to see</li>
+                        <li>Pantoprazole 40mg IV twice daily</li>
+                        <li>Lasix 40mg IV twice daily (diuresis)</li>
+                        <li>Hold Diltiazem, continue Amiodarone for 24 hours</li>
+                    </ul>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #e65100;">What Changed by Jan 9:</strong>
+                        <table style="width: 100%; margin-top: 8px; font-size: 10pt;">
+                            <tr>
+                                <th style="text-align: left; padding: 4px;">Measure</th>
+                                <th style="text-align: left; padding: 4px;">Jan 8 AM</th>
+                                <th style="text-align: left; padding: 4px;">Jan 9</th>
+                                <th style="text-align: left; padding: 4px;">Change</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px;">Creatinine</td>
+                                <td style="padding: 4px;">86</td>
+                                <td style="padding: 4px; color: #c00;"><strong>120</strong></td>
+                                <td style="padding: 4px; color: #c00;">↑ Worse</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px;">Heart rate</td>
+                                <td style="padding: 4px;">90s</td>
+                                <td style="padding: 4px; color: #c00;"><strong>110</strong></td>
+                                <td style="padding: 4px; color: #c00;">↑ Faster</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px;">Lasix dose</td>
+                                <td style="padding: 4px;">40 IV BID</td>
+                                <td style="padding: 4px;"><strong>80 IV BID</strong></td>
+                                <td style="padding: 4px;">↑ Doubled</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px;">Apixaban</td>
+                                <td style="padding: 4px;">HELD</td>
+                                <td style="padding: 4px; color: #2e7d32;"><strong>RESTARTED</strong></td>
+                                <td style="padding: 4px;">GI cleared</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px;">Rate control</td>
+                                <td style="padding: 4px;">Amiodarone</td>
+                                <td style="padding: 4px;"><strong>Metoprolol</strong></td>
+                                <td style="padding: 4px;">Switched</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Maham Rehman (PGY2 IM) on behalf of Dr. Ko (CICU Staff)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>This is an older note from the morning before. Your kidney numbers went up a bit and your water pill was doubled. Your blood thinner is back on now that the stomach is okay.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 4:17pm - Dr. Bowers Note from Jan 8 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">4:17pm</div>
+                    <div class="badge badge-critical">DR. BOWERS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Dr. Bowers Follow-Up Note — The Proceduralist's Account</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 4:17pm) · Written Jan 8 at 4:10pm (POD1)</em></p>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c62828;">Critical New Detail:</strong>
+                        The clip WORKED initially — result was <strong>TRACE MR</strong> (almost no leak). Then during the lock test, the clip opened and MR went back to <strong>SEVERE</strong>. They couldn't remove the device at that point.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">What This Means:</h5>
+                    <ul>
+                        <li>The clip was placed correctly and working — the leak was almost gone</li>
+                        <li>The lock mechanism failed during testing — the clip popped open</li>
+                        <li>Once it opened, they couldn't take it out safely</li>
+                        <li>This was a <strong>device malfunction</strong>, not a problem with her heart or the doctors' technique</li>
+                        <li>Device sent to Abbott (the manufacturer) for engineering review</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Echo Results (Jan 8):</h5>
+                    <ul>
+                        <li>TTE shows <strong>mod-severe MR</strong> with mean gradient 5mmHg</li>
+                        <li>This is where she was before the procedure — no improvement, but also no worse</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #069;">Plan Discussed:</h5>
+                    <ul>
+                        <li><strong>Consider Mitral Valve Surgery (MVR)</strong> — open heart to replace the valve</li>
+                        <li><strong>Reassess at 1 month</strong> in TMT clinic</li>
+                        <li>No decision needed now — recovery first</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Status at Time of Note:</h5>
+                    <ul>
+                        <li>No further large volume vomiting</li>
+                        <li>Hemodynamics stable, Hb stable (102 from 107)</li>
+                        <li>GI to see, NPO, on Pantoloc (PPI)</li>
+                    </ul>
+
+                    <div class="staff">
+                        <strong>Written by:</strong> Dr. Nicolas Bowers, MD FRCPC (Interventional Cardiologist who performed the procedure)<br>
+                        <strong>Context:</strong> Met with patient, spoke with Son on phone
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>The clip actually worked at first — the leak was almost gone! But then the clip popped open (a device problem, not your body). Dr. Bowers will talk about other options at your follow-up in 1 month.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 4:15pm - GI Consult Note from Jan 8 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">4:15pm</div>
+                    <div class="badge badge-update">GI CONSULT</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Gastroenterology Consult — Dr. Griller / Dr. Li</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 4:15pm) · Assessment Jan 8 at 11:13am · Signed Jan 8 at 8:03pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Bottom Line:</strong>
+                        The vomiting was most likely caused by the TEE tube irritating her throat/stomach — NOT dangerous internal bleeding. GI is not concerned. No scope needed.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">What Happened (Their Understanding):</h5>
+                    <ul>
+                        <li>Had TEE (ultrasound down throat) around 1pm after MitraClip procedure</li>
+                        <li>After TEE: 1st episode of dark brown vomit — she remembers this</li>
+                        <li>Felt nauseous with abdominal discomfort</li>
+                        <li>~1 hour later: 2nd episode of coffee-ground vomit</li>
+                        <li>No bright red blood at any point</li>
+                        <li>Stable overnight, no more bleeding</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">GI's Assessment:</h5>
+                    <ul>
+                        <li><strong style="color: #2e7d32;">Most likely: TRAUMATIC</strong> — the TEE tube irritated the throat/esophagus</li>
+                        <li>Less likely: ulcer, esophagitis, Mallory-Weiss tear, angiodysplasia</li>
+                        <li>Hemoglobin only dropped slightly (111 → 107 → 102) — minimal blood loss</li>
+                        <li>CT showed esophagus looks normal, no air leak</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #069;">GI's Plan:</h5>
+                    <ul>
+                        <li><strong>No scope needed</strong> — stable, not worth the risk</li>
+                        <li><strong>PPI twice daily for 2 weeks</strong> — protect the stomach/esophagus while it heals</li>
+                        <li><strong>No ongoing PPI or GI follow-up needed after 2 weeks</strong></li>
+                        <li>GI signing off — call back only if more bleeding or hemoglobin drops</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Social History Documented:</h5>
+                    <ul>
+                        <li>Lives alone at home</li>
+                        <li>Husband passed away 2 years ago</li>
+                        <li>Son (Son) helps with doctor's appointments, otherwise independent</li>
+                        <li><strong>Considering more supports at home post-admission</strong></li>
+                        <li>Non-smoker, no drugs, minimal alcohol (celebrations only)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Other Notes:</h5>
+                    <ul>
+                        <li><strong>2023 colonoscopy was normal</strong> — repeat FIT test or colonoscopy recommended in 5 years (so by 2028)</li>
+                        <li>Family history: Lung cancer in her mom, no GI cancers</li>
+                        <li>Apixaban was held before procedure (last dose Jan 4 PM)</li>
+                        <li>Creatinine was 86 on Jan 8 (jumped to 120 by Jan 9)</li>
+                    </ul>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Huaqi Li (PGY2) on behalf of Dr. Griller<br>
+                        <strong>Copied to:</strong> Dr. Alice Sy (Family Doctor) — 420 Highway 7 East, Unit 27, Richmond Hill
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>The stomach doctors checked you out. The brown vomit was from the tube down your throat irritating things — NOT dangerous bleeding. Take the stomach pill twice a day for 2 weeks, then you're done with that.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 4:10pm - TMT Procedural Consultation (Late Entry for Jan 7) -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">4:10pm</div>
+                    <div class="badge badge-update">PROCEDURE NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>TMT Procedural Consultation — Dr. Czarnecki</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 4:10pm) · Late entry documenting Jan 7 procedure · Signed Jan 9 at 12:51pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">What This Note Is:</strong>
+                        This is the official summary of the MitraClip procedure from the heart team. It documents why she was chosen for the procedure and what happened.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Why She Was Chosen for MitraClip:</h5>
+                    <ul>
+                        <li>Dr. Cohen initially saw her and felt MitraClip (TEER) was better than open surgery</li>
+                        <li>Reason: Her MR is "functional" (from heart stretching) not "structural" (from damaged valve)</li>
+                        <li>NYHA Class II = mild symptoms — comfortable at rest, short of breath with normal activity</li>
+                        <li>TEE imaging showed her anatomy was well-suited for the clip</li>
+                        <li>Heart team reviewed and approved her for the procedure</li>
+                        <li>She was stable and "well compensated" going in</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Her Medical History (Confirmed):</h5>
+                    <ul>
+                        <li>MR (mitral regurgitation), HF (heart failure), AF (atrial fibrillation)</li>
+                        <li>CKD (chronic kidney disease), HTN (high blood pressure)</li>
+                        <li>RA (rheumatoid arthritis), Osteoporosis</li>
+                        <li><strong>NKDA</strong> = No Known Drug Allergies</li>
+                        <li>Independent at baseline, non-smoker</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #c00;">What Went Wrong:</h5>
+                    <ul>
+                        <li><strong>Lock failure on clip #1</strong> — the clip passed the "lock line test" but still failed to lock</li>
+                        <li>Result: "Sub-optimal MR reduction" — the leak wasn't fixed as hoped</li>
+                        <li>This confirms it was a device/mechanical problem, not her heart</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #069;">What Happens Next:</h5>
+                    <ul>
+                        <li><strong>Follow-up in TMT clinic</strong> to discuss if she needs MVR (Mitral Valve Replacement = open heart surgery)</li>
+                        <li><strong style="background: #fff3e0; padding: 2px 6px;">SBE prophylaxis recommended LIFELONG</strong> — must take antibiotics before dental work forever to prevent heart infection</li>
+                    </ul>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Son Czarnecki (TMT Staff)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>This is the official record of your procedure. The clip didn't work because of a mechanical problem (not you). IMPORTANT: From now on, always tell dentists you need antibiotics before any dental work.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 3:15pm - CICU Progress Note from MyChart -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">3:15pm</div>
+                    <div class="badge badge-critical">CLINICAL NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>CICU Progress Note — Dr. Ko / Dr. Sugumar</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: Sunnybrook MyChart (accessed 3:15pm) · Note signed 12:57pm · Assessment time unknown</em></p>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #e65100;">Key Finding: VOLUME OVERLOADED</strong><br>
+                        This is the "water" issue — too much fluid in her system. They're increasing her water pill significantly.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Current Status:</h5>
+                    <ul>
+                        <li><strong>Mental status:</strong> Alert, oriented, fully conscious (GCS 15) — brain is good</li>
+                        <li><strong>Heart rate:</strong> 110 (still fast, in AFib)</li>
+                        <li><strong>Blood pressure:</strong> 120s (normal)</li>
+                        <li><strong>Oxygen:</strong> On 1L O2</li>
+                        <li><strong>No fever, no swelling</strong></li>
+                        <li><strong>Urine output:</strong> 900ml/24hr (low — kidneys under stress)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #c00;">Lab Concerns:</h5>
+                    <ul>
+                        <li><strong style="color: #c00;">Creatinine: 120 (was 86)</strong> — Kidney function dropped. Likely from procedure/contrast dye. Needs monitoring.</li>
+                        <li><strong>Hemoglobin: 102 (was 107)</strong> — Small drop, possibly from bleeding. Stable.</li>
+                        <li>Troponin 50 — Elevated but expected after heart procedure</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0; color: #069;">Medication Changes:</h5>
+                    <ul>
+                        <li><strong style="color: #c00;">STOP Diltiazem 180mg</strong> — No longer taking this</li>
+                        <li><strong style="color: #c00;">STOP Amiodarone IV</strong> — Infusion discontinued</li>
+                        <li><strong style="color: #080;">START Metoprolol 37.5mg twice daily</strong> — New heart rate med (beta blocker)</li>
+                        <li><strong style="color: #080;">INCREASE Furosemide to 80mg IV twice daily</strong> — Was 40mg oral once daily</li>
+                        <li><strong>RESTART Apixaban</strong> — Blood thinner back on</li>
+                        <li><strong>CONTINUE PPI twice daily x 2 weeks</strong> — Stomach acid protection</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Good News:</h5>
+                    <ul>
+                        <li><strong>CT Chest:</strong> No esophageal injury — vomiting didn't tear anything</li>
+                        <li><strong>GI cleared:</strong> No scope needed, stable</li>
+                        <li><strong>Transferring to regular ward</strong> — Out of ICU (good sign!)</li>
+                        <li>Heart pumping function still good (LVEF 60-65%)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Also Noted:</h5>
+                    <ul>
+                        <li>Coronary arteries have some plaque (60% LAD, 50% mid-LAD, 40% circumflex) — moderate blockages</li>
+                        <li>Aorta slightly dilated (4.1cm)</li>
+                        <li>Full code status</li>
+                    </ul>
+
+                    <div class="staff">
+                        <strong>Signed by:</strong> Dr. Viji Sugumar (PGY1) on behalf of Dr. Ko (CICU Staff)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You have too much water in your body (fluid). They doubled your water pill to help you pee it out. New pill for heart rate (Metoprolol). Kidneys are a bit stressed but they're watching. Moving to regular room is GOOD.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 10:30am -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">10:30am</div>
+                    <div class="badge badge-warning">SETBACK</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Doctors Rounds — NOT Going Home Next Couple Days</h4>
+                    <ul>
+                        <li><strong>"Water in her lungs"</strong> — pulmonary edema (fluid backup from heart failure)</li>
+                        <li>Mom called Son at 10:30am with this update</li>
+                        <li>Extended monitoring required</li>
+                        <li>Nurse removing some lines/tubes so she can sit up and move</li>
+                        <li><em>Question to ask: How was this detected? (X-ray? Physical exam?)</em></li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You have extra fluid that needs to come out before going home. The water pill will help. Stay a couple more days so they can make sure you're okay.</p>
+                </div>
+            </div>
+
+            <!-- Jan 9, 10:10am -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 9, 2026</div>
+                    <div class="time">10:10am</div>
+                    <div class="badge badge-info">UPDATE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Morning Check-In — Eating Breakfast</h4>
+                    <ul>
+                        <li>Son called mom around 10am</li>
+                        <li><strong>Breakfast:</strong> Oatmeal + coffee</li>
+                        <li>Has a Chinese nurse today</li>
+                        <li>Someone mentioned possible discharge today (but mom lacks clarity — take with filter)</li>
+                        <li>No physio yet — Son may help with movement when he arrives</li>
+                        <li><strong>To do:</strong> Set up MyChart access (needs MRN or health card # from hospital)</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You had breakfast and you're feeling okay. Son will visit later.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 9:30pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">9:30pm</div>
+                    <div class="badge badge-info">NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Sleep Disruption — Nurse Station Noise</h4>
+                    <ul>
+                        <li>Nurses loud at station, hard for mom to sleep</li>
+                        <li>Son put in ear plugs for her</li>
+                        <li><em>Lesson: Bring ear plugs for future hospital stays</em></li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Noisy at night. Son brought ear plugs. Try to rest.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 8:15pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">8:15pm</div>
+                    <div class="badge badge-info">SYMPTOM</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Fibromyalgia Flare-Up</h4>
+                    <ul>
+                        <li>Pain flare-up from fibromyalgia</li>
+                        <li>Asked Izzy: home Pregabalin or hospital's?</li>
+                        <li>Izzy: Use hospital's — need to clear with team first (check for interactions)</li>
+                        <li>8:39pm: Still waiting for Pregabalin to arrive</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Your fibromyalgia is acting up. They'll give you your pain pill once they check it's safe with your other meds.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 7:53pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">7:53pm</div>
+                    <div class="badge badge-info">MEDICATION</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Amiodarone IV Noticed</h4>
+                    <ul>
+                        <li>IV bag for <strong>Amiodarone</strong> observed (antiarrhythmic for AFib)</li>
+                        <li>Start time unknown — not noticed earlier</li>
+                        <li>Likely for rhythm control post-procedure</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>They put medicine in your IV to keep your heart rhythm steady after the procedure.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 6:16pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">6:16pm</div>
+                    <div class="badge badge-update">GOOD NEWS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>No GI Scope Needed — Tolerating Food</h4>
+                    <ul>
+                        <li><strong>Gastroenterologist (this morning):</strong> No scope needed</li>
+                        <li><strong>Note:</strong> Dr. Bowers did not read GI notes before his 3:45pm call</li>
+                        <li><strong>Lunch:</strong> Had a little bit of food</li>
+                        <li><strong>Dinner (6:16pm):</strong> Congee (brought by Son)</li>
+                        <li><strong>No nausea</strong> after eating</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Day Nurse:</strong> Giselle (confirmed update ~5pm)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Great news! No stomach procedure needed. You're eating and keeping food down. Son brought congee.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 3:45pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">3:45pm</div>
+                    <div class="badge badge-update">UPDATE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Dr. Bowers Call — Procedure Debrief & Path Forward</h4>
+                    <ul>
+                        <li><strong>Current status:</strong> Deciding whether GI scope needed before discharge — no plan yet</li>
+                        <li><strong>Echo today:</strong> Leakage NOT better than pre-procedure, but also NOT worse</li>
+                        <li><strong>Both clips in place:</strong> First clip came out during testing (not fully closed); second clip there but not giving needed effect</li>
+                        <li><strong>Another clip not recommended:</strong> Positioning issue — current clip location means another wouldn't yield desired effect</li>
+                        <li><strong>Device issue:</strong> Not her heart physiology — "device engineering/manufacturing problem" (frustrating); sending device back to Abbott</li>
+                        <li><strong>Path forward:</strong> Open heart surgery (Dr. Bowers' recommendation) OR medication management only</li>
+                        <li><strong>If surgery chosen:</strong> Clips would be removed, valve REPLACEMENT (not repair)</li>
+                        <li><strong>Follow-up:</strong> See Dr. Bowers again in 1 month</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Location:</strong> Room 342, CICU<br>
+                        <strong>Day Nurse:</strong> Giselle
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Dr. Bowers called to explain. The clip didn't fix the leak like we hoped. Your heart is the same as before — not worse. We'll talk about options at your follow-up in 1 month.</p>
+                </div>
+            </div>
+
+            <!-- Jan 8, 12pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 8, 2026</div>
+                    <div class="time">12:00pm</div>
+                    <div class="badge badge-update">UPDATE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>No Discharge — Extended Monitoring</h4>
+                    <ul>
+                        <li>Would typically be discharged by now post-MitraClip</li>
+                        <li>Requires additional monitoring</li>
+                        <li>Investigating whether vomiting was GI bleeding</li>
+                        <li>Physician communication unclear</li>
+                        <li>Son heading to hospital to clarify</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You can't go home yet. They want to check on your stomach first. Son is coming to talk to the doctors.</p>
+                </div>
+            </div>
+
+            <!-- Jan 7, 8pm -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 7, 2026</div>
+                    <div class="time">8:05pm</div>
+                    <div class="badge badge-warning">COMPLICATION</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Post-Procedure Complication — Vomiting</h4>
+                    <ul>
+                        <li>Vomiting brown substance post-procedure</li>
+                        <li>No stomach pain, but chest discomfort</li>
+                        <li>Appearance: Brown, NOT bright red</li>
+                        <li>Doctors do not think it's blood</li>
+                        <li>Workup ordered: CT scan and X-ray</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Overnight Team (Jan 7 → Jan 8):</strong> Dr. Co (Physician), Izzy Balazo (Nurse)
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You threw up brown stuff after the procedure. The doctors don't think it's blood. They're doing scans to check.</p>
+                </div>
+            </div>
+
+            <!-- Jan 7, Procedure -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 7, 2026</div>
+                    <div class="time">Procedure</div>
+                    <div class="badge badge-critical">UNSUCCESSFUL</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>MitraClip Procedure — Did Not Achieve Goal</h4>
+                    <ul>
+                        <li><strong>First clip:</strong> Placed well initially but came out</li>
+                        <li><strong>Second clip:</strong> Placed but unclear if meaningfully attached</li>
+                        <li><strong>Dr. Bowers:</strong> Unlikely to see symptoms improve from pre-clip state</li>
+                        <li><strong>Dr. Cohen:</strong> Could potentially be better (guarded optimism)</li>
+                        <li><strong>Next steps:</strong> Open heart surgery discussed as future option (months from now)</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Procedure Team:</strong> Dr. Bowers, Dr. Cohen, Nurse Felicia Mistry
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>The clip procedure didn't work as hoped. The clip came loose. Your heart isn't worse than before. The doctors will discuss other options with you later.</p>
+                </div>
+            </div>
+
+            <!-- Jan 7, Admission -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 7, 2026</div>
+                    <div class="time">Morning</div>
+                    <div class="badge badge-info">ADMISSION</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Admitted for MitraClip Procedure</h4>
+                    <ul>
+                        <li>Location: Sunnybrook Hospital</li>
+                        <li>Procedure: Transcatheter mitral valve repair</li>
+                        <li>Indication: Severe mitral regurgitation</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>You came to the hospital today to have the clip put on your heart valve.</p>
+                </div>
+            </div>
+
+            <!-- Nov 26, 2025 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Nov 26, 2025</div>
+                    <div class="time">Procedure</div>
+                    <div class="badge badge-info">WORKUP</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Coronary Angiogram + Right Heart Catheterization</h4>
+                    <ul>
+                        <li>Location: Sunnybrook Hospital</li>
+                        <li>Pictures of heart via artery (angiogram)</li>
+                        <li>Pressure measurements via vein (right heart cath)</li>
+                        <li>Access: Groin</li>
+                        <li>Purpose: Pre-MitraClip assessment</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Nurse:</strong> Felicia Mistry
+                    </div>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>They took pictures of your heart through your leg to make sure everything is okay before the clip procedure.</p>
+                </div>
+            </div>
+
+            <!-- Oct 24, 2025 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Oct 24, 2025</div>
+                    <div class="time">Test</div>
+                    <div class="badge badge-info">WORKUP</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Surface Echocardiogram (Repeat)</h4>
+                    <ul>
+                        <li>Location: Sunnybrook Health Sciences Centre</li>
+                        <li>Standard transthoracic echo</li>
+                        <li>Follow-up imaging after TEE</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Another ultrasound of your heart from outside your chest. Part of getting ready for the procedure.</p>
+                </div>
+            </div>
+
+            <!-- Oct 16, 2025 -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Oct 16, 2025</div>
+                    <div class="time">Test</div>
+                    <div class="badge badge-info">WORKUP</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Transesophageal Echocardiogram (TEE)</h4>
+                    <ul>
+                        <li>Location: Sunnybrook Health Sciences Centre</li>
+                        <li>Camera down throat to view heart from behind</li>
+                        <li>Provides detailed images of mitral valve</li>
+                        <li>Short stay procedure</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>They put a small camera down your throat to get clearer pictures of your heart valve. This helped them plan the clip procedure.</p>
+                </div>
+            </div>
+
+            <!-- Sept 3, 2025 - ER -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Sept 3, 2025</div>
+                    <div class="time">ER Visit</div>
+                    <div class="badge badge-critical">DIAGNOSIS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>ER Admission — Atrial Fibrillation Diagnosed</h4>
+                    <ul>
+                        <li>Location: North York General Hospital (ER)</li>
+                        <li>Transferred from KMH Cardiology after echo showed severe findings</li>
+                        <li>Diagnosis: Atrial fibrillation (new onset) + severe mitral regurgitation</li>
+                        <li>Labs: eGFR 56 (Stage 3a CKD)</li>
+                        <li>Started on: Apixaban (anticoagulation), Furosemide (diuretic)</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>This is when they discovered your heart problems. Your heart rhythm was irregular and your valve was leaking. They started you on the blood thinner and water pill.</p>
+                </div>
+            </div>
+
+            <!-- Sept 3, 2025 - KMH -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Sept 3, 2025</div>
+                    <div class="time">Afternoon</div>
+                    <div class="badge badge-info">WORKUP</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>First Echocardiogram — Triggered ER Transfer</h4>
+                    <ul>
+                        <li>Location: KMH Cardiology</li>
+                        <li>Chief complaint: SOB, high heart rate</li>
+                        <li>Echo showed severe mitral regurgitation</li>
+                        <li>Sent immediately to NYGH ER</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Your first heart ultrasound when you felt short of breath. It showed the valve problem and they sent you to the hospital right away.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOM'S VERSION - Plain Language Timeline -->
+    <div style="border: 3px solid #9c27b0; margin-top: 40px; page-break-before: always;">
+        <h2 style="background: #9c27b0; color: #fff; padding: 15px 20px; margin: 0; font-size: 18pt; letter-spacing: 0.5px;">
+            Mom's Version — Your Hospital Story
+        </h2>
+
+        <div style="background: #f3e5f5; padding: 20px; margin: 20px; border-radius: 10px;">
+            <p style="font-size: 14pt; line-height: 1.9; margin: 0;">
+                <strong>Mom, this section is just for you.</strong>
+            </p>
+            <p style="font-size: 14pt; line-height: 1.9; margin: 15px 0 0 0;">
+                It tells the story of what the doctors found and did, starting from the beginning.
+            </p>
+            <p style="font-size: 14pt; line-height: 1.9; margin: 15px 0 0 0; color: #7b1fa2;">
+                Read it slowly. Ask Son if anything is confusing.
+            </p>
+        </div>
+
+        <div style="padding: 25px;">
+
+            <!-- 1. Sept 3, 2025 -->
+            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">1</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">September 3, 2025</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">When They Found the Problem</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    You went to see a heart doctor because you were feeling short of breath.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    They did an ultrasound of your heart and found <strong>two problems:</strong>
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #9c27b0;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>Problem 1:</strong> A valve in your heart isn't closing properly. When your heart pumps, some blood leaks backwards. This is called a "leaky valve."
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                        <strong>Problem 2:</strong> Your heart rhythm is irregular — it beats fast and out of rhythm. This is called "AFib."
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    Because this was serious, they sent you to the hospital right away.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    They started you on <strong>two important medicines:</strong> a blood thinner to prevent strokes, and a water pill to help get rid of extra fluid.
+                </p>
+            </div>
+
+            <!-- 2. Oct-Nov 2025 -->
+            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">2</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">October – November 2025</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Getting Ready for the Procedure</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    The doctors did several tests to learn more about your heart and plan how to fix it:
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 0;">
+                        <strong>October 16:</strong> A special ultrasound with a camera down your throat to see the valve up close.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                        <strong>October 24:</strong> Another heart ultrasound from outside your chest.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                        <strong>November 26:</strong> A test where they put a thin tube through your leg to look at your heart arteries and measure pressures.
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                    <strong>Good news from these tests:</strong> Your heart was healthy enough to try a procedure called "MitraClip" to fix the leaky valve — without needing to open your chest.
+                </p>
+            </div>
+
+            <!-- 3. Jan 7, 2026 - The Procedure -->
+            <div style="background: #fff5f5; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #e53935;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #e53935; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">3</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #c62828; font-weight: 600;">January 7, 2026</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">The Clip Procedure</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    This was the day of your procedure. The doctors put you to sleep and placed a small clip on your valve to help it close better.
+                </p>
+
+                <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>What happened:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        At first, the clip worked perfectly — the leak was almost gone!
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        But then the clip popped open. The leak came back.
+                    </p>
+                </div>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #1976d2;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>This was NOT your fault.</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The clip device itself had a problem. The company that makes it is investigating.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        Your heart is the same as before — not worse.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4. Jan 7 Evening - Vomiting -->
+            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">4</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 7, 2026 — Evening</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">After the Procedure — You Got Sick</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    After waking up, you vomited brown stuff. This worried the doctors.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    They did a CT scan to check if anything was hurt inside.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                    <strong>Good news:</strong> The scans showed nothing was damaged. You were okay.
+                </p>
+            </div>
+
+            <!-- 5. Jan 8 - GI and Dr. Bowers -->
+            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">5</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 8, 2026</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Doctors Explained Everything</div>
+                    </div>
+                </div>
+
+                <div style="background: #e8f5e9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>The stomach doctors said:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The vomiting was just from the tube they put down your throat during the procedure. It scratched your throat a little. NOT dangerous bleeding.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        You don't need any more stomach tests. Just take a stomach pill twice a day for 2 weeks.
+                    </p>
+                </div>
+
+                <div style="background: #e3f2fd; padding: 20px; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>Dr. Bowers (your clip doctor) said:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The clip worked at first, then popped open. It was a device problem.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        He will see you again in 1 month to talk about what to do next. One option is open heart surgery to replace the valve.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0; font-style: italic;">
+                        You don't need to decide anything now. Focus on resting.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6. Jan 8 - Echo -->
+            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">6</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">January 8, 2026</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Heart Ultrasound Results</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                    <strong>Good news:</strong> Your heart muscle is strong! It's pumping at 61%, which is normal and healthy.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    The valve is still leaking (same as before), but your heart muscle is working well.
+                </p>
+            </div>
+
+            <!-- 7. Jan 9 - Fluid and Kidneys -->
+            <div style="background: #fff8e1; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ffcc80;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">7</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 9, 2026</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Too Much Fluid — Stronger Water Pills</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    The doctors found you have too much water in your body. It's backing up into your lungs.
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>What they did:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                        • Gave you a stronger water pill (80mg twice a day instead of 40mg once)
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 10px 0 0 0;">
+                        • Changed your heart pill to a new one called Metoprolol
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2.2; margin: 10px 0 0 0;">
+                        • Put your blood thinner back on
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    <strong>You will pee a lot.</strong> That's good! It means the extra water is leaving your body.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff3e0; padding: 15px; border-radius: 8px;">
+                    <strong>One thing they're watching:</strong> Your kidney number went up a bit. This is probably from the dye they used during the procedure. It usually gets better on its own.
+                </p>
+            </div>
+
+            <!-- 8. Jan 9 - Out of ICU -->
+            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">8</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 9, 2026 — Afternoon</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Good News — Moved Out of ICU!</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    You were moved from intensive care to a regular hospital room.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    <strong>This is a good sign.</strong> It means you're stable and don't need as much monitoring.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    <strong>Your new room:</strong> D347, Bed 2
+                </p>
+            </div>
+
+            <!-- 9. Jan 9 - Stable -->
+            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">9</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 9, 2026 — Evening</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Heart Doctor Says You're Stable</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    Dr. Moustafa checked on you and said you are <strong>"stable"</strong> — not showing any worrying symptoms.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    Your heart rhythm is under control. Keep taking your medicines and resting.
+                </p>
+            </div>
+
+            <!-- 10. Jan 10 - Son Visit -->
+            <div style="background: #fff5f5; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #ff9800;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">10</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 10, 2026 — Afternoon</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Son Visited — Heart Rate Is Too Fast</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    Son came to visit around 1pm. Your nurse today is Michelle.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                    <strong>Good news:</strong> You're peeing well! The water pill is working — the extra fluid is leaving your body.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    You had some pain. Michelle is getting Tylenol approved by the doctor for you.
+                </p>
+
+                <div style="background: #ffebee; padding: 20px; margin: 20px 0 0 0; border-radius: 8px; border-left: 5px solid #c62828;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong style="color: #c62828;">Your heart is beating too fast — up to 160 beats per minute.</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The medicine (Metoprolol) isn't slowing it down enough.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        They can't give you more of that medicine because it would make your blood pressure drop too low.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The doctors are working on finding the right balance.
+                    </p>
+                </div>
+
+                <div style="background: #e3f2fd; padding: 20px; margin: 20px 0 0 0; border-radius: 8px;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong>Note on the whiteboard:</strong> "Waiting for surgery"
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        The nurse mentioned this, but it might be a misunderstanding. Dr. Bowers said you would come back in <strong>1 month</strong> to talk about surgery options. No surgery is planned right now — just recovery first.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 11. Jan 10 - Clarified with Doctor -->
+            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">11</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Later That Day</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Good News — The Nurse Checked with the Doctor</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    Your nurse Michelle asked Dr. Moustafa to explain what's happening.
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong style="color: #2e7d32;">The doctor confirmed:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        Right now is "medication management" — they're working on getting your medicines right.
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        <strong>No surgery is planned right now.</strong> That will be discussed later at your follow-up.
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff; padding: 15px; border-radius: 8px;">
+                    <strong>Also:</strong> You got Tylenol for your pain, and potassium because your levels were a bit low.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    This is good news — focus on resting and letting the medicines do their job.
+                </p>
+            </div>
+
+            <!-- 12. Jan 10 - Dr. Moustafa: Going Home Monday -->
+            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 3px solid #4caf50;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">12</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Late Afternoon</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Great News from the Doctor!</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    Son talked to Dr. Moustafa while you were sleeping.
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
+                    <p style="font-size: 16pt; line-height: 2; margin: 0; color: #2e7d32;">
+                        <strong>Two pieces of good news:</strong>
+                    </p>
+                    <p style="font-size: 15pt; line-height: 2; margin: 15px 0 0 0;">
+                        1. You probably <strong>DON'T need surgery</strong> before going home.
+                    </p>
+                    <p style="font-size: 15pt; line-height: 2; margin: 15px 0 0 0;">
+                        2. You could go home as early as <strong>Monday</strong>!
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    They're increasing your heart medicine to help slow your heart rate down.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff; padding: 15px; border-radius: 8px;">
+                    <strong>About being short of breath:</strong> This is normal right now. Your body has been through a lot. It takes time to recover.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; font-weight: bold; color: #2e7d32;">
+                    You're doing well. Keep resting.
+                </p>
+            </div>
+
+            <!-- 13. Jan 10 - Official Doctor's Note -->
+            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">13</div>
+                    <div>
+                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Evening</div>
+                        <div style="font-size: 16pt; font-weight: bold; color: #333;">The Doctor Wrote Everything Down</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                    Dr. Moustafa wrote an official note about how you're doing.
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
+                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                        <strong style="color: #2e7d32;">Good things:</strong>
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                        • Your kidney number got better (96, down from 120)
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 10px 0 0 0;">
+                        • They stopped two IV medicines — you don't need them anymore
+                    </p>
+                    <p style="font-size: 14pt; line-height: 2; margin: 10px 0 0 0;">
+                        • You are "stable" with no worrying symptoms
+                    </p>
+                </div>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    <strong>Your heart pill (Metoprolol) was increased</strong> — now 50mg twice a day instead of 37.5mg. This will help slow your heart rate.
+                </p>
+
+                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff3e0; padding: 15px; border-radius: 8px;">
+                    Your potassium is still a bit low (3.3). They want it above 4. They're giving you potassium to bring it up.
+                </p>
+            </div>
+
+            <!-- IMPORTANT REMINDER -->
+            <div style="background: #ffebee; border: 3px solid #c62828; padding: 25px; border-radius: 12px; margin-top: 40px;">
+                <h3 style="margin: 0 0 15px 0; color: #c62828; font-size: 18pt;">⚠️ VERY IMPORTANT</h3>
+
+                <p style="font-size: 15pt; line-height: 2; margin: 0;">
+                    <strong>Before ANY dental work</strong> — cleaning, fillings, anything — you MUST take antibiotics first.
+                </p>
+
+                <p style="font-size: 15pt; line-height: 2; margin: 20px 0 0 0;">
+                    This is because you have clips in your heart. Bacteria from dental work could cause an infection.
+                </p>
+
+                <div style="background: #fff; padding: 20px; margin: 25px 0; border-radius: 8px;">
+                    <p style="font-size: 15pt; line-height: 2; margin: 0;">
+                        <strong>Tell every dentist:</strong>
+                    </p>
+                    <p style="font-size: 16pt; line-height: 2; margin: 10px 0 0 0; color: #c62828;">
+                        "I had a MitraClip and need antibiotics before dental work."
+                    </p>
+                </div>
+
+                <p style="font-size: 15pt; line-height: 2; margin: 0; font-weight: bold; color: #c62828;">
+                    This is for the rest of your life.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- UNDERSTANDING YOUR CONDITION - Plain language for patient -->
+    <div class="notes-section" style="background: #fff8e1; border: 2px solid #f9a825;">
+        <h3 style="color: #f57f17; border-bottom: 2px solid #f9a825;">Understanding Your Condition — In Simple Words</h3>
+
+        <!-- SYNTHESIS SECTION - What it all means -->
+        <div style="background: #fff; border: 2px solid #4caf50; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+            <h4 style="color: #2e7d32; margin: 0 0 12px 0; font-size: 14pt;">What's Happening With You Right Now (Jan 9, 2026)</h4>
+
+            <p style="font-size: 11pt; line-height: 1.7; margin-bottom: 12px;">
+                <strong>The short version:</strong> Your body has too much fluid in it right now. This is making it harder for your heart and lungs to work, and it's also putting stress on your kidneys. The doctors are giving you stronger medicine to help your body get rid of the extra fluid. Once the fluid is gone, you should feel better.
+            </p>
+
+            <div style="background: #e8f5e9; padding: 12px; border-radius: 5px; margin-bottom: 15px;">
+                <strong style="color: #2e7d32; font-size: 12pt;">The Good News:</strong>
+                <ul style="margin: 8px 0 0 20px; line-height: 1.8;">
+                    <li>Your brain is working perfectly — you're alert and thinking clearly</li>
+                    <li>Your heart is still pumping well (60-65% strength, which is normal)</li>
+                    <li>The vomiting didn't damage anything — CT scan is clear</li>
+                    <li>You're stable enough to leave the ICU and go to a regular room</li>
+                    <li>No fever, no infection</li>
+                </ul>
+            </div>
+
+            <div style="background: #fff3e0; padding: 12px; border-radius: 5px; margin-bottom: 15px;">
+                <strong style="color: #e65100; font-size: 12pt;">What They're Watching Closely:</strong>
+                <ul style="margin: 8px 0 0 20px; line-height: 1.8;">
+                    <li><strong>Too much fluid:</strong> Your body is holding onto water. This backs up into your lungs and makes breathing harder. The water pill (Lasix) will help you pee this out.</li>
+                    <li><strong>Kidneys are tired:</strong> The number that measures kidney function went up (120 from 86). This is probably from the dye they used during the procedure. The doctors will watch this — it often gets better on its own.</li>
+                    <li><strong>Heart rate still fast:</strong> Your heart is beating 110 times per minute. They want it under 100. That's why they're switching your medicine.</li>
+                </ul>
+            </div>
+
+            <div style="background: #e3f2fd; padding: 12px; border-radius: 5px; margin-bottom: 15px;">
+                <strong style="color: #1565c0; font-size: 12pt;">What They're Doing About It:</strong>
+                <ol style="margin: 8px 0 0 20px; line-height: 1.8;">
+                    <li><strong>Stronger water pill:</strong> Instead of one 40mg pill at home, you're getting 80mg through IV twice a day. This will make you pee a lot — that's good! It means the fluid is leaving your body.</li>
+                    <li><strong>New heart medicine:</strong> They stopped Diltiazem and Amiodarone. Now you're taking Metoprolol instead. This should slow your heart down better.</li>
+                    <li><strong>Stomach protection:</strong> You're taking an acid blocker twice a day for 2 weeks to protect your stomach after the vomiting.</li>
+                    <li><strong>Blood thinner back on:</strong> Apixaban is restarted to prevent strokes.</li>
+                </ol>
+            </div>
+
+            <div style="background: #f3e5f5; padding: 12px; border-radius: 5px; margin-bottom: 15px;">
+                <strong style="color: #7b1fa2; font-size: 12pt;">Why You're Staying in the Hospital:</strong>
+                <p style="margin: 8px 0 0 0; line-height: 1.7;">
+                    You need to stay a few more days so the doctors can:
+                </p>
+                <ul style="margin: 8px 0 0 20px; line-height: 1.8;">
+                    <li>Make sure the extra fluid leaves your body</li>
+                    <li>Watch your kidneys recover</li>
+                    <li>Make sure the new heart medicine works</li>
+                    <li>Make sure you don't have any more bleeding</li>
+                </ul>
+                <p style="margin: 10px 0 0 0; line-height: 1.7;">
+                    <strong>This is normal care after what you went through.</strong> You had a heart procedure, you had some vomiting, and your body needs time to recover. The doctors are being careful — that's a good thing.
+                </p>
+            </div>
+
+            <div style="background: #ffebee; padding: 12px; border-radius: 5px;">
+                <strong style="color: #c62828; font-size: 12pt;">About the MitraClip Procedure:</strong>
+                <p style="margin: 8px 0 0 0; line-height: 1.7;">
+                    The clip procedure did not work the way the doctors hoped. The device had a problem locking onto your valve — this was a problem with the device, not with your heart. The valve is still leaking the same as before.
+                </p>
+                <p style="margin: 10px 0 0 0; line-height: 1.7;">
+                    <strong>What this means for the future:</strong> Dr. Bowers will see you in 1 month to discuss options. The main choice is between open heart surgery (to replace the valve) or continuing with medicines only. You don't need to decide anything right now — focus on recovering first.
+                </p>
+            </div>
+        </div>
+        <!-- END SYNTHESIS SECTION -->
+
+        <div style="margin-bottom: 20px;">
+            <h4 style="color: #333; margin-bottom: 8px;">"Water in Lungs" — What Does This Mean?</h4>
+            <p style="font-size: 11pt; line-height: 1.6;">
+                The doctors found some fluid (water) has collected in your lungs. This is called <strong>pulmonary edema</strong>.
+                It makes breathing a little harder, which is why you might feel short of breath.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>Why did this happen?</strong><br>
+                Your heart valve (the mitral valve) doesn't close properly. When blood tries to pump forward, some goes backwards.
+                This is like a clogged drain — the fluid has nowhere to go, so it backs up into your lungs.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>How did they find it?</strong><br>
+                Doctors can hear it with a stethoscope (sounds like crackling) or see it on a chest X-ray (lungs look hazy instead of clear).
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>What are they doing about it?</strong><br>
+                Your water pill (Lasix/Furosemide) helps your body get rid of extra fluid. They may give you more of it through IV so it works faster.
+                Sitting up also helps — fluid drains to the bottom of your lungs, making it easier to breathe.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px; background: #e8f5e9; padding: 10px; border-radius: 5px;">
+                <strong>Good news:</strong> This is common with your heart condition and is treatable.
+                The doctors are keeping you in the hospital a few more days to make sure the fluid goes away and you feel better before going home.
+            </p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h4 style="color: #333; margin-bottom: 8px;">"Water Around the Heart" — What Does This Mean?</h4>
+            <p style="font-size: 11pt; line-height: 1.6;">
+                This is different from water in the lungs. Your heart sits inside a thin sac (like a bag) called the <strong>pericardium</strong>.
+                Sometimes fluid can collect in this sac. This is called <strong>pericardial effusion</strong>.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>Why might this happen?</strong><br>
+                It can happen after heart procedures like the MitraClip. The heart gets a little irritated and produces extra fluid.
+                It's a known possible side effect.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>How do they find it?</strong><br>
+                Doctors can see it on an ultrasound of the heart (echocardiogram). It shows up as a dark area around the heart.
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+                <strong>What do they do about it?</strong><br>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li><strong>If small:</strong> Just watch and wait — it usually goes away on its own</li>
+                    <li><strong>If large:</strong> They may need to drain it with a small needle (rare)</li>
+                </ul>
+            </p>
+
+            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px; background: #e3f2fd; padding: 10px; border-radius: 5px;">
+                <strong>Note:</strong> "Water in lungs" and "water around heart" are two different things.
+                Ask your doctors to clarify which one they found, or if it's both.
+            </p>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #333; margin-bottom: 8px;">Your Heart Has Two Problems (Reminder)</h4>
+            <ol style="font-size: 11pt; line-height: 1.8; margin-left: 20px;">
+                <li><strong>Fast, irregular heartbeat</strong> (atrial fibrillation) — like bad electrical wiring</li>
+                <li><strong>Leaky heart valve</strong> (mitral valve) — like a door that won't close properly</li>
+            </ol>
+            <p style="font-size: 11pt; margin-top: 8px;">These two problems work together to cause shortness of breath and fluid backup.</p>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <h4 style="color: #333; margin-bottom: 8px;">Understanding the Doctor's Notes — Medical Terms Explained</h4>
+            <p style="font-size: 10pt; color: #666; margin-bottom: 10px;"><em>Reference guide for the CICU Progress Note (Jan 9, 2026)</em></p>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc; width: 30%;">Medical Term</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">What It Means in Plain Language</th>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>AAOX3, GCS 15</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Brain is working well. Alert, knows who she is, where she is, and what day it is. Perfect consciousness score.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>S1S2 harsh SEM apex</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Heart sounds. The doctor hears a harsh "whooshing" sound (murmur) at the bottom of the heart — this is from the leaky valve.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>JVP 3-4cm</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Jugular Venous Pressure. The vein in the neck is slightly bulging — sign of fluid backup in the system.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>AFib, HR 110</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Heart is in atrial fibrillation (irregular rhythm) beating 110 times per minute. They want it slower (under 100).</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>SBP 120s</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Systolic Blood Pressure in the 120s. This is normal/good.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Afebrile</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">No fever. Good — means no infection.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>1L O2</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Getting 1 liter of oxygen through nose tubes. Low amount — just a little help.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Foley in-situ</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Has a urinary catheter (tube to collect pee). Lets them measure exactly how much she's peeing.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Art-line</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Arterial line — a tube in the artery to measure blood pressure continuously. They're removing it.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Non-collapsing IVC</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The big vein going to the heart stays full and doesn't squeeze down when breathing. Sign of too much fluid in the body.</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Cr 120 from 86</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong style="color: #c00;">Kidney function dropped.</strong> Creatinine is a waste product — when it goes UP, kidneys are struggling. Jumped from 86 to 120. Needs watching.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Hg 102 (107)</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Hemoglobin (red blood cells). Dropped slightly from 107 to 102. Small drop, likely from the bleeding episode. Stable.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Trop 50</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Troponin — a heart muscle marker. Elevated because the heart was worked on during the procedure. Expected.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Lactate 1.7</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Normal. If this was high, it would mean organs aren't getting enough blood. 1.7 is fine.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Hematemesis</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Vomiting blood. This is why she was kept in ICU for monitoring.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>HFnrEF</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Heart Failure with Near-normal (or mildly Reduced) Ejection Fraction. The heart pumps okay (60-65%) but still has failure symptoms due to the leaky valve.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>TEER</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Transcatheter Edge-to-Edge Repair. The medical name for the MitraClip procedure.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Mod-severe MR</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Moderate-to-severe Mitral Regurgitation. The valve is still leaking significantly — the clip didn't fix it.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Device lock failure</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The MitraClip device didn't lock properly onto the valve leaflets. This is why the procedure failed.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>DVTp</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">DVT Prophylaxis — blood thinner shots to prevent leg clots. Held because of bleeding risk.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>PPI BID</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Proton Pump Inhibitor twice daily. Stomach acid blocker to protect from ulcers/bleeding.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>80 IV BID</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">80mg through IV, twice a day. Much stronger than the 40mg pill once daily she takes at home.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Metoprolol</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">A beta blocker — slows the heart down. Replacing Diltiazem because heart rate is still too fast.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>K>4, Mg>1</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Keep potassium above 4 and magnesium above 1. Low levels can cause dangerous heart rhythms.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>LVEF 60-65%</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Left Ventricle Ejection Fraction. The main pumping chamber squeezes out 60-65% of blood each beat. This is NORMAL — good news.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>LAD 60%, 50%</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Left Anterior Descending artery has 60% and 50% blockages. Moderate — not severe enough to need stents right now.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Full code</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">If her heart stops, do everything to save her (CPR, shocks, breathing tube). This is the default.</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;" colspan="2"><em>From Echocardiogram (Jan 8)</em></th>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Ejection Fraction (EF) 61%</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">How much blood the heart pumps out with each beat. 61% is NORMAL (55-70% is healthy). This means her heart muscle is still strong.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>XTW and XT clips</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The two MitraClip devices placed — different sizes. Both are still in place.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>RVSP 50 mmHg</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Right Ventricular Systolic Pressure — pressure in lung arteries. 50 is elevated (normal is under 35). Caused by blood backing up from the leaky mitral valve.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Left atrium severely dilated</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The upper left chamber is stretched out — like a waiting room that's overfull because blood is leaking backwards through the valve.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Atrial Septal Defect (ASD)</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Small hole between left and right upper chambers. This is EXPECTED after MitraClip — they poke through to do the procedure. Usually closes on its own.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>L→R shunt</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Blood flowing left to right through the small ASD hole. Normal direction and expected post-procedure.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Concentric LV hypertrophy</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Heart muscle walls are evenly thicker than normal — the heart has been working harder to compensate for the valve leak.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Eccentric jet</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The blood leak sprays to the side instead of straight back. Harder to fix with clips because the leak direction is unpredictable.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Mean mitral gradient 5 mmHg</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Pressure difference across the mitral valve. Low number is good — means the clips aren't blocking blood flow (no stenosis).</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Tricuspid regurgitation</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Right side heart valve also leaking — mild-moderate. Common when mitral valve has been leaking for a while.</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;" colspan="2"><em>From TMT Procedural Note (Jan 7)</em></th>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>TMT</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Transcatheter Mitral Team — the specialized heart team that does MitraClip procedures.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>M-TEER</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Mitral Transcatheter Edge-to-Edge Repair — the medical name for MitraClip procedure.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Functional MR</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The valve itself is normal, but the heart has stretched so the valve doesn't close properly. Different from "structural" where the valve is damaged.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Atrial functional MR</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The leak is caused by the atrium (top chamber) stretching from atrial fibrillation, pulling the valve apart.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Phx</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Past history — a list of previous medical conditions.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>NKDA</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">No Known Drug Allergies. Good — means no medications to avoid.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>NYHA II</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">New York Heart Association Class 2 — mild heart failure. Comfortable at rest, but normal activities (stairs, walking) cause shortness of breath.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>CAD</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Coronary Artery Disease — blockages in the heart arteries. Hers is "moderate" (not severe).</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Well compensated</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Her body was managing the heart problems okay before the procedure — not in crisis.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Lock line test</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">A test during the procedure to check if the clip locked properly. Hers passed the test but still failed — unusual.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Sub-optimal MR reduction</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The leak wasn't reduced as much as hoped. The valve is still leaking significantly.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>MVR</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Mitral Valve Replacement — open heart surgery to replace the valve entirely. This may be discussed at follow-up.</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>SBE prophylaxis lifelong</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong style="color: #c00;">IMPORTANT:</strong> She must take antibiotics before any dental work (cleaning, fillings, extractions) for the rest of her life. This prevents bacteria from infecting the heart valve. Tell every dentist about this.</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;" colspan="2"><em>From GI Consult Note (Jan 8)</em></th>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Coffee ground emesis</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Vomit that looks like coffee grounds — indicates old/digested blood (not fresh bleeding). Dark brown, grainy appearance.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Hematemesis</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Vomiting blood. Bright red = fresh active bleeding (more serious). Coffee ground = older blood (less urgent).</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Traumatic etiology</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Caused by physical irritation/injury — in this case, the TEE tube scratched her throat/esophagus. Not a disease, just mechanical irritation.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>PUD</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Peptic Ulcer Disease — ulcers in stomach or small intestine. GI ruled this out as unlikely cause.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Mallory-Weiss tear</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">A tear in the esophagus lining from forceful vomiting. Can cause bleeding. GI said this is unlikely.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Angiodysplasia</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Abnormal blood vessels in the GI tract that can bleed. GI said this is unlikely.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>EGD</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Esophagogastroduodenoscopy — a scope down the throat to look at the esophagus, stomach, and small intestine. She has NOT had one before.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>FIT test</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Fecal Immunochemical Test — checks stool for hidden blood. Her 2023 positive FIT led to colonoscopy (which was normal).</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>NPO</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Nothing by mouth — no eating or drinking. Standard before/after procedures.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>NAD</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">No Acute Distress — patient looks comfortable, not in obvious pain or trouble.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>WOB</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Work Of Breathing — how hard someone is working to breathe. "No increased WOB" = breathing easily.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Hematochezia</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Bright red blood in stool — indicates lower GI bleeding. She does NOT have this.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Pneumomediastinum</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Air leak into the chest cavity — can happen if esophagus is perforated. CT showed she does NOT have this (good).</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;" colspan="2"><em>From Dr. Bowers Note (Jan 8)</em></th>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>POD1</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Post-Operative Day 1 — the first day after surgery (Jan 8, one day after Jan 7 procedure).</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Trace MR</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Almost no mitral regurgitation — the tiniest amount of leak. This is basically "fixed." The clip achieved this BEFORE it failed.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Lock test</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">A test during the procedure to confirm the clip is locked in place. Her clip passed but then opened anyway — device malfunction.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>MG 5mmHg</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Mean Gradient — measures how hard blood has to push through the valve. 5mmHg is acceptable. Higher would mean the valve is too tight.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Pantoloc</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Brand name for Pantoprazole — a PPI (stomach acid blocker). Same family as Rabeprazole she takes at home.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Hemodynamics stable</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Blood pressure and heart function are steady — not crashing or unstable. Good sign.</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Abbott</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">The company that makes the MitraClip device. They're reviewing the failed device to understand what went wrong.</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;" colspan="2"><em>From CICU Morning Note (Jan 8 AM)</em></th>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>FB -600cc</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Fluid Balance negative 600cc — she peed out 600cc more than she took in. This is good — getting rid of extra fluid.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Amio 0.5</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Amiodarone infusion at 0.5 mg/min — IV drip to control heart rhythm. Later stopped and switched to Metoprolol pills.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Femoral sheath sites</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Where they put the catheter in the groin for the procedure. "Clean and dry, no hematoma" = healing well, no bleeding or bruising.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Pitting edema</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Swelling where you can press a finger and leave a dent. Sign of fluid retention. "Mild" = not severe.</td>
+                </tr>
+                <tr style="background: #fafafa;">
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Spontaneously rate controlled</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Her heart rate came down on its own without aggressive intervention. Good sign on Jan 8 AM (HR 90s).</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="notes-section">
+        <h3>Healthcare Team</h3>
+        <p style="font-size: 9pt; color: #666; margin-bottom: 10px;"><em>* = role inferred from note signatures, may not be exact title</em></p>
+        <table class="lab-table">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Name</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- OUTPATIENT / LONG-TERM -->
+                <tr style="background: #e3f2fd;">
+                    <td colspan="3"><strong>Outpatient / Long-Term Care</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Primary Cardiologist</strong></td>
+                    <td>Dr. Myers</td>
+                    <td>Primary cardiac care since Sept 2025, referred for MitraClip</td>
+                </tr>
+                <tr>
+                    <td><strong>GP</strong></td>
+                    <td>Dr. Alice Sy</td>
+                    <td>420 Highway 7 East, Unit 27, Richmond Hill</td>
+                </tr>
+
+                <!-- MITRACLIP PROCEDURE TEAM -->
+                <tr style="background: #e3f2fd;">
+                    <td colspan="3"><strong>MitraClip Procedure Team (Jan 7)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Interventional Cardiologist</strong></td>
+                    <td>Dr. Bowers</td>
+                    <td>Performed MitraClip, will discuss MVR at 1-month follow-up</td>
+                </tr>
+                <tr>
+                    <td><strong>Cardiac Surgeon</strong></td>
+                    <td>Dr. Cohen</td>
+                    <td>MitraClip procedure, discussed open heart surgery option</td>
+                </tr>
+                <tr>
+                    <td><strong>TMT Staff*</strong></td>
+                    <td>Dr. Son Czarnecki</td>
+                    <td>Transcatheter Mitral Team — signed procedural consultation note</td>
+                </tr>
+                <tr>
+                    <td><strong>Procedure Nurse</strong></td>
+                    <td>Felicia Mistry</td>
+                    <td>Angiogram (Nov 26) + MitraClip (Jan 7) — continuity of care</td>
+                </tr>
+
+                <!-- CICU TEAM -->
+                <tr style="background: #e3f2fd;">
+                    <td colspan="3"><strong>CICU Team (Jan 7-9)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CICU Staff Physician</strong></td>
+                    <td>Dr. Ko</td>
+                    <td>CICU attending — oversaw ICU care Jan 8-9</td>
+                </tr>
+                <tr>
+                    <td><strong>CICU Fellow/Staff*</strong></td>
+                    <td>Dr. Rehman</td>
+                    <td>Mentioned alongside Dr. Ko — likely fellow or co-attending</td>
+                </tr>
+                <tr>
+                    <td><strong>CICU Resident (PGY1)</strong></td>
+                    <td>Dr. Viji Sugumar</td>
+                    <td>Wrote CICU progress notes on behalf of Dr. Ko</td>
+                </tr>
+                <tr>
+                    <td><strong>Overnight Physician*</strong></td>
+                    <td>Dr. Co</td>
+                    <td>Overnight Jan 7→8 (may be same as Dr. Ko, spelling unclear)</td>
+                </tr>
+
+                <!-- CONSULTS -->
+                <tr style="background: #e3f2fd;">
+                    <td colspan="3"><strong>Consults During Admission</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>GI Consult</strong></td>
+                    <td>Dr. Griller</td>
+                    <td>Jan 8 — cleared for no scope, traumatic vomiting not bleeding</td>
+                </tr>
+                <tr>
+                    <td><strong>Cardiology (Ward)*</strong></td>
+                    <td>Dr. Amr Moustafa</td>
+                    <td>Jan 9 — ward consult note, confirmed stable status</td>
+                </tr>
+
+                <!-- NURSING -->
+                <tr style="background: #e3f2fd;">
+                    <td colspan="3"><strong>Nursing Staff</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CICU Nurse (Night)</strong></td>
+                    <td>Izzy Balazo</td>
+                    <td>Overnight Jan 7→8</td>
+                </tr>
+                <tr>
+                    <td><strong>CICU Nurse (Day)</strong></td>
+                    <td>Giselle</td>
+                    <td>Day shift Jan 8, Room 342</td>
+                </tr>
+                <tr>
+                    <td><strong>Ward Nurse</strong></td>
+                    <td>Lemlem</td>
+                    <td>Room D347 Bed 2 — Jan 9 evening after transfer</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="med-section">
+        <h2>Active Medications — Cardiovascular (Critical)</h2>
+        <table class="med-table">
+            <thead>
+                <tr>
+                    <th style="width:22%">Medication</th>
+                    <th style="width:12%">Dose</th>
+                    <th style="width:18%">Frequency</th>
+                    <th style="width:25%">Indication</th>
+                    <th style="width:13%">Start Date</th>
+                    <th style="width:10%">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="med-name">Apixaban</span><br>
+                        <span class="med-generic">Brand: Eliquis</span>
+                    </td>
+                    <td><span class="dose-highlight">5 mg</span></td>
+                    <td><span class="critical-timing">BID (q12h)</span><br>Must maintain 12hr spacing</td>
+                    <td>Anticoagulation for AFib<br>Stroke prophylaxis</td>
+                    <td>Sept 2025</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Diltiazem CD</span><br>
+                        <span class="med-generic">Brand: Cardizem CD</span>
+                    </td>
+                    <td><span class="dose-highlight">180 mg</span></td>
+                    <td>Once daily</td>
+                    <td>Rate control for AFib<br>(also antihypertensive)</td>
+                    <td>Sept 24, 2025</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Furosemide</span><br>
+                        <span class="med-generic">Brand: Lasix</span>
+                    </td>
+                    <td><span class="dose-highlight">40 mg</span></td>
+                    <td>Once daily</td>
+                    <td>Loop diuretic<br>Heart failure / fluid retention</td>
+                    <td>Sept 2025</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr style="background: #f5f5f5;">
+                    <td>
+                        <span class="med-name" style="text-decoration: line-through; color: #999;">Nifedipine ER</span><br>
+                        <span class="med-generic">Brand: Adalat</span>
+                    </td>
+                    <td><span style="color: #999;">30 mg</span></td>
+                    <td style="color: #999;">Once daily</td>
+                    <td style="color: #999;">Antihypertensive<br><em>Replaced by Diltiazem</em></td>
+                    <td style="color: #999;">—</td>
+                    <td><span class="status-discontinued">D/C'd<br>Sept 24</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="med-section">
+        <h2>Active Medications — Psychiatric / Pain Management</h2>
+        <table class="med-table">
+            <thead>
+                <tr>
+                    <th style="width:22%">Medication</th>
+                    <th style="width:12%">Dose</th>
+                    <th style="width:18%">Frequency</th>
+                    <th style="width:25%">Indication</th>
+                    <th style="width:13%">Start Date</th>
+                    <th style="width:10%">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="med-name">Mirtazapine</span><br>
+                        <span class="med-generic">Brand: Apo-Mirtazapine</span>
+                    </td>
+                    <td><span class="dose-highlight">15 mg</span></td>
+                    <td>Once daily (HS)</td>
+                    <td>Antidepressant / Sleep aid</td>
+                    <td>—</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Duloxetine</span><br>
+                        <span class="med-generic">Brand: Cymbalta</span>
+                    </td>
+                    <td><span class="dose-highlight">30 mg</span></td>
+                    <td>Once daily</td>
+                    <td>SNRI — Depression<br>Neuropathic pain</td>
+                    <td>—</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Pregabalin</span><br>
+                        <span class="med-generic">Brand: Lyrica</span>
+                    </td>
+                    <td><span class="dose-highlight">100 mg</span></td>
+                    <td>Once daily</td>
+                    <td>Fibromyalgia</td>
+                    <td>Aug 2023</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="med-section">
+        <h2>Active Medications — Rheumatology / MSK</h2>
+        <table class="med-table">
+            <thead>
+                <tr>
+                    <th style="width:22%">Medication</th>
+                    <th style="width:12%">Dose</th>
+                    <th style="width:18%">Frequency</th>
+                    <th style="width:25%">Indication</th>
+                    <th style="width:13%">Start Date</th>
+                    <th style="width:10%">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="med-name">Hydroxychloroquine</span><br>
+                        <span class="med-generic">Brand: Mylan-HCQ</span>
+                    </td>
+                    <td><span class="dose-highlight">200 mg</span></td>
+                    <td>Mon-Fri only<br>(weekends off)</td>
+                    <td>Rheumatoid Arthritis<br><em>Requires annual retinal exam</em></td>
+                    <td>—</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Meloxicam</span><br>
+                        <span class="med-generic">Brand: Act-Meloxicam</span>
+                    </td>
+                    <td><span class="dose-highlight">15 mg</span></td>
+                    <td>PRN</td>
+                    <td>NSAID — RA flares<br><strong style="color:#c00;">⚠️ Nephrotoxic - use sparingly</strong></td>
+                    <td>—</td>
+                    <td><span class="status-prn">PRN</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Denosumab</span><br>
+                        <span class="med-generic">Brand: Prolia</span>
+                    </td>
+                    <td><span class="dose-highlight">60 mg</span></td>
+                    <td>SC injection<br>q6 months</td>
+                    <td>Osteoporosis<br><strong style="color:#b36b00;">⚠️ Verify with cardiology before next dose (valve disease)</strong></td>
+                    <td>—</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="med-section">
+        <h2>Active Medications — Other / Supportive</h2>
+        <table class="med-table">
+            <thead>
+                <tr>
+                    <th style="width:22%">Medication</th>
+                    <th style="width:12%">Dose</th>
+                    <th style="width:18%">Frequency</th>
+                    <th style="width:25%">Indication</th>
+                    <th style="width:13%">Start Date</th>
+                    <th style="width:10%">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="med-name">Rabeprazole</span><br>
+                        <span class="med-generic">PPI</span>
+                    </td>
+                    <td><span class="dose-highlight">20 mg</span></td>
+                    <td>PRN</td>
+                    <td>GERD / Acid reflux</td>
+                    <td>—</td>
+                    <td><span class="status-prn">PRN</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Tears Naturale</span><br>
+                        <span class="med-generic">Artificial tears</span>
+                    </td>
+                    <td>15 mL</td>
+                    <td>2 gtt BID</td>
+                    <td>Dry eyes</td>
+                    <td>—</td>
+                    <td><span class="status-active">ACTIVE</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="med-name">Doxycycline</span><br>
+                        <span class="med-generic">Antibiotic</span>
+                    </td>
+                    <td><span class="dose-highlight">100 mg</span></td>
+                    <td>BID x 7 days</td>
+                    <td>Short-course antibiotic<br>(likely dental-related)</td>
+                    <td>—</td>
+                    <td><span class="status-active">SHORT COURSE</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="lab-section">
+        <h2>Relevant Laboratory Values</h2>
+        <table class="lab-table">
+            <thead>
+                <tr>
+                    <th>Test</th>
+                    <th>Value</th>
+                    <th>Reference Range</th>
+                    <th>Date</th>
+                    <th>Clinical Significance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="lab-abnormal">
+                    <td><strong>eGFR</strong></td>
+                    <td><strong>56 mL/min/1.73m²</strong></td>
+                    <td>&gt;90 normal</td>
+                    <td>Sept 3, 2025</td>
+                    <td>Stage 3a CKD — Renal dose adjustments may apply; contrast precautions</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="notes-section">
+        <h3>Clinical Notes for Healthcare Providers</h3>
+        <ul>
+            <li><strong>Anticoagulation:</strong> Continue Apixaban for routine dental procedures with local hemostatic measures. Risk of stroke (CHA₂DS₂-VASc) outweighs bleeding risk for simple extractions.</li>
+            <li><strong>Renal Function:</strong> eGFR 56 — Apixaban 5mg BID remains appropriate. Would reduce to 2.5mg BID only if eGFR &lt;25 OR meets ≥2 of: age ≥80, weight ≤60kg, Cr ≥1.5.</li>
+            <li><strong>NSAIDs:</strong> Use Meloxicam sparingly given CKD Stage 3a. Consider alternatives for RA flare management.</li>
+            <li><strong>Prolia:</strong> Given severe mitral regurgitation and pending valve surgery, recommend cardiology clearance before next injection due to endocarditis risk.</li>
+            <li><strong>Hydroxychloroquine:</strong> Mon-Fri schedule (weekends off) to reduce cumulative retinal toxicity risk. Annual ophthalmology screening required.</li>
+            <li><strong>Living Situation:</strong> Lives independently, functions well at home. May need post-surgical support if valve repair proceeds.</li>
+        </ul>
+    </div>
+
+    <div class="notes-section">
+        <h3>Known Allergies / Adverse Reactions</h3>
+        <p><em>No documented allergies on file. Please verify with patient.</em></p>
+    </div>
+
+    <div class="notes-section">
+        <h3>Hospital Logistics — Sunnybrook</h3>
+        <table class="lab-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Parking Passes (5-visit)</strong></td>
+                    <td><strong>7 remaining</strong></td>
+                    <td>Jan 8, 4:22pm — Had 2, bought +5</td>
+                </tr>
+                <tr>
+                    <td><strong>Room</strong></td>
+                    <td>342 (CICU)</td>
+                    <td>Jan 8, 2026</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <div>
+            <strong>Emergency Contact:</strong> Family Contact<br>
+            <strong>Document Source:</strong> Family healthcare coordination
+        </div>
+        <div style="text-align: right;">
+            <strong>Printed:</strong> <span id="print-date"></span><br>
+            <strong>Last Verified:</strong> January 7, 2026
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('print-date').textContent = new Date().toLocaleDateString('en-CA');
+    </script>
+</body>
+</html>
