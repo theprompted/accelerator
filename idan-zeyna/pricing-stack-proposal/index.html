@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposed Pricing Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 25px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #4a7c59;
+            transform: scale(1.02);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4a7c59;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            margin-top: 10px;
+        }
+
+        .tier-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .location-icons {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .location-text {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .current-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        .current-price span {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .price-each {
+            font-size: 20px;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .savings {
+            color: #4a7c59;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .feature .check {
+            color: #4a7c59;
+            font-weight: bold;
+        }
+
+        .feature.bonus {
+            color: #4a7c59;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: #4a7c59;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #3d6a4a;
+        }
+
+        .cta-button.secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .cta-button.secondary:hover {
+            background: #d0d0d0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .comparison {
+            max-width: 600px;
+            margin: 40px auto 0;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .comparison h3 {
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison th, .comparison td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison th {
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .new-price {
+            color: #4a7c59;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proposed Pricing Stack</h1>
+    <p class="subtitle">Anticipated AOV: ~$98 | Gross Margin: ~77.5% ($76/order)</p>
+
+    <div class="pricing-container">
+        <!-- Starter Kit (Left) -->
+        <div class="pricing-card">
+            <h2 class="tier-name">STARTER KIT</h2>
+            <p class="tier-subtitle">See if it works for you</p>
+            <div class="location-icons">🏠</div>
+            <p class="location-text">Home</p>
+            <p class="original-price"><s>$139</s></p>
+            <div class="current-price">$69</div>
+            <p class="savings">You save $70 (50% off)</p>
+            <div class="features">
+                <div class="feature"><span class="check">✓</span> NeuroEase Device</div>
+                <div class="feature"><span class="check">✓</span> Free Shipping</div>
+            </div>
+            <button class="cta-button secondary">Try It Risk-Free</button>
+        </div>
+
+        <!-- Complete Relief - MOST POPULAR (Middle) -->
+        <div class="pricing-card featured">
+            <div class="badge">Most Popular</div>
+            <h2 class="tier-name">COMPLETE RELIEF</h2>
+            <p class="tier-subtitle">Relief at home and where sciatica builds</p>
+            <div class="location-icons">🏠 🏢</div>
+            <p class="location-text">Home & Office</p>
+            <p class="original-price">TOTAL <s>$196</s></p>
+            <div class="current-price">$49<span>/each</span></div>
+            <p class="savings">You save $98 (50% off)</p>
+            <div class="features">
+                <div class="feature"><span class="check">✓</span> 2× NeuroEase Devices</div>
+                <div class="feature"><span class="check">✓</span> 80 Activation Pad Uses</div>
+                <div class="feature"><span class="check">✓</span> Free Shipping</div>
+                <div class="feature bonus"><span class="check">✓</span> FREE Core Support Trainer ($59)</div>
+            </div>
+            <button class="cta-button">Get Complete Relief</button>
+        </div>
+
+        <!-- Total Coverage (Right) -->
+        <div class="pricing-card">
+            <h2 class="tier-name">TOTAL COVERAGE</h2>
+            <p class="tier-subtitle">Never without relief, no matter where you are</p>
+            <div class="location-icons">🏠 🏢 ✈️</div>
+            <p class="location-text">Home, Office & Travel</p>
+            <p class="original-price">TOTAL <s>$269</s></p>
+            <div class="current-price">$45<span>/each</span></div>
+            <p class="savings">You save $134 (50% off)</p>
+            <div class="features">
+                <div class="feature"><span class="check">✓</span> 3× NeuroEase Devices</div>
+                <div class="feature"><span class="check">✓</span> 120 Activation Pad Uses</div>
+                <div class="feature"><span class="check">✓</span> Free Shipping</div>
+                <div class="feature bonus"><span class="check">✓</span> FREE Core Support Trainer ($59)</div>
+                <div class="feature bonus"><span class="check">✓</span> FREE Leg Trainer ($39)</div>
+            </div>
+            <button class="cta-button">Get Total Coverage</button>
+        </div>
+    </div>
+
+    <div class="comparison">
+        <h3>Price Comparison: Current vs Proposed</h3>
+        <table>
+            <tr>
+                <th>Tier</th>
+                <th>Current</th>
+                <th>Proposed</th>
+                <th>Per Unit</th>
+            </tr>
+            <tr>
+                <td>Starter Kit</td>
+                <td class="old-price">$99</td>
+                <td class="new-price">$69</td>
+                <td>$69/each</td>
+            </tr>
+            <tr>
+                <td>Complete Relief</td>
+                <td class="old-price">$148</td>
+                <td class="new-price">$98</td>
+                <td>$49/each</td>
+            </tr>
+            <tr>
+                <td>Total Coverage</td>
+                <td class="old-price">$198</td>
+                <td class="new-price">$135</td>
+                <td>$45/each</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
