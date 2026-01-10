@@ -336,6 +336,93 @@
       color: #4a7c59;
       font-weight: 700;
     }
+
+    /* Browser Embed */
+    .browser-window {
+      border: 2px solid black;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1.25rem 0;
+      box-shadow: -0.25rem 0.25rem 0 0 #383838;
+    }
+
+    .browser-toolbar {
+      background: #e8e8e8;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid black;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,0,0,0.2);
+    }
+
+    .browser-dot.red { background: #ff5f57; }
+    .browser-dot.yellow { background: #febc2e; }
+    .browser-dot.green { background: #28c840; }
+
+    .browser-url-bar {
+      flex: 1;
+      background: white;
+      border: 1.5px solid #ccc;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 11px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .browser-url-bar .lock {
+      color: #28c840;
+    }
+
+    .browser-content {
+      background: #fff;
+    }
+
+    .browser-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .browser-fallback {
+      padding: 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .browser-fallback a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #53DBC9;
+      color: black;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid black;
+      border-radius: 2px;
+      box-shadow: -0.15rem 0.15rem 0 0 #383838;
+    }
+
+    .browser-fallback a:hover {
+      transform: translate(-2px, 2px);
+      box-shadow: -0.075rem 0.075rem 0 0 #383838;
+    }
   </style>
 </head>
 <body>
@@ -433,8 +520,29 @@
     <!-- Checkout Permalinks -->
     <div class="section">
       <div class="section-label">Checkout Permalinks</div>
-      <p>Instead of going to PDP on the advertorial funnels and ecom LPs, use checkout permalinks: <a href="https://help.shopify.com/en/manual/checkout-settings/cart-permalink" target="_blank">help.shopify.com/en/manual/checkout-settings/cart-permalink</a></p>
+      <p>Instead of going to PDP on the advertorial funnels and ecom LPs, use checkout permalinks.</p>
       <p>This can help with conversion rate. Basically each tier of the offer goes straight to checkout as opposed to requiring the consumer to go the PDP, add to cart, then checkout.</p>
+
+      <!-- Browser Window Embed -->
+      <div class="browser-window">
+        <div class="browser-toolbar">
+          <div class="browser-dots">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+          </div>
+          <div class="browser-url-bar">
+            <span class="lock">🔒</span>
+            help.shopify.com/en/manual/checkout-settings/cart-permalink
+          </div>
+        </div>
+        <div class="browser-content">
+          <div class="browser-fallback">
+            <p>Shopify's official documentation on cart permalinks — how to create direct-to-checkout links for each product/variant.</p>
+            <a href="https://help.shopify.com/en/manual/checkout-settings/cart-permalink" target="_blank">Open Documentation →</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Focus & Congruence -->
