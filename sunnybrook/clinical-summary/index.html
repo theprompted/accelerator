@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Clinical Summary - Patient</title>
+    <title>Patient Clinical Summary - Patient M.S.</title>
     <style>
         * {
             margin: 0;
@@ -403,6 +403,270 @@
             text-transform: uppercase;
             color: #b36b00;
         }
+
+        /* ===== MOM'S VERSION - RESPONSIVE CLASSES ===== */
+
+        .mom-entry {
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+        }
+
+        .mom-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mom-number {
+            font-size: 1rem;
+            font-weight: bold;
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .mom-title-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .mom-title-main {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .mom-text {
+            font-size: 1.17rem;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .mom-text + .mom-text {
+            margin-top: 1.25rem;
+        }
+
+        .mom-box {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .mom-box-highlight {
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Understanding Your Condition section */
+        .understanding-text {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .understanding-table td {
+            font-size: 0.95rem;
+            padding: 8px;
+        }
+
+        /* Table scroll hint */
+        .med-section,
+        .lab-section {
+            position: relative;
+        }
+
+        /* ===== TABLET MEDIA QUERY (≤768px) ===== */
+        @media (max-width: 768px) {
+            /* Layout */
+            body {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            /* Timeline - stack columns */
+            .timeline-entry {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .timeline-date {
+                text-align: left;
+                border-right: none;
+                border-bottom: 2px solid #333;
+                padding-bottom: 8px;
+                padding-right: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .timeline-mom {
+                margin-top: 10px;
+                font-size: 1rem;
+            }
+
+            /* Tables - horizontal scroll */
+            .med-section,
+            .lab-section {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .med-table,
+            .lab-table {
+                min-width: 500px;
+            }
+
+            /* Print button - hide */
+            .print-btn {
+                display: none;
+            }
+
+            /* Patient info - single column */
+            .patient-info {
+                grid-template-columns: 1fr;
+            }
+
+            /* Table scroll hint */
+            .med-section::after,
+            .lab-section::after {
+                content: '→ scroll';
+                position: absolute;
+                right: 5px;
+                top: 45px;
+                font-size: 0.7rem;
+                color: #999;
+                background: rgba(255,255,255,0.9);
+                padding: 2px 5px;
+                border-radius: 3px;
+            }
+        }
+
+        /* ===== PHONE MEDIA QUERY (≤480px) ===== */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header-title {
+                font-size: 1rem;
+            }
+
+            /* CURRENT STATUS - Most important info, make it BIG */
+            .current-status {
+                margin: 10px;
+                font-size: 1.2rem;
+                padding: 15px;
+                line-height: 1.6;
+            }
+
+            /* Timeline "For Mom" boxes */
+            .timeline-mom {
+                font-size: 1.15rem;
+                line-height: 1.7;
+                padding: 15px;
+            }
+
+            /* Mom's Version - phone optimizations */
+            .mom-entry {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .mom-number {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 0.95rem;
+                margin-right: 12px;
+            }
+
+            .mom-header {
+                flex-wrap: wrap;
+            }
+
+            .mom-title-date {
+                font-size: 0.8rem;
+            }
+
+            .mom-title-main {
+                font-size: 1.15rem;
+            }
+
+            .mom-text {
+                font-size: 1.3rem;
+                line-height: 1.8;
+            }
+
+            .mom-box {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            .mom-box-highlight {
+                padding: 12px;
+            }
+
+            /* Understanding section */
+            .understanding-text {
+                font-size: 1.15rem;
+                line-height: 1.8;
+            }
+
+            .understanding-table td {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            /* Alert boxes */
+            .alert-box {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            /* Timeline content */
+            .timeline-content {
+                font-size: 1rem;
+            }
+
+            .timeline-content h4 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== SMALL PHONE MEDIA QUERY (≤375px) ===== */
+        @media (max-width: 375px) {
+            body {
+                padding: 8px;
+            }
+
+            /* Circles need to fit two-digit numbers (19, 20, 21, 22) */
+            .mom-number {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+                font-size: 0.85rem;
+                margin-right: 10px;
+            }
+
+            .mom-entry {
+                padding: 12px;
+            }
+
+            .mom-text {
+                font-size: 1.25rem;
+            }
+
+            .current-status {
+                font-size: 1.1rem;
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -416,7 +680,7 @@
     <div class="patient-info">
         <div class="info-group">
             <h3>Patient Name</h3>
-            <p>Patient</p>
+            <p>Patient M.S.</p>
         </div>
         <div class="info-group">
             <h3>Date of Birth / Age</h3>
@@ -446,7 +710,7 @@
         </div>
         <div class="info-group">
             <h3>Document Last Updated</h3>
-            <p>January 10, 2026 — 5:01pm</p>
+            <p>January 12, 2026 — 1:10pm</p>
         </div>
     </div>
 
@@ -469,11 +733,920 @@
         <h2>Event Timeline — Cardiac History</h2>
 
         <div class="current-status" style="background: #e8f5e9; border-color: #4caf50;">
-            <div class="label" style="color: #2e7d32;">Current Status (Jan 10, 5:01pm)</div>
-            ON WARD — Room D347 Bed 2 — <strong style="color: #2e7d32;">DISCHARGE LIKELY MONDAY</strong> — Metoprolol ↑ to 50mg BID — Creatinine improved (96) — K still low (3.3) — Diltiazem/Amio infusions stopped — "Asymptomatic, vitally compensated"
+            <div class="label" style="color: #2e7d32;">Current Status (Jan 13, 12:15pm)</div>
+            ON WARD — Room D347 Bed 2 — <strong style="color: #2e7d32;">Off oxygen</strong> — <strong style="color: #2e7d32;">HR 70s</strong> — Switching to oral Lasix today — Catheter out today — <strong style="color: #2e7d32;">Possible discharge TOMORROW (Jan 14)</strong>
         </div>
 
         <div class="timeline">
+            <!-- Jan 13, 12:15pm - NP Brianna Rounds -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 13, 2026</div>
+                    <div class="time">12:15pm</div>
+                    <div class="badge badge-update">NP ROUNDS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>NP Brianna Malhotra — Rounds & Plan</h4>
+
+                    <div style="background: #e8f5e9; padding: 12px; border-radius: 5px; margin-bottom: 10px; border: 2px solid #4caf50;">
+                        <strong style="color: #2e7d32; font-size: 12pt;">Possible discharge TOMORROW (Jan 14)</strong>
+                        <br><span style="font-size: 10pt;">Blood work early tomorrow AM → decision if ready to go home</span>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Assessment:</strong>
+                        <ul style="margin: 5px 0 0 15px; font-size: 10pt;">
+                            <li>Heart rate much better</li>
+                            <li>Lungs sound better than yesterday</li>
+                            <li>"Everything's looking really good"</li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin: 12px 0 5px 0;">Today's Plan:</h5>
+                    <table style="font-size: 10pt; width: 100%; border-collapse: collapse;">
+                        <tr style="background: #f5f5f5;"><td style="padding: 5px; font-weight: bold;">Lasix</td><td style="padding: 5px;">Switching to <strong>oral</strong> today. Considering 40mg or 60mg (home dose was 40mg). Reviewing trends before deciding.</td></tr>
+                        <tr><td style="padding: 5px; font-weight: bold;">Catheter</td><td style="padding: 5px;"><strong>Coming out today</strong>. Will measure first void + bladder scan to confirm emptying properly.</td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 5px; font-weight: bold;">Potassium</td><td style="padding: 5px;">Top up with 20mmol today (gave 80mmol yesterday). Expects K to stabilize on oral Lasix.</td></tr>
+                        <tr><td style="padding: 5px; font-weight: bold;">Digoxin</td><td style="padding: 5px;">0.125mg maintenance dose today</td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 5px; font-weight: bold;">Urine culture</td><td style="padding: 5px;">Should be back today — will confirm negative</td></tr>
+                    </table>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin: 12px 0;">
+                        <strong>About overnight fast HR episode:</strong>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">
+                            "Not concerning. With AFib, you might have brief episodes where HR goes faster. Meds just started — will take time for full effect. She was asymptomatic, just the number went up. I'm totally okay with that."
+                        </p>
+                    </div>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Oxygen guidance:</strong>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">
+                            "We don't use oxygen for shortness of breath — only if O2 level is actually low. Using oxygen when not low can actually be harmful. We want to keep it off."
+                        </p>
+                    </div>
+
+                    <div style="background: #f3e5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #9c27b0;">
+                        <strong>PRN Lasix at home (NEW teaching):</strong>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">
+                            If weight ↑ <strong>>2 lbs (~1kg) in 24 hours</strong> → take an extra Lasix tablet that day.
+                        </p>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">
+                            Helps prevent fluid buildup, may keep you out of hospital. Keep log of weights + extra pills for cardiologist to review.
+                        </p>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+                        <strong>Instructions for today:</strong>
+                        <ul style="margin: 5px 0 0 15px; font-size: 10pt;">
+                            <li><strong>Sit up a lot</strong> — not lying in bed. Helps lungs open up.</li>
+                            <li>No oxygen unless nurse checks and O2 is actually low</li>
+                        </ul>
+                    </div>
+
+                    <div class="staff">
+                        <strong>Nurse Practitioner:</strong> Brianna Malhotra
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Great news! Brianna says you might go home tomorrow if your blood test looks good in the morning! They're switching your water pill to a regular pill today and taking out the tube (catheter). She says your heart rate is much better and your lungs sound better. Today, try to sit up a lot — it helps your breathing. You're doing great!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 13, 11:20am - Leg Pain Update -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 13, 2026</div>
+                    <div class="time">11:20am</div>
+                    <div class="badge badge-info">SYMPTOM</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Leg Pain — Resolved</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Pain resolved</strong> — no leg pain today, including during physio walk at 9am
+                    </div>
+
+                    <ul style="font-size: 10pt;">
+                        <li><strong>Yesterday (Jan 12):</strong> Had leg pain while walking</li>
+                        <li><strong>Today (Jan 13):</strong> No pain, even with cane walk</li>
+                    </ul>
+
+                    <p style="font-size: 9pt; color: #666; margin-top: 10px;">
+                        <em>Note: Leg pain + bed rest could raise DVT concern, but she's on Apixaban (protective). Resolved pain is reassuring. Worth mentioning to team if recurs.</em>
+                    </p>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your leg pain from yesterday is gone — that's good! You walked with the physio this morning and no pain. Keep moving when they ask you to.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 13, 11:15am - Medication Review Discussion -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 13, 2026</div>
+                    <div class="time">11:15am</div>
+                    <div class="badge badge-info">MED REVIEW</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Family Medication Review — Questions for Team</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Andrew's research with AI assistance to prepare informed questions</em></p>
+
+                    <div style="background: #e3f2fd; padding: 12px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Question 1: ACE Inhibitor — Why not on one?</strong>
+                        <p style="font-size: 10pt; margin: 8px 0 0 0;">
+                            <strong>Answer:</strong> Likely not indicated because:
+                        </p>
+                        <ul style="font-size: 9pt; margin: 5px 0 0 15px;">
+                            <li>EF preserved (60-65%) — ACEi most beneficial in reduced EF</li>
+                            <li>BP too low — was 79/57, couldn't even increase beta blocker</li>
+                            <li>Primary problem is mechanical (valve) — ACEi doesn't fix that</li>
+                        </ul>
+                        <p style="font-size: 9pt; margin: 8px 0 0 0; font-style: italic;">
+                            → Ask team: "Is there a role for ACEi given severe MR, or is BP the limiting factor?"
+                        </p>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 12px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Question 2: Spironolactone — Should it be added?</strong>
+                        <p style="font-size: 10pt; margin: 8px 0 0 0;">
+                            <strong>Rationale:</strong> She keeps losing potassium on Lasix (was 2.9, needed 80mmol replacement)
+                        </p>
+                        <ul style="font-size: 9pt; margin: 5px 0 0 15px;">
+                            <li>Spironolactone is K-sparing (reduces supplement burden)</li>
+                            <li>Has mortality benefit in heart failure</li>
+                            <li>Low dose (12.5-25mg) usually well tolerated</li>
+                            <li>ADD to Lasix, not swap — different mechanisms</li>
+                        </ul>
+                        <p style="font-size: 9pt; margin: 8px 0 0 0; font-style: italic;">
+                            → Ask team: "Would low-dose spironolactone help with K retention and long-term benefit?"
+                        </p>
+                    </div>
+
+                    <div style="background: #fff3e0; padding: 12px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Question 3: Digoxin Timing — Could it have been started earlier?</strong>
+                        <p style="font-size: 10pt; margin: 8px 0 0 0;">
+                            <strong>Observation:</strong> HR was 100-130 for 5 days (Jan 7-11) while metoprolol was limited by low BP
+                        </p>
+                        <ul style="font-size: 9pt; margin: 5px 0 0 15px;">
+                            <li>Digoxin not added until Jan 12 (day 6)</li>
+                            <li>Within 24 hours of digoxin, HR now 70s</li>
+                            <li>Educational question, not accusatory</li>
+                        </ul>
+                        <p style="font-size: 9pt; margin: 8px 0 0 0; font-style: italic;">
+                            → Ask team: "In hindsight, could digoxin have been considered earlier given the persistent tachycardia?"
+                        </p>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+                        <strong style="font-size: 10pt;">Other meds considered but likely not needed:</strong>
+                        <ul style="font-size: 9pt; margin: 5px 0 0 15px;">
+                            <li><strong>Hydralazine:</strong> Afterload reduction, but also lowers BP — same limitation</li>
+                            <li><strong>Metolazone:</strong> Add-on diuretic if Lasix insufficient — diuresis seems adequate</li>
+                            <li><strong>Amiodarone:</strong> Rate/rhythm control but toxic side effects — digoxin working well</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 13, 11:05am - Lab Results -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 13, 2026</div>
+                    <div class="time">11:05am</div>
+                    <div class="badge badge-update">LAB RESULTS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Morning Labs — All Trending Well</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 11:05am Jan 13)</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Potassium: 3.6 mmol/L</strong> (was 2.9 → now 3.6)
+                        <br><span style="font-size: 9pt;">Normal range: 3.5-5.0 · Now in range! Target >4 with digoxin. 80mmol replacement worked.</span>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Hemoglobin: 107</strong> (was 103 → now 107)
+                        <br><span style="font-size: 9pt;">Trending UP — bleeding concern likely resolving. Pattern: 102→118→103→<strong>107↑</strong></span>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Troponin: 29 ng/L</strong> (was 50 Jan 8 → now 29)
+                        <br><span style="font-size: 9pt;">Trending DOWN — no ongoing cardiac injury. Expected post-procedure elevation resolving.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Creatinine: 88</strong> (was 84 → now 88)
+                        <br><span style="font-size: 9pt;">Normal range: 44-106 · Minor fluctuation, still great. Kidneys doing fine.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Glucose: 7.9 mmol/L</strong>
+                        <br><span style="font-size: 9pt;">Borderline high (normal <7.8) — likely stress/hospital response, not urgent concern.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your blood tests this morning look great! Your potassium is back to normal (the supplements worked). Your blood count went up a little (107 from 103) which means no more bleeding worries. Your heart enzyme is going down which is normal healing. Kidneys still doing well.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 13, 11am - Morning Update -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 13, 2026</div>
+                    <div class="time">11:00am</div>
+                    <div class="badge badge-update">PROGRESS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Day 7 Morning — Excellent Progress</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Heart Rate: 70s on telemetry</strong>
+                        <br><span style="font-size: 9pt;">Digoxin clearly working! Down from 100-130 pre-digoxin.</span>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Off oxygen again</strong>
+                        <br><span style="font-size: 9pt;">Removed this morning (was back on overnight due to 87-88% SpO2)</span>
+                    </div>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Physio Assessment:</strong>
+                        <ul style="margin: 5px 0 0 15px; font-size: 10pt;">
+                            <li>Walked <strong>1 lap with cane</strong> (upgraded from walker!)</li>
+                            <li>Physio advised: use walker when family visits (safety)</li>
+                        </ul>
+                    </div>
+
+                    <ul>
+                        <li>Subjectively feeling well</li>
+                    </ul>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Great morning! Your heart rate is in the 70s now — that's excellent and means the new medicine (Digoxin) is really working. You're off the oxygen again. And you walked a whole lap with just a cane today! The physio said you're doing well but use the walker when we visit just to be safe.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 8:20pm - Night Nurse Bero -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">8:20pm</div>
+                    <div class="badge badge-warning">VITALS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Night Nurse Assessment — Bero</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">BP: 118/78</strong> — much improved from 79/57 yesterday
+                        <br><strong>HR: 100</strong> — at target!
+                    </div>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c62828;">Oxygen back on</strong>
+                        <br><span style="font-size: 9pt;">SpO2 dropped to 87-88% on room air (needs to be >92%). Back on supplemental O2.</span>
+                    </div>
+
+                    <ul>
+                        <li>Mild swelling noted</li>
+                    </ul>
+
+                    <div style="background: #fff8e1; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px; border-left: 3px solid #ff9800;">
+                        <strong>Family note:</strong> Bero asked family for plan rather than reading clinical notes. Appeared less engaged than day shift. (Same pattern as Jan 10-11 nights.)
+                    </div>
+
+                    <div class="staff">
+                        <strong>Night Nurse:</strong> Bero
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your blood pressure is much better tonight (118/78 — great!). Your heart rate is 100 which is right at the goal. They put oxygen back on because your levels dipped a bit when you were breathing room air. This is normal — some days are better than others.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 3:45pm - Post-Digoxin Walk -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">3:45pm</div>
+                    <div class="badge badge-info">MOBILITY</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Walk After Digoxin — Improved HR Response</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <ul style="margin: 0;">
+                            <li>Walked <strong>12 minutes</strong> — double previous walk (6 min)</li>
+                            <li>Heart rate <strong>90s-110s</strong> — improved from 100-130 earlier</li>
+                            <li><strong>No adverse effects</strong> from digoxin or potassium</li>
+                        </ul>
+                    </div>
+
+                    <p style="font-size: 9pt; color: #666; margin-top: 10px;"><em>Post-digoxin 0.5mg IV load + 80mmol K. HR response to activity notably better than pre-digoxin walks. Good tolerance, no complications.</em></p>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Great job on the walk! You walked for 12 minutes today — twice as long as before! And your heart rate was better too (90s-110s instead of 100-130). The new medicine is helping!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 1:10pm - Confirmed Digoxin + K Dosing -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">1:10pm</div>
+                    <div class="badge badge-update">CONFIRMED</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Digoxin &amp; Potassium Dosing Confirmed</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Per NP Brianna Malhotra</em></p>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Digoxin:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li><strong>Load: 0.5mg IV</strong> today</li>
+                            <li><strong>Maintenance: 0.125mg</strong> daily after</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px;">
+                        <strong style="color: #2e7d32;">Potassium: 80 mmol total (2 × 40 mmol)</strong>
+                        <br><span style="font-size: 9pt;">Given with digoxin load. Expected to raise K from 2.9 to ~3.5-3.7. Will need recheck and possibly more to reach target &gt;4.</span>
+                    </div>
+
+                    <div class="staff">
+                        <strong>NP (Cardiac):</strong> Brianna Malhotra
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 12:15pm - Walked with Walker -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">12:15pm</div>
+                    <div class="badge badge-info">MOBILITY</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Walk in Hallway — Good Tolerance</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px;">
+                        <ul style="margin: 0;">
+                            <li>Walked with <strong>walker</strong></li>
+                            <li>Heart rate stayed <strong>100-120</strong> during walk</li>
+                            <li><strong>No oxygen needed</strong></li>
+                        </ul>
+                    </div>
+
+                    <p style="font-size: 9pt; color: #666; margin-top: 10px;"><em>Good functional tolerance — HR stayed reasonable with activity, no desaturation requiring O2.</em></p>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Great job going for a walk! Your heart rate stayed okay (100-120) and you didn't need oxygen. This is good progress!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 12:30pm - Digoxin Added -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">12:30pm</div>
+                    <div class="badge badge-update">MED CHANGE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>New Medication: Digoxin</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Per NP Brianna after speaking with Dr. Moustafa</em></p>
+
+                    <ul>
+                        <li><strong>Adding Digoxin IV today</strong> — higher dose to load</li>
+                        <li><strong>Then likely oral (PO)</strong> after</li>
+                    </ul>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #1565c0;">Why Digoxin?</strong>
+                        <br><span style="font-size: 9pt;">Helps control heart rate in AFib when beta blockers alone aren't enough. Her HR is still 100-130, target is &lt;100. Can't increase Metoprolol much due to low BP, so Digoxin is added as second agent.</span>
+                    </div>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #c62828;">⚠️ Safety Note: Low K + Digoxin</strong>
+                        <br><span style="font-size: 9pt;">Her K is 2.9 (target &gt;4 for digoxin). Low potassium increases digoxin toxicity risk. Conservative dosing recommended:</span>
+                        <ul style="font-size: 9pt; margin: 5px 0 0 15px;">
+                            <li>IV load: 0.125-0.25mg (not usual 0.5mg)</li>
+                            <li>Maintenance: 0.0625-0.125mg daily</li>
+                            <li>Needs concurrent IV potassium replacement</li>
+                            <li>Recheck K in 4-6 hours</li>
+                        </ul>
+                        <span style="font-size: 9pt; color: #c62828;"><strong>Confirm K replacement plan is aggressive.</strong></span>
+                    </div>
+
+                    <div class="staff">
+                        <strong>Via:</strong> NP Brianna Malhotra (per Dr. Moustafa)
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> They're adding a new heart medicine called Digoxin to help slow your heart rate down. You'll get it through the IV today, then as a pill later.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 11:45am - NP Brianna Malhotra Update -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">11:45am</div>
+                    <div class="badge badge-update">NP UPDATE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Cardiac NP Assessment — Brianna Malhotra</h4>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Hemoglobin:</strong> Not concerned yet — one reading, no other signs of bleeding
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Plan:</h5>
+                    <ul>
+                        <li><strong>Potassium:</strong> Acknowledges low K, will give supplemental potassium</li>
+                        <li><strong>Heart rate:</strong> Currently 100-130, aiming for &lt;100</li>
+                        <li><strong>Beta blocker:</strong> Unsure if given overnight/AM — checking</li>
+                        <li><strong>Urine culture:</strong> Results in 24 hours</li>
+                    </ul>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #2e7d32;">Good news — Off oxygen!</strong>
+                        <br><span style="font-size: 9pt;">O2 only given if oxygen levels low, not for shortness of breath. Being off is a positive sign.</span>
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Discharge Progression:</h5>
+                    <ul>
+                        <li><strong>Today:</strong> IV Lasix</li>
+                        <li><strong>Tomorrow:</strong> Potentially switch to oral Lasix + remove catheter</li>
+                    </ul>
+
+                    <div class="staff">
+                        <strong>Nurse Practitioner (Cardiac):</strong> Brianna Malhotra
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Good news — they're not worried about your blood levels right now. They'll give you more potassium. You're off the oxygen, which is great! They might switch your water pill to a regular pill tomorrow and take out the tube.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 10:36am - Formal Clinical Note -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">10:36am</div>
+                    <div class="badge badge-info">CLINICAL NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Cardiology Progress Note — NP Brianna Malhotra</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Assessment: 10:36am · Note signed: 3:11pm · Source: MyChart</em></p>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Vitals:</strong> HR 92, BP 97/66, SpO2 98% on 2L NP, RR 18, Temp 36.0°C, Wt 53.6kg
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Subjective — How Mom Feels:</strong>
+                        <ul style="margin: 5px 0 0 15px; font-size: 10pt;">
+                            <li><strong>Feels better today</strong> compared to yesterday</li>
+                            <li>Abdominal and back pain — <strong>improved</strong></li>
+                            <li>Intermittent chest pain with exertion — <strong>longstanding, same as baseline</strong>, resolves with rest</li>
+                            <li>Intermittent dizziness with exertion — also not new</li>
+                            <li>Slept with head of bed close to flat (good sign — no orthopnea)</li>
+                            <li>Denies palpitations, orthopnea, or PND</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong>Physical Exam:</strong>
+                        <ul style="margin: 5px 0 0 15px; font-size: 10pt;">
+                            <li>Neuro: Alert and oriented</li>
+                            <li>CV: S1/S2 present, <strong>3/6 systolic murmur</strong> at apex → axilla, JVP 4cm ASA</li>
+                            <li>Edema: Non-pitting to bilateral lower legs</li>
+                            <li>Resp: Fine crackles at bases (L worse than R) — <em>still some fluid</em></li>
+                        </ul>
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Assessment/Plan Summary:</h5>
+                    <ol style="font-size: 10pt; margin-left: 15px;">
+                        <li><strong>Coffee ground emesis:</strong> Resolved, continue PPI BID × 2 weeks, no GI follow-up needed</li>
+                        <li><strong>Severe MR:</strong> Lasix 80mg IV BID (reassess tomorrow for PO), K replaced with 80mmol, follow-up in TMT clinic for MVR discussion</li>
+                        <li><strong>AFib:</strong> HR 100-130 on tele, metoprolol 50mg BID (limited by BP), <strong>digoxin 0.5mg IV ×1 → 0.125mg PO daily</strong>, check digoxin level in 5-7 days</li>
+                        <li><strong>Disposition:</strong> <strong style="color: #1565c0;">Likely home once stable on PO Lasix and stable HR — possibly Wednesday</strong></li>
+                    </ol>
+
+                    <div class="staff">
+                        <strong>Nurse Practitioner (Cardiac):</strong> Brianna Malhotra
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> The doctors wrote up their full notes today. You're feeling better than yesterday — good! The chest tightness with walking is the same as before (not new). They might send you home on Wednesday if everything stays stable!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 12, 9:38am - Lab Results -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 12, 2026</div>
+                    <div class="time">9:38am</div>
+                    <div class="badge badge-warning">LAB RESULTS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Morning Lab Results — Mixed News</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 9:38am Jan 12)</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Creatinine: 84</strong> (was 94 → now 84)
+                        <br><span style="font-size: 9pt;">Normal range: 44-106 · Kidneys continuing to improve!</span>
+                    </div>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c62828;">Potassium: 2.9</strong> (was 3.3 → now 2.9)
+                        <br><span style="font-size: 9pt;">Normal range: 3.5-5.0 · Target: &gt;4 · <strong>DROPPED FURTHER</strong> despite replacement</span>
+                        <br><span style="font-size: 9pt; color: #c62828;">⚠️ Low K dangerous with AFib — expect increased K replacement</span>
+                    </div>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c62828;">Hemoglobin — DROPPED AGAIN AFTER RECOVERY</strong>
+                        <table style="font-size: 9pt; margin-top: 8px; width: 100%; border-collapse: collapse;">
+                            <tr style="background: #f5f5f5;"><th style="padding: 4px; text-align: left;">Date</th><th style="padding: 4px;">Hgb</th><th style="padding: 4px; text-align: left;">Context</th></tr>
+                            <tr><td style="padding: 3px;">Jan 7 5:26pm</td><td style="padding: 3px; text-align: center;">111</td><td style="padding: 3px; font-size: 8pt;">Procedure day</td></tr>
+                            <tr style="background: #ffebee;"><td style="padding: 3px;">Jan 8 6:48am</td><td style="padding: 3px; text-align: center; color: #c62828;"><strong>102</strong></td><td style="padding: 3px; font-size: 8pt;">Hematemesis nadir</td></tr>
+                            <tr style="background: #e8f5e9;"><td style="padding: 3px;">Jan 8 5:13pm</td><td style="padding: 3px; text-align: center; color: #2e7d32;">112</td><td style="padding: 3px; font-size: 8pt;">Recovered post-GI</td></tr>
+                            <tr><td style="padding: 3px;">Jan 9 6:04am</td><td style="padding: 3px; text-align: center;">111</td><td style="padding: 3px; font-size: 8pt;">Stable</td></tr>
+                            <tr style="background: #e8f5e9;"><td style="padding: 3px;">Jan 10 1:09pm</td><td style="padding: 3px; text-align: center; color: #2e7d32;"><strong>118</strong></td><td style="padding: 3px; font-size: 8pt;">Peak recovery</td></tr>
+                            <tr><td style="padding: 3px;">Jan 11 12:45pm</td><td style="padding: 3px; text-align: center;">115</td><td style="padding: 3px; font-size: 8pt;">Starting to drop</td></tr>
+                            <tr style="background: #ffebee;"><td style="padding: 3px;">Jan 12 9:22am</td><td style="padding: 3px; text-align: center; color: #c62828;"><strong>103</strong></td><td style="padding: 3px; font-size: 8pt;">Back to nadir level</td></tr>
+                        </table>
+                        <p style="font-size: 9pt; margin: 8px 0 0 0; color: #c62828;">
+                            <strong>⚠️ Pattern: Recovered 102→118, now dropped back to 103.</strong> This suggests new/recurrent bleeding, not continuous. On Apixaban. Worth asking team about GI reassessment.
+                        </p>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your kidneys are doing even better (84 is great!). Your potassium dropped a bit, so they'll give you more. Your blood count went down some — the doctors will keep watching this. It might be why you feel tired.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 8:50pm - Night Nurse Bero Update -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">8:50pm</div>
+                    <div class="badge badge-warning">VITALS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Night Nurse Assessment — Bero</h4>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #c62828;">BP: 79/57</strong> — very low
+                    </div>
+
+                    <ul>
+                        <li>Bero initially said <strong>no Metoprolol tonight</strong> due to low BP</li>
+                        <li>Said she would <strong>page doctor</strong></li>
+                        <li>Bero thinks she has <strong>UTI</strong> (urine specimen collected earlier)</li>
+                    </ul>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #e65100;">⚠️ Follow-up (learned Jan 12 via NP Brianna):</strong>
+                        <br><span style="font-size: 9pt;">They DID give Metoprolol 50mg that night AND in the morning, despite Bero's initial plan to hold. Unclear what happened after page.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>Note:</strong> Some contradiction between Bero's observations/plan vs. what Moustafa's notes show and what Brianna confirmed happened.
+                    </div>
+
+                    <div class="staff">
+                        <strong>Night Nurse:</strong> Bero
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 6:46pm - Dr. Moustafa Staff Weekend Note -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">6:46pm</div>
+                    <div class="badge badge-update">CLINICAL NOTE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Staff Weekend Note — Dr. Moustafa</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Source: MyChart (accessed 7:38pm Jan 11) · Assessment 6:46pm · Signed 6:52pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Status:</strong>
+                        "Asymptomatic, vitally compensated" — Transferred to ward today
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Labs:</h5>
+                    <ul>
+                        <li><strong>Creatinine: 96 → 94</strong> — still improving</li>
+                        <li><strong>Potassium: 3.3 → 3.3</strong> — replaced but holding same</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Telemetry:</h5>
+                    <ul>
+                        <li>In <strong>AFib with controlled ventricular response</strong></li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Assessment/Plan:</h5>
+
+                    <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin: 8px 0;">
+                        <strong>1. Post-TEER Hematemesis:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>On Apixaban (blood thinner)</li>
+                            <li>GI has seen — stable, no endoscopy needed</li>
+                            <li>Continue PPI twice daily × 2 weeks</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin: 8px 0;">
+                        <strong style="color: #2e7d32;">2. Mod-Severe MR — Reaching Euvolemia:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li><strong>Reaching euvolemia</strong> (normal fluid balance!)</li>
+                            <li>Continue Lasix 80 IV BID</li>
+                            <li>Consider switching to oral tomorrow based on volume/creatinine</li>
+                            <li>Home dose was 40mg PO once daily</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin: 8px 0;">
+                        <strong style="color: #e65100;">3. Atrial Fibrillation:</strong>
+                        <ul style="margin: 5px 0 0 15px;">
+                            <li>Diltiazem &amp; Amio infusions discontinued</li>
+                            <li>Still tachycardic — Metoprolol 50mg BID (per note)</li>
+                            <li>Better control today than yesterday</li>
+                            <li>Still gets tachycardic with mobilization</li>
+                            <li>Target: K &gt;4, Mg &gt;1</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 10px;"><em>"Case discussed in details with son, and answered all his questions."</em></p>
+
+                    <div class="staff">
+                        <strong>Physician:</strong> Dr. Amr Moustafa
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Great news — the doctor says your body is getting close to the right amount of fluid (no more extra water). Kidneys still improving. Heart rhythm is better controlled today than yesterday, though it still goes fast when you move around. They may switch your water pill from IV to a regular pill tomorrow.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 5:50pm - Pain Onset + Urine Specimen -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">5:50pm</div>
+                    <div class="badge badge-warning">SYMPTOM</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>New Pain + Urine Specimen Collected</h4>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #e65100;">New Symptom:</strong>
+                        Pain onset around dinner — <strong>lower back, right side</strong>
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Urine Concerns:</h5>
+                    <ul>
+                        <li>Nurse noted urine <strong>smelled</strong> when emptying catheter bag</li>
+                        <li><strong>Sediment</strong> observed in urine</li>
+                        <li>Specimen collected for analysis</li>
+                        <li>Results expected <strong>tomorrow (Jan 12)</strong></li>
+                    </ul>
+
+                    <div style="background: #ffebee; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #c62828;">Watch For:</strong> Lower back pain + smelly urine with sediment could indicate UTI or kidney involvement. Awaiting specimen results.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Pain Management:</h5>
+                    <ul>
+                        <li>Tylenol being brought for pain relief</li>
+                    </ul>
+
+                    <p style="font-size: 9pt; color: #666; margin-top: 10px;"><em>Note: Urine container auto-empties to bag — no overflow concern</em></p>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> You have some new pain in your lower back. The nurse is bringing Tylenol to help. They also noticed your urine looked a bit different, so they're testing it to make sure everything is okay. Results tomorrow.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 1:00pm - Dr. Moustafa Rounds -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">1:00pm</div>
+                    <div class="badge badge-update">PHYSICIAN</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Dr. Moustafa — Daily Rounds</h4>
+
+                    <h5 style="margin: 10px 0 5px 0;">Metoprolol Decision:</h5>
+                    <ul>
+                        <li><strong>Staying at 37.5mg BID</strong> (not increasing to 50mg yet)</li>
+                        <li>Reason: BP too low (systolic 90s, diastolic 60s)</li>
+                        <li>Don't want to hinder recovery — needs BP for movement/walking</li>
+                        <li>Will re-assess tomorrow</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">New: Voltaren Gel for Rib Pain</h5>
+                    <ul>
+                        <li>Starting Voltaren gel <strong>4x daily</strong> for rib pain</li>
+                        <li>Pain likely from being in bed too much</li>
+                        <li>Topical NSAID — no kidney/GI concern with topical form</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Labs &amp; Monitoring:</h5>
+                    <ul>
+                        <li>Waiting for creatinine results to assess Lasix dosing</li>
+                        <li>Andrew mentioned good urine output (~350ml/hr) — noted</li>
+                        <li>Urine container auto-flows to bag — just empty every shift</li>
+                    </ul>
+
+                    <div style="background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #1565c0;">Discharge Follow-Up (ACTION NEEDED):</strong>
+                        <ul style="margin: 5px 0 0 0;">
+                            <li><strong>Dr. Sy:</strong> 1 week post-discharge</li>
+                            <li><strong>Dr. Myers:</strong> 2-4 weeks post-discharge</li>
+                        </ul>
+                        <em style="font-size: 9pt;">Andrew to schedule these appointments</em>
+                    </div>
+
+                    <div class="staff">
+                        <strong>Physician:</strong> Dr. Moustafa (on service until Wednesday)
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> The doctor is keeping your heart medicine the same for now because your blood pressure is a bit low. They're giving you a cream for your rib pain (from lying down too much). You'll see Dr. Sy about 1 week after going home, and Dr. Myers 2-4 weeks after.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 12:56pm - Nurse Check-In -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">12:56pm</div>
+                    <div class="badge badge-update">VITALS</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Nurse Check-In — Vitals Update</h4>
+                    <ul>
+                        <li><strong>Heart rate: 120s</strong> — elevated (was 85 at 8pm last night)</li>
+                        <li><strong>Blood pressure: Low 90s systolic</strong> — still on lower side</li>
+                        <li><strong>Metoprolol:</strong> Confirmed given this morning (verifying dose)</li>
+                    </ul>
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #e65100;">Note:</strong> HR back up to 120s despite Metoprolol this morning. Was 85 last night, spiked to 140 night before. BP remains low 90s which may limit ability to increase Metoprolol.
+                    </div>
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your heart rate is a bit faster right now (120s). They gave you the heart medicine this morning. Blood pressure is still on the lower side.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 10:30-11:10am - Urine Output Observation -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">10:30am</div>
+                    <div class="badge badge-update">OBSERVATION</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Urine Output — Lasix Working Well</h4>
+                    <ul>
+                        <li><strong>10:30am:</strong> Urine collector at 200ml</li>
+                        <li><strong>11:10am:</strong> Urine collector at 400ml (+200ml in 40 min)</li>
+                        <li><strong>12:00pm:</strong> Urine collector at ~750ml (+350ml in 50 min)</li>
+                        <li><strong>Total: ~550ml in 90 minutes</strong> = ~365ml/hour average</li>
+                    </ul>
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                        <strong style="color: #2e7d32;">Above Target:</strong> Expected response to 80mg IV Lasix is 100-200ml/hour. She's averaging ~365ml/hour — excellent diuretic response. Body is clearing excess fluid well.
+                    </div>
+                    <div class="staff">
+                        <strong>Observed by:</strong> Andrew (photos on phone)
+                    </div>
+                    <div style="background: #e8f5e9; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your body is getting rid of the extra water — that's exactly what we want! The water pill (Lasix) is doing its job.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 11, 11:25am - Blood Work Done -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 11, 2026</div>
+                    <div class="time">11:25am</div>
+                    <div class="badge badge-info">LAB</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Blood Work Drawn</h4>
+                    <ul>
+                        <li>Routine blood work completed</li>
+                        <li>Results pending — likely checking K levels, creatinine, etc.</li>
+                    </ul>
+                    <div class="staff">
+                        <strong>Phlebotomy Technician:</strong> Anique Fraser
+                    </div>
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> They took some blood to check your levels. This is routine — they want to make sure your potassium and kidney numbers are good before you go home.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 10, 8:00pm - Night Nurse Update (Bero) -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">8:00pm</div>
+                    <div class="badge badge-update">NURSE UPDATE</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Night Nurse Assessment — Bero</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Night shift check-in around 8pm</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Overall Status:</strong>
+                        "Mostly doing good" — heart rate much improved from yesterday
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Vitals &amp; Labs:</h5>
+                    <ul>
+                        <li><strong>Heart rate: 85 at rest</strong> — good (was spiking to 140 at rest last night)</li>
+                        <li><strong>Blood pressure: 90-95 systolic</strong> — on the lower side</li>
+                        <li><strong>Blood glucose: 8.5</strong> (finger prick)</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Observations:</h5>
+                    <ul>
+                        <li><strong>Arm irritation:</strong> Likely from Amiodarone IV (now discontinued)</li>
+                    </ul>
+
+                    <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                        <strong style="color: #e65100;">Medication Note:</strong>
+                        May hold off on increasing Metoprolol due to low BP (90s systolic). Since HR is now controlled at 85, may not need the increase. Checking with physician.
+                    </div>
+
+                    <div class="staff">
+                        <strong>Night Nurse:</strong> Bero
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 8px 10px; margin-top: 10px; font-size: 9pt; border-radius: 3px;">
+                        <strong>For Mom:</strong> Your heart rate is much better tonight — 85 instead of 140. Blood pressure a bit low, so they might not increase your heart medicine. The rash on your arm is from the IV medicine they already stopped.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jan 10, 6:38pm - Why Fatigue Is Normal -->
+            <div class="timeline-entry">
+                <div class="timeline-date">
+                    <div class="date">Jan 10, 2026</div>
+                    <div class="time">6:38pm</div>
+                    <div class="badge badge-info">INFO</div>
+                </div>
+                <div class="timeline-content">
+                    <h4>Why Fatigue Is Normal After MitraClip</h4>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Mom feeling very tired — this is expected</em></p>
+
+                    <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <strong style="color: #2e7d32;">Bottom Line:</strong>
+                        Fatigue for days after MitraClip is completely normal. Recovery takes 4-6 weeks.
+                    </div>
+
+                    <h5 style="margin: 10px 0 5px 0;">Why She's So Tired:</h5>
+                    <ul>
+                        <li><strong>Anesthesia:</strong> Takes 3-7 days to fully clear, especially at age 75</li>
+                        <li><strong>Heart adjusting:</strong> Even "minimally invasive" procedures require healing</li>
+                        <li><strong>Volume overload:</strong> Carrying extra fluid is exhausting — Lasix is fixing this</li>
+                        <li><strong>Fast heart rate (AFib):</strong> HR 110-160 is like doing light cardio 24/7</li>
+                        <li><strong>Low potassium (3.3):</strong> Causes muscle weakness and fatigue</li>
+                        <li><strong>Hospital environment:</strong> Poor sleep, constant interruptions</li>
+                    </ul>
+
+                    <h5 style="margin: 10px 0 5px 0;">Typical Recovery Timeline:</h5>
+                    <ul>
+                        <li><strong>Week 1:</strong> Significant fatigue, rest most of the day</li>
+                        <li><strong>Weeks 2-4:</strong> Gradual improvement, short walks</li>
+                        <li><strong>4-6 weeks:</strong> Most patients back to baseline</li>
+                    </ul>
+                </div>
+                <div class="timeline-mom">
+                    <div class="mom-label">For Mom</div>
+                    <p>Feeling very tired is NORMAL. Your body went through a lot. The anesthesia takes days to leave your system. Your heart is adjusting. You'll feel better each week — most people feel like themselves again in 4-6 weeks. Rest is exactly what you need right now.</p>
+                </div>
+            </div>
+
             <!-- Jan 10, 5:01pm - Dr. Moustafa Staff Weekend Note -->
             <div class="timeline-entry">
                 <div class="timeline-date">
@@ -535,7 +1708,7 @@
                 </div>
             </div>
 
-            <!-- Jan 10, 4:45pm - Dr. Moustafa Update to Son -->
+            <!-- Jan 10, 4:45pm - Dr. Moustafa Update to Andrew -->
             <div class="timeline-entry">
                 <div class="timeline-date">
                     <div class="date">Jan 10, 2026</div>
@@ -544,7 +1717,7 @@
                 </div>
                 <div class="timeline-content">
                     <h4>Dr. Moustafa Update — Discharge Likely Monday</h4>
-                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Son spoke with Dr. Moustafa while mom was sleeping</em></p>
+                    <p style="font-size: 9pt; color: #666; margin-bottom: 8px;"><em>Andrew spoke with Dr. Moustafa while mom was sleeping</em></p>
 
                     <div style="background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
                         <strong style="color: #2e7d32;">Good News:</strong>
@@ -602,7 +1775,7 @@
                 </div>
             </div>
 
-            <!-- Jan 10, 1:50pm - Son Visit Update -->
+            <!-- Jan 10, 1:50pm - Andrew Visit Update -->
             <div class="timeline-entry">
                 <div class="timeline-date">
                     <div class="date">Jan 10, 2026</div>
@@ -610,7 +1783,7 @@
                     <div class="badge badge-update">VISIT</div>
                 </div>
                 <div class="timeline-content">
-                    <h4>Son Visit — Update from Nurse Michelle</h4>
+                    <h4>Andrew Visit — Update from Nurse Michelle</h4>
                     <ul>
                         <li><strong>Nurse today:</strong> Michelle (morning shift)</li>
                         <li><strong>Pain:</strong> Mom had some pain — Michelle put in an order for Tylenol (needs physician approval first)</li>
@@ -634,7 +1807,7 @@
                 </div>
                 <div class="timeline-mom">
                     <div class="mom-label">For Mom</div>
-                    <p>Son visited. You're peeing well — the water pill is working. Your heart is beating too fast (up to 160). They can't give you more heart medicine because it would make your blood pressure too low. No surgery is planned right now — Dr. Bowers will see you in 1 month to talk about options.</p>
+                    <p>Andrew visited. You're peeing well — the water pill is working. Your heart is beating too fast (up to 160). They can't give you more heart medicine because it would make your blood pressure too low. No surgery is planned right now — Dr. Bowers will see you in 1 month to talk about options.</p>
                 </div>
             </div>
 
@@ -672,7 +1845,7 @@
 
                     <div style="background: #fff3e0; padding: 10px; border-radius: 5px; margin-top: 10px;">
                         <strong style="color: #e65100;">Still No Mention of Angiogram:</strong>
-                        Son was told on Jan 8 that an angiogram might be done before discharge. Not mentioned in this note either. Ask the team.
+                        Andrew was told on Jan 8 that an angiogram might be done before discharge. Not mentioned in this note either. Ask the team.
                     </div>
 
                     <div class="staff">
@@ -988,7 +2161,7 @@
 
                     <div class="staff">
                         <strong>Written by:</strong> Dr. Nicolas Bowers, MD FRCPC (Interventional Cardiologist who performed the procedure)<br>
-                        <strong>Context:</strong> Met with patient, spoke with Son on phone
+                        <strong>Context:</strong> Met with patient, spoke with Andrew on phone
                     </div>
                 </div>
                 <div class="timeline-mom">
@@ -1043,7 +2216,7 @@
                     <ul>
                         <li>Lives alone at home</li>
                         <li>Husband passed away 2 years ago</li>
-                        <li>Son (Son) helps with doctor's appointments, otherwise independent</li>
+                        <li>Son (Andrew) helps with doctor's appointments, otherwise independent</li>
                         <li><strong>Considering more supports at home post-admission</strong></li>
                         <li>Non-smoker, no drugs, minimal alcohol (celebrations only)</li>
                     </ul>
@@ -1116,7 +2289,7 @@
                     </ul>
 
                     <div class="staff">
-                        <strong>Signed by:</strong> Dr. Son Czarnecki (TMT Staff)
+                        <strong>Signed by:</strong> Dr. Andrew Czarnecki (TMT Staff)
                     </div>
                 </div>
                 <div class="timeline-mom">
@@ -1204,7 +2377,7 @@
                     <h4>Doctors Rounds — NOT Going Home Next Couple Days</h4>
                     <ul>
                         <li><strong>"Water in her lungs"</strong> — pulmonary edema (fluid backup from heart failure)</li>
-                        <li>Mom called Son at 10:30am with this update</li>
+                        <li>Mom called Andrew at 10:30am with this update</li>
                         <li>Extended monitoring required</li>
                         <li>Nurse removing some lines/tubes so she can sit up and move</li>
                         <li><em>Question to ask: How was this detected? (X-ray? Physical exam?)</em></li>
@@ -1226,17 +2399,17 @@
                 <div class="timeline-content">
                     <h4>Morning Check-In — Eating Breakfast</h4>
                     <ul>
-                        <li>Son called mom around 10am</li>
+                        <li>Andrew called mom around 10am</li>
                         <li><strong>Breakfast:</strong> Oatmeal + coffee</li>
                         <li>Has a Chinese nurse today</li>
                         <li>Someone mentioned possible discharge today (but mom lacks clarity — take with filter)</li>
-                        <li>No physio yet — Son may help with movement when he arrives</li>
+                        <li>No physio yet — Andrew may help with movement when he arrives</li>
                         <li><strong>To do:</strong> Set up MyChart access (needs MRN or health card # from hospital)</li>
                     </ul>
                 </div>
                 <div class="timeline-mom">
                     <div class="mom-label">For Mom</div>
-                    <p>You had breakfast and you're feeling okay. Son will visit later.</p>
+                    <p>You had breakfast and you're feeling okay. Andrew will visit later.</p>
                 </div>
             </div>
 
@@ -1251,13 +2424,13 @@
                     <h4>Sleep Disruption — Nurse Station Noise</h4>
                     <ul>
                         <li>Nurses loud at station, hard for mom to sleep</li>
-                        <li>Son put in ear plugs for her</li>
+                        <li>Andrew put in ear plugs for her</li>
                         <li><em>Lesson: Bring ear plugs for future hospital stays</em></li>
                     </ul>
                 </div>
                 <div class="timeline-mom">
                     <div class="mom-label">For Mom</div>
-                    <p>Noisy at night. Son brought ear plugs. Try to rest.</p>
+                    <p>Noisy at night. Andrew brought ear plugs. Try to rest.</p>
                 </div>
             </div>
 
@@ -1317,7 +2490,7 @@
                         <li><strong>Gastroenterologist (this morning):</strong> No scope needed</li>
                         <li><strong>Note:</strong> Dr. Bowers did not read GI notes before his 3:45pm call</li>
                         <li><strong>Lunch:</strong> Had a little bit of food</li>
-                        <li><strong>Dinner (6:16pm):</strong> Congee (brought by Son)</li>
+                        <li><strong>Dinner (6:16pm):</strong> Congee (brought by Andrew)</li>
                         <li><strong>No nausea</strong> after eating</li>
                     </ul>
                     <div class="staff">
@@ -1326,7 +2499,7 @@
                 </div>
                 <div class="timeline-mom">
                     <div class="mom-label">For Mom</div>
-                    <p>Great news! No stomach procedure needed. You're eating and keeping food down. Son brought congee.</p>
+                    <p>Great news! No stomach procedure needed. You're eating and keeping food down. Andrew brought congee.</p>
                 </div>
             </div>
 
@@ -1374,12 +2547,12 @@
                         <li>Requires additional monitoring</li>
                         <li>Investigating whether vomiting was GI bleeding</li>
                         <li>Physician communication unclear</li>
-                        <li>Son heading to hospital to clarify</li>
+                        <li>Andrew heading to hospital to clarify</li>
                     </ul>
                 </div>
                 <div class="timeline-mom">
                     <div class="mom-label">For Mom</div>
-                    <p>You can't go home yet. They want to check on your stomach first. Son is coming to talk to the doctors.</p>
+                    <p>You can't go home yet. They want to check on your stomach first. Andrew is coming to talk to the doctors.</p>
                 </div>
             </div>
 
@@ -1579,466 +2752,810 @@
         </h2>
 
         <div style="background: #f3e5f5; padding: 20px; margin: 20px; border-radius: 10px;">
-            <p style="font-size: 14pt; line-height: 1.9; margin: 0;">
+            <p class="mom-text">
                 <strong>Mom, this section is just for you.</strong>
             </p>
-            <p style="font-size: 14pt; line-height: 1.9; margin: 15px 0 0 0;">
+            <p class="mom-text">
                 It tells the story of what the doctors found and did, starting from the beginning.
             </p>
-            <p style="font-size: 14pt; line-height: 1.9; margin: 15px 0 0 0; color: #7b1fa2;">
-                Read it slowly. Ask Son if anything is confusing.
+            <p class="mom-text" style="color: #7b1fa2;">
+                Read it slowly. Ask Andrew if anything is confusing.
             </p>
         </div>
 
         <div style="padding: 25px;">
 
             <!-- 1. Sept 3, 2025 -->
-            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">1</div>
+            <div class="mom-entry" style="background: #fafafa; border: 1px solid #ddd;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #9c27b0; color: #fff;">1</div>
                     <div>
-                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">September 3, 2025</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">When They Found the Problem</div>
+                        <div class="mom-title-date" style="color: #9c27b0;">September 3, 2025</div>
+                        <div class="mom-title-main">When They Found the Problem</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     You went to see a heart doctor because you were feeling short of breath.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     They did an ultrasound of your heart and found <strong>two problems:</strong>
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #9c27b0;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #9c27b0;">
+                    <p class="mom-text">
                         <strong>Problem 1:</strong> A valve in your heart isn't closing properly. When your heart pumps, some blood leaks backwards. This is called a "leaky valve."
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                    <p class="mom-text">
                         <strong>Problem 2:</strong> Your heart rhythm is irregular — it beats fast and out of rhythm. This is called "AFib."
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     Because this was serious, they sent you to the hospital right away.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     They started you on <strong>two important medicines:</strong> a blood thinner to prevent strokes, and a water pill to help get rid of extra fluid.
                 </p>
             </div>
 
             <!-- 2. Oct-Nov 2025 -->
-            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">2</div>
+            <div class="mom-entry" style="background: #fafafa; border: 1px solid #ddd;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #9c27b0; color: #fff;">2</div>
                     <div>
-                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">October – November 2025</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Getting Ready for the Procedure</div>
+                        <div class="mom-title-date" style="color: #9c27b0;">October – November 2025</div>
+                        <div class="mom-title-main">Getting Ready for the Procedure</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     The doctors did several tests to learn more about your heart and plan how to fix it:
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 0;">
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
                         <strong>October 16:</strong> A special ultrasound with a camera down your throat to see the valve up close.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         <strong>October 24:</strong> Another heart ultrasound from outside your chest.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         <strong>November 26:</strong> A test where they put a thin tube through your leg to look at your heart arteries and measure pressures.
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #e8f5e9;">
                     <strong>Good news from these tests:</strong> Your heart was healthy enough to try a procedure called "MitraClip" to fix the leaky valve — without needing to open your chest.
                 </p>
             </div>
 
             <!-- 3. Jan 7, 2026 - The Procedure -->
-            <div style="background: #fff5f5; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #e53935;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #e53935; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">3</div>
+            <div class="mom-entry" style="background: #fff5f5; border: 2px solid #e53935;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #e53935; color: #fff;">3</div>
                     <div>
-                        <div style="font-size: 12pt; color: #c62828; font-weight: 600;">January 7, 2026</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">The Clip Procedure</div>
+                        <div class="mom-title-date" style="color: #c62828;">January 7, 2026</div>
+                        <div class="mom-title-main">The Clip Procedure</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     This was the day of your procedure. The doctors put you to sleep and placed a small clip on your valve to help it close better.
                 </p>
 
-                <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #ffebee;">
+                    <p class="mom-text">
                         <strong>What happened:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         At first, the clip worked perfectly — the leak was almost gone!
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         But then the clip popped open. The leak came back.
                     </p>
                 </div>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #1976d2;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #1976d2;">
+                    <p class="mom-text">
                         <strong>This was NOT your fault.</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The clip device itself had a problem. The company that makes it is investigating.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         Your heart is the same as before — not worse.
                     </p>
                 </div>
             </div>
 
             <!-- 4. Jan 7 Evening - Vomiting -->
-            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">4</div>
+            <div class="mom-entry" style="background: #fafafa; border: 1px solid #ddd;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #ff9800; color: #fff;">4</div>
                     <div>
-                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 7, 2026 — Evening</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">After the Procedure — You Got Sick</div>
+                        <div class="mom-title-date" style="color: #e65100;">January 7, 2026 — Evening</div>
+                        <div class="mom-title-main">After the Procedure — You Got Sick</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     After waking up, you vomited brown stuff. This worried the doctors.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     They did a CT scan to check if anything was hurt inside.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #e8f5e9;">
                     <strong>Good news:</strong> The scans showed nothing was damaged. You were okay.
                 </p>
             </div>
 
             <!-- 5. Jan 8 - GI and Dr. Bowers -->
-            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">5</div>
+            <div class="mom-entry" style="background: #fafafa; border: 1px solid #ddd;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">5</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 8, 2026</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Doctors Explained Everything</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 8, 2026</div>
+                        <div class="mom-title-main">Doctors Explained Everything</div>
                     </div>
                 </div>
 
-                <div style="background: #e8f5e9; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #e8f5e9;">
+                    <p class="mom-text">
                         <strong>The stomach doctors said:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The vomiting was just from the tube they put down your throat during the procedure. It scratched your throat a little. NOT dangerous bleeding.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         You don't need any more stomach tests. Just take a stomach pill twice a day for 2 weeks.
                     </p>
                 </div>
 
-                <div style="background: #e3f2fd; padding: 20px; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #e3f2fd;">
+                    <p class="mom-text">
                         <strong>Dr. Bowers (your clip doctor) said:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The clip worked at first, then popped open. It was a device problem.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         He will see you again in 1 month to talk about what to do next. One option is open heart surgery to replace the valve.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0; font-style: italic;">
+                    <p class="mom-text" style="font-style: italic;">
                         You don't need to decide anything now. Focus on resting.
                     </p>
                 </div>
             </div>
 
             <!-- 6. Jan 8 - Echo -->
-            <div style="background: #fafafa; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ddd;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #9c27b0; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">6</div>
+            <div class="mom-entry" style="background: #fafafa; border: 1px solid #ddd;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #9c27b0; color: #fff;">6</div>
                     <div>
-                        <div style="font-size: 12pt; color: #9c27b0; font-weight: 600;">January 8, 2026</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Heart Ultrasound Results</div>
+                        <div class="mom-title-date" style="color: #9c27b0;">January 8, 2026</div>
+                        <div class="mom-title-main">Heart Ultrasound Results</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #e8f5e9;">
                     <strong>Good news:</strong> Your heart muscle is strong! It's pumping at 61%, which is normal and healthy.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     The valve is still leaking (same as before), but your heart muscle is working well.
                 </p>
             </div>
 
             <!-- 7. Jan 9 - Fluid and Kidneys -->
-            <div style="background: #fff8e1; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 1px solid #ffcc80;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">7</div>
+            <div class="mom-entry" style="background: #fff8e1; border: 1px solid #ffcc80;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #ff9800; color: #fff;">7</div>
                     <div>
-                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 9, 2026</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Too Much Fluid — Stronger Water Pills</div>
+                        <div class="mom-title-date" style="color: #e65100;">January 9, 2026</div>
+                        <div class="mom-title-main">Too Much Fluid — Stronger Water Pills</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     The doctors found you have too much water in your body. It's backing up into your lungs.
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
                         <strong>What they did:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         • Gave you a stronger water pill (80mg twice a day instead of 40mg once)
                     </p>
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 10px 0 0 0;">
+                    <p class="mom-text">
                         • Changed your heart pill to a new one called Metoprolol
                     </p>
-                    <p style="font-size: 14pt; line-height: 2.2; margin: 10px 0 0 0;">
+                    <p class="mom-text">
                         • Put your blood thinner back on
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     <strong>You will pee a lot.</strong> That's good! It means the extra water is leaving your body.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff3e0; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #fff3e0;">
                     <strong>One thing they're watching:</strong> Your kidney number went up a bit. This is probably from the dye they used during the procedure. It usually gets better on its own.
                 </p>
             </div>
 
             <!-- 8. Jan 9 - Out of ICU -->
-            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">8</div>
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">8</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 9, 2026 — Afternoon</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Good News — Moved Out of ICU!</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 9, 2026 — Afternoon</div>
+                        <div class="mom-title-main">Good News — Moved Out of ICU!</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     You were moved from intensive care to a regular hospital room.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     <strong>This is a good sign.</strong> It means you're stable and don't need as much monitoring.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     <strong>Your new room:</strong> D347, Bed 2
                 </p>
             </div>
 
             <!-- 9. Jan 9 - Stable -->
-            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">9</div>
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">9</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 9, 2026 — Evening</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Heart Doctor Says You're Stable</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 9, 2026 — Evening</div>
+                        <div class="mom-title-main">Heart Doctor Says You're Stable</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     Dr. Moustafa checked on you and said you are <strong>"stable"</strong> — not showing any worrying symptoms.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     Your heart rhythm is under control. Keep taking your medicines and resting.
                 </p>
             </div>
 
-            <!-- 10. Jan 10 - Son Visit -->
-            <div style="background: #fff5f5; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #ff9800;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #ff9800; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">10</div>
+            <!-- 10. Jan 10 - Andrew Visit -->
+            <div class="mom-entry" style="background: #fff5f5; border: 2px solid #ff9800;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #ff9800; color: #fff;">10</div>
                     <div>
-                        <div style="font-size: 12pt; color: #e65100; font-weight: 600;">January 10, 2026 — Afternoon</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Son Visited — Heart Rate Is Too Fast</div>
+                        <div class="mom-title-date" style="color: #e65100;">January 10, 2026 — Afternoon</div>
+                        <div class="mom-title-main">Andrew Visited — Heart Rate Is Too Fast</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
-                    Son came to visit around 1pm. Your nurse today is Michelle.
+                <p class="mom-text">
+                    Andrew came to visit around 1pm. Your nurse today is Michelle.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #e8f5e9;">
                     <strong>Good news:</strong> You're peeing well! The water pill is working — the extra fluid is leaving your body.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     You had some pain. Michelle is getting Tylenol approved by the doctor for you.
                 </p>
 
-                <div style="background: #ffebee; padding: 20px; margin: 20px 0 0 0; border-radius: 8px; border-left: 5px solid #c62828;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #ffebee; border-left: 5px solid #c62828;">
+                    <p class="mom-text">
                         <strong style="color: #c62828;">Your heart is beating too fast — up to 160 beats per minute.</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The medicine (Metoprolol) isn't slowing it down enough.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         They can't give you more of that medicine because it would make your blood pressure drop too low.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The doctors are working on finding the right balance.
                     </p>
                 </div>
 
-                <div style="background: #e3f2fd; padding: 20px; margin: 20px 0 0 0; border-radius: 8px;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #e3f2fd;">
+                    <p class="mom-text">
                         <strong>Note on the whiteboard:</strong> "Waiting for surgery"
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         The nurse mentioned this, but it might be a misunderstanding. Dr. Bowers said you would come back in <strong>1 month</strong> to talk about surgery options. No surgery is planned right now — just recovery first.
                     </p>
                 </div>
             </div>
 
             <!-- 11. Jan 10 - Clarified with Doctor -->
-            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">11</div>
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">11</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Later That Day</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Good News — The Nurse Checked with the Doctor</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 10, 2026 — Later That Day</div>
+                        <div class="mom-title-main">Good News — The Nurse Checked with the Doctor</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     Your nurse Michelle asked Dr. Moustafa to explain what's happening.
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
                         <strong style="color: #2e7d32;">The doctor confirmed:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         Right now is "medication management" — they're working on getting your medicines right.
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         <strong>No surgery is planned right now.</strong> That will be discussed later at your follow-up.
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
                     <strong>Also:</strong> You got Tylenol for your pain, and potassium because your levels were a bit low.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     This is good news — focus on resting and letting the medicines do their job.
                 </p>
             </div>
 
             <!-- 12. Jan 10 - Dr. Moustafa: Going Home Monday -->
-            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 3px solid #4caf50;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">12</div>
+            <div class="mom-entry" style="background: #e8f5e9; border: 3px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">12</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Late Afternoon</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">Great News from the Doctor!</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 10, 2026 — Late Afternoon</div>
+                        <div class="mom-title-main">Great News from the Doctor!</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
-                    Son talked to Dr. Moustafa while you were sleeping.
+                <p class="mom-text">
+                    Andrew talked to Dr. Moustafa while you were sleeping.
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
-                    <p style="font-size: 16pt; line-height: 2; margin: 0; color: #2e7d32;">
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #4caf50;">
+                    <p class="mom-text" style="color: #2e7d32;">
                         <strong>Two pieces of good news:</strong>
                     </p>
-                    <p style="font-size: 15pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         1. You probably <strong>DON'T need surgery</strong> before going home.
                     </p>
-                    <p style="font-size: 15pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         2. You could go home as early as <strong>Monday</strong>!
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     They're increasing your heart medicine to help slow your heart rate down.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
                     <strong>About being short of breath:</strong> This is normal right now. Your body has been through a lot. It takes time to recover.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; font-weight: bold; color: #2e7d32;">
+                <p class="mom-text" style="font-weight: bold; color: #2e7d32;">
                     You're doing well. Keep resting.
                 </p>
             </div>
 
             <!-- 13. Jan 10 - Official Doctor's Note -->
-            <div style="background: #e8f5e9; padding: 25px; margin-bottom: 30px; border-radius: 12px; border: 2px solid #4caf50;">
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <div style="background: #4caf50; color: #fff; font-size: 16pt; font-weight: bold; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">13</div>
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">13</div>
                     <div>
-                        <div style="font-size: 12pt; color: #2e7d32; font-weight: 600;">January 10, 2026 — Evening</div>
-                        <div style="font-size: 16pt; font-weight: bold; color: #333;">The Doctor Wrote Everything Down</div>
+                        <div class="mom-title-date" style="color: #2e7d32;">January 10, 2026 — Evening</div>
+                        <div class="mom-title-main">The Doctor Wrote Everything Down</div>
                     </div>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <p class="mom-text">
                     Dr. Moustafa wrote an official note about how you're doing.
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 5px solid #4caf50;">
-                    <p style="font-size: 14pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
                         <strong style="color: #2e7d32;">Good things:</strong>
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 15px 0 0 0;">
+                    <p class="mom-text">
                         • Your kidney number got better (96, down from 120)
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 10px 0 0 0;">
+                    <p class="mom-text">
                         • They stopped two IV medicines — you don't need them anymore
                     </p>
-                    <p style="font-size: 14pt; line-height: 2; margin: 10px 0 0 0;">
+                    <p class="mom-text">
                         • You are "stable" with no worrying symptoms
                     </p>
                 </div>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     <strong>Your heart pill (Metoprolol) was increased</strong> — now 50mg twice a day instead of 37.5mg. This will help slow your heart rate.
                 </p>
 
-                <p style="font-size: 14pt; line-height: 2; margin: 20px 0 0 0; background: #fff3e0; padding: 15px; border-radius: 8px;">
+                <p class="mom-text mom-box-highlight" style="background: #fff3e0;">
                     Your potassium is still a bit low (3.3). They want it above 4. They're giving you potassium to bring it up.
                 </p>
             </div>
 
-            <!-- IMPORTANT REMINDER -->
-            <div style="background: #ffebee; border: 3px solid #c62828; padding: 25px; border-radius: 12px; margin-top: 40px;">
-                <h3 style="margin: 0 0 15px 0; color: #c62828; font-size: 18pt;">⚠️ VERY IMPORTANT</h3>
+            <!-- 14. Jan 10 - Why You Feel So Tired -->
+            <div class="mom-entry" style="background: #e3f2fd; border: 2px solid #1976d2;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #1976d2; color: #fff;">14</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #1565c0;">January 10, 2026 — Evening</div>
+                        <div class="mom-title-main">Why You Feel So Tired</div>
+                    </div>
+                </div>
 
-                <p style="font-size: 15pt; line-height: 2; margin: 0;">
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    <strong>Feeling very tired is NORMAL.</strong> This is expected after what you went through.
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>Why you're so tired:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • The sleep medicine (anesthesia) takes days to leave your body
+                    </p>
+                    <p class="mom-text">
+                        • Your heart is healing and adjusting
+                    </p>
+                    <p class="mom-text">
+                        • Your body is getting rid of extra water
+                    </p>
+                    <p class="mom-text">
+                        • It's hard to sleep well in a hospital
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #e8f5e9; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">You will feel better each week.</strong>
+                    </p>
+                    <p class="mom-text">
+                        Most people feel like themselves again in <strong>4-6 weeks</strong>.
+                    </p>
+                    <p class="mom-text">
+                        Right now, <strong>rest is exactly what your body needs</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 15. Jan 10 - Night Nurse Good News -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">15</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 10, 2026 — Night</div>
+                        <div class="mom-title-main">Good News From the Night Nurse</div>
+                    </div>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    <strong>Your heart rate is MUCH better tonight!</strong>
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>Tonight:</strong> Your heart rate is <strong>85 beats per minute</strong> at rest.
+                    </p>
+                    <p class="mom-text">
+                        <strong>Last night:</strong> Your heart rate was going up to <strong>140 at rest</strong>.
+                    </p>
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">85 is a good, normal number!</strong>
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #fff3e0; border-left: 5px solid #ff9800;">
+                    <p class="mom-text">
+                        <strong>About your arm irritation:</strong> The rash is from the IV medicine (Amiodarone) that they already stopped. It will get better.
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #e8f5e9; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">The nurse said you are "mostly doing good."</strong>
+                    </p>
+                    <p class="mom-text">
+                        Blood sugar and other numbers look fine. Keep resting!
+                    </p>
+                </div>
+            </div>
+
+            <!-- 16. Jan 11 - Blood Work Done -->
+            <div class="mom-entry" style="background: #e3f2fd; border: 2px solid #1976d2;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #1976d2; color: #fff;">16</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #1565c0;">January 11, 2026 — Morning</div>
+                        <div class="mom-title-main">Blood Work Done</div>
+                    </div>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    They took some blood this morning to check your levels.
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        This is <strong>routine</strong> — they want to make sure your potassium and kidney numbers are good before you go home.
+                    </p>
+                    <p class="mom-text">
+                        We'll know the results soon.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 17. Jan 11 - Fluid Balance Improving -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">17</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 11, 2026 — Evening</div>
+                        <div class="mom-title-main">Your Body Is Getting Rid of Extra Water</div>
+                    </div>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    <strong>The doctor says you are "reaching euvolemia"</strong> — that means the extra water in your body is going away!
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>This is very good news.</strong>
+                    </p>
+                    <p class="mom-text">
+                        • Your kidneys are still getting better (creatinine went from 96 to 94)
+                    </p>
+                    <p class="mom-text">
+                        • The water pill (Lasix) is working well
+                    </p>
+                    <p class="mom-text">
+                        • They may switch from IV to a regular pill tomorrow
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #e8f5e9; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">Your heart rhythm is also better controlled today than yesterday.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 18. Jan 12 - Off Oxygen + Progress -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">18</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 12, 2026 — Late Morning</div>
+                        <div class="mom-title-main">Good Progress Today</div>
+                    </div>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    <strong>You are off the oxygen!</strong> This is a good sign.
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        The nurse practitioner came to check on you. Here's the update:
+                    </p>
+                    <p class="mom-text">
+                        • They're <strong>not worried</strong> about your blood levels right now
+                    </p>
+                    <p class="mom-text">
+                        • They'll give you more <strong>potassium</strong>
+                    </p>
+                    <p class="mom-text">
+                        • Your <strong>kidneys are doing great</strong>
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #e8f5e9; border-left: 5px solid #4caf50;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">Tomorrow they might:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • Switch your water pill from IV to a regular pill
+                    </p>
+                    <p class="mom-text">
+                        • Take out the catheter (the tube)
+                    </p>
+                    <p class="mom-text">
+                        <strong>These are steps toward going home!</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 19. Jan 12 Afternoon - Post-Digoxin Walk -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">19</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 12, 2026 — Afternoon</div>
+                        <div class="mom-title-main">Your Best Walk Yet!</div>
+                    </div>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #fff;">
+                    <strong>You walked for 12 minutes today!</strong> That's twice as long as your last walk.
+                </p>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>More good news:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • Your heart rate was <strong>better</strong> during the walk — 90s to 110s
+                    </p>
+                    <p class="mom-text">
+                        • The new medicine (Digoxin) they gave you is helping
+                    </p>
+                    <p class="mom-text">
+                        • No bad reactions to any of the medicines
+                    </p>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #c8e6c9;">
+                    <strong style="color: #2e7d32;">This is excellent progress!</strong> Keep resting and doing your walks when the nurses ask.
+                </p>
+            </div>
+
+            <!-- 20. Jan 12 Evening - Mixed Update -->
+            <div class="mom-entry" style="background: #fff3e0; border: 2px solid #ff9800;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #ff9800; color: #fff;">20</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #e65100;">January 12, 2026 — Evening</div>
+                        <div class="mom-title-main">Evening Check — Good and Not-So-Good</div>
+                    </div>
+                </div>
+
+                <div class="mom-box" style="background: #e8f5e9;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">Good news:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • Your <strong>blood pressure is much better</strong> — 118/78 (great!)
+                    </p>
+                    <p class="mom-text">
+                        • Your <strong>heart rate is 100</strong> — right at the goal!
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #fff; border-left: 5px solid #ff9800;">
+                    <p class="mom-text">
+                        <strong>Small step back:</strong> They put the oxygen back on tonight.
+                    </p>
+                    <p class="mom-text">
+                        Your oxygen levels dipped when breathing room air. This is normal — some days are better than others.
+                    </p>
+                    <p class="mom-text" style="font-style: italic;">
+                        The important thing is your heart is doing better. The oxygen is just helping while your body adjusts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 21. Jan 13 Morning - Great Progress -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">21</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 13, 2026 — Morning</div>
+                        <div class="mom-title-main">Great News This Morning!</div>
+                    </div>
+                </div>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong style="color: #2e7d32;">Your heart rate is in the 70s now!</strong>
+                    </p>
+                    <p class="mom-text">
+                        This is excellent. The new medicine (Digoxin) is really working. Before, your heart was beating 100-130 times per minute. Now it's down to 70s — much better!
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>More good news:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • You're <strong>off the oxygen again</strong>
+                    </p>
+                    <p class="mom-text">
+                        • The physio came and you walked <strong>a whole lap with just a cane!</strong>
+                    </p>
+                    <p class="mom-text">
+                        • You're feeling well
+                    </p>
+                </div>
+
+                <p class="mom-text mom-box-highlight" style="background: #c8e6c9;">
+                    <strong style="color: #2e7d32;">You're getting stronger every day!</strong> The physio said use the walker when family visits (just to be extra safe), but you did great with the cane.
+                </p>
+            </div>
+
+            <!-- 22. Jan 13 - Brianna Update & Possible Discharge -->
+            <div class="mom-entry" style="background: #e8f5e9; border: 3px solid #4caf50;">
+                <div class="mom-header">
+                    <div class="mom-number" style="background: #4caf50; color: #fff;">22</div>
+                    <div>
+                        <div class="mom-title-date" style="color: #388e3c;">January 13, 2026 — Late Morning</div>
+                        <div class="mom-title-main">You Might Go Home Tomorrow!</div>
+                    </div>
+                </div>
+
+                <div class="mom-box" style="background: #fff; border: 2px solid #4caf50;">
+                    <p class="mom-text" style="color: #2e7d32;">
+                        <strong>The nurse practitioner (Brianna) came to see you and said everything looks really good!</strong>
+                    </p>
+                    <p class="mom-text">
+                        If your blood test tomorrow morning looks good, <strong>you might go home tomorrow!</strong>
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
+                        <strong>What's happening today:</strong>
+                    </p>
+                    <p class="mom-text">
+                        • They're switching your water pill to a <strong>regular pill</strong> (not IV anymore)
+                    </p>
+                    <p class="mom-text">
+                        • They're taking out the <strong>catheter</strong> (the tube)
+                    </p>
+                    <p class="mom-text">
+                        • Your heart rate is much better
+                    </p>
+                    <p class="mom-text">
+                        • Your lungs sound better
+                    </p>
+                </div>
+
+                <div class="mom-box" style="background: #fff3e0; border-left: 5px solid #ff9800;">
+                    <p class="mom-text">
+                        <strong>Important for today:</strong> Try to <strong>sit up a lot</strong> — not lying down too much. Sitting up helps your lungs breathe better.
+                    </p>
+                </div>
+            </div>
+
+            <!-- IMPORTANT REMINDER -->
+            <div class="mom-entry" style="background: #ffebee; border: 3px solid #c62828; margin-top: 40px;">
+                <h3 style="margin: 0 0 15px 0; color: #c62828; font-size: 18pt;">VERY IMPORTANT</h3>
+
+                <p class="mom-text">
                     <strong>Before ANY dental work</strong> — cleaning, fillings, anything — you MUST take antibiotics first.
                 </p>
 
-                <p style="font-size: 15pt; line-height: 2; margin: 20px 0 0 0;">
+                <p class="mom-text">
                     This is because you have clips in your heart. Bacteria from dental work could cause an infection.
                 </p>
 
-                <div style="background: #fff; padding: 20px; margin: 25px 0; border-radius: 8px;">
-                    <p style="font-size: 15pt; line-height: 2; margin: 0;">
+                <div class="mom-box" style="background: #fff;">
+                    <p class="mom-text">
                         <strong>Tell every dentist:</strong>
                     </p>
-                    <p style="font-size: 16pt; line-height: 2; margin: 10px 0 0 0; color: #c62828;">
+                    <p class="mom-text" style="color: #c62828;">
                         "I had a MitraClip and need antibiotics before dental work."
                     </p>
                 </div>
 
-                <p style="font-size: 15pt; line-height: 2; margin: 0; font-weight: bold; color: #c62828;">
+                <p class="mom-text" style="font-weight: bold; color: #c62828;">
                     This is for the rest of your life.
                 </p>
             </div>
@@ -2054,7 +3571,7 @@
         <div style="background: #fff; border: 2px solid #4caf50; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
             <h4 style="color: #2e7d32; margin: 0 0 12px 0; font-size: 14pt;">What's Happening With You Right Now (Jan 9, 2026)</h4>
 
-            <p style="font-size: 11pt; line-height: 1.7; margin-bottom: 12px;">
+            <p class="understanding-text" style="margin-bottom: 12px;">
                 <strong>The short version:</strong> Your body has too much fluid in it right now. This is making it harder for your heart and lungs to work, and it's also putting stress on your kidneys. The doctors are giving you stronger medicine to help your body get rid of the extra fluid. Once the fluid is gone, you should feel better.
             </p>
 
@@ -2118,29 +3635,29 @@
 
         <div style="margin-bottom: 20px;">
             <h4 style="color: #333; margin-bottom: 8px;">"Water in Lungs" — What Does This Mean?</h4>
-            <p style="font-size: 11pt; line-height: 1.6;">
+            <p class="understanding-text">
                 The doctors found some fluid (water) has collected in your lungs. This is called <strong>pulmonary edema</strong>.
                 It makes breathing a little harder, which is why you might feel short of breath.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>Why did this happen?</strong><br>
                 Your heart valve (the mitral valve) doesn't close properly. When blood tries to pump forward, some goes backwards.
                 This is like a clogged drain — the fluid has nowhere to go, so it backs up into your lungs.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>How did they find it?</strong><br>
                 Doctors can hear it with a stethoscope (sounds like crackling) or see it on a chest X-ray (lungs look hazy instead of clear).
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>What are they doing about it?</strong><br>
                 Your water pill (Lasix/Furosemide) helps your body get rid of extra fluid. They may give you more of it through IV so it works faster.
                 Sitting up also helps — fluid drains to the bottom of your lungs, making it easier to breathe.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px; background: #e8f5e9; padding: 10px; border-radius: 5px;">
+            <p class="understanding-text" style="margin-top: 10px; background: #e8f5e9; padding: 10px; border-radius: 5px;">
                 <strong>Good news:</strong> This is common with your heart condition and is treatable.
                 The doctors are keeping you in the hospital a few more days to make sure the fluid goes away and you feel better before going home.
             </p>
@@ -2148,23 +3665,23 @@
 
         <div style="margin-bottom: 20px;">
             <h4 style="color: #333; margin-bottom: 8px;">"Water Around the Heart" — What Does This Mean?</h4>
-            <p style="font-size: 11pt; line-height: 1.6;">
+            <p class="understanding-text">
                 This is different from water in the lungs. Your heart sits inside a thin sac (like a bag) called the <strong>pericardium</strong>.
                 Sometimes fluid can collect in this sac. This is called <strong>pericardial effusion</strong>.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>Why might this happen?</strong><br>
                 It can happen after heart procedures like the MitraClip. The heart gets a little irritated and produces extra fluid.
                 It's a known possible side effect.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>How do they find it?</strong><br>
                 Doctors can see it on an ultrasound of the heart (echocardiogram). It shows up as a dark area around the heart.
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px;">
+            <p class="understanding-text" style="margin-top: 10px;">
                 <strong>What do they do about it?</strong><br>
                 <ul style="margin-left: 20px; margin-top: 5px;">
                     <li><strong>If small:</strong> Just watch and wait — it usually goes away on its own</li>
@@ -2172,7 +3689,7 @@
                 </ul>
             </p>
 
-            <p style="font-size: 11pt; line-height: 1.6; margin-top: 10px; background: #e3f2fd; padding: 10px; border-radius: 5px;">
+            <p class="understanding-text" style="margin-top: 10px; background: #e3f2fd; padding: 10px; border-radius: 5px;">
                 <strong>Note:</strong> "Water in lungs" and "water around heart" are two different things.
                 Ask your doctors to clarify which one they found, or if it's both.
             </p>
@@ -2184,14 +3701,14 @@
                 <li><strong>Fast, irregular heartbeat</strong> (atrial fibrillation) — like bad electrical wiring</li>
                 <li><strong>Leaky heart valve</strong> (mitral valve) — like a door that won't close properly</li>
             </ol>
-            <p style="font-size: 11pt; margin-top: 8px;">These two problems work together to cause shortness of breath and fluid backup.</p>
+            <p class="understanding-text" style="margin-top: 8px;">These two problems work together to cause shortness of breath and fluid backup.</p>
         </div>
 
         <div style="margin-bottom: 15px;">
             <h4 style="color: #333; margin-bottom: 8px;">Understanding the Doctor's Notes — Medical Terms Explained</h4>
             <p style="font-size: 10pt; color: #666; margin-bottom: 10px;"><em>Reference guide for the CICU Progress Note (Jan 9, 2026)</em></p>
 
-            <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+            <table class="understanding-table" style="width: 100%; border-collapse: collapse;">
                 <tr style="background: #e3f2fd;">
                     <th style="padding: 8px; text-align: left; border: 1px solid #ccc; width: 30%;">Medical Term</th>
                     <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">What It Means in Plain Language</th>
@@ -2558,7 +4075,7 @@
                 </tr>
                 <tr>
                     <td><strong>TMT Staff*</strong></td>
-                    <td>Dr. Son Czarnecki</td>
+                    <td>Dr. Andrew Czarnecki</td>
                     <td>Transcatheter Mitral Team — signed procedural consultation note</td>
                 </tr>
                 <tr>
@@ -2913,7 +4430,7 @@
 
     <div class="footer">
         <div>
-            <strong>Emergency Contact:</strong> Family Contact<br>
+            <strong>Emergency Contact:</strong> Andrew Szeto (Son)<br>
             <strong>Document Source:</strong> Family healthcare coordination
         </div>
         <div style="text-align: right;">
