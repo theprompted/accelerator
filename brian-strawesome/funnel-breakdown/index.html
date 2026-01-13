@@ -286,6 +286,80 @@
             font-style: normal;
         }
 
+        /* Browser Mockup - For iframe previews */
+        .browser-mockup {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .browser-chrome {
+            background: linear-gradient(180deg, #f6f6f6 0%, #e8e8e8 100%);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .traffic-lights {
+            display: flex;
+            gap: 6px;
+        }
+
+        .traffic-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .traffic-light.red { background: #ff5f57; }
+        .traffic-light.yellow { background: #ffbd2e; }
+        .traffic-light.green { background: #28ca41; }
+
+        .url-bar {
+            flex: 1;
+            background: white;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            border: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .browser-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .browser-actions a {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.625rem;
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .browser-actions a:hover {
+            text-decoration: underline;
+        }
+
+        .browser-content {
+            flex: 1;
+            min-height: 450px;
+        }
+
+        .browser-content iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border: none;
+        }
+
         /* Technique Box - For right column */
         .technique-box {
             background: var(--accent-orange);
@@ -1165,26 +1239,37 @@
         </div>
 
         <div class="section-body">
-            <!-- Left: Copy + Belief -->
+            <!-- Left: Preview -->
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Metal straws are the safe, sustainable choice"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Wait... there are problems with metal straws I haven't considered?"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-1.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>5 Reasons You <em>Shouldn't</em> Use Metal Straws</strong><br><br>
-                    The "safer" choice everyone switched to has problems no one talks about.<br><br>
-                    <em>By The Strawesome Team — Handcrafting Glass Straws in Michigan Since 2009</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-1.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <!-- Right: Analysis -->
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Metal straws are the safe, sustainable choice"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Wait... there are problems with metal straws I haven't considered?"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Opening Violation</strong> — First line contradicts a belief the reader holds to be true.</p>
@@ -1233,26 +1318,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Metal is the safe, responsible choice"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Metal has a documented fatality. Glass doesn't. How did I not know this?"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-2.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>The "safe" straw in your tumbler is more dangerous than the one you're afraid of.</strong><br><br>
-                    Not a little.<br>
-                    Not in some edge case.<br><br>
-                    <strong>Metal straws have a documented fatality.</strong><br>
-                    Glass straws don't.<br><br>
-                    That's not what you expected to read.
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-2.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Metal is the safe, responsible choice"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Metal has a documented fatality. Glass doesn't. How did I not know this?"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Opening Violation</strong> — Delivers the most shocking contradiction immediately to lock attention.</p>
@@ -1300,25 +1393,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Temperature discomfort is a minor inconvenience I can manage"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Temperature transfer is a fundamental material flaw that makes metal hostile to everyday use"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-3.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    Metal is an excellent conductor of heat.<br><br>
-                    <strong>Hot coffee becomes a metal straw that burns your lips.</strong><br>
-                    <strong>Iced drinks become a frozen rod against your teeth.</strong><br><br>
-                    Your metal straw is the hot pan handle you keep grabbing — except it's against your lips.<br><br>
-                    <em>You shouldn't have to wait for your drink to reach a "safe straw temperature" before taking a sip.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-3.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Temperature discomfort is a minor inconvenience I can manage"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Temperature transfer is a fundamental material flaw that makes metal hostile to everyday use"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Analogy Bridge</strong> — Uses a familiar scenario (hot pan handle) to make an abstract concept (thermal conductivity) visceral and undeniable.</p>
@@ -1366,26 +1468,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"My metal straw is clean—I rinse it"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"I have no idea what's growing inside something I can't see through"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-4.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Research shows that reusable drinking containers can harbor 100,000 times more bacteria than a bathroom doorknob after regular use.</strong><br><br>
-                    Imagine eating at a restaurant where you can't see the kitchen.<br>
-                    No window. No open layout. Just a wall.<br>
-                    You have to trust that it's clean back there.<br><br>
-                    <strong>Your metal straw is a restaurant kitchen you can never inspect.</strong><br><br>
-                    <em>You shouldn't have to guess whether your straw is sanitary.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-4.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "My metal straw is clean—I rinse it"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I have no idea what's growing inside something I can't see through"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Analogy Bridge</strong> — Uses "restaurant kitchen you can't see" to make invisible bacteria feel like a concrete trust violation.</p>
@@ -1433,27 +1543,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"The sturdiness of metal is a feature"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"'Unbreakable' means something else has to break instead—my teeth"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-5.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>One accidental bite. One clink too hard. One moment of distraction.</strong><br>
-                    And you're looking at a chipped tooth, a cracked molar, or a trip to the dentist.<br><br>
-                    Think about highway guardrails. They flex when a car hits them. The guardrail bends — absorbing energy.<br>
-                    Now imagine a concrete wall instead. Same impact. Zero flex.<br><br>
-                    <strong>Metal straws are concrete walls for your teeth.</strong><br><br>
-                    In 2016, Starbucks recalled 2.5 million stainless steel straws after reports of children experiencing mouth lacerations.<br><br>
-                    <em>You shouldn't have to treat your straw like a hazard.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-5.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "The sturdiness of metal is a feature"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "'Unbreakable' means something else has to break instead—my teeth"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Analogy Bridge</strong> — Uses "guardrail vs concrete wall" to reframe rigidity as danger rather than strength.</p>
@@ -1501,26 +1618,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Stainless steel is inert — that metallic taste is just how metal straws are"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"The metallic taste means metal is dissolving into my drink with every sip"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-6.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    That metallic taste you notice with your morning coffee isn't nothing.<br><br>
-                    <strong>It's metal dissolving into your drink.</strong><br><br>
-                    Research shows that chromium and nickel — both present in stainless steel — leach into beverages with high acidity.<br><br>
-                    Think about "filtered" water that still tastes like the pipes... The last few inches of contact undid all your effort.<br><br>
-                    <strong>Your metal straw is the faucet ruining the filtered water.</strong><br><br>
-                    <em>You shouldn't have to worry about what's dissolving into your drink.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-6.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Stainless steel is inert — that metallic taste is just how metal straws are"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "The metallic taste means metal is dissolving into my drink with every sip"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Analogy Bridge</strong> — Uses "faucet ruining filtered water" to make invisible chemical leaching feel like a relatable everyday frustration.</p>
@@ -1568,27 +1693,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Unbreakable means safe — the straw that survives is the safest option"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"'Unbreakable' means 'unforgiving' — the safest tools are the ones that fail safely"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-7.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    In November 2018, Elena Struthers-Gardner — a 60-year-old retired jockey in England — fell while carrying a Mason jar with a metal straw.<br><br>
-                    <strong>The straw impaled her through her eye socket.</strong><br>
-                    It pierced her brain.<br>
-                    She died two days later.<br><br>
-                    Think about car safety design. Modern cars have crumple zones... parts designed to fail in a specific way — absorbing impact energy before it reaches the passengers.<br><br>
-                    <strong>Metal straws have no crumple zones.</strong><br><br>
-                    <em>The safest tools aren't the ones that never fail — they're the ones that fail safely.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-7.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Unbreakable means safe — the straw that survives is the safest option"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "'Unbreakable' means 'unforgiving' — the safest tools are the ones that fail safely"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Analogy Bridge</strong> — Uses "car crumple zones" to reframe strength as a safety liability, not a safety feature.</p>
@@ -1636,29 +1768,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"These are isolated problems — maybe I can live with some of them"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Five problems is a pattern, not a collection of edge cases. The question isn't IF I should switch — it's what I've been missing about glass."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-8.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>The Question Isn't Whether to Keep Using Metal</strong><br><br>
-                    So here's where you are:<br>
-                    ✓ Metal conducts dangerous temperatures.<br>
-                    ✓ Metal hides bacterial growth.<br>
-                    ✓ Metal chips teeth.<br>
-                    ✓ Metal leaches into acidic drinks.<br>
-                    ✓ Metal causes more severe injuries.<br><br>
-                    The straw you chose because it seemed safer has five problems the one you've been avoiding doesn't have.<br><br>
-                    <strong>The question is what you've been missing about glass.</strong>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-8.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "These are isolated problems — maybe I can live with some of them"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Five problems is a pattern, not edge cases. The question is what I've been missing about glass."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Bridge Recap</strong> — Summarizes all problems in one list, then pivots from "whether" to "what" — closing the debate and opening curiosity.</p>
@@ -1706,27 +1843,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Glass breaks — that's why I avoided it in the first place"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"CHEAP glass breaks. Properly annealed glass is stable, predictable, and stronger than I thought"</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-9.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    Most people are afraid of glass straws for one reason: breaking.<br><br>
-                    That fear is reasonable — <strong>for cheap glass.</strong><br><br>
-                    Cheap glass is mass-produced without proper finishing. It contains internal stress from rapid cooling. That stress creates unpredictable weak points.<br><br>
-                    But properly made glass is different.<br><br>
-                    <strong>There's a process called annealing — slowly cooling glass in a kiln to remove internal stress.</strong><br><br>
-                    Annealed glass is stable. Annealed glass is predictable. Annealed glass doesn't shatter unexpectedly.<br><br>
-                    <em>This is what separates a glass straw you should trust from one you shouldn't.</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-9.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Glass breaks — that's why I avoided it in the first place"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "CHEAP glass breaks. Properly annealed glass is stable and stronger than I thought"</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Mechanism Reveal</strong> — Names the scientific/technical process (annealing) that differentiates quality glass from cheap glass.</p>
@@ -1774,26 +1918,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I don't know where to find properly-made glass straws"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Strawesome has been doing this right since 2009 — before anyone else cared. They're the original."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-10.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Meet Strawesome — The Original Glass Straw Company</strong><br><br>
-                    In 2009, a woman named Daedra in Michigan started making glass straws by hand.<br><br>
-                    She learned lampworking at The Glass Academy in Dearborn. She started in her garage with a torch, glass supplies, and a big vision.<br><br>
-                    Back then, almost nobody was talking about reusable straws. Plastic bans didn't exist. The viral turtle video hadn't happened.<br><br>
-                    <strong>Strawesome wasn't riding a trend. They were creating one.</strong><br><br>
-                    Sixteen years later, they're the longest-running dedicated glass straw maker in the world.
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-10.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I don't know where to find properly-made glass straws"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Strawesome has been doing this right since 2009 — they're the original."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Origin Story</strong> — Founder narrative that establishes authenticity, craft, and "first mover" positioning before any trend existed.</p>
@@ -1841,26 +1993,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"Glass straws probably break more than they claim"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"1.5% replacement rate over 16 years. 98.5% are still in use. That's not marketing — that's materials science."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-11.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>The 16-Year Test</strong><br><br>
-                    Over 16 years, Strawesome has had a <span style="color: var(--accent-orange); font-weight: 700; font-size: 1.25rem;">1.5%</span> replacement rate on their straws.<br><br>
-                    Not breakage rate. Replacement rate.<br><br>
-                    That includes every accidental drop, every dishwasher cycle, every kid's backpack, every travel bag.<br><br>
-                    <strong>98.5% of their straws are still out there, being used.</strong><br><br>
-                    That's not marketing. That's materials science.
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-11.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "Glass straws probably break more than they claim"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "1.5% replacement rate over 16 years. 98.5% still in use. That's materials science."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Hero Stat</strong> — One compelling number (1.5% replacement rate) that proves the core claim with undeniable specificity.</p>
@@ -1908,27 +2068,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I understand the problems with metal, but I'm not sure what I actually gain from glass"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Each benefit directly solves a problem I just learned about. Glass isn't just 'not metal' — it's actively better."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-12.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>What Strawesome Does For You</strong><br><br>
-                    <strong>1. Pure, Clean Taste</strong><br>
-                    Glass is completely non-reactive. Nothing leaches. No metallic aftertaste. Your drink tastes exactly as intended.<br><br>
-                    <strong>2. See-Through Safety</strong><br>
-                    You can see if your Strawesome is clean. No guessing. No faith required. Transparency isn't just aesthetic — it's functional.<br><br>
-                    <strong>3. Comfort at Any Temperature</strong><br>
-                    Glass doesn't conduct heat. Your lips touch glass, not temperature extremes. Hot coffee stays hot in the drink. Your straw stays comfortable.
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-12.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I understand the problems with metal, but I'm not sure what I actually gain from glass"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Each benefit directly solves a problem I just learned about. Glass isn't just 'not metal' — it's actively better."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Feature-Problem Match</strong> — Each benefit directly solves a specific problem seeded in Sections 3-7. No new information; just reframing problems as solved.</p>
@@ -1976,51 +2143,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I've heard the arguments, but I need to see them side by side to really compare"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Glass wins on every single metric. There's no dimension where metal is actually better."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-13.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Glass vs. Metal: The Full Comparison</strong><br><br>
-                    <table style="font-size: 0.85rem; width: 100%; border-collapse: collapse;">
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Temperature</strong></td>
-                            <td>Conducts → Non-conductive</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Visibility</strong></td>
-                            <td>Opaque → Transparent</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Teeth Safety</strong></td>
-                            <td>Rigid, recalled → Smooth, gentle</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Leaching</strong></td>
-                            <td>Chromium/nickel → Non-reactive</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Injury Risk</strong></td>
-                            <td>Fatality documented → Crumbles safely</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ddd;">
-                            <td style="padding: 0.5rem 0;"><strong>Warranty</strong></td>
-                            <td>1 year or none → Lifetime</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.5rem 0;"><strong>Made In</strong></td>
-                            <td>Overseas → Michigan, USA</td>
-                        </tr>
-                    </table>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-13.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I've heard the arguments, but I need to see them side by side to really compare"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Glass wins on every single metric. There's no dimension where metal is actually better."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Comparison Grid</strong> — Side-by-side visual that forces direct comparison on every dimension, making the choice obvious.</p>
@@ -2068,25 +2218,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"This sounds good in theory, but does it actually work for real people?"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Real customers confirm everything the page said. They switched from metal, noticed the difference, and aren't going back."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-14.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>What Customers Notice</strong><br><br>
-                    <em>"They somehow make my water seem fresher and colder."</em><br><br>
-                    <em>"They're thicker than Amazon ones so these are the ones I trust."</em><br><br>
-                    <em>"We are hooked — donating all of our copper and silicone straws and going all glass!"</em><br><br>
-                    <em>"Omg thank you for making these... I can finally have the cup I want w/o the plastic."</em>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-14.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "This sounds good in theory, but does it actually work for real people?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Real customers confirm everything the page said. They switched from metal, noticed the difference, and aren't going back."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Social Proof</strong> — Customer voices that validate claims from the page, using their words rather than marketing language.</p>
@@ -2134,27 +2293,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I understand the benefits intellectually, but I can't quite picture the change"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"I can see myself tomorrow morning, drinking from a glass straw, and it's... better. Quieter. The problems just aren't there anymore."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-15.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Picture This</strong><br><br>
-                    Imagine waking up tomorrow and reaching for your Stanley tumbler.<br><br>
-                    But this time, when you take that first sip of coffee, there's no metallic edge. Just the drink. Pure and clean.<br><br>
-                    Your lips don't burn on the hot metal.<br><br>
-                    The straw feels smooth against your teeth — no hard clink, no worry about chipping.<br><br>
-                    You glance down and see through the straw itself. <strong>Crystal clear. Obviously clean.</strong><br><br>
-                    You realize you're not thinking about the straw at all. <strong>Because it's just... working.</strong>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-15.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I understand the benefits intellectually, but I can't quite picture the change"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I can see myself tomorrow morning, drinking from a glass straw, and it's... better. Quieter. The problems just aren't there anymore."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Future Pacing</strong> — Sensory "walk-through" of life after purchase, making the improved experience feel real before they buy.</p>
@@ -2202,29 +2368,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I'm buying a better straw"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"I'm buying into a philosophy: 'Reusable Should Mean Forever.' This isn't just a product — it's a commitment to what sustainability actually means."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-16.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Reusable Should Mean Forever</strong><br><br>
-                    The sustainability promise got watered down somewhere along the way.<br><br>
-                    "Reusable" started meaning "replace less often."<br><br>
-                    People buy reusable straws, then buy more reusable straws when those break.<br><br>
-                    <strong>That's not reusable. That's just slower disposable.</strong><br><br>
-                    Strawesome believes reusable should mean you never buy another one.<br><br>
-                    That's why they only make glass — it lasts.<br>
-                    That's why they anneal properly — so it doesn't break.<br>
-                    That's why they offer a lifetime warranty — they stand behind "forever."
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-16.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I'm buying a better straw"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I'm buying into a philosophy: 'Reusable Should Mean Forever.' This isn't just a product — it's a commitment to what sustainability actually means."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Brand Thesis Reveal</strong> — States the deeper belief the brand stands for, elevating the purchase from transaction to identity alignment.</p>
@@ -2272,27 +2443,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I believe the claims, but I'm still worried about breakage — what if the 1.5% includes me?"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"I risk nothing. If it breaks for any reason, they replace it. The only risk is continuing with metal."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-17.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Try Strawesome Completely Risk-Free</strong><br><br>
-                    We know you're skeptical.<br><br>
-                    You've been told glass breaks. You've imagined shattered straws on kitchen floors.<br><br>
-                    <strong>Lifetime warranty against breakage.</strong><br><br>
-                    If your Strawesome straw ever breaks — for any reason — we replace it.<br><br>
-                    No time limits. No fine print. No hassle.<br><br>
-                    <strong>You risk nothing by trying. The only risk is continuing with the straw that's been hiding these problems all along.</strong>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-17.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I believe the claims, but I'm still worried about breakage — what if the 1.5% includes me?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I risk nothing. If it breaks for any reason, they replace it. The only risk is continuing with metal."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Risk Reversal</strong> — Removes purchase anxiety by placing all risk on the company, then redefines "risk" as inaction rather than action.</p>
@@ -2340,25 +2518,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I have many options — metal, glass, silicone, bamboo..."</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"I have two options: keep tolerating known problems, or make the switch. There's no third option where I avoid choosing."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-18.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>You Have Two Options</strong><br><br>
-                    <strong>Option 1:</strong> Keep using metal.<br>
-                    Accept the temperature extremes. Ignore what might be growing inside. Hope your teeth survive the clinks. Wonder about that metallic taste.<br><br>
-                    <strong>Option 2:</strong> Make the switch.<br>
-                    Experience what glass straws — real glass straws, made properly — actually feel like. Get a straw backed by 16 years of craftsmanship and a lifetime warranty.
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-18.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I have many options — metal, glass, silicone, bamboo..."</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "I have two options: keep tolerating known problems, or make the switch. There's no third option where I avoid choosing."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Binary Choice Close</strong> — Reduces a complex decision to two options, making one clearly unacceptable based on everything the reader just learned.</p>
@@ -2406,27 +2593,34 @@
 
         <div class="section-body">
             <div class="section-left">
-                <div class="belief-state-box">
-                    <div class="label">Belief Shift</div>
-                    <div class="before-after">
-                        <span class="before">"I've decided to switch — now how do I actually do it?"</span>
-                        <span class="arrow">&darr;</span>
-                        <span class="after">"Clear path: click, see the collection, get free shipping over $49. Trust badges confirm legitimacy. This is the last straw I'll ever need to buy."</span>
+                <div class="browser-mockup">
+                    <div class="browser-chrome">
+                        <div class="traffic-lights">
+                            <div class="traffic-light red"></div>
+                            <div class="traffic-light yellow"></div>
+                            <div class="traffic-light green"></div>
+                        </div>
+                        <div class="url-bar">strawesome.com/5-reasons</div>
+                        <div class="browser-actions">
+                            <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-19.html" target="_blank">Open &rarr;</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="copy-excerpt">
-                    <strong>Ready to Make the Safer Switch?</strong><br><br>
-                    Strawesome straws are handmade in Michigan.<br>
-                    Properly annealed. Backed by a lifetime warranty.<br>
-                    Free USA shipping on orders over $49.<br><br>
-                    <strong>[See The Strawesome Collection]</strong><br><br>
-                    <em>The last straw you'll ever need to buy.</em><br><br>
-                    <span style="font-size: 0.85rem; color: var(--text-muted);">Handmade in USA | Lifetime Warranty | Free Shipping $49+ | 16 Years Trusted</span>
+                    <div class="browser-content">
+                        <iframe src="https://theprompted.github.io/accelerator/brian-strawesome/funnel/section-previews/section-19.html"></iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="section-right">
+                <div class="belief-state-box" style="margin: 0 0 1.25rem 0;">
+                    <div class="label">Belief State</div>
+                    <div class="before-after">
+                        <span class="before">Before: "I've decided to switch — now how do I actually do it?"</span>
+                        <span class="arrow">&darr;</span>
+                        <span class="after">After: "Clear path: click, see the collection, get free shipping over $49. Trust badges confirm legitimacy. This is the last straw I'll ever need to buy."</span>
+                    </div>
+                </div>
+
                 <div class="technique-box">
                     <div class="label">Key Technique</div>
                     <p><strong>Trust Stack</strong> — CTA surrounded by legitimacy signals (handmade, warranty, free shipping, trust badges) that reduce friction at the moment of action.</p>
