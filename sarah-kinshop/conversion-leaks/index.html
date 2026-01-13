@@ -235,50 +235,6 @@
             margin-bottom: 0;
         }
 
-        /* Impact Box */
-        .impact-box {
-            background: var(--bg-green);
-            border: var(--border);
-            padding: 1.25rem;
-            margin: 1.25rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .impact-box h4 {
-            color: #2e7d32;
-            margin-bottom: 0.75rem;
-        }
-
-        .impact-box p {
-            margin: 0;
-        }
-
-        /* Implementation Box */
-        .impl-box {
-            background: var(--bg-blue);
-            border: var(--border);
-            padding: 1.25rem;
-            margin: 1.25rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .impl-box h4 {
-            color: #0277bd;
-            margin-bottom: 0.75rem;
-        }
-
-        .impl-box p, .impl-box ul {
-            margin: 0;
-        }
-
-        .impl-box ul {
-            padding-left: 1.25rem;
-        }
-
-        .impl-box li {
-            margin-bottom: 0.5rem;
-        }
-
         /* Priority Tag */
         .priority-tag {
             display: inline-block;
@@ -448,6 +404,40 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Blockquote for copy examples */
+        blockquote {
+            background: var(--bg-yellow);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin: 0;
+        }
+
+        blockquote strong {
+            font-style: normal;
+        }
+
+        /* Callout box */
+        .callout {
+            background: var(--bg-blue);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .callout-green {
+            background: var(--bg-green);
+        }
+
+        .callout p {
+            margin: 0;
+        }
+
         /* Responsive */
         @media (max-width: 640px) {
             .container {
@@ -506,13 +496,21 @@
             <h3>About This Review</h3>
         </div>
         <div class="simple-card-content">
-            <p>Every brand has Conversion Leaks. It's an always-on process of plugging them repeatedly - a Kaizen approach.</p>
-            <p>Some are small and invisible until you go looking for them. Others are sitting in plain sight, quietly draining revenue every single day.</p>
-            <p>Kinshop isn't like most leather goods brands. You're a woman-owned studio nestled along the Salmon River in Idaho, handcrafting every piece with two calloused, dye-stained hands.</p>
-            <p>Your vegetable-tanned leather comes from one of the last tanneries in the United States - no harsh chemicals, just quality materials that develop their own patina over time.</p>
+            <p>Every brand has Conversion Leaks.</p>
+            <p>It's an always-on process of plugging them repeatedly—a Kaizen approach. Some are small and invisible until you go looking for them. Others are sitting in plain sight, quietly draining revenue every single day.</p>
+            <p>The objective is to find the specific, high-leverage changes that will move the needle for your brand. Changes that aren't just theoretical, but tied directly to how your customers shop, decide, and buy.</p>
+            <p>What follows is a series of recommendations written with one goal in mind: to improve the stability and volume of your profit year-round. So you're not just riding the highs of your best seasons, but sustaining a healthier baseline in the slower ones too.</p>
+            <p>Some of these will address obvious gaps—missing elements that can be added quickly and start producing a lift almost immediately.</p>
+            <p>Others will push you to rethink how you present the product, the brand, and the offer. So that you're not just getting more people to convert, but you're doing it in a way that deepens their connection to the brand and increases their long-term value.</p>
+            <p>Each recommendation is standalone. But together, they form a playbook that can strengthen your positioning, raise your conversion rate, and expand your average order value and lifetime value.</p>
+            <p><strong>Here's what makes Kinshop different from most leather goods brands:</strong></p>
+            <p>You're a woman-owned studio nestled along the Salmon River in Idaho. Every piece is handcrafted—two calloused, dye-stained hands doing the work. Your vegetable-tanned leather comes from Wickett & Craig, one of the last tanneries in the United States. No harsh chemicals. Products designed to develop their own patina over time. And 5% of profits go back to community and environmental causes.</p>
             <p>These aren't marketing gimmicks. They're meaningful differentiators that separate Kinshop from the thousands of mass-produced leather goods flooding Amazon and Etsy.</p>
             <p><strong>But right now, most of these advantages are buried.</strong></p>
-            <p>What follows is a series of recommendations written with one goal in mind: to improve conversion rate, average order value, and contribution margin per session.</p>
+            <p>A good wallet says "look at me." A great brand says "come with me."</p>
+            <p>Right now, Kinshop is positioned around craftsmanship and quality, but it's framed in a way that's still widget-first. The story is there. The differentiation is there. It's just not leading.</p>
+            <p>Desire doesn't come from features. It comes from story.</p>
+            <p>You already have the bones of that story. What we're doing here is bringing it forward—building upon what's there into a well-defined thesis you can operate from, one that will scale you meaningfully.</p>
         </div>
     </div>
 
@@ -529,25 +527,13 @@
             <span class="priority-tag urgent">Urgent</span>
         </div>
         <div class="rec-body">
-            <p>This is the foundation for everything else. Microsoft Clarity is free heatmap and session recording software that lets you watch actual customer behavior on your site.</p>
-            <p>Not what you think they're doing. What they're actually doing.</p>
-            <p>Where they click, where they scroll, where they get stuck, where they abandon.</p>
-            <p>Right now, you're flying blind. You can see traffic and conversion rate in Shopify Analytics, but you can't see <em>why</em> people aren't converting.</p>
-
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Visit clarity.microsoft.com</li>
-                    <li>Create a free account</li>
-                    <li>Add the tracking code to your Shopify theme (theme.liquid file)</li>
-                    <li>Within 24 hours, you'll start seeing session recordings and heatmaps</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>This doesn't directly lift conversion rate on its own. But it informs every other decision you make. It's the foundation that makes all other optimization 3-5x more effective because you're no longer guessing what to fix.</p>
-            </div>
+            <p>This is the foundation for everything else.</p>
+            <p>Microsoft Clarity is free heatmap and session recording software that lets you watch actual customer behavior on your site. Not what you think they're doing. What they're actually doing.</p>
+            <p>Where they click. Where they scroll. Where they get stuck. Where they abandon.</p>
+            <p>Right now, you're flying blind. You can see traffic and conversion rate in Shopify Analytics, but you can't see <em>why</em> people aren't converting. You're making educated guesses about what to fix, when you could be watching recordings of real customers hitting the exact friction points that cost you sales.</p>
+            <p>The psychology here is simple: humans are terrible at predicting their own behavior, and even worse at predicting others'. Session recordings bypass all that guesswork. You see a customer hover over your Add to Cart button three times without clicking, you know exactly where hesitation lives.</p>
+            <p>Visit clarity.microsoft.com, create a free account, and add the tracking code to your Shopify theme. Within 24 hours, you'll start seeing session recordings and heatmaps.</p>
+            <p>This doesn't directly lift conversion rate on its own. But it informs every other decision you make. It's the foundation that makes all other optimization 3-5x more effective because you're no longer guessing what to fix—you're seeing it.</p>
         </div>
     </div>
 
@@ -555,31 +541,21 @@
     <div class="rec-card">
         <div class="rec-header">
             <span class="section-num">2</span>
-            <h3>Fix the Review Display - This Is Urgent</h3>
+            <h3>Fix the Review Display—This Is Actively Hurting You</h3>
             <span class="priority-tag urgent">Urgent</span>
         </div>
         <div class="rec-body">
             <img src="img-reviews-issue.png" alt="Kinshop PDP showing reviews from other products" class="screenshot">
-            <p class="screenshot-caption">The Slim Wallet page shows "5 stars from 6 reviews" - but they're for other products like Cribbage Boards and Totes.</p>
-            <p>Right now, your product pages have a serious problem with review display that is actively hurting customer trust.</p>
-            <p>On the Slim Wallet product page, there's a section titled "Let customers speak for us" showing 5 stars from 6 reviews. Except those reviews aren't for the Slim Wallet. They're for completely different products.</p>
+            <p class="screenshot-caption">The Slim Wallet page shows "5 stars from 6 reviews"—but they're for other products like Cribbage Boards and Totes.</p>
+
+            <p>Right now, your product pages have a serious problem with review display that is actively eroding customer trust.</p>
+            <p>On the Slim Wallet product page, there's a section titled "Let customers speak for us" showing 5 stars from 6 reviews. The problem is that those reviews aren't for the Slim Wallet. They're for completely different products—Cribbage Boards, Totes, other items.</p>
             <p>Then, below all that, there's another section called "Customer Reviews" that shows "Average rating is 0.00 stars" with a prompt to "Be the first to write a review."</p>
             <p><strong>So in one scroll, the customer sees two conflicting signals:</strong> "We have 5-star reviews!" and "We have zero reviews, be the first!"</p>
-            <p>This creates cognitive dissonance. It erodes trust. It makes customers wonder what's real.</p>
-
-            <div class="impl-box">
-                <h4>The Fix</h4>
-                <ul>
-                    <li>Check Judge.me settings for review association rules</li>
-                    <li>Either fix the filtering or temporarily remove the cross-product review section</li>
-                    <li>Set up post-purchase email sequence requesting product-specific reviews</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-10% increase in conversion rate by removing trust-damaging confusion. This is an urgent fix because it's actively hurting you every day it remains.</p>
-            </div>
+            <p>This creates cognitive dissonance—the uncomfortable mental state when someone encounters contradictory information. And when customers feel cognitive dissonance, they don't investigate to resolve it. They leave.</p>
+            <p>The brain's default response to confusion is exit. It's easier to click away than to reconcile conflicting information about a brand you just discovered.</p>
+            <p>Check your Judge.me settings for review association rules. Either fix the filtering so only product-specific reviews appear, or temporarily remove the cross-product review section entirely until you have enough product-specific reviews to populate it properly. Then set up a post-purchase email sequence requesting product-specific reviews.</p>
+            <p>This fix alone could lift conversion rate 5-10% by removing trust-damaging confusion. Every day it remains is a day you're paying for traffic that bounces because your credibility signals contradict each other.</p>
         </div>
     </div>
 
@@ -591,24 +567,12 @@
             <span class="priority-tag urgent">Urgent</span>
         </div>
         <div class="rec-body">
-            <p>Right now, when customers scroll down your product pages to read details, see reviews, or understand your shipping timeline, your add to cart button scrolls out of view.</p>
+            <p>Right now, when customers scroll down your product pages to read details, see reviews, or understand your shipping timeline, your Add to Cart button scrolls out of view.</p>
             <p>That's friction. And friction kills conversion.</p>
-            <p>Every extra action required between "I want this" and "I'm buying this" is a chance for hesitation, distraction, or abandonment.</p>
-            <p>The fix: make the add to cart button sticky, so it stays visible at the top or bottom of the screen as customers scroll.</p>
-
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Most Shopify themes have this as a built-in option in theme settings</li>
-                    <li>If your current theme doesn't support it, apps like "Sticky Add to Cart Booster" can add this functionality in under an hour</li>
-                    <li>Test both top-sticky and bottom-sticky positions</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-15% increase in add-to-cart rate, especially on mobile where scrolling is more common.</p>
-            </div>
+            <p>The psychology is straightforward: every extra action required between "I want this" and "I'm buying this" is a chance for hesitation, distraction, or abandonment. A customer reading your product description feels the pull to buy. But by the time they scroll back up to find the button, that impulse has cooled. The moment is lost.</p>
+            <p>This is called the Intention-Action Gap. The longer the gap between wanting and doing, the more likely someone will talk themselves out of it—or simply get distracted by a text message.</p>
+            <p>Most Shopify themes have sticky Add to Cart as a built-in option in theme settings. If your current theme doesn't support it, apps like "Sticky Add to Cart Booster" can add this functionality in under an hour. Test both top-sticky and bottom-sticky positions to see which performs better for your customers.</p>
+            <p>Expect a 5-15% increase in add-to-cart rate, especially on mobile where scrolling is more common and thumb travel distance matters more than people realize.</p>
         </div>
     </div>
 
@@ -626,26 +590,17 @@
         </div>
         <div class="rec-body">
             <img src="img-cart.png" alt="Kinshop cart page without free shipping progress bar" class="screenshot">
-            <p class="screenshot-caption">Current cart: $60 Slim Wallet, $40 away from free shipping - but no visual progress bar or reminder.</p>
-            <p>Your free shipping threshold is $100. That's communicated in your rotating announcement bar, which is good.</p>
-            <p>But there's no visual feedback in the cart showing them how close they are to reaching it.</p>
-            <p>A customer with a $60 Slim Wallet in their cart is $40 away from free shipping. That's an achievable stretch. But right now, they have no visual reminder of that opportunity.</p>
-            <p><strong>The Goal Gradient Effect:</strong> People accelerate their efforts as they get closer to a goal. Seeing "only $15 away" feels achievable and motivates adding one more item.</p>
+            <p class="screenshot-caption">Current cart: $60 Slim Wallet, $40 away from free shipping—but no visual progress bar or reminder.</p>
 
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Apps like Free Shipping Bar or Hextom can add this in under an hour</li>
-                    <li>Position prominently at top of cart, above product list</li>
-                    <li>Update dynamically as items are added/removed</li>
-                    <li>Celebrate when threshold is reached</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>15-25% increase in average order value by encouraging customers to add items to reach the threshold.</p>
-            </div>
+            <p>Your free shipping threshold is $100. That's communicated in your rotating announcement bar, which is good. But there's no visual feedback in the cart showing customers how close they are to reaching it.</p>
+            <p>A customer with a $60 Slim Wallet in their cart is $40 away from free shipping. That's an achievable stretch. But right now, they have no visual reminder of that opportunity—and no psychological pull toward closing the gap.</p>
+            <p>There's a deep layer of consumer psychology at play here called the Goal Gradient Effect. When customers see a progress bar inching toward a better deal, or a locked reward just out of reach, they don't feel pressured. They feel motivated.</p>
+            <p>That's the power of structured incentives: they give the shopper a clear path to a better outcome, and they make the act of spending feel like a strategic choice, not a splurge.</p>
+            <p>Every unlocked reward delivers a dopamine hit. Every locked tier builds curiosity and forward momentum.</p>
+            <p>And because it's framed as a series of wins, not a discount for discount's sake, it increases AOV, boosts conversion rate, and improves gross profit per order by encouraging larger carts without eroding brand value.</p>
+            <p>When incentives are visual, progressive, and gamified, the cart becomes more than a checkout tool. It becomes a behavioral engine that guides people to buy more, feel good about it, and come back again.</p>
+            <p>Apps like Free Shipping Bar or Hextom can add this in under an hour. Position it prominently at the top of cart, above the product list. Have it update dynamically as items are added or removed. And make sure it celebrates when the threshold is reached—that little moment of triumph reinforces the behavior.</p>
+            <p>Expect a 15-25% increase in average order value by encouraging customers to add items to reach the threshold.</p>
         </div>
     </div>
 
@@ -658,31 +613,21 @@
         </div>
         <div class="rec-body">
             <img src="img-pdp-top.png" alt="Kinshop product page without badges" class="screenshot">
-            <p class="screenshot-caption">Beautiful product images - but no badges showing "Handcrafted in Idaho" or "US Leather" to differentiate at a glance.</p>
+            <p class="screenshot-caption">Beautiful product images—but no badges showing "Handcrafted in Idaho" or "US Leather" to differentiate at a glance.</p>
+
             <p>Right now, your product images are clean and show the leather beautifully, but they're not doing any persuasive work beyond showing the product.</p>
-            <p>Many customers don't read - they scan. They look at images first, and only read if something catches their attention.</p>
+            <p>The psychology is straightforward: people process visuals faster than text, and visuals trigger emotion before logic kicks in. The psychology is the same reason physical retail uses endcaps and signage—images act as visual signposts, giving instant recognition of what's inside each category, reducing the mental load, and pulling people toward what's most relevant.</p>
+            <p>Many customers don't read—they scan. They look at images first, and only read if something catches their attention. Your differentiators need to be visible to scanners, not just readers.</p>
             <p><strong>Specific badges for Kinshop:</strong></p>
             <ul>
-                <li>"Handcrafted in Idaho" - Emphasizes local craftsmanship and authenticity</li>
-                <li>"US Leather" or "American Leather" - Highlights domestic sourcing</li>
-                <li>"Woman-Owned" - Appeals to customers who want to support independent makers</li>
-                <li>"Develops Patina" - Signals quality and longevity</li>
-                <li>"5% Gives Back" - Highlights your mission for values-aligned buyers</li>
+                <li><strong>"Handcrafted in Idaho"</strong> — Emphasizes local craftsmanship and authenticity</li>
+                <li><strong>"US Leather"</strong> — Highlights domestic sourcing from Wickett & Craig</li>
+                <li><strong>"Woman-Owned"</strong> — Appeals to customers who want to support independent makers</li>
+                <li><strong>"Develops Patina"</strong> — Signals quality and longevity, primes for realistic expectations</li>
+                <li><strong>"5% Gives Back"</strong> — Highlights your mission for values-aligned buyers</li>
             </ul>
-
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Most Shopify themes support badge overlays in product image settings</li>
-                    <li>Apps like "Product Badges & Labels" can add these in 1-2 hours</li>
-                    <li>Keep badges consistent in style (same colors, same placement)</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-10% increase in conversion rate by making your differentiators visible to scanners, not just readers.</p>
-            </div>
+            <p>Most Shopify themes support badge overlays in product image settings. Apps like "Product Badges & Labels" can add these in 1-2 hours. Keep badges consistent in style—same colors, same placement—so they become a recognizable visual language across your store.</p>
+            <p>Expect a 5-10% increase in conversion rate by making your differentiators visible at first glance.</p>
         </div>
     </div>
 
@@ -694,20 +639,21 @@
             <span class="priority-tag high">High</span>
         </div>
         <div class="rec-body">
-            <p>A dedicated, strong, well-placed guarantee isn't just a customer service policy. It's a conversion lever.</p>
-            <p>Right now, your guarantee and return policy information is buried in your Policies + Terms page, linked in the footer.</p>
-            <p>Customers who are on the fence have no prominent reassurance on the product page itself.</p>
-
-            <div class="impl-box">
-                <h4>Example Structure</h4>
-                <p><strong>Headline:</strong> "Our Promise: Craftsmanship You Can Trust"</p>
-                <p><strong>Body:</strong> Every Kinshop wallet is made by hand in our Idaho studio, and we stand behind every piece that leaves our workshop. If you're not completely satisfied with your purchase, let us know within 30 days and we'll make it right.</p>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-15% increase in conversion rate by removing purchase anxiety as a barrier.</p>
-            </div>
+            <p>A guarantee isn't just a customer service policy. It's a conversion lever.</p>
+            <p>Right now, your guarantee and return policy information is buried in your Policies + Terms page, linked in the footer. Customers who are on the fence have no prominent reassurance on the product page itself.</p>
+            <p>The psychology: people don't buy when they're uncertain. They buy when they feel safe. A strong, well-placed guarantee doesn't just answer "what if I don't like it?"—it signals confidence. It says: "We're so sure you'll love this that we're willing to take on the risk."</p>
+            <p>That transfer of risk from buyer to seller is one of the most powerful conversion tools you have.</p>
+            <p>But here's the thing: the guarantee is specific and emotionally aligned. Not just "risk-free." But "if you don't smile the moment you put it on, we'll buy it back, no questions."</p>
+            <p>The design isn't just described, it's justified. It's positioned as a response to a cultural tension your audience feels.</p>
+            <p>The voice is unmistakable. You could erase the logo and still know exactly which brand you're reading.</p>
+            <blockquote>
+                <p><strong>Our Promise: Craftsmanship You Can Trust</strong></p>
+                <p>Every Kinshop piece is made by hand in our Idaho studio—stitched, dyed, and finished by the same two hands that have been doing this for years. We stand behind every piece that leaves our workshop.</p>
+                <p>If your new wallet doesn't feel right in your hands, if the leather doesn't make you want to run your thumb across it, if it doesn't feel like something you'll carry for the next decade—let us know within 30 days and we'll make it right.</p>
+                <p>No weird hoops. No receipt hunting. Just reach out.</p>
+            </blockquote>
+            <p>See how that does double duty? It addresses the return policy AND reinforces your handcrafted-in-Idaho differentiator. It reduces purchase anxiety while deepening brand connection.</p>
+            <p>Expect a 5-15% increase in conversion rate by removing purchase anxiety as a barrier.</p>
         </div>
     </div>
 
@@ -719,19 +665,23 @@
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
-            <p>You already have a rotating announcement bar with three messages. Message #1 is warm but not actionable. Message #2 is functional but doesn't differentiate you. Message #3 (5% gives back) is your strongest.</p>
+            <p>You already have a rotating announcement bar with three messages. Message #1 is warm but not actionable. Message #2 is functional but doesn't differentiate you from every other Shopify store offering free shipping. Message #3—the 5% gives back—is your strongest because it's actually unique to Kinshop.</p>
+            <p>The announcement bar is prime real estate. It's the first thing customers see. It should be doing heavy lifting for differentiation, not just logistics.</p>
             <p><strong>Messages to test:</strong></p>
-            <ul>
-                <li>"Handcrafted in Idaho - Every Piece Made by Hand in Our Salmon River Studio"</li>
-                <li>"US Vegetable-Tanned Leather - No Chemicals, Just Quality That Lasts"</li>
-                <li>"Woman-Owned Small Business - Thank You for Supporting Independent Makers"</li>
-                <li>"Designed to Develop Patina - Wallets That Get Better Every Day"</li>
-            </ul>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-10% increase in conversion rate by speaking to different customer motivations.</p>
-            </div>
+            <blockquote>
+                <p>"Handcrafted in Idaho — Every Piece Made by Hand in Our Salmon River Studio"</p>
+            </blockquote>
+            <blockquote>
+                <p>"US Vegetable-Tanned Leather — No Chemicals, Just Quality That Lasts"</p>
+            </blockquote>
+            <blockquote>
+                <p>"Woman-Owned Small Business — Thank You for Supporting Independent Makers"</p>
+            </blockquote>
+            <blockquote>
+                <p>"Designed to Develop Patina — Wallets That Get Better Every Day"</p>
+            </blockquote>
+            <p>Each message speaks to a different customer motivation. Some customers care most about supporting small business. Others care about materials. Others want to know their money is going to a cause. Test which resonates most with your audience.</p>
+            <p>Expect a 5-10% increase in conversion rate by speaking to different customer motivations and making differentiation the first thing they see.</p>
         </div>
     </div>
 
@@ -750,27 +700,17 @@
         <div class="rec-body">
             <p>The cart is one of the highest-leverage pieces of real estate on your entire site.</p>
             <p>A customer adds a Slim Wallet for $60, goes to the cart, and sees... just the wallet. No recommendations. No complementary products. No "complete your purchase" suggestions.</p>
+            <p>That's leaving money on the table.</p>
+            <p>The psychology: a customer who has already decided to buy is in a different mental state than one who's browsing. The commitment is made. The wallet is open. Adding one more small item feels like completion, not splurging.</p>
             <p><strong>For Kinshop, natural product pairings include:</strong></p>
             <ul>
-                <li>Slim Wallet → Leather Card Sleeve or Key Clip</li>
-                <li>Any Wallet → Cribbage Board Pegs (if they're buying a gift)</li>
-                <li>Cribbage Board → Extra Pegs Set (essential accessory)</li>
-                <li>Any purchase under $100 → Small goods to reach free shipping threshold</li>
+                <li><strong>Slim Wallet → Leather Card Sleeve or Key Clip</strong> — "Complete your everyday carry"</li>
+                <li><strong>Any Wallet → Leather Conditioner</strong> — "Keep it looking beautiful for years"</li>
+                <li><strong>Cribbage Board → Extra Pegs Set</strong> — Essential accessory</li>
+                <li><strong>Any purchase under $100 → Small goods to reach free shipping threshold</strong></li>
             </ul>
-
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Apps like Rebuy, CartHook, or Slide Cart allow in-cart product recommendations</li>
-                    <li>Set up product association rules</li>
-                    <li>Position recommendations prominently with one-click add functionality</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>15-30% of customers who interact with cart upsells will add at least one additional item. On a $60 average wallet purchase, adding a $25 small good = $85 new AOV (42% increase).</p>
-            </div>
+            <p>Apps like Rebuy, CartHook, or Slide Cart allow in-cart product recommendations with one-click add functionality. Set up product association rules so the recommendations are actually relevant, not random.</p>
+            <p>15-30% of customers who interact with cart upsells will add at least one additional item. On a $60 average wallet purchase, adding a $25 small good = $85 new AOV. That's a 42% increase—with zero additional customer acquisition cost.</p>
         </div>
     </div>
 
@@ -782,23 +722,21 @@
             <span class="priority-tag high">High</span>
         </div>
         <div class="rec-body">
-            <p>Post-purchase upsells are offers shown immediately after a customer completes their checkout, before they reach the thank you page.</p>
-            <p>The order is already placed. The credit card information is already entered. The buying momentum is still high.</p>
-            <p>Because you're not paying to acquire that second product, the margin on post-purchase upsells is significantly higher than on the initial sale.</p>
-
-            <div class="impl-box">
-                <h4>Example Flow</h4>
-                <ul>
-                    <li><strong>Upsell #1:</strong> "Complete your everyday carry! Add a Leather Key Clip for just $22"</li>
-                    <li><strong>Downsell #1:</strong> "How about leather care? Add our Leather Conditioner for $15"</li>
-                    <li><strong>Upsell #2:</strong> "Gift for a friend? Add another wallet in a different color for $54 (10% off)"</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>10-20% take rate on first upsell. $3-6 average AOV increase across all orders. $2,000-$4,000 annual revenue increase on 50 orders/month - all pure margin (no additional CAC).</p>
-            </div>
+            <p>There's a lever that adds revenue without increasing your customer acquisition cost at all: post-purchase upsells.</p>
+            <p>These are offers shown immediately after a customer completes their checkout, before they reach the thank you page. The order is already placed. The credit card is already on file. The buying momentum is still high.</p>
+            <p>At that point, adding an extra product to the order is frictionless—often just a single click—and doesn't require them to re-enter payment information.</p>
+            <p>The economics here are meaningful.</p>
+            <p>Because you're not paying to acquire that second product, the margin on post-purchase upsells is significantly higher than on the initial sale. That extra profit per order can go straight to your bottom line or be reinvested into your advertising budget, giving you more room to bid competitively and scale.</p>
+            <p>The usual structure is simple but effective: fill at least two post-purchase upsell slots with relevant, high-margin products that make sense as an add-on to the customer's initial purchase. Then, if a customer declines an upsell, present them with a downsell—a related but lower-priced or lower-commitment offer that still boosts the order value.</p>
+            <p>The combination of upsells and downsells keeps more customers in the buying flow, even if they say "no" to the first offer.</p>
+            <p><strong>Example flow for Kinshop:</strong></p>
+            <blockquote>
+                <p><strong>Upsell #1:</strong> "Complete your everyday carry! Add a Leather Key Clip for just $22"</p>
+                <p><strong>Downsell:</strong> "Not ready for more leather? Add our Leather Conditioner for $15 to keep your wallet looking beautiful for years"</p>
+                <p><strong>Upsell #2:</strong> "Gift for a friend? Add another Slim Wallet in a different color for $54 (10% off)"</p>
+            </blockquote>
+            <p>A good benchmark is to aim for a 10-20% take rate on upsell number one. That means out of every 100 customers, 10-40 will add the upsell to their order, creating an immediate lift in average order value and profit per order.</p>
+            <p>When you scale up to 50 orders per month, even a conservative $3-6 average AOV increase across all orders yields $2,000-$4,000 in additional annual revenue—all pure margin with no additional acquisition cost.</p>
         </div>
     </div>
 
@@ -810,24 +748,13 @@
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
-            <p>Not all products are equal. Some products convert at dramatically higher rates. Some have more reviews and social proof. Some are proven "gateway products" that lead to repeat purchases.</p>
-            <p>Those products deserve prominent placement because they're your highest-probability conversion opportunities.</p>
-            <p><strong>The 80/20 principle applies here:</strong> Your top 20% of products likely drive 80% of your revenue.</p>
-
-            <div class="impl-box">
-                <h4>How to Implement</h4>
-                <ul>
-                    <li>Pull Shopify data for the last 90 days - identify top 5 products by units sold, revenue, and reviews</li>
-                    <li>Create a "Best-Sellers" or "Customer Favorites" navigation category</li>
-                    <li>Feature top 3-5 products in homepage hero or featured collection</li>
-                    <li>Add "Best-Seller" badge to product images for top performers</li>
-                </ul>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>10-15% increase in conversion rate by guiding visitors to proven high-converters. Faster purchase decisions (less time browsing, more confidence in choice).</p>
-            </div>
+            <p>Not all products are equal.</p>
+            <p>Some products convert at dramatically higher rates. Some have more reviews and social proof. Some are proven "gateway products" that lead to repeat purchases.</p>
+            <p>Those products deserve prominent placement because they're your highest-probability conversion opportunities. The 80/20 principle applies here: your top 20% of products likely drive 80% of your revenue.</p>
+            <p>Right now, customers land on your site and have to browse through everything to find what's actually popular. That's friction. It's also a missed opportunity to guide them toward products that are more likely to convert them from visitor to customer.</p>
+            <p>Pull your Shopify data for the last 90 days. Identify your top 5 products by units sold, revenue, and reviews. Create a "Best-Sellers" or "Customer Favorites" navigation category. Feature your top 3-5 products in a homepage hero or featured collection. Add a "Best-Seller" badge to product images for top performers.</p>
+            <p>This isn't about being pushy. It's about reducing decision fatigue. When visitors see clear signals of what's popular, they feel more confident in their choice. "If everyone else is buying this, it's probably good" is a powerful heuristic that works in your favor.</p>
+            <p>Expect a 10-15% increase in conversion rate by guiding visitors to proven high-converters, plus faster purchase decisions overall.</p>
         </div>
     </div>
 
@@ -840,17 +767,35 @@
         </div>
         <div class="rec-body">
             <img src="img-accordion-faq.png" alt="Kinshop product details accordion" class="screenshot">
-            <p class="screenshot-caption">Current accordion: Shipping, Additional Information, Note - functional but not optimized for conversion.</p>
-            <p>A well-constructed FAQ isn't just there to answer questions. It's a strategic conversion tool. It addresses objections, builds trust, and gives customers the information they need to feel confident.</p>
-            <p><strong>Example:</strong></p>
-            <p><em>Q: What makes your leather different from other wallets?</em></p>
-            <p>We source our leather from one of the last vegetable tanneries in the United States - Wickett & Craig in Pennsylvania. Unlike chrome-tanned leather (which uses harsh chemicals), vegetable tanning uses natural bark extracts. The result is leather that's more durable, develops a beautiful patina over time, and won't end up leaching chemicals.</p>
-            <p>See how that answer does double duty? It addresses the quality question AND reinforces your US-sourcing and sustainability differentiator.</p>
+            <p class="screenshot-caption">Current accordion: Shipping, Additional Information, Note—functional but not optimized for conversion.</p>
 
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>10-15% reduction in cart abandonment by addressing objections before they become reasons not to buy.</p>
-            </div>
+            <p>A well-built FAQ isn't just about preventing support tickets.</p>
+            <p>It's a strategic conversion lever, especially for brands like yours where the magic lies in tone, energy, and emotional resonance.</p>
+            <p>At its best, the FAQ isn't support documentation. It's a continuation of the sales argument and resonance with the consumer, repackaged in a casual, curiosity-driven format.</p>
+            <p>It's for the customer who's 60-80% of the way there but still circling the runway. It's where they're looking to confirm they've landed somewhere different, somewhere they want to belong.</p>
+            <p>Instead of just answering questions, consider building narrative questions that extend the brand's world:</p>
+            <blockquote>
+                <p><strong>Q: What makes your leather different from other wallets?</strong></p>
+                <p>A: We source our leather from Wickett & Craig in Pennsylvania—one of the last vegetable tanneries in the United States. Unlike chrome-tanned leather (which uses harsh chemicals and produces that uniform, almost plastic-y feel), vegetable tanning uses natural bark extracts. The result is leather that's more durable, develops a beautiful patina over time, and won't end up leaching chemicals into your pocket. Most wallets are made to look good in the photo. Ours are made to look better after a year in your back pocket.</p>
+            </blockquote>
+            <p>See how that answer does double duty? It addresses the quality question AND reinforces your US-sourcing and sustainability differentiator.</p>
+            <p>You could also layer in narrative-building questions like:</p>
+            <blockquote>
+                <p><strong>Q: Do I need to condition my wallet?</strong></p>
+                <p>A: Honestly? Not really. Vegetable-tanned leather is meant to be used, not babied. The oils from your hands, the wear from your pocket, the little scuffs from everyday life—that's what creates the patina. If you want to speed up the process or give it some extra love, a light coat of leather conditioner once or twice a year works great. But if you just want to use it and forget about it, that's exactly what it's designed for.</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>Q: Why Idaho?</strong></p>
+                <p>A: Because the Salmon River is right there, the mountains are right there, and there's something about making things with your hands in a place where you can step outside and remember why you started. Big-city workshops optimize for efficiency. We optimize for craft. Every piece that leaves here was made by the same two hands, in the same small studio, with views that make the slow parts of the work feel worth it.</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>Q: What if I don't like it?</strong></p>
+                <p>A: Send it back within 30 days. No weird hoops, no receipt hunting, no guilt trip. If it doesn't feel right in your hands—if it doesn't make you want to run your thumb across the leather—we'd rather have it back than sitting in a drawer somewhere. Just reach out and we'll take care of it.</p>
+            </blockquote>
+            <p>These types of questions don't just deflect objections—they create affinity.</p>
+            <p>Done well, this section becomes more than a place to find return info. It becomes a confidence builder. A tone reinforcer. A final nudge.</p>
+            <p>It gives voice to the invisible hesitations, and replaces them with reasons to believe.</p>
+            <p>Expect a 10-15% reduction in cart abandonment by addressing objections before they become reasons not to buy.</p>
         </div>
     </div>
 
@@ -863,19 +808,18 @@
         </div>
         <div class="rec-body">
             <p>Your free shipping threshold is currently $100. That might not be optimized for your actual customer behavior.</p>
-            <p>The sweet spot is typically calibrated to your <strong>Modal Order Value</strong> (MOV) - the most common order value in your distribution, not the average.</p>
-            <p>If most customers buy a single wallet, your MOV is likely in the $60-$80 range. That means customers would need to add $20-$40 more to hit the $100 threshold.</p>
+            <p>The sweet spot is typically calibrated to your Modal Order Value (MOV)—the most common order value in your distribution, not the average. The average gets skewed by outliers. The mode tells you what most customers actually spend.</p>
+            <p>If most of your customers buy a single wallet, your MOV is likely in the $60-$80 range. That means customers would need to add $20-$40 more to hit the $100 threshold.</p>
+            <p>For some customers, that stretch feels achievable and motivating. For others, it feels like too much—so they just pay for shipping or, worse, abandon the cart entirely.</p>
             <p><strong>What to test:</strong></p>
             <ul>
-                <li><strong>Test 1:</strong> Free shipping at $75 (single premium wallet + small good reaches it)</li>
-                <li><strong>Test 2:</strong> Free shipping at $85 (mid-point that feels more achievable)</li>
-                <li><strong>Test 3:</strong> Tiered structure with multiple incentives</li>
+                <li><strong>Free shipping at $75</strong> — A single premium wallet plus a small good reaches it</li>
+                <li><strong>Free shipping at $85</strong> — A mid-point that feels more achievable</li>
+                <li><strong>Tiered structure</strong> — Free shipping at $75, free gift at $100, free expedited at $150</li>
             </ul>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>Optimized threshold calibrated to MOV can lift conversion rate by 5-10% and AOV by 10-20% compared to a poorly calibrated threshold.</p>
-            </div>
+            <p>The goal isn't necessarily to lower the threshold. It's to find the number that maximizes the combination of conversion rate AND average order value. Sometimes a lower threshold converts more customers but at lower AOV. Sometimes a higher threshold converts fewer but at significantly higher AOV.</p>
+            <p>You need data to find your optimal point. Run each threshold for 2-4 weeks with enough traffic to reach statistical significance, then compare conversion rate, AOV, and revenue per visitor.</p>
+            <p>An optimized threshold calibrated to MOV can lift conversion rate by 5-10% and AOV by 10-20% compared to a poorly calibrated one.</p>
         </div>
     </div>
 
@@ -894,28 +838,31 @@
         <div class="rec-body">
             <p>Right now, customers have to read through text descriptions to understand why they should buy from Kinshop instead of Amazon, Etsy, or other leather goods shops.</p>
             <p>You have a strong story. You just aren't telling it prominently on the pages that matter most.</p>
-            <p><strong>What makes Kinshop different:</strong></p>
+            <p>A PDP (product description page) isn't just a space to describe what something is like an instruction manual. It's a chance to express why it exists.</p>
+            <p>A widget-driven PDP lists specs: "soft fabric," "original art," "guarantee."</p>
+            <p>A thesis-driven PDP declares a perspective consumers can resonate with. From listing attributes to asserting worldview.</p>
+            <p>In thesis-driven PDPs:</p>
             <ul>
-                <li>Woman-owned studio in Salmon, Idaho (along the Salmon River)</li>
-                <li>Every piece handcrafted by two calloused, dye-stained hands</li>
-                <li>Vegetable-tanned leather from one of the last US tanneries</li>
-                <li>No harsh chemicals in the tanning process</li>
-                <li>Products designed to develop patina over time</li>
-                <li>5% of profits go to community and environmental causes</li>
+                <li>The copy speaks from belief, not neutrality. It has opinions. It excludes some people to magnetize the right ones.</li>
+                <li>The guarantee is specific and emotionally aligned. Not just "risk-free," but something that shows you understand what they're worried about.</li>
+                <li>The design isn't just described, it's justified.</li>
+                <li>It's positioned as a response to a cultural tension your audience feels.</li>
             </ul>
-
-            <div class="impl-box">
-                <h4>Example Structure</h4>
-                <p><strong>Section 1:</strong> "Handcrafted in Idaho" - Every piece is made by hand in our Salmon River studio. No factories. No outsourcing.</p>
-                <p><strong>Section 2:</strong> "US-Sourced Vegetable-Tanned Leather" - We source from one of the last vegetable tanneries in America.</p>
-                <p><strong>Section 3:</strong> "Designed to Last Decades" - Our wallets are meant to be used, bruised, and loved for years.</p>
-                <p><strong>Section 4:</strong> "5% Back to Community" - Every purchase supports organizations making a difference.</p>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>10-15% increase in conversion rate by giving fence-sitters clear reasons to choose you over alternatives.</p>
-            </div>
+            <p>This isn't about hype. It's about alignment. About making every part of the page answer the question: "Does this product prove something about the person who buys it?"</p>
+            <p>When you can answer that with confidence, it shifts you from being a digital J-town widget shop to the Apple of your space.</p>
+            <blockquote>
+                <p><strong>Handcrafted in Idaho</strong> — Every piece is made by hand in our Salmon River studio. No factories. No outsourcing. Two hands, start to finish.</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>US-Sourced Vegetable-Tanned Leather</strong> — We source from Wickett & Craig, one of the last vegetable tanneries in America. Natural bark extracts instead of chemicals. Leather that develops character instead of falling apart.</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>Designed to Last Decades</strong> — Our wallets are meant to be used, bruised, and loved for years. The scuffs and scratches aren't wear—they're story.</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>5% Back to Community</strong> — Every purchase supports organizations making a difference along the Salmon River and beyond.</p>
+            </blockquote>
+            <p>Expect a 10-15% increase in conversion rate by giving fence-sitters clear reasons to choose you over alternatives.</p>
         </div>
     </div>
 
@@ -930,11 +877,16 @@
             <p>A comparison chart visually shows your unique advantages at a glance. It doesn't require reading paragraphs. It doesn't require hunting for information.</p>
             <p>It's a simple table that says: "Here's us. Here's everyone else. Here's why we're better."</p>
             <p>The vegetable-tanned leather vs. chrome-tanned leather distinction is particularly powerful. Most customers don't know the difference. When you show them that your leather uses natural processes while competitors use chemical-heavy methods, you're educating and differentiating simultaneously.</p>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>5-10% increase in conversion rate by making differentiation obvious to scanners. Reduces price sensitivity (when advantages are clear, price becomes less important).</p>
-            </div>
+            <p><strong>Example comparison points:</strong></p>
+            <ul>
+                <li><strong>Leather sourcing:</strong> Kinshop (US tannery, vegetable-tanned) vs. Most brands (imported, chrome-tanned)</li>
+                <li><strong>Manufacturing:</strong> Kinshop (handcrafted by maker) vs. Most brands (factory production)</li>
+                <li><strong>Develops patina:</strong> Kinshop (yes, designed to age beautifully) vs. Most brands (no, looks worse over time)</li>
+                <li><strong>Chemical-free:</strong> Kinshop (natural tanning process) vs. Most brands (harsh chemical tanning)</li>
+                <li><strong>Supports community:</strong> Kinshop (5% gives back) vs. Most brands (no giving program)</li>
+            </ul>
+            <p>This works because it reframes the purchase decision. Instead of "should I buy this wallet?" the customer is now asking "do I want Kinshop quality or mass-produced quality?" That's a much easier question to answer—especially when you've shown them the difference.</p>
+            <p>Expect a 5-10% increase in conversion rate by making differentiation obvious to scanners. Also reduces price sensitivity—when advantages are clear, price becomes less important.</p>
         </div>
     </div>
 
@@ -942,32 +894,38 @@
     <div class="rec-card">
         <div class="rec-header">
             <span class="section-num">15</span>
-            <h3>Optimize Homepage Hero to Lead with Offer or Mission</h3>
+            <h3>Optimize Homepage Hero to Lead with Story</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
             <img src="img-homepage-hero.png" alt="Kinshop homepage hero" class="screenshot">
-            <p class="screenshot-caption">Current hero: "Kinshop Wallets - In new, juicy colors" - clean but doesn't communicate your Idaho story or mission.</p>
+            <p class="screenshot-caption">Current hero: "Kinshop Wallets — In new, juicy colors"—clean but doesn't communicate your Idaho story or mission.</p>
+
             <p>Right now, your hero features "Kinshop Wallets" with "In new, juicy colors" and a "Shop the collection" link.</p>
-            <p>That's fine. It's clean. It shows product. But it's not doing any heavy lifting.</p>
+            <p>That's fine. It's clean. It shows product.</p>
+            <p>But it's not doing any heavy lifting. It could be any leather goods brand. There's nothing in those first five seconds that tells me why Kinshop is different from the hundreds of other options I could find.</p>
             <p>Your hero should answer three questions instantly:</p>
             <ol>
                 <li><strong>What do you sell?</strong> (Handcrafted leather goods)</li>
                 <li><strong>Why should I care?</strong> (Idaho studio, US leather, develops patina)</li>
                 <li><strong>Why buy now?</strong> (Mission, quality, limited handcraft capacity)</li>
             </ol>
-
-            <div class="impl-box">
-                <h4>Options to Test</h4>
+            <p><strong>Options to test:</strong></p>
+            <blockquote>
                 <p><strong>Mission-first:</strong> "Handcrafted Leather. Made to Last. Made in Idaho."</p>
+            </blockquote>
+            <blockquote>
                 <p><strong>Patina-first:</strong> "The Wallet That Gets Better Every Day"</p>
+            </blockquote>
+            <blockquote>
                 <p><strong>Origin-first:</strong> "From a Small Idaho Studio to Your Pocket"</p>
-            </div>
-
-            <div class="impact-box">
-                <h4>Expected Impact</h4>
-                <p>10-20% reduction in homepage bounce rate by immediately communicating value. 5-10% increase in conversion rate by featuring your differentiators prominently.</p>
-            </div>
+            </blockquote>
+            <blockquote>
+                <p><strong>Craft-first:</strong> "Two Hands. One Wallet. Years of Character."</p>
+            </blockquote>
+            <p>Each headline tests a different angle. Mission-first speaks to values-driven buyers. Patina-first speaks to quality-seekers who want something that improves with age. Origin-first speaks to people who want to know where their stuff comes from. Craft-first speaks to people who appreciate the maker behind the product.</p>
+            <p>Run each for 2-3 weeks and measure bounce rate and click-through to collection pages. The winning headline tells you which story resonates most with your audience—and that insight informs all your other messaging.</p>
+            <p>Expect a 10-20% reduction in homepage bounce rate by immediately communicating value, plus a 5-10% increase in conversion rate by featuring your differentiators prominently.</p>
         </div>
     </div>
 
@@ -980,70 +938,70 @@
 
     <div class="phase-card">
         <div class="phase-header phase-1">
-            <h3>Phase 1: Urgent Fixes (Week 1)</h3>
+            <h3>Phase 1: Urgent Fixes</h3>
         </div>
         <div class="phase-content">
             <ol>
-                <li>Fix review display issue - showing wrong products (1-2 hours)</li>
-                <li>Install Microsoft Clarity (30 minutes)</li>
-                <li>Make ATC button sticky on mobile (1-2 hours)</li>
+                <li>Fix review display issue—showing wrong products</li>
+                <li>Install Microsoft Clarity</li>
+                <li>Make ATC button sticky on mobile</li>
             </ol>
         </div>
     </div>
 
     <div class="phase-card">
         <div class="phase-header phase-2">
-            <h3>Phase 2: Quick Wins (Week 2-3)</h3>
+            <h3>Phase 2: Quick Wins</h3>
         </div>
         <div class="phase-content">
             <ol>
-                <li>Add free shipping progress bar in cart (2-3 hours)</li>
-                <li>Add product image badges (2-3 hours)</li>
-                <li>Test announcement bar messaging (ongoing, 1-2 weeks per message)</li>
-                <li>Add dedicated guarantee section to PDPs (2 hours)</li>
+                <li>Add free shipping progress bar in cart</li>
+                <li>Add product image badges</li>
+                <li>Test announcement bar messaging</li>
+                <li>Add dedicated guarantee section to PDPs</li>
             </ol>
         </div>
     </div>
 
     <div class="phase-card">
         <div class="phase-header phase-3">
-            <h3>Phase 3: AOV Boosters (Week 4-7)</h3>
+            <h3>Phase 3: AOV Boosters</h3>
         </div>
         <div class="phase-content">
             <ol>
-                <li>Implement in-cart upsells (3-4 hours with Rebuy/CartHook)</li>
-                <li>Add post-purchase upsell flow (3-4 hours)</li>
-                <li>Feature best-sellers prominently in navigation and homepage (2-3 hours)</li>
-                <li>Build comprehensive FAQ section (4-5 hours)</li>
-                <li>Test free shipping threshold variations (ongoing, 2-4 weeks per test)</li>
+                <li>Implement in-cart upsells</li>
+                <li>Add post-purchase upsell flow</li>
+                <li>Feature best-sellers prominently in navigation and homepage</li>
+                <li>Build comprehensive FAQ section</li>
+                <li>Test free shipping threshold variations</li>
             </ol>
         </div>
     </div>
 
     <div class="phase-card">
         <div class="phase-header phase-4">
-            <h3>Phase 4: Differentiation (Week 8-12)</h3>
+            <h3>Phase 4: Differentiation</h3>
         </div>
         <div class="phase-content">
             <ol>
-                <li>Create USP section on PDPs (3-4 hours)</li>
-                <li>Add comparison chart to PDPs (2-3 hours)</li>
-                <li>Optimize homepage hero section (2-3 hours per test)</li>
-                <li>Test different hero messaging (mission-first vs. origin-first vs. patina-first)</li>
+                <li>Create USP section on PDPs</li>
+                <li>Add comparison chart to PDPs</li>
+                <li>Optimize homepage hero section</li>
+                <li>Test different hero messaging</li>
             </ol>
         </div>
     </div>
 
     <div class="phase-card">
         <div class="phase-header phase-5">
-            <h3>Phase 5: Optimization (Month 4+)</h3>
+            <h3>Phase 5: Optimization (Ongoing)</h3>
         </div>
         <div class="phase-content">
             <ol>
-                <li>Analyze Clarity data weekly and fix friction points (ongoing)</li>
-                <li>Review and optimize based on A/B test results (ongoing)</li>
-                <li>Refine upsell offers based on take rate data (ongoing)</li>
-                <li>Expand product-specific reviews through post-purchase campaigns (ongoing)</li>
+                <li>Analyze Clarity data weekly and fix friction points</li>
+                <li>Review and optimize based on A/B test results</li>
+                <li>Refine upsell offers based on take rate data</li>
+                <li>Expand product-specific reviews through post-purchase campaigns</li>
             </ol>
         </div>
     </div>
@@ -1108,7 +1066,7 @@
     <div class="simple-card" style="border-left: 4px solid var(--accent-purple);">
         <div class="simple-card-content">
             <p><strong>That's 73% revenue growth with the same traffic.</strong></p>
-            <p>And because many of these tactics (post-purchase upsells, in-cart upsells, sticky ATC) improve margin percentage as well as raw revenue, contribution margin increases even more.</p>
+            <p>And because many of these tactics—post-purchase upsells, in-cart upsells, sticky ATC—improve margin percentage as well as raw revenue, contribution margin increases even more.</p>
         </div>
     </div>
 
@@ -1117,16 +1075,19 @@
     <!-- Final Thoughts -->
     <div class="simple-card">
         <div class="simple-card-header">
-            <h3>Final Thoughts: Contribution Margin Over Revenue</h3>
+            <h3>Final Thoughts: The Brands That Win</h3>
         </div>
         <div class="simple-card-content">
-            <p>The goal isn't just to increase revenue. It's to increase contribution margin - the profit left after you subtract variable costs and ad spend.</p>
+            <p>The goal isn't just to increase revenue. It's to increase contribution margin—the profit left after you subtract variable costs and ad spend.</p>
             <p>Your handcrafted production model means every piece has significant labor invested. Protect your margins by leading with value and story, not discounts.</p>
             <p>Your giving-back mission (5% of profits) is a differentiator worth protecting. Higher margins mean more impact.</p>
-            <p>Your patina story is a natural defense against returns - customers who understand their wallet will develop character are less likely to return it for "not looking like the photo."</p>
+            <p>Your patina story is a natural defense against returns—customers who understand their wallet will develop character are less likely to return it for "not looking like the photo."</p>
             <p><strong>The brands that win in handcrafted goods aren't the ones that discount most aggressively.</strong></p>
             <p>They're the ones that build strong origin stories, lead with differentiation, and optimize every step of the customer journey for both conversion and margin.</p>
-            <p>You're already doing the hard part - making exceptional products by hand in your Idaho studio. These recommendations just help you capture more of the value you're creating.</p>
+            <p>You're already doing the hard part—making exceptional products by hand in your Idaho studio, with leather that most brands wouldn't bother sourcing because it costs more and takes longer.</p>
+            <p>These recommendations aren't about changing what Kinshop is. They're about making sure people see it. About bringing the story forward. About capturing more of the value you're already creating.</p>
+            <p>The voice is there. The craft is there. The differentiation is there.</p>
+            <p>Now it's about making sure every visitor who lands on your site can feel it in the first five seconds.</p>
         </div>
     </div>
 
