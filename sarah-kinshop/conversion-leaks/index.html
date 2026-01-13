@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinshop - Conversion Leaks Review | The Prompted</title>
+    <meta name="description" content="Conversion leaks review and recommendations for Kinshop handcrafted leather goods.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-primary: 'Montserrat', 'Questrial', Arial, sans-serif;
+            --color-text-primary: #2e2e2e;
+            --color-text-headline: #0e1b4d;
+            --color-text-secondary: #1f2555;
+            --color-text-muted: #666666;
+            --color-accent: #8B4513;
+            --color-accent-light: #D2B48C;
+            --color-accent-dark: #5D3A1A;
+            --color-success: #2E8B57;
+            --color-success-light: #d4edda;
+            --color-urgency: #c0392b;
+            --color-urgency-light: #f8d7da;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #f8f7f5;
+            --color-bg-cream: #faf8f5;
+            --color-midnight: #0e1b4d;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background: var(--color-bg-white);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--color-midnight) 0%, #1a2a5e 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-brand {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+        }
+
+        .header-date {
+            color: var(--color-accent-light);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--color-bg-cream) 0%, var(--color-bg-white) 100%);
+            padding: 3rem 2rem;
+        }
+
+        .hero p {
+            margin-bottom: 1.25rem;
+            max-width: 800px;
+        }
+
+        .hero strong {
+            color: var(--color-text-secondary);
+        }
+
+        /* Typography */
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-headline);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            margin: 1.25rem 0 0.75rem;
+        }
+
+        p { margin-bottom: 1rem; }
+        strong { font-weight: 700; color: var(--color-text-secondary); }
+
+        /* Section Divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-light) 50%, var(--color-accent) 100%);
+            margin: 3rem 0;
+            border-radius: 2px;
+        }
+
+        /* Recommendation Section */
+        .recommendation {
+            padding: 2.5rem 2rem;
+        }
+
+        .recommendation:nth-child(even) {
+            background: var(--color-bg-light);
+        }
+
+        .recommendation-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .recommendation-number {
+            width: 3.5rem;
+            height: 3.5rem;
+            min-width: 3.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+        }
+
+        .recommendation-title {
+            flex: 1;
+        }
+
+        .recommendation-title h2 {
+            margin-bottom: 0.25rem;
+        }
+
+        .recommendation-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Urgent Badge */
+        .urgent-badge {
+            display: inline-block;
+            background: var(--color-urgency);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 0.5rem;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--color-bg-light) 0%, #e8e4df 100%);
+            border: 2px dashed var(--color-accent-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--color-text-muted);
+            font-style: italic;
+            font-size: 0.9375rem;
+        }
+
+        /* Expected Impact Box */
+        .impact-box {
+            background: var(--color-success-light);
+            border-left: 4px solid var(--color-success);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .impact-box h4 {
+            color: var(--color-success);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .impact-box p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .impact-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Implementation Box */
+        .implementation-box {
+            background: var(--color-bg-cream);
+            border: 1px solid var(--color-accent-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .implementation-box h4 {
+            color: var(--color-accent-dark);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .implementation-box p {
+            margin-bottom: 0.75rem;
+            font-size: 0.9375rem;
+        }
+
+        .implementation-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+        }
+
+        ul li {
+            padding-left: 1.75rem;
+            position: relative;
+            margin-bottom: 0.625rem;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1.5;
+        }
+
+        /* Bullet Lists with Checkmarks */
+        .check-list li::before {
+            content: "✓";
+            color: var(--color-success);
+            font-size: 1rem;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 2.5rem 2rem;
+            background: var(--color-bg-light);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .comparison-table thead {
+            background: var(--color-midnight);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9375rem;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.9375rem;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--color-bg-light);
+        }
+
+        .comparison-table .highlight-col {
+            background: rgba(139, 69, 19, 0.08);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 2.5rem 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-light));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.625rem;
+            line-height: 1.2;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+        }
+
+        .timeline-marker .phase-label {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-marker .phase-number {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            color: var(--color-text-headline);
+        }
+
+        .timeline-content .timing {
+            color: var(--color-accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ol {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .timeline-content ol li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        /* Projections Section */
+        .projections-section {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, var(--color-midnight) 0%, #1a2a5e 100%);
+            color: white;
+        }
+
+        .projections-section h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .projections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .projection-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .projection-card .phase {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .projection-card .metric {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .projection-card .label {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .projection-highlight {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .projection-highlight .metric {
+            font-size: 3rem;
+        }
+
+        /* Final Thoughts Section */
+        .final-section {
+            padding: 2.5rem 2rem;
+            background: var(--color-bg-cream);
+        }
+
+        .callout-box {
+            background: white;
+            border: 2px solid var(--color-accent);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-box h4 {
+            color: var(--color-accent-dark);
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-midnight);
+            color: rgba(255,255,255,0.8);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact {
+            font-size: 0.9375rem;
+        }
+
+        .footer-contact a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.25rem; }
+            .recommendation { padding: 2rem 1.25rem; }
+            .header-title { font-size: 1.5rem; }
+            h2 { font-size: 1.5rem; }
+            .recommendation-header { flex-direction: column; gap: 1rem; }
+            .comparison-table { font-size: 0.8125rem; }
+            .comparison-table th, .comparison-table td { padding: 0.625rem 0.5rem; }
+            .projections-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 1.25rem; }
+            .timeline-item { padding-left: 3.5rem; }
+            .timeline-marker { width: 2.5rem; height: 2.5rem; }
+        }
+
+        /* Print Styles */
+        @media print {
+            body { font-size: 11pt; }
+            .header { padding: 1rem; }
+            .recommendation { padding: 1.5rem 1rem; }
+            .section-divider { margin: 2rem 0; }
+            .image-placeholder { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-brand">The Prompted</div>
+        <h1 class="header-title">Kinshop - Conversion Leaks Review</h1>
+        <p class="header-subtitle">Recommendations for improving conversion rate, AOV, and contribution margin</p>
+        <p class="header-date">January 2026</p>
+    </div>
+
+    <!-- Hero Introduction -->
+    <div class="hero">
+        <div class="container">
+            <p>Every brand has Conversion Leaks.</p>
+
+            <p>It's an always-on process of plugging them repeatedly - a Kaizen approach.</p>
+
+            <p>Some are small and invisible until you go looking for them. Others are sitting in plain sight, quietly draining revenue every single day.</p>
+
+            <p><strong>Kinshop isn't like most leather goods brands.</strong></p>
+
+            <p>You're a woman-owned studio nestled along the Salmon River in Idaho, handcrafting every piece with two calloused, dye-stained hands.</p>
+
+            <p>Your vegetable-tanned leather comes from one of the last tanneries in the United States - no harsh chemicals, just quality materials that develop their own patina over time.</p>
+
+            <p>You give 5% of profits back to your community and planet, and 10% of every Frank hat sale supports Idaho Rivers United.</p>
+
+            <p>These aren't marketing gimmicks. They're meaningful differentiators that separate Kinshop from the thousands of mass-produced leather goods flooding Amazon and Etsy.</p>
+
+            <p><strong>But right now, most of these advantages are buried.</strong></p>
+
+            <p>Customers have to dig through your site to discover what makes you different. And most customers don't dig. They scan, decide, and either buy or leave.</p>
+
+            <p>What follows is a series of recommendations based on how your site is currently performing, how your PDP and cart flows are structured, and where your unique advantages - the Idaho story, the woman-owned studio, the US-sourced leather, the patina philosophy - are being underutilized.</p>
+
+            <p>They're written with one goal in mind: <strong>to improve conversion rate, average order value, and contribution margin per session.</strong></p>
+
+            <p>Each recommendation is standalone. But together, they form a playbook that can strengthen your positioning, raise your conversion rate, and expand your average order value while staying true to what makes Kinshop special.</p>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Recommendation 1 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">1</div>
+                <div class="recommendation-title">
+                    <h2>Install Microsoft Clarity Immediately</h2>
+                    <p class="recommendation-subtitle">See what customers actually do on your site</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Microsoft Clarity dashboard example]</div>
+
+            <p>This is the foundation for everything else.</p>
+
+            <p>Microsoft Clarity is free heatmap and session recording software that lets you watch actual customer behavior on your site.</p>
+
+            <p>Not what you think they're doing. <strong>What they're actually doing.</strong></p>
+
+            <p>Where they click, where they scroll, where they get stuck, where they abandon.</p>
+
+            <p>Right now, you're flying blind.</p>
+
+            <p>You can see traffic and conversion rate in Shopify Analytics, but you can't see <em>why</em> people aren't converting.</p>
+
+            <ul>
+                <li>You can't see if they're even finding your add to cart button.</li>
+                <li>You can't see if they're scrolling past your "made in Idaho" messaging without noticing it.</li>
+                <li>You can't see if they're confused by the review section showing products they didn't come to buy.</li>
+            </ul>
+
+            <p>Clarity shows you all of that.</p>
+
+            <p>And it's not just diagnostic. <strong>It's generative.</strong></p>
+
+            <p>Once you can see the friction points, you can make data-driven decisions about what to fix first, instead of guessing.</p>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Visit clarity.microsoft.com</p>
+                <p>Create a free account</p>
+                <p>Add the tracking code to your Shopify theme (theme.liquid file)</p>
+                <p>Within 24 hours, you'll start seeing session recordings and heatmaps</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p>This doesn't directly lift conversion rate on its own. But it informs every other decision you make.</p>
+                <p><strong>It's the foundation that makes all other optimization 3-5x more effective because you're no longer guessing what to fix.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 2 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">2</div>
+                <div class="recommendation-title">
+                    <h2>Fix the Review Display Immediately <span class="urgent-badge">Urgent</span></h2>
+                    <p class="recommendation-subtitle">This is actively hurting customer trust</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Review section showing wrong products]</div>
+
+            <p>Right now, your product pages have a serious problem with review display that is actively hurting customer trust.</p>
+
+            <p>On the Slim Wallet product page, there's a section titled "Let customers speak for us" showing 5 stars from 6 reviews.</p>
+
+            <p>That sounds great. Social proof. Validation. Trust signals.</p>
+
+            <p><strong>Except those reviews aren't for the Slim Wallet.</strong></p>
+
+            <p>They're for completely different products - the Cast Iron Handle Sleeve, Canvas Market Tote, Cribbage Board Pegs, Limited Run Waves Travel Cribbage Board, and Billfold Wallet.</p>
+
+            <p>A customer looking at the Slim Wallet sees reviews for products they didn't come to buy.</p>
+
+            <p>That's confusing at best. At worst, it feels misleading.</p>
+
+            <p>Then, below all that, there's another section called "Customer Reviews" that shows "Average rating is 0.00 stars" with a prompt to "Be the first to write a review."</p>
+
+            <p><strong>So in one scroll, the customer sees two conflicting signals:</strong> "We have 5-star reviews!" and "We have zero reviews, be the first!"</p>
+
+            <p>This creates cognitive dissonance. It erodes trust. It makes customers wonder what's real.</p>
+
+            <div class="implementation-box">
+                <h4>The Fix:</h4>
+                <p>Either configure Judge.me (your review app) to only show product-specific reviews on each PDP, or remove the "Let customers speak for us" section entirely until you have reviews for that specific product.</p>
+                <p>If you want to show brand-level social proof (reviews from across all products), label it clearly: "What customers say about Kinshop" - not mixed in with product-specific review sections.</p>
+                <p>Better yet, actively collect reviews from customers who've purchased wallets. Consider offering a small incentive (10% off next purchase) for customers who leave photo reviews.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-10% increase in conversion rate</strong> by removing trust-damaging confusion.</p>
+                <p>This is an urgent fix because it's actively hurting you every day it remains.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 3 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">3</div>
+                <div class="recommendation-title">
+                    <h2>Implement In-Cart Upsells to Boost AOV</h2>
+                    <p class="recommendation-subtitle">Capture incremental revenue at the highest-leverage moment</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Empty cart page]</div>
+
+            <p>The cart is one of the highest-leverage pieces of real estate on your entire site.</p>
+
+            <p>It's the exact moment when customers are reviewing their order, mentally calculating total cost, and asking themselves "is this everything I need?"</p>
+
+            <p>That question creates a decision window.</p>
+
+            <p><strong>And right now, your cart is completely bare.</strong></p>
+
+            <p>A customer adds a Slim Wallet for $60, goes to the cart, and sees... just the wallet. No recommendations. No complementary products. No "complete your purchase" suggestions.</p>
+
+            <p>That's a missed opportunity worth significant revenue.</p>
+
+            <p>In-cart upsells work because the buying decision has already been made. The customer isn't deliberating on whether to purchase. They've crossed that threshold. Adding one more item to an existing order is psychologically easier than making a separate purchase later.</p>
+
+            <h4>For Kinshop, natural product pairings include:</h4>
+            <ul>
+                <li>Slim Wallet → Leather Card Sleeve or Key Clip</li>
+                <li>Any Wallet → Cribbage Board Pegs (if they're buying a gift)</li>
+                <li>Cribbage Board → Extra Pegs Set</li>
+                <li>Wallet purchase → Frank Hat</li>
+                <li>Any purchase under $100 → Small goods to reach free shipping threshold</li>
+            </ul>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Apps like Rebuy, CartHook, or Slide Cart allow in-cart product recommendations.</p>
+                <p>Set up product association rules (wallets → small goods, cribbage boards → pegs, any → Frank hats).</p>
+                <p>Position recommendations prominently with one-click add functionality.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>15-30% of customers who interact with cart upsells will add at least one additional item.</strong></p>
+                <p>On a $60 average wallet purchase, adding a $25 small good = $85 new AOV (42% increase).</p>
+                <p>Even if only 20% take the upsell, that's $5 average AOV lift across all orders.</p>
+                <p>At 50 orders per month, that's <strong>$250/month in incremental revenue = $3,000/year</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 4 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">4</div>
+                <div class="recommendation-title">
+                    <h2>Add a Free Shipping Progress Bar in the Cart</h2>
+                    <p class="recommendation-subtitle">Visualize the path to free shipping</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Cart without progress bar]</div>
+
+            <p>Your free shipping threshold is $100. That's communicated in your rotating announcement bar, which is good.</p>
+
+            <p>But there's no visual feedback in the cart showing customers how close they are to reaching it.</p>
+
+            <p>A customer with a $60 Slim Wallet in their cart is $40 away from free shipping. That's an achievable stretch - another small good, a leather care kit, or a second wallet as a gift.</p>
+
+            <p><strong>But right now, they have no visual reminder of that opportunity.</strong></p>
+
+            <h4>This works because of several psychological principles:</h4>
+            <ul>
+                <li><strong>Goal Gradient Effect:</strong> People accelerate their efforts as they get closer to a goal</li>
+                <li><strong>Loss Aversion:</strong> Customers don't want to "miss out" on free shipping they're close to unlocking</li>
+                <li><strong>Gamification:</strong> Progress bars tap into the same dopamine response as video game progress trackers</li>
+            </ul>
+
+            <h4>Example messaging progression:</h4>
+            <ul>
+                <li>At $45 cart value: "Add $55 more for FREE SHIPPING"</li>
+                <li>At $60 cart value: "You're $40 away from FREE SHIPPING"</li>
+                <li>At $80 cart value: "Just $20 more for FREE SHIPPING!"</li>
+                <li>At $100+: "Congrats! You've unlocked FREE SHIPPING"</li>
+            </ul>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Apps like Free Shipping Bar or Hextom can add this in under an hour.</p>
+                <p>Position prominently at top of cart, above product list.</p>
+                <p>Update dynamically as items are added/removed.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>15-25% increase in average order value</strong> by encouraging customers to add items to reach the threshold.</p>
+                <p>Higher percentage of customers reaching $100 threshold.</p>
+                <p>More multi-item orders, improving fulfillment efficiency.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 5 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">5</div>
+                <div class="recommendation-title">
+                    <h2>Add Post-Purchase Upsells</h2>
+                    <p class="recommendation-subtitle">Capture pure-margin revenue after checkout</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Post-purchase upsell example]</div>
+
+            <p>Post-purchase upsells are offers shown immediately after a customer completes their checkout, before they reach the thank you page.</p>
+
+            <p>The order is already placed. The credit card information is already entered. The buying momentum is still high.</p>
+
+            <p>At that point, adding an extra product to the order is frictionless - often just a single click.</p>
+
+            <p><strong>The economics here are exceptional.</strong></p>
+
+            <p>Because you're not paying to acquire that second (or third) product, the margin on post-purchase upsells is significantly higher than on the initial sale.</p>
+
+            <h4>For Kinshop, this could look like:</h4>
+            <ul>
+                <li><strong>Initial purchase:</strong> $60 Slim Wallet</li>
+                <li><strong>Upsell #1:</strong> "Complete your everyday carry! Add a Leather Key Clip for just $22"</li>
+                <li><strong>Downsell #1:</strong> "How about leather care? Add our Leather Conditioner for $15"</li>
+                <li><strong>Upsell #2:</strong> "Gift for a friend? Add another wallet in a different color for $54 (10% off)"</li>
+                <li><strong>Downsell #2:</strong> "Last chance: Add Cribbage Pegs for $8"</li>
+            </ul>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Apps like Zipify OCU, ReConvert, or CartHook enable post-purchase upsells.</p>
+                <p>Set up product association rules (wallets → accessories, cribbage boards → pegs).</p>
+                <p>Test different offers (discount percentage, product pairings, urgency messaging).</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>10-20% take rate on first upsell</strong></p>
+                <p>5-10% take rate on second upsell</p>
+                <p>$3-6 average AOV increase across all orders</p>
+                <p>Pure margin (no additional customer acquisition cost)</p>
+                <p><strong>$2,000-$4,000 annual revenue increase</strong> on 50 orders/month</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 6 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">6</div>
+                <div class="recommendation-title">
+                    <h2>Make the Add to Cart Button Sticky on Mobile</h2>
+                    <p class="recommendation-subtitle">Remove friction at the moment of decision</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Mobile PDP without sticky ATC]</div>
+
+            <p>Right now, when customers scroll down your product pages to read details, see reviews, or understand your shipping timeline, your add to cart button scrolls out of view.</p>
+
+            <p>That means if they decide they want to buy while reading about your vegetable-tanned leather process, they have to scroll back up to find the button.</p>
+
+            <p><strong>That's friction. And friction kills conversion.</strong></p>
+
+            <p>Every extra action required between "I want this" and "I'm buying this" is a chance for hesitation, distraction, or abandonment.</p>
+
+            <p>The fix: make the add to cart button sticky, so it stays visible at the top or bottom of the screen as customers scroll.</p>
+
+            <p>This is especially critical on mobile, where scrolling is the primary navigation method.</p>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Most Shopify themes have this as a built-in option in theme settings.</p>
+                <p>If your current theme doesn't support it, apps like "Sticky Add to Cart Booster" can add this functionality in under an hour.</p>
+                <p>Test both top-sticky and bottom-sticky positions to see which performs better.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-15% increase in add-to-cart rate</strong>, especially on mobile where scrolling is more common.</p>
+                <p>Particularly effective for customers who engage with product details and FAQ sections before deciding to buy.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 7 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">7</div>
+                <div class="recommendation-title">
+                    <h2>Create a Dedicated USP Section on Product Pages</h2>
+                    <p class="recommendation-subtitle">Tell customers why to buy from you specifically</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current PDP structure]</div>
+
+            <p>Right now, your product pages flow from product details and color selection straight into reviews and additional information.</p>
+
+            <p>That structure works, but it misses a critical opportunity: telling customers why they should buy from you specifically, rather than from Amazon or Etsy.</p>
+
+            <p><strong>You have a strong story. You just aren't telling it prominently on the pages that matter most.</strong></p>
+
+            <h4>Here's what makes Kinshop different:</h4>
+            <ul>
+                <li>Woman-owned studio in Salmon, Idaho (along the Salmon River)</li>
+                <li>Every piece handcrafted by two calloused, dye-stained hands</li>
+                <li>Vegetable-tanned leather from one of the last US tanneries</li>
+                <li>No harsh chemicals in the tanning process</li>
+                <li>Products designed to develop patina over time</li>
+                <li>5% of profits go to community and environmental causes</li>
+                <li>Physical studio available by appointment</li>
+            </ul>
+
+            <h4>Example structure for Kinshop:</h4>
+            <div class="callout-box">
+                <h4>"Why Choose Kinshop?"</h4>
+                <p><strong>Handcrafted in Idaho</strong> - Every piece is made by hand in our Salmon River studio. No factories. No outsourcing.</p>
+                <p><strong>US-Sourced Vegetable-Tanned Leather</strong> - We source from one of the last vegetable tanneries in America. No harsh chemicals.</p>
+                <p><strong>Designed to Last Decades</strong> - Our wallets are meant to be used, bruised, and loved for years.</p>
+                <p><strong>5% Back to Community</strong> - Every purchase supports organizations making a difference.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>10-15% increase in conversion rate</strong> by giving fence-sitters clear reasons to choose you over alternatives.</p>
+                <p>Particularly effective for customers who are comparison shopping and would otherwise default to Amazon based on price/speed.</p>
+                <p>Higher customer lifetime value as mission-aligned customers become loyal repeat buyers.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 8 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">8</div>
+                <div class="recommendation-title">
+                    <h2>Add Visual Badges to Product Images</h2>
+                    <p class="recommendation-subtitle">Make your differentiators visible to scanners</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current product image without badges]</div>
+
+            <p>Right now, your product images are clean and show the leather beautifully, but they're not doing any persuasive work beyond showing the product.</p>
+
+            <p>They show what the wallet looks like, but they don't communicate what makes that wallet special.</p>
+
+            <p>Badges are visual cues that draw attention to your unique selling propositions before the customer even starts reading.</p>
+
+            <h4>Specific badges for Kinshop:</h4>
+            <ul>
+                <li><strong>"Handcrafted in Idaho"</strong> - Emphasizes local craftsmanship and authenticity</li>
+                <li><strong>"US Leather"</strong> - Highlights domestic sourcing in an era of imports</li>
+                <li><strong>"Woman-Owned"</strong> - Appeals to customers who want to support independent makers</li>
+                <li><strong>"Develops Patina"</strong> - Signals quality and longevity</li>
+                <li><strong>"5% Gives Back"</strong> - Highlights your mission for values-aligned buyers</li>
+            </ul>
+
+            <div class="implementation-box">
+                <h4>How to implement:</h4>
+                <p>Most Shopify themes support badge overlays in product image settings.</p>
+                <p>Apps like "Product Badges & Labels" can add these in 1-2 hours.</p>
+                <p>Keep badges consistent in style (same colors, same placement) for professional appearance.</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-10% increase in conversion rate</strong> by making your differentiators visible to scanners, not just readers.</p>
+                <p>Higher perceived value, which can support premium pricing.</p>
+                <p>Stronger brand recall - customers remember "the Idaho leather wallet maker" more easily when it's visually reinforced.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 9 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">9</div>
+                <div class="recommendation-title">
+                    <h2>Add a Dedicated Guarantee Section That Sells</h2>
+                    <p class="recommendation-subtitle">Remove purchase anxiety at the decision point</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current policies location]</div>
+
+            <p>A dedicated, strong, well-placed guarantee isn't just a customer service policy. <strong>It's a conversion lever.</strong></p>
+
+            <p>It takes risk off the table, removes hesitation, and gives people the confidence to buy now instead of "thinking about it."</p>
+
+            <p>Right now, your guarantee and return policy information is buried in your Policies + Terms page, linked in the footer.</p>
+
+            <p>Customers who are on the fence have no prominent reassurance on the product page itself.</p>
+
+            <h4>Example structure for Kinshop:</h4>
+            <div class="callout-box">
+                <h4>"Our Promise: Craftsmanship You Can Trust"</h4>
+                <p><em>Every Kinshop wallet is made by hand in our Idaho studio, and we stand behind every piece that leaves our workshop.</em></p>
+                <p><em>If you're not completely satisfied with your purchase, let us know within 30 days and we'll make it right.</em></p>
+                <p><em>And because our leather is designed to last, we'll repair or replace any wallet that shows manufacturing defects - not wear from a life well-lived.</em></p>
+                <p><em>The patina your wallet develops is yours to keep. It's the story of your everyday carry.</em></p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-15% increase in conversion rate</strong> by removing purchase anxiety as a barrier.</p>
+                <p>Particularly effective for first-time customers who don't yet know your quality standards.</p>
+                <p>Higher customer lifetime value (customers who feel protected are more likely to buy again).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 10 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">10</div>
+                <div class="recommendation-title">
+                    <h2>Build a FAQ Section That Sells, Not Just Answers</h2>
+                    <p class="recommendation-subtitle">Address objections while reinforcing your differentiators</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current accordion sections]</div>
+
+            <p>Right now, your product pages have collapsible accordion sections for Shipping, Additional Information, and Notes.</p>
+
+            <p>That's functional for providing information. But it's not optimized for conversion.</p>
+
+            <p><strong>A well-constructed FAQ isn't just there to answer questions. It's a strategic conversion tool.</strong></p>
+
+            <h4>For Kinshop, customers are likely wondering:</h4>
+            <ul>
+                <li><strong>About the leather:</strong> "What makes vegetable-tanned leather different?"</li>
+                <li><strong>About sizing:</strong> "Will this wallet fit in my front pocket?"</li>
+                <li><strong>About customization:</strong> "Can I get this monogrammed?"</li>
+                <li><strong>About the brand:</strong> "Who makes these wallets?"</li>
+                <li><strong>About shipping:</strong> "When will my order ship?"</li>
+            </ul>
+
+            <p>Each question is an opportunity to both answer the concern AND reinforce your unique advantages.</p>
+
+            <div class="callout-box">
+                <h4>Example Q&A:</h4>
+                <p><strong>Q: What makes your leather different from other wallets?</strong></p>
+                <p><em>We source our leather from one of the last vegetable tanneries in the United States - Wickett & Craig in Pennsylvania. Unlike chrome-tanned leather (which uses harsh chemicals), vegetable tanning uses natural bark extracts. The result is leather that's more durable, develops a beautiful patina over time, and won't end up leaching chemicals.</em></p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>10-15% reduction in cart abandonment</strong> by addressing objections before they become reasons not to buy.</p>
+                <p>Fewer support inquiries (every question answered on the page is one you don't have to answer via email).</p>
+                <p>Higher customer confidence leading to higher conversion rate.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 11 - Comparison Chart -->
+    <div class="comparison-section">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">11</div>
+                <div class="recommendation-title">
+                    <h2>Add a Comparison Chart to Highlight Your Advantages</h2>
+                    <p class="recommendation-subtitle">Make differentiation obvious at a glance</p>
+                </div>
+            </div>
+
+            <p>Right now, customers have to read through text descriptions to understand why they should buy from Kinshop instead of Amazon, Etsy, or other leather goods shops.</p>
+
+            <p>That's too much work for most visitors. They're scanning, not reading.</p>
+
+            <p><strong>A comparison chart solves this by visually showing your unique advantages at a glance.</strong></p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="highlight-col">Kinshop</th>
+                        <th>Amazon Leather</th>
+                        <th>Etsy Sellers</th>
+                        <th>Fast Fashion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Production</td>
+                        <td class="highlight-col">Handcrafted in Idaho</td>
+                        <td>Mass Produced</td>
+                        <td>Varies</td>
+                        <td>Factory Overseas</td>
+                    </tr>
+                    <tr>
+                        <td>Leather Source</td>
+                        <td class="highlight-col">US Vegetable-Tanned</td>
+                        <td>Unknown/Imported</td>
+                        <td>Varies</td>
+                        <td>Synthetic/Import</td>
+                    </tr>
+                    <tr>
+                        <td>Tanning Method</td>
+                        <td class="highlight-col">Natural (No Chemicals)</td>
+                        <td>Chrome (Chemical)</td>
+                        <td>Varies</td>
+                        <td>Chemical</td>
+                    </tr>
+                    <tr>
+                        <td>Ownership</td>
+                        <td class="highlight-col">Woman-Owned Studio</td>
+                        <td>Corporate</td>
+                        <td>Varies</td>
+                        <td>Corporate</td>
+                    </tr>
+                    <tr>
+                        <td>Develops Patina</td>
+                        <td class="highlight-col">Yes - Gets Better</td>
+                        <td>No - Degrades</td>
+                        <td>Sometimes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Giving Back</td>
+                        <td class="highlight-col">5% to Community</td>
+                        <td>No</td>
+                        <td>Rarely</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Visit Studio</td>
+                        <td class="highlight-col">By Appointment</td>
+                        <td>No</td>
+                        <td>Rarely</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-10% increase in conversion rate</strong> by making differentiation obvious to scanners.</p>
+                <p>Particularly effective for comparison shoppers who are weighing multiple options.</p>
+                <p>Reduces price sensitivity (when advantages are clear, price becomes less important).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 12 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">12</div>
+                <div class="recommendation-title">
+                    <h2>Optimize Homepage Hero to Lead with Offer or Mission</h2>
+                    <p class="recommendation-subtitle">Communicate value in under 3 seconds</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current homepage hero]</div>
+
+            <p>The homepage hero is the first thing most visitors see. It sets the tone for their entire session.</p>
+
+            <p>Right now, your hero features "Kinshop Wallets" with "In new, juicy colors" and a "Shop the collection" link.</p>
+
+            <p>That's fine. It's clean. It shows product.</p>
+
+            <p><strong>But it's not doing any heavy lifting.</strong></p>
+
+            <ul>
+                <li>It's not communicating your mission.</li>
+                <li>It's not highlighting your differentiators.</li>
+                <li>It's not making an offer that creates urgency.</li>
+            </ul>
+
+            <h4>Optimized structure options:</h4>
+
+            <div class="callout-box">
+                <h4>Mission-first:</h4>
+                <p><strong>Headline:</strong> "Handcrafted Leather. Made to Last. Made in Idaho."</p>
+                <p><strong>Subheadline:</strong> "From our Salmon River studio to your everyday carry - wallets, goods, and accessories crafted to develop their own story over time."</p>
+                <p><strong>Trust signals:</strong> "Woman-Owned" | "US Leather" | "5% Gives Back"</p>
+            </div>
+
+            <div class="callout-box">
+                <h4>Patina-first:</h4>
+                <p><strong>Headline:</strong> "The Wallet That Gets Better Every Day"</p>
+                <p><strong>Subheadline:</strong> "Vegetable-tanned leather, handcrafted in Idaho, designed to develop character. Not to end up in a landfill."</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>10-20% reduction in homepage bounce rate</strong> by immediately communicating value.</p>
+                <p>5-10% increase in conversion rate by featuring your differentiators prominently.</p>
+                <p>Better brand positioning (mission-forward, not product-forward).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 13 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">13</div>
+                <div class="recommendation-title">
+                    <h2>Feature Best-Sellers Prominently</h2>
+                    <p class="recommendation-subtitle">Guide visitors to your highest-converting products</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current navigation/collection page]</div>
+
+            <p>Right now, your product catalog is organized by category: Wallets, Home Goods, Accessories, Cribbage Boards, Small Goods.</p>
+
+            <p>That's good for browsing. But it's neutral from a sales perspective.</p>
+
+            <p><strong>In reality, not all products are equal.</strong></p>
+
+            <p>Some products convert at dramatically higher rates. Some have more reviews and social proof. Some are proven "gateway products" that lead to repeat purchases.</p>
+
+            <p>Those products deserve prominent placement because they're your highest-probability conversion opportunities.</p>
+
+            <h4>For Kinshop, this means:</h4>
+            <ul>
+                <li><strong>Step 1:</strong> Pull Shopify data for the last 90 days - identify top 5 products by units sold, revenue, and review count</li>
+                <li><strong>Step 2:</strong> Look for patterns - Is the Slim Wallet your top seller? Which colors perform best?</li>
+                <li><strong>Step 3:</strong> Feature these winners prominently in navigation, homepage, cart upsells, and email sequences</li>
+            </ul>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>10-15% increase in conversion rate</strong> by guiding visitors to proven high-converters.</p>
+                <p>Higher average order value if best-sellers happen to be higher-priced items.</p>
+                <p>Faster purchase decisions (less time browsing, more confidence in choice).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 14 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">14</div>
+                <div class="recommendation-title">
+                    <h2>Test Announcement Bar Messaging for Differentiation</h2>
+                    <p class="recommendation-subtitle">Use prime real estate for brand storytelling</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Current announcement bar]</div>
+
+            <p>You already have a rotating announcement bar with three messages:</p>
+            <ul>
+                <li>"Thanks for being here. We hope you find something you enjoy."</li>
+                <li>"Free shipping on all orders over $100"</li>
+                <li>"5% of all profits go to support our community and our planet."</li>
+            </ul>
+
+            <p>Message #1 is warm but not actionable.</p>
+            <p>Message #2 is functional but doesn't differentiate you.</p>
+            <p><strong>Message #3 is your strongest</strong> - it highlights your giving-back mission.</p>
+
+            <h4>Messages to test for Kinshop:</h4>
+            <ul>
+                <li>"Handcrafted in Idaho - Every Piece Made by Hand in Our Salmon River Studio"</li>
+                <li>"US Vegetable-Tanned Leather - No Chemicals, Just Quality That Lasts"</li>
+                <li>"Woman-Owned Small Business - Thank You for Supporting Independent Makers"</li>
+                <li>"Designed to Develop Patina - Wallets That Get Better Every Day"</li>
+            </ul>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p><strong>5-10% increase in conversion rate</strong> by speaking to different customer motivations.</p>
+                <p>Better brand positioning (less commoditized, more differentiated).</p>
+                <p>Higher engagement from values-aligned customers.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation 15 -->
+    <div class="recommendation">
+        <div class="container">
+            <div class="recommendation-header">
+                <div class="recommendation-number">15</div>
+                <div class="recommendation-title">
+                    <h2>Consider Testing Lower Free Shipping Threshold</h2>
+                    <p class="recommendation-subtitle">Calibrate to your Modal Order Value</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">[Screenshot: Price point analysis]</div>
+
+            <p>Your free shipping threshold is currently $100. That might not be optimized for your actual customer behavior.</p>
+
+            <p>The question isn't "should we have a free shipping threshold?" The question is <strong>"what threshold maximizes gross profit per order based on how customers actually buy?"</strong></p>
+
+            <h4>For Kinshop:</h4>
+            <p>Your price points range from $45 (Essentials Wallet) to $95 (Tower Wallet, Wave Snap Wallet).</p>
+            <p>If most customers buy a single wallet, your Modal Order Value is likely in the $60-$80 range.</p>
+            <p>That means customers would need to add $20-$40 more to hit the $100 threshold.</p>
+
+            <h4>What to test:</h4>
+            <ul>
+                <li><strong>Current:</strong> Free shipping at $100</li>
+                <li><strong>Test 1:</strong> Free shipping at $75 (single premium wallet + small good reaches it)</li>
+                <li><strong>Test 2:</strong> Free shipping at $85 (mid-point that feels more achievable)</li>
+                <li><strong>Test 3:</strong> Tiered structure - Spend $60: 10% off | Spend $75: Free shipping | Spend $100: Free shipping + bonus gift</li>
+            </ul>
+
+            <div class="implementation-box">
+                <h4>How to test:</h4>
+                <p>Run each threshold for 2-4 weeks.</p>
+                <p>Track: Conversion rate, AOV, percentage of orders with free shipping, gross profit per order, units per transaction.</p>
+                <p>Calculate: Did the AOV increase and conversion lift offset the shipping cost increase?</p>
+            </div>
+
+            <div class="impact-box">
+                <h4>Expected Impact</h4>
+                <p>Optimized threshold calibrated to MOV can lift conversion rate by <strong>5-10%</strong> and AOV by <strong>10-20%</strong> compared to a poorly calibrated threshold.</p>
+                <p>More customers reaching threshold = more multi-item orders = higher lifetime value.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Implementation Timeline -->
+    <div class="timeline-section">
+        <div class="container">
+            <h2>Implementation Priority</h2>
+            <p>A phased approach to maximize impact while respecting your capacity.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-label">Phase</span>
+                        <span class="phase-number">1</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Urgent Fixes</h3>
+                        <p class="timing">Week 1 | ~3-4 hours total</p>
+                        <ol>
+                            <li>Fix review display issue - showing wrong products (1-2 hours)</li>
+                            <li>Install Microsoft Clarity (30 minutes)</li>
+                            <li>Make ATC button sticky on mobile (1-2 hours)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-label">Phase</span>
+                        <span class="phase-number">2</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Quick Wins</h3>
+                        <p class="timing">Week 2-3 | ~8-10 hours total</p>
+                        <ol>
+                            <li>Add free shipping progress bar in cart (2-3 hours)</li>
+                            <li>Add product image badges - "Handcrafted in Idaho", "US Leather" (2-3 hours)</li>
+                            <li>Test announcement bar messaging (ongoing, 1-2 weeks per message)</li>
+                            <li>Add dedicated guarantee section to PDPs (2 hours)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-label">Phase</span>
+                        <span class="phase-number">3</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>AOV Boosters</h3>
+                        <p class="timing">Week 4-7 | ~15-20 hours total</p>
+                        <ol>
+                            <li>Implement in-cart upsells (3-4 hours with Rebuy/CartHook)</li>
+                            <li>Add post-purchase upsell flow (3-4 hours)</li>
+                            <li>Feature best-sellers prominently in navigation and homepage (2-3 hours)</li>
+                            <li>Build comprehensive FAQ section (4-5 hours)</li>
+                            <li>Test free shipping threshold variations (ongoing, 2-4 weeks per test)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-label">Phase</span>
+                        <span class="phase-number">4</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Differentiation</h3>
+                        <p class="timing">Week 8-12 | ~10-12 hours total</p>
+                        <ol>
+                            <li>Create USP section on PDPs (3-4 hours)</li>
+                            <li>Add comparison chart to PDPs (2-3 hours)</li>
+                            <li>Optimize homepage hero section (2-3 hours per test)</li>
+                            <li>Test different hero messaging (mission-first vs. origin-first vs. patina-first)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="phase-label">Phase</span>
+                        <span class="phase-number">5</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Ongoing Optimization</h3>
+                        <p class="timing">Month 4+ | Continuous</p>
+                        <ol>
+                            <li>Analyze Clarity data weekly and fix friction points</li>
+                            <li>Review and optimize based on A/B test results</li>
+                            <li>Refine upsell offers based on take rate data</li>
+                            <li>Expand product-specific reviews through post-purchase campaigns</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projections Section -->
+    <div class="projections-section">
+        <div class="container">
+            <h2>Expected Cumulative Impact</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">Conservative estimates based on assumed current performance</p>
+
+            <div class="projections-grid">
+                <div class="projection-card">
+                    <div class="phase">Current Baseline</div>
+                    <div class="metric">2.5%</div>
+                    <div class="label">Conversion Rate</div>
+                </div>
+                <div class="projection-card">
+                    <div class="phase">Current Baseline</div>
+                    <div class="metric">$65</div>
+                    <div class="label">Average Order Value</div>
+                </div>
+                <div class="projection-card">
+                    <div class="phase">After Phase 1</div>
+                    <div class="metric">2.7%</div>
+                    <div class="label">Conversion Rate (+8%)</div>
+                </div>
+                <div class="projection-card">
+                    <div class="phase">After Phase 2</div>
+                    <div class="metric">$70</div>
+                    <div class="label">AOV (+8%)</div>
+                </div>
+                <div class="projection-card">
+                    <div class="phase">After Phase 3</div>
+                    <div class="metric">$82</div>
+                    <div class="label">AOV (+26%)</div>
+                </div>
+                <div class="projection-card">
+                    <div class="phase">After Phase 4</div>
+                    <div class="metric">3.3%</div>
+                    <div class="label">Conversion Rate (+32%)</div>
+                </div>
+                <div class="projection-highlight">
+                    <div class="phase">Full Implementation</div>
+                    <div class="metric">+73%</div>
+                    <div class="label">Revenue Growth with Same Traffic</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Thoughts Section -->
+    <div class="final-section">
+        <div class="container">
+            <h2>Final Thoughts: Contribution Margin Over Revenue</h2>
+
+            <p>One last note on how to think about these recommendations:</p>
+
+            <p><strong>The goal isn't just to increase revenue. It's to increase contribution margin</strong> - the profit left after you subtract variable costs and ad spend.</p>
+
+            <p>With handcrafted goods like Kinshop's, not all revenue is created equal.</p>
+
+            <p>A $60 order with free shipping and 10% first-time discount leaves you with very different margin than a $95 order at full price with customer paying shipping.</p>
+
+            <h4>As you implement these recommendations, track:</h4>
+            <ul>
+                <li><strong>Not just AOV, but gross margin per order</strong> (revenue minus COGS, fulfillment, shipping, payment processing)</li>
+                <li><strong>Not just conversion rate, but contribution margin per session</strong> (gross margin minus ad spend, divided by sessions)</li>
+                <li><strong>Not just revenue growth, but first-order profitability</strong> (can you acquire customers profitably on first order?)</li>
+            </ul>
+
+            <div class="callout-box">
+                <h4>For Kinshop specifically:</h4>
+                <p>Your handcrafted production model means every piece has significant labor invested. <strong>Protect your margins by leading with value and story, not discounts.</strong></p>
+                <p>Your giving-back mission (5% of profits) is a differentiator worth protecting. Higher margins mean more impact.</p>
+                <p>Your patina story is a natural defense against returns - customers who understand their wallet will develop character are less likely to return it for "not looking like the photo."</p>
+                <p>Your US-sourced vegetable-tanned leather is premium positioning. Don't undercut that with discount-heavy messaging.</p>
+            </div>
+
+            <p>The brands that win in handcrafted goods aren't the ones that discount most aggressively.</p>
+
+            <p><strong>They're the ones that build strong origin stories, lead with differentiation, and optimize every step of the customer journey for both conversion and margin.</strong></p>
+
+            <p>You're already doing the hard part - making exceptional products by hand in your Idaho studio.</p>
+
+            <p>These recommendations just help you capture more of the value you're creating.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-brand">The Prompted</div>
+        <p class="footer-tagline">Helping DTC operators scale with leverage</p>
+        <p class="footer-contact">Questions or implementation support? Reach out anytime.</p>
+    </div>
+
+</body>
+</html>
