@@ -483,8 +483,11 @@
         /* ===== TABLET MEDIA QUERY (≤768px) ===== */
         @media (max-width: 768px) {
             /* Layout */
-            body {
+            html, body {
                 max-width: 100%;
+                overflow-x: hidden;
+            }
+            body {
                 padding: 15px;
             }
 
@@ -512,7 +515,8 @@
 
             /* Tables - horizontal scroll */
             .med-section,
-            .lab-section {
+            .lab-section,
+            .notes-section {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -534,7 +538,8 @@
 
             /* Table scroll hint */
             .med-section::after,
-            .lab-section::after {
+            .lab-section::after,
+            .notes-section::after {
                 content: '→ scroll';
                 position: absolute;
                 right: 5px;
@@ -544,6 +549,10 @@
                 background: rgba(255,255,255,0.9);
                 padding: 2px 5px;
                 border-radius: 3px;
+            }
+
+            .notes-section {
+                position: relative;
             }
         }
 
