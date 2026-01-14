@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 28: Testimonials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FAF7F5;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(46, 42, 57, 0.08);
+        }
+        .testimonial-stars {
+            color: #F5A623;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .testimonial-quote {
+            font-size: 0.9375rem;
+            font-style: italic;
+            color: #2E2A39;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 0.8125rem;
+            color: #6B6777;
+        }
+        @media (max-width: 900px) {
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <h2>What Customers Are Saying</h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"They somehow make my water seem fresher and colder."</div>
+            <div class="testimonial-author">— Verified Customer</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"Thicker than Amazon ones so these are the ones I trust."</div>
+            <div class="testimonial-author">— Verified Customer</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"We are hooked — donating all of our copper and silicone straws and going all glass!"</div>
+            <div class="testimonial-author">— David</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"I can finally have the Stanley cup I want without the plastic."</div>
+            <div class="testimonial-author">— Sarah</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"Thank you for saving the turtles. I have been buying your products for years for everyone I know."</div>
+            <div class="testimonial-author">— Jennifer</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote">"The glass straws are easy to clean and definitely feel better on your teeth than metal straws do."</div>
+            <div class="testimonial-author">— David</div>
+        </div>
+    </div>
+</body>
+</html>

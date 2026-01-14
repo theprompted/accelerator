@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 27: FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #FDF9F7;
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .faq-question {
+            font-weight: 700;
+            color: #2E2A39;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        .faq-answer {
+            color: #4A4654;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 640px) {
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-grid">
+        <div class="faq-item">
+            <div class="faq-question">How do I clean my glass straw?</div>
+            <div class="faq-answer">Every Strawesome set comes with a cleaning brush designed for your straw. Quick rinse after use keeps things fresh. For deeper cleaning, run it through the dishwasher — our straws are fully dishwasher safe. The best part: you can SEE when it's clean.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Will it really not break?</div>
+            <div class="faq-answer">Our glass is properly annealed — slowly cooled in a kiln to remove internal stress. This is what cheap glass skips. The result: a 1.5% replacement rate over 16 years. And if yours ever does break, our lifetime warranty covers it.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I use it with hot drinks?</div>
+            <div class="faq-answer">Yes. Glass doesn't conduct heat like metal. Your lips touch the glass, not the temperature of your drink. Hot coffee, iced tea, room temperature water — all comfortable.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What if it doesn't fit my tumbler?</div>
+            <div class="faq-answer">We make straws specifically sized for Stanley, YETI, Hydro Flask, and Owala tumblers. Check our Tumbler Replacement collection for your exact fit.</div>
+        </div>
+    </div>
+</body>
+</html>

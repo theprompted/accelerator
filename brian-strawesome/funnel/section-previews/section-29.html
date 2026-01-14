@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 29: Final Push + CTA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .summary-table {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(46, 42, 57, 0.08);
+        }
+        .summary-table th {
+            background: #FF6700;
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        .summary-table th:nth-child(2) { text-align: center; }
+        .summary-table th:last-child { text-align: right; }
+        .summary-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: #FFFFFF;
+        }
+        .summary-table td:first-child {
+            font-weight: 600;
+            color: #2E2A39;
+        }
+        .summary-table td:nth-child(2) {
+            text-align: center;
+            font-weight: 700;
+            color: #FF6700;
+        }
+        .summary-table td:last-child {
+            text-align: right;
+            color: #6B6777;
+            font-size: 0.875rem;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(180deg, #FF6700 0%, #E55A00 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .cta-button.secondary {
+            background: #FFFFFF;
+            color: #FF6700;
+            border: 2px solid #FF6700;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(46, 42, 57, 0.1);
+        }
+        .trust-badge {
+            text-align: center;
+        }
+        .trust-badge-icon {
+            width: 55px;
+            height: 55px;
+            background: #1A7D65;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.375rem;
+            color: white;
+        }
+        .trust-badge-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #4A4654;
+            line-height: 1.3;
+        }
+        @media (max-width: 640px) {
+            .cta-buttons { flex-direction: column; }
+            .cta-button { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Choose Your Set</h2>
+
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Set</th>
+                <th>Price</th>
+                <th>Best For</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Starter Set</td>
+                <td>$22</td>
+                <td>Trying glass for the first time</td>
+            </tr>
+            <tr>
+                <td>Everyday Set</td>
+                <td>$45</td>
+                <td>Daily drinkers who want variety</td>
+            </tr>
+            <tr>
+                <td>Ultimate Collection</td>
+                <td>$115</td>
+                <td>Never think about straws again</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="cta-buttons">
+        <a href="#" class="cta-button">Shop Bundles</a>
+        <a href="#" class="cta-button secondary">Shop All Straws</a>
+        <a href="#" class="cta-button secondary">Shop Tumbler Straws</a>
+    </div>
+
+    <div class="trust-badges">
+        <div class="trust-badge">
+            <div class="trust-badge-icon">🔒</div>
+            <div class="trust-badge-text">Lifetime<br>Warranty</div>
+        </div>
+        <div class="trust-badge">
+            <div class="trust-badge-icon">🚚</div>
+            <div class="trust-badge-text">Free Shipping<br>$49+</div>
+        </div>
+        <div class="trust-badge">
+            <div class="trust-badge-icon">🔐</div>
+            <div class="trust-badge-text">Secure<br>Checkout</div>
+        </div>
+        <div class="trust-badge">
+            <div class="trust-badge-icon">🇺🇸</div>
+            <div class="trust-badge-text">Made in<br>USA</div>
+        </div>
+    </div>
+</body>
+</html>
