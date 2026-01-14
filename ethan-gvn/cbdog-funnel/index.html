@@ -167,6 +167,54 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .btn-download {
+            background: #2D5A27;
+            color: white;
+        }
+
+        .instructions {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .instructions h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .instruction-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .step-content {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .step-content strong {
+            color: var(--text-black);
+        }
     </style>
 </head>
 <body>
@@ -199,6 +247,46 @@
                 <span class="btn-title">Full Funnel Analysis</span>
                 <span class="btn-desc">Section-by-section breakdown of why each part works. Use this to understand the strategy and adapt it.</span>
             </a>
+
+            <hr class="divider">
+
+            <a href="cbdog-funnel-ghl.zip" class="btn btn-download" download>
+                <span class="btn-label">Download</span>
+                <span class="btn-title">GoHighLevel Package (.zip)</span>
+                <span class="btn-desc">Everything you need to deploy this funnel in GHL: HTML files, images, and setup instructions.</span>
+            </a>
+        </div>
+
+        <div class="instructions">
+            <h2>How to Use This Funnel</h2>
+
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <strong>Preview the funnel above</strong> — Click through both pages to see the flow. The Education Page is CBD-free (safe for paid ads). The Offer Page contains the solution reveal and purchase CTAs.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <strong>Download the GHL package</strong> — The zip contains both HTML files, product images, and detailed setup instructions.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <strong>In GoHighLevel:</strong> Create a 2-page funnel, upload images to Media Library, paste HTML into Custom Code elements, then update image URLs and checkout links.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <strong>Final touches:</strong> Update the buy button links to your Shopify cart URLs, and swap any placeholder images with your actual product photos.
+                </div>
+            </div>
         </div>
     </div>
 
