@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefan - Thesis Feedback & Next Steps | The Prompted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .header .label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .header p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 2px solid black;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-header.yellow {
+            background: #FFDE00;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Step Numbers */
+        .step-num {
+            width: 2rem;
+            height: 2rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .card-header.yellow .step-num {
+            background: white;
+        }
+
+        /* Thesis Cards */
+        .thesis-card {
+            background: #FAFAFA;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .thesis-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .thesis-card.recommended {
+            background: #FFFDE7;
+            border-color: #1a1a1a;
+        }
+
+        .thesis-card.weak {
+            background: #FAFAFA;
+            border-color: #ccc;
+        }
+
+        .thesis-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .thesis-name {
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .thesis-badge {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .badge-strong {
+            background: #FFDE00;
+        }
+
+        .badge-weak {
+            background: #E5E5E5;
+            border-color: #999;
+            color: #666;
+        }
+
+        .badge-new {
+            background: #E8F5E9;
+        }
+
+        .thesis-hook {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .thesis-analysis {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: white;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 2px solid black;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border: 2px solid black;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #FAFAFA;
+        }
+
+        /* Callout */
+        .callout {
+            padding: 1.25rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .callout-yellow {
+            background: #FFFDE7;
+        }
+
+        .callout-green {
+            background: #E8F5E9;
+        }
+
+        .callout-gray {
+            background: #FAFAFA;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote */
+        .quote {
+            border-left: 4px solid #FFDE00;
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            color: #1a1a1a;
+        }
+
+        /* List */
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Link */
+        a {
+            color: #0066cc;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: #E5E5E5;
+            margin: 2rem 0;
+        }
+
+        /* Section Label */
+        .section-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid black;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.875rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            background: #FFDE00;
+            box-shadow: -0.2rem 0.2rem 0 0 #383838;
+            transition: all 0.1s;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -0.1rem 0.1rem 0 0 #383838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="label">The Prompted &rarr; Stefan & Nadja</span>
+            <h1>Thesis Feedback & Next Steps</h1>
+            <p>January 21, 2026</p>
+        </div>
+
+        <!-- SECTION 1: Thesis Feedback -->
+        <div class="card">
+            <div class="card-header yellow">
+                <div class="step-num">1</div>
+                <h2>Thesis Feedback</h2>
+            </div>
+            <div class="card-body">
+                <p>Excellent work on the thesis exploration. You've clearly put real thought into this.</p>
+
+                <p>Good news: <strong>2 of your 5 theses are strong and ready to use.</strong> The other 3 are good angles, useful for ad copy and supporting messaging, but they're not theses on their own.</p>
+
+                <p>Here's the distinction that matters:</p>
+
+                <div class="callout callout-yellow">
+                    <p><strong>A thesis contradicts a widely-held market belief.</strong> It creates tension. It has a villain. Angles support a thesis. A thesis stands alone and makes people rethink what they assumed.</p>
+                </div>
+
+                <p>Let me show you what I mean by walking through each one:</p>
+
+                <div class="section-label">Your 5 Theses: Assessed</div>
+
+                <!-- Thesis 1 -->
+                <div class="thesis-card recommended">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 1: Technical (78/22 Formula)</span>
+                        <span class="thesis-badge badge-strong">Strong</span>
+                    </div>
+                    <div class="thesis-hook">"The real problem isn't uncomfortable feet, it's that most socks are made with zero respect for how your body actually works."</div>
+                    <div class="thesis-analysis">
+                        <strong>This is the winner.</strong> Clear villain (socks that ignore biomechanics). Proprietary mechanism (The 78/22 Formula). Makes competitors look lazy. Defensible because you have the product to back it up.
+                    </div>
+                </div>
+
+                <!-- Thesis 2 -->
+                <div class="thesis-card weak">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 2: Individualistic (Color)</span>
+                        <span class="thesis-badge badge-weak">Angle Only</span>
+                    </div>
+                    <div class="thesis-hook">"Color up your life / variety of colors"</div>
+                    <div class="thesis-analysis">
+                        "We have more colors" is a USP, not a belief. No villain. No market assumption being violated. Fine as supporting copy but won't carry a funnel.
+                    </div>
+                </div>
+
+                <!-- Thesis 3 -->
+                <div class="thesis-card weak">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 3: Emotional (You're Worth It)</span>
+                        <span class="thesis-badge badge-weak">Weak Thesis</span>
+                    </div>
+                    <div class="thesis-hook">"It does matter what socks you wear. You are worth it."</div>
+                    <div class="thesis-analysis">
+                        "Socks matter" isn't contrarian. Every premium sock brand says this. No tension created. True but not differentiating.
+                    </div>
+                </div>
+
+                <!-- Thesis 4 -->
+                <div class="thesis-card weak">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 4: Convenience (Fits Your Life)</span>
+                        <span class="thesis-badge badge-weak">Positioning Only</span>
+                    </div>
+                    <div class="thesis-hook">"It's not about finding socks that fit your dress code, it's about finding socks that fit your life."</div>
+                    <div class="thesis-analysis">
+                        Benefit statement without contradiction. "One sock for work and home" is positioning, not a belief the brand stands behind.
+                    </div>
+                </div>
+
+                <!-- Thesis 5 -->
+                <div class="thesis-card recommended">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 5: Aspirational (800-Dollar Suit)</span>
+                        <span class="thesis-badge badge-strong">Strong</span>
+                    </div>
+                    <div class="thesis-hook">"800-dollar suit and 1-dollar socks? All flash and no substance."</div>
+                    <div class="thesis-analysis">
+                        Attacks the buyer's behavior, not just competitors. Creates social pressure because nobody wants to be "all surface." Clear villain. Second strongest option.
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section-label">2 Additional Theses From Me</div>
+                <p>To make this feedback more tangible, here are two additional thesis options that pass the contrarian test:</p>
+
+                <!-- New Thesis 1 -->
+                <div class="thesis-card" style="background: #E8F5E9;">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 6: The Softness Trap</span>
+                        <span class="thesis-badge badge-new">New</span>
+                    </div>
+                    <div class="thesis-hook">"The Softest Sock In The Store Is Usually The Worst Sock For Your Life"</div>
+                    <table>
+                        <tr>
+                            <th>Market Belief</th>
+                            <td>"Soft = comfortable. The softest sock is the most comfortable."</td>
+                        </tr>
+                        <tr>
+                            <th>Contrarian Truth</th>
+                            <td>Softness is first-touch. Comfort is all-day. The softest fibers hold moisture, need special care, wear out fast.</td>
+                        </tr>
+                        <tr>
+                            <th>Tension</th>
+                            <td>"I've been picking socks based on 3 seconds instead of 8 hours?"</td>
+                        </tr>
+                    </table>
+                    <div class="thesis-analysis">
+                        <strong>Brand Belief:</strong> First-touch softness is a trap. True comfort is engineered for the full day, not the first 3 seconds.
+                    </div>
+                </div>
+
+                <!-- New Thesis 2 -->
+                <div class="thesis-card" style="background: #E8F5E9;">
+                    <div class="thesis-header">
+                        <span class="thesis-name">Thesis 7: The Purity Tax</span>
+                        <span class="thesis-badge badge-new">New</span>
+                    </div>
+                    <div class="thesis-hook">"100% Natural Is 100% Compromise"</div>
+                    <table>
+                        <tr>
+                            <th>Market Belief</th>
+                            <td>"Purity is quality. 100% merino = premium."</td>
+                        </tr>
+                        <tr>
+                            <th>Contrarian Truth</th>
+                            <td>Purity means ALL the weaknesses of one material. 100% wool holds moisture. 100% cotton wears out. Optimization beats purity.</td>
+                        </tr>
+                        <tr>
+                            <th>Tension</th>
+                            <td>"'100% pure' was a limitation, not a feature?"</td>
+                        </tr>
+                    </table>
+                    <div class="thesis-analysis">
+                        <strong>Brand Belief:</strong> Purity is a compromise. The best performance comes from engineered blends where each fiber does what it does best.
+                    </div>
+                </div>
+
+                <div class="callout callout-gray" style="margin-top: 1.5rem;">
+                    <p><strong>My Recommendation:</strong> Lead with <strong>Thesis 1 (Technical / 78/22 Formula)</strong>. It has the clearest villain, the proprietary mechanism, and the strongest proof points. Use Thesis 6 or 7 as secondary angles within the funnel or for testing alternate hooks.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Unit Economics -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">2</div>
+                <h2>Unit Economics</h2>
+            </div>
+            <div class="card-body">
+                <p>Great work on the unit economics scenarios.</p>
+
+                <p><strong>One thing to watch:</strong> Make sure your most generous offer still lands at 50%+ gross margin. That's the floor. Below that, you can win the auction but not keep enough profit after ad spend.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 3: The Plan -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">3</div>
+                <h2>The Plan & Next Steps</h2>
+            </div>
+            <div class="card-body">
+                <p>You asked for a clearer picture of immediate next steps. Here it is:</p>
+
+                <div class="callout callout-green">
+                    <p class="section-label" style="margin-top: 0;">Where You Are Now</p>
+                    <p style="margin-bottom: 0;"><strong>Weeks 1-2: Lock in Thesis and unit economics.</strong> You've done the work. You delivered 5 thesis directions and built out unit economics scenarios. That's exactly what Weeks 1-2 asked for.</p>
+                </div>
+
+                <div class="callout callout-yellow">
+                    <p class="section-label" style="margin-top: 0;">What's Next</p>
+                    <p><strong>Weeks 3-6: Build ads and funnels, launch and test</strong></p>
+                    <p style="margin-bottom: 0;">Specifically, in this order:</p>
+                </div>
+
+                <p><strong>Step 1: Finalize the landing page.</strong></p>
+                <p>The advertorial funnel I shared is 90% there. The remaining 10%:</p>
+                <ul>
+                    <li>Finalize images (replace placeholders)</li>
+                    <li>Lock in the thesis (Thesis 1 is my recommendation)</li>
+                    <li>Build the page via Shopify Pages or a landing page builder (Pagefly, PageDeck, Replo)</li>
+                </ul>
+
+                <p><strong>Step 2: Build ads that drive to the landing page.</strong></p>
+                <p>We can work on these together. I can share examples of ads that you can build upon and use for reference to model and keep running with.</p>
+
+                <p><strong>Step 3: Launch, measure, iterate.</strong></p>
+                <p>The funnel structure is:</p>
+
+                <div class="callout callout-gray">
+                    <p style="margin-bottom: 0;"><strong>Ad</strong> (hooks attention with thesis) → <strong>Presell/Advertorial</strong> (educates on 78/22 Formula) → <strong>Offer Page</strong> (converts)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Product Naming -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">4</div>
+                <h2>Product Naming for DTC</h2>
+            </div>
+            <div class="card-body">
+                <p>I saw your naming brainstorm for DTC vs Amazon. Good instinct to differentiate.</p>
+
+                <p>My take: <strong>DTC naming is an opportunity to sound proprietary.</strong></p>
+
+                <p>On Amazon, you optimize for search terms. "Socken Herren" works because that's what people type. On DTC, you're not competing for search. You're building a brand.</p>
+
+                <p>Names like "Komfort Socken" or "Feine Socken" are fine, but they're generic. Any sock brand could use them. They don't reinforce the thesis or make Mat & Vic's feel ownable.</p>
+
+                <div class="callout callout-yellow">
+                    <p><strong>The opportunity:</strong> Name your product lines in a way that ties to the 78/22 Formula positioning. Something that sounds like Mat & Vic's invented it.</p>
+                </div>
+
+                <p>You already have "Cotton Classic", which is a good start. Here are two directions:</p>
+
+                <div class="section-label">Option A: Elevate What You Have</div>
+                <table>
+                    <tr>
+                        <th>Current</th>
+                        <th>DTC Name</th>
+                    </tr>
+                    <tr>
+                        <td>Cotton Classic</td>
+                        <td><strong>The Cotton Classic</strong> (add "The", feels more ownable)</td>
+                    </tr>
+                    <tr>
+                        <td>Sneaker Socken</td>
+                        <td><strong>The Low Profile</strong> or <strong>The Ankle</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Füßlinge</td>
+                        <td><strong>The Invisible</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Arbeitssocken</td>
+                        <td><strong>The Workhorse</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Warme Socken</td>
+                        <td><strong>The All-Day Warm</strong> or <strong>The Thermal</strong></td>
+                    </tr>
+                </table>
+
+                <div class="section-label">Option B: Tie Everything to the Thesis</div>
+                <p>Create a collection name that reinforces the 78/22 Formula:</p>
+                <ul>
+                    <li><strong>The 78/22 Classic</strong> (crew)</li>
+                    <li><strong>The 78/22 Low</strong> (ankle)</li>
+                    <li><strong>The 78/22 Invisible</strong> (no-show)</li>
+                    <li><strong>The 78/22 Thermal</strong> (warm)</li>
+                    <li><strong>The 78/22 Work</strong> (heavy duty)</li>
+                </ul>
+                <p>This makes every product reinforce the thesis. When someone sees "78/22" they think of your proprietary formula.</p>
+
+                <p>This isn't urgent. Get the thesis and landing page locked first. But when you're ready to finalize DTC product naming, think proprietary, not generic.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 5: How We Work Together -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">5</div>
+                <h2>How We Work Together</h2>
+            </div>
+            <div class="card-body">
+                <p>You mentioned wanting a call. I understand. Sometimes it feels easier to talk things through live.</p>
+
+                <p>Here's what I've found works best: <strong>async communication lets me give your questions the nuanced attention they deserve.</strong> When I respond to your messages, I'm not thinking on my feet. I'm taking time to consider the angles, review your work carefully, and give you my best thinking.</p>
+
+                <p>That's why Accelerator is built around daily async via Skool DM. You can reach out any time without scheduling, and I respond every weekday with full attention on your situation.</p>
+
+                <div class="callout callout-green">
+                    <p><strong>If something feels easier to say than type:</strong> Send me a Loom video. Walk me through your screen, explain your thinking out loud, show me what you're looking at. I'll watch it and respond with the same depth I would in writing.</p>
+                </div>
+
+                <p>The Skool DM is always open. Send questions, send work for review, send Looms, send updates. I'm here for you.</p>
+
+                <div class="callout callout-gray">
+                    <p><strong>For reference:</strong> Here's the full breakdown of what's included at each tier, including Partnership which does include live calls if that's ever something you want:</p>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;"><a href="https://theprompted.github.io/accelerator/offer-tiers/" target="_blank">https://theprompted.github.io/accelerator/offer-tiers/</a></p>
+                </div>
+
+                <p>Let's get that landing page finalized and start testing ads.</p>
+
+                <p style="margin-bottom: 0;">- Andrew</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>The Prompted &bull; January 2026</p>
+        </div>
+    </div>
+</body>
+</html>
