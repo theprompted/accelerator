@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Prompted - Offer Tiers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Tier Cards Grid */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tier-card.featured {
+            box-shadow: -0.31rem 0.31rem 0 0 #1a1a1a;
+            border-color: #1a1a1a;
+        }
+
+        .tier-header {
+            padding: 1.5rem;
+            border-bottom: 2px solid black;
+            text-align: center;
+        }
+
+        .tier-card.featured .tier-header {
+            background: #FFDE00;
+            border-bottom-color: black;
+        }
+
+        .tier-name {
+            font-family: 'SF Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .tier-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #444;
+        }
+
+        .tier-positioning {
+            font-size: 0.875rem;
+            color: #444;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .tier-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tier-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-body li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tier-body li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-body li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .tier-body li.highlight {
+            background: #FFFDE7;
+            margin: 0.25rem -1.5rem;
+            padding: 0.75rem 1.5rem 0.75rem 3rem;
+        }
+
+        .tier-body li.highlight::before {
+            left: 1.5rem;
+        }
+
+        .section-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 1rem 2rem;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.875rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.1s;
+            text-decoration: none;
+            color: black;
+            margin-top: auto;
+        }
+
+        .btn-primary {
+            background: #FFDE00;
+            box-shadow: -0.25rem 0.25rem 0 0 #383838;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -0.13rem 0.13rem 0 0 #383838;
+        }
+
+        .btn-secondary {
+            background: white;
+        }
+
+        .tier-footer {
+            padding: 1.5rem;
+            border-top: 2px solid black;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            margin-top: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            background: white;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: white;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem;
+            text-align: left;
+            border: 2px solid black;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border: 2px solid black;
+            font-size: 0.875rem;
+        }
+
+        tr:nth-child(even) {
+            background: #FAFAFA;
+        }
+
+        td.check {
+            text-align: center;
+            color: #1a1a1a;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        td.dash {
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* Callout */
+        .callout {
+            padding: 1.25rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            margin: 1.5rem 0;
+        }
+
+        .callout-yellow {
+            background: #FFFDE7;
+        }
+
+        .callout-green {
+            background: #E8F5E9;
+        }
+
+        .callout-gray {
+            background: #FAFAFA;
+        }
+
+        /* Key Shift Section */
+        .shift-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .shift-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .shift-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.5rem;
+        }
+
+        .shift-arrow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .shift-from, .shift-to {
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 2px solid black;
+            border-radius: 2px;
+        }
+
+        .shift-from {
+            background: #FAFAFA;
+        }
+
+        .shift-to {
+            background: #FFDE00;
+        }
+
+        .shift-arrow span {
+            font-size: 1.5rem;
+        }
+
+        .shift-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 800px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .result-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .result-metric {
+            font-family: 'SF Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        /* Quote */
+        .quote {
+            border-left: 4px solid #FFDE00;
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            font-style: italic;
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #E5E5E5;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .footer-note strong {
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <p class="label">The Prompted</p>
+            <h1>Stress Free Scaling</h1>
+            <p>Three ways to work with us. Upgrade or downgrade anytime. No lock-in.</p>
+        </div>
+
+        <!-- Tier Cards -->
+        <div class="tiers-grid">
+            <!-- Syndicate -->
+            <div class="tier-card">
+                <div class="tier-header">
+                    <div class="tier-name">Syndicate</div>
+                    <div class="tier-price">$49<span>/month</span></div>
+                    <div class="tier-positioning">Support-led, self-serve tools</div>
+                </div>
+                <div class="tier-body">
+                    <div class="section-label">PromptedOS Tools</div>
+                    <ul>
+                        <li>Persona Decoder</li>
+                        <li>Meta Ads Turbo Launcher</li>
+                        <li>Thesis Architect</li>
+                        <li>Million Dollar PDP Factory</li>
+                        <li>Offer Engine</li>
+                        <li>Conversion Economics Calculator</li>
+                    </ul>
+                    <div class="section-label">Resources</div>
+                    <ul>
+                        <li>$4.3M Theme + lifetime updates</li>
+                        <li>AI Agent Workflows</li>
+                        <li>Private Workshops</li>
+                        <li>Conversion Boosting Features</li>
+                        <li>Community Access</li>
+                    </ul>
+                </div>
+                <div class="tier-footer">
+                    <a href="https://scale.theprompted.co" class="btn btn-secondary">Start $9 Trial</a>
+                </div>
+            </div>
+
+            <!-- Accelerator -->
+            <div class="tier-card featured">
+                <div class="tier-header">
+                    <div class="tier-name">Accelerator</div>
+                    <div class="tier-price">$250<span>/week</span></div>
+                    <div class="tier-positioning">Done-with-you, deeper support</div>
+                </div>
+                <div class="tier-body">
+                    <div class="section-label">Everything in Syndicate, plus:</div>
+                    <ul>
+                        <li class="highlight">Daily async support (Skool DM)</li>
+                        <li class="highlight">Conversion Leaks Review</li>
+                        <li class="highlight">Growth Systems & Plan Review</li>
+                        <li>Unit economics review</li>
+                        <li>CPA & ROAS target setting</li>
+                        <li>Risk Reduced Bidding system</li>
+                        <li>Invisible Conversion Systems setup</li>
+                        <li>Up to 50% off dev work</li>
+                    </ul>
+                    <div class="section-label">How It Works</div>
+                    <ul>
+                        <li>You bring questions & challenges</li>
+                        <li>We respond daily (Mon-Fri)</li>
+                        <li>Deep thought on every problem</li>
+                    </ul>
+                </div>
+                <div class="tier-footer">
+                    <a href="mailto:hello@theprompted.co?subject=I'm in - Accelerator" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Partnership -->
+            <div class="tier-card">
+                <div class="tier-header">
+                    <div class="tier-name">Partnership</div>
+                    <div class="tier-price">$5,000<span>/month</span></div>
+                    <div class="tier-positioning">Extension of your team</div>
+                </div>
+                <div class="tier-body">
+                    <div class="section-label">Everything in Accelerator, plus:</div>
+                    <ul>
+                        <li class="highlight">Private Slack channel</li>
+                        <li class="highlight">2x 60-min calls/month</li>
+                        <li class="highlight">Weekly numbers review</li>
+                        <li class="highlight">Monthly done-for-you projects</li>
+                        <li>Andrew (Growth) + Alfred (Tech/Ops)</li>
+                        <li>RICE-prioritized initiatives</li>
+                        <li>Ad creatives & copywriting</li>
+                        <li>AI agent building</li>
+                        <li>Web development</li>
+                    </ul>
+                    <div class="section-label">How It Works</div>
+                    <ul>
+                        <li>We proactively address bottlenecks</li>
+                        <li>Monthly project ownership</li>
+                        <li>Divide and conquer together</li>
+                    </ul>
+                </div>
+                <div class="tier-footer">
+                    <a href="mailto:hello@theprompted.co?subject=I'm in - Partnership" class="btn btn-secondary">Let's Talk</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Shifts -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Key Differences Between Tiers</h2>
+            </div>
+            <div class="card-body">
+                <div class="shift-grid">
+                    <div class="shift-card">
+                        <div class="shift-arrow">
+                            <div class="shift-from">Syndicate</div>
+                            <span>→</span>
+                            <div class="shift-to">Accelerator</div>
+                        </div>
+                        <div class="shift-description">
+                            Self-serve tools → <strong>1:1 async support</strong> with onboarding deliverables (Conversion Leaks Review, Growth Plan)
+                        </div>
+                    </div>
+                    <div class="shift-card">
+                        <div class="shift-arrow">
+                            <div class="shift-from">Accelerator</div>
+                            <span>→</span>
+                            <div class="shift-to">Partnership</div>
+                        </div>
+                        <div class="shift-description">
+                            You bring questions → <strong>We proactively address bottlenecks</strong> + monthly done-for-you projects
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Full Feature Comparison</h2>
+                </div>
+                <div class="card-body" style="padding: 0; overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Syndicate</th>
+                                <th>Accelerator</th>
+                                <th>Partnership</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PromptedOS Tools</strong></td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$4.3M Theme + Updates</strong></td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Agent Workflows</strong></td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Private Workshops</strong></td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Community Access</strong></td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Conversion Leaks Review</strong></td>
+                                <td class="dash">—</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Growth Systems & Plan</strong></td>
+                                <td class="dash">—</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Daily Async Support</strong></td>
+                                <td class="dash">—</td>
+                                <td>Skool DM</td>
+                                <td>Slack</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Preferred Dev Rates</strong></td>
+                                <td class="dash">—</td>
+                                <td>Up to 50% off</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weekly Numbers Review</strong></td>
+                                <td class="dash">—</td>
+                                <td class="dash">—</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monthly DFY Projects</strong></td>
+                                <td class="dash">—</td>
+                                <td class="dash">—</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sync Calls</strong></td>
+                                <td class="dash">—</td>
+                                <td class="dash">—</td>
+                                <td>2x 60min/mo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="card" style="margin-top: 2rem;">
+            <div class="card-header">
+                <h2>Results Members Have Experienced</h2>
+            </div>
+            <div class="card-body">
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-metric">$85K</div>
+                        <div class="result-label">Sales at 5X ROAS<br>(Motocross brand)</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-metric">174%</div>
+                        <div class="result-label">Sales increase<br>(Culinary brand)</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-metric">66%</div>
+                        <div class="result-label">CVR improvement<br>(Streetwear brand)</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-metric">$5K</div>
+                        <div class="result-label">Day 1 sales<br>(Furniture brand)</div>
+                    </div>
+                </div>
+
+                <div class="callout callout-green" style="margin-top: 1.5rem;">
+                    <strong>Social Impact Apparel Brand:</strong> From losing $4,000/profit → making $3,000 contribution profit/week by month 2
+                </div>
+            </div>
+        </div>
+
+        <!-- How We Work -->
+        <div class="card" style="margin-top: 2rem;">
+            <div class="card-header">
+                <h2>Coaching, Consulting & Mentoring</h2>
+            </div>
+            <div class="card-body">
+                <p style="margin-bottom: 1rem; color: #666;">We use all three contextually based on the situation:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>When We Use It</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Coaching</strong></td>
+                            <td>Guide you to find the answer yourself (founder/executive decisions)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consulting</strong></td>
+                            <td>Give you the answer directly (when that's the best use of circumstances)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mentoring</strong></td>
+                            <td>Tell you what we would do in your shoes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Flexibility Note -->
+        <div class="callout callout-yellow" style="margin-top: 2rem;">
+            <strong>Flexible by design:</strong> Upgrade or downgrade between tiers anytime. Pay-as-you-go. No long-term lock-in. This isn't a hostage situation — we play long-term games with long-term people.
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <p><strong>Questions?</strong> Email hello@theprompted.co or reply to any of our emails.</p>
+            <p style="margin-top: 0.5rem;">The power isn't in the information — it's in the nuanced application of experience to your specific context.</p>
+        </div>
+    </div>
+</body>
+</html>
