@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Strategy Breakdown - Mat & Vic's</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-dark: #1a1a1a;
+            --accent-teal: #108474;
+            --accent-teal-light: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .font-mono {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        h1, h2, h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.375rem; }
+        h3 { font-size: 1.125rem; }
+
+        /* Header */
+        .header-card {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        .header-card h1 { color: white; margin-bottom: 0.5rem; }
+        .header-card .subtitle { opacity: 0.9; font-size: 1.0625rem; }
+
+        .header-meta {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+
+        .meta-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+        }
+
+        .meta-value { font-weight: 600; }
+        .meta-value a { color: white; text-decoration: underline; }
+
+        /* Navigation */
+        .nav-card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-card p { font-size: 0.9375rem; color: var(--text-gray); }
+        .nav-card a { color: var(--accent-teal); font-weight: 600; text-decoration: none; }
+        .nav-card a:hover { text-decoration: underline; }
+
+        /* Part Headers */
+        .part-header {
+            background: var(--bg-dark);
+            border: var(--border);
+            padding: 1.5rem 2rem;
+            margin: 3rem 0 2rem 0;
+            color: white;
+            border-top: 6px solid var(--accent-teal);
+        }
+
+        .part-header h2 { color: var(--accent-teal); margin-bottom: 0.5rem; }
+        .part-header p { font-size: 0.9375rem; opacity: 0.9; }
+
+        /* Copy Block (dark background for actual copy) */
+        .copy-block {
+            margin: 1.5rem 0;
+            border-left: 6px solid var(--accent-teal);
+        }
+
+        .copy-text {
+            background: var(--bg-dark);
+            color: #e0e0e0;
+            padding: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .copy-text strong { color: var(--accent-teal-light); font-weight: 700; }
+
+        /* Annotation (white box below copy) */
+        .annotation {
+            background: var(--bg-white);
+            border: var(--border);
+            border-top: none;
+            padding: 1.5rem;
+        }
+
+        .annotation-label {
+            color: var(--accent-teal);
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .annotation-content { font-size: 0.9375rem; line-height: 1.8; color: var(--text-dark); }
+        .annotation-content p { margin-bottom: 0.75rem; }
+        .annotation-content p:last-child { margin-bottom: 0; }
+        .annotation-content strong { color: var(--accent-teal); }
+
+        /* Tactic Tags */
+        .tactic-tag {
+            display: inline-block;
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0.5rem 0.5rem 0 0;
+            border-radius: 3px;
+        }
+
+        .tactic-tag.warning {
+            background: var(--accent-red);
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header.bg-blue { background: #EBF9FF; }
+        .section-header.bg-purple { background: #F7F1FF; }
+        .section-header.bg-yellow { background: #FFFDE7; }
+        .section-header.bg-green { background: #E8F5E9; }
+        .section-header.bg-orange { background: #FFF8F0; }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .section-body { padding: 1.5rem; }
+        .section-body p { margin-bottom: 1rem; }
+        .section-body p:last-child { margin-bottom: 0; }
+        .section-body ul, .section-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+        .section-body li { margin-bottom: 0.5rem; }
+
+        /* Technique Box */
+        .technique-box {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+            color: white;
+        }
+
+        .technique-box .label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .technique-box p { margin: 0; font-weight: 500; }
+
+        /* Critical Box */
+        .critical-box {
+            background: #FFEBEE;
+            border: var(--border);
+            border-left: 6px solid var(--accent-red);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .critical-box .critical-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .critical-box p { margin: 0; color: var(--text-dark); }
+
+        /* Comparison Box */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .comparison-box { grid-template-columns: 1fr; }
+        }
+
+        .comparison-side {
+            padding: 1.25rem;
+            border: var(--border);
+        }
+
+        .comparison-side.left { background: #f5f5f5; }
+        .comparison-side.right { background: #E8F5E9; }
+
+        .comparison-side .label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        .comparison-side.right .label { color: #2e7d32; }
+        .comparison-side ul { margin: 0; padding-left: 1.25rem; }
+        .comparison-side li { margin-bottom: 0.5rem; font-size: 0.9375rem; }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 700px) { .image-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 450px) { .image-grid { grid-template-columns: 1fr; } }
+
+        .image-card { border: var(--border); overflow: hidden; }
+        .image-card img { width: 100%; height: auto; display: block; }
+
+        .image-card .caption {
+            padding: 0.75rem;
+            background: var(--bg-page);
+            font-size: 0.8125rem;
+            border-top: var(--border);
+        }
+
+        .image-card .caption strong { display: block; margin-bottom: 0.25rem; }
+
+        /* Prompt Box */
+        .prompt-box {
+            background: var(--bg-dark);
+            border: var(--border);
+            margin: 1.25rem 0;
+            overflow: hidden;
+        }
+
+        .prompt-box-header {
+            background: #2a2a2a;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .prompt-box-header .draft-name {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-teal-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prompt-box-header .image-name { color: #e0e0e0; font-size: 0.875rem; font-weight: 600; }
+
+        .prompt-box-body { padding: 1rem; }
+
+        .prompt-box-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.625rem;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt-box-text {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.8125rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+        }
+
+        .prompt-box-text strong { color: var(--accent-teal-light); }
+
+        /* Draft Examples */
+        .draft-example {
+            background: var(--bg-page);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .draft-example .draft-num {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .draft-example .opening { font-weight: 600; font-size: 1.0625rem; color: var(--text-black); margin-bottom: 0.5rem; }
+        .draft-example .belief { font-size: 0.875rem; color: var(--text-gray); }
+
+        /* Workflow Steps */
+        .workflow-step {
+            background: var(--bg-page);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .workflow-step .step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .workflow-step .step-num {
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .workflow-step .step-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .workflow-step .step-content {
+            margin-left: 2.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-gray);
+        }
+
+        .workflow-step .step-content ul { margin: 0.5rem 0 0 0; padding-left: 1.25rem; }
+        .workflow-step .step-content li { margin-bottom: 0.375rem; }
+
+        /* Checklist */
+        .checklist {
+            background: #E8F5E9;
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist .checklist-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #2e7d32;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist ul { margin: 0; padding-left: 1.5rem; list-style: none; }
+        .checklist li { margin-bottom: 0.5rem; position: relative; }
+        .checklist li::before { content: "□"; position: absolute; left: -1.5rem; color: var(--accent-teal); font-weight: bold; }
+
+        /* Iteration Timeline */
+        .iteration-timeline { margin: 1.5rem 0; }
+
+        .iteration-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .iteration-step .version {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--bg-page);
+            border: var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .iteration-step .version.fail { background: #FFEBEE; color: var(--accent-red); }
+        .iteration-step .version.success { background: #E8F5E9; color: #2e7d32; }
+
+        .iteration-step .iteration-content { flex: 1; padding-top: 0.25rem; }
+        .iteration-step .iteration-title { font-weight: 700; color: var(--text-black); margin-bottom: 0.25rem; }
+        .iteration-step .iteration-desc { font-size: 0.9375rem; color: var(--text-gray); }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer a { color: var(--accent-teal); text-decoration: none; font-weight: 600; }
+        .footer .powered-by { margin-top: 1rem; font-size: 0.8125rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1>How These Ads Work</h1>
+            <p class="subtitle">Strategy, nuance, and how to create more</p>
+            <div class="header-meta">
+                <div class="meta-item">
+                    <span class="meta-label">View Ads</span>
+                    <span class="meta-value"><a href="index.html">See the 6 Ad Drafts</a></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Landing Page</span>
+                    <span class="meta-value"><a href="../sample-funnel/presell/index.html">5 Reasons Advertorial</a></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Updated</span>
+                    <span class="meta-value">January 26, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-card">
+            <p><strong>This document has three parts.</strong> Part 1 explains what these ads are doing. Part 2 covers the nuances that make them work. Part 3 shows you how to create more.</p>
+        </div>
+
+        <!-- ==================== PART 1: THE STRATEGY ==================== -->
+        <div class="part-header">
+            <h2>Part 1: The Strategy</h2>
+            <p>What these ads are doing and why</p>
+        </div>
+
+        <!-- What These Ads Are -->
+        <div class="section-card">
+            <div class="section-header bg-blue">
+                <span class="section-num">1</span>
+                <h2>What These Ads Are</h2>
+            </div>
+            <div class="section-body">
+                <p>These are <strong>native image ads</strong>.</p>
+
+                <p>They're designed to look like content in the feed — not like advertising.</p>
+
+                <p>The goal is to stop the scroll and create curiosity <em>before</em> the viewer realizes they're looking at an ad.</p>
+
+                <p>By then, they're already engaged.</p>
+
+                <div class="comparison-box">
+                    <div class="comparison-side left">
+                        <div class="label">Product Ads</div>
+                        <ul>
+                            <li>Product on white background</li>
+                            <li>Discount prominently featured</li>
+                            <li>"Shop Now" energy</li>
+                            <li>Reaches people ready to buy</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-side right">
+                        <div class="label">Native Image Ads</div>
+                        <ul>
+                            <li>Looks like content a friend posted</li>
+                            <li>Stops scroll through recognition</li>
+                            <li>"Wait, what?" energy</li>
+                            <li>Creates demand in cold audiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Both approaches have their place.</p>
+
+                <p>Product ads work for retargeting and people already shopping for socks.</p>
+
+                <p>Native ads work for reaching people who don't know they have a sock problem yet — which is a much larger audience.</p>
+
+                <div class="technique-box">
+                    <div class="label">The Pattern</div>
+                    <p>Product ads sell to people who are ready. Native ads create readiness in people who aren't.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How These Ads Work Together -->
+        <div class="section-card">
+            <div class="section-header bg-green">
+                <span class="section-num">2</span>
+                <h2>The Full Journey</h2>
+            </div>
+            <div class="section-body">
+                <p>These ads are step one.</p>
+
+                <p>They create curiosity and drive traffic to the advertorial, which does the deeper work of shifting beliefs.</p>
+
+                <div class="copy-block">
+                    <div class="copy-text">
+                        <strong>Step 1: Ad stops the scroll</strong><br>
+                        Image triggers recognition. Opening line creates "wait, what?" reaction.<br><br>
+                        <strong>Step 2: Copy builds curiosity</strong><br>
+                        Reader keeps going because they need to understand why they're wrong.<br><br>
+                        <strong>Step 3: Click to advertorial</strong><br>
+                        "5 Reasons You Shouldn't Buy Premium Wool or Alpaca Socks"<br><br>
+                        <strong>Step 4: Advertorial shifts beliefs</strong><br>
+                        Deep education on why the premium sock market is broken.<br><br>
+                        <strong>Step 5: Offer page closes</strong><br>
+                        Reader now understands why Mat & Vic's is different.
+                    </div>
+                    <div class="annotation">
+                        <span class="annotation-label">What's Happening Here</span>
+                        <div class="annotation-content">
+                            <p>By the time someone reaches the offer page, they're not comparing Mat & Vic's to other sock brands.</p>
+                            <p>They're comparing it to the broken system they just learned about.</p>
+                            <p><strong>Product ads compete on price and features.</strong></p>
+                            <p><strong>This approach competes on understanding.</strong></p>
+                            <p>Once someone understands why the market is broken, price becomes secondary.</p>
+                        </div>
+                        <span class="tactic-tag">Belief-Based Selling</span>
+                        <span class="tactic-tag">Education Before Offer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PART 2: THE NUANCE ==================== -->
+        <div class="part-header">
+            <h2>Part 2: The Nuance</h2>
+            <p>The difference between good and great</p>
+        </div>
+
+        <!-- The Images -->
+        <div class="section-card">
+            <div class="section-header bg-yellow">
+                <span class="section-num">3</span>
+                <h2>The Images: Looks Like Content, Not Like an Ad</h2>
+            </div>
+            <div class="section-body">
+                <p>The viewer's brain decides in 0.3 seconds: <strong>is this an ad or content?</strong></p>
+
+                <p>If it looks like an ad, they scroll past before consciously processing it.</p>
+
+                <p>If it looks like content, curiosity kicks in and they stop.</p>
+
+                <div class="copy-block">
+                    <div class="copy-text">
+                        <strong>Looks like an ad</strong> = clever concepts from a creative brainstorm.<br><br>
+                        <strong>Looks like content</strong> = something that could already be in their feed.
+                    </div>
+                    <div class="annotation">
+                        <span class="annotation-label">What's Happening Here</span>
+                        <div class="annotation-content">
+                            <p><strong>Looks like an ad:</strong> Alpaca in an elevator wearing socks. Clever. Staged. A creative team made this.</p>
+                            <p><strong>Looks like content:</strong> Alpaca's goofy face at a petting zoo. The animal IS the punchline. No staging required.</p>
+                            <p><strong>Looks like an ad:</strong> Crime scene with socks as evidence markers.</p>
+                            <p><strong>Looks like content:</strong> Hand holding expensive sock with hole. Just the evidence.</p>
+                        </div>
+                        <span class="tactic-tag">Looks Like Content</span>
+                        <span class="tactic-tag warning">Not Like an Ad</span>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <div class="label">The Test</div>
+                    <p>Would someone actually post this image on their own social media? If yes → looks like content. If no → looks like an ad and gets scrolled past.</p>
+                </div>
+
+                <p>Your 6 images follow this principle:</p>
+
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="generated_images/draft_01_20260125_151240.png" alt="The Evidence">
+                        <div class="caption">
+                            <strong>The Evidence</strong>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="generated_images/draft_02_20260125_151305.png" alt="The Source">
+                        <div class="caption">
+                            <strong>The Source</strong>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="generated_images/draft_03_20260125_151328.png" alt="The Instructions">
+                        <div class="caption">
+                            <strong>The Instructions</strong>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="generated_images/draft_04_20260125_151354.png" alt="The Drawer">
+                        <div class="caption">
+                            <strong>The Drawer</strong>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="generated_images/draft_05_20260125_151421.png" alt="The Morning Moment">
+                        <div class="caption">
+                            <strong>The Morning Moment</strong>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="generated_images/draft_06_20260125_151444.png" alt="The Comparison">
+                        <div class="caption">
+                            <strong>The Comparison</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Copy Pattern -->
+        <div class="section-card">
+            <div class="section-header bg-purple">
+                <span class="section-num">4</span>
+                <h2>The Copy Pattern: Violate & Elevate</h2>
+            </div>
+            <div class="section-body">
+                <p>Every ad follows a pattern called <strong>Violate & Elevate</strong>.</p>
+
+                <p>The opening line must be a <em>violation</em>.</p>
+
+                <p>A direct contradiction of something they believe to be true.</p>
+
+                <p>Stated as fact.</p>
+
+                <p>Not poetry. Not cleverness. A statement that makes them think "wait, that's wrong" before they can stop themselves.</p>
+
+                <div class="copy-block">
+                    <div class="copy-text">
+                        <strong>"Cheap socks last longer than expensive ones."</strong>
+                    </div>
+                    <div class="annotation">
+                        <span class="annotation-label">What's Happening Here</span>
+                        <div class="annotation-content">
+                            <p><strong>The belief being violated:</strong> "You get what you pay for." Price equals quality.</p>
+                            <p><strong>Why it works:</strong> This isn't vague or poetic. It's a direct factual claim that contradicts something they believe to be true.</p>
+                            <p><strong>The instinct:</strong> They can't scroll past because they need to know why you're wrong.</p>
+                            <p><strong>Compare to:</strong> "Your sock drawer is full of broken promises." — Poetic, but not wrong. They'd nod along and keep scrolling.</p>
+                        </div>
+                        <span class="tactic-tag">Belief Violation</span>
+                        <span class="tactic-tag">Stated As Fact</span>
+                    </div>
+                </div>
+
+                <p><strong>Your 6 opening violations:</strong></p>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 1</div>
+                    <div class="opening">"Cheap socks last longer than expensive ones."</div>
+                    <div class="belief">Violates: "You get what you pay for"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 2</div>
+                    <div class="opening">"Alpaca socks weren't designed for humans."</div>
+                    <div class="belief">Violates: "Alpaca is a premium luxury material"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 3</div>
+                    <div class="opening">"The care label is an admission of failure."</div>
+                    <div class="belief">Violates: "Special care = high quality"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 4</div>
+                    <div class="opening">"Softness is a trap."</div>
+                    <div class="belief">Violates: "Soft = comfortable = good"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 5</div>
+                    <div class="opening">"If it needs cold water, it already failed."</div>
+                    <div class="belief">Violates: "Delicate care protects quality"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Draft 6</div>
+                    <div class="opening">"100% anything is a design flaw."</div>
+                    <div class="belief">Violates: "Purity = premium"</div>
+                </div>
+
+                <div class="technique-box">
+                    <div class="label">The Test</div>
+                    <p>Does the line contradict a specific belief they hold? If they'd nod along, it's not a violation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reading Level -->
+        <div class="section-card">
+            <div class="section-header bg-blue">
+                <span class="section-num">5</span>
+                <h2>Reading Level: The Non-Negotiable</h2>
+            </div>
+            <div class="section-body">
+                <div class="critical-box">
+                    <div class="critical-label">Critical Requirement</div>
+                    <p>Every ad must be written at a <strong>5th-6th grade reading level</strong>. Short sentences. Simple words. If a sentence is over 15 words, break it up.</p>
+                </div>
+
+                <p>This isn't about dumbing down.</p>
+
+                <p>World-class copywriters — Gary Halbert, Eugene Schwartz, David Ogilvy — all wrote at this level.</p>
+
+                <p>It removes cognitive friction so the message lands instantly while someone scrolls.</p>
+
+                <div class="comparison-box">
+                    <div class="comparison-side left">
+                        <div class="label">Too Complex</div>
+                        <ul>
+                            <li>"structurally" → cut it</li>
+                            <li>"durability" → "how long it lasts"</li>
+                            <li>"engineered to" → "built to"</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-side right">
+                        <div class="label">Specificity Creates Recognition</div>
+                        <ul>
+                            <li>"Your socks wear out" → weak</li>
+                            <li>"The hole at the heel that appears after three months" → strong</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Generic details feel like advertising.</p>
+
+                <p>Specific details feel like someone who knows.</p>
+            </div>
+        </div>
+
+        <!-- ==================== PART 3: HOW TO DO IT YOURSELF ==================== -->
+        <div class="part-header">
+            <h2>Part 3: How to Do It Yourself</h2>
+            <p>The system for creating more ads like these</p>
+        </div>
+
+        <!-- Step 1: The Image -->
+        <div class="section-card">
+            <div class="section-header bg-green">
+                <span class="section-num">6</span>
+                <h2>Step 1: The Image</h2>
+            </div>
+            <div class="section-body">
+                <p>You can start with the image or the copy — either direction works.</p>
+
+                <p>But the image has one job: stop the scroll in 0.3 seconds.</p>
+
+                <p>Picture the person scrolling. Tired after work. Half-watching TV. Not thinking about socks.</p>
+
+                <p>Logic doesn't interrupt. Emotion does.</p>
+
+                <div class="copy-block">
+                    <div class="copy-text">
+                        <strong>Four image categories that work:</strong><br><br>
+                        1. <strong>Painful Recognition</strong> — Show something they've experienced but never articulated. "That's my drawer" / "I've done that"<br><br>
+                        2. <strong>Absurd Juxtaposition</strong> — Put something where it doesn't belong. "Wait, what?" → laughter → curiosity<br><br>
+                        3. <strong>Emotional Betrayal</strong> — Show the promise vs. the reality. "I was lied to" / "I paid for THIS?"<br><br>
+                        4. <strong>Relatable Frustration</strong> — Capture a micro-frustration everyone knows. "Who has time for this?"
+                    </div>
+                    <div class="annotation">
+                        <span class="annotation-label">What's Happening Here</span>
+                        <div class="annotation-content">
+                            <p><strong>The key:</strong> Each category triggers an emotional response BEFORE any copy is read.</p>
+                            <p>If your image requires explanation, it's not working.</p>
+                            <p>The image should make them stop. The copy should make them click.</p>
+                        </div>
+                        <span class="tactic-tag">Emotion First</span>
+                        <span class="tactic-tag">Recognition Triggers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: The Copy -->
+        <div class="section-card">
+            <div class="section-header bg-orange">
+                <span class="section-num">7</span>
+                <h2>Step 2: The Copy Architecture</h2>
+            </div>
+            <div class="section-body">
+                <p>After the opening violation, the copy follows a specific architecture:</p>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">1</span>
+                        <span class="step-title">Open with the violation</span>
+                    </div>
+                    <div class="step-content">
+                        One line. Direct contradiction stated as fact.
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">2</span>
+                        <span class="step-title">Acknowledge the tension</span>
+                    </div>
+                    <div class="step-content">
+                        "That sounds backwards." / "Not what you expected to hear."
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">3</span>
+                        <span class="step-title">Name what they believe</span>
+                    </div>
+                    <div class="step-content">
+                        List the specific beliefs. Show you understand WHY they believe it.
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">4</span>
+                        <span class="step-title">Introduce the turn</span>
+                    </div>
+                    <div class="step-content">
+                        "But here's what nobody mentions..." / "Here's what they got wrong..."
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">5</span>
+                        <span class="step-title">Stack the evidence</span>
+                    </div>
+                    <div class="step-content">
+                        Specific details, not abstractions. One sentence per line.
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">6</span>
+                        <span class="step-title">Land the reframe</span>
+                    </div>
+                    <div class="step-content">
+                        New way to see the situation. Identity upgrade, not attack.
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-header">
+                        <span class="step-num">7</span>
+                        <span class="step-title">Bridge to product</span>
+                    </div>
+                    <div class="step-content">
+                        Product is the resolution, not the pitch. "There is a..." not "Buy our..."
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;">The reader keeps their identity ("I make smart choices") while changing their understanding.</p>
+
+                <p>They weren't wrong — they were working with incomplete information.</p>
+            </div>
+        </div>
+
+        <!-- Final Checklist -->
+        <div class="section-card">
+            <div class="section-header bg-green">
+                <span class="section-num">8</span>
+                <h2>Final Checklist</h2>
+            </div>
+            <div class="section-body">
+                <div class="checklist">
+                    <div class="checklist-title">Before Publishing Any Ad</div>
+                    <ul>
+                        <li>Image looks like content, not advertising</li>
+                        <li>Opening line contradicts a specific belief (not poetry)</li>
+                        <li>Reading level is 5th-6th grade</li>
+                        <li>One sentence per line</li>
+                        <li>Product appears as resolution, not pitch</li>
+                        <li>Identity protected (they weren't wrong, they were misled)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Questions? <a href="mailto:andrew@theprompted.com">andrew@theprompted.com</a></p>
+            <p class="powered-by">Powered by <strong>PromptedOS</strong></p>
+        </div>
+    </div>
+</body>
+</html>
