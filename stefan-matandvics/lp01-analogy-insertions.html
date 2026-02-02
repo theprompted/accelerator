@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefan LP01 — Analogy Insertions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .page-header {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.75rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            background: #FFFDE7;
+        }
+
+        /* Headline Card */
+        .headline-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .headline-card .card-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white;
+            background: #1a1a1a;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .headline-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .old-headline {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .new-headline {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .headline-rationale {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #E5E5E5;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .headline-rationale strong {
+            color: #1a1a1a;
+        }
+
+        /* Insertion Cards */
+        .insertion-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .insertion-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid black;
+            background: #FAFAFA;
+        }
+
+        .insertion-num {
+            width: 2.25rem;
+            height: 2.25rem;
+            min-width: 2.25rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .insertion-title {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        .insertion-body {
+            padding: 1.5rem;
+        }
+
+        /* Location callout */
+        .location {
+            background: #FFFDE7;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .location-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Purpose callout */
+        .purpose {
+            background: #E8F5E9;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .purpose-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Existing copy block */
+        .existing-copy {
+            background: #FAFAFA;
+            border-left: 4px solid #ccc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .existing-copy-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .existing-copy .translation {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #ddd;
+            font-style: italic;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .existing-copy .translation::before {
+            content: "EN: ";
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.6rem;
+            font-weight: bold;
+            font-style: normal;
+            letter-spacing: 0.05em;
+            color: #bbb;
+        }
+
+        /* New copy block */
+        .new-copy {
+            border-left: 4px solid #53DBC9;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            line-height: 1.7;
+            background: rgba(83, 219, 201, 0.06);
+        }
+
+        .new-copy-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #53DBC9;
+            margin-bottom: 0.5rem;
+        }
+
+        .new-copy p {
+            margin-bottom: 0.75rem;
+        }
+
+        .new-copy p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* German copy block */
+        .new-copy-de {
+            border-left: 4px solid #4A90D9;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            line-height: 1.7;
+            background: rgba(74, 144, 217, 0.06);
+        }
+
+        .new-copy-de-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #4A90D9;
+            margin-bottom: 0.5rem;
+        }
+
+        .new-copy-de p {
+            margin-bottom: 0.75rem;
+        }
+
+        .new-copy-de p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Summary Table */
+        .summary-card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card .card-label {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white;
+            background: #1a1a1a;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: white;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 2px solid black;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border: 2px solid black;
+            font-size: 0.85rem;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #FAFAFA;
+        }
+
+        /* Section divider */
+        .section-divider {
+            margin: 2.5rem 0;
+            padding-top: 1.5rem;
+            border-top: 2px solid #E5E5E5;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+
+        /* Major section banner */
+        .section-banner {
+            background: #1a1a1a;
+            color: white;
+            padding: 1.25rem 2rem;
+            margin: 3rem 0 1.5rem 0;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        .section-banner h2 {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0;
+        }
+
+        .section-banner .section-subtitle {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 0.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .section-banner:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Key insight callout */
+        .key-insight {
+            background: #FFEBE9;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .key-insight strong {
+            display: block;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Language toggle legend */
+        .lang-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .lang-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-swatch {
+            width: 4px;
+            height: 1.25rem;
+            border-radius: 2px;
+        }
+
+        .lang-swatch-en { background: #53DBC9; }
+        .lang-swatch-de { background: #4A90D9; }
+        .lang-swatch-existing { background: #ccc; }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.75rem; }
+            .page-header h1 { font-size: 1.25rem; }
+            .new-headline { font-size: 1.25rem; }
+            .meta-row { gap: 0.75rem; }
+            .headline-grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Stefan LP01 — Copy Upgrades</h1>
+            <div class="subtitle">New headline + 6 analogy insertions for matandvics.com/pages/lp01</div>
+            <div class="meta-row">
+                <span class="meta-tag">Jan 31, 2026</span>
+                <span class="meta-tag">Mat & Vic's</span>
+                <span class="meta-tag">6 Insertions</span>
+            </div>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="lang-legend">
+            <div class="lang-legend-item">
+                <div class="lang-swatch lang-swatch-existing"></div>
+                <span>Existing LP copy (DE)</span>
+            </div>
+            <div class="lang-legend-item">
+                <div class="lang-swatch lang-swatch-en"></div>
+                <span>New copy — English</span>
+            </div>
+            <div class="lang-legend-item">
+                <div class="lang-swatch lang-swatch-de"></div>
+                <span>New copy — Deutsch</span>
+            </div>
+        </div>
+
+        <!-- Section 1: Headline -->
+        <div class="section-banner">
+            <h2>Recommendation 1 — Headline</h2>
+            <div class="section-subtitle">One change to stop the scroll — directional, not prescriptive</div>
+        </div>
+
+        <!-- Why Headlines Matter -->
+        <div class="insertion-card">
+            <div class="card-label" style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; color: white; background: #1a1a1a; padding: 0.75rem 1.5rem; border-bottom: 2px solid black;">Why Headlines Drive Conversion</div>
+            <div class="insertion-body" style="font-size: 0.95rem;">
+                <p style="margin-bottom: 0.75rem;">80% of people read the headline. 20% read the rest. That ratio comes from decades of direct response advertising — and it holds on landing pages too. The headline is the ad for the page itself. If it doesn't stop the scroll, nothing else on the page matters.</p>
+
+                <p style="margin-bottom: 0.75rem;">A headline has one job: <strong>create enough tension that the reader needs to keep going.</strong> Not to summarize. Not to describe the product. Not to be clever. Just to make the next line feel mandatory.</p>
+
+                <p style="margin-bottom: 0.75rem;">The best-converting headlines share three traits:</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>1. They make a claim that feels wrong.</strong> "The softest socks are the worst for your feet" contradicts what everyone believes. That friction is the hook — the reader can't scroll past something that challenges what they think they know. They have to find out if it's true. A headline that confirms existing beliefs gets a nod and a scroll-past.</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>2. They create an information gap.</strong> The reader now has a question they didn't have 3 seconds ago — "wait, why would soft be bad?" That gap is uncomfortable. The only way to close it is to keep reading. This is the difference between a headline that gets attention and a headline that gets engagement.</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>3. They filter for the right reader.</strong> A strong headline doesn't try to appeal to everyone. It speaks directly to people who buy socks based on how they feel in the store — which is nearly everyone. The person who reads "the softest socks are the worst" and thinks "that's ridiculous" is exactly the person the LP is written to convince.</p>
+
+                <p style="margin-bottom: 0;">The current headline does some of this, but hedges and softens in ways that reduce its stopping power. Here's what to change and why — the specific wording below is directional. If a different phrasing feels stronger to you, use it. The structural principles are what matter.</p>
+            </div>
+        </div>
+
+        <!-- Headline -->
+        <div class="headline-card">
+            <div class="card-label">Headline Change</div>
+            <div class="card-body">
+                <div class="old-headline">Die weichste Socke im Laden? Vermutlich die schlechteste fur dein Leben.</div>
+                <div class="new-headline" style="margin-bottom: 0.5rem;">Warum die weichsten Socken die schlechtesten fur deine Fusse sind</div>
+                <div style="font-size: 0.85rem; color: #666; font-style: italic; margin-bottom: 0.5rem;">EN: Why The Softest Socks Are The Worst For Your Feet</div>
+                <div class="headline-rationale">
+                    <div class="headline-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                        <div style="background: #FFEBE9; border: 2px solid black; border-radius: 2px; padding: 1rem;">
+                            <div style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin-bottom: 0.5rem;">Original</div>
+                            <div style="font-size: 0.95rem; color: #666;">Die weichste Socke im Laden<strong style="color:#d32f2f;">?</strong> <strong style="color:#d32f2f;">Vermutlich</strong> die schlechteste fur dein Leben.</div>
+                        </div>
+                        <div style="background: #E8F5E9; border: 2px solid black; border-radius: 2px; padding: 1rem;">
+                            <div style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; color: #999; margin-bottom: 0.5rem;">Proposed (DE)</div>
+                            <div style="font-size: 0.95rem; color: #1a1a1a; font-weight: 700;">Warum die weichsten Socken die schlechtesten fur deine Fusse sind</div>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.875rem; color: #444; line-height: 1.7;">
+                        <p style="margin-bottom: 0.75rem;"><strong style="color: #1a1a1a;">Issue 1: Rhetorical question.</strong> The original opens with a question mark. Rhetorical questions feel like an invitation — but they're actually an exit ramp. The reader can mentally answer "no" or "I don't care" and bounce before the first paragraph. A statement doesn't give them that option. It makes a claim they have to contend with.</p>
+
+                        <p style="margin-bottom: 0.75rem;"><strong style="color: #1a1a1a;">Issue 2: "Vermutlich" (probably) hedges the claim.</strong> This is the most important word to cut. "Probably the worst" gives the reader permission to dismiss it — <em>probably</em> means <em>maybe not</em>. The proposed version states it as fact: "die schlechtesten." That's a provocation. Provocations demand engagement. Hedged statements let people scroll past.</p>
+
+                        <p style="margin-bottom: 0.75rem;"><strong style="color: #1a1a1a;">Issue 3: "Warum" creates an open loop.</strong> Starting with "Warum" (Why) tells the reader there's an explanation coming — a reason they don't know yet. It creates curiosity without asking a question. The reader clicks or scrolls to close the loop. The original headline doesn't create this pull — it presents a thought and immediately softens it.</p>
+
+                        <p style="margin-bottom: 0.75rem;"><strong style="color: #1a1a1a;">Net effect:</strong> Same core idea. Three structural changes (statement > question, no hedge, open loop). The difference is the original <em>suggests</em> something might be true. The proposed version <em>declares</em> something is true and promises to explain why.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Analogies -->
+        <div class="section-banner">
+            <h2>Recommendation 2 — Analogies</h2>
+            <div class="section-subtitle">6 insertions to make the copy stick — examples to illustrate direction, not final copy</div>
+        </div>
+
+        <!-- Why Analogies Matter -->
+        <div class="insertion-card">
+            <div class="card-label" style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; color: white; background: #1a1a1a; padding: 0.75rem 1.5rem; border-bottom: 2px solid black;">Why Analogies Boost Conversion</div>
+            <div class="insertion-body" style="font-size: 0.95rem;">
+                <p style="margin-bottom: 0.75rem;">People don't buy because they <em>understand</em> your product. They buy because they <em>feel</em> it.</p>
+
+                <p style="margin-bottom: 0.75rem;">Analogies are the fastest way to create that feeling. They work because of how the brain processes information:</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>1. They bypass skepticism.</strong> A logical claim ("our socks manage moisture better") triggers the critical mind. An analogy ("it's like wearing a down comforter in July") bypasses it entirely — the reader experiences the discomfort before they can argue with it.</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>2. They make the invisible visible.</strong> Nobody can see fiber composition. Nobody can feel moisture-wicking through a screen. Analogies translate invisible product features into images the reader already understands — houses, cars, comforters. Now they can "see" the difference.</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>3. They stick in memory.</strong> Facts fade. Images persist. A reader will forget "78% cotton with 22% polyamide for optimal moisture management." They will not forget "a sports car with an engine made of glass." When they're standing in a store deciding, it's the image that surfaces — not the spec sheet.</p>
+
+                <p style="margin-bottom: 0.75rem;"><strong>4. They compress complex arguments into one sentence.</strong> Explaining why 100% pure materials are a limitation takes a whole section. "Building a house entirely from glass is also 100% pure — it's still a terrible house" does the same job in one line. Less reading, same persuasion. That means fewer drop-offs.</p>
+
+                <p style="margin-bottom: 0;"><strong>The LP right now persuades through formatting</strong> — checkmarks, emoji, comparison cards. That convinces the scanner. Analogies convince the <em>reader</em>. Adding even 2-3 of these means the page works on both levels instead of one.</p>
+
+                <p style="margin-bottom: 0;">The specific analogies below are examples to illustrate the direction. If different images resonate more naturally in German or feel stronger to you, use those instead. The principle is what matters — not the exact wording.</p>
+            </div>
+        </div>
+
+        <!-- Insertion 1 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">1</div>
+                <div class="insertion-title">Down Comforter in July / Daunendecke im Juli</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">Insert After</div>
+                    The "3 Sekunden vs. 8 Stunden" section — right after the closing line about the sock industry exploiting this.
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Makes the moisture problem visceral. The current copy states the problem logically. This makes you <em>feel</em> the discomfort.
+                </div>
+
+                <div class="existing-copy">
+                    <div class="existing-copy-label">The Current Copy Ends With (DE)</div>
+                    Du hast nicht nach Komfort ausgewahlt. Du hast nach First-Touch-Weichheit ausgewahlt. Das ist NICHT dasselbe. Und die Sockenindustrie weiss das - und nutzt es aus.
+                    <div class="translation">You didn't choose based on comfort. You chose based on First-Touch Softness. That is NOT the same thing. And the sock industry knows it — and exploits it.</div>
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">Insert This (EN)</div>
+                    <p>It's like a down comforter in July.</p>
+                    <p>The first few minutes feel cozy. By noon it's unbearable.</p>
+                    <p>That's exactly what's happening inside your shoe — you just don't notice until your feet have been sitting in their own sweat for hours.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">Insert This (DE)</div>
+                    <p>Es ist wie eine Daunendecke im Juli.</p>
+                    <p>Die ersten Minuten fuhlen sich gemutlich an. Mittags ist es unertraglich.</p>
+                    <p>Genau das passiert in deinem Schuh — du merkst es nur nicht, bis deine Fusse stundenlang in ihrem eigenen Schweiss gesessen haben.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insertion 2 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">2</div>
+                <div class="insertion-title">Buying a Car by Its Color / Auto nach Farbe kaufen</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">Replace Last Sentence In</div>
+                    The "DER UNTERSCHIED" comparison box — inside the First-Touch vs All-Day Comfort section.
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Reframes the shopping mistake as absurd. Makes the reader feel slightly embarrassed about how they've been buying socks — which motivates change.
+                </div>
+
+                <div class="existing-copy">
+                    <div class="existing-copy-label">The Current Copy (DE)</div>
+                    Die weichsten Fasern halten Feuchtigkeit. Verlieren Form. Verschleissen schnell. Du optimierst fur die falsche Sache. Du wahlst basierend auf 3 Sekunden. Aber du lebst mit der Entscheidung 8 Stunden pro Tag.
+                    <div class="translation">The softest fibers hold moisture. Lose shape. Wear out fast. You're optimizing for the wrong thing. You choose based on 3 seconds. But you live with the decision 8 hours a day.</div>
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">Replace Last Two Sentences With (EN)</div>
+                    <p>You're optimizing for the wrong thing.</p>
+                    <p>That's like buying a car based on its paint color — and then wondering why the engine doesn't run.</p>
+                    <p>3 seconds of feeling. 8 hours of reality. You're choosing based on the wrong thing.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">Replace Last Two Sentences With (DE)</div>
+                    <p>Du optimierst fur die falsche Sache.</p>
+                    <p>Das ist, als wurdest du ein Auto nach der Lackfarbe kaufen — und dich dann wundern, warum der Motor nicht lauft.</p>
+                    <p>3 Sekunden Gefuhl. 8 Stunden Realitat. Du wahlst nach dem Falschen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insertion 3 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">3</div>
+                <div class="insertion-title">House Made of Glass / Haus aus Glas</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">Expand Inside</div>
+                    "DIE ERKENNTNIS" box — after the three material breakdowns (merino, cotton, polyester).
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Makes "100% = limitation" visual and intuitive. The current version states it logically. The glass house image makes it impossible to unsee.
+                </div>
+
+                <div class="existing-copy">
+                    <div class="existing-copy-label">The Current Copy (DE)</div>
+                    "100% rein" ist kein Feature. Es ist eine Einschrankung. Wenn du 100% von EINEM Material wahlst, bekommst du 100% von ALLEN Schwachen dieses Materials. Es gibt keinen perfekten Rohstoff. Es gibt nur perfekte KOMBINATIONEN.
+                    <div class="translation">"100% pure" isn't a feature. It's a limitation. When you choose 100% of ONE material, you get 100% of ALL that material's weaknesses. There is no perfect raw material. There are only perfect COMBINATIONS.</div>
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">Expand To (EN)</div>
+                    <p>"100% pure" isn't a feature. It's a limitation.</p>
+                    <p>Building a house entirely from glass is also "100% pure." It's still a terrible house.</p>
+                    <p>The best buildings use multiple materials — concrete for structure, glass for light, insulation for temperature.</p>
+                    <p>Socks work the same way. There's no perfect raw material. There are only perfect combinations.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">Expand To (DE)</div>
+                    <p>"100% rein" ist kein Feature. Es ist eine Einschrankung.</p>
+                    <p>Ein Haus komplett aus Glas zu bauen ist auch "100% rein." Es ist trotzdem ein furchtbares Haus.</p>
+                    <p>Die besten Gebaude nutzen mehrere Materialien — Beton fur Struktur, Glas fur Licht, Dammung fur Temperatur.</p>
+                    <p>Bei Socken ist es genauso. Es gibt keinen perfekten Rohstoff. Es gibt nur perfekte Kombinationen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insertion 4 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">4</div>
+                <div class="insertion-title">Honda + Mercedes</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">Insert After</div>
+                    "WARUM GENAU 78/22?" ratio explanation — after the line about the perfect balance.
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Makes the blend ratio feel like a win, not a compromise. "78/22" sounds like a chemistry equation. Honda + Mercedes makes it sound like the best of both worlds.
+                </div>
+
+                <div class="existing-copy">
+                    <div class="existing-copy-label">The Current Copy Ends With (DE)</div>
+                    Bei 78/22: Die perfekte Balance. Naturlich genug fur ganztagigen Komfort. Technisch genug fur extreme Haltbarkeit. Optimiert fur 8+ Stunden an deinen Fussen - nicht fur 3 Sekunden in Ihrer Hand.
+                    <div class="translation">At 78/22: The perfect balance. Natural enough for all-day comfort. Technical enough for extreme durability. Optimized for 8+ hours on your feet — not for 3 seconds in your hand.</div>
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">Insert This (EN)</div>
+                    <p>Think of it like a daily driver that's as reliable as a Honda and as comfortable as a Mercedes.</p>
+                    <p>You don't have to choose between the two.</p>
+                    <p>The 78/22-Formel gives you both — in a ratio optimized for your real life, not for a marketing promise.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">Insert This (DE)</div>
+                    <p>Stell dir einen Alltagswagen vor, der so zuverlassig ist wie ein Honda und so komfortabel wie ein Mercedes.</p>
+                    <p>Du musst dich nicht zwischen beidem entscheiden.</p>
+                    <p>Die 78/22-Formel gibt dir beides — in einem Verhaltnis, das fur dein echtes Leben optimiert ist, nicht fur ein Marketing-Versprechen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insertion 5 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">5</div>
+                <div class="insertion-title">Sports Car, Glass Engine / Sportwagen, Glasmotor</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">Insert After</div>
+                    "NORMALE SOCKEN" comparison — after the line "Fuhlt sich toll an... fur 3 Sekunden."
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Makes durability failure memorable. One sentence that sticks in the reader's head and colors everything that follows.
+                </div>
+
+                <div class="existing-copy">
+                    <div class="existing-copy-label">The Current Copy (DE)</div>
+                    Optimiert fur den Laden. Maximal weich beim Anfassen. "100% rein" als Verkaufsargument. Fuhlt sich toll an... fur 3 Sekunden.
+                    <div class="translation">Optimized for the store. Maximum softness when you touch them. "100% pure" as a selling point. Feels great... for 3 seconds.</div>
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">Insert After "3 Seconds" (EN)</div>
+                    <p>That's like a sports car whose engine is made of glass.</p>
+                    <p>Impressive on paper. Fragile in practice.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">Insert After "3 Sekunden" (DE)</div>
+                    <p>Das ist wie ein Sportwagen, dessen Motor aus Glas besteht.</p>
+                    <p>Beeindruckend auf dem Papier. Zerbrechlich in der Praxis.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insertion 6 -->
+        <div class="insertion-card">
+            <div class="insertion-header">
+                <div class="insertion-num">6</div>
+                <div class="insertion-title">Care Label Confession / Das Pflegeetikett-Gestandnis</div>
+            </div>
+            <div class="insertion-body">
+                <div class="location">
+                    <div class="location-label">New Section — Insert Between</div>
+                    Testimonials and FAQ. They currently jump straight from social proof to FAQ with no transition. This fills a gap — they completely skip the care/maintenance argument.
+                </div>
+
+                <div class="purpose">
+                    <div class="purpose-label">What It Does</div>
+                    Adds an entirely missing argument. Our presell's Problem #3 ("Special care required = design failure") has no equivalent in their LP. This is the highest-impact insertion because it's net-new.
+                </div>
+
+                <div class="new-copy">
+                    <div class="new-copy-label">New Section (EN)</div>
+                    <p><strong style="font-size: 1.15rem;">What the care label actually tells you.</strong></p>
+                    <p>Flip it over. Read it. "Cold water. Gentle cycle. Lay flat to dry. No fabric softener."</p>
+                    <p>Most people see this as a sign of quality. It's not. It's a confession.</p>
+                    <p>"Special care required" means: this product wasn't designed for your life. It was designed for a fantasy version of your life where you have time to hand-wash socks.</p>
+                    <p>Mat & Vic's? Throw them in. With everything else. Hot, cold, doesn't matter. They come out the same way they went in.</p>
+                </div>
+
+                <div class="new-copy-de">
+                    <div class="new-copy-de-label">New Section (DE)</div>
+                    <p><strong style="font-size: 1.15rem;">Was das Pflegeetikett dir wirklich sagt.</strong></p>
+                    <p>Dreh es um. Lies es. "Kaltwasser. Schonwaschgang. Liegend trocknen. Kein Weichspuler."</p>
+                    <p>Die meisten Menschen sehen das als Zeichen von Qualitat. Ist es nicht. Es ist ein Gestandnis.</p>
+                    <p>"Spezielle Pflege erforderlich" bedeutet: Dieses Produkt wurde nicht fur dein Leben entworfen. Es wurde fur eine Fantasie-Version deines Lebens entworfen, in der du Zeit hast, Socken per Hand zu waschen.</p>
+                    <p>Mat & Vic's? Wirf sie rein. Mit allem anderen zusammen. Heiss, kalt, egal. Sie kommen genauso raus, wie sie reingegangen sind.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">Summary</div>
+
+        <!-- Summary Table -->
+        <div class="summary-card">
+            <div class="card-label">All 6 Insertions at a Glance</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Analogy</th>
+                        <th>Where It Goes</th>
+                        <th>What It Does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Daunendecke im Juli<br><span style="color:#999; font-size:0.75rem;">Down comforter in July</span></td>
+                        <td>After "3 Sekunden vs. 8 Stunden"</td>
+                        <td>Makes moisture problem visceral</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Auto nach Farbe kaufen<br><span style="color:#999; font-size:0.75rem;">Buying a car by its color</span></td>
+                        <td>Inside "DER UNTERSCHIED" box</td>
+                        <td>Reframes the shopping mistake</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Haus aus Glas<br><span style="color:#999; font-size:0.75rem;">House made of glass</span></td>
+                        <td>Inside "DIE ERKENNTNIS" box</td>
+                        <td>Makes "100% = limitation" visual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Honda + Mercedes</td>
+                        <td>After "Warum genau 78/22?"</td>
+                        <td>Makes the blend feel like a win</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Sportwagen, Glasmotor<br><span style="color:#999; font-size:0.75rem;">Sports car, glass engine</span></td>
+                        <td>Inside "NORMALE SOCKEN" comparison</td>
+                        <td>Makes durability failure memorable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong></td>
+                        <td>Pflegeetikett-Gestandnis<br><span style="color:#999; font-size:0.75rem;">Care label confession</span></td>
+                        <td>New block before FAQ</td>
+                        <td>Adds missing maintenance argument</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
