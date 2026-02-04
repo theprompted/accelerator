@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Ad Limit Strategy | The Prompted</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      border: 4px solid black;
+      border-radius: 2px;
+      box-shadow: -.5rem .5rem 0 0 #383838;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-family: 'SF Mono', Monaco, Consolas, monospace;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .header .subtitle {
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #0866FF;
+      color: white;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* Question Box */
+    .question-box {
+      background: #e8f4fc;
+      border: 3px solid #0866FF;
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .question-box .label {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0866FF;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .question-box p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #333;
+    }
+
+    /* Answer Section */
+    .answer-section {
+      background: white;
+      border: 4px solid black;
+      border-radius: 2px;
+      box-shadow: -.5rem .5rem 0 0 #383838;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .answer-section h2 {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #eee;
+    }
+
+    .answer-section p {
+      margin-bottom: 1rem;
+    }
+
+    /* Decision Tree */
+    .decision-tree {
+      background: white;
+      border: 4px solid black;
+      border-radius: 2px;
+      box-shadow: -.5rem .5rem 0 0 #383838;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .decision-tree h2 {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .tree-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .tree-node {
+      background: #f9fafb;
+      border: 3px solid #333;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .tree-node.question {
+      background: #fff3cd;
+      border-color: #ffc107;
+    }
+
+    .tree-node.action-green {
+      background: #d4edda;
+      border-color: #28a745;
+    }
+
+    .tree-node.action-yellow {
+      background: #fff3cd;
+      border-color: #ffc107;
+    }
+
+    .tree-node.action-red {
+      background: #f8d7da;
+      border-color: #dc3545;
+    }
+
+    .tree-node strong {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.9rem;
+    }
+
+    .tree-node p {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+
+    .tree-row {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 16px solid #333;
+    }
+
+    .branch-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .branch-label {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    /* Priority List */
+    .priority-list {
+      background: white;
+      border: 4px solid black;
+      border-radius: 2px;
+      box-shadow: -.5rem .5rem 0 0 #383838;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .priority-list h2 {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .priority-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      border: 2px solid #eee;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+
+    .priority-item:hover {
+      border-color: #0866FF;
+      background: #f9fafb;
+    }
+
+    .priority-number {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #0866FF;
+      color: white;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .priority-content h3 {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .priority-content p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+    }
+
+    /* Callout */
+    .callout {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout strong {
+      font-family: 'SF Mono', Monaco, monospace;
+    }
+
+    /* Example Box */
+    .example-box {
+      background: #f0f9ff;
+      border: 2px solid #0866FF;
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .example-box .label {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0866FF;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .example-box ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .example-box li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.85rem;
+      padding-top: 1rem;
+    }
+
+    /* Screenshot Gallery */
+    .screenshot-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .screenshot-item {
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    .screenshot-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-caption {
+      padding: 0.75rem 1rem;
+      background: white;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .screenshot-caption p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .screenshot-caption strong {
+      font-family: 'SF Mono', Monaco, monospace;
+      color: #333;
+    }
+
+    /* Page Pills */
+    .page-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .page-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      border: 2px solid #333;
+      border-radius: 20px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .page-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .page-pill.brand .dot { background: #0866FF; }
+    .page-pill.content .dot { background: #28a745; }
+    .page-pill.doctor .dot { background: #9333ea; }
+    .page-pill.cause .dot { background: #f59e0b; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .header, .answer-section, .decision-tree, .priority-list {
+        padding: 1.5rem;
+        box-shadow: -.25rem .25rem 0 0 #383838;
+      }
+      .tree-row { gap: 1rem; }
+      .tree-node { max-width: 100%; padding: 0.75rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Hitting Meta's Ad Limit?</h1>
+      <p class="subtitle">How to decide which ads to turn off when you're running out of room</p>
+    </div>
+
+    <!-- Question -->
+    <div class="question-box">
+      <div class="label">The Question</div>
+      <p>"I'm getting close to my maximum number of ads allowed and Meta says I should turn some off. Do you have a strategy for cutting ads to keep room for more?"</p>
+    </div>
+
+    <!-- Decision Tree Visual -->
+    <div class="decision-tree">
+      <h2>The Decision Tree</h2>
+
+      <div class="tree-container">
+        <!-- Start -->
+        <div class="tree-node question">
+          <strong>Is the ad getting spend?</strong>
+        </div>
+
+        <div class="tree-row">
+          <div class="branch-container">
+            <span class="branch-label">No Spend</span>
+            <div class="arrow-down"></div>
+            <div class="tree-node action-green">
+              <strong>Turn it off</strong>
+              <p>Check 7, 14, or 30 day windows. If zero spend despite same CPA target as ads that ARE spending, it's safe to cut.</p>
+            </div>
+          </div>
+
+          <div class="branch-container">
+            <span class="branch-label">Getting Spend</span>
+            <div class="arrow-down"></div>
+            <div class="tree-node question">
+              <strong>Is it hitting your CPA/ROAS target?</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="tree-row" style="margin-top: 1rem;">
+          <div class="branch-container" style="margin-left: 200px;">
+            <span class="branch-label">Yes - On Target</span>
+            <div class="arrow-down"></div>
+            <div class="tree-node action-green">
+              <strong>Keep it</strong>
+              <p>Profitable ads stay on. Period.</p>
+            </div>
+          </div>
+
+          <div class="branch-container">
+            <span class="branch-label">No - Poor Metrics</span>
+            <div class="arrow-down"></div>
+            <div class="tree-node action-yellow">
+              <strong>Adjust targets first</strong>
+              <p>Lower the cost cap or increase the ROAS goal on that ad set. Don't turn it off yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Priority Order -->
+    <div class="priority-list">
+      <h2>Priority Order for Freeing Up Ad Slots</h2>
+
+      <div class="priority-item">
+        <div class="priority-number">1</div>
+        <div class="priority-content">
+          <h3>Cut ads with zero spend (longest time first)</h3>
+          <p>Start with ads that haven't spent anything in 30 days, then 14 days, then 7 days. If it's at the same CPA target as ads that ARE spending but getting nothing, Meta has already told you it's not competitive.</p>
+        </div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-number">2</div>
+        <div class="priority-content">
+          <h3>Create more pages in your Business Manager</h3>
+          <p>When creating new ads, select a different page. This unlocks more active ad volume. Not uncommon for brands to run ads from 3-5+ different pages for the same product.</p>
+        </div>
+      </div>
+
+      <div class="priority-item">
+        <div class="priority-number">3</div>
+        <div class="priority-content">
+          <h3>Last resort: Turn off poor-performing ads that ARE spending</h3>
+          <p>Be cautious here. An ad with "bad" metrics may be supporting your winners by driving top-of-funnel awareness. Try adjusting targets first before cutting.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why This Order -->
+    <div class="answer-section">
+      <h2>Why This Order Matters</h2>
+
+      <p><strong>Getting spend is the hardest part of the game.</strong></p>
+
+      <p>If an ad is getting spend but has a poor CPA, I'd rather adjust the cost cap or ROAS target than turn it off. That ad might be serving a purpose beyond direct conversions - it could be what's allowing your other ads to have good metrics by doing top-of-funnel work.</p>
+
+      <div class="callout">
+        <strong>Key insight:</strong> An ad doing "poorly" may actually be supporting your business more meaningfully than the numbers suggest. It's driving awareness that feeds your conversion ads.
+      </div>
+
+      <p>That's why cutting zero-spend ads is the safest move. Meta already deprioritized them - you're just cleaning up.</p>
+    </div>
+
+    <!-- Real World Example -->
+    <div class="answer-section">
+      <h2>Real World Example: EarthBreeze (1 million visitors/month)</h2>
+
+      <p>EarthBreeze runs ads from multiple pages for the same brand. Here's what that looks like in the Meta Ad Library:</p>
+
+      <div class="page-pills">
+        <span class="page-pill brand"><span class="dot"></span>Earth Breeze</span>
+        <span class="page-pill content"><span class="dot"></span>Laundry Tips Daily</span>
+        <span class="page-pill content"><span class="dot"></span>Eco-Friendly Living Daily</span>
+        <span class="page-pill doctor"><span class="dot"></span>Dr. Patrick McElaney MD</span>
+        <span class="page-pill cause"><span class="dot"></span>Save Our Planet</span>
+      </div>
+
+      <div class="screenshot-gallery">
+        <div class="screenshot-item">
+          <img src="SCR-20260203-qpyx.png" alt="EarthBreeze ads from main brand page">
+          <div class="screenshot-caption">
+            <p><strong>Brand pages:</strong> Traditional product-focused ads from the main Earth Breeze page</p>
+          </div>
+        </div>
+        <div class="screenshot-item">
+          <img src="SCR-20260203-pkbw.png" alt="EarthBreeze ads from content pages">
+          <div class="screenshot-caption">
+            <p><strong>Content pages:</strong> "Laundry Tips Daily" and "Eco-Friendly Living Daily" - educational angles that don't feel like ads</p>
+          </div>
+        </div>
+        <div class="screenshot-item">
+          <img src="SCR-20260203-pkdo.png" alt="EarthBreeze ads from doctor and cause pages">
+          <div class="screenshot-caption">
+            <p><strong>Authority & cause pages:</strong> "Dr. Patrick McElaney MD" for credibility, "Save Our Planet" for mission-driven messaging</p>
+          </div>
+        </div>
+      </div>
+
+      <p>They're driving ~1 million visits/month to their website. Multiple pages = more ad slots = more creative testing capacity.</p>
+
+      <p>This isn't a hack - it's standard practice for scaling brands.</p>
+    </div>
+
+    <!-- Time Ranges -->
+    <div class="answer-section">
+      <h2>Which Time Range to Use?</h2>
+
+      <p>It's not an exact science - partially an art. Your choice depends on your batch sizes of new ads.</p>
+
+      <div class="example-box">
+        <div class="label">General Guidelines</div>
+        <ul>
+          <li><strong>30 days no spend:</strong> Most confident to cut. These are truly dead.</li>
+          <li><strong>14 days no spend:</strong> Safe to cut if you need the room.</li>
+          <li><strong>7 days no spend:</strong> Be more selective. Start with oldest first.</li>
+        </ul>
+      </div>
+
+      <p>Generally, the longer an ad has gone without spend, the more confident you can be in turning it off. Start with the oldest zero-spend ads and work forward from there.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>The Prompted | Meta Ads Strategy</p>
+    </div>
+
+  </div>
+</body>
+</html>
