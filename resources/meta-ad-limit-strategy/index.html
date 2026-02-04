@@ -405,17 +405,17 @@
     <div class="decision-tree">
       <h2>The Decision Tree</h2>
 
-      <div class="tree-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
         <!-- Level 1: Main Question -->
         <div class="tree-node question">
           <strong>Is the ad getting spend?</strong>
         </div>
 
-        <div class="arrow-down"></div>
+        <!-- Branches side by side -->
+        <div style="display: flex; gap: 3rem; margin-top: 0.5rem;">
 
-        <!-- Level 2: First Branch -->
-        <div class="tree-row">
-          <div class="branch-container">
+          <!-- LEFT BRANCH: No Spend -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
             <span class="branch-label">No Spend</span>
             <div class="arrow-down"></div>
             <div class="tree-node action-green">
@@ -424,16 +424,17 @@
             </div>
           </div>
 
-          <div class="branch-container">
+          <!-- RIGHT BRANCH: Getting Spend (with sub-branches) -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
             <span class="branch-label">Getting Spend</span>
             <div class="arrow-down"></div>
             <div class="tree-node question">
               <strong>Hitting CPA/ROAS target?</strong>
             </div>
 
-            <!-- Level 3: Nested under "Getting Spend" -->
-            <div class="tree-row" style="margin-top: 1rem;">
-              <div class="branch-container">
+            <!-- Sub-branches under Getting Spend -->
+            <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
                 <span class="branch-label">Yes</span>
                 <div class="arrow-down"></div>
                 <div class="tree-node action-green">
@@ -442,7 +443,7 @@
                 </div>
               </div>
 
-              <div class="branch-container">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
                 <span class="branch-label">No</span>
                 <div class="arrow-down"></div>
                 <div class="tree-node action-yellow">
