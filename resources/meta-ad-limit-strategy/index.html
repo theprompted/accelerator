@@ -412,10 +412,10 @@
         </div>
 
         <!-- Branches side by side -->
-        <div style="display: flex; gap: 3rem; margin-top: 0.5rem;">
+        <div style="display: flex; flex-direction: row; gap: 3rem; margin-top: 0.5rem; align-items: flex-start;">
 
           <!-- LEFT BRANCH: No Spend -->
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; min-width: 200px;">
             <span class="branch-label">No Spend</span>
             <div class="arrow-down"></div>
             <div class="tree-node action-green">
@@ -433,7 +433,7 @@
             </div>
 
             <!-- Sub-branches under Getting Spend -->
-            <div style="display: flex; gap: 2rem; margin-top: 0.5rem;">
+            <div style="display: flex; flex-direction: row; gap: 2rem; margin-top: 0.5rem;">
               <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
                 <span class="branch-label">Yes</span>
                 <div class="arrow-down"></div>
