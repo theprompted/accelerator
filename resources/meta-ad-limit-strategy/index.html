@@ -406,18 +406,21 @@
       <h2>The Decision Tree</h2>
 
       <div class="tree-container">
-        <!-- Start -->
+        <!-- Level 1: Main Question -->
         <div class="tree-node question">
           <strong>Is the ad getting spend?</strong>
         </div>
 
+        <div class="arrow-down"></div>
+
+        <!-- Level 2: First Branch -->
         <div class="tree-row">
           <div class="branch-container">
             <span class="branch-label">No Spend</span>
             <div class="arrow-down"></div>
             <div class="tree-node action-green">
               <strong>Turn it off</strong>
-              <p>Check 7, 14, or 30 day windows. If zero spend despite same CPA target as ads that ARE spending, it's safe to cut.</p>
+              <p>Start with 30 days no spend, then 14, then 7. Safe to cut.</p>
             </div>
           </div>
 
@@ -425,27 +428,28 @@
             <span class="branch-label">Getting Spend</span>
             <div class="arrow-down"></div>
             <div class="tree-node question">
-              <strong>Is it hitting your CPA/ROAS target?</strong>
+              <strong>Hitting CPA/ROAS target?</strong>
             </div>
-          </div>
-        </div>
 
-        <div class="tree-row" style="margin-top: 1rem;">
-          <div class="branch-container" style="margin-left: 200px;">
-            <span class="branch-label">Yes - On Target</span>
-            <div class="arrow-down"></div>
-            <div class="tree-node action-green">
-              <strong>Keep it</strong>
-              <p>Profitable ads stay on. Period.</p>
-            </div>
-          </div>
+            <!-- Level 3: Nested under "Getting Spend" -->
+            <div class="tree-row" style="margin-top: 1rem;">
+              <div class="branch-container">
+                <span class="branch-label">Yes</span>
+                <div class="arrow-down"></div>
+                <div class="tree-node action-green">
+                  <strong>Keep it</strong>
+                  <p>Profitable ads stay on. Period.</p>
+                </div>
+              </div>
 
-          <div class="branch-container">
-            <span class="branch-label">No - Poor Metrics</span>
-            <div class="arrow-down"></div>
-            <div class="tree-node action-yellow">
-              <strong>Adjust targets first</strong>
-              <p>Lower the cost cap or increase the ROAS goal on that ad set. Don't turn it off yet.</p>
+              <div class="branch-container">
+                <span class="branch-label">No</span>
+                <div class="arrow-down"></div>
+                <div class="tree-node action-yellow">
+                  <strong>Adjust targets</strong>
+                  <p>Lower cost cap or increase ROAS goal. Don't turn off yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
