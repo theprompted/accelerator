@@ -12,7 +12,7 @@
     font-size: 18px;
     line-height: 1.6;
     color: #1a1a1a;
-    background: #ffffff;
+    background: #f9f9f7;
     padding: 20px 16px 60px;
     max-width: 500px;
     margin: 0 auto;
@@ -23,25 +23,17 @@
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #000;
+    color: #1a3a5c;
   }
 
   h2 {
     font-size: 21px;
     font-weight: 700;
     margin-top: 36px;
-    margin-bottom: 12px;
-    color: #000;
-    border-bottom: 2px solid #ddd;
+    margin-bottom: 14px;
+    color: #1a3a5c;
+    border-bottom: 3px solid #d0e4f5;
     padding-bottom: 6px;
-  }
-
-  h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 28px;
-    margin-bottom: 8px;
-    color: #333;
   }
 
   p {
@@ -54,51 +46,71 @@
     margin-bottom: 24px;
   }
 
-  /* Path table */
-  .path-table {
-    width: 100%;
-    border-collapse: collapse;
+  /* Path steps — colored cards instead of table */
+  .path-steps {
     margin-bottom: 20px;
-    font-size: 16px;
   }
 
-  .path-table th {
-    background: #f0f0f0;
-    text-align: left;
-    padding: 10px 8px;
+  .path-step {
+    display: flex;
+    align-items: flex-start;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border-left: 5px solid;
+  }
+
+  .path-step-1 { background: #e8f4fd; border-color: #3a8fcd; }
+  .path-step-2 { background: #e8f4fd; border-color: #3a8fcd; }
+  .path-step-3 { background: #fff4e0; border-color: #d4952a; }
+  .path-step-4 { background: #e6f5e8; border-color: #3a9e4a; }
+
+  .path-step-number {
+    font-size: 22px;
+    font-weight: 800;
+    min-width: 32px;
+    margin-right: 12px;
+    line-height: 1.3;
+  }
+
+  .path-step-1 .path-step-number, .path-step-2 .path-step-number { color: #2a6fa0; }
+  .path-step-3 .path-step-number { color: #b07d1e; }
+  .path-step-4 .path-step-number { color: #2d7a3a; }
+
+  .path-step-content {
+    flex: 1;
+  }
+
+  .path-step-where {
     font-weight: 700;
-    border-bottom: 2px solid #ccc;
+    font-size: 17px;
+    color: #1a1a1a;
   }
 
-  .path-table td {
-    padding: 10px 8px;
-    border-bottom: 1px solid #eee;
-    vertical-align: top;
-  }
-
-  .path-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  .step-label {
-    font-weight: 700;
-    color: #000;
+  .path-step-note {
+    font-size: 15px;
+    color: #555;
+    margin-top: 2px;
   }
 
   /* Option cards */
   .option {
-    background: #f8f8f8;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 16px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    border-left: 5px solid;
   }
+
+  .option-home     { background: #e6f5e8; border-color: #3a9e4a; }
+  .option-retire   { background: #f3e8f9; border-color: #8e44ad; }
+  .option-care     { background: #e8f4fd; border-color: #3a8fcd; }
+  .option-family   { background: #fff4e0; border-color: #d4952a; }
 
   .option-title {
     font-weight: 700;
     font-size: 17px;
     margin-bottom: 6px;
-    color: #000;
+    color: #1a1a1a;
   }
 
   .option p {
@@ -110,37 +122,55 @@
   /* Organization cards */
   .org-section {
     margin-top: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   .org-section-label {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    color: #666;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .org-section-label-free {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .org-section-label-private {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .org-section-label-retire {
+    background: #e8d5f5;
+    color: #5b2c7e;
   }
 
   .org {
-    background: #fafafa;
+    background: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 14px;
     margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
 
   .org-name {
     font-weight: 700;
     font-size: 17px;
-    color: #000;
+    color: #1a1a1a;
     margin-bottom: 4px;
   }
 
   .org-desc {
     font-size: 15px;
     color: #444;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1.5;
   }
 
@@ -154,13 +184,39 @@
     text-decoration: none;
   }
 
+  .call-button {
+    display: inline-block;
+    background: #0066cc;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .call-button:active {
+    background: #004d99;
+  }
+
+  .web-link {
+    display: inline-block;
+    background: #eee;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   .cost-tag {
     display: inline-block;
     font-size: 13px;
     font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 5px;
-    margin-bottom: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
   }
 
   .cost-free {
@@ -173,15 +229,37 @@
     color: #856404;
   }
 
+  .section-intro {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  /* Discharge planner callout */
+  .planner-note {
+    background: #e8f4fd;
+    border: 1px solid #b8d9f0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #1a3a5c;
+    line-height: 1.5;
+  }
+
+  .planner-note strong {
+    color: #0d5ca8;
+  }
+
   /* Bottom note */
   .bottom-note {
     margin-top: 36px;
-    padding: 16px;
-    background: #f0f7ff;
-    border-radius: 10px;
-    border: 1px solid #cce0ff;
+    padding: 20px;
+    background: #e6f5e8;
+    border-radius: 12px;
+    border: 2px solid #a3d9a5;
     text-align: center;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     color: #1a1a1a;
     line-height: 1.5;
@@ -196,54 +274,59 @@
 
 <h2>The General Path</h2>
 
-<table class="path-table">
-  <tr>
-    <th>Step</th>
-    <th>Where</th>
-    <th>Notes</th>
-  </tr>
-  <tr>
-    <td><span class="step-label">Surgery</span></td>
-    <td>Sunnybrook</td>
-    <td>Friday Feb 7</td>
-  </tr>
-  <tr>
-    <td><span class="step-label">Hospital recovery</span></td>
-    <td>Sunnybrook</td>
-    <td>As long as the doctors think is needed</td>
-  </tr>
-  <tr>
-    <td><span class="step-label">Rehab</span></td>
-    <td>St. John's Rehab</td>
-    <td>Physiotherapy and exercises to rebuild strength</td>
-  </tr>
-  <tr>
-    <td><span class="step-label">Home</span></td>
-    <td>With help arranged</td>
-    <td>When the medical team says it's safe</td>
-  </tr>
-</table>
+<div class="path-steps">
+  <div class="path-step path-step-1">
+    <div class="path-step-number">1</div>
+    <div class="path-step-content">
+      <div class="path-step-where">Surgery — Sunnybrook</div>
+      <div class="path-step-note">Friday Feb 7</div>
+    </div>
+  </div>
+  <div class="path-step path-step-2">
+    <div class="path-step-number">2</div>
+    <div class="path-step-content">
+      <div class="path-step-where">Hospital Recovery — Sunnybrook</div>
+      <div class="path-step-note">As long as the doctors think is needed</div>
+    </div>
+  </div>
+  <div class="path-step path-step-3">
+    <div class="path-step-number">3</div>
+    <div class="path-step-content">
+      <div class="path-step-where">Rehab — St. John's Rehab</div>
+      <div class="path-step-note">Physiotherapy and exercises to rebuild strength</div>
+    </div>
+  </div>
+  <div class="path-step path-step-4">
+    <div class="path-step-number">4</div>
+    <div class="path-step-content">
+      <div class="path-step-where">Home — with help arranged</div>
+      <div class="path-step-note">When the medical team says it's safe</div>
+    </div>
+  </div>
+</div>
 
 <h2>Options for After Rehab</h2>
 
-<p>A <strong>discharge planner</strong> at the hospital or rehab centre helps figure out the right plan. That's their job. They look at how the patient is doing and what kind of support is needed.</p>
+<div class="planner-note">
+  A <strong>discharge planner</strong> at the hospital or rehab centre helps figure out the right plan. That's their job. They look at how the patient is doing and what kind of support is needed.
+</div>
 
-<div class="option">
+<div class="option option-home">
   <div class="option-title">Home with visiting helpers</div>
   <p>Government-funded home care can provide free visits — help with bathing, meals, medicines, and exercises. Private caregivers can also be hired for extra hours if needed.</p>
 </div>
 
-<div class="option">
+<div class="option option-retire">
   <div class="option-title">Short stay at a retirement home</div>
   <p>Some places offer stays of a few weeks — private room, meals, and staff nearby around the clock. This costs money.</p>
 </div>
 
-<div class="option">
+<div class="option option-care">
   <div class="option-title">Recovery bed in a care home</div>
   <p>Some long-term care homes have beds for short-term surgery recovery. Free, with 24-hour care and daily physiotherapy. May have a waiting list.</p>
 </div>
 
-<div class="option">
+<div class="option option-family">
   <div class="option-title">Stay with family</div>
   <p>Possible for a short time. A caregiver would still be arranged to help during the day.</p>
 </div>
@@ -251,81 +334,82 @@
 <h2>Organizations Andrew Is Looking Into</h2>
 
 <div class="org-section">
-  <div class="org-section-label">Free / Government-Funded</div>
+  <div class="org-section-label org-section-label-free">Free / Government-Funded</div>
 
   <div class="org">
     <span class="cost-tag cost-free">FREE — OHIP</span>
     <div class="org-name">Ontario Health atHome</div>
     <div class="org-desc">The provincial home care program. Provides PSW visits (bathing, dressing, meals), nursing visits (wound care, medications), and physiotherapy at home. Usually covers a couple of visits per day, not all-day coverage. The hospital or rehab centre arranges this before discharge.</div>
-    <div class="org-contact">Phone: <a href="tel:3102222">310-2222</a> (no area code needed)</div>
+    <div class="org-contact"><a class="call-button" href="tel:3102222">Call 310-2222</a></div>
+    <div style="font-size:13px; color:#777; margin-top:6px;">No area code needed</div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-free">FREE — OHIP</span>
     <div class="org-name">Convalescent Care Beds (York Region)</div>
-    <div class="org-desc">Short-stay recovery beds inside long-term care homes. 24-hour nursing, physiotherapy twice daily, meals included. Managed by Ontario Health atHome. Closest locations: AgeCare Aurora (32 Mill St), Maple Health Centre (10424 Keele St), Newmarket Health Centre (194 Eagle St). May have a waiting list.</div>
-    <div class="org-contact">Phone: <a href="tel:9058951240">905-895-1240</a> or <a href="tel:4162222241">416-222-2241</a></div>
+    <div class="org-desc">Short-stay recovery beds inside long-term care homes. 24-hour nursing, physiotherapy twice daily, meals included. Closest locations: AgeCare Aurora (32 Mill St), Maple Health Centre (10424 Keele St), Newmarket Health Centre (194 Eagle St). May have a waiting list.</div>
+    <div class="org-contact"><a class="call-button" href="tel:9058951240">Call 905-895-1240</a></div>
   </div>
 </div>
 
 <div class="org-section">
-  <div class="org-section-label">Private Home Care (~$28-35/hr)</div>
+  <div class="org-section-label org-section-label-private">Private Home Care (~$28-35/hr)</div>
 
-  <p style="font-size:15px; color:#555; margin-bottom:12px;">These send caregivers to the home for as many hours as needed. They help with bathing, meals, walking, medication reminders, and companionship. If a caregiver calls in sick, the agency sends a replacement.</p>
+  <p class="section-intro">These send caregivers to the home for as many hours as needed. They help with bathing, meals, walking, medication reminders, and companionship. If a caregiver calls in sick, the agency sends a replacement.</p>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">Bayshore Home Health (York Region)</div>
     <div class="org-desc">Canada's largest home care company. 13,000+ staff across 100+ locations. Covers Markham, Richmond Hill, Thornhill, Vaughan, Stouffville, Aurora, and Newmarket. Also delivers government-funded home care, so they know the system well.</div>
-    <div class="org-contact"><a href="https://www.bayshore.ca">bayshore.ca</a></div>
+    <div class="org-contact"><a class="web-link" href="https://www.bayshore.ca">bayshore.ca</a></div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">SE Health (Saint Elizabeth)</div>
     <div class="org-desc">Non-profit home care organization with an office in Markham (25 Centurian Dr, Unit 104). Provides nursing, PSW, physiotherapy, occupational therapy, and dietetics. Also runs Elizz, a caregiver support service that helps families navigate recovery planning.</div>
-    <div class="org-contact"><a href="https://www.sehc.com">sehc.com</a></div>
+    <div class="org-contact"><a class="web-link" href="https://www.sehc.com">sehc.com</a></div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">TheKey (formerly Home Care Assistance)</div>
     <div class="org-desc">Premium home care provider, 20 years in business. Specifically trains caregivers for cardiac recovery — heart-healthy diet, monitoring for complications, mobility support after heart surgery. Serves Toronto, Markham, and North York. 4.8-star rating.</div>
-    <div class="org-contact">Phone: <a href="tel:8007551458">(800) 755-1458</a></div>
+    <div class="org-contact"><a class="call-button" href="tel:8007551458">Call (800) 755-1458</a></div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">Closing the Gap Healthcare</div>
     <div class="org-desc">Ontario home care provider covering Markham and North York. Free in-home assessment to build a care plan. PSWs available 24/7.</div>
-    <div class="org-contact"><a href="https://www.closingthegap.ca">closingthegap.ca</a></div>
+    <div class="org-contact"><a class="web-link" href="https://www.closingthegap.ca">closingthegap.ca</a></div>
   </div>
 </div>
 
 <div class="org-section">
-  <div class="org-section-label">Short-Stay Retirement Homes (~$100+/day)</div>
+  <div class="org-section-label org-section-label-retire">Short-Stay Retirement Homes (~$100+/day)</div>
 
-  <p style="font-size:15px; color:#555; margin-bottom:12px;">Private room, all meals, care staff on site around the clock, activities. Typical stay is 2-6 weeks. Exact rates require calling.</p>
+  <p class="section-intro">Private room, all meals, care staff on site around the clock, activities. Typical stay is 2-6 weeks. Exact rates require calling.</p>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">Amica Swan Lake (Markham)</div>
     <div class="org-desc">Well-known retirement community in Markham. Offers respite stays specifically for post-surgery recovery. Includes furnished private suite, meals, housekeeping, medication management, wound care support, and daily programs.</div>
-    <div class="org-contact">Phone: <a href="tel:9052016058">905-201-6058</a></div>
+    <div class="org-contact"><a class="call-button" href="tel:9052016058">Call 905-201-6058</a></div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">Sunrise of Unionville (Markham)</div>
     <div class="org-desc">Quiet Unionville neighbourhood. Offers short-term recovery stays. Families who used it after hospital discharge said staff were kind and patient, and the environment was clean and comfortable. Has walking paths, fitness area, and wheelchair-accessible transport for appointments.</div>
-    <div class="org-contact">Phone: <a href="tel:8663963202">(866) 396-3202</a></div>
+    <div class="org-contact"><a class="call-button" href="tel:8663963202">Call (866) 396-3202</a></div>
   </div>
 
   <div class="org">
     <span class="cost-tag cost-paid">PAID</span>
     <div class="org-name">GreenLaFleur Respite Care Centre (Newmarket)</div>
     <div class="org-desc">24/7 care facility with PSWs, nurses, and occupational therapists. Serves GTA including Markham and North York. Private-pay alternative to government convalescent care beds — likely easier to get into than the public wait list.</div>
-    <div class="org-contact"><a href="https://www.greenlafleur.com/respitecare">greenlafleur.com/respitecare</a></div>
+    <div class="org-contact"><a class="web-link" href="https://www.greenlafleur.com/respitecare">greenlafleur.com/respitecare</a></div>
   </div>
 </div>
 
