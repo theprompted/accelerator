@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Strategy Breakdown - Mat & Vic's</title>
+    <style>
+        /* PromptedOS Design System */
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --bg-orange: #FFF8F0;
+
+            --accent-teal: #108474;
+            --accent-teal-light: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-red: #E53935;
+
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .font-mono {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        /* Header Card */
+        .header-card {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        .header-card h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-card .subtitle {
+            opacity: 0.9;
+            font-size: 1.0625rem;
+        }
+
+        .header-meta {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+        }
+
+        .meta-value {
+            font-weight: 600;
+        }
+
+        .meta-value a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav-card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-card p {
+            font-size: 0.9375rem;
+            color: var(--text-gray);
+        }
+
+        .nav-card a {
+            color: var(--accent-teal);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header.bg-blue { background: var(--bg-blue); }
+        .section-header.bg-purple { background: var(--bg-purple); }
+        .section-header.bg-yellow { background: var(--bg-yellow); }
+        .section-header.bg-green { background: var(--bg-green); }
+        .section-header.bg-orange { background: var(--bg-orange); }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .section-body {
+            padding: 1.5rem;
+        }
+
+        .section-body p {
+            margin-bottom: 1rem;
+        }
+
+        .section-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Comparison Box */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-side {
+            padding: 1.25rem;
+            border: var(--border);
+        }
+
+        .comparison-side.bad {
+            background: #FEE2E2;
+        }
+
+        .comparison-side.good {
+            background: var(--bg-green);
+        }
+
+        .comparison-side .label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .comparison-side.bad .label { color: var(--accent-red); }
+        .comparison-side.good .label { color: #2e7d32; }
+
+        .comparison-side ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .comparison-side li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        /* Technique Box */
+        .technique-box {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+            color: white;
+        }
+
+        .technique-box .label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .technique-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--bg-yellow);
+            border: var(--border);
+            border-left: 6px solid var(--accent-teal);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .quote-box .attribution {
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        /* Draft Examples */
+        .draft-example {
+            background: var(--bg-page);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .draft-example .draft-num {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .draft-example .opening {
+            font-weight: 600;
+            font-size: 1.0625rem;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .draft-example .belief {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .powered-by {
+            margin-top: 1rem;
+            font-size: 0.8125rem;
+        }
+
+        /* List styling */
+        .section-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .section-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--text-black);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1>Why These Ads Work</h1>
+            <p class="subtitle">The strategy behind your Mat & Vic's ad concepts</p>
+            <div class="header-meta">
+                <div class="meta-item">
+                    <span class="meta-label">View Ads</span>
+                    <span class="meta-value"><a href="index.html">See the 6 Ad Drafts</a></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Landing Page</span>
+                    <span class="meta-value"><a href="../sample-funnel/presell/index.html">5 Reasons Advertorial</a></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Updated</span>
+                    <span class="meta-value">January 25, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-card">
+            <p><strong>This document explains the strategy.</strong> The <a href="index.html">ad mockups page</a> shows you exactly how each ad will appear in someone's Facebook feed.</p>
+        </div>
+
+        <!-- Section 1: Native vs Product Ads -->
+        <div class="section-card">
+            <div class="section-header bg-blue">
+                <span class="section-num">1</span>
+                <h2>Native Image Ads vs Product Ads</h2>
+            </div>
+            <div class="section-body">
+                <p>Most sock brands run what I call <strong>"bottom of funnel" ads</strong> — product photos with discount offers. "50% OFF! Premium Alpaca Socks! Shop Now!"</p>
+
+                <p>These ads work for people who already know they want alpaca socks and are comparing options. The problem: that audience is tiny.</p>
+
+                <p>The much larger opportunity is people who <em>don't know they have a sock problem yet</em>. They're scrolling Facebook, not thinking about socks at all. They've been buying €50 socks that fall apart, and they've accepted it as normal.</p>
+
+                <p><strong>Native image ads</strong> are designed for this audience. They look like content, not advertising. They stop the scroll by triggering recognition or curiosity — not by announcing a sale.</p>
+
+                <div class="comparison-box">
+                    <div class="comparison-side bad">
+                        <div class="label">Product Ad Approach</div>
+                        <ul>
+                            <li>Product on white background</li>
+                            <li>Discount prominently featured</li>
+                            <li>"Shop Now" energy</li>
+                            <li>Triggers ad blindness</li>
+                            <li>Only reaches buyers ready to buy</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-side good">
+                        <div class="label">Native Image Ad Approach</div>
+                        <ul>
+                            <li>Looks like content a friend posted</li>
+                            <li>Stops scroll through recognition</li>
+                            <li>"Wait, what?" energy</li>
+                            <li>Bypasses ad filter in the brain</li>
+                            <li>Creates demand in cold audiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="technique-box">
+                    <div class="label">Key Principle</div>
+                    <p>The image must make someone feel something <em>before</em> they realize it's an ad. By then, they're already engaged.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: The Carlton Principle -->
+        <div class="section-card">
+            <div class="section-header bg-yellow">
+                <span class="section-num">2</span>
+                <h2>Discovered, Not Invented</h2>
+            </div>
+            <div class="section-body">
+                <p>The best ad hooks aren't created by clever copywriters in brainstorming sessions. They're <strong>discovered</strong> — found in the product, the origin story, or the customer experience.</p>
+
+                <div class="quote-box">
+                    <p>"Your job is to be a sales detective. The hook exists in what makes the product remarkable. You just have to dig until you find it."</p>
+                    <div class="attribution">— John Carlton, legendary direct response copywriter</div>
+                </div>
+
+                <p>Carlton's most famous ad was for a golf training program. He interviewed the client for 2 hours before discovering a throwaway detail: the instructor had one leg and could still outplay two-legged golfers.</p>
+
+                <p>The client dismissed it as "old news." Carlton recognized it as gold. That ad ran for 8-10 years because the contradiction was <em>real</em> — not manufactured.</p>
+
+                <p><strong>For Mat & Vic's, the contradictions already exist:</strong></p>
+                <ul>
+                    <li>Cheap socks lasting longer than expensive ones (the blend engineering)</li>
+                    <li>Alpaca fiber not being designed for humans (it's designed for alpacas)</li>
+                    <li>Washing machine care labels on "luxury" socks (admission of fragility)</li>
+                    <li>"Premium" price not buying durability (just softness)</li>
+                </ul>
+
+                <p>These aren't advertising concepts. They're product truths that create cognitive dissonance when stated plainly.</p>
+
+                <div class="technique-box">
+                    <div class="label">The Test</div>
+                    <p>If the hook relies on a staged visual gag or clever metaphor, it's invented. If the hook is simply stating what's true about the product, it's discovered.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Violate & Elevate -->
+        <div class="section-card">
+            <div class="section-header bg-purple">
+                <span class="section-num">3</span>
+                <h2>The Copy Pattern: Violate & Elevate</h2>
+            </div>
+            <div class="section-body">
+                <p>Every ad draft follows the same psychological architecture:</p>
+
+                <p><strong>Step 1: Violate a belief.</strong> The opening line must contradict something they believe to be true. Not poetry. Not cleverness. A statement that makes them think "wait, that's wrong" before they can stop themselves.</p>
+
+                <p><strong>Step 2: Acknowledge the violation.</strong> "That sounds backwards." This validates their resistance and keeps them reading.</p>
+
+                <p><strong>Step 3: Elevate their understanding.</strong> Show them the hidden truth. Not by attacking them for believing wrong — but by revealing they were lied to by marketing.</p>
+
+                <div class="draft-example">
+                    <div class="draft-num">Example: Draft 1</div>
+                    <div class="opening">"Cheap socks last longer than expensive ones."</div>
+                    <div class="belief">Contradicts: "You get what you pay for" / "Expensive = better quality"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Example: Draft 2</div>
+                    <div class="opening">"Alpaca socks weren't designed for humans."</div>
+                    <div class="belief">Contradicts: "Alpaca is a premium material for luxury garments"</div>
+                </div>
+
+                <div class="draft-example">
+                    <div class="draft-num">Example: Draft 5</div>
+                    <div class="opening">"If it needs cold water, it already failed."</div>
+                    <div class="belief">Contradicts: "Special care = high quality"</div>
+                </div>
+
+                <p>The reader gets to keep their identity ("I make smart choices") while changing their behavior. They weren't dumb — they were deceived by premium sock marketing.</p>
+
+                <div class="technique-box">
+                    <div class="label">Why This Works</div>
+                    <p>People don't resist new information. They resist feeling stupid. The copy protects their ego while shifting their belief.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Image Philosophy -->
+        <div class="section-card">
+            <div class="section-header bg-green">
+                <span class="section-num">4</span>
+                <h2>Why the Images Look "Unpolished"</h2>
+            </div>
+            <div class="section-body">
+                <p>You might notice the images look like iPhone photos, not professional photography. This is intentional.</p>
+
+                <p>The brain has an ad filter. Anything that looks like advertising — clean backgrounds, perfect lighting, staged compositions — triggers that filter and gets skipped.</p>
+
+                <p>Images that look like <em>content</em> bypass the filter. They feel like something a friend posted, not something a marketing team produced.</p>
+
+                <div class="comparison-box">
+                    <div class="comparison-side bad">
+                        <div class="label">Triggers Ad Blindness</div>
+                        <ul>
+                            <li>Product on white background</li>
+                            <li>Perfect studio lighting</li>
+                            <li>Text overlay explaining the image</li>
+                            <li>Staged "lifestyle" photography</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-side good">
+                        <div class="label">Bypasses Ad Filter</div>
+                        <ul>
+                            <li>Messy real-life backgrounds</li>
+                            <li>Imperfect phone camera lighting</li>
+                            <li>Image speaks for itself</li>
+                            <li>"I took this to show a friend" energy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p><strong>Each image is designed to trigger a specific reaction:</strong></p>
+                <ul>
+                    <li><strong>The sock with a hole:</strong> "That's my drawer"</li>
+                    <li><strong>The alpaca face:</strong> "Ha — wait, why is this funny?"</li>
+                    <li><strong>The care label:</strong> "Ugh, I hate those"</li>
+                    <li><strong>The sock comparison:</strong> "That's exactly what happened to mine"</li>
+                </ul>
+
+                <p>The goal isn't to show the product. The goal is to trigger recognition or curiosity that earns 3 more seconds of attention.</p>
+
+                <div class="technique-box">
+                    <div class="label">The Litmus Test</div>
+                    <p>Would someone screenshot this image to share with a friend? If not, the image looks like an ad and will be skipped.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: What Happens Next -->
+        <div class="section-card">
+            <div class="section-header bg-orange">
+                <span class="section-num">5</span>
+                <h2>The Full Journey</h2>
+            </div>
+            <div class="section-body">
+                <p>These ads are <strong>top of funnel</strong>. They don't try to sell directly — they create curiosity and drive traffic to the advertorial.</p>
+
+                <p><strong>The sequence:</strong></p>
+                <ol style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.75rem;"><strong>Ad stops scroll</strong> — Image triggers recognition, opening line violates belief</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Copy builds curiosity</strong> — They read because they need to know why they're wrong</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Click to advertorial</strong> — "5 Reasons You Shouldn't Buy Premium Wool or Alpaca Socks"</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Advertorial shifts beliefs</strong> — Deep education on why the market is broken</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Offer page closes</strong> — Now they understand why Mat & Vic's is different</li>
+                </ol>
+
+                <p>By the time they reach the offer page, they're not comparing you to other sock brands. They're comparing Mat & Vic's to the broken system they just learned about.</p>
+
+                <div class="technique-box">
+                    <div class="label">The Shift</div>
+                    <p>Product ads compete on price and features. Native ads with advertorials compete on <em>understanding</em>. Once someone understands why the market is broken, price becomes secondary.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Questions about the strategy? <a href="mailto:andrew@theprompted.com">andrew@theprompted.com</a></p>
+            <p class="powered-by">Powered by <strong>PromptedOS</strong></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -390,6 +390,9 @@
         .screenshot {
             width: 100%;
             max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            object-position: top;
             border: var(--border);
             box-shadow: var(--shadow-sm);
             margin-bottom: 1.5rem;
@@ -402,6 +405,53 @@
             font-style: italic;
             margin-top: -1rem;
             margin-bottom: 1.5rem;
+        }
+
+        /* Side-by-side comparison layout */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comparison-item .comparison-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-item .comparison-label.good {
+            color: #2E7D32;
+        }
+
+        .comparison-item .screenshot {
+            margin-bottom: 0.5rem;
+            max-height: 350px;
+            width: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+
+        .comparison-item .screenshot-caption {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Blockquote for copy examples */
@@ -507,7 +557,7 @@
             <p>You're a woman-owned studio nestled along the Salmon River in Idaho. Every piece is handcrafted—two calloused, dye-stained hands doing the work. Your vegetable-tanned leather comes from Wickett & Craig, one of the last tanneries in the United States. No harsh chemicals. Products designed to develop their own patina over time. And 5% of profits go back to community and environmental causes.</p>
             <p>These aren't marketing gimmicks. They're meaningful differentiators that separate Kinshop from the thousands of mass-produced leather goods flooding Amazon and Etsy.</p>
             <p><strong>But right now, most of these advantages are buried.</strong></p>
-            <p>A good wallet says "look at me." A great brand says "come with me."</p>
+            <p>A good product says "look at me." A great brand says "come with me."</p>
             <p>Right now, Kinshop is positioned around craftsmanship and quality, but it's framed in a way that's still widget-first. The story is there. The differentiation is there. It's just not leading.</p>
             <p>Desire doesn't come from features. It comes from story.</p>
             <p>You already have the bones of that story. What we're doing here is bringing it forward—building upon what's there into a well-defined thesis you can operate from, one that will scale you meaningfully.</p>
@@ -525,7 +575,7 @@
         </div>
         <div class="simple-card-content">
             <p>Before we get into tactical fixes, there's something more fundamental to address.</p>
-            <p>Kinshop isn't in the wallet business.</p>
+            <p>Kinshop isn't in the leather goods business.</p>
             <p>You're not selling leather, stitching, or card slots.</p>
             <p>You're not here to convince people the leather is soft or the dimensions are right.</p>
             <p>That's commodity talk. That's how brands sell when they don't have a perspective.</p>
@@ -587,7 +637,7 @@
                 <li><strong>Why you use vegetable-tanned leather</strong> — it develops patina, unlike chrome-tanned leather that just shows wear</li>
                 <li><strong>Why you handcraft each piece</strong> — mass production can't create character</li>
                 <li><strong>Why you're in Idaho, not a factory</strong> — craft requires space to breathe</li>
-                <li><strong>Why your wallets are meant to be "used, bruised, and loved"</strong> — the wear IS the point</li>
+                <li><strong>Why your leather goods are meant to be "used, bruised, and loved"</strong> — the wear IS the point</li>
                 <li><strong>Why you source from Wickett & Craig</strong> — one of the last US tanneries doing it the old way</li>
             </ul>
             <p>This is the deeper belief that should be embedded in every piece of content — your about page, your product descriptions, your emails, your social posts.</p>
@@ -598,27 +648,27 @@
     <div class="rec-card">
         <div class="rec-header">
             <span class="section-num" style="background: #E8F5E9;">F</span>
-            <h3>Kinshop's Funnel Thesis: "A Good Wallet Gets Worse Every Day. A Great Wallet Gets Better."</h3>
+            <h3>Kinshop's Funnel Thesis: "Good Leather Gets Worse Every Day. Great Leather Gets Better."</h3>
         </div>
         <div class="rec-body">
             <p>This is the contrarian hook that gets attention.</p>
             <p><strong>The market belief to contradict:</strong></p>
-            <p>People assume wallets are disposable commodities. You buy one. It looks nice for a while. It slowly falls apart. You replace it. This is the accepted lifecycle.</p>
+            <p>People assume leather goods are disposable commodities. You buy one. It looks nice for a while. It slowly falls apart. You replace it. This is the accepted lifecycle.</p>
             <p>The default assumption is that wear = damage. That use = degradation.</p>
             <p><strong>The reframe:</strong></p>
             <p>What if wear was actually improvement?</p>
             <p>What if the marks from daily use weren't damage — they were story?</p>
-            <p>What if the right wallet actually got <em>better</em> over time?</p>
+            <p>What if the right leather actually got <em>better</em> over time?</p>
             <p>This is contrarian because everyone assumes new = best, wear = decline, replace = upgrade.</p>
             <p>But with properly-made vegetable-tanned leather, the opposite is true.</p>
-            <p><strong>Why most wallets get worse:</strong></p>
+            <p><strong>Why most leather goods get worse:</strong></p>
             <ul>
-                <li>Chrome-tanned leather (what most wallets use) is processed with harsh chemicals in days instead of months</li>
+                <li>Chrome-tanned leather (what most brands use) is processed with harsh chemicals in days instead of months</li>
                 <li>Results in uniform, almost plastic-like leather that doesn't develop patina — just shows wear</li>
                 <li>Cracks, peels, and degrades over time</li>
-                <li>That "new wallet" look is the best it will ever look</li>
+                <li>That "brand new" look is the best it will ever look</li>
             </ul>
-            <p><strong>Why Kinshop wallets get better:</strong></p>
+            <p><strong>Why Kinshop leather gets better:</strong></p>
             <ul>
                 <li>Vegetable-tanned leather from Wickett & Craig uses natural bark extracts</li>
                 <li>Tanning process takes months, not days</li>
@@ -627,7 +677,65 @@
                 <li>Gets more beautiful with every year of carry</li>
             </ul>
             <p>This funnel thesis sets up your education. It creates curiosity. It positions you as having knowledge the customer doesn't have yet.</p>
-            <p>And once they understand why their "good" wallet keeps failing them, the Brand Thesis — "Leather Should Tell Your Story" — becomes the obvious answer.</p>
+            <p>And once they understand why their "good" leather keeps failing them, the Brand Thesis — "Leather Should Tell Your Story" — becomes the obvious answer.</p>
+        </div>
+    </div>
+
+    <div class="simple-card">
+        <div class="simple-card-header">
+            <h3>Alternative Funnel Thesis: The Sustainability Angle</h3>
+        </div>
+        <div class="simple-card-content">
+            <p>Your Brand Thesis stays constant. But you can have multiple Funnel Theses that attack different market beliefs.</p>
+            <p>Here's another angle worth testing, pulled directly from your Materials page:</p>
+            <div class="callout" style="margin: 1.5rem 0; background: var(--bg-orange);">
+                <p><strong>Market Belief:</strong> "Vegan leather is more sustainable than real leather."</p>
+            </div>
+            <p>This is what drives people toward synthetic leather thinking they're making an eco-friendly choice.</p>
+            <p>But you already know the truth — and you've written about it:</p>
+            <blockquote>
+                <p>"Unlike plastic-based alternatives, leather naturally biodegrades over time."</p>
+                <p>"Many mass-produced options are chemically treated, layered in plastics, or bonded with glue."</p>
+            </blockquote>
+            <p><strong>The Contrarian Truth:</strong></p>
+            <p>Vegan leather is petroleum-based plastic with better marketing.</p>
+            <p>It doesn't biodegrade — it sits in landfills for 500 years.</p>
+            <p>It falls apart in 2 years, so you buy more.</p>
+            <p>Real leather is a byproduct that would've gone to landfill anyway.</p>
+            <p>Real leather biodegrades naturally.</p>
+            <p>Real leather, properly made, lasts decades.</p>
+            <p><strong>The tension this creates:</strong></p>
+            <p>"Wait... my 'eco-friendly' bag is actually worse for the environment than real leather?"</p>
+            <p>That's the moment of realization that opens the door to everything else you stand for.</p>
+        </div>
+    </div>
+
+    <div class="rec-card">
+        <div class="rec-header">
+            <span class="section-num" style="background: var(--bg-orange);">F2</span>
+            <h3>Funnel Thesis Options: Sustainability Contrast</h3>
+        </div>
+        <div class="rec-body">
+            <p>These headlines attack the same market belief from different angles:</p>
+            <blockquote>
+                <p><strong>"Vegan Leather Is Just Plastic With Better Marketing"</strong></p>
+            </blockquote>
+            <p>Direct and confrontational. Names the enemy explicitly. Works well for audiences already skeptical of greenwashing.</p>
+            <blockquote>
+                <p><strong>"The Most Sustainable Leather Is the Kind You Never Replace"</strong></p>
+            </blockquote>
+            <p>Reframes sustainability from material origin to longevity. Less confrontational, more philosophical. Appeals to the "buy it for life" crowd.</p>
+            <blockquote>
+                <p><strong>"Your 'Eco-Friendly' Bag Is Made of Oil"</strong></p>
+            </blockquote>
+            <p>Provocative. Creates immediate cognitive dissonance. The scare quotes around "Eco-Friendly" signal that the label is being questioned.</p>
+            <blockquote>
+                <p><strong>"Real Leather Biodegrades. 'Vegan Leather' Sits in Landfills for 500 Years."</strong></p>
+            </blockquote>
+            <p>Specific and factual. The contrast is concrete and visual. Harder to dismiss because it's making a verifiable claim.</p>
+            <p><strong>Which to use?</strong></p>
+            <p>Test them. The "Gets Better Every Day" thesis (Funnel Thesis #1) attacks the quality/disposability belief. These attack the sustainability belief. Different audiences, different entry points — same Brand Thesis destination.</p>
+            <p>You might find sustainability messaging resonates more on certain channels (Instagram, Pinterest) where eco-conscious buyers congregate, while the "Gets Better" angle works better on direct response ads.</p>
         </div>
     </div>
 
@@ -639,12 +747,19 @@
             <p>Every tactical recommendation in this review becomes more powerful when it's grounded in your Thesis.</p>
             <p><strong>Without Thesis:</strong> Your USP section lists features — "handcrafted," "US leather," "develops patina."</p>
             <p><strong>With Thesis:</strong> Your USP section tells a story — "We believe leather should tell your story. Here's how every piece is made to do exactly that."</p>
-            <p><strong>Without Thesis:</strong> Your homepage hero says "Kinshop Wallets — In new, juicy colors."</p>
-            <p><strong>With Thesis:</strong> Your homepage hero says "The Wallet That Gets Better Every Day" or "Handcrafted Leather. Made to Tell Your Story."</p>
+            <p><strong>Without Thesis:</strong> Your homepage hero says "Kinshop — In new, juicy colors."</p>
+            <p><strong>With Thesis:</strong> Your homepage hero says "Leather That Gets Better Every Day" or "Handcrafted Leather. Made to Tell Your Story."</p>
             <p><strong>Without Thesis:</strong> Your FAQ answers questions.</p>
-            <p><strong>With Thesis:</strong> Your FAQ reinforces beliefs — "Will this wallet really get better with age? Absolutely. Our vegetable-tanned leather is designed to be used, bruised, and loved for years..."</p>
+            <p><strong>With Thesis:</strong> Your FAQ reinforces beliefs — "Will this leather really get better with age? Absolutely. Our vegetable-tanned leather is designed to be used, bruised, and loved for years..."</p>
             <p>The Thesis is the foundation. The tactics are the architecture built on top of it.</p>
             <p>As you implement the recommendations below, filter each one through the question: <strong>"Does this communicate that leather should tell your story?"</strong></p>
+            <p><strong>Testing different Funnel Theses:</strong></p>
+            <p>You now have two distinct entry points to test:</p>
+            <ul>
+                <li><strong>Quality/Patina angle:</strong> "Good Leather Gets Worse Every Day. Great Leather Gets Better." — Attacks the belief that wear = damage.</li>
+                <li><strong>Sustainability angle:</strong> "Vegan Leather Is Just Plastic With Better Marketing" — Attacks the belief that synthetic = eco-friendly.</li>
+            </ul>
+            <p>Different audiences respond to different contrarian hooks. Test both. The one that pulls harder becomes your lead — but both can coexist across different channels and campaigns.</p>
         </div>
     </div>
 
@@ -740,17 +855,27 @@
             <span class="priority-tag high">High</span>
         </div>
         <div class="rec-body">
-            <img src="img-cart.png" alt="Kinshop cart page without free shipping progress bar" class="screenshot">
-            <p class="screenshot-caption">Current cart: $60 Slim Wallet, $40 away from free shipping—but no visual progress bar or reminder.</p>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <span class="comparison-label">Current:</span>
+                    <img src="img-cart.png" alt="Kinshop cart page without free shipping progress bar" class="screenshot">
+                    <p class="screenshot-caption">$60 Slim Wallet, $40 away from free shipping—but no visual progress bar or reminder.</p>
+                </div>
+                <div class="comparison-item">
+                    <span class="comparison-label good">What good looks like:</span>
+                    <img src="img-example-cart-upsells.png" alt="Original Grain cart showing upsells and bundle offers" class="screenshot">
+                    <p class="screenshot-caption">Original Grain's cart: tiered upsells, "Save 30% Off When You Bundle" messaging, one-click add buttons.</p>
+                </div>
+            </div>
 
             <p>Your free shipping threshold is $100. That's communicated in your rotating announcement bar, which is good. But there's no visual feedback in the cart showing customers how close they are to reaching it.</p>
-            <p>A customer with a $60 Slim Wallet in their cart is $40 away from free shipping. That's an achievable stretch. But right now, they have no visual reminder of that opportunity—and no psychological pull toward closing the gap.</p>
+            <p>A customer with a $60 item in their cart is $40 away from free shipping. That's an achievable stretch. But right now, they have no visual reminder of that opportunity—and no psychological pull toward closing the gap.</p>
             <p>There's a deep layer of consumer psychology at play here called the Goal Gradient Effect.</p>
             <p>When customers see a progress bar inching toward a better deal, or a locked reward just out of reach, they don't feel pressured. They feel motivated. The closer they get to the goal, the more momentum they feel. It's the same reason people run faster at the end of a race—proximity to the finish line creates its own energy.</p>
             <p>That's the power of structured incentives: they give the shopper a clear path to a better outcome, and they make the act of spending feel like a strategic choice, not a splurge.</p>
             <p>Every unlocked reward delivers a dopamine hit. Every locked tier builds curiosity and forward momentum.</p>
             <p>And because it's framed as a series of wins, not a discount for discount's sake, it increases AOV, boosts conversion rate, and improves gross profit per order by encouraging larger carts without eroding brand value.</p>
-            <p>Think about the alternative. Without a progress bar, a customer at $60 has no idea how close they are to anything. They're just looking at a cart with a wallet in it. The free shipping threshold might as well not exist for them in that moment.</p>
+            <p>Think about the alternative. Without a progress bar, a customer at $60 has no idea how close they are to anything. They're just looking at a cart with an item in it. The free shipping threshold might as well not exist for them in that moment.</p>
             <p>But add a visual progress bar that says "You're $40 away from free shipping!" and suddenly the customer is thinking differently. They're scanning for what else they might want. Maybe a leather conditioner. Maybe a key clip. Something they might not have considered if the goal wasn't staring them in the face.</p>
             <p>When incentives are visual, progressive, and gamified, the cart becomes more than a checkout tool. It becomes a behavioral engine that guides people to buy more, feel good about it, and come back again.</p>
             <p>Apps like Free Shipping Bar or Hextom can add this quickly. Position it prominently at the top of cart, above the product list. Have it update dynamically as items are added or removed. And make sure it celebrates when the threshold is reached—that little moment of triumph reinforces the behavior and makes the customer feel smart for hitting the target.</p>
@@ -758,16 +883,56 @@
         </div>
     </div>
 
-    <!-- Rec 5: Product Image Badges -->
+    <!-- Rec 5: Slider Cart -->
     <div class="rec-card">
         <div class="rec-header">
             <span class="section-num">5</span>
+            <h3>Replace Your Cart Page with a Slider Cart</h3>
+            <span class="priority-tag high">High</span>
+        </div>
+        <div class="rec-body">
+            <div class="callout callout-green" style="margin-bottom: 1.5rem;">
+                <p><strong>What good looks like:</strong></p>
+            </div>
+            <img src="img-example-cart-upsells.png" alt="Original Grain slider cart with product upsells" class="screenshot">
+            <p class="screenshot-caption">Original Grain's slider cart: slides in from the side, shows product + price, bundle savings messaging, contextual upsells with one-click add buttons, and running total—all without leaving the page.</p>
+
+            <p>Right now, when a customer clicks "Add to Cart" on your site, they get a popup confirmation modal with options to view cart, checkout, or continue shopping.</p>
+            <p>If they click "View Cart," they're redirected to kinshopgoods.com/cart—a completely separate page that pulls them out of the shopping experience.</p>
+            <p>This is one of those legacy patterns that most brands never question. Cart pages have been around since the early days of e-commerce. But for a brand like Kinshop, where customers might be browsing leather goods and considering which color to get, or thinking about adding a complementary piece, a full-page cart creates unnecessary friction.</p>
+            <p>The psychology here is about maintaining flow state.</p>
+            <p>When a customer is browsing your site, they're in a mental mode of exploration and consideration. They're building momentum toward a purchase. Every time you pull them out of that flow—whether it's a page redirect, a new tab, or even just a jarring transition—you risk breaking that momentum.</p>
+            <p>A slider cart (also called a drawer cart or ajax cart) keeps customers in their current context while still showing them what's in their cart. It slides in from the side of the screen, displays the cart contents, and lets them either proceed to checkout or close it and keep shopping—all without leaving the page they're on.</p>
+            <p>This matters because the decision to add something to cart isn't the same as the decision to buy. A customer might add your Cribbage Board to cart while they're still browsing, wanting to "save" it while they look at other options. With a full-page cart redirect, that browsing momentum is broken. They have to actively navigate back to continue shopping.</p>
+            <p>With a slider cart, they add the item, see it's saved, and seamlessly continue browsing. Maybe they spot the leather key clip. Maybe they notice they're $40 away from free shipping. The shopping continues uninterrupted.</p>
+            <p>The slider cart also creates a better canvas for upsells and cross-sells. Because it appears in context, you can show recommended products ("Complete your carry with a Key Clip") right there in the drawer, where the customer is already thinking about their cart. On a separate cart page, that same recommendation feels more disconnected—they've already mentally shifted from "shopping" to "checking out."</p>
+            <p>For Kinshop specifically, where your product range includes natural pairings—cribbage boards with extra pegs, wallets with key clips, totes with smaller leather accessories—the slider cart becomes a soft nudge toward multi-item orders without feeling pushy.</p>
+            <p>Apps like Slide Cart, Cart Drawer, or Rebuy can implement this. Most modern Shopify themes also have built-in drawer cart options in theme settings—you might just need to enable it.</p>
+            <p>The implementation is straightforward: when someone clicks Add to Cart, instead of showing a modal or redirecting to /cart, the cart drawer slides in from the right side of the screen. They see their items, see the subtotal, see how close they are to free shipping, and see a few recommended products. One click takes them to checkout. Another click closes the drawer and returns them to shopping.</p>
+            <p>It's a small change that removes friction from the entire browsing experience. Every customer who adds something to cart will interact with this touchpoint. Making it seamless rather than disruptive compounds across every session on your site.</p>
+        </div>
+    </div>
+
+    <!-- Rec 6: Product Image Badges -->
+    <div class="rec-card">
+        <div class="rec-header">
+            <span class="section-num">6</span>
             <h3>Add Visual Badges to Product Images</h3>
             <span class="priority-tag high">High</span>
         </div>
         <div class="rec-body">
-            <img src="img-pdp-top.png" alt="Kinshop product page without badges" class="screenshot">
-            <p class="screenshot-caption">Beautiful product images—but no badges showing "Handcrafted in Idaho" or "US Leather" to differentiate at a glance.</p>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <span class="comparison-label">Current:</span>
+                    <img src="img-pdp-top.png" alt="Kinshop product page without badges" class="screenshot">
+                    <p class="screenshot-caption">Beautiful product images—but no badges showing "Handcrafted in Idaho" or "US Leather".</p>
+                </div>
+                <div class="comparison-item">
+                    <span class="comparison-label good">What good looks like:</span>
+                    <img src="img-example-product-badges.png" alt="Hollow product page with visual badges" class="screenshot">
+                    <p class="screenshot-caption">Hollow: "Made in USA" badge, "Anniversary Sale 30% Off", countdown timer—instant value communication.</p>
+                </div>
+            </div>
 
             <p>Right now, your product images are clean and show the leather beautifully, but they're not doing any persuasive work beyond showing the product.</p>
             <p>The psychology is straightforward: people process visuals faster than text, and visuals trigger emotion before logic kicks in.</p>
@@ -790,10 +955,10 @@
         </div>
     </div>
 
-    <!-- Rec 6: Guarantee Section -->
+    <!-- Rec 7: Guarantee Section -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">6</span>
+            <span class="section-num">7</span>
             <h3>Add a Dedicated Guarantee Section That Sells</h3>
             <span class="priority-tag high">High</span>
         </div>
@@ -811,7 +976,7 @@
             <blockquote>
                 <p><strong>Our Promise: Craftsmanship You Can Trust</strong></p>
                 <p>Every Kinshop piece is made by hand in our Idaho studio—stitched, dyed, and finished by the same two hands that have been doing this for years. We stand behind every piece that leaves our workshop.</p>
-                <p>If your new wallet doesn't feel right in your hands, if the leather doesn't make you want to run your thumb across it, if it doesn't feel like something you'll carry for the next decade—let us know within 30 days and we'll make it right.</p>
+                <p>If your new piece doesn't feel right in your hands, if the leather doesn't make you want to run your thumb across it, if it doesn't feel like something you'll use for the next decade—let us know within 30 days and we'll make it right.</p>
                 <p>No weird hoops. No receipt hunting. Just reach out.</p>
             </blockquote>
             <p>See how that does double duty? It addresses the return policy AND reinforces your handcrafted-in-Idaho differentiator. It reduces purchase anxiety while deepening brand connection.</p>
@@ -820,10 +985,10 @@
         </div>
     </div>
 
-    <!-- Rec 7: Announcement Bar -->
+    <!-- Rec 8: Announcement Bar -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">7</span>
+            <span class="section-num">8</span>
             <h3>Test Announcement Bar Messaging for Differentiation</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
@@ -835,7 +1000,7 @@
             <p>But "Handcrafted in Idaho"? That's something they haven't seen. That's a signal that this isn't just another drop-shipped product from overseas. That's a reason to keep scrolling instead of bouncing.</p>
             <p><strong>Messages to test:</strong></p>
             <blockquote>
-                <p><strong>(Thesis-aligned):</strong> "A Good Wallet Gets Worse. A Great Wallet Gets Better. — See the Difference"</p>
+                <p><strong>(Thesis-aligned):</strong> "Good Leather Gets Worse. Great Leather Gets Better. — See the Difference"</p>
             </blockquote>
             <blockquote>
                 <p>"Handcrafted in Idaho — Every Piece Made by Hand in Our Salmon River Studio"</p>
@@ -847,12 +1012,22 @@
                 <p>"Woman-Owned Small Business — Thank You for Supporting Independent Makers"</p>
             </blockquote>
             <blockquote>
-                <p>"Designed to Develop Patina — Wallets That Get Better Every Day"</p>
+                <p>"Designed to Develop Patina — Leather That Gets Better Every Day"</p>
             </blockquote>
             <blockquote>
                 <p><strong>(Brand Thesis):</strong> "Leather That Tells Your Story — Handcrafted in Idaho"</p>
             </blockquote>
-            <p>Each message speaks to a different customer motivation. Some customers care most about supporting small business. Others care about materials and craftsmanship. Others want to know their purchase supports a cause. The announcement bar lets you lead with whatever resonates most.</p>
+            <p><strong>Sustainability Thesis options:</strong></p>
+            <blockquote>
+                <p>"Vegan Leather Is Plastic. Real Leather Biodegrades. — Learn the Difference"</p>
+            </blockquote>
+            <blockquote>
+                <p>"The Most Sustainable Leather Is the Kind You Never Replace"</p>
+            </blockquote>
+            <blockquote>
+                <p>"Real Leather. Real Craft. No Plastic Pretending to Be 'Eco-Friendly.'"</p>
+            </blockquote>
+            <p>Each message speaks to a different customer motivation. Some customers care most about supporting small business. Others care about materials and craftsmanship. Others want to know their purchase is genuinely sustainable — not greenwashed plastic. The announcement bar lets you lead with whatever resonates most.</p>
             <p>You can also use a sticky announcement bar that stays visible as customers scroll. When someone decides they're ready to buy, the most effective thing you can do is make that moment even more compelling. A sticky announcement bar helps by keeping your key differentiator anchored at the top of the screen at all times.</p>
             <p>This means that when they hit the point of decision—whether they're midway through reading reviews, looking at a different product, or just about to check out—the reason to choose you is right there in front of them.</p>
             <p>Run each message variation for enough time to reach statistical significance, then compare bounce rate, time on site, and conversion rate. The winning headline tells you which story resonates most with your audience—and that insight informs all your other messaging decisions across the brand.</p>
@@ -864,39 +1039,53 @@
         <h2>Phase 3: AOV Boosters</h2>
     </div>
 
-    <!-- Rec 8: In-Cart Upsells -->
+    <!-- Rec 9: In-Cart Upsells -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">8</span>
+            <span class="section-num">9</span>
             <h3>Implement In-Cart Upsells to Boost AOV & Gross Profit</h3>
             <span class="priority-tag high">High</span>
         </div>
         <div class="rec-body">
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <span class="comparison-label">Current:</span>
+                    <img src="img-cart.png" alt="Kinshop cart without upsells" class="screenshot">
+                    <p class="screenshot-caption">Just the product, no recommendations, no "complete your purchase" suggestions.</p>
+                </div>
+                <div class="comparison-item">
+                    <span class="comparison-label good">What good looks like:</span>
+                    <img src="img-example-cart-upsells.png" alt="Original Grain cart with bundle upsells" class="screenshot">
+                    <p class="screenshot-caption">Original Grain: tiered upsells, "Save 30% Off When You Bundle", one-click add buttons.</p>
+                </div>
+            </div>
+
             <p>The cart is one of the highest-leverage pieces of real estate on your entire site.</p>
-            <p>A customer adds a Slim Wallet for $60, goes to the cart, and sees... just the wallet. No recommendations. No complementary products. No "complete your purchase" suggestions.</p>
+            <p>A customer adds a Cribbage Board for $85, goes to the cart, and sees... just the board. No recommendations. No complementary products. No "complete your purchase" suggestions.</p>
             <p>That's leaving money on the table.</p>
             <p>The beauty of the cart is that it's not just a holding zone before checkout—it's a decision-making moment, where intent is high but commitment hasn't been sealed yet.</p>
-            <p>The psychology: a customer who has already decided to buy is in a different mental state than one who's browsing. The commitment is made. The wallet is open. Adding one more small item feels like completion, not splurging.</p>
+            <p>The psychology: a customer who has already decided to buy is in a different mental state than one who's browsing. The commitment is made. The credit card is out. Adding one more small item feels like completion, not splurging.</p>
             <p>In-cart upsells catch the customer right before the finish line, when they're open to adding just one more item. And that moment matters, because what happens in the cart doesn't just lift AOV—it can improve conversion rate too.</p>
             <p>When the right upsells are framed as contextual add-ons or an easy win, it gives the shopper one more reason to complete the order instead of walking away.</p>
             <p><strong>For Kinshop, natural product pairings include:</strong></p>
             <ul>
-                <li><strong>Slim Wallet → Leather Card Sleeve or Key Clip</strong> — "Complete your everyday carry"</li>
-                <li><strong>Any Wallet → Leather Conditioner</strong> — "Keep it looking beautiful for years"</li>
-                <li><strong>Cribbage Board → Extra Pegs Set</strong> — Essential accessory</li>
+                <li><strong>Cribbage Board → Extra Pegs Set</strong> — "Make sure you never run short mid-game"</li>
+                <li><strong>Slim Wallet → Leather Key Clip or Card Sleeve</strong> — "Complete your everyday carry"</li>
+                <li><strong>Tote → Smaller leather accessories</strong> — "Match your daily carry"</li>
+                <li><strong>Any leather item → Leather Conditioner</strong> — "Keep it looking beautiful for years"</li>
                 <li><strong>Any purchase under $100 → Small goods to reach free shipping threshold</strong></li>
             </ul>
             <p>The framing matters as much as the product itself. "You might also like" is passive. "Complete your everyday carry" is intentional—it tells the customer why they want this addition, not just what it is.</p>
-            <p>Apps like Rebuy, CartHook, or Slide Cart allow in-cart product recommendations with one-click add functionality. Set up product association rules so the recommendations are actually relevant, not random. A customer buying a wallet should see other leather goods, not a cribbage board.</p>
+            <p>Apps like Rebuy, CartHook, or Slide Cart allow in-cart product recommendations with one-click add functionality. Set up product association rules so the recommendations are actually relevant, not random. A customer buying a cribbage board should see pegs and leather accessories, not a wallet.</p>
             <p>From a business standpoint, these in-cart additions drive up your gross profit per order without increasing ad spend or traffic. They're clean margin. They raise the value of the orders you're already getting, and stack especially well with tiered incentives like your free shipping threshold.</p>
-            <p>On a $60 average wallet purchase, adding a $25 small good = $85 new AOV. That's a 42% increase in order value—with zero additional customer acquisition cost. The customer was already going to buy. You just helped them buy more of what they wanted.</p>
+            <p>On a $70 average order, adding a $25 small good = $95 new AOV. That's a 36% increase in order value—with zero additional customer acquisition cost. The customer was already going to buy. You just helped them buy more of what they wanted.</p>
         </div>
     </div>
 
-    <!-- Rec 9: Post-Purchase Upsells -->
+    <!-- Rec 10: Post-Purchase Upsells -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">9</span>
+            <span class="section-num">10</span>
             <h3>Add Post-Purchase Upsells to Capture Pure-Margin Revenue</h3>
             <span class="priority-tag high">High</span>
         </div>
@@ -913,8 +1102,8 @@
             <p><strong>Example flow for Kinshop:</strong></p>
             <blockquote>
                 <p><strong>Upsell #1:</strong> "Complete your everyday carry! Add a Leather Key Clip for just $22"</p>
-                <p><strong>Downsell:</strong> "Not ready for more leather? Add our Leather Conditioner for $15 to keep your wallet looking beautiful for years"</p>
-                <p><strong>Upsell #2:</strong> "Gift for a friend? Add another Slim Wallet in a different color for $54 (10% off)"</p>
+                <p><strong>Downsell:</strong> "Not ready for more leather? Add our Leather Conditioner for $15 to keep your pieces looking beautiful for years"</p>
+                <p><strong>Upsell #2:</strong> "Gift for a friend? Add a matching Cribbage Board for $76 (10% off)"</p>
             </blockquote>
             <p>A good benchmark is to aim for a 10-20% take rate on upsell number one. That means out of every 100 customers, 10-20 will add the upsell to their order, creating an immediate lift in average order value and profit per order.</p>
             <p>When you scale up to 50 orders per month, even a conservative $3-6 average AOV increase across all orders yields $2,000-$4,000 in additional annual revenue—all pure margin with no additional acquisition cost.</p>
@@ -922,10 +1111,10 @@
         </div>
     </div>
 
-    <!-- Rec 10: Best-Sellers -->
+    <!-- Rec 11: Best-Sellers -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">10</span>
+            <span class="section-num">11</span>
             <h3>Feature Best-Sellers Prominently in Navigation and Homepage</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
@@ -945,10 +1134,10 @@
         </div>
     </div>
 
-    <!-- Rec 11: FAQ Section -->
+    <!-- Rec 12: FAQ Section -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">11</span>
+            <span class="section-num">12</span>
             <h3>Build a FAQ Section That Sells, Not Just Answers</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
@@ -962,14 +1151,14 @@
             <p>It's for the customer who's 60-80% of the way there but still circling the runway. It's where they're looking to confirm they've landed somewhere different, somewhere they want to belong.</p>
             <p>Instead of just answering questions, consider building narrative questions that extend the brand's world:</p>
             <blockquote>
-                <p><strong>Q: What makes your leather different from other wallets?</strong></p>
-                <p>A: We source our leather from Wickett & Craig in Pennsylvania—one of the last vegetable tanneries in the United States. Unlike chrome-tanned leather (which uses harsh chemicals and produces that uniform, almost plastic-y feel), vegetable tanning uses natural bark extracts. The result is leather that's more durable, develops a beautiful patina over time, and won't end up leaching chemicals into your pocket. Most wallets are made to look good in the photo. Ours are made to look better after a year in your back pocket.</p>
+                <p><strong>Q: What makes your leather different from other brands?</strong></p>
+                <p>A: We source our leather from Wickett & Craig in Pennsylvania—one of the last vegetable tanneries in the United States. Unlike chrome-tanned leather (which uses harsh chemicals and produces that uniform, almost plastic-y feel), vegetable tanning uses natural bark extracts. The result is leather that's more durable, develops a beautiful patina over time, and is better for both you and the environment. Most leather goods are made to look good in the photo. Ours are made to look better after a year of daily use.</p>
             </blockquote>
             <p>See how that answer does double duty? It addresses the quality question AND reinforces your US-sourcing and sustainability differentiator.</p>
             <p>You could also layer in narrative-building questions like:</p>
             <blockquote>
-                <p><strong>Q: Do I need to condition my wallet?</strong></p>
-                <p>A: Honestly? Not really. Vegetable-tanned leather is meant to be used, not babied. The oils from your hands, the wear from your pocket, the little scuffs from everyday life—that's what creates the patina. If you want to speed up the process or give it some extra love, a light coat of leather conditioner once or twice a year works great. But if you just want to use it and forget about it, that's exactly what it's designed for.</p>
+                <p><strong>Q: Do I need to condition my leather?</strong></p>
+                <p>A: Honestly? Not really. Vegetable-tanned leather is meant to be used, not babied. The oils from your hands, the natural wear from daily use, the little scuffs from everyday life—that's what creates the patina. If you want to speed up the process or give it some extra love, a light coat of leather conditioner once or twice a year works great. But if you just want to use it and forget about it, that's exactly what it's designed for.</p>
             </blockquote>
             <blockquote>
                 <p><strong>Q: Why Idaho?</strong></p>
@@ -986,23 +1175,23 @@
         </div>
     </div>
 
-    <!-- Rec 12: Free Shipping Threshold -->
+    <!-- Rec 13: Free Shipping Threshold -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">12</span>
+            <span class="section-num">13</span>
             <h3>Consider Testing Lower Free Shipping Threshold</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
             <p>Your free shipping threshold is currently $100. That might not be optimized for your actual customer behavior.</p>
             <p>The sweet spot is typically calibrated to your Modal Order Value (MOV)—the most common order value in your distribution, not the average. The average gets skewed by outliers. The mode tells you what most customers actually spend.</p>
-            <p>If most of your customers buy a single wallet, your MOV is likely in the $60-$80 range. That means customers would need to add $20-$40 more to hit the $100 threshold.</p>
+            <p>If most of your customers buy a single item, your MOV is likely in the $60-$85 range. That means customers would need to add $15-$40 more to hit the $100 threshold.</p>
             <p>For some customers, that stretch feels achievable and motivating. For others, it feels like too much—so they just pay for shipping or, worse, abandon the cart entirely.</p>
             <p>Think about the psychology at play here. When the gap between cart value and free shipping feels too large, the incentive loses its power. The customer does the mental math and thinks "I'd have to spend $40 more just to save $8 on shipping? That doesn't make sense."</p>
             <p>But when the gap feels small—"I'm only $15 away"—the incentive becomes magnetic. The customer starts looking for something small to add. They feel smart for reaching the threshold instead of feeling pressured to spend more.</p>
             <p><strong>What to test:</strong></p>
             <ul>
-                <li><strong>Free shipping at $75</strong> — A single premium wallet plus a small good reaches it</li>
+                <li><strong>Free shipping at $75</strong> — A single premium item plus a small good reaches it</li>
                 <li><strong>Free shipping at $85</strong> — A mid-point that feels more achievable</li>
                 <li><strong>Tiered structure</strong> — Free shipping at $75, free gift at $100, free expedited at $150</li>
             </ul>
@@ -1017,10 +1206,10 @@
         <h2>Phase 4: Differentiation</h2>
     </div>
 
-    <!-- Rec 13: USP Section -->
+    <!-- Rec 14: USP Section -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">13</span>
+            <span class="section-num">14</span>
             <h3>Create a Dedicated USP Section on Product Pages</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
@@ -1033,7 +1222,7 @@
             <p>A PDP (product description page) isn't just a space to describe what something is like an instruction manual. It's a chance to express why it exists.</p>
             <p>A widget-driven PDP lists specs: "soft fabric," "original art," "guarantee."</p>
             <p>A thesis-driven PDP declares a perspective consumers can resonate with. From listing attributes to asserting worldview.</p>
-            <p>The distinction matters because customers aren't just buying a wallet. They're buying into what the wallet represents. The best brands understand this—they know that every product page is a chance to help the customer see themselves differently.</p>
+            <p>The distinction matters because customers aren't just buying a leather good. They're buying into what that piece represents. The best brands understand this—they know that every product page is a chance to help the customer see themselves differently.</p>
             <p>In thesis-driven PDPs:</p>
             <ul>
                 <li>The copy speaks from belief, not neutrality. It has opinions. It excludes some people to magnetize the right ones.</li>
@@ -1051,7 +1240,7 @@
                 <p><strong>US-Sourced Vegetable-Tanned Leather</strong> — We source from Wickett & Craig, one of the last vegetable tanneries in America. Natural bark extracts instead of chemicals. Leather that develops character instead of falling apart.</p>
             </blockquote>
             <blockquote>
-                <p><strong>Designed to Last Decades</strong> — Our wallets are meant to be used, bruised, and loved for years. The scuffs and scratches aren't wear—they're story.</p>
+                <p><strong>Designed to Last Decades</strong> — Our leather goods are meant to be used, bruised, and loved for years. The scuffs and scratches aren't wear—they're story.</p>
             </blockquote>
             <blockquote>
                 <p><strong>5% Back to Community</strong> — Every purchase supports organizations making a difference along the Salmon River and beyond.</p>
@@ -1061,17 +1250,17 @@
         </div>
     </div>
 
-    <!-- Rec 14: Comparison Chart -->
+    <!-- Rec 15: Comparison Chart -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">14</span>
+            <span class="section-num">15</span>
             <h3>Add a Comparison Chart to Highlight Your Advantages</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
             <p>A comparison chart visually shows your unique advantages at a glance. It doesn't require reading paragraphs. It doesn't require hunting for information.</p>
             <p>It's a simple table that says: "Here's us. Here's everyone else. Here's why we're better."</p>
-            <p>This is particularly powerful for brands like yours that are competing against mass-market alternatives. When a customer is comparing your $60 wallet to a $20 wallet on Amazon, they need to understand why the price difference exists. A comparison chart makes that difference concrete and visual.</p>
+            <p>This is particularly powerful for brands like yours that are competing against mass-market alternatives. When a customer is comparing your $85 cribbage board to a $30 one on Amazon, they need to understand why the price difference exists. A comparison chart makes that difference concrete and visual.</p>
             <p>The vegetable-tanned leather vs. chrome-tanned leather distinction is particularly powerful. Most customers don't know the difference. They've never thought about how leather is made or what chemicals might be involved. When you show them that your leather uses natural processes while competitors use chemical-heavy methods, you're educating and differentiating simultaneously.</p>
             <p>Education is a form of selling. When you teach someone something they didn't know, you earn their trust. When you show them that you know more about your craft than the competition, you position yourself as the expert. That expertise commands a premium.</p>
             <p><strong>Example comparison points:</strong></p>
@@ -1081,29 +1270,31 @@
                 <li><strong>Develops patina:</strong> Kinshop (yes, designed to age beautifully) vs. Most brands (no, looks worse over time)</li>
                 <li><strong>Chemical-free:</strong> Kinshop (natural tanning process) vs. Most brands (harsh chemical tanning)</li>
                 <li><strong>Supports community:</strong> Kinshop (5% gives back) vs. Most brands (no giving program)</li>
+                <li><strong>End of life:</strong> Kinshop (real leather biodegrades naturally) vs. "Vegan leather" (petroleum-based plastic, 500+ years in landfill)</li>
+                <li><strong>Longevity:</strong> Kinshop (decades of use, gets better with age) vs. Synthetic (falls apart in 1-2 years, looks worse immediately)</li>
             </ul>
-            <p>This works because it reframes the purchase decision. Instead of "should I buy this wallet?" the customer is now asking "do I want Kinshop quality or mass-produced quality?" That's a much easier question to answer—especially when you've shown them the difference.</p>
+            <p>This works because it reframes the purchase decision. Instead of "should I buy this?" the customer is now asking "do I want Kinshop quality or mass-produced quality?" That's a much easier question to answer—especially when you've shown them the difference.</p>
             <p>The comparison also reduces price sensitivity. When the advantages are clear, price becomes less important. The customer stops thinking "is this worth $60?" and starts thinking "do I want the cheap option or the quality option?" You've changed the frame, and in doing so, you've changed the decision they're making.</p>
             <p>The format itself matters too. A comparison chart is scannable in a way that paragraphs aren't. Visitors can glance at it and immediately see the pattern: check marks on your side, X marks on the other side. That visual shorthand communicates superiority faster than any amount of prose.</p>
             <p>Place the comparison chart on your product pages, below the main product details but above the reviews. This is where customers often go when they're in "research mode"—looking for reasons to justify the purchase they're already considering. Give them the comparison at that moment, and you're helping them convince themselves.</p>
         </div>
     </div>
 
-    <!-- Rec 15: Homepage Hero -->
+    <!-- Rec 16: Homepage Hero -->
     <div class="rec-card">
         <div class="rec-header">
-            <span class="section-num">15</span>
+            <span class="section-num">16</span>
             <h3>Optimize Homepage Hero to Lead with Story</h3>
             <span class="priority-tag medium">Medium</span>
         </div>
         <div class="rec-body">
             <div class="callout callout-green" style="margin-bottom: 1.5rem;">
-                <p><strong>Your Funnel Thesis belongs here.</strong> The hero is where "A Good Wallet Gets Worse Every Day. A Great Wallet Gets Better." can do its work — creating curiosity and pulling visitors deeper into your story.</p>
+                <p><strong>Your Funnel Thesis belongs here.</strong> The hero is where "Good Leather Gets Worse Every Day. Great Leather Gets Better." can do its work — creating curiosity and pulling visitors deeper into your story.</p>
             </div>
             <img src="img-homepage-hero.png" alt="Kinshop homepage hero" class="screenshot">
-            <p class="screenshot-caption">Current hero: "Kinshop Wallets — In new, juicy colors"—clean but doesn't communicate your Idaho story or mission.</p>
+            <p class="screenshot-caption">Current hero: "Kinshop — In new, juicy colors"—clean but doesn't communicate your Idaho story or mission.</p>
 
-            <p>Right now, your hero features "Kinshop Wallets" with "In new, juicy colors" and a "Shop the collection" link.</p>
+            <p>Right now, your hero features "Kinshop" with "In new, juicy colors" and a "Shop the collection" link.</p>
             <p>That's fine. It's clean. It shows product.</p>
             <p>But it's not doing any heavy lifting. It could be any leather goods brand. There's nothing in those first five seconds that tells me why Kinshop is different from the hundreds of other options I could find.</p>
             <p>The hero is your first impression. It's the first thing visitors see when they land on your site. And in that first moment, they're making a split-second decision: "Is this place worth my attention? Or should I keep scrolling?"</p>
@@ -1116,24 +1307,35 @@
             </ol>
             <p><strong>Options to test:</strong></p>
             <blockquote>
-                <p><strong>Thesis-first (Recommended):</strong> "A Good Wallet Gets Worse Every Day. This One Gets Better."</p>
+                <p><strong>Thesis-first (Recommended):</strong> "Good Leather Gets Worse Every Day. Ours Gets Better."</p>
             </blockquote>
             <blockquote>
                 <p><strong>Mission-first:</strong> "Handcrafted Leather. Made to Last. Made in Idaho."</p>
             </blockquote>
             <blockquote>
-                <p><strong>Patina-first:</strong> "The Wallet That Gets Better Every Day"</p>
+                <p><strong>Patina-first:</strong> "Leather That Gets Better Every Day"</p>
             </blockquote>
             <blockquote>
                 <p><strong>Origin-first:</strong> "From a Small Idaho Studio to Your Pocket"</p>
             </blockquote>
             <blockquote>
-                <p><strong>Craft-first:</strong> "Two Hands. One Wallet. Years of Character."</p>
+                <p><strong>Craft-first:</strong> "Two Hands. Handcrafted Leather. Years of Character."</p>
             </blockquote>
             <blockquote>
                 <p><strong>Story-first:</strong> "Leather That Tells Your Story — Made by Hand in Idaho"</p>
             </blockquote>
+            <p><strong>Sustainability Thesis options:</strong></p>
+            <blockquote>
+                <p><strong>Contrarian-first:</strong> "Vegan Leather Is Plastic. This Is Real."</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>Longevity-first:</strong> "The Most Sustainable Leather Is the Kind You Never Replace"</p>
+            </blockquote>
+            <blockquote>
+                <p><strong>Anti-greenwash:</strong> "Real Leather. Real Craft. No Plastic Pretending to Be 'Eco-Friendly.'"</p>
+            </blockquote>
             <p>Each headline tests a different angle. Mission-first speaks to values-driven buyers. Patina-first speaks to quality-seekers who want something that improves with age. Origin-first speaks to people who want to know where their stuff comes from. Craft-first speaks to people who appreciate the maker behind the product.</p>
+            <p>The sustainability angles speak to eco-conscious buyers who've been misled by "vegan leather" marketing. If this resonates with your audience, it could be the sharpest differentiator — because it contradicts something they've been told is true.</p>
             <p>Run each for enough time to collect meaningful data, then compare bounce rate and click-through to collection pages. The winning headline tells you which story resonates most with your audience—and that insight informs all your other messaging across the brand.</p>
             <p>The hero is one of the easiest places to test messaging because it's high-traffic and the results are clear. When you find the story that works, you'll see it in the numbers—more people staying, more people clicking, more people converting. And you'll know exactly which angle to lean into for everything else you create.</p>
             <p>Don't overlook the subheadline and CTA either. The headline catches attention, but the subheadline does the convincing. Something like "Handcrafted leather goods from our Idaho studio to your pocket. Each piece made by hand to develop character over time." That reinforces the story without repeating the headline.</p>
@@ -1168,6 +1370,7 @@
         <div class="phase-content">
             <ol>
                 <li>Add free shipping progress bar in cart</li>
+                <li>Replace cart page with slider cart</li>
                 <li>Add product image badges</li>
                 <li>Test announcement bar messaging</li>
                 <li>Add dedicated guarantee section to PDPs</li>
@@ -1293,7 +1496,7 @@
             <p>The goal isn't just to increase revenue. It's to increase contribution margin—the profit left after you subtract variable costs and ad spend.</p>
             <p>Your handcrafted production model means every piece has significant labor invested. Protect your margins by leading with value and story, not discounts.</p>
             <p>Your giving-back mission (5% of profits) is a differentiator worth protecting. Higher margins mean more impact.</p>
-            <p>Your patina story is a natural defense against returns—customers who understand their wallet will develop character are less likely to return it for "not looking like the photo."</p>
+            <p>Your patina story is a natural defense against returns—customers who understand their leather will develop character are less likely to return it for "not looking like the photo."</p>
             <p><strong>The brands that win in handcrafted goods aren't the ones that discount most aggressively.</strong></p>
             <p>They're the ones that build strong origin stories, lead with differentiation, and optimize every step of the customer journey for both conversion and margin.</p>
             <p>You're already doing the hard part—making exceptional products by hand in your Idaho studio, with leather that most brands wouldn't bother sourcing because it costs more and takes longer.</p>
