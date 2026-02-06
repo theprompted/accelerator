@@ -10,7 +10,7 @@
   body {
     font-family: -apple-system, system-ui, sans-serif;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #1a1a1a;
     background: #f9f9f7;
     padding: 20px 16px 60px;
@@ -39,19 +39,19 @@
   h3 {
     font-size: 18px;
     font-weight: 700;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 24px;
+    margin-bottom: 12px;
     color: #333;
   }
 
   p {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .intro {
     font-size: 16px;
     color: #444;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     background: #e8f4fd;
     padding: 16px;
     border-radius: 12px;
@@ -63,7 +63,7 @@
   .section-card {
     background: #fff;
     border-radius: 12px;
-    padding: 16px;
+    padding: 18px;
     margin-bottom: 16px;
     border-left: 5px solid;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
@@ -74,25 +74,11 @@
   .section-green { border-color: #3a9e4a; background: #e6f5e8; }
   .section-purple { border-color: #8e44ad; background: #f3e8f9; }
 
-  .section-title {
-    font-weight: 700;
-    font-size: 17px;
-    margin-bottom: 10px;
-    color: #1a1a1a;
+  .section-card p {
+    margin-bottom: 12px;
   }
 
-  ul {
-    margin-left: 20px;
-    margin-bottom: 0;
-  }
-
-  li {
-    margin-bottom: 10px;
-    font-size: 17px;
-    line-height: 1.5;
-  }
-
-  li:last-child {
+  .section-card p:last-child {
     margin-bottom: 0;
   }
 
@@ -137,24 +123,29 @@
     color: #1a1a1a;
     line-height: 1.5;
   }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 24px 0;
+  }
 </style>
 </head>
 <body>
 
-<h1>Alfred's Dad — Open Heart Surgery Experience</h1>
+<h1>Alfred's Dad — Open Heart Surgery Experience (CABG)</h1>
 
 <div class="intro">
+  Shared by Alfred with Andrew on February 5, 2026, ahead of Miranda's surgery on February 6, 2026.<br><br>
   Alfred's dad had a CABG (coronary artery bypass grafting). Miranda is having mitral valve replacement + tricuspid valve repair + possible maze procedure, but many of the recovery dynamics are similar.
 </div>
 
 <h2>The Surgery</h2>
 
 <div class="section-card section-blue">
-  <ul>
-    <li>Check-in to OR: ~6-7 hours of waiting</li>
-    <li>Surgery itself: ~4-5 hours</li>
-    <li>Surgery was deemed successful</li>
-  </ul>
+  <p>Check-in to OR: ~6-7 hours of waiting</p>
+  <p>Surgery itself: ~4-5 hours</p>
+  <p>Surgery was deemed successful</p>
 </div>
 
 <h2>Post-Op Complications</h2>
@@ -162,64 +153,54 @@
 <h3>Mini-Stroke (24 hours post-op)</h3>
 
 <div class="section-card section-amber">
-  <ul>
-    <li>Happened while family was visiting in the CCU</li>
-    <li>Suddenly started speaking gibberish, blood pressure dropped, nurses rushed in</li>
-    <li>CT scan confirmed mini-stroke</li>
-    <li>Doctors said this is <strong>not uncommon after open-heart surgery</strong> and often has no long-term effects</li>
-    <li>At the time: very scary, "wait and see" situation</li>
-  </ul>
+  <p>Happened while family was visiting in the CCU</p>
+  <p>Suddenly started speaking gibberish, blood pressure dropped, nurses rushed in</p>
+  <p>CT scan confirmed mini-stroke</p>
+  <p>Doctors said this is <strong>not uncommon after open-heart surgery</strong> and often has no long-term effects</p>
+  <p>At the time: very scary, "wait and see" situation</p>
 </div>
 
 <h3>Prostate Complication (unrelated to heart)</h3>
 
 <div class="section-card section-amber">
-  <ul>
-    <li>Ongoing bleeding in urine → repeated catheter insertions (very painful)</li>
-    <li>Dropping hemoglobin → blood pressure crashes</li>
-    <li>Caused: dizziness, disorientation, hallucinations, not recognizing family, speaking nonsense</li>
-    <li><strong>All of this was due to blood loss</strong> — but they didn't know that at the time</li>
-    <li>Heart itself was healing well throughout — cardiac side was actually fine</li>
-  </ul>
+  <p>Ongoing bleeding in urine → repeated catheter insertions (very painful)</p>
+  <p>Dropping hemoglobin → blood pressure crashes</p>
+  <p>Caused: dizziness, disorientation, hallucinations, not recognizing family, speaking nonsense</p>
+  <p><strong>All of this was due to blood loss</strong> — but they didn't know that at the time</p>
+  <p>Heart itself was healing well throughout — cardiac side was actually fine</p>
 </div>
 
 <h3>Falls on the Ward</h3>
 
 <div class="section-card section-amber">
-  <ul>
-    <li>Fell multiple times — once found passed out on bathroom floor in the middle of the night</li>
-    <li>Each fall meant CT scans to check for head injury</li>
-    <li>Family had to intervene and demand constant supervision</li>
-    <li>When blood pressure dropped, he would try to get up unsafely — had to override his decisions (emotionally very hard)</li>
-    <li>After second fall: spoke with ward manager → got a private room</li>
-    <li>Alfred stayed overnight with him for about a week</li>
-  </ul>
+  <p>Fell multiple times — once found passed out on bathroom floor in the middle of the night</p>
+  <p>Each fall meant CT scans to check for head injury</p>
+  <p>Family had to intervene and demand constant supervision</p>
+  <p>When blood pressure dropped, he would try to get up unsafely — had to override his decisions (emotionally very hard)</p>
+  <p>After second fall: spoke with ward manager → got a private room</p>
+  <p>Alfred stayed overnight with him for about a week</p>
 </div>
 
 <h3>Resolution</h3>
 
 <div class="section-card section-green">
-  <ul>
-    <li>Took ~3 weeks to determine prostate was the root cause</li>
-    <li>Multiple specialists involved: cardiology, neurology, urology</li>
-    <li>After discharge: collapsed again at home weeks later, same symptoms, ambulance back to ER</li>
-    <li><strong>Operated on the prostate → that finally fixed everything</strong></li>
-    <li>From that point, recovery was much smoother</li>
-    <li>Today: dad says 90-95%, but Alfred says he looks completely normal — <strong>fully recovered</strong></li>
-  </ul>
+  <p>Took ~3 weeks to determine prostate was the root cause</p>
+  <p>Multiple specialists involved: cardiology, neurology, urology</p>
+  <p>After discharge: collapsed again at home weeks later, same symptoms, ambulance back to ER</p>
+  <p><strong>Operated on the prostate → that finally fixed everything</strong></p>
+  <p>From that point, recovery was much smoother</p>
+  <p>Today: dad says 90-95%, but Alfred says he looks completely normal — <strong>fully recovered</strong></p>
 </div>
 
 <h2>Recovery Timeline</h2>
 
 <div class="section-card section-blue">
-  <ul>
-    <li>Most patients on the ward were discharged in <strong>7-10 days</strong>, sometimes 2 weeks</li>
-    <li>Alfred's dad stayed almost a month (due to the unrelated complication)</li>
-    <li>A few rare cases stayed months (severe/emergency cases)</li>
-    <li>Once discharged and able to move more at home, recovery accelerates</li>
-    <li>In hospital: basically in bed all day except short walks</li>
-    <li>At home: movement increases naturally</li>
-  </ul>
+  <p>Most patients on the ward were discharged in <strong>7-10 days</strong>, sometimes 2 weeks</p>
+  <p>Alfred's dad stayed almost a month (due to the unrelated complication)</p>
+  <p>A few rare cases stayed months (severe/emergency cases)</p>
+  <p>Once discharged and able to move more at home, recovery accelerates</p>
+  <p>In hospital: basically in bed all day except short walks</p>
+  <p>At home: movement increases naturally</p>
 </div>
 
 <h2>Key Takeaways for Caregivers</h2>
@@ -227,55 +208,45 @@
 <h3>Emotional Reality</h3>
 
 <div class="section-card section-purple">
-  <ul>
-    <li>While you're in it, you don't have answers — you don't know what's happening, what will fix it, or whether recovery will fully happen</li>
-    <li>That uncertainty is terrifying — whatever you're feeling is completely valid</li>
-    <li>There were long stretches where his dad wasn't really aware of what was going on</li>
-    <li>He just wanted to go home, even when he wasn't ready</li>
-    <li>Recovery is <strong>not a straight line</strong> — there were real regressions</li>
-    <li>Despite all the twists: <strong>full recovery</strong></li>
-  </ul>
+  <p>While you're in it, you don't have answers — you don't know what's happening, what will fix it, or whether recovery will fully happen</p>
+  <p>That uncertainty is terrifying — whatever you're feeling is completely valid</p>
+  <p>There were long stretches where his dad wasn't really aware of what was going on</p>
+  <p>He just wanted to go home, even when he wasn't ready</p>
+  <p>Recovery is <strong>not a straight line</strong> — there were real regressions</p>
+  <p>Despite all the twists: <strong>full recovery</strong></p>
 </div>
 
 <h3>Advocacy is Critical</h3>
 
 <div class="section-card section-blue">
-  <ul>
-    <li>Be there for rounds daily — shift changes mean people don't always know the full story</li>
-    <li>Someone needs to advocate consistently</li>
-    <li>Don't be afraid to intervene with the ward when something isn't working</li>
-  </ul>
+  <p>Be there for rounds daily — shift changes mean people don't always know the full story</p>
+  <p>Someone needs to advocate consistently</p>
+  <p>Don't be afraid to intervene with the ward when something isn't working</p>
 </div>
 
 <h3>Practical Tips</h3>
 
 <div class="section-card section-green">
-  <ul>
-    <li>Hospitals are bright, loud, uncomfortable — bring things to make it feel more like home (music, small speaker, familiar shows, personal items)</li>
-    <li>Having someone around consistently helps — both for the patient and for staying on top of communication between doctors/nurses</li>
-    <li>Encourage walking once safe — not just waiting for physio, but small walks with family</li>
-    <li>Plan support so you're not carrying everything alone</li>
-    <li>Once discharged: having her stay with family (with help coming in) will likely speed recovery</li>
-  </ul>
+  <p>Hospitals are bright, loud, uncomfortable — bring things to make it feel more like home (music, small speaker, familiar shows, personal items)</p>
+  <p>Having someone around consistently helps — both for the patient and for staying on top of communication between doctors/nurses</p>
+  <p>Encourage walking once safe — not just waiting for physio, but small walks with family</p>
+  <p>Plan support so you're not carrying everything alone</p>
+  <p>Once discharged: having her stay with family (with help coming in) will likely speed recovery</p>
 </div>
 
 <h3>Self-Care Reminder</h3>
 
 <div class="section-card section-purple">
-  <ul>
-    <li>Caregiving takes huge mental and emotional energy</li>
-    <li>Especially once home and nurses aren't there anymore</li>
-    <li>Take care of yourself — you can't pour from an empty cup</li>
-  </ul>
+  <p>Caregiving takes huge mental and emotional energy</p>
+  <p>Especially once home and nurses aren't there anymore</p>
+  <p>Take care of yourself — you can't pour from an empty cup</p>
 </div>
+
+<hr>
 
 <div class="quote-box">
   <div class="quote-text">"Despite all the twists, my dad made a full recovery. The surgeons are very, very good at what they do — and often the hardest part isn't the surgery itself, but the recovery afterward."</div>
   <div class="quote-author">— Alfred Chan</div>
-</div>
-
-<div class="bottom-note">
-  Despite all the twists: full recovery.
 </div>
 
 </body>
