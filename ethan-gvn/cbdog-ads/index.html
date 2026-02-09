@@ -447,6 +447,26 @@
             background: #166fe5;
         }
 
+        .copy-btn {
+            background: #449344;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .copy-btn:hover {
+            background: #367036;
+        }
+
+        .copy-btn.copied {
+            background: #666;
+        }
+
     </style>
 </head>
 <body>
@@ -465,7 +485,7 @@
         <div class="grid-row">
             <!-- Ad 1 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 1</div>
+                <div class="draft-label">Ad 1<button class="copy-btn" onclick="copyAdText(1)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -563,7 +583,7 @@ And they don't talk to each other.
 
             <!-- Ad 2 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 2</div>
+                <div class="draft-label">Ad 2<button class="copy-btn" onclick="copyAdText(2)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -655,7 +675,7 @@ Or you can fix the leak once.
 
             <!-- Ad 3 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 3</div>
+                <div class="draft-label">Ad 3<button class="copy-btn" onclick="copyAdText(3)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -751,7 +771,7 @@ You followed advice that was never meant for this.
         <div class="grid-row">
             <!-- Ad 4 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 4</div>
+                <div class="draft-label">Ad 4<button class="copy-btn" onclick="copyAdText(4)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -841,7 +861,7 @@ The approach was.
 
             <!-- Ad 5 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 5</div>
+                <div class="draft-label">Ad 5<button class="copy-btn" onclick="copyAdText(5)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -929,7 +949,7 @@ You were just handed the wrong tool.
 
             <!-- Ad 6 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 6</div>
+                <div class="draft-label">Ad 6<button class="copy-btn" onclick="copyAdText(6)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1026,7 +1046,7 @@ You were following a map drawn before anyone discovered the territory.
         <div class="grid-row">
             <!-- Ad 7 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 7</div>
+                <div class="draft-label">Ad 7<button class="copy-btn" onclick="copyAdText(7)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1120,7 +1140,7 @@ The trade-off you thought you were making doesn't exist.
 
             <!-- Ad 8 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 8</div>
+                <div class="draft-label">Ad 8<button class="copy-btn" onclick="copyAdText(8)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1206,7 +1226,7 @@ And that signal isn't coming from the tennis ball.
 
             <!-- Ad 9 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 9</div>
+                <div class="draft-label">Ad 9<button class="copy-btn" onclick="copyAdText(9)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1302,7 +1322,7 @@ Or you can look at what's actually causing the water.
         <div class="grid-row">
             <!-- Ad 10 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 10</div>
+                <div class="draft-label">Ad 10<button class="copy-btn" onclick="copyAdText(10)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1396,7 +1416,7 @@ You've had it for months.
 
             <!-- Ad 11 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 11</div>
+                <div class="draft-label">Ad 11<button class="copy-btn" onclick="copyAdText(11)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1490,7 +1510,7 @@ The other addresses what's actually stuck.
 
             <!-- Ad 12 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 12</div>
+                <div class="draft-label">Ad 12<button class="copy-btn" onclick="copyAdText(12)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1589,7 +1609,7 @@ Your dog is running the same system on empty.
         <div class="grid-row">
             <!-- Ad 13 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 13</div>
+                <div class="draft-label">Ad 13<button class="copy-btn" onclick="copyAdText(13)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1679,7 +1699,7 @@ And nobody told you about the pipes.
 
             <!-- Ad 14 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 14</div>
+                <div class="draft-label">Ad 14<button class="copy-btn" onclick="copyAdText(14)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1771,7 +1791,7 @@ And the data says this isn't working.
 
             <!-- Ad 15 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 15</div>
+                <div class="draft-label">Ad 15<button class="copy-btn" onclick="copyAdText(15)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1859,7 +1879,7 @@ They're anxious because something is missing.
         <div class="grid-row">
             <!-- Ad 16 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 16</div>
+                <div class="draft-label">Ad 16<button class="copy-btn" onclick="copyAdText(16)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -1949,7 +1969,7 @@ And you can't exercise it full.
 
             <!-- Ad 17 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 17</div>
+                <div class="draft-label">Ad 17<button class="copy-btn" onclick="copyAdText(17)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -2043,7 +2063,7 @@ The instinct you've been doubting was correct.
 
             <!-- Ad 18 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 18</div>
+                <div class="draft-label">Ad 18<button class="copy-btn" onclick="copyAdText(18)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -2144,7 +2164,7 @@ And the data says this isn't working.
         <div class="grid-row">
             <!-- Ad 19 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 19</div>
+                <div class="draft-label">Ad 19<button class="copy-btn" onclick="copyAdText(19)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -2238,7 +2258,7 @@ Now we know.
 
             <!-- Ad 20 -->
             <div class="grid-item">
-                <div class="draft-label">Ad 20</div>
+                <div class="draft-label">Ad 20<button class="copy-btn" onclick="copyAdText(20)">Copy Text</button></div>
                 <div class="fb-post">
                     <div class="post-header">
                         <div class="avatar">G</div>
@@ -3345,6 +3365,22 @@ The second one is still waiting for a different signal.
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(url);
             });
+    }
+    
+    function copyAdText(adNum) {
+        const textEl = document.getElementById('text-' + adNum);
+        if (textEl) {
+            const text = textEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy Text';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
     }
     </script>
 </body>
