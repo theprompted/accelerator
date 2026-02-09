@@ -1,0 +1,168 @@
+{
+  "projectName": "Native Image Ads — CBDog Calming Treats (Batch 2)",
+  "description": "11 belief-violation native image ads driving to '5 Reasons Why Exercise Won't Fix Your Dog's Anxiety'. Batch 2 — using REMAINING expressions only. Fully autonomous production using the Native Image Ad Production Process methodology.",
+  "adCount": 11,
+  "batchNumber": 2,
+  "methodology": "methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+  "checklist": "methodologies/ad-creative/violation-opener-checklist.md",
+  "funnel": "clients/accelerator-site/ethan-gvn/cbdog-funnel/5-reasons/index.html",
+  "productResearch": "clients/accelerator-site/ethan-gvn/cbdog-funnel/offer/index.html",
+  "brandName": "GVN",
+  "brandDomain": "gvnpets.com",
+  "brandColorHex": "#449344",
+  "funnelHeadline": "5 reasons exercise won't fix your dog's anxiety",
+  "outputDir": "clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads",
+  "env": {
+    "OPENAI_API_KEY": "Required for US-005 image generation. Must be exported before launching Ralph. Not in any .env file — find in methodologies/shirt-swap-openai.md or .claude/settings.local.json."
+  },
+  "expressionBank": {
+    "file": "clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/expression-bank.md",
+    "description": "Master list of 40 opener expressions organized by 10 angles. Each expression attacks the ONE belief: 'Exercise/exhaustion creates calm in anxious dogs.' All expressions are congruent with the funnel's core frame that the nervous system is depleted, not overstimulated.",
+    "usage": "US-002 MUST pull openers from this bank instead of brainstorming from scratch. Batch 2 selects 11 expressions — at least 1 per angle from REMAINING expressions only. Used expression numbers are tracked in batch-history.md."
+  },
+  "batchHistory": {
+    "file": "clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/batch-history.md",
+    "description": "Tracks which expression numbers, evidence sections, and image concepts have been used across all batches. Updated after each batch completes (append in US-006).",
+    "usage": "US-001 loads this file first to understand what has already been produced. US-002 checks it to avoid reusing expressions. US-003 checks it to avoid reusing evidence section combinations. US-004 checks it to avoid reusing image concepts.",
+    "usedExpressions": [1, 3, 5, 6, 9, 11, 13, 14, 17, 20, 21, 23, 25, 28, 29, 30, 35, 36, 37, 39],
+    "availableExpressions": [2, 4, 7, 8, 10, 12, 15, 16, 18, 19, 22, 24, 26, 27, 31, 32, 33, 34, 38, 40]
+  },
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Ingest funnel and write context brief",
+      "description": "Read the full funnel HTML and product research. Infer the argument structure. Write the context brief with all components. Run the funnel inference self-check.",
+      "acceptanceCriteria": [
+        "Load methodology file: methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+        "Load violation checklist: methodologies/ad-creative/violation-opener-checklist.md",
+        "Read the ENTIRE funnel HTML — not first 200 lines, the FULL document",
+        "Read all product research files",
+        "Context brief already exists at clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/context-brief.md — verify it is still valid",
+        "Context brief contains: exact headline (copied from H1, not paraphrased), core thesis, audience level, key claims with specific stats, broken system with quoted funnel language, product resolution, and 5-10 implied beliefs"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Context brief pre-created during Batch 1 on 2026-02-06. Full funnel was read and argument structure extracted. Reuse existing context-brief.md."
+    },
+    {
+      "id": "US-002",
+      "title": "Brainstorm and evaluate violation openers",
+      "description": "Select 11 expressions from the expression bank REMAINING pool. Run mandatory self-check on each. Ensure angle and evidence diversity.",
+      "acceptanceCriteria": [
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/context-brief.md for beliefs and funnel context",
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/expression-bank.md for the master list of 40 pre-written expressions",
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/batch-history.md to see which expression numbers are already used",
+        "CRITICAL: Only select from REMAINING expressions: 2, 4, 7, 8, 10, 12, 15, 16, 18, 19, 22, 24, 26, 27, 31, 32, 33, 34, 38, 40",
+        "Select 11 expressions from the bank — at least 1 per angle from REMAINING expressions. One angle may have 2 expressions, nine angles get 1 each.",
+        "Only select expression numbers that are NOT already used in batch-history.md",
+        "Each selected expression has a pre-assigned evidence pairing (R1-R5). Within the batch, ensure at least 4 different evidence pairings are represented.",
+        "Run mandatory self-check on each selected expression in the exact specified format: OPENER, TARGET, READER REACTION, GOLD STANDARD (pass/fail), FUCK YOU TEST (pass/fail), TURN TEST (pass/fail with turn written out), FAIL PATTERN (if applicable), VERDICT",
+        "All 11 selected openers pass all 3 tests — if any fail, pick the next unused expression from the same angle",
+        "Zero selected openers are observations, category attacks, wise reflections, compliments in disguise, or what-critics-say patterns",
+        "All selected openers attack the reader's IDENTITY/BELIEFS (V2), not the product/industry (V1)",
+        "All 11 openers attack the ONE belief: 'Exercise/exhaustion creates calm in anxious dogs'",
+        "Save full evaluations to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/opener-evaluations-batch2.md including selected expressions with complete self-check format, note expression numbers and their evidence pairings"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Selected 11 expressions: #2, #7, #10, #15, #18, #22, #26, #31, #32, #34, #38. All 10 angles represented (Angle 8 has 2). Evidence distribution: R1=2, R2=4, R3=1, R4=2, R5=2. All 11 passed 3-test quality gate."
+    },
+    {
+      "id": "US-003",
+      "title": "Write 11 ad copy drafts",
+      "description": "Write full body copy for all 11 ads following the 7-part architecture. Run mandatory body copy self-check on each.",
+      "acceptanceCriteria": [
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/opener-evaluations-batch2.md for the final 11 openers",
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/context-brief.md for funnel evidence and claims",
+        "Write 11 complete ad drafts following the 7-part architecture: Violation (1 line) → Acknowledge tension (1-2 lines) → Name what they believe (3-5 lines) → The Turn (1-2 lines) → Stack evidence (5-10 lines) → Land the reframe (2-3 lines) → Bridge to funnel (1-2 lines)",
+        "Each ad's body copy draws from the evidence section specified in its expression's evidence pairing (R1-R5). This is what prevents body copy duplication across ads.",
+        "ALL 11 ads end with the identical bridge line: '5 reasons exercise won't fix your dog's anxiety: {url}'",
+        "ZERO product names (CBDog, CBD, calming treats), brand names (GVN), product benefits, product claims, or selling language across ALL 11 ads",
+        "All evidence is CATEGORY level (mechanisms, stats, comparisons) — not product level. Two ads with the same evidence pairing must use DIFFERENT stats/mechanisms from that section — never identical proof.",
+        "Run mandatory body copy self-check on EACH draft in the exact specified format: product selling check, congruence check, 7-part structure check, copy rules check, open loop check, verdict",
+        "Every ad leaves UNRESOLVED TENSION — reader cannot close the loop without clicking",
+        "Copy rules: one sentence per line, line breaks between, 5th-6th grade reading level, max 15 words per sentence, no rhetorical questions, no emojis, no jargon, identity protection throughout",
+        "Each ad is 200-350 words. Process ads in sub-batches of 5-6 to maintain quality.",
+        "Body copy for each ad could NOT exist with a different opener — it flows from THIS specific violation",
+        "Save all 11 drafts with self-check evaluations to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/ad-copy-drafts-batch2.md"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "Wrote all 11 ad copy drafts. R2 had 4 ads — each uses DIFFERENT evidence angles (feeding panic/buried alarm, unmeasured interior, chemical imbalance/fever analogy, two-track scientific). All 11 passed body copy self-check. Zero product/brand mentions. All end with identical bridge line. Word counts 250-270."
+    },
+    {
+      "id": "US-004",
+      "title": "Design 11 image concepts and write prompts",
+      "description": "Design 11 image concepts with subtle contradictions. Run mandatory image concept self-check. Write generation prompts.",
+      "acceptanceCriteria": [
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/ad-copy-drafts-batch2.md for the 11 openers and their emotional frames",
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/batch-history.md to see which 20 image concepts are ALREADY USED — no visual setup may repeat",
+        "Design 11 image concepts — each built around a SUBTLE CONTRADICTION from one of 4 categories: Object in Wrong Context, Quantity That Feels Wrong, Evidence of Failure, The 'Wait What?' Detail",
+        "Run mandatory image concept self-check on EACH concept in the exact specified format: concept name, description, subject type, contradiction (with category), Layer 1 (technical native), Layer 2 (context native — write the implied caption), Layer 3 (intent native — what do you feel?), opener match (emotional state not just topic), face test, stock check, verdict",
+        "ZERO concepts use people-as-subject performing emotions",
+        "All 11 concepts pass all 3 layers of the native test",
+        "All 11 images match the EMOTIONAL STATE of their paired opener, not just the topic",
+        "No concept would appear in a stock photo library",
+        "If faces present: removing the face does NOT remove the image's point",
+        "CRITICAL: Check batch-history.md — these 20 image concepts are BANNED: Still Panting on Dog Bed, Worn-Out Sneakers, Mile Tracker, Pile of Fetch Toys, Quote on Fridge, Old Dog Book, Trail App Map, Ignored Ball, Step Counter Watch, Ball Chucker on Ground, Empty Dog Bed, Two Dogs at Park, Calendar of Walks, Couch After Walk, Empty Food Bowl, Vet Paperwork, Walk Route (Again), Kitchen at 6am, Watch After Walk, Dog Park Aftermath",
+        "Each concept has a unique visual approach — no two look similar in a feed",
+        "At least 3 different contradiction categories represented across the 11.",
+        "Write image generation prompts using the V3 raw iPhone UGC template with SPECIFIC ugly (not abstract descriptors)",
+        "Prompts use specific camera failures and specific environmental mess — no 'harsh lighting' or 'raw feel'",
+        "Images stay in the anxious dog owner's world: leashes, tennis balls, worn-out sneakers, panting dog after walk, empty water bowl, dog park scenes, multiple fetch toys, anxious dog behaviors (pacing, whale eye, alert ears)",
+        "Save concepts, self-checks, and prompts to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/image-concepts-batch2.md"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": "Designed 11 NEW image concepts — all different from Batch 1's 20 concepts. Contradiction distribution: Evidence of Failure (5), Object in Wrong Context (3), Wait What Detail (2), Quantity Wrong (1). All 11 passed 3-layer native test + self-check. All object-based, zero people performing emotions. Settings: kitchen (2), entryway/mudroom (2), phone screen (2), living room (1), bedroom (1), doorway (1), counter (1), floor (1). V3 prompts with specific ugly written for all 11."
+    },
+    {
+      "id": "US-005",
+      "title": "Generate images, review, and build HTML mockup",
+      "description": "Generate 11 images with gpt-image-1.5. Run post-generation review. Build Facebook feed mockup HTML. Regenerate any failing images.",
+      "acceptanceCriteria": [
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/image-concepts-batch2.md for prompts",
+        "Read clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/ad-copy-drafts-batch2.md for copy",
+        "Create generate_cbdog_images_batch2.py using generate_cbdog_images.py as template",
+        "Set model to gpt-image-1.5, quality to high",
+        "Generate all 11 images in sub-batches of 5-6 (API rate limits)",
+        "Run mandatory post-generation image review on EACH image in the exact specified format: cleanliness check (5 AI failure modes — lighting, composition, surfaces, objects, color grading), contradiction visible check, phone photo test, scroll-stop test, verdict",
+        "All 11 images score 3+ out of 5 on cleanliness check",
+        "If any image fails: regenerate with specific ugly prompts, lower quality, or escalation path",
+        "Build ad-mockups-batch2.html using ad-mockups.html as template",
+        "Customize: brand color #449344, avatar letter G, brand name GVN, domain gvnpets.com, funnel headline '5 reasons exercise won't fix your dog's anxiety'",
+        "Each ad card: draft label with angle name + expression number, post header, collapsible copy with 'See more', generated image with prompt overlay, link preview with funnel headline, CTA row",
+        "Save post-generation reviews to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/image-review-batch2.md",
+        "ad-mockups-batch2.html renders correctly with all 11 ad cards and images",
+        "IMPORTANT: After generating HTML, embed images as base64 (same process as batch 1 — relative paths don't work)"
+      ],
+      "priority": 5,
+      "passes": true,
+      "notes": "Generated all 11 images with gpt-image-1.5 at high quality. 100% success rate (11/11). All images passed post-generation review: 5/5 cleanliness on all, contradictions visible, phone photo test pass, scroll-stop test pass. Built ad-mockups-batch2.html with base64 embedded images. Generation cost: ~$2.64. Zero regeneration needed."
+    },
+    {
+      "id": "US-006",
+      "title": "Final set review and batch history update",
+      "description": "Run the mandatory final set review across all 11 ads as a complete unit. Fix any issues found. Update batch-history.md.",
+      "acceptanceCriteria": [
+        "Read all artifact files for full context",
+        "Run mandatory final set review in the exact specified format:",
+        "ANGLE DIVERSITY: All 10 angles represented (1 each for 9 angles, 2 for 1 angle). No redundant messaging.",
+        "EVIDENCE DIVERSITY: At least 4 of 5 evidence sections (R1-R5) represented. No two ads with same evidence pairing use identical stats/mechanisms.",
+        "IMAGE DIVERSITY: 11 visually distinct images. No two look similar in a feed. 3+ contradiction categories. Mix of settings. No image concept repeats from batch-history.md (including the 20 from Batch 1).",
+        "TONE CONSISTENCY: Same voice, reading level, sentence length, emotional register across all 11.",
+        "NO-SELL FINAL SCAN: Zero product mentions (CBDog, CBD, calming treats), brand names (GVN), or selling language across the ENTIRE set.",
+        "BRIDGE CONSISTENCY: All 11 ads end with the identical bridge line: '5 reasons exercise won't fix your dog's anxiety: {url}'",
+        "BODY COPY DEDUP: No two ads share >40% identical sentences. If overlap found, rewrite the later ad using different proof from its evidence section.",
+        "All 7 boxes in the set verdict checklist are checked",
+        "If any box unchecked: fix the issue and re-run the relevant checks",
+        "Save final set review to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/artifacts/final-set-review-batch2.md",
+        "Final deliverables confirmed: ad-mockups-batch2.html with base64 embedded images, generate_cbdog_images_batch2.py, generated_ad_images_batch2/ with 11 images, artifacts/ with all checkpoint files",
+        "CRITICAL: Append Batch 2 to clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads/batch-history.md: batch number, expression numbers used (with angles), evidence sections used per ad, image concept names and contradiction types, image settings/locations. Update the 'Available Expression Numbers' list to remove the 11 used numbers."
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "All 7 boxes checked. Batch 2 complete: 11 ads, expressions 2/7/10/15/18/22/26/31/32/34/38, all 10 angles represented (Angle 8 has 2), all 5 evidence sections used, 11 new image concepts (31 total across batches), batch-history.md updated with full data, 9 expressions remaining for future batches."
+    }
+  ]
+}

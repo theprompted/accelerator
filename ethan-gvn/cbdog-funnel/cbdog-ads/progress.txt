@@ -1,0 +1,562 @@
+# CBDog Native Ads — Progress Log
+
+## Batch 1 Setup
+- Created: 2026-02-06
+- Status: PREP COMPLETE — ready for Ralph
+
+## Files Created
+- expression-bank.md — 40 expressions across 10 angles
+- batch-history.md — empty, ready for first batch
+- artifacts/context-brief.md — full funnel analysis
+- prd.json — Ralph configuration (20 ads, US-001 marked passes: true)
+- progress.txt — this file
+
+## Next Step
+Run Ralph to execute US-002 through US-006:
+```bash
+cd /Users/andrew/Dropbox/july2025/clients/accelerator-site/ethan-gvn/cbdog-funnel/cbdog-ads
+/path/to/ralph.sh 5 .
+```
+(5 iterations for stories US-002 through US-006)
+
+## Key Decisions
+- ONE belief attacked: "Exercise/exhaustion creates calm in anxious dogs"
+- Identity defended: Exhausted dog owner who tries SO hard
+- Identity attacked: "Tired dog is a calm dog" conventional wisdom
+- Evidence sections: R1-R5 mapped from funnel's 5 reasons
+- Brand color: #449344 (green)
+- Domain: gvnpets.com (confirm with Ethan)
+
+---
+
+## 2026-02-06 - US-002: Brainstorm and evaluate violation openers
+
+**Completed:**
+- Selected 20 expressions from expression bank (2 per angle across all 10 angles)
+- Ran mandatory 3-test quality gate on each expression
+- Expression #33 failed as "Compliment in Disguise" — replaced with #35
+- Full evaluations saved to artifacts/opener-evaluations.md
+
+**Expression numbers used:**
+1, 3, 5, 6, 9, 11, 13, 14, 17, 20, 21, 23, 25, 28, 29, 30, 35, 36, 37, 39
+
+**Evidence distribution:**
+- R1: 3 ads (expressions 9, 11, 25)
+- R2: 5 ads (expressions 1, 5, 13, 35, 37)
+- R3: 2 ads (expressions 23, 39)
+- R4: 6 ads (expressions 3, 6, 17, 20, 28, 36)
+- R5: 4 ads (expressions 14, 21, 29, 30)
+
+**Learnings for future iterations:**
+- Angle 9 (Identity) expressions are all validation-heavy by design — they defend rather than attack
+- #35 and #36 passed borderline because they add disruption via "wrong approach" framing
+- The strongest openers came from Angle 2 (Flip) and Angle 5 (Quit Proof) — visceral, personal
+- Next story (US-003) must use evidence pairings carefully — R4 has 6 ads, need variety within
+
+---
+
+## 2026-02-06 - US-003: Write 20 ad copy drafts
+
+**Completed:**
+- Wrote all 20 ad copy drafts following 7-part architecture
+- Processed in sub-batches of 5 to maintain quality
+- Ran mandatory body copy self-check on each draft
+- All 20 passed self-check: zero product/brand mentions, all congruent with openers, all leave unresolved tension
+- Full drafts saved to artifacts/ad-copy-drafts.md
+
+**Evidence usage per ad:**
+| Ad | Expr | Evidence | Key mechanisms/stats used |
+|----|------|----------|--------------------------|
+| 1 | 1 | R2 | Cortisol after 2hr walk, radio/engine metaphor |
+| 2 | 3 | R4 | Mop/leak metaphor (adding distance) |
+| 3 | 5 | R2 | Cortisol elevation, buried alarm, two-track |
+| 4 | 6 | R4 | Mop/leak (collapse→pacing pattern) |
+| 5 | 9 | R1 | 1970s origin, shock collar era, no brain imaging |
+| 6 | 11 | R1 | Timeline of advice vs. science (1990s/2010s) |
+| 7 | 13 | R2 | Cortisol + insomnia comparison |
+| 8 | 14 | R5 | Smoke alarm metaphor, starving reset |
+| 9 | 17 | R4 | Reader's own experiment data |
+| 10 | 20 | R4 | Arm gave out = data point (visceral) |
+| 11 | 21 | R5 | Stuck alarm, depleted reset signal |
+| 12 | 23 | R3 | Wild dogs 16hrs rest, no marathon needed |
+| 13 | 25 | R1 | Guilt + 1970s advice + mopping metaphor |
+| 14 | 28 | R4 | Exhaustion as evidence (schedule around exercise) |
+| 15 | 29 | R5 | Smoke alarm + starving mechanism |
+| 16 | 30 | R5 | Nothing wrong / something missing paradox |
+| 17 | 35 | R2 | Cortisol + "you noticed before studies confirmed" |
+| 18 | 36 | R4 | Exhaustion = data, mop/leak |
+| 19 | 37 | R2 | Scientific framing, 20-40% separation anxiety stat |
+| 20 | 39 | R3 | Wolves 16hrs, coyotes, wild canids comparison |
+
+**Deduplication within evidence sections:**
+- R2 (5 ads): Varied between cortisol finding, two-track system, insomnia comparison, "tired but wired", science framing
+- R4 (6 ads): Different mop/leak angles — adding miles, collapse pattern, reader's experiment, arm gave out, schedule, exhaustion as data
+- R5 (4 ads): Alarm metaphors varied — fetch can't fill, stuck alarm, starving mechanism, nothing in tank paradox
+
+**Copy patterns that emerged:**
+- Most powerful bodies: Ads 8, 10, 15, 16 (R5 evidence) — the "starving reset mechanism" frame is highly resonant
+- Most visceral: Ads 9, 10, 18 (Quit Proof angle) — using the reader's own experience as data
+- Guilt angle (13, 14) works when combined with "wrong tool" rather than pure validation
+
+**Learnings for future iterations:**
+- R4 (mop/leak) is versatile but risks feeling repetitive — varied the specific angle each time
+- R5 (smoke alarm/starving) is the most emotionally resonant — consider weighting future batches toward this
+- The 7-part architecture forces congruence — body can't drift from opener's frame
+- Word counts naturally land 240-280 — the structure is tight enough to prevent bloat
+- Open loops work best when they tease the "what" not the "how" — reader needs to know there IS a solution, just not what it is
+
+**Next story (US-004) needs:**
+- 20 image concepts that match each opener's EMOTIONAL STATE
+- Images in anxious dog owner's world (leashes, balls, worn shoes, panting dog, etc.)
+- Contradiction categories: Evidence of Failure, Quantity That Feels Wrong, Object in Wrong Context, Wait What Detail
+- No people performing emotions — objects carrying contradiction
+- Each image must feel native (would someone take AND post this?)
+
+---
+
+## 2026-02-06 - US-004: Design 20 image concepts and write prompts
+
+**Completed:**
+- Designed 20 image concepts, each with subtle contradiction matching opener's emotional state
+- Ran mandatory 3-layer native test + full self-check on each concept
+- All 20 pass: no people-as-subject performing emotions, all pass Layer 1/2/3, all match opener EMOTIONAL STATE
+- Wrote 20 V3 raw iPhone UGC prompts with SPECIFIC ugly (not abstract descriptors)
+- Full concepts and prompts saved to artifacts/image-concepts.md
+
+**Image concepts by ad:**
+| Ad | Concept Name | Contradiction Type | Setting |
+|----|--------------|-------------------|---------|
+| 1 | Still Panting on the Dog Bed | Evidence of Failure | Home interior |
+| 2 | The Worn-Out Sneakers | Evidence of Failure | Entryway |
+| 3 | The Mile Tracker | "Wait What?" Detail | Kitchen |
+| 4 | The Pile of Fetch Toys | Quantity That Feels Wrong | Home interior |
+| 5 | The Quote on the Fridge | Object in Wrong Context | Kitchen |
+| 6 | The Old Dog Book | Object in Wrong Context | Living room |
+| 7 | The Trail App Map | "Wait What?" Detail | Kitchen |
+| 8 | The Ignored Ball | Evidence of Failure | Backyard |
+| 9 | The Step Counter Watch | "Wait What?" Detail | Outdoor |
+| 10 | The Ball Chucker on the Ground | Evidence of Failure | Backyard |
+| 11 | The Empty Dog Bed | Object in Wrong Context | Home interior |
+| 12 | Two Dogs at the Park | Quantity/Comparison | Dog park |
+| 13 | The Calendar of Walks | Evidence of Failure | Kitchen/office |
+| 14 | The Couch After the Walk | Evidence of Failure | Living room |
+| 15 | The Empty Food Bowl | Evidence of Failure | Kitchen |
+| 16 | The Vet Paperwork | Evidence of Failure | Kitchen |
+| 17 | The Walk Route (Again) | Object in Wrong Context | Window view |
+| 18 | The Kitchen at 6am | Evidence of Failure | Kitchen |
+| 19 | The Watch After the Walk | "Wait What?" Detail | Outdoor |
+| 20 | The Dog Park Aftermath | Object in Wrong Context | Dog park |
+
+**Contradiction category distribution:**
+- Evidence of Failure: 9 (ads 1, 2, 8, 10, 13, 14, 15, 16, 18)
+- "Wait What?" Detail: 4 (ads 3, 7, 9, 19)
+- Object in Wrong Context: 5 (ads 5, 6, 11, 17, 20)
+- Quantity That Feels Wrong: 2 (ads 4, 12)
+
+**Settings diversity:**
+- Kitchen: 6 (ads 3, 5, 7, 15, 16, 18)
+- Home interior/living: 5 (ads 1, 4, 6, 11, 14)
+- Backyard/park: 4 (ads 8, 10, 12, 20)
+- Outdoor/walking: 2 (ads 9, 19)
+- Entryway: 1 (ad 2)
+- Window view: 1 (ad 17)
+- Office: 1 (ad 13)
+
+**Learnings for future iterations:**
+- Objects carrying contradiction > people performing emotions — every concept uses objects
+- "Evidence of Failure" is the most versatile category — works for guilt, quit proof, and protect angles
+- "Wait What?" Detail works well for science and data-focused openers (cortisol, step counts)
+- Key objects in anxious dog owner's world: worn shoes, step counters, fetch toys, leashes, dog beds, vet papers
+- Matching EMOTIONAL STATE (not just topic) forces unique visual approaches per ad
+- Settings should be mixed to avoid feed fatigue — no two ads in same exact location
+
+**Next story (US-005) needs:**
+- Create generate_cbdog_images.py from maggie template
+- Generate all 20 images with gpt-image-1.5, high quality
+- Run post-generation image review (5 AI cleanliness failure modes)
+- Build ad-mockups.html with brand color #449344, GVN branding
+- Regenerate any images that fail cleanliness check
+
+---
+
+## 2026-02-06 - US-005: Generate images, review, and build HTML mockup
+
+**Completed:**
+- Created generate_cbdog_images.py from maggie-funnels/generate_maggie_images.py template
+- Generated all 20 images with gpt-image-1.5 at high quality in 4 batches of 5
+- 100% success rate (20/20 images generated)
+- Ran mandatory post-generation image review on all 20 images
+- All 20 images passed: 5/5 cleanliness scores, all contradictions visible, all pass phone photo test, all pass scroll-stop test
+- Zero regeneration needed
+- Built ad-mockups.html with full GVN branding
+- Full reviews saved to artifacts/image-review.md
+
+**Image generation results:**
+| Ad | Concept Name | Cleanliness | Contradiction | Phone Test | Scroll-Stop | Verdict |
+|----|--------------|-------------|---------------|------------|-------------|---------|
+| 1 | Still Panting on the Dog Bed | 5/5 | PASS | PASS | PASS | **PASS** |
+| 2 | The Worn-Out Sneakers | 5/5 | PASS | PASS | PASS | **PASS** |
+| 3 | The Mile Tracker | 5/5 | PASS | PASS | PASS | **PASS** |
+| 4 | The Pile of Fetch Toys | 5/5 | PASS | PASS | PASS | **PASS** |
+| 5 | The Quote on the Fridge | 5/5 | PASS | PASS | PASS | **PASS** |
+| 6 | The Old Dog Book | 5/5 | PASS | PASS | PASS | **PASS** |
+| 7 | The Trail App Map | 5/5 | PASS | PASS | PASS | **PASS** |
+| 8 | The Ignored Ball | 5/5 | PASS | PASS | PASS | **PASS** |
+| 9 | The Step Counter Watch | 5/5 | PASS | PASS | PASS | **PASS** |
+| 10 | The Ball Chucker on the Ground | 5/5 | PASS | PASS | PASS | **PASS** |
+| 11 | The Empty Dog Bed | 5/5 | PASS | PASS | PASS | **PASS** |
+| 12 | Two Dogs at the Park | 5/5 | PASS | PASS | PASS | **PASS** |
+| 13 | The Calendar of Walks | 5/5 | PASS | PASS | PASS | **PASS** |
+| 14 | The Couch After the Walk | 5/5 | PASS | PASS | PASS | **PASS** |
+| 15 | The Empty Food Bowl | 5/5 | PASS | PASS | PASS | **PASS** |
+| 16 | The Vet Paperwork | 5/5 | PASS | PASS | PASS | **PASS** |
+| 17 | The Walk Route (Again) | 5/5 | PASS | PASS | PASS | **PASS** |
+| 18 | The Kitchen at 6am | 5/5 | PASS | PASS | PASS | **PASS** |
+| 19 | The Watch After the Walk | 5/5 | PASS | PASS | PASS | **PASS** |
+| 20 | The Dog Park Aftermath | 5/5 | PASS | PASS | PASS | **PASS** |
+
+**ad-mockups.html features:**
+- Brand color: #449344 (GVN green)
+- Avatar: "G" in green circle
+- Brand name: GVN
+- Domain: gvnpets.com
+- 20 ad cards in responsive grid layout (3 cols desktop, 2 cols tablet, 1 col mobile)
+- Each card: draft label with angle + expression number, post header, collapsible copy with "See more", generated image with prompt overlay, link preview, CTA row
+- Section headers group ads by angle type
+- All images load from generated_ad_images/ folder
+
+**Files created/updated:**
+- generate_cbdog_images.py — image generation script with 20 prompts and batch support
+- generated_ad_images/ — 40 files (20 timestamped + 20 "latest" copies)
+- ad-mockups.html — Facebook feed mockup with all 20 ads
+- artifacts/image-review.md — full post-generation reviews
+
+**Learnings for future iterations:**
+- gpt-image-1.5 at high quality produces excellent raw iPhone UGC style
+- V3 prompts with SPECIFIC ugly (not abstract descriptors) are critical for avoiding AI cleanliness
+- Processing in batches of 5 prevents rate limiting issues
+- Saving both timestamped and "latest" copies simplifies HTML references
+- The 5-point cleanliness check catches all AI failure modes effectively
+- All 20 images achieved 5/5 — V3 prompt methodology is working
+
+**Generation cost:** ~$4.80 (20 images × ~$0.24/image at high quality)
+
+---
+
+## 2026-02-06 - US-006: Final set review
+
+**Completed:**
+- Ran mandatory 7-box final set review across all 20 ads
+- ALL 7 BOXES CHECKED:
+  1. ✓ 20 different beliefs attacked (10 angles × 2, each pair attacks different aspect)
+  2. ✓ All 5 evidence sections represented with no duplicate mechanisms
+  3. ✓ 20 visually distinct images across 4 contradiction categories, 7+ settings
+  4. ✓ Consistent voice/tone/reading level across all 20
+  5. ✓ Zero product/brand mentions or selling language
+  6. ✓ Identical bridge line on all 20
+  7. ✓ No body copy duplication >40%
+- Full review saved to artifacts/final-set-review.md
+- batch-history.md updated with:
+  - 20 expression numbers used (1, 3, 5, 6, 9, 11, 13, 14, 17, 20, 21, 23, 25, 28, 29, 30, 35, 36, 37, 39)
+  - 20 image concepts with contradiction types and settings
+  - Available expression numbers updated (20 remain)
+
+**Final Deliverables:**
+- ad-mockups.html — Facebook feed mockup with all 20 ad cards
+- generate_cbdog_images.py — Image generation script
+- generated_ad_images/ — 40 files (20 timestamped + 20 latest)
+- artifacts/ — All 6 checkpoint files complete
+
+**Batch Statistics:**
+- Total ads: 20
+- Image generation cost: ~$4.80
+- Regeneration required: 0 (100% first-pass success)
+- Expressions remaining: 20 (enough for one more batch)
+
+**Learnings for future iterations:**
+- The V3 raw iPhone UGC prompt template with SPECIFIC ugly produces excellent results at high quality
+- gpt-image-1.5 at high quality = 0% regeneration needed
+- 7-part body copy architecture keeps all ads congruent with their openers
+- Evidence deduplication within sections (R1-R5) prevents body copy overlap
+- Opener quality gate (3-test evaluation) catches weak expressions early
+
+---
+
+## BATCH 1 COMPLETE — RALPH_COMPLETE
+
+---
+
+## BATCH 2 — 11 ADS
+
+## Creative Decisions (Batch 2)
+
+**Selected Expressions (11 total):**
+- #2 (Angle 1, R1): "A tired dog is not a calm dog."
+- #7 (Angle 2, R2): "That long walk is feeding the panic, not draining it."
+- #10 (Angle 3, R2): "Everyone giving you exercise advice has never measured what's happening inside your dog."
+- #15 (Angle 4, R2): "You can't outrun a chemical imbalance."
+- #18 (Angle 5, R4): "If exercise fixed dog anxiety, yours would be calm by now."
+- #22 (Angle 6, R5): "Anxiety isn't excess energy. It's a depleted reset mechanism."
+- #26 (Angle 7, R1): "The guilt you feel isn't proof you're a bad owner. It's proof you were handed the wrong tool."
+- #31 (Angle 8, R3): "Your dog isn't defective. Their reset mechanism just needs fuel."
+- #32 (Angle 8, R5): "The anxiety isn't who they are. It's what happens when the system runs empty."
+- #34 (Angle 9, R4): "That instinct that told you 'this isn't working' was correct."
+- #38 (Angle 10, R2): "Physical fatigue and nervous system regulation run on completely different tracks."
+
+**Evidence Distribution:**
+- R1: 2 ads (#2, #26)
+- R2: 4 ads (#7, #10, #15, #38)
+- R3: 1 ad (#31)
+- R4: 2 ads (#18, #34)
+- R5: 2 ads (#22, #32)
+
+---
+
+## 2026-02-06 - US-002: Select 11 expressions from expression bank (Batch 2)
+
+**Completed:**
+- Selected 11 expressions from available pool (2, 4, 7, 8, 10, 12, 15, 16, 18, 19, 22, 24, 26, 27, 31, 32, 33, 34, 38, 40)
+- All 10 angles represented (Angle 8 has 2 expressions — #31 and #32)
+- Ran mandatory 3-test quality gate on all 11 expressions
+- All 11 passed: Gold Standard, Fuck You Test, Turn Test
+- Zero fail patterns (no observations, category attacks, wise reflections, compliments, or "what critics say")
+- Full evaluations saved to artifacts/opener-evaluations-batch2.md
+
+**Expression numbers used in Batch 2:**
+2, 7, 10, 15, 18, 22, 26, 31, 32, 34, 38
+
+**Learnings for future iterations:**
+- Batch 2 expressions have slightly more emotional punch than Batch 1 — expressions like #18 ("yours would be calm by now") and #22 ("depleted reset mechanism") hit harder on personal experience
+- Angle 8 (Protect) has the strongest remaining expressions — both #31 and #32 attack the "broken dog" fear effectively
+- R2 evidence (cortisol studies) has the most expressions assigned — 4 ads will use this evidence section, so body copy must use DIFFERENT stats/mechanisms for each
+- The turn for #26 (Guilt) requires careful handling — validate the guilt without making the reader feel attacked for feeling guilty
+
+**Next story (US-003) needs:**
+- Write 11 ad copy drafts following 7-part architecture
+- Each ad draws from its assigned evidence section (R1-R5)
+- R2 has 4 ads — vary the cortisol evidence across all 4 (study specifics, insomnia comparison, two-track system, science framing)
+- All ads end with identical bridge line
+- Zero product/brand mentions
+
+---
+
+## 2026-02-06 - US-003: Write 11 ad copy drafts (Batch 2)
+
+**Completed:**
+- Wrote all 11 ad copy drafts following 7-part architecture
+- Processed in sub-batches (6 + 5) to maintain quality
+- Ran mandatory body copy self-check on each draft
+- All 11 passed self-check: zero product/brand mentions, all congruent with openers, all leave unresolved tension
+- Full drafts saved to artifacts/ad-copy-drafts-batch2.md
+
+**Evidence usage per ad:**
+| Ad | Expr | Evidence | Key mechanisms/stats used |
+|----|------|----------|--------------------------|
+| 1 | 2 | R1 | 1970s origin, shock collar era, no brain imaging, tired vs calm distinction |
+| 2 | 7 | R2 | Cortisol elevation, feeding panic, buried alarm analogy |
+| 3 | 10 | R2 | Unmeasured interior, advice-givers watching outside not inside |
+| 4 | 15 | R2 | Chemical imbalance, fever analogy, no threshold exists |
+| 5 | 18 | R4 | Mop/leak metaphor, your own data as evidence |
+| 6 | 22 | R5 | Depleted reset mechanism, smoke alarm starving |
+| 7 | 26 | R1 | 1970s advice, guilt misattributed, wrong tool |
+| 8 | 31 | R3 | Wild dogs 16hrs rest, wolves/coyotes comparison |
+| 9 | 32 | R5 | System running empty, personality vs depletion |
+| 10 | 34 | R4 | Instinct confirmed, mop/leak, reader's own experiment |
+| 11 | 38 | R2 | Two-track scientific explanation, cortisol data |
+
+**R2 Deduplication (4 ads):**
+- Ad 2 (#7): Cortisol elevation, "feeding the panic," buried alarm analogy
+- Ad 3 (#10): Unmeasured interior, cortisol studies discovered late, outside vs inside watching
+- Ad 4 (#15): Chemical imbalance framing, fever analogy, trade-off that doesn't exist
+- Ad 11 (#38): Two-track scientific explanation, "two tracks" repeated structure, signal framing
+
+**Copy patterns that emerged:**
+- Strongest bodies: Ads 6, 9 (R5 evidence) — depleted reset mechanism frame is highly resonant
+- Most visceral: Ads 5, 10 (Quit Proof) — using reader's own experience as data
+- Guilt angle (Ad 7) works by validating the guilt exists but redirecting the blame to the system
+
+**Learnings for future iterations:**
+- R2 has 4 ads but deduplication worked — varied cortisol angles: feeding panic, unmeasured, chemistry, two tracks
+- The 7-part architecture forces congruence — body can't drift from opener's frame
+- Word counts naturally land 250-270 — tight structure prevents bloat
+- Open loops work best when they tease the "what" not the "how" — reader needs to know there IS a solution, just not what it is
+
+**Next story (US-004) needs:**
+- 11 image concepts that match each opener's EMOTIONAL STATE
+- Images in anxious dog owner's world (leashes, balls, worn shoes, panting dog, etc.)
+- BANNED: 20 concepts from Batch 1 — must create entirely new visual approaches
+- Contradiction categories: Evidence of Failure, Quantity That Feels Wrong, Object in Wrong Context, Wait What Detail
+- No people performing emotions — objects carrying contradiction
+- Each image must feel native (would someone take AND post this?)
+
+---
+
+## 2026-02-06 - US-004: Design 11 image concepts and write prompts (Batch 2)
+
+**Completed:**
+- Designed 11 NEW image concepts — all different from Batch 1's 20 banned concepts
+- Ran mandatory 3-layer native test + full self-check on each concept
+- All 11 passed: zero people performing emotions, all pass Layer 1/2/3, all match opener EMOTIONAL STATE
+- Wrote 11 V3 raw iPhone UGC prompts with SPECIFIC ugly (not abstract descriptors)
+- Full concepts and prompts saved to artifacts/image-concepts-batch2.md
+
+**Image concepts by ad:**
+| Ad | Concept Name | Contradiction Type | Setting |
+|----|--------------|-------------------|---------|
+| 1 | The Leash Collection | Quantity Wrong | Entryway hooks |
+| 2 | The Paw-Print Trail | Evidence of Failure | Hardwood floor |
+| 3 | The Frayed Leash | Evidence of Failure | Counter/table |
+| 4 | The Playlist | Wait What Detail | Phone screen |
+| 5 | The Couch Cushion | Evidence of Failure | Living room couch |
+| 6 | The Water Bowl Puddle | Evidence of Failure | Kitchen floor |
+| 7 | The Sunrise Alarm | Object Wrong Context | Bedroom nightstand |
+| 8 | The Grass Stains | Evidence of Failure | Mudroom/laundry |
+| 9 | The Dog Gate | Object Wrong Context | Doorway |
+| 10 | The Recall Notes | Wait What Detail | Phone notes app |
+| 11 | The Double Bowls | Object Wrong Context | Kitchen floor |
+
+**Contradiction category distribution:**
+- Evidence of Failure: 5 (ads 2, 3, 5, 6, 8)
+- Object in Wrong Context: 3 (ads 7, 9, 11)
+- Wait What? Detail: 2 (ads 4, 10)
+- Quantity That Feels Wrong: 1 (ad 1)
+
+**Settings diversity:**
+- Kitchen: 2 (ads 6, 11)
+- Entryway/mudroom: 2 (ads 1, 8)
+- Phone screen: 2 (ads 4, 10)
+- Living room: 1 (ad 5)
+- Bedroom: 1 (ad 7)
+- Doorway: 1 (ad 9)
+- Counter/table: 1 (ad 3)
+- Hardwood floor: 1 (ad 2)
+
+**Learnings for future iterations:**
+- Phone screen shots (The Playlist, The Recall Notes) are excellent for Wait What? contradictions — the data/list itself IS the contradiction
+- Damage/wear concepts (Frayed Leash, Couch Cushion, Dog Gate scratches) are visceral evidence of anxiety that's hard to fake
+- The Sunrise Alarm and similar "sacrifice" concepts capture the guilt angle well — physical evidence of what the owner gave up
+- All 11 concepts avoid the trap of "illustrating the opener" — each creates its OWN tension independent of text
+- Matching emotional state vs. just topic: The Leash Collection matches "tired ≠ calm" because the quantity shows YEARS of trying the same approach
+
+**Next story (US-005) needs:**
+- Create generate_cbdog_images_batch2.py using generate_cbdog_images.py as template
+- Generate all 11 images with gpt-image-1.5, high quality
+- Run post-generation image review (5 AI cleanliness failure modes)
+- Build ad-mockups-batch2.html with brand color #449344, GVN branding
+- Regenerate any images that fail cleanliness check
+- IMPORTANT: Embed images as base64 after HTML generation (relative paths don't work)
+
+---
+
+## 2026-02-06 - US-005: Generate images, review, and build HTML mockup (Batch 2)
+
+**Completed:**
+- Created generate_cbdog_images_batch2.py with all 11 prompts from image-concepts-batch2.md
+- Generated all 11 images with gpt-image-1.5 at high quality in 3 batches (5+5+1)
+- 100% success rate (11/11 images generated)
+- Ran mandatory post-generation image review on all 11 images
+- All 11 images passed: 5/5 cleanliness scores, all contradictions visible, all pass phone photo test, all pass scroll-stop test
+- Zero regeneration needed
+- Built ad-mockups-batch2.html with full GVN branding
+- Embedded all 11 images as base64 in HTML file
+- Full reviews saved to artifacts/image-review-batch2.md
+
+**Image generation results:**
+| Ad | Concept Name | Cleanliness | Contradiction | Phone Test | Scroll-Stop | Verdict |
+|----|--------------|-------------|---------------|------------|-------------|---------|
+| 1 | The Leash Collection | 5/5 | PASS | PASS | PASS | **PASS** |
+| 2 | The Paw-Print Trail | 5/5 | PASS | PASS | PASS | **PASS** |
+| 3 | The Frayed Leash | 5/5 | PASS | PASS | PASS | **PASS** |
+| 4 | The Playlist | 5/5 | PASS | PASS | PASS | **PASS** |
+| 5 | The Couch Cushion | 5/5 | PASS | PASS | PASS | **PASS** |
+| 6 | The Water Bowl Puddle | 5/5 | PASS | PASS | PASS | **PASS** |
+| 7 | The Sunrise Alarm | 5/5 | PASS | PASS | PASS | **PASS** |
+| 8 | The Grass Stains | 5/5 | PASS | PASS | PASS | **PASS** |
+| 9 | The Dog Gate | 5/5 | PASS | PASS | PASS | **PASS** |
+| 10 | The Recall Notes | 5/5 | PASS | PASS | PASS | **PASS** |
+| 11 | The Double Bowls | 5/5 | PASS | PASS | PASS | **PASS** |
+
+**ad-mockups-batch2.html features:**
+- Brand color: #449344 (GVN green)
+- Avatar: "G" in green circle
+- Brand name: GVN
+- Domain: gvnpets.com
+- 11 ad cards in responsive grid layout (3 cols desktop, 2 cols tablet, 1 col mobile)
+- Each card: draft label with angle + expression number, post header, collapsible copy with "See more", generated image, link preview, CTA row
+- All 11 images embedded as base64 for portability
+
+**Files created/updated:**
+- generate_cbdog_images_batch2.py — image generation script with 11 prompts and batch support
+- generated_ad_images_batch2/ — 22 files (11 timestamped + 11 "latest" copies)
+- ad-mockups-batch2.html — Facebook feed mockup with all 11 ads (base64 images embedded)
+- artifacts/image-review-batch2.md — full post-generation reviews
+
+**Learnings for future iterations:**
+- gpt-image-1.5 at high quality produces excellent raw iPhone UGC style
+- V3 prompts with SPECIFIC ugly (not abstract descriptors) are critical for avoiding AI cleanliness
+- Processing in batches of 5 prevents rate limiting issues
+- The 5-point cleanliness check catches all AI failure modes effectively
+- All 11 images achieved 5/5 — V3 prompt methodology continues to work
+- Phone screen concepts (The Playlist, The Recall Notes) produced compelling "Wait What?" contradictions
+
+**Generation cost:** ~$2.64 (11 images × ~$0.24/image at high quality)
+
+---
+
+## 2026-02-06 - US-006: Final set review and batch history update (Batch 2)
+
+**Completed:**
+- Ran mandatory 7-box final set review across all 11 ads
+- ALL 7 BOXES CHECKED:
+  1. ✓ All 10 angles represented (Angle 8 has 2 expressions: #31 and #32)
+  2. ✓ All 5 evidence sections represented (R1=2, R2=4, R3=1, R4=2, R5=2)
+  3. ✓ 11 visually distinct images, 4 contradiction categories, 8 settings, zero repeats from Batch 1
+  4. ✓ Consistent voice/tone/reading level across all 11
+  5. ✓ Zero product/brand mentions or selling language
+  6. ✓ Identical bridge line on all 11
+  7. ✓ No body copy duplication >40%
+- Full review saved to artifacts/final-set-review-batch2.md
+- batch-history.md updated with:
+  - 11 expression numbers used (2, 7, 10, 15, 18, 22, 26, 31, 32, 34, 38)
+  - 11 image concepts with contradiction types and settings
+  - Available expression numbers updated (9 remain)
+  - Cumulative statistics added (31 ads total across 2 batches)
+
+**Final Deliverables:**
+- ad-mockups-batch2.html — Facebook feed mockup with all 11 ad cards (base64 images embedded)
+- generate_cbdog_images_batch2.py — Image generation script with 11 prompts
+- generated_ad_images_batch2/ — 22 files (11 timestamped + 11 latest)
+- artifacts/ — All 6 checkpoint files complete (context-brief reused from Batch 1)
+
+**Batch 2 Statistics:**
+- Total ads: 11
+- Image generation cost: ~$2.64
+- Regeneration required: 0 (100% first-pass success)
+- Expressions remaining: 9 (enough for ~1 more batch)
+
+**Learnings for future iterations:**
+- Phone screen concepts (The Playlist, The Recall Notes) are excellent for Wait What? contradictions
+- Damage/wear concepts (Frayed Leash, Couch Cushion, Dog Gate) are visceral evidence that's hard to fake
+- R2 with 4 ads required careful deduplication — each used different cortisol angle (feeding panic, unmeasured, chemistry, two tracks)
+- All 11 images achieved 5/5 cleanliness — V3 prompt methodology continues to deliver
+- Base64 embedding for HTML mockups ensures portability
+
+---
+
+## BATCH 2 COMPLETE — RALPH_COMPLETE
+
+---
+
+## CUMULATIVE PROJECT STATUS
+
+| Metric | Batch 1 | Batch 2 | Total |
+|--------|---------|---------|-------|
+| Ads | 20 | 11 | 31 |
+| Expressions used | 20 | 11 | 31 |
+| Image concepts | 20 | 11 | 31 |
+| Generation cost | ~$4.80 | ~$2.64 | ~$7.44 |
+| Regenerations needed | 0 | 0 | 0 |
+
+**Expressions remaining:** 9 (4, 8, 12, 16, 19, 24, 27, 33, 40)
+
+---
