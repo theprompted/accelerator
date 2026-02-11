@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefan - LP01 & Collection Page Feedback | The Prompted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .header .label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .header p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 2px solid black;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-header.yellow {
+            background: #FFDE00;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Step Numbers */
+        .step-num {
+            width: 2rem;
+            height: 2rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .card-header.yellow .step-num {
+            background: white;
+        }
+
+        /* Feedback Item */
+        .feedback-item {
+            background: #FAFAFA;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feedback-item.priority {
+            background: #FFFDE7;
+            border-color: #1a1a1a;
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feedback-title {
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .feedback-badge {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .badge-remove {
+            background: #FFEBE9;
+        }
+
+        .badge-change {
+            background: #FFDE00;
+        }
+
+        .badge-add {
+            background: #E8F5E9;
+        }
+
+        .feedback-description {
+            font-size: 0.875rem;
+            color: #444;
+        }
+
+        /* Callout */
+        .callout {
+            padding: 1.25rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .callout-yellow {
+            background: #FFFDE7;
+        }
+
+        .callout-green {
+            background: #E8F5E9;
+        }
+
+        .callout-gray {
+            background: #FAFAFA;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* List */
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Link */
+        a {
+            color: #0066cc;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: #E5E5E5;
+            margin: 2rem 0;
+        }
+
+        /* Section Label */
+        .section-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid black;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* URL display */
+        .url-display {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            background: #1a1a1a;
+            color: #53DBC9;
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        /* Rationale */
+        .rationale {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #ddd;
+        }
+
+        /* Side-by-side layout: screenshot left, content right */
+        .feedback-layout {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .feedback-screenshot {
+            flex-shrink: 0;
+            width: 180px;
+        }
+
+        .feedback-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .screenshot {
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .screenshot-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #999;
+            margin-bottom: 0.35rem;
+            display: block;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .screenshot-wrapper {
+            margin-bottom: 0.75rem;
+        }
+
+        .screenshot-wrapper:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 500px) {
+            .feedback-layout {
+                flex-direction: column;
+            }
+            .feedback-screenshot {
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-body { padding: 1rem; }
+            .feedback-header { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="label">The Prompted &rarr; Stefan & Nadja</span>
+            <h1>LP01 & Collection Page Feedback</h1>
+            <p>February 10, 2026</p>
+        </div>
+
+        <!-- Intro -->
+        <div class="callout callout-gray">
+            <p>Reviewed both pages. Good progress on implementing the previous feedback — especially the headline change on LP01. Here's what to adjust next.</p>
+        </div>
+
+        <!-- SECTION 1: LP01 Feedback -->
+        <div class="card">
+            <div class="card-header yellow">
+                <div class="step-num">1</div>
+                <h2>LP01 Landing Page</h2>
+            </div>
+            <div class="card-body">
+                <div class="url-display">matandvics.com/pages/lp01</div>
+
+                <!-- Feedback 1 -->
+                <div class="feedback-item priority">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Current</span>
+                            <img src="images/lp01-hero.png" alt="LP01 hero image" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">Kill the hero image</span>
+                                <span class="feedback-badge badge-remove">Remove</span>
+                            </div>
+                            <div class="feedback-description">
+                                Start the page with the headline directly. No lifestyle image above the fold.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> The headline is your highest-leverage copy. Every pixel between the visitor and the headline is a chance to bounce. Generic lifestyle imagery doesn't stop the scroll — it lets people think "I've seen this before" and leave.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 2 -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Red box = center-aligned</span>
+                            <img src="images/lp01-body-copy.png" alt="LP01 center-aligned body copy" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">Left-align body copy</span>
+                                <span class="feedback-badge badge-change">Change</span>
+                            </div>
+                            <div class="feedback-description">
+                                Body copy is currently center-aligned throughout the page. Switch to left-align.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> Center-aligned text forces the eye to hunt for the start of each new line. That's cognitive friction — and friction causes drop-off. Left-aligned text lets readers scan faster and stay engaged longer.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 3 -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Current</span>
+                            <img src="images/lp01-45-discount.png" alt="LP01 45% discount section" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">"45% discount" section — use best-seller image</span>
+                                <span class="feedback-badge badge-change">Change</span>
+                            </div>
+                            <div class="feedback-description">
+                                Replace the current image with one featuring your best-selling product.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> This is the conversion moment. A generic image creates distance. Showing the actual best-seller makes the next step concrete — the visitor can picture owning it. Specificity reduces hesitation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 4 -->
+                <div class="feedback-item priority">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Current</span>
+                            <img src="images/lp01-faq.png" alt="LP01 FAQ section" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">Kill the FAQ section</span>
+                                <span class="feedback-badge badge-remove">Remove</span>
+                            </div>
+                            <div class="feedback-description">
+                                Remove the FAQ entirely from LP01. Let the more commerce-driven pages (collection & PDP) contain the FAQ.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> FAQs on an advertorial LP are an exit ramp. If someone's reading FAQs instead of clicking, the page didn't convince them — and an FAQ won't fix that. Move FAQs to PDPs where they belong.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION 2: Collection Page Feedback -->
+        <div class="card">
+            <div class="card-header yellow">
+                <div class="step-num">2</div>
+                <h2>MV Collection Page</h2>
+            </div>
+            <div class="card-body">
+                <div class="url-display">matandvics.com/collections/mv-collection</div>
+
+                <p>The collection page is sparse. It needs conversion-boosting elements. Redundancy with LP01 is fine — visitors skim, and the person on this page already clicked through. They need reassurance, not re-education.</p>
+
+                <!-- Recommended Page Order -->
+                <div class="callout callout-yellow" style="margin: 1rem 0 1.5rem;">
+                    <div class="section-label" style="margin-top: 0;">Recommended Page Order (top to bottom)</div>
+                    <ol style="margin: 0.5rem 0 0; padding-left: 1.25rem; font-size: 0.875rem;">
+                        <li><strong>Hero</strong> — Products + "45% off" (continuity from LP01)</li>
+                        <li><strong>Social proof bar</strong> — 600k customers (immediate credibility)</li>
+                        <li><strong>Product grid</strong> — The actual shopping</li>
+                        <li><strong>Comparison table</strong> — Value justification for scrollers</li>
+                        <li><strong>78/22 Formula</strong> — Differentiation reminder</li>
+                        <li><strong>Testimonials</strong> — Objection handling</li>
+                        <li><strong>FAQ</strong> — Last-minute friction removal</li>
+                    </ol>
+                    <p style="margin: 0.75rem 0 0; font-size: 0.8rem; color: #666;"><strong>Logic:</strong> Top = continuity + credibility. Middle = shopping + value. Bottom = objections + friction.</p>
+                </div>
+
+                <!-- Feedback 1: Hero -->
+                <div class="feedback-item priority">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Current</span>
+                            <img src="images/collection-hero.png" alt="Collection page hero image" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">1. Replace hero image</span>
+                                <span class="feedback-badge badge-change">Change</span>
+                            </div>
+                            <div class="feedback-description">
+                                Current hero is a lifestyle shot. Replace with an image featuring best-selling products + "Up to 45% off" verbiage.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> Visitor just came from LP promising 45% off. Generic lifestyle image creates disconnect — "wait, where's the sale?" A hero showing best-sellers with discount verbiage creates instant continuity.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 2: Social Proof Bar -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Reference from LP01</span>
+                            <img src="images/lp01-social-proof.png" alt="600k social proof from LP01" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">2. Add social proof bar</span>
+                                <span class="feedback-badge badge-add">Add</span>
+                            </div>
+                            <div class="feedback-description">
+                                "Über 600.000 Menschen haben aufgehört, nach 'weich' zu greifen" — add as a banner directly below the hero, above the product grid.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> 600k customers is massive social proof but it's buried in LP01. Placed early on collection page, this banner answers "Am I making the right choice?" before they even start browsing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 3: Comparison Table -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Add from LP01</span>
+                            <img src="images/lp01-comparison-table.png" alt="Comparison table from LP01" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">3. Add the comparison table</span>
+                                <span class="feedback-badge badge-add">Add</span>
+                            </div>
+                            <div class="feedback-description">
+                                Pull the "78/22 vs Softest Cotton vs 100% Merino" table from LP01. Place below the product grid.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> The comparison table reframes price from "cost" to "value." €19 (1x purchase) vs €50-70 for alternatives. Catches scrollers who need more convincing mid-page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 4: 78/22 Formula -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Reference from LP01</span>
+                            <img src="images/lp01-7822-formula.png" alt="78/22 Formula section from LP01" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">4. Add condensed 78/22 Formula</span>
+                                <span class="feedback-badge badge-add">Add</span>
+                            </div>
+                            <div class="feedback-description">
+                                Quick reminder: "78% Premium Natural Fibers + 22% Strategic Technology." Just the formula and a one-liner. Place after comparison table.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> Visitors skim. When they see "78/22 Formula" on collection page, it triggers recall — "oh right, that's the thing." Differentiation prevents comparison shopping.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 5: Testimonials -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <div class="screenshot-wrapper">
+                                <span class="screenshot-label">Diabetic</span>
+                                <img src="images/lp01-testimonial-diabetic.png" alt="Diabetic testimonial" class="screenshot">
+                            </div>
+                            <div class="screenshot-wrapper">
+                                <span class="screenshot-label">"Soft = best"</span>
+                                <img src="images/lp01-testimonial-soft.png" alt="Soft testimonial" class="screenshot">
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">5. Add 2-3 testimonials</span>
+                                <span class="feedback-badge badge-add">Add</span>
+                            </div>
+                            <div class="feedback-description">
+                                Pull the diabetic testimonial and "thought soft = best, was wrong" one from LP01. Place after 78/22 Formula section.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> Testimonials on collection page reassure, not educate. Diabetic testimonial = "if it works for diabetics, it'll work for me." Strategic placement catches scrollers who haven't committed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback 6: FAQ -->
+                <div class="feedback-item">
+                    <div class="feedback-layout">
+                        <div class="feedback-screenshot">
+                            <span class="screenshot-label">Move from LP01</span>
+                            <img src="images/lp01-faq.png" alt="FAQ section from LP01" class="screenshot">
+                        </div>
+                        <div class="feedback-content">
+                            <div class="feedback-header">
+                                <span class="feedback-title">6. Add FAQ section</span>
+                                <span class="feedback-badge badge-add">Add</span>
+                            </div>
+                            <div class="feedback-description">
+                                Move the FAQ from LP01 to the collection page. Place at the very bottom, after testimonials.
+                            </div>
+                            <div class="rationale">
+                                <strong>How this increases CVR:</strong> FAQs belong on commerce pages where the visitor is actively considering purchase. At this stage, FAQs answer last-minute objections (shipping, returns, sizing) and remove friction before checkout.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">3</div>
+                <h2>Quick Reference</h2>
+            </div>
+            <div class="card-body">
+                <div class="section-label">LP01 Changes (4 items)</div>
+                <ul>
+                    <li><strong>Remove:</strong> Hero image — start with headline</li>
+                    <li><strong>Change:</strong> Body copy alignment — left-align, not center</li>
+                    <li><strong>Change:</strong> "45% off" section image — use best-seller</li>
+                    <li><strong>Remove:</strong> FAQ section — belongs on PDPs only</li>
+                </ul>
+
+                <div class="section-label">Collection Page Changes (6 items, in recommended order)</div>
+                <ol>
+                    <li><strong>Change:</strong> Hero image — feature products + sale verbiage</li>
+                    <li><strong>Add:</strong> Social proof bar (600k customers) — below hero</li>
+                    <li><strong>Add:</strong> Comparison table — below product grid</li>
+                    <li><strong>Add:</strong> Condensed 78/22 Formula reminder</li>
+                    <li><strong>Add:</strong> 2-3 testimonials</li>
+                    <li><strong>Add:</strong> FAQ section (moved from LP01) — at bottom</li>
+                </ol>
+
+                <div class="callout callout-green" style="margin-top: 1.5rem;">
+                    <p><strong>Implementation order:</strong> Start with the "Remove" items on LP01 — those are fastest. Then tackle Collection page from top to bottom (hero → social proof → products → comparison → formula → testimonials → FAQ).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>The Prompted &bull; February 2026</p>
+        </div>
+    </div>
+</body>
+</html>
