@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second-Time Parents Curriculum 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --light-pink: #FFB6C1;
+            --pink: #FFC0CB;
+            --misty-rose: #FFE4E1;
+            --lavender-blush: #FFF0F5;
+            --hot-pink: #FF69B4;
+            --gold: #FFD700;
+            --white: #FFFFFF;
+            --text-dark: #5D4E60;
+            --text-light: #8B7B8E;
+        }
+
+        body {
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--lavender-blush) 0%, var(--misty-rose) 50%, var(--lavender-blush) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding-bottom: 100px;
+        }
+
+        /* Header with Bow */
+        .header {
+            background: linear-gradient(180deg, var(--pink) 0%, var(--light-pink) 100%);
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--hot-pink);
+        }
+
+        .bow {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .bow::before,
+        .bow::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background: var(--hot-pink);
+            border-radius: 50% 50% 50% 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bow::before {
+            left: -45px;
+            transform: translateY(-50%) rotate(-20deg);
+        }
+
+        .bow::after {
+            right: -45px;
+            transform: translateY(-50%) rotate(20deg);
+        }
+
+        .bow-center {
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.4);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 30px;
+            margin: -40px 20px 30px;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.15);
+            border: 2px solid var(--pink);
+        }
+
+        .welcome-card p {
+            margin-bottom: 15px;
+        }
+
+        .welcome-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Heart Divider */
+        .heart-divider {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--hot-pink);
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+        }
+
+        /* Module Cards */
+        .module {
+            background: var(--white);
+            border-radius: 24px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.1);
+            border: 2px solid var(--pink);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .module:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--light-pink) 100%);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--hot-pink);
+        }
+
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .module-icon {
+            font-size: 1.4rem;
+        }
+
+        .toggle-icon {
+            display: none;
+        }
+
+        .module-content {
+            padding: 25px;
+        }
+
+        /* Sticky Navigation Bar - Premium Pill Style */
+        .sticky-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .sticky-nav select {
+            padding: 16px 28px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            background-color: var(--hot-pink);
+            border: none;
+            border-radius: 50px;
+            color: var(--white);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.45), 0 4px 10px rgba(0, 0, 0, 0.1);
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 14px;
+            padding-right: 52px;
+            min-width: 200px;
+            text-align: left;
+            letter-spacing: 0.3px;
+        }
+
+        .sticky-nav select option {
+            background-color: var(--white);
+            color: var(--text-dark);
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        .sticky-nav select:focus {
+            outline: none;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6), 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .sticky-nav select:active {
+            transform: scale(0.98);
+        }
+
+        /* Sections within modules */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--hot-pink);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed var(--pink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '♡';
+            color: var(--gold);
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+        }
+
+        li::before {
+            content: '✿';
+            position: absolute;
+            left: 0;
+            color: var(--hot-pink);
+            font-size: 0.9rem;
+        }
+
+        /* Subsection lists */
+        .subsection {
+            background: var(--lavender-blush);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid var(--hot-pink);
+        }
+
+        .subsection-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        /* Checklist style */
+        .checklist li::before {
+            content: '☐';
+            font-size: 1rem;
+        }
+
+        /* Tip boxes */
+        .tip-box {
+            background: linear-gradient(135deg, var(--misty-rose) 0%, var(--lavender-blush) 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--pink);
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '✨ Pro Tip';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--hot-pink);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .tip-box p {
+            margin-top: 5px;
+        }
+
+        /* Warning boxes */
+        .warning-box {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFEEDD 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠️ Important';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--text-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Diagram images */
+        .diagram-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+            border: 2px solid var(--light-pink);
+        }
+
+        /* Wise insight paragraphs */
+        .wise-insight {
+            font-style: italic;
+            color: var(--text-dark);
+            border-left: 3px solid var(--hot-pink);
+            padding-left: 16px;
+            margin: 20px 0;
+        }
+
+        .wise-insight strong {
+            color: var(--hot-pink);
+            font-style: normal;
+        }
+
+
+        /* Timeline style for week-by-week */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--hot-pink), var(--pink), var(--light-pink));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--lavender-blush);
+            border-radius: 16px;
+            border: 1px solid var(--pink);
+        }
+
+        .timeline-item::before {
+            content: '♡';
+            position: absolute;
+            left: -30px;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hot-pink);
+            font-size: 0.8rem;
+            border: 2px solid var(--hot-pink);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--hot-pink);
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .module-title {
+                font-size: 1rem;
+            }
+
+            .bow::before,
+            .bow::after {
+                width: 30px;
+                height: 22px;
+            }
+
+            .bow::before {
+                left: -35px;
+            }
+
+            .bow::after {
+                right: -35px;
+            }
+
+            .welcome-card {
+                margin: -40px 10px 20px;
+                padding: 20px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Accordion animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .module.open .section {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* Print styles */
+        @media print {
+            .sticky-nav {
+                display: none;
+            }
+
+            .module {
+                break-inside: avoid;
+            }
+
+            body {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="bow">
+            <span class="bow-center"></span>
+        </div>
+        <h1>Second-Time Parents Curriculum</h1>
+        <p class="subtitle">For Rebecca 💕 Baby #2 arriving March 2026</p>
+    </header>
+
+    <div class="welcome-card">
+        <p>Welcome back to the newborn world. You've done this before, which means you know just enough to be dangerous — and just enough to have forgotten the details.</p>
+        <p>This curriculum is your refresher. Not generic fluff, but the specific things that matter when you're juggling a 3.5-year-old named Ethan while recovering from birth and keeping a tiny human alive.</p>
+        <p>Click any module to expand. The floating hearts at the bottom jump to each section. You've got this. 🌸</p>
+    </div>
+
+    <div class="progress-container">
+        <span class="progress-heart" data-module="1">♡</span>
+        <span class="progress-heart" data-module="2">♡</span>
+        <span class="progress-heart" data-module="3">♡</span>
+        <span class="progress-heart" data-module="4">♡</span>
+        <span class="progress-heart" data-module="5">♡</span>
+        <span class="progress-heart" data-module="6">♡</span>
+        <span class="progress-heart" data-module="7">♡</span>
+        <span class="progress-heart" data-module="8">♡</span>
+    </div>
+
+    <div class="container">
+        <!-- Module 1 -->
+        <div class="module" id="module-1">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">🎀</span>
+                    Module 1: Preparing for Arrival
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Hospital Bag (Streamlined)</h3>
+                    <p>You don't need half of what the internet tells you. Here's what actually matters:</p>
+
+                    <div class="subsection">
+                        <div class="subsection-title">For Labor & Delivery</div>
+                        <ul class="checklist">
+                            <li>Health card and hospital pre-registration paperwork</li>
+                            <li>Phone charger with a LONG cord (minimum 6 feet)</li>
+                            <li>Hair ties and lip balm (hospitals are dry)</li>
+                            <li>Your own pillow in a non-white pillowcase</li>
+                            <li>Slippers with grip for walking the halls</li>
+                            <li>Snacks for Andrew (labor can take forever)</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">For Recovery</div>
+                        <ul class="checklist">
+                            <li>Going-home outfit: loose dress or oversized everything (you'll still look 6 months pregnant)</li>
+                            <li>Nursing bra or soft bralette (no underwire)</li>
+                            <li>Your own mesh underwear if the hospital's are trash</li>
+                            <li>Nipple cream (Lanolin or similar)</li>
+                            <li>Phone/tablet loaded with shows</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">For Baby</div>
+                        <ul class="checklist">
+                            <li>Car seat installed and inspected BEFORE labor starts</li>
+                            <li>1 going-home outfit (zip-up sleeper easiest)</li>
+                            <li>1 blanket for the car seat</li>
+                            <li>That's it. Hospital provides everything else.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-box">
+                        <p>Pack the bag at 36 weeks. Not "soon" — literally week 36. Put it by the door with the car seat.</p>
+                    </div>
+
+                    <p class="wise-insight">Here's what matters: <strong>Preparing vs. Perfecting</strong>. Preparing means having the essentials ready and a loose plan. Perfecting means researching the "best" option for 3 hours when any option works. One gives you confidence. The other steals your energy before baby even arrives.</p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Home Setup with a Toddler Around</h3>
+                    <ul>
+                        <li>Baby sleeping spot in YOUR room (bassinet, pack n play) — not Ethan's room</li>
+                        <li>Diaper changing station on each floor to minimize trips</li>
+                        <li>Nursing station: water bottle, snacks, phone charger, burp cloths, remote</li>
+                        <li>Baby-proof anything Ethan could knock over onto baby</li>
+                        <li>Create a "big kid zone" with special toys only Ethan can access</li>
+                    </ul>
+
+                    <img src="curriculum-diagrams/module1-hospital-bag.png" alt="Hospital Bag Checklist" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Preparing Ethan (3.5 years old)</h3>
+                    <p>At 3.5, Ethan understands more than he can process emotionally. The goal isn't to make him "ready" — it's to make change feel less sudden.</p>
+
+                    <ul>
+                        <li><strong>Language to use:</strong> "Our baby" not "your baby" — he's not responsible for this kid</li>
+                        <li><strong>Timeline:</strong> Don't count down weeks. Use concrete markers: "After your birthday" or "When the snow melts"</li>
+                        <li><strong>Books:</strong> Read sibling books casually, not as a curriculum</li>
+                        <li><strong>Hospital visit:</strong> Keep it SHORT. 20 minutes max. Bring a gift "from the baby" to Ethan</li>
+                        <li><strong>Don't oversell:</strong> The baby won't play with him for months. Set that expectation.</li>
+                    </ul>
+
+                    <img src="curriculum-diagrams/module1-preparing-toddler.png" alt="Preparing Ethan Timeline" class="diagram-image">
+
+                    <div class="tip-box">
+                        <p>When you come home, have Andrew carry the baby in. You greet Ethan with empty arms and full attention first.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Freezer Meals & Support System</h3>
+                    <ul>
+                        <li>Aim for 10-15 freezer meals by week 36</li>
+                        <li>Best options: soups, stews, casseroles, marinated proteins, breakfast burritos</li>
+                        <li>Label EVERYTHING with name and date</li>
+                        <li>Stock up on easy breakfast/lunch items: bagels, frozen waffles, deli meat, cheese sticks</li>
+                    </ul>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Support System Activation</div>
+                        <ul>
+                            <li>Create a meal train signup (use MealTrain.com or TakeThemAMeal.com)</li>
+                            <li>Assign specific people to specific tasks: "Mom handles Ethan pickup MWF"</li>
+                            <li>Write down who has spare keys</li>
+                            <li>Prep a list of Ethan's routine for caregivers (wake time, nap, foods, bedtime rituals)</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module1-hospital-bag.png" alt="Hospital Bag Checklist" class="diagram-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 2 -->
+        <div class="module" id="module-2">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">💕</span>
+                    Module 2: Labor & Delivery Refresher
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Signs of Labor (The Details You Forget)</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Early Labor Signs (Could Be Days Away)</div>
+                        <ul>
+                            <li><strong>Bloody show:</strong> Pink/brown mucus discharge. Means cervix is changing. Not urgent.</li>
+                            <li><strong>Loose stools:</strong> Body clearing out. Very common 24-48 hours before.</li>
+                            <li><strong>Nesting urge:</strong> Sudden energy to organize everything at 2am.</li>
+                            <li><strong>Irregular contractions:</strong> Tightening that comes and goes without pattern.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Active Labor Signs (Time to Pay Attention)</div>
+                        <ul>
+                            <li><strong>Regular contractions:</strong> Coming at consistent intervals, getting closer</li>
+                            <li><strong>Contractions intensifying:</strong> Can't talk through them anymore</li>
+                            <li><strong>Water breaking:</strong> Gush or slow trickle. Note the TIME and COLOR.</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module2-labor-signs.png" alt="Labor Signs Decision Tree" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">When to Go to Hospital</h3>
+                    <p>Second babies often come faster. Don't wait as long as you did with Ethan.</p>
+
+                    <div class="warning-box">
+                        <p><strong>Call or go immediately if:</strong> Water breaks and fluid is green/brown, heavy bleeding (soaking a pad in an hour), baby isn't moving, severe headache with vision changes, contractions 3-4 minutes apart for an hour.</p>
+                    </div>
+
+                    <ul>
+                        <li><strong>5-1-1 Rule for first-timers.</strong> For you: consider going at 6-1-1 or when contractions are 5 min apart and intense.</li>
+                        <li>If your water breaks, go in even without contractions — they'll want to assess.</li>
+                        <li>Trust your gut. If something feels wrong, go. You're not being dramatic.</li>
+                    </ul>
+
+                    <p class="wise-insight">Here's the reframe: <strong>Birth Plan vs. Birth Preferences</strong>. A birth plan implies control over something you can't control. Birth preferences acknowledge what you'd like while staying open to what happens. One sets you up for disappointment. The other sets you up for presence.</p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Pain Management Options</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Non-Medicated</div>
+                        <ul>
+                            <li>Movement: walking, swaying, hands and knees</li>
+                            <li>Hydrotherapy: shower on lower back, tub if available</li>
+                            <li>Breathing techniques: slow exhales, low moaning</li>
+                            <li>Counterpressure: Andrew pressing hard on lower back/hips</li>
+                            <li>Birth ball: sitting, bouncing, rocking</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Medicated</div>
+                        <ul>
+                            <li><strong>Nitrous oxide (gas):</strong> Takes edge off, you stay mobile, wears off in minutes</li>
+                            <li><strong>IV pain meds:</strong> Takes edge off, makes you drowsy, can't have close to delivery</li>
+                            <li><strong>Epidural:</strong> Numbs from waist down. You stay in bed. Most effective pain relief. Takes 20-30 min to place.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-box">
+                        <p>If you want an epidural, ask early. Anesthesiologists get busy, and once you're at 8cm it might be too late.</p>
+                    </div>
+
+                    <img src="curriculum-diagrams/module2-pain-management.png" alt="Pain Management Options" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">C-Section Possibility</h3>
+                    <p>Even with a vaginal delivery last time, C-sections happen. Here's what to know:</p>
+                    <ul>
+                        <li>You'll be awake. Andrew can usually be in the room.</li>
+                        <li>You might feel pressure and tugging, not pain.</li>
+                        <li>Baby is out in about 10 minutes. Stitching takes 30-45 min.</li>
+                        <li>Recovery is longer: 6-8 weeks vs 4-6 weeks vaginal.</li>
+                        <li>You'll need more help at home. No lifting anything heavier than baby for weeks.</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Recovery Room Expectations</h3>
+                    <ul>
+                        <li>First hour: skin-to-skin, first breastfeed attempt, delivery of placenta, any stitching</li>
+                        <li>You'll be checked frequently: bleeding, uterus firmness, vitals</li>
+                        <li>First bathroom trip: nurse comes with you. You will bleed. A lot. It's normal.</li>
+                        <li>Nurses will push on your uterus. It's awful. It's necessary.</li>
+                        <li>Ask for stool softeners immediately. Do not wait for the first poop.</li>
+                        <li>Sleep when baby sleeps — ignore this advice at your peril</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 3 -->
+        <div class="module" id="module-3">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">🌸</span>
+                    Module 3: Postpartum Recovery
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Physical Recovery Timeline</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Vaginal Delivery</div>
+                        <ul>
+                            <li><strong>Days 1-3:</strong> Heaviest bleeding, most soreness, uterus contracting</li>
+                            <li><strong>Week 1:</strong> Bleeding slows, stitches (if any) healing, sitting still hurts</li>
+                            <li><strong>Weeks 2-3:</strong> Bleeding becomes more like a period, energy slightly better</li>
+                            <li><strong>Weeks 4-6:</strong> Most physical healing complete, cleared for exercise and sex at 6-week check</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">C-Section</div>
+                        <ul>
+                            <li><strong>Days 1-3:</strong> Can't get out of bed easily, catheter, strong pain meds</li>
+                            <li><strong>Week 1:</strong> Walking slowly, incision care, no stairs if possible</li>
+                            <li><strong>Weeks 2-4:</strong> Incision healing, still can't lift anything heavy</li>
+                            <li><strong>Weeks 6-8:</strong> Full healing, cleared for normal activity</li>
+                        </ul>
+                    </div>
+
+                    <p class="wise-insight">Remember: <strong>Healing vs. Bouncing Back</strong>. "Bouncing back" implies your pre-baby body was better and you need to return to it. Healing honors that you created life and your body needs time, grace, and nourishment. One creates pressure. The other creates space.</p>
+
+                    <img src="curriculum-diagrams/module2-recovery-timeline.png" alt="Recovery Timeline" class="diagram-image">
+                    <img src="curriculum-diagrams/module3-warning-signs.png" alt="Warning Signs" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Bleeding, Stitches, Pelvic Floor</h3>
+
+                    <ul>
+                        <li><strong>Bleeding (lochia):</strong> Heavy and red → pink/brown → yellowish. Takes 4-6 weeks total.</li>
+                        <li><strong>Clots:</strong> Normal up to golf ball size. Bigger than that = call your provider.</li>
+                        <li><strong>Stitches:</strong> Keep clean, pat dry, peri bottle after bathroom. Usually dissolve in 1-2 weeks.</li>
+                        <li><strong>Hemorrhoids:</strong> Very common. Tucks pads, sitz baths, stool softeners.</li>
+                        <li><strong>Pelvic floor:</strong> Start gentle Kegels when you can. See a pelvic floor physio if anything feels "off" at 6 weeks.</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <p>The peri bottle is your best friend. Fill with warm water, spray while peeing to dilute the sting, pat dry gently. Hospital provides one — take it home.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Hormonal Shifts and Mood</h3>
+                    <ul>
+                        <li><strong>Day 3-5:</strong> "Baby blues" peak. Crying at everything. Normal.</li>
+                        <li><strong>Night sweats:</strong> Your body dumping pregnancy fluids. Sleep on a towel.</li>
+                        <li><strong>Hair loss:</strong> Starts around 3-4 months. It grows back.</li>
+                        <li><strong>Mood swings:</strong> Expect them. Sleep deprivation makes everything worse.</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <p><strong>Postpartum depression/anxiety is NOT just "baby blues."</strong> If crying doesn't stop after 2 weeks, if you feel detached from baby, if you have scary thoughts about harming yourself or baby, if anxiety is constant — tell someone immediately. Your OB, midwife, or go to emerg.</p>
+                    </div>
+
+                    <img src="curriculum-diagrams/module3-mood-changes.png" alt="Baby Blues vs PPD" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Warning Signs Needing Medical Attention</h3>
+                    <p>Go to ER or call your provider immediately for:</p>
+                    <ul>
+                        <li>Fever over 38°C / 100.4°F</li>
+                        <li>Heavy bleeding (soaking a pad in an hour, or large clots)</li>
+                        <li>Foul-smelling discharge</li>
+                        <li>Severe headache or vision changes</li>
+                        <li>Chest pain or difficulty breathing</li>
+                        <li>Pain/redness/swelling in legs (blood clot sign)</li>
+                        <li>Incision opening, oozing, or red and hot</li>
+                        <li>Thoughts of harming yourself or baby</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Sleep Deprivation Management</h3>
+                    <ul>
+                        <li>You cannot bank sleep. But you can minimize debt.</li>
+                        <li>Take shifts: Andrew handles 10pm-2am, you handle 2am-6am (or whatever works)</li>
+                        <li>Sleep when baby sleeps — at least once a day, non-negotiable</li>
+                        <li>Keep bedroom dark and phone away during sleep opportunities</li>
+                        <li>Accept help. If someone offers to hold baby so you can nap, SAY YES.</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <p>A 20-minute nap actually helps. You don't need a full sleep cycle to feel human again.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Nutrition for Recovery and Milk Supply</h3>
+                    <ul>
+                        <li><strong>Hydration:</strong> Keep a water bottle with you at all times. Drink every time you nurse.</li>
+                        <li><strong>Protein:</strong> Eggs, cheese, nuts, meat — helps tissue healing</li>
+                        <li><strong>Iron:</strong> You lost blood. Eat red meat, spinach, fortified cereals. Take your prenatal still.</li>
+                        <li><strong>Easy calories:</strong> You need 300-500 extra calories while breastfeeding. This is not the time to diet.</li>
+                        <li><strong>Fiber:</strong> That first postpartum poop is... an event. Fiber + stool softener + water = your friends.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 4 -->
+        <div class="module" id="module-4">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">✨</span>
+                    Module 4: Newborn Care Basics
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Feeding: Breast, Bottle, Combo</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Breastfeeding Basics</div>
+                        <ul>
+                            <li><strong>Latch:</strong> Wide open mouth, lips flanged out, chin touching breast, nose free</li>
+                            <li><strong>Positions:</strong> Cradle, cross-cradle, football, side-lying (best for night feeds)</li>
+                            <li><strong>Frequency:</strong> 8-12 times per day in the first weeks. Yes, really.</li>
+                            <li><strong>Duration:</strong> Let baby finish one breast before offering the other. 10-20 min per side typical.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Signs of Good Feeding</div>
+                        <ul>
+                            <li>Audible swallowing</li>
+                            <li>Baby relaxed after feeding</li>
+                            <li>6+ wet diapers per day by day 5</li>
+                            <li>Weight gain by 2-week check</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module4-feeding-positions.png" alt="Breastfeeding Positions" class="diagram-image">
+
+                    <div class="tip-box">
+                        <p>Pain beyond initial latch = something's wrong. Don't suffer. Ask for a lactation consultant at the hospital before discharge.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Sleep: Safe Sleep & Wake Windows</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Safe Sleep (ABCs)</div>
+                        <ul>
+                            <li><strong>Alone:</strong> No blankets, pillows, stuffed animals, bumpers</li>
+                            <li><strong>Back:</strong> Always on their back until they can roll both ways</li>
+                            <li><strong>Crib:</strong> Firm flat surface. Bassinet or crib, not swing or car seat for long sleeps.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Wake Windows (Newborn)</div>
+                        <ul>
+                            <li><strong>0-4 weeks:</strong> 45-60 minutes awake max</li>
+                            <li><strong>4-8 weeks:</strong> 60-90 minutes awake max</li>
+                            <li><strong>Watch for sleepy cues:</strong> Looking away, yawning, red eyebrows, fussing</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module4-wake-windows.png" alt="Wake Windows by Age" class="diagram-image">
+
+                    <div class="subsection">
+                        <div class="subsection-title">Day/Night Confusion</div>
+                        <ul>
+                            <li>Keep days bright and active (even during naps)</li>
+                            <li>Keep nights dark and boring — dim lights, whisper, no play</li>
+                            <li>Get outside in natural light during the day</li>
+                            <li>This usually resolves by 6-8 weeks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Diapering, Bathing, Umbilical Cord</h3>
+                    <ul>
+                        <li><strong>Diapers:</strong> 8-12 per day is normal for newborns. Yes, it's a lot.</li>
+                        <li><strong>Umbilical cord:</strong> Keep dry, fold diaper below it, sponge baths until it falls off (1-3 weeks)</li>
+                        <li><strong>Baths:</strong> 2-3x per week is plenty. Don't overwash. Use gentle, fragrance-free products.</li>
+                        <li><strong>Circumcision care (if applicable):</strong> Vaseline on gauze at every diaper change until healed</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <p>Boys will pee on you. Cover that thing immediately when the diaper comes off. You will forget. You will get peed on anyway.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Crying and Soothing</h3>
+                    <p>Newborns cry 2-3 hours per day on average. Peak fussiness is around 6 weeks, then it gets better.</p>
+
+                    <p class="wise-insight">The key distinction: <strong>Responding vs. Reacting</strong>. Reacting is frantic energy — "Why won't they stop crying?!" Responding is calm presence — "You're telling me something. Let me figure it out." The baby feels both. One escalates. The other soothes.</p>
+
+                    <div class="subsection">
+                        <div class="subsection-title">The 5 S's (Harvey Karp)</div>
+                        <ul>
+                            <li><strong>Swaddle:</strong> Snug arms, loose hips</li>
+                            <li><strong>Side/Stomach:</strong> Hold baby on side or tummy (never for sleep)</li>
+                            <li><strong>Shush:</strong> Loud shushing near ear — as loud as their cry</li>
+                            <li><strong>Swing:</strong> Small, rapid jiggly movements (support head)</li>
+                            <li><strong>Suck:</strong> Pacifier, finger, breast</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module4-soothing-5s.png" alt="The 5 S's for Soothing" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">When to Call the Pediatrician</h3>
+                    <ul>
+                        <li>Fever (rectal temp 38°C / 100.4°F or higher in first 3 months — this is urgent)</li>
+                        <li>Not eating or refusing to wake for feeds</li>
+                        <li>Fewer than 6 wet diapers per day after day 5</li>
+                        <li>Jaundice getting worse (yellow spreading to arms/legs)</li>
+                        <li>Difficulty breathing: flaring nostrils, grunting, ribs showing</li>
+                        <li>Extreme lethargy or extremely inconsolable</li>
+                        <li>Anything that feels "off" — trust your gut</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <p>Under 3 months + fever = go to ER. Do not wait. Do not pass go. Call on the way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 5 -->
+        <div class="module" id="module-5">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">🍼</span>
+                    Module 5: Feeding Deep Dive
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Breastfeeding Troubleshooting</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Engorgement</div>
+                        <ul>
+                            <li>Happens around day 3-5 when milk "comes in"</li>
+                            <li>Breasts feel rock hard, hot, painful</li>
+                            <li><strong>Fix:</strong> Feed frequently, hand express a little before latching (softens areola), cold compresses between feeds</li>
+                            <li>Don't pump a lot — signals body to make MORE milk</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Low Supply Worries</div>
+                        <ul>
+                            <li>Most women make enough. "Not enough milk" is rarely the actual problem.</li>
+                            <li><strong>Signs supply IS fine:</strong> Baby gaining weight, enough wet diapers, content after feeds</li>
+                            <li><strong>To boost supply:</strong> Feed more often, add a pumping session, skin-to-skin</li>
+                            <li>Galactagogues (oatmeal, fenugreek, etc.) — evidence is weak but won't hurt</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Pain</div>
+                        <ul>
+                            <li>Brief pain at latch (10-30 seconds) can be normal early on</li>
+                            <li>Pain throughout feed = latch problem, tongue tie, or infection</li>
+                            <li><strong>Cracked/bleeding nipples:</strong> Fix latch, use nipple cream, air dry, consider nipple shields short-term</li>
+                            <li><strong>Mastitis:</strong> Flu-like symptoms + red, hot, painful area on breast = call provider ASAP. May need antibiotics.</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module5-supply-troubleshooting.png" alt="Supply Troubleshooting" class="diagram-image">
+
+                    <div class="tip-box">
+                        <p>If breastfeeding isn't working and it's destroying your mental health, formula is not failure. A fed baby and a functioning mother matter more than method.</p>
+                    </div>
+
+                    <p class="wise-insight">This matters: <strong>Fed vs. "Fed the Right Way"</strong>. "Fed the right way" is a judgment disguised as advice. Fed is the only thing that matters. Breast, bottle, combo — a nourished baby with a mentally healthy mom wins every time.</p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Pumping Basics</h3>
+                    <ul>
+                        <li>Wait until breastfeeding is established (2-4 weeks) before introducing pump unless medically needed</li>
+                        <li><strong>Flange fit matters:</strong> Nipple should move freely, not rub sides or pull in too much areola</li>
+                        <li>Pump both sides at once to save time</li>
+                        <li>Store milk in fridge (4 days) or freezer (6-12 months)</li>
+                        <li>Label everything with date</li>
+                    </ul>
+
+                    <img src="curriculum-diagrams/module5-pumping-basics.png" alt="Pumping Basics" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Formula as Backup or Primary</h3>
+                    <ul>
+                        <li><strong>Types:</strong> Cow's milk-based (most common), soy, hypoallergenic, specialized</li>
+                        <li>Generic/store brand is the same as name brand — regulated by FDA/Health Canada</li>
+                        <li><strong>Prep:</strong> Follow can instructions exactly. 1 scoop per 2oz water typically.</li>
+                        <li>Room temp, warm, or cold — baby's preference. Don't microwave.</li>
+                        <li>Prepared formula: use within 2 hours at room temp, 24 hours in fridge</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <p>Never water down formula to make it last longer. This is dangerous — babies need exact concentrations for proper nutrition.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Growth Spurts and Cluster Feeding</h3>
+                    <ul>
+                        <li><strong>Growth spurts:</strong> Around 7-10 days, 2-3 weeks, 6 weeks, 3 months</li>
+                        <li>Baby wants to eat constantly. Every hour. Feels like supply dropped.</li>
+                        <li><strong>It hasn't.</strong> Baby is increasing your supply for their growing needs.</li>
+                        <li>Lasts 2-3 days. Then things calm down.</li>
+                        <li><strong>Cluster feeding:</strong> Common in evenings. Baby feeds, fusses, feeds, fusses. Can last hours.</li>
+                        <li>This is normal. Exhausting but normal. It passes.</li>
+                    </ul>
+
+                    <img src="curriculum-diagrams/module5-growth-spurts.png" alt="Growth Spurt Timeline" class="diagram-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 6 -->
+        <div class="module" id="module-6">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">👶🧒</span>
+                    Module 6: Managing Two Kids
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Toddler Regression</h3>
+                    <p>Ethan's world just got rocked. Regression is how toddlers cope with big feelings they can't express. Expect it.</p>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Sleep Regression</div>
+                        <ul>
+                            <li>Night wakings, resisting bed, needing you to stay</li>
+                            <li><strong>Response:</strong> Keep routine consistent. Extra patience. It's temporary.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Potty Regression</div>
+                        <ul>
+                            <li>Accidents when previously trained. May ask for diapers again.</li>
+                            <li><strong>Response:</strong> Don't shame. Be matter-of-fact. Some parents put training on hold temporarily.</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Behavior Regression</div>
+                        <ul>
+                            <li>Acting like a baby: wanting to be carried, baby talk, wanting bottles</li>
+                            <li>Acting out: tantrums, hitting, defiance</li>
+                            <li><strong>Response:</strong> Name the feeling ("You're feeling mad/sad about the baby"). Give extra connection time.</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module6-sibling-adjustment.png" alt="Sibling Adjustment Journey" class="diagram-image">
+
+                    <div class="tip-box">
+                        <p>The behavior is not the problem — it's the symptom. When Ethan acts out, he's saying "I need reassurance that you still love me." Give him that reassurance.</p>
+                    </div>
+
+                    <p class="wise-insight">The distinction that saves your sanity: <strong>Fair vs. Equal</strong>. Equal means giving both kids the same thing. Fair means giving each kid what they need. A 3-year-old and a newborn don't need equal time — they need appropriate attention. That's fair.</p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Sibling Introduction and Bonding</h3>
+                    <ul>
+                        <li>First meeting: keep it brief, low-key. Not a big production.</li>
+                        <li>Let Ethan set the pace. Don't force him to hold baby or give kisses.</li>
+                        <li>Give him a job: get a diaper, sing to baby, show baby his toys</li>
+                        <li>Protect baby's space: teach "gentle hands" but don't leave them alone together</li>
+                        <li>Narrate positive moments: "Look, baby is watching you! She thinks you're so cool."</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Daily Logistics</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Bedtime with Two</div>
+                        <ul>
+                            <li>Option 1: Stagger — baby down first in bassinet, then full Ethan routine</li>
+                            <li>Option 2: One parent per kid — alternate nightly</li>
+                            <li>Option 3: Nurse baby while reading to Ethan</li>
+                            <li>Ethan's routine should stay as close to normal as possible</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Outings</div>
+                        <ul>
+                            <li>Double-check diaper bags have supplies for both kids</li>
+                            <li>Lower your expectations. Getting everyone dressed and out the door IS an accomplishment.</li>
+                            <li>Baby carrier + stroller for toddler is often easier than double stroller early on</li>
+                            <li>Give yourself 20 extra minutes for everything</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Solo Parenting Both</div>
+                        <ul>
+                            <li>This will happen. You will survive.</li>
+                            <li>Screen time for Ethan while you feed baby is fine. It's survival mode.</li>
+                            <li>Prep everything in advance: snacks out, activities ready, changing supplies accessible</li>
+                            <li>If both are crying, tend to the toddler first (if baby is safe) — baby won't remember, toddler will</li>
+                        </ul>
+                    </div>
+
+                    <img src="curriculum-diagrams/module6-two-kid-logistics.png" alt="Two-Kid Logistics" class="diagram-image">
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Protecting Ethan's Routine While Adapting</h3>
+                    <ul>
+                        <li>Keep his wake-up time, nap time, and bedtime the same as much as possible</li>
+                        <li>Protect one-on-one time with each parent daily, even 15 minutes</li>
+                        <li>Don't cancel his activities for baby stuff — he needs his normal life</li>
+                        <li>Let him have spaces/toys that are just his (not shared with baby)</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <p>"Special time" with Ethan: Set a timer for 15 minutes. He picks the activity. You do nothing but engage with him. No phone. No baby. This fills his cup more than hours of distracted presence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">♡ ♡ ♡</div>
+
+        <!-- Module 7 (formerly Module 8) -->
+        <div class="module" id="module-7">
+            <div class="module-header">
+                <span class="module-title">
+                    <span class="module-icon">🌟</span>
+                    Module 7: The First 3 Months
+                </span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="module-content">
+                <div class="section">
+                    <h3 class="section-title">Week-by-Week Realistic Expectations</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Week 1: Survival Mode</div>
+                            <p>Milk coming in. Hormones crashing. Everything hurts. Baby sleeps a lot but wakes constantly. Ethan is confused. You will cry. Andrew will feel helpless. This is the hardest week.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">Week 2: Still Foggy</div>
+                            <p>Feeding is getting slightly more routine. You leave the house for the first time (pediatrician visit). Night/day confusion peaks. Ethan's behavior might get worse before better.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">Weeks 3-4: Glimpses of Pattern</div>
+                            <p>Baby slightly more alert. First social smiles might appear. You know what different cries mean. Ethan starts accepting baby's presence (or not). First growth spurt chaos.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">Weeks 5-6: Peak Fussiness</div>
+                            <p>Crying peaks around 6 weeks. Cluster feeding intensifies. You're exhausted. But: 6-week checkup clears you physically. Tiny light at end of tunnel.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">Weeks 7-8: Turning Point</div>
+                            <p>Real smiles. More eye contact. Longer stretches of sleep emerging. Feeding becoming second nature. Family starting to feel like a unit of 4.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">Weeks 9-12: Fog Lifting</div>
+                            <p>Baby's personality emerging. Routines actually working. Ethan adjusting. You remember you're a person, not just a milk machine. First laughs. You've got this.</p>
+                        </div>
+                    </div>
+
+                    <img src="curriculum-diagrams/module8-first-12-weeks.png" alt="The First 12 Weeks Journey" class="diagram-image">
+
+                    <p class="wise-insight">The reframe that helps: <strong>Surviving vs. Enduring</strong>. Surviving implies barely making it, white-knuckling through. Enduring means accepting difficulty as temporary without losing yourself in it. The fourth trimester is hard. But you're not just surviving — you're adapting.</p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Milestones to Expect</h3>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Baby Milestones</div>
+                        <ul>
+                            <li><strong>2 weeks:</strong> Regained birth weight, umbilical cord fell off</li>
+                            <li><strong>4 weeks:</strong> Tracking faces, brief head lift during tummy time</li>
+                            <li><strong>6 weeks:</strong> First real social smile</li>
+                            <li><strong>8 weeks:</strong> Cooing sounds, better head control</li>
+                            <li><strong>12 weeks:</strong> Laughing, grabbing at objects, longer sleep stretches</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="subsection-title">Family Adjustment Milestones</div>
+                        <ul>
+                            <li><strong>2 weeks:</strong> Found at least one feeding position that works</li>
+                            <li><strong>4 weeks:</strong> Left the house without catastrophe at least once</li>
+                            <li><strong>6 weeks:</strong> Had a "good day" (whatever that means to you)</li>
+                            <li><strong>8 weeks:</strong> Can predict baby's patterns somewhat</li>
+                            <li><strong>12 weeks:</strong> Can imagine doing something other than surviving</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">When the Fog Lifts — Recalibrating</h3>
+                    <p>Around 12 weeks, something shifts. The survival fog lifts. You start thinking beyond the next feeding cycle.</p>
+
+                    <ul>
+                        <li><strong>Check in with yourself:</strong> How are you really doing? Not coping-doing, but actually doing?</li>
+                        <li><strong>Check in with Andrew:</strong> How is he really doing? Partners often fall apart after the adrenaline wears off.</li>
+                        <li><strong>Check in on Ethan:</strong> Has his behavior stabilized? Does he need extra support?</li>
+                        <li><strong>Think about return to work:</strong> If applicable, what's the plan? Who needs to know what?</li>
+                        <li><strong>Consider: what do you need?</strong> Sleep? Adult conversation? Exercise? Make it happen.</li>
+                    </ul>
+
+                    <img src="curriculum-diagrams/module8-new-normal.png" alt="Recalibrating to New Normal" class="diagram-image">
+
+                    <div class="tip-box">
+                        <p>The first three months are called the "fourth trimester" for a reason. Baby is still becoming human. You're still becoming a family of four. It's supposed to be hard. And then it gets easier. It really does.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heart-divider">🎀 ♡ 🎀</div>
+
+        <div class="welcome-card">
+            <p style="text-align: center; font-size: 1.1rem;">You did this once. You can do it again.</p>
+            <p style="text-align: center; color: var(--hot-pink); font-weight: 600;">And this time, you know the punchline. 💕</p>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky-nav">
+        <select id="module-nav" onchange="navigateToModule(this.value)">
+            <option value="">Jump to Module...</option>
+            <option value="module-1">Module 1: Before Baby Arrives</option>
+            <option value="module-2">Module 2: Labor & Delivery</option>
+            <option value="module-3">Module 3: Postpartum Recovery</option>
+            <option value="module-4">Module 4: Newborn Care Basics</option>
+            <option value="module-5">Module 5: Feeding Your Baby</option>
+            <option value="module-6">Module 6: Managing Two Kids</option>
+            <option value="module-7">Module 7: First 12 Weeks</option>
+        </select>
+    </nav>
+
+    <script>
+        function navigateToModule(moduleId) {
+            if (moduleId) {
+                const element = document.getElementById(moduleId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Reset dropdown to placeholder
+                document.getElementById('module-nav').selectedIndex = 0;
+            }
+        }
+
+        // Update active state on scroll
+        const moduleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Update select to show current module
+                    const moduleId = entry.target.id;
+                    const select = document.getElementById('module-nav');
+                    const option = select.querySelector(`option[value="${moduleId}"]`);
+                    if (option) {
+                        select.value = moduleId;
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.module').forEach(module => {
+            moduleObserver.observe(module);
+        });
+    </script>
+</body>
+</html>
