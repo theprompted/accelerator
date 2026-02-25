@@ -115,15 +115,15 @@ PROMPTS = [
     },
     {
         "id": "draft_14",
-        "name": "The Two Timers",
+        "name": "The Essential Oil Diffuser Collection",
         "opener": "Deep breathing buys you 20 minutes. Meditation buys you maybe an hour. Neither buys you tomorrow.",
-        "prompt": "Raw iPhone photo of bathroom counter with two objects side by side: a meditation timer app on phone showing 20:00 completed, and a regular alarm clock showing 3:47 AM. Both objects clearly visible, stark comparison. Harsh overhead bathroom light creating ugly shadows. Prescription bottle blurry in background. Wadded tissue nearby. Counter has water spots and toothpaste smear. Phone screen has fingerprint visible. Shot straight down from above. This is \"20 minutes bought, 3:47am still happened\" energy."
+        "prompt": "Raw iPhone photo of bedroom dresser with 2-3 essential oil diffusers clustered together, one running with visible mist coming out. Multiple small essential oil bottles scattered around — lavender, eucalyptus, peppermint, some with caps off. The quantity tells the story: tried one diffuser, didn't work, bought another. Dresser surface dusty, jewelry tangled nearby, harsh lamp light from side. One diffuser clearly older/used, one looks newer. Shot from standing height, slightly messy angle. This is \"bought another one hoping this one would work\" energy."
     },
     {
         "id": "draft_15",
-        "name": "The Habit Tracker Grid",
+        "name": "The Weighted Blanket on the Couch",
         "opener": "You did the deep breathing. You did the journaling. You did the cold showers. The anxiety is still there every Monday morning.",
-        "prompt": "Raw iPhone photo of a physical habit tracker page taped to bathroom wall with masking tape, showing a full month grid with checkmarks for \"breathwork\", \"journal\", \"meditate\" — every single box checked. Paper is slightly crooked, tape peeling at one corner. Mirror edge visible showing tired reflection (blurry, not the focus). Toiletries crowded on shelf below — face wash, lotion, q-tips container. Harsh overhead bathroom light. Paper has a coffee ring stain in corner. This is \"I checked every box and nothing changed\" energy."
+        "prompt": "Raw iPhone photo of a weighted blanket on a couch with a visible body indent/depression where someone was lying. Afternoon light coming through window — this is DAYTIME, not bedtime. TV remote on couch cushion, half-empty water glass on side table, phone face-down nearby. The weighted blanket during the day signals anxiety so constant it follows you out of bed. Blanket is rumpled, clearly just used. Living room slightly messy — shoes on floor, magazine on table. Shot from standing in doorway. This is \"needed the blanket at 2pm\" energy."
     },
     {
         "id": "draft_16",
