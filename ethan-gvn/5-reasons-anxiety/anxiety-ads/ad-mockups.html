@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anxiety Ad Drafts - Facebook Feed Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F8F8F7;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .feed-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .grid-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-row {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            background: #449344;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+        }
+
+        .page-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .page-header p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .draft-label {
+            background: #dc2626;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .draft-label .angle {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .fb-post {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-header {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #449344 0%, #2d6b2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .page-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: #050505;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .verified {
+            width: 12px;
+            height: 12px;
+            background: #1877f2;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+        }
+
+        .sponsored {
+            font-size: 11px;
+            color: #65676b;
+        }
+
+        .more-btn {
+            color: #65676b;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .post-text {
+            padding: 0 12px 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #050505;
+            white-space: pre-line;
+        }
+
+        .post-text.collapsed {
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-text.collapsed::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, white);
+        }
+
+        .post-text.expanded {
+            max-height: none;
+        }
+
+        .post-text.expanded::after {
+            display: none;
+        }
+
+        .see-more-btn {
+            padding: 0 12px 10px;
+            color: #65676b;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .see-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+            background: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .placeholder-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #65676b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .placeholder-image .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .placeholder-image .concept {
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 8px;
+            color: #449344;
+            font-weight: 500;
+        }
+
+        .link-preview {
+            background: #f0f2f5;
+            padding: 10px 12px;
+            border-top: 1px solid #dddfe2;
+        }
+
+        .link-preview .domain {
+            font-size: 11px;
+            color: #65676b;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .link-preview .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #050505;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .link-preview .description {
+            font-size: 12px;
+            color: #65676b;
+            line-height: 1.3;
+        }
+
+        .cta-row {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #dddfe2;
+            margin-top: auto;
+        }
+
+        .cta-button {
+            background: #1877f2;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .reactions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #65676b;
+        }
+
+        .section-header {
+            background: #000;
+            padding: 12px 20px;
+            margin: 0 0 20px;
+            border-radius: 4px;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: #5cb85c;
+            border: 2px solid #000;
+            box-shadow: -.25rem .25rem 0 0 #383838;
+        }
+
+        /* Prompt Overlay */
+        .prompt-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .prompt-icon:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .prompt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            z-index: 5;
+        }
+
+        .prompt-overlay.open {
+            display: flex;
+        }
+
+        .prompt-overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .prompt-overlay-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: #5cb85c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prompt-overlay-close {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: 1px solid #666;
+            border-radius: 4px;
+            color: #999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .prompt-overlay-close:hover {
+            border-color: #5cb85c;
+            color: #5cb85c;
+        }
+
+        .prompt-overlay-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .page-footer {
+            background: transparent;
+            border-top: 2px solid #e5e5e5;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .page-footer a {
+            color: #449344;
+            text-decoration: none;
+        }
+
+        .page-footer .powered-by {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .page-footer .powered-by strong {
+            color: #000;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-top: 1px solid #dddfe2;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #f0f2f5;
+            border-color: #c4c4c4;
+        }
+
+        .action-btn.copied {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .action-btn .icon {
+            font-size: 14px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Anxiety Ad Drafts — Batch 1</h1>
+            <p>10 belief-contradiction native image ads for Facebook | Leads to: "5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety"</p>
+        </div>
+
+        <!-- SECTION -->
+        <div class="section-header">
+            BELIEF VIOLATIONS — Attack What They Hold Dear About Calming Techniques
+        </div>
+
+        <!-- ROW 1: Drafts 1-3 -->
+        <div class="grid-row">
+            <!-- Draft 1: Flat Denial -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 1 · Flat Denial (#1)
+                    <span class="angle">R1: Deep breathing</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-1">Deep breathing doesn't fix anxiety.
+
+It manages it.
+
+There's a difference.
+
+You've done the exercises.
+
+Maybe for years.
+
+Every morning, you sit down.
+
+You inhale for four.
+
+Hold for seven.
+
+Exhale for eight.
+
+And it works.
+
+For a few hours.
+
+Then the meeting starts, or the email lands, or nothing even happens — and you're back where you started.
+
+That's not a flaw in your technique.
+
+That's the design.
+
+A 2023 Stanford study found that cyclic sighing — one of the most effective breathing techniques — only reduces anxiety while you're actively practicing.
+
+Miss a day, lose the effect.
+
+That's not building anything.
+
+That's renting a state of calm.
+
+Every morning, you pay rent again.
+
+The difference between managing and fixing is simple.
+
+Managing means the problem stays the same size.
+
+Fixing means it gets smaller over time.
+
+If deep breathing was fixing anything, you'd need less of it by now.
+
+Not more.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(1)">See more</div>
+                    <div class="post-image" id="image-1">
+                        <img src="generated_ad_images/draft_01.png" alt="The Unchanged Journal Entry — journal showing 'Did breathing exercise. Still anxious.'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">📓</div>
+                            <div>The Unchanged Journal Entry</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(1)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-1">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(1)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of an open journal on a nightstand, taken to send a frustrated friend. The visible page shows handwritten text "Did breathing exercise. Still anxious." with faded similar text barely visible from a previous page. Harsh single bedside lamp creating yellow-orange cast on left side, dark shadows on right. Phone charger cable dangling off nightstand edge. Water glass with visible lip marks and dust at base. Slight motion blur on the edge of the journal — shot one-handed while lying in bed. This is "3am can't sleep" energy, not journaling content.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Deep Breathing Doesn't Fix Anxiety</div>
+                        <div class="description">It's a manual override. There's a difference.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-1" onclick="copyText(1)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(1)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 2: Flip -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 2 · Flip (#5)
+                    <span class="angle">R5: Dependency</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-2">The more you practice calming techniques, the more dependent you become on them.
+
+That's not healing.
+
+That's a maintenance contract.
+
+At first, you didn't need the breathing exercise every day.
+
+Now you can't imagine skipping it.
+
+That sounds like progress.
+
+It's the opposite.
+
+Healing means needing less intervention over time.
+
+Your body learns to handle things on its own.
+
+The anxiety response gets smaller.
+
+The recovery happens automatically.
+
+That's not what's happening.
+
+The techniques are working exactly as designed.
+
+They activate a calming system.
+
+But that system was supposed to regulate anxiety on its own.
+
+When it's depleted, it can't.
+
+So you override it.
+
+Manually.
+
+Every day.
+
+And the pathways that were supposed to run automatically start to narrow.
+
+The brain learns that calm only comes from effort.
+
+That's not recovery.
+
+That's adaptation to a broken state.
+
+You're not getting better at managing anxiety.
+
+You're getting better at being dependent on the thing that manages it.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(2)">See more</div>
+                    <div class="post-image" id="image-2">
+                        <img src="generated_ad_images/draft_02.png" alt="The Alarm Progression — phone showing 6 wellness alarms" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">⏰</div>
+                            <div>The Alarm Progression</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(2)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-2">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(2)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of a phone screen showing the iPhone alarm list with 6 wellness alarms visible: "5:00am Breathwork", "7:00am Meditate", "12:00pm Journal break", "3:00pm Walk", "6:00pm Yoga", "9:00pm Gratitude". Phone lying on messy nightstand with crumpled tissue, lotion bottle on its side, tangled earbuds. Overhead bedroom light making everything flat and washed out. The phone screen is slightly tilted in frame — grabbed quickly to screenshot. Fingerprint smudge visible on phone screen. This is "ugh look at this" energy, not productivity content.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Calming Techniques Create Dependency</div>
+                        <div class="description">It's a maintenance contract you pay every day.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.2K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-2" onclick="copyText(2)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(2)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 3: Attack Advice -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 3 · Attack Advice (#9)
+                    <span class="angle">R2: Depleted</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-3">Everyone told you to regulate your nervous system.
+
+Nobody told you it was running on empty.
+
+Dysregulated.
+
+That's the word they all use.
+
+As if your nervous system just forgot how to behave.
+
+As if it needs training.
+
+More meditation.
+
+More cold showers.
+
+More discipline.
+
+But dysregulated implies the system works fine.
+
+It just needs better inputs.
+
+What if that's wrong.
+
+A 2016 landmark paper proposed something different.
+
+That chronic stress doesn't just disrupt the nervous system.
+
+It depletes it.
+
+There's a molecule called anandamide.
+
+It's your body's own calming chemical.
+
+Under chronic stress, an enzyme called FAAH breaks it down faster than you can make it.
+
+The tank runs dry.
+
+And no breathing exercise refills it.
+
+Think of it like a car with no brake fluid.
+
+Pressing the pedal harder doesn't help.
+
+The fluid is gone.
+
+You can regulate all you want.
+
+But you can't train your way out of a supply problem.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(3)">See more</div>
+                    <div class="post-image" id="image-3">
+                        <img src="generated_ad_images/draft_03.png" alt="The Supplement Cabinet — bathroom cabinet with nearly-full calming supplements" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">💊</div>
+                            <div>The Supplement Cabinet</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(3)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-3">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(3)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of bathroom medicine cabinet half-open, showing a row of supplement bottles: ashwagandha, magnesium calm, L-theanine, lavender capsules. All bottles are nearly full, only a few pills missing from each. Single harsh fluorescent bathroom light creating yellow-green cast on everything. Toothpaste tube squeezed in the middle visible on shelf. Hair tie draped over shelf edge. Cabinet mirror has water spots on the edge. Phone held at slight upward angle to catch the shelf contents. This is "look at my supplement graveyard" energy, documenting embarrassment.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Your Nervous System Is Running on Empty</div>
+                        <div class="description">No technique refills an empty tank.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.7K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-3" onclick="copyText(3)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(3)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: Drafts 4-6 -->
+        <div class="grid-row">
+            <!-- Draft 4: Attack Trade-Off -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 4 · Attack Trade-Off (#13)
+                    <span class="angle">R1: Deep breathing</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-4">You traded 10 minutes every morning for a few hours of relief.
+
+That's not a solution.
+
+That's a shift rate.
+
+You're working for your own calm.
+
+Clocking in.
+
+Every single day.
+
+And if you miss a shift, the anxiety is right there waiting.
+
+Unchanged.
+
+Unimproved.
+
+A meta-analysis across 12 clinical trials found the same pattern.
+
+Breathing techniques produce modest reductions in anxiety.
+
+Only while practicing.
+
+The effect doesn't build.
+
+It doesn't compound.
+
+It resets to zero the moment you stop.
+
+That means after five years of breathing exercises, you're in exactly the same position as day one.
+
+Still needing to do it.
+
+Still paying the same price.
+
+A real solution gets cheaper over time.
+
+The problem shrinks.
+
+The effort required drops.
+
+If your technique demands the same investment it did years ago, it's not solving anything.
+
+It's maintaining something.
+
+And you deserve better than a maintenance contract on your own mind.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(4)">See more</div>
+                    <div class="post-image" id="image-4">
+                        <img src="generated_ad_images/draft_04.png" alt="The Calendar Blocks — laptop showing repeating meditation events" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">📅</div>
+                            <div>The Calendar Blocks</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(4)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-4">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(4)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of laptop screen showing a Google Calendar weekly view, where the same event "Breathing / Meditation" appears as a repeating blue block at the same time every single day for the visible week. Laptop on messy desk with 2 coffee mugs (one empty, one half-full cold). Sticky notes scattered. Lamp creating glare on part of the screen. Shot from slight side angle — not straight on. Crumpled napkin visible at desk edge. This is "this is my life now" energy, resignation not productivity.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">10 Minutes of Breathing Buys 3 Hours of Calm</div>
+                        <div class="description">That's a shift rate. You're working for your own calm.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.6K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-4" onclick="copyText(4)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(4)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 5: Quit Proof -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 5 · Quit Proof (#17)
+                    <span class="angle">R3: Meditation apps</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-5">You've been meditating for years.
+
+If it was going to work, it would have worked by now.
+
+That sounds harsh.
+
+But you've already run the experiment.
+
+Thousands of sessions.
+
+Years of consistency.
+
+And you're still here.
+
+Still anxious.
+
+Still wondering if you're doing it wrong.
+
+A 2022 meta-analysis looked at the leading meditation apps.
+
+Calm.
+
+Headspace.
+
+The effect sizes were 0.23 to 0.32.
+
+That's real.
+
+But modest.
+
+And temporary.
+
+The improvements lasted only as long as people kept using the apps.
+
+That's not meditation building a stronger nervous system.
+
+That's meditation renting a calmer one.
+
+The apps assume your calming system is functional.
+
+That it just needs better inputs.
+
+More sessions.
+
+More practice.
+
+But what if the system isn't functional.
+
+What if it's depleted.
+
+No amount of meditation can refill an empty tank.
+
+You can sit for a thousand more hours.
+
+Or you can ask a different question.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(5)">See more</div>
+                    <div class="post-image" id="image-5">
+                        <img src="generated_ad_images/draft_05.png" alt="The 2019 Streak — meditation app showing 847 consecutive days" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🔥</div>
+                            <div>The 2019 Streak</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(5)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-5">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(5)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of another phone screen showing a meditation app profile page: "Member since 2019" and a streak number showing "847 consecutive days" with achievement badges. Phone being held in a woman's hand, thumb visible on the edge. Background is messy desk with coffee ring stains on papers, charger cable tangled. Warm lamp light on one side, cold laptop screen glow on the other — ugly mixed lighting. Screen has visible fingerprint smudge. This is "is this even working" energy, not achievement celebration.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Meditation Should Have Worked by Now</div>
+                        <div class="description">You already ran the experiment. The data is in.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 5.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-5" onclick="copyText(5)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(5)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 6: Real Variable -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 6 · Real Variable (#21)
+                    <span class="angle">R2: Depleted</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-6">It was never about how you breathe.
+
+It was about what's missing when you're not breathing.
+
+You've optimized the technique.
+
+Inhale for four.
+
+Hold for seven.
+
+Exhale for eight.
+
+Box breathing.
+
+Cyclic sighing.
+
+Physiological sighs.
+
+You've tried them all.
+
+And they all work.
+
+While you're doing them.
+
+The problem shows up after.
+
+When you stop breathing intentionally.
+
+When the technique ends and your body is supposed to take over.
+
+But it doesn't.
+
+Your body has a calming molecule called anandamide.
+
+Under normal conditions, it floats through your system.
+
+Keeping your emotional responses stable.
+
+Automatically.
+
+But chronic stress depletes it.
+
+An enzyme called FAAH breaks it down faster than you produce it.
+
+So when the breathing exercise ends, there's nothing left to carry the calm forward.
+
+You weren't breathing wrong.
+
+You were breathing into an empty system.
+
+The technique activated something that had nothing to give.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(6)">See more</div>
+                    <div class="post-image" id="image-6">
+                        <img src="generated_ad_images/draft_06.png" alt="The Complete Screen in Chaos — Session Complete on phone amid chaotic desk" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">✅</div>
+                            <div>The Complete Screen in Chaos</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(6)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-6">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(6)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of a phone screen showing a breathing app completion screen with a green checkmark and "Session Complete!" text. The phone is lying flat on a desk covered in visible chaos: 3 coffee cups in various states, crumpled paper, open laptop behind it showing email notification badges (47 unread), receipts, a pen with the cap off. Harsh overhead fluorescent creating flat unflattering light with visible shadows. Phone slightly askew in frame. This is "technically I did my breathwork" energy, documenting ironic futility.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Breathing Exercises Stop Working When You Stop</div>
+                        <div class="description">It was about what's missing when you stop.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.8K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-6" onclick="copyText(6)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(6)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3: Drafts 7-9 -->
+        <div class="grid-row">
+            <!-- Draft 7: Guilt -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 7 · Guilt (#25)
+                    <span class="angle">R1: Deep breathing</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-7">You weren't failing at calming techniques.
+
+You were using the right tool for the wrong problem.
+
+The breathing worked.
+
+The meditation worked.
+
+They activated exactly what they were designed to activate.
+
+Your parasympathetic nervous system came online.
+
+Your heart rate dropped.
+
+You felt calmer.
+
+That's not failure.
+
+That's the tool doing its job.
+
+The problem is what happened next.
+
+The calm didn't stick.
+
+Because the techniques are manual overrides.
+
+A 2023 Stanford study measured exactly this.
+
+Breathing techniques create real, measurable reductions in anxiety.
+
+But only during practice.
+
+And only while you keep practicing.
+
+The effect is dose-dependent.
+
+Not cumulative.
+
+You weren't inconsistent.
+
+You weren't undisciplined.
+
+You were using a tool designed for one thing to solve a completely different problem.
+
+The techniques calm you down.
+
+They were never meant to keep you calm.
+
+That's a different system entirely.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(7)">See more</div>
+                    <div class="post-image" id="image-7">
+                        <img src="generated_ad_images/draft_07.png" alt="The Right Tools, Wrong Room — meditation cushion next to work desk" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🧘</div>
+                            <div>The Right Tools, Wrong Room</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(7)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-7">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(7)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken from a doorway, showing a home office corner: meditation cushion on the floor with lit candle and incense holder, but directly next to a desk with an open laptop showing Teams or Slack notifications. The cushion is maybe 2 feet from the desk. Mixed lighting — warm candle glow clashing with cold laptop screen. Papers scattered on floor near cushion. Coffee cup on desk. The frame is slightly tilted, shot quickly from hallway. This is "where I try to meditate next to where I panic" energy.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Calming Techniques Work — They Just Don't Last</div>
+                        <div class="description">The effect is dose-dependent. Not cumulative.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.9K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-7" onclick="copyText(7)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(7)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 8: Protect -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 8 · Protect (#29)
+                    <span class="angle">R4: Automatic system</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-8">Your body has a calming system that was supposed to handle all of this automatically.
+
+It's been running on empty, doing the best it can with nothing left.
+
+Nobody talks about this system.
+
+It's called the endocannabinoid system.
+
+It regulates stress, mood, and emotional recovery.
+
+Think of it as a shock absorber for life.
+
+When something stressful happens, this system releases a molecule called anandamide.
+
+It calms the response.
+
+Automatically.
+
+Without you doing anything.
+
+Some people have a genetic variant that slows down anandamide breakdown.
+
+Studies show they report lower anxiety levels.
+
+Not because they're stronger.
+
+Because their tank stays full longer.
+
+There was a weight-loss drug that accidentally blocked this system.
+
+Within months, depression and anxiety rates spiked so severely that regulators pulled it from the market.
+
+That's how important this system is.
+
+When it's full, you recover automatically.
+
+When it's empty, you have to do everything manually.
+
+Every breathing exercise.
+
+Every meditation.
+
+Every desperate attempt to feel okay.
+
+Your body wasn't broken.
+
+It was depleted.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(8)">See more</div>
+                    <div class="post-image" id="image-8">
+                        <img src="generated_ad_images/draft_08.png" alt="The Low Fuel Navigation — car dashboard with low fuel warning and 3 stops remaining" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">⛽</div>
+                            <div>The Low Fuel Navigation</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(8)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-8">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(8)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of a car dashboard at night, showing the fuel gauge near empty with the low fuel warning light on, and the navigation screen showing a route with "3 stops remaining" or multiple destination pins. Steering wheel partially visible. Dashboard lights reflecting slightly on the windshield. The phone camera captured some motion blur from being in a moving car. Slight fingerprint smudge on nav screen visible. This is "running on fumes with 3 more things to do" energy, not aesthetic car content.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Your Calming System Isn't Broken</div>
+                        <div class="description">It's empty. It's been doing its best with nothing left.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.5K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-8" onclick="copyText(8)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(8)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 9: Identity -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 9 · Identity (#33)
+                    <span class="angle">R1: Deep breathing</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-9">You knew deep down the techniques weren't fixing anything.
+
+You just couldn't prove it.
+
+Every expert told you to keep going.
+
+Every app reminded you that consistency was the key.
+
+But something didn't add up.
+
+If breathing exercises build a calmer nervous system, why do you still need them just as much as day one.
+
+If meditation trains the brain to be less anxious, why hasn't the anxiety gotten smaller.
+
+Now there's proof.
+
+A 2023 Stanford study tested the most effective breathing techniques.
+
+The reductions in anxiety were real.
+
+But dose-dependent.
+
+Miss a day, the effect resets.
+
+A meta-analysis across 12 trials found the same thing.
+
+The benefits only last while you're practicing.
+
+No cumulative effect.
+
+No building.
+
+That's not a technique problem.
+
+That's a design limitation.
+
+Your instinct was right.
+
+The techniques manage anxiety.
+
+They were never going to fix it.
+
+You weren't crazy for noticing.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(9)">See more</div>
+                    <div class="post-image" id="image-9">
+                        <img src="generated_ad_images/draft_09.png" alt="The Private Doubt — Notes app showing 'Questions for therapist'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">📝</div>
+                            <div>The Private Doubt</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(9)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-9">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(9)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of a phone screen showing the Notes app with a note titled "Questions for therapist" — visible text includes "Why am I still anxious after 2 years of doing everything right?" and maybe another partially visible bullet point. Phone lying on rumpled white bed sheets. Soft morning window light from one side. The phone screen has a slight crack or scratch visible. Hair on the pillow edge visible at frame edge. This is "the note I've been too scared to bring up" energy, vulnerable screenshot.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Breathing and Meditation Aren't Fixing Your Anxiety</div>
+                        <div class="description">You were right. Now there's proof.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 5.3K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-9" onclick="copyText(9)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(9)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 4: Draft 10 -->
+        <div class="grid-row">
+            <!-- Draft 10: Science -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 10 · Science (#37)
+                    <span class="angle">R1: Deep breathing</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">G</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Green Valley Nutrition
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌐</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-10">A 2023 Stanford study found the calming effect of deep breathing only holds if you practice every single day.
+
+Miss a day, lose the momentum.
+
+That's maintenance, not repair.
+
+The study tested cyclic sighing against mindfulness meditation.
+
+Sighing won.
+
+It produced greater reductions in anxiety.
+
+But there was a catch.
+
+The effect was dose-dependent.
+
+It only lasted with continuous, daily practice.
+
+Skip one day and the nervous system returned to baseline.
+
+Not some of the way.
+
+All the way.
+
+That tells you something important.
+
+Deep breathing doesn't build capacity.
+
+It doesn't train the nervous system.
+
+It doesn't create lasting change.
+
+It overrides.
+
+Temporarily.
+
+Manually.
+
+Every single time.
+
+Repair means the system gets stronger.
+
+The problem shrinks.
+
+Eventually, you need less intervention.
+
+Maintenance means the problem stays the same size.
+
+You pay the same price forever.
+
+The study isn't saying breathing doesn't work.
+
+It's saying breathing is a lease, not a purchase.
+
+5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(10)">See more</div>
+                    <div class="post-image" id="image-10">
+                        <img src="generated_ad_images/draft_10.png" alt="The Broken Streak — meditation app showing Current Streak: 0 days, Previous: 47 days" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">💔</div>
+                            <div>The Broken Streak</div>
+                            <div class="concept">Run generate_anxiety_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(10)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-10">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">GPT-Image-1 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(10)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo of a phone screen showing a meditation app with "Current Streak: 0 days" prominently displayed, with smaller text showing "Previous streak: 47 days" visible below. Phone lying on messy bedside table — half-empty water glass, crumpled tissue, book with bent corner. Early morning light through window creating harsh shadows. The screen has a thumbprint visible at the bottom. This is "missed one day and it's all gone" energy, documenting loss.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">greenvalleynutrition.com</div>
+                        <div class="title">Miss One Day of Breathwork, Lose All Progress</div>
+                        <div class="description">That's not building anything. That's renting calm.</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="copy-btn-10" onclick="copyText(10)"><span class="icon">📋</span> Copy Text</button>
+                        <button class="action-btn" onclick="downloadImage(10)"><span class="icon">⬇️</span> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Footer -->
+        <div class="page-footer">
+            <p>Landing Page: <a href="https://theprompted.github.io/accelerator/ethan-gvn/5-reasons-anxiety/page-1/">5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety</a></p>
+            <p class="powered-by">Powered by <strong>PromptedOS</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleText(id) {
+            const text = document.getElementById('text-' + id);
+            const btn = text.nextElementSibling;
+            if (text.classList.contains('collapsed')) {
+                text.classList.remove('collapsed');
+                text.classList.add('expanded');
+                btn.textContent = 'See less';
+            } else {
+                text.classList.remove('expanded');
+                text.classList.add('collapsed');
+                btn.textContent = 'See more';
+            }
+        }
+
+        function togglePrompt(id) {
+            const overlay = document.getElementById('prompt-' + id);
+            overlay.classList.toggle('open');
+        }
+
+        function copyText(id) {
+            const textEl = document.getElementById('text-' + id);
+            const text = textEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-btn-' + id);
+                btn.classList.add('copied');
+                btn.innerHTML = '<span class="icon">✓</span> Copied!';
+                showToast('Ad copy copied to clipboard');
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<span class="icon">📋</span> Copy Text';
+                }, 2000);
+            });
+        }
+
+        function downloadImage(id) {
+            const paddedId = id.toString().padStart(2, '0');
+            const filename = 'anxiety-ad-draft-' + paddedId + '.png';
+            const imgPath = 'generated_ad_images/draft_' + paddedId + '.png';
+
+            // Use XMLHttpRequest for better browser compatibility
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', imgPath, true);
+            xhr.responseType = 'blob';
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    showToast('Downloaded ' + filename);
+                }
+            };
+
+            xhr.send();
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.className = 'toast';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

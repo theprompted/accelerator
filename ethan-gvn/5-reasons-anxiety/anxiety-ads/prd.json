@@ -1,0 +1,158 @@
+{
+  "projectName": "Native Image Ads — CBD Oil Drops (Anxiety)",
+  "description": "10 belief-violation native image ads driving to 5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety. Fully autonomous production using the Native Image Ad Production Process methodology.",
+  "adCount": 10,
+  "methodology": "/Users/andrew/Dropbox/july2025/methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+  "checklist": "/Users/andrew/Dropbox/july2025/methodologies/ad-creative/violation-opener-checklist.md",
+  "funnel": "/Users/andrew/Dropbox/july2025/5-reasons-anxiety-funnel/index.html",
+  "productResearch": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/ethan-gvn/5-reasons-anxiety/anxiety-ads/artifacts/context-brief.md",
+  "brandName": "Green Valley Nutrition",
+  "brandDomain": "greenvalleynutrition.com",
+  "brandColorHex": "#449344",
+  "funnelHeadline": "5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety",
+  "outputDir": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/ethan-gvn/5-reasons-anxiety/anxiety-ads",
+  "env": {
+    "OPENAI_API_KEY": "Required for US-005 image generation. Must be exported before launching Ralph. Find in methodologies/shirt-swap-openai.md or .claude/settings.local.json."
+  },
+  "expressionBank": {
+    "file": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/ethan-gvn/5-reasons-anxiety/anxiety-ads/expression-bank.md",
+    "description": "Master list of 40 opener expressions organized by 10 angles. Each expression attacks the ONE belief: 'If I just practice calming techniques consistently enough, my anxiety will finally go away.' All expressions are congruent with the funnel's depletion frame.",
+    "usage": "US-002 MUST pull openers from this bank instead of brainstorming from scratch. For 10 ads, select 1 expression per angle. Used expression numbers are tracked in batch-history.md."
+  },
+  "batchHistory": {
+    "file": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/ethan-gvn/5-reasons-anxiety/anxiety-ads/batch-history.md",
+    "description": "Tracks which expression numbers, evidence sections, and image concepts have been used across all batches. Updated after each batch completes (append in US-006).",
+    "usage": "US-001 loads this file first to understand what has already been produced. US-002 checks it to avoid reusing expressions. US-003 checks it to avoid reusing evidence section combinations. US-004 checks it to avoid reusing image concepts."
+  },
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Ingest funnel and write context brief",
+      "description": "Read the full funnel HTML and product research. Infer the argument structure. Write the context brief with all components. Run the funnel inference self-check.",
+      "acceptanceCriteria": [
+        "Load methodology file: methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+        "Load violation checklist: methodologies/ad-creative/violation-opener-checklist.md",
+        "Read the ENTIRE funnel HTML — not first 200 lines, the FULL document",
+        "Read all product research files",
+        "Write context brief to [outputDir]/artifacts/context-brief.md containing: exact headline (copied from H1, not paraphrased), core thesis, audience level, key claims with specific stats, broken system with quoted funnel language, product resolution, and 5-10 implied beliefs",
+        "Run funnel inference self-check: headline check (exact not paraphrased), thesis check (3+ supporting sections cited), broken system check (specific language quoted), belief structure check (each belief mapped to a funnel section that contradicts it), audience level check (evidence cited), resolution check (bridge section quoted)",
+        "Every belief in the list has a corresponding funnel section that argues against it — no guesses",
+        "Context brief is written to file, not just held in memory"
+      ],
+      "priority": 1,
+      "passes": true,
+      "note": "Context brief pre-created by /prep-native-ads on 2026-02-10. Includes full funnel analysis, 5 belief mappings to evidence sections (R1-R5), identity stance, visual world, and banned patterns."
+    },
+    {
+      "id": "US-002",
+      "title": "Select and evaluate 10 violation openers",
+      "description": "Select 10 expressions from the expression bank (1 per angle). Run mandatory self-check on each. Ensure all pass the violation tests.",
+      "acceptanceCriteria": [
+        "Read [outputDir]/artifacts/context-brief.md for beliefs and funnel context",
+        "Read [outputDir]/expression-bank.md for the master list of 40 pre-written expressions",
+        "Read [outputDir]/batch-history.md to see which expression numbers are already used",
+        "Select 10 expressions from the bank — 1 per angle across all 10 angles. Every angle must be represented exactly once.",
+        "Only select expression numbers that are NOT already used in batch-history.md",
+        "Each selected expression has a pre-assigned evidence pairing (R1-R5). Within the batch of 10, ensure at least 4 different evidence pairings are represented.",
+        "Run mandatory self-check on each selected expression in the exact specified format: OPENER, TARGET, READER REACTION, GOLD STANDARD (pass/fail), FUCK YOU TEST (pass/fail), TURN TEST (pass/fail with turn written out), FAIL PATTERN (if applicable), VERDICT",
+        "All 10 selected openers pass all 3 tests — if any fail, pick the next unused expression from the same angle",
+        "Zero selected openers are observations, category attacks, wise reflections, compliments in disguise, or what-critics-say patterns",
+        "All selected openers attack the reader's IDENTITY/BELIEFS (V2), not the product/industry (V1)",
+        "All 10 openers attack the ONE belief identified in the expression bank header — not different beliefs",
+        "Save full evaluations to [outputDir]/artifacts/opener-evaluations.md including selected expressions with complete self-check format, note expression numbers and their evidence pairings"
+      ],
+      "priority": 2,
+      "passes": true
+    },
+    {
+      "id": "US-003",
+      "title": "Write 10 ad copy drafts",
+      "description": "Write full body copy for all 10 ads following the 7-part architecture. Run mandatory body copy self-check on each.",
+      "acceptanceCriteria": [
+        "Read [outputDir]/artifacts/opener-evaluations.md for the final 10 openers",
+        "Read [outputDir]/artifacts/context-brief.md for funnel evidence and claims",
+        "Write 10 complete ad drafts following the 7-part architecture: Violation (1 line) → Acknowledge tension (1-2 lines) → Name what they believe (3-5 lines) → The Turn (1-2 lines) → Stack evidence (5-10 lines) → Land the reframe (2-3 lines) → Bridge to funnel (1-2 lines)",
+        "Each ad's body copy draws from the evidence section specified in its expression's evidence pairing (R1-R5). This is what prevents body copy duplication across ads.",
+        "ALL 10 ads end with the identical bridge line: 5 Reasons Why Calming Your Nervous System Won't Fix Your Anxiety: {url}",
+        "ZERO product names, brand names, product benefits, product claims, or selling language across ALL 10 ads",
+        "All evidence is CATEGORY level (mechanisms, stats, comparisons) — not product level. Two ads with the same evidence pairing must use DIFFERENT stats/mechanisms from that section — never identical proof.",
+        "Run mandatory body copy self-check on EACH draft in the exact specified format: product selling check, congruence check, 7-part structure check, copy rules check, open loop check, verdict",
+        "Every ad leaves UNRESOLVED TENSION — reader cannot close the loop without clicking",
+        "Copy rules: one sentence per line, line breaks between, 5th-6th grade reading level, max 15 words per sentence, no rhetorical questions, no emojis, no jargon, identity protection throughout",
+        "Each ad is 200-350 words. Process ads in sub-batches of 5 to maintain quality — do not draft all 10 in one pass.",
+        "Body copy for each ad could NOT exist with a different opener — it flows from THIS specific violation",
+        "Save all 10 drafts with self-check evaluations to [outputDir]/artifacts/ad-copy-drafts.md"
+      ],
+      "priority": 3,
+      "passes": true
+    },
+    {
+      "id": "US-004",
+      "title": "Design 10 image concepts and write prompts",
+      "description": "Design 10 image concepts with subtle contradictions. Run mandatory image concept self-check. Write generation prompts.",
+      "acceptanceCriteria": [
+        "Read [outputDir]/artifacts/ad-copy-drafts.md for the 10 openers and their emotional frames",
+        "Design 10 image concepts — each built around a SUBTLE CONTRADICTION from one of 4 categories: Object in Wrong Context, Quantity That Feels Wrong, Evidence of Failure, The 'Wait What?' Detail",
+        "Run mandatory image concept self-check on EACH concept in the exact specified format: concept name, description, subject type, contradiction (with category), Layer 1 (technical native), Layer 2 (context native — write the implied caption), Layer 3 (intent native — what do you feel?), opener match (emotional state not just topic), face test, stock check, verdict",
+        "ZERO concepts use people-as-subject performing emotions",
+        "All 10 concepts pass all 3 layers of the native test",
+        "All 10 images match the EMOTIONAL STATE of their paired opener, not just the topic",
+        "No concept would appear in a stock photo library",
+        "If faces present: removing the face does NOT remove the image's point",
+        "Check batch-history.md for previously used image concepts — no visual setup may repeat across batches",
+        "Each concept has a unique visual approach — no two look similar in a feed",
+        "At least 3 different contradiction categories represented across the 10",
+        "Write image generation prompts using the V3 raw iPhone UGC template with SPECIFIC ugly (not abstract descriptors)",
+        "Prompts use specific camera failures and specific environmental mess — no 'harsh lighting' or 'raw feel'",
+        "Save concepts, self-checks, and prompts to [outputDir]/artifacts/image-concepts.md"
+      ],
+      "priority": 4,
+      "passes": true
+    },
+    {
+      "id": "US-005",
+      "title": "Generate images, review, and build HTML mockup",
+      "description": "Generate 10 images with gpt-image-1. Run post-generation review. Build Facebook feed mockup HTML. Regenerate any failing images.",
+      "acceptanceCriteria": [
+        "Read [outputDir]/artifacts/image-concepts.md for prompts",
+        "Read [outputDir]/artifacts/ad-copy-drafts.md for copy",
+        "Create or update generate_anxiety_images.py using maggie-funnels/generate_maggie_images.py as template",
+        "Set model to gpt-image-1, quality to medium",
+        "Generate all 10 images in sub-batches of 5 (API rate limits)",
+        "Run mandatory post-generation image review on EACH image in the exact specified format: cleanliness check (5 AI failure modes — lighting, composition, surfaces, objects, color grading), contradiction visible check, phone photo test, scroll-stop test, verdict",
+        "All 10 images score 3+ out of 5 on cleanliness check",
+        "If any image fails: regenerate with specific ugly prompts, lower quality, or escalation path",
+        "Build ad-mockups.html using maggie-funnels/ad-mockups.html as template",
+        "Customize: brand color hex (#449344), avatar letter (G), brand name (Green Valley Nutrition), domain (greenvalleynutrition.com), funnel headline",
+        "Each ad card: draft label with angle name + expression number, post header, collapsible copy with 'See more', generated image with prompt overlay, link preview with funnel headline, CTA row",
+        "Save post-generation reviews to [outputDir]/artifacts/image-review.md",
+        "ad-mockups.html renders correctly with all 10 ad cards and images"
+      ],
+      "priority": 5,
+      "passes": true
+    },
+    {
+      "id": "US-006",
+      "title": "Final set review",
+      "description": "Run the mandatory final set review across all 10 ads as a complete unit. Fix any issues found.",
+      "acceptanceCriteria": [
+        "Read all artifact files for full context",
+        "Run mandatory final set review in the exact specified format:",
+        "ANGLE DIVERSITY: All 10 angles represented (1 each for 10-ad batch). No redundant messaging.",
+        "EVIDENCE DIVERSITY: At least 4 of 5 evidence sections (R1-R5) represented. No two ads with same evidence pairing use identical stats/mechanisms.",
+        "IMAGE DIVERSITY: 10 visually distinct images. No two look similar in a feed. 3+ contradiction categories. Mix of settings. No image concept repeats from batch-history.md.",
+        "TONE CONSISTENCY: Same voice, reading level, sentence length, emotional register across all 10.",
+        "NO-SELL FINAL SCAN: Zero product mentions, brand names, or selling language across the ENTIRE set.",
+        "BRIDGE CONSISTENCY: All 10 ads end with the identical bridge line.",
+        "BODY COPY DEDUP: No two ads share >40% identical sentences. If overlap found, rewrite the later ad using different proof from its evidence section.",
+        "All 7 boxes in the set verdict checklist are checked",
+        "If any box unchecked: fix the issue and re-run the relevant checks",
+        "Save final set review to [outputDir]/artifacts/final-set-review.md",
+        "Final deliverables confirmed: ad-mockups.html, generate_anxiety_images.py, generated_ad_images/ with 10 images, artifacts/ with all checkpoint files",
+        "Append this batch to [outputDir]/batch-history.md: batch number, expression numbers used (with angles), evidence sections used per ad, image concept names and contradiction types, image settings/locations. Update the 'Available Expression Numbers' list to remove used numbers."
+      ],
+      "priority": 6,
+      "passes": true
+    }
+  ]
+}
