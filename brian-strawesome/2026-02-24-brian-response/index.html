@@ -160,15 +160,34 @@
             border-radius: 2px;
             margin-bottom: 0.5rem;
             word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .url-display a {
             color: #53DBC9;
-            text-decoration: none;
+            text-decoration: underline;
         }
 
         .url-display a:hover {
-            text-decoration: underline;
+            color: #7FFFEF;
+        }
+
+        .url-display .open-link {
+            background: #FFDE00;
+            color: #1a1a1a;
+            padding: 0.35rem 0.75rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .url-display .open-link:hover {
+            background: #FFE94D;
         }
 
         .section-label {
@@ -352,25 +371,25 @@
                 <div class="asset-card">
                     <div class="asset-title">Presell Page (Draft)</div>
                     <div class="asset-description">Structure and flow are done. Review the copy and refine it so it sounds like you.</div>
-                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/" target="_blank">theprompted.github.io/.../presell/</a></div>
+                    <div class="url-display"><span>theprompted.github.io/.../presell/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/" target="_blank" class="open-link">Open →</a></div>
                 </div>
 
                 <div class="asset-card">
                     <div class="asset-title">Offer Page (Draft)</div>
                     <div class="asset-description">Products, bundles, comparison, testimonials. Update to match your actual products and pricing.</div>
-                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/offer/" target="_blank">theprompted.github.io/.../offer/</a></div>
+                    <div class="url-display"><span>theprompted.github.io/.../offer/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/offer/" target="_blank" class="open-link">Open →</a></div>
                 </div>
 
                 <div class="asset-card">
                     <div class="asset-title">Ad Mockups</div>
                     <div class="asset-description">3 ad concepts ready to use as templates.</div>
-                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/ad-mockups/" target="_blank">theprompted.github.io/.../ad-mockups/</a></div>
+                    <div class="url-display"><span>theprompted.github.io/.../ad-mockups/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/ad-mockups/" target="_blank" class="open-link">Open →</a></div>
                 </div>
 
                 <div class="asset-card">
                     <div class="asset-title">Funnel Breakdown</div>
                     <div class="asset-description">Section-by-section analysis — reference when you want to understand why each part works.</div>
-                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel-breakdown/" target="_blank">theprompted.github.io/.../funnel-breakdown/</a></div>
+                    <div class="url-display"><span>theprompted.github.io/.../funnel-breakdown/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel-breakdown/" target="_blank" class="open-link">Open →</a></div>
                 </div>
             </div>
         </div>
