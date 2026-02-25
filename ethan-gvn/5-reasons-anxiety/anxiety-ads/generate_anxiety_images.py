@@ -22,7 +22,7 @@ from datetime import datetime
 from openai import OpenAI
 
 # Configuration
-MODEL = "gpt-image-1"
+MODEL = "gpt-image-1.5"
 API_KEY = os.environ.get("OPENAI_API_KEY", "")
 OUTPUT_DIR = Path(__file__).parent / "generated_ad_images"
 DELAY_BETWEEN_GENERATIONS = 2  # seconds
@@ -93,6 +93,67 @@ PROMPTS = [
         "name": "The Broken Streak",
         "opener": "A 2023 Stanford study found the calming effect of deep breathing only holds if you practice every single day.",
         "prompt": "Raw iPhone photo of a phone screen showing a meditation app with \"Current Streak: 0 days\" prominently displayed, with smaller text showing \"Previous streak: 47 days\" visible below. Phone lying on messy bedside table — half-empty water glass, crumpled tissue, book with bent corner. Early morning light through window creating harsh shadows. The screen has a thumbprint visible at the bottom. This is \"missed one day and it's all gone\" energy, documenting loss."
+    },
+    # BATCH 2 - Added 2026-02-24
+    {
+        "id": "draft_11",
+        "name": "The Notification Badges",
+        "opener": "Your meditation app isn't healing anything. It's making you a calmer passenger in a car that still can't stop.",
+        "prompt": "Raw iPhone photo of a phone lying face-up on bathroom counter, screen showing home screen with Calm or Headspace app icon displaying a red notification badge showing \"365\". Phone surrounded by anxiety products: lavender roller bottle on its side, ashwagandha bottle with lid off, magnesium spray, CBD lotion tube squeezed in middle. Single harsh bathroom fluorescent making everything yellow-green. Water spots on counter. Hair tie and bobby pins scattered. Phone has visible fingerprint smudges on screen. Shot from above, slightly tilted. This is \"achieved the streak, still need all this\" energy."
+    },
+    {
+        "id": "draft_12",
+        "name": "The Morning Ritual Station",
+        "opener": "Every morning you open Calm, you reinforce a belief that's quietly running your life: 'I am someone who needs to DO something to be calm.'",
+        "prompt": "Raw iPhone photo of kitchen corner at 6am — yoga mat rolled and leaning against cabinet, meditation cushion on floor nearby, digital timer showing 15:00, coffee maker running with red light on. Harsh early morning light through window creating long shadows. Counter has yesterday's mail pile, keys tossed, single dirty coffee mug. One sock visible on floor near cushion. Everything staged and ready but the room feels cold and reluctant. Shot from standing height looking down. This is \"mandatory morning routine\" energy, not wellness content."
+    },
+    {
+        "id": "draft_13",
+        "name": "The Wellness Feed Graveyard",
+        "opener": "Instagram said 'dysregulated.' Science says depleted. Those are different problems with different solutions.",
+        "prompt": "Raw iPhone photo of bathroom counter with phone lying FACE DOWN, surrounded by wellness products Instagram recommended: ashwagandha bottle half-empty, magnesium calm powder with scoop sticking out, adaptogen packet torn open, essential oil roller, nervous system supplement bottle. All products opened and partially used. Phone is face-down — screen not visible. Single harsh fluorescent overhead making everything flat and unflattering. Toothpaste cap off to the side, hair in the sink edge. Water spots on mirror visible in background. Shot quickly from above. This is \"I tried everything the algorithm told me\" energy."
+    },
+    {
+        "id": "draft_14",
+        "name": "The Two Timers",
+        "opener": "Deep breathing buys you 20 minutes. Meditation buys you maybe an hour. Neither buys you tomorrow.",
+        "prompt": "Raw iPhone photo of bathroom counter with two objects side by side: a meditation timer app on phone showing 20:00 completed, and a regular alarm clock showing 3:47 AM. Both objects clearly visible, stark comparison. Harsh overhead bathroom light creating ugly shadows. Prescription bottle blurry in background. Wadded tissue nearby. Counter has water spots and toothpaste smear. Phone screen has fingerprint visible. Shot straight down from above. This is \"20 minutes bought, 3:47am still happened\" energy."
+    },
+    {
+        "id": "draft_15",
+        "name": "The Habit Tracker Grid",
+        "opener": "You did the deep breathing. You did the journaling. You did the cold showers. The anxiety is still there every Monday morning.",
+        "prompt": "Raw iPhone photo of a physical habit tracker page taped to bathroom wall with masking tape, showing a full month grid with checkmarks for \"breathwork\", \"journal\", \"meditate\" — every single box checked. Paper is slightly crooked, tape peeling at one corner. Mirror edge visible showing tired reflection (blurry, not the focus). Toiletries crowded on shelf below — face wash, lotion, q-tips container. Harsh overhead bathroom light. Paper has a coffee ring stain in corner. This is \"I checked every box and nothing changed\" energy."
+    },
+    {
+        "id": "draft_16",
+        "name": "The Two Desks",
+        "opener": "Your colleague handles the same pressure without white knuckles. Same meetings. Same deadlines. Different levels of one molecule you've never heard of.",
+        "prompt": "Raw iPhone photo showing corner of open office with two workstations visible in frame. LEFT desk: minimal, clean, single coffee mug, tidy cables, calm. RIGHT desk: multiple coffee cups, crumpled tissues, supplement bottles, stress ball, cluttered sticky notes, hand cream. Both screens showing same Monday 9am meeting invite visible. Harsh fluorescent office lighting, that sick green-white color. Shot from standing in aisle between desks, slightly tilted. Ceiling tiles visible at top of frame. This is \"same pressure, different chemistry\" energy."
+    },
+    {
+        "id": "draft_17",
+        "name": "The Timer Progression",
+        "opener": "The fact that you need 15 minutes of deep breathing now instead of 2 isn't weakness. It's a depleted system asking for more than you can give it.",
+        "prompt": "Raw iPhone photo of nightstand with three timers/phones lined up showing progression: first showing 5:00, second showing 10:00, third showing 15:00. The visual story of needing MORE each time. Each device looks used — scratches, worn cases. Nightstand cluttered with sleep mask tangled, melatonin bottle, book with cracked spine, water glass with dust at waterline. Harsh bedside lamp creating yellow-orange cast. Shot from bed level, one-handed. This is \"tolerance is building\" energy."
+    },
+    {
+        "id": "draft_18",
+        "name": "The Low Battery",
+        "opener": "The anxiety isn't a sign that something is wrong with you. It's a signal that something ran out.",
+        "prompt": "Raw iPhone photo of phone on nightstand showing low battery warning at 5%, red battery icon prominent, charging cable clearly plugged in but phone still dying. Surrounding objects: supplement bottles (magnesium, B-complex), sleep mask pushed aside, tangled earbuds, half-empty water glass. Soft morning light from window but phone screen harsh in contrast. The metaphor is visual: plugged in all night, still empty. Fingerprint smudge on phone screen. This is \"depleted system not getting recharged\" energy."
+    },
+    {
+        "id": "draft_19",
+        "name": "The Bookmarked Page",
+        "opener": "That voice that said 'something else is going on here' — it was right. There was something underneath the techniques couldn't reach.",
+        "prompt": "Raw iPhone photo of open self-help book lying on unmade bed, spine cracked and broken from overuse. Multiple pages dog-eared and bookmarked with colored tabs — this book has been read 3+ times. Highlighter marks visible on open pages. Reading glasses on pillow nearby. Coffee mug ring stain on nightstand edge visible. Soft morning window light, sheets rumpled. The book is clearly \"The Anxiety Workbook\" or similar self-help title (generic, no real brand). This is \"I've done this cover to cover twice and I'm back\" energy."
+    },
+    {
+        "id": "draft_20",
+        "name": "The Research Printouts",
+        "opener": "Your nervous system was wired for anxiety before you were born. Not because something is wrong with you. Because something is missing.",
+        "prompt": "Raw iPhone photo of desk with stack of printed research papers, highlighted and annotated with handwritten notes in margins. Laptop behind showing blurry PubMed or Google Scholar search visible. Papers have coffee ring stains, some pages bent at corners. Yellow highlighter with cap off. Reading glasses folded on top of papers. Harsh desk lamp creating glare on paper edges. Empty coffee mug with dried residue. This is \"I've actually done the research, not just scrolled Instagram\" energy."
     }
 ]
 
