@@ -1,1 +1,50 @@
-Error 400: : Unable to convert the diagram: connect ECONNREFUSED 127.0.0.1:38637
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 220">
+  <style>
+    .title { font-family: 'Virgil', 'Comic Sans MS', cursive; font-size: 24px; font-weight: bold; fill: #1e1e1e; }
+    .box-label { font-family: 'Virgil', 'Comic Sans MS', cursive; font-size: 18px; font-weight: bold; fill: #1e1e1e; }
+    .sub-label { font-family: 'Virgil', 'Comic Sans MS', cursive; font-size: 13px; fill: #868e96; }
+  </style>
+
+  <!-- Background -->
+  <rect width="850" height="220" fill="#f5f5f0"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" class="title">YOUR FUNNEL FLOW</text>
+
+  <!-- AD Box -->
+  <rect x="50" y="70" width="120" height="70" rx="8" fill="#ffec99" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="110" y="112" text-anchor="middle" class="box-label">AD</text>
+  <text x="110" y="160" text-anchor="middle" class="sub-label">Meta Ads</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 180 105 L 230 105" stroke="#1e1e1e" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- PRESELL Box -->
+  <rect x="240" y="70" width="140" height="70" rx="8" fill="#a5d8ff" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="310" y="112" text-anchor="middle" class="box-label">PRESELL</text>
+  <text x="310" y="160" text-anchor="middle" class="sub-label">Shopify Pages</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 390 105 L 440 105" stroke="#1e1e1e" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- OFFER Box -->
+  <rect x="450" y="70" width="140" height="70" rx="8" fill="#b2f2bb" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="520" y="112" text-anchor="middle" class="box-label">OFFER</text>
+  <text x="520" y="160" text-anchor="middle" class="sub-label">Shopify Pages</text>
+
+  <!-- Arrow 3 -->
+  <path d="M 600 105 L 650 105" stroke="#1e1e1e" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- PDP Box -->
+  <rect x="660" y="70" width="140" height="70" rx="8" fill="#ffc078" stroke="#1e1e1e" stroke-width="2"/>
+  <text x="730" y="102" text-anchor="middle" class="box-label">PDP /</text>
+  <text x="730" y="122" text-anchor="middle" class="box-label">COLLECTION</text>
+  <text x="730" y="160" text-anchor="middle" class="sub-label">Shopify</text>
+
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e1e1e"/>
+    </marker>
+  </defs>
+</svg>
