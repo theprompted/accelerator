@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian - Your Funnel Is Ready | The Prompted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .header .label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .header p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 2px solid black;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-header.yellow {
+            background: #FFDE00;
+        }
+
+        .card-header.green {
+            background: #C8E6C9;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Step Numbers */
+        .step-num {
+            width: 2rem;
+            height: 2rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .card-header.yellow .step-num {
+            background: white;
+        }
+
+        .card-header.green .step-num {
+            background: white;
+        }
+
+        /* Callout */
+        .callout {
+            padding: 1.25rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .callout-yellow {
+            background: #FFFDE7;
+        }
+
+        .callout-green {
+            background: #E8F5E9;
+        }
+
+        .callout-gray {
+            background: #FAFAFA;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* List */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Link */
+        a {
+            color: #0066cc;
+        }
+
+        /* URL display */
+        .url-display {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            background: #1a1a1a;
+            color: #53DBC9;
+            padding: 0.75rem 1rem;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        .url-display a {
+            color: #53DBC9;
+            text-decoration: none;
+        }
+
+        .url-display a:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: #E5E5E5;
+            margin: 2rem 0;
+        }
+
+        /* Section Label */
+        .section-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid black;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Asset Card */
+        .asset-card {
+            background: #FAFAFA;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .asset-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .asset-title {
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .asset-description {
+            font-size: 0.875rem;
+            color: #444;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Task Item */
+        .task-item {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .task-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-num {
+            width: 1.75rem;
+            height: 1.75rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-detail {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Coming Soon Badge */
+        .badge-soon {
+            display: inline-block;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            background: #E3F2FD;
+            border: 2px solid #1976D2;
+            border-radius: 2px;
+            color: #1976D2;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="label">The Prompted &rarr; Brian</span>
+            <h1>Your Funnel Is Ready</h1>
+            <p>February 24, 2026</p>
+        </div>
+
+        <!-- Intro -->
+        <div class="callout callout-yellow">
+            <p>Good news: you don't need to build anything from scratch. Your funnel pages already exist. I built them as part of the breakdown work. All you need to do is get them live on your domain and drive traffic.</p>
+        </div>
+
+        <!-- SECTION 1: Your Assets -->
+        <div class="card">
+            <div class="card-header yellow">
+                <div class="step-num">1</div>
+                <h2>Your Assets (Ready Now)</h2>
+            </div>
+            <div class="card-body">
+                <p>Here's everything that's already built for you:</p>
+
+                <div class="asset-card">
+                    <div class="asset-title">Presell Page (Education/Advertorial)</div>
+                    <div class="asset-description">The "why glass straws" education page. This is where ads will send traffic. It educates, builds desire, and clicks through to your offer.</div>
+                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/" target="_blank">https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Offer Page</div>
+                    <div class="asset-description">The conversion page. Shows your products, bundles, comparison table, testimonials, guarantee. This is where people buy.</div>
+                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/offer/" target="_blank">https://theprompted.github.io/accelerator/brian-strawesome/funnel/offer/</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Ad Mockups (3 Variations)</div>
+                    <div class="asset-description">Three ad concepts you can use as templates. Each has the image style and copy approach mapped out.</div>
+                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/ad-mockups/" target="_blank">https://theprompted.github.io/accelerator/brian-strawesome/ad-mockups/</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Full Funnel Breakdown</div>
+                    <div class="asset-description">Section-by-section analysis of why each part of the funnel works. Reference this when you want to understand the psychology behind the copy.</div>
+                    <div class="url-display"><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel-breakdown/" target="_blank">https://theprompted.github.io/accelerator/brian-strawesome/funnel-breakdown/</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Answers -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">2</div>
+                <h2>Answering Your Questions</h2>
+            </div>
+            <div class="card-body">
+                <div class="section-label">Q: Are we setting up landing pages not linked on the website?</div>
+                <p><strong>Yes.</strong> The presell page is a standalone landing page. It's not in your site navigation. Ads drive directly to it. This is intentional — you're testing a funnel separate from your main site so you can measure what works without affecting your existing traffic.</p>
+
+                <div class="section-label">Q: Once it proves viable, do we add more for different audiences?</div>
+                <p><strong>Yes.</strong> The pattern is: one thesis, one funnel, test it. If it works, scale it. Then build a second funnel with a different angle for a different audience segment. But don't build the second one until the first one proves out.</p>
+
+                <div class="section-label">Q: Does this eventually get to the website and product pages?</div>
+                <p><strong>Eventually, yes.</strong> Once you find what converts, you can pull winning elements into your main site. But right now the goal is to find a winning funnel — not redesign your website. Keep them separate for now.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Your 7-Day Plan -->
+        <div class="card">
+            <div class="card-header green">
+                <div class="step-num">3</div>
+                <h2>Your 7-Day Plan</h2>
+            </div>
+            <div class="card-body">
+                <p>Here's exactly what to do this week:</p>
+
+                <div class="task-item">
+                    <div class="task-num">1</div>
+                    <div class="task-content">
+                        <div class="task-title">Build the presell page in Shopify Pages</div>
+                        <div class="task-detail">Open my presell page in one tab. Open Shopify Pages editor in another. Recreate it section by section. You're copying structure and copy — not designing from scratch.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">2</div>
+                    <div class="task-content">
+                        <div class="task-title">Build the offer page in Shopify Pages</div>
+                        <div class="task-detail">Same process. The offer page links to your actual products, so connect the CTAs to your Shopify product pages or collections.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">3</div>
+                    <div class="task-content">
+                        <div class="task-title">Add your Facebook Pixel</div>
+                        <div class="task-detail">Make sure the pixel fires on both pages. Set up a ViewContent event on the presell page and a Purchase event on checkout.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">4</div>
+                    <div class="task-content">
+                        <div class="task-title">Create your first ad in Meta</div>
+                        <div class="task-detail">Use one of the 3 ad mockups as your template. Create the image (or use a product photo that matches the vibe). Write the copy. Point the ad to your new presell page.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">5</div>
+                    <div class="task-content">
+                        <div class="task-title">Launch with $20-50/day</div>
+                        <div class="task-detail">Start small. Let it run for 3-5 days without touching it. Watch the data.</div>
+                    </div>
+                </div>
+
+                <div class="callout callout-green" style="margin-top: 1.5rem;">
+                    <p><strong>The discovery:</strong> You're not "running ads." You're finding out if this funnel converts. That's the experiment. The data will tell you what to do next.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Coming Soon -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">4</div>
+                <h2>Coming Soon</h2>
+            </div>
+            <div class="card-body">
+                <div class="callout callout-gray">
+                    <p><span class="badge-soon">~14 days</span></p>
+                    <p style="margin-top: 0.75rem;"><strong>Landing Page Builder:</strong> Alfred and I are building a tool that hosts your landing pages on your domain — no Shopify Pages required. You'll be able to deploy funnels without any page building. Once it's live, we can migrate your pages over.</p>
+                </div>
+
+                <div class="callout callout-gray">
+                    <p><strong>Ad Generation:</strong> We can help you create your first 30 ads. Once you've got traffic flowing to the funnel, we'll work together on scaling ad volume. The 3 mockups are just the start.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: The Shift -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">5</div>
+                <h2>The Shift</h2>
+            </div>
+            <div class="card-body">
+                <p>You said you relate to the "smart guy who doesn't get results." I get it. Here's the reframe:</p>
+
+                <div class="callout callout-yellow">
+                    <p><strong>The "how" isn't complicated — it's just unfamiliar.</strong> The pages exist. The ad templates exist. The only thing left is to copy them into Shopify and click "publish." That's not strategy work. That's just typing.</p>
+                </div>
+
+                <p>The ROI doesn't come from more learning. It comes from getting traffic to a funnel and seeing what happens. That's it.</p>
+
+                <p>This week, you're not launching a business. You're running an experiment. The experiment is: "Will this funnel convert?"</p>
+
+                <p>Let me know when the pages are live and I'll review them before you launch ads.</p>
+
+                <p style="margin-bottom: 0;">- Andrew</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>The Prompted &bull; February 2026</p>
+        </div>
+    </div>
+</body>
+</html>
