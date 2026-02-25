@@ -127,21 +127,21 @@ PROMPTS = [
     },
     {
         "id": "draft_16",
-        "name": "The Two Desks",
+        "name": "The Supplement Rotation",
         "opener": "Your colleague handles the same pressure without white knuckles. Same meetings. Same deadlines. Different levels of one molecule you've never heard of.",
-        "prompt": "Raw iPhone photo showing corner of open office with two workstations visible in frame. LEFT desk: minimal, clean, single coffee mug, tidy cables, calm. RIGHT desk: multiple coffee cups, crumpled tissues, supplement bottles, stress ball, cluttered sticky notes, hand cream. Both screens showing same Monday 9am meeting invite visible. Harsh fluorescent office lighting, that sick green-white color. Shot from standing in aisle between desks, slightly tilted. Ceiling tiles visible at top of frame. This is \"same pressure, different chemistry\" energy."
+        "prompt": "Raw iPhone photo of bathroom counter with 5 different calming supplement bottles clustered together: ashwagandha, L-theanine, magnesium calm powder, GABA capsules, lavender capsules. All bottles opened, different fill levels — some nearly full, some half-empty, one almost done. Lids scattered on counter. Single harsh fluorescent bathroom light making everything yellow-green. Toothbrush holder and face wash bottle crowded nearby. Water spots on counter. Hair tie and bobby pin visible. Shot from above, slightly tilted. This is \"if any of these worked there wouldn't be 5\" energy."
     },
     {
         "id": "draft_17",
-        "name": "The Timer Progression",
+        "name": "The Meditation App Graveyard",
         "opener": "The fact that you need 15 minutes of deep breathing now instead of 2 isn't weakness. It's a depleted system asking for more than you can give it.",
-        "prompt": "Raw iPhone photo of nightstand with three timers/phones lined up showing progression: first showing 5:00, second showing 10:00, third showing 15:00. The visual story of needing MORE each time. Each device looks used — scratches, worn cases. Nightstand cluttered with sleep mask tangled, melatonin bottle, book with cracked spine, water glass with dust at waterline. Harsh bedside lamp creating yellow-orange cast. Shot from bed level, one-handed. This is \"tolerance is building\" energy."
+        "prompt": "Raw iPhone photo of a phone lying on a dusty yoga mat, phone screen showing home screen with 4 meditation app icons visible — Calm, Headspace, Insight Timer, and a breathing app. The yoga mat has visible dust, a hair or two, clearly hasn't been used in weeks. Phone has fingerprint smudges on screen. Mat is unrolled in corner of room, crumpled sock nearby, water bottle with old water. Harsh overhead light creating unflattering shadows. Shot from standing looking down. This is \"downloaded every app, abandoned the practice\" energy."
     },
     {
         "id": "draft_18",
-        "name": "The Low Battery",
+        "name": "The Full Bottle Old Date",
         "opener": "The anxiety isn't a sign that something is wrong with you. It's a signal that something ran out.",
-        "prompt": "Raw iPhone photo of phone on nightstand showing low battery warning at 5%, red battery icon prominent, charging cable clearly plugged in but phone still dying. Surrounding objects: supplement bottles (magnesium, B-complex), sleep mask pushed aside, tangled earbuds, half-empty water glass. Soft morning light from window but phone screen harsh in contrast. The metaphor is visual: plugged in all night, still empty. Fingerprint smudge on phone screen. This is \"depleted system not getting recharged\" energy."
+        "prompt": "Raw iPhone photo of a single ashwagandha or magnesium supplement bottle on bathroom counter, bottle is nearly full — only a few capsules taken. The bottle looks like it's been sitting there for months — slight dust on cap, water spots around base. Surrounded by everyday toiletries: toothpaste, deodorant, hair product. Harsh bathroom fluorescent light. The bottle cap is on but crooked. This is \"bought it hopeful, tried it twice, gave up\" energy — the full bottle IS the review."
     },
     {
         "id": "draft_19",
@@ -151,9 +151,9 @@ PROMPTS = [
     },
     {
         "id": "draft_20",
-        "name": "The Research Printouts",
+        "name": "The Breathing Card Buried",
         "opener": "Your nervous system was wired for anxiety before you were born. Not because something is wrong with you. Because something is missing.",
-        "prompt": "Raw iPhone photo of desk with stack of printed research papers, highlighted and annotated with handwritten notes in margins. Laptop behind showing blurry PubMed or Google Scholar search visible. Papers have coffee ring stains, some pages bent at corners. Yellow highlighter with cap off. Reading glasses folded on top of papers. Harsh desk lamp creating glare on paper edges. Empty coffee mug with dried residue. This is \"I've actually done the research, not just scrolled Instagram\" energy."
+        "prompt": "Raw iPhone photo of a desk with a 4-7-8 breathing instruction card half-buried under papers, mail, and clutter. Only corner of the laminated card visible, showing partial breathing circle diagram. Desk is chaos: 2 coffee cups (one empty, one cold), crumpled receipts, laptop open with email notifications, pen with cap off, phone charger cable tangled. The breathing card got buried by the very stress it was supposed to help. Harsh overhead light, ugly shadows. Shot from above at angle. This is \"the tool exists but got swallowed by the problem\" energy."
     }
 ]
 
