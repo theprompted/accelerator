@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Account Review - CBDog Native Images</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .section:first-of-type {
+            margin-top: 1.5rem;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .callout {
+            background: #FFFDE7;
+            border: 1px solid #e0d68a;
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .callout-teal {
+            background: #E0F7F3;
+            border: 1px solid #53DBC9;
+        }
+
+        .callout-purple {
+            background: #F3E8FF;
+            border: 1px solid #9D4EDD;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9375rem;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+        }
+
+        .metric-value {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .metric-value.highlight {
+            color: var(--accent-purple);
+            font-size: 1.125rem;
+        }
+
+        .screenshot {
+            width: 100%;
+            border: var(--border);
+            margin: 1rem 0 0.5rem 0;
+            display: block;
+        }
+
+        .screenshot-caption {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step-list li {
+            display: flex;
+            gap: 0.875rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .step-text {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+            padding-top: 0.125rem;
+        }
+
+        .step-text strong {
+            color: var(--text-black);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="icon">&#128200;</div>
+        <h1>Ad Account Review</h1>
+        <p class="subtitle">CBDog Native Images - Tiered Pricing Ad Set</p>
+        <p class="date">February 27, 2026</p>
+
+        <!-- ANALYSIS -->
+        <div class="section">
+            <h2>What I'm Seeing</h2>
+
+            <p>Took a look at your stats and not too concerned with a bug or glitch on the spend.</p>
+
+            <p>What's happening here is Meta spending based on its forecast that these ads will drive performance.</p>
+
+            <p>In these cases I like to look at CPM and CPC to see if there's anything unusually high or low but looking at them, they look fine.</p>
+
+            <img src=""" + third_uri + """ alt="Native Images Ad Set - Daily Breakdown showing CPM and CPC" class="screenshot">
+            <p class="screenshot-caption">Native Images Ad Set — Daily Breakdown (Feb 11-17)</p>
+
+            <p>And the spend isn't too crazy each day, $229/day for that ad set, which relative to a $60 cost cap is not that high and only allowing for about 4 conversions per day at that cap and budget.</p>
+
+            <p>It's also hard to measure definitively what impact the impressions on these ads drive in other campaigns and ad sets.</p>
+        </div>
+
+        <!-- BLENDED ROAS -->
+        <div class="section">
+            <h2>The Blended View</h2>
+
+            <p>Which is why I also like looking at the total spend (FB) &amp; sales (Shopify) to see if the overall numbers are concerning.</p>
+
+            <div class="callout callout-teal">
+                <div class="metric-row">
+                    <span class="metric-label">Shopify Net Sales (Feb 11-16)</span>
+                    <span class="metric-value">$9,856.62</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Total Ad Spend (Feb 11-16)</span>
+                    <span class="metric-value">$3,760.36</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Blended ROAS</span>
+                    <span class="metric-value highlight">2.62x</span>
+                </div>
+            </div>
+
+            <p>Running that, you get: $9,856.62 / $3,760.36 = 2.62x ROAS which is decent.</p>
+
+            <p>In these cases I usually presume the ads getting spend consistently (which these are) but no sales as having an impact holistically.</p>
+        </div>
+
+        <!-- RECOMMENDATION -->
+        <div class="section">
+            <h2>What I'd Do Next</h2>
+
+            <p>I usually don't turn these off outright, instead I'll drop the caps a bit and see if overall performance maintains or improves (overall sales / overall spend).</p>
+
+            <div class="callout callout-teal">
+                In your case now, since they've been off since Feb 17, I would turn them back on and start with a cap of $40 and work my way back up every 24 hours in $5 increments until spend comes through and is closer to the target you want.
+            </div>
+
+            <p>But I wouldn't be too stringent on that one ad set having good metrics &mdash; if the overall metrics are still looking good (total sales / total spend) then I'd just leave it as is.</p>
+
+            <p>Sometimes you'll have "loser looking" ad sets that are actually just playing a different role on the team &mdash; driving awareness and filling the funnel while other ad sets and ads clean up.</p>
+        </div>
+
+        <!-- SCREENSHOTS -->
+        <div class="section">
+            <h2>What I Reviewed</h2>
+
+            <p>Here are the three views I looked at:</p>
+
+            <img src="/clients/accelerator-site/ethan-gvn/cbdog-ads/images/SCR-20260227-bptm.png" alt="Shopify Analytics - Feb 11-16 vs Feb 5-10" class="screenshot">
+            <p class="screenshot-caption">Shopify Analytics &mdash; Feb 11-16, 2026 vs Feb 5-10, 2026</p>
+
+            <img src="/clients/accelerator-site/ethan-gvn/cbdog-ads/images/SCR-20260227-bpqm.png" alt="Meta Ads Manager - Campaign Ads View" class="screenshot">
+            <p class="screenshot-caption">Meta Ads Manager &mdash; All Ads in Campaign (Feb 11-16)</p>
+
+            <img src="/clients/accelerator-site/ethan-gvn/cbdog-ads/images/SCR-20260227-bowd.png" alt="Meta Ads Manager - Native Images Ad Set Daily Breakdown" class="screenshot">
+            <p class="screenshot-caption">Native Images Ad Set &mdash; Daily Breakdown (Feb 11-17)</p>
+        </div>
+
+    </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
+</body>
+</html>
