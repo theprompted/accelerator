@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PelviCore Pro - Performance Analysis</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .section:first-of-type {
+            margin-top: 1.5rem;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .callout {
+            background: #FFFDE7;
+            border: 1px solid #e0d68a;
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .callout-teal {
+            background: #E0F7F3;
+            border: 1px solid #53DBC9;
+        }
+
+        .callout-purple {
+            background: #F3E8FF;
+            border: 1px solid #9D4EDD;
+        }
+
+        .callout-green {
+            background: #dcfce7;
+            border: 1px solid #22c55e;
+        }
+
+        .note {
+            background: #f5f5f5;
+            border-left: 3px solid #9ca3af;
+            padding: 0.75rem 1rem;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .note strong {
+            color: var(--text-dark);
+            font-style: normal;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9375rem;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+        }
+
+        .metric-value {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .metric-value.highlight {
+            color: var(--accent-purple);
+            font-size: 1.125rem;
+        }
+
+        .metric-value.green {
+            color: var(--accent-green);
+        }
+
+        .metric-value.red {
+            color: var(--accent-red);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.625rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .raise-row {
+            background: #E0F7F3;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag-red {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .tag-yellow {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="icon">📊</div>
+        <h1>PelviCore Pro Analysis</h1>
+        <p class="subtitle">Last 7 Days Performance + Recommendations</p>
+        <p class="date">February 27, 2026</p>
+
+        <!-- PERFORMANCE SNAPSHOT -->
+        <div class="section">
+            <h2>Performance Snapshot (Feb 20-26)</h2>
+
+            <div class="callout callout-teal">
+                <div class="metric-row">
+                    <span class="metric-label">Shopify Net Sales</span>
+                    <span class="metric-value">₪72,708</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Meta Ad Spend</span>
+                    <span class="metric-value">₪38,333</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Orders</span>
+                    <span class="metric-value">176</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Blended ROAS</span>
+                    <span class="metric-value highlight">1.98x</span>
+                </div>
+            </div>
+
+            <p>You're well above your 1.5x target ROAS. The gap between Meta's reported 1.60x and actual 1.98x is attribution — Shopify is capturing sales Meta isn't taking credit for.</p>
+        </div>
+
+        <!-- UNIT ECONOMICS -->
+        <div class="section">
+            <h2>Unit Economics (Corrected)</h2>
+
+            <p>Your brief showed $11 COGS, but that's per unit. With your x2 bundles, actual COGS per order is higher.</p>
+
+            <div class="callout">
+                <div class="metric-row">
+                    <span class="metric-label">Single Unit (₪399)</span>
+                    <span class="metric-value">₪40 COGS</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">x2 Bundle (₪599)</span>
+                    <span class="metric-value">₪80 COGS</span>
+                </div>
+            </div>
+
+            <p>Based on your order mix (~13% bundles), here's the real contribution margin:</p>
+
+            <div class="callout callout-purple">
+                <div class="metric-row">
+                    <span class="metric-label">Revenue (Net Sales)</span>
+                    <span class="metric-value">₪72,708</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">− VAT (18%)</span>
+                    <span class="metric-value">−₪13,087</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">− COGS (148 singles + 23 bundles)</span>
+                    <span class="metric-value">−₪7,760</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">− Payment Processing (~5%)</span>
+                    <span class="metric-value">−₪3,635</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">− Returns</span>
+                    <span class="metric-value">−₪1,477</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">− Ad Spend</span>
+                    <span class="metric-value">−₪38,333</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">= Contribution Margin</span>
+                    <span class="metric-value highlight">₪8,416 (~$2,690)</span>
+                </div>
+            </div>
+
+            <p><strong>CM %: 14.1%</strong> — Still profitable, but thinner than your 91% gross margin suggests. VAT eats 18%, payment processing ~5% (Shopify Basic 2% + PayPlus ~3%).</p>
+
+            <div class="note">
+                <strong>Note on COGS:</strong> We used ₪80 for x2 bundles (2 × ₪40). But if shipping is per-order not per-unit, real bundle COGS is likely ~₪65. Your actual CM may be slightly better than shown.
+            </div>
+
+            <div class="note">
+                <strong>Note on payment processing:</strong> We estimated 5% (Shopify Basic 2% + PayPlus ~3%). Worth confirming your actual PayPlus rate.
+            </div>
+        </div>
+
+        <!-- CPA TARGETS -->
+        <div class="section">
+            <h2>Your CPA Targets</h2>
+
+            <div class="callout callout-teal">
+                <div class="metric-row">
+                    <span class="metric-label">Breakeven CPA (1.4x ROAS)</span>
+                    <span class="metric-value">₪276</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Target CPA (1.5x ROAS)</span>
+                    <span class="metric-value">₪250</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Current Avg CPA</span>
+                    <span class="metric-value green">₪276</span>
+                </div>
+            </div>
+
+            <p>Your best ad sets are running at ₪106-168 CPA — way under breakeven. The cost caps at ₪180 are strangling spend on your winners.</p>
+        </div>
+
+        <!-- AD SET ANALYSIS -->
+        <div class="section">
+            <h2>Ad Set Analysis</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ad Set</th>
+                        <th>CPA</th>
+                        <th>ROAS</th>
+                        <th>Cap</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="raise-row">
+                        <td>DP - 1LP - ECOM PURI</td>
+                        <td>₪106</td>
+                        <td><span class="tag tag-green">4.19x</span></td>
+                        <td>₪180</td>
+                        <td><strong>→ ₪250</strong></td>
+                    </tr>
+                    <tr class="raise-row">
+                        <td>DP - 1LP - STORY NEW</td>
+                        <td>₪116</td>
+                        <td><span class="tag tag-green">3.73x</span></td>
+                        <td>₪180</td>
+                        <td><strong>→ ₪250</strong></td>
+                    </tr>
+                    <tr class="raise-row">
+                        <td>PDP - 1LP - WINNERS</td>
+                        <td>₪140</td>
+                        <td><span class="tag tag-green">2.92x</span></td>
+                        <td>₪180</td>
+                        <td><strong>→ ₪220</strong></td>
+                    </tr>
+                    <tr class="raise-row">
+                        <td>DP - 1LP - ECOM</td>
+                        <td>₪168</td>
+                        <td><span class="tag tag-green">2.81x</span></td>
+                        <td>₪180</td>
+                        <td><strong>→ ₪220</strong></td>
+                    </tr>
+                    <tr>
+                        <td>DP - 3LP - STORY</td>
+                        <td>₪194</td>
+                        <td><span class="tag tag-green">2.32x</span></td>
+                        <td>₪230</td>
+                        <td>Leave</td>
+                    </tr>
+                    <tr>
+                        <td>PDP - ECOM 1</td>
+                        <td>₪251</td>
+                        <td><span class="tag tag-yellow">1.71x</span></td>
+                        <td>₪200</td>
+                        <td>Leave</td>
+                    </tr>
+                    <tr>
+                        <td>DP - MIRI LP</td>
+                        <td>₪440</td>
+                        <td><span class="tag tag-red">0.97x</span></td>
+                        <td>₪200</td>
+                        <td>Leave</td>
+                    </tr>
+                    <tr>
+                        <td>DP - 3LP - SOHENET</td>
+                        <td>₪412</td>
+                        <td><span class="tag tag-red">0.97x</span></td>
+                        <td>₪170</td>
+                        <td>Leave</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="section">
+            <h2>Recommendations</h2>
+
+            <div class="callout callout-green">
+                <strong>Raise cost caps on your winners.</strong><br><br>
+                Your top 4 ad sets have CPAs 35-60% below your breakeven. The ₪180 caps are too conservative — you're leaving profitable spend on the table.<br><br>
+                <strong>ECOM PURI</strong> and <strong>STORY NEW</strong> → Raise to ₪250<br>
+                <strong>WINNERS</strong> and <strong>ECOM</strong> → Raise to ₪220
+            </div>
+
+            <p>These are still well below your ₪276 breakeven. You're giving Meta permission to find more volume at slightly higher CPAs — which are still very profitable.</p>
+
+            <p>Leave the "bad" ad sets alone for now. Your overall numbers are good — don't overthink the individual performers. Just loosen the winners and see if overall scale bumps up.</p>
+        </div>
+
+        <!-- BOTTOM LINE -->
+        <div class="section">
+            <h2>Bottom Line</h2>
+
+            <p>You went from 1.33x ROAS (bleeding) to ~2x ROAS (profitable) in about a week. You're making ~₪49/order contribution margin, or ~$2.7K/week.</p>
+
+            <p>The issue isn't profitability — it's scale. Your winners are capped too tight. Loosen the leash and let them run.</p>
+        </div>
+
+    </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
+</body>
+</html>
