@@ -175,6 +175,178 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
+        /* Date picker */
+        .date-picker-wrapper {
+            position: relative;
+        }
+
+        .date-picker-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s var(--ease-out);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .date-picker-btn:hover {
+            border-color: var(--text-dim);
+            box-shadow: var(--shadow);
+        }
+
+        .date-picker-btn:active {
+            transform: scale(0.98);
+        }
+
+        .date-picker-btn svg {
+            width: 15px;
+            height: 15px;
+            color: var(--text-muted);
+        }
+
+        .calendar-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow-lg);
+            padding: 18px;
+            z-index: 100;
+            min-width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.96);
+            transition: all 0.25s var(--ease-spring);
+            transform-origin: top right;
+        }
+
+        .calendar-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--bg-muted);
+        }
+
+        .calendar-month {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 6px;
+        }
+
+        .calendar-nav-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: var(--bg-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: all 0.15s var(--ease-out);
+        }
+
+        .calendar-nav-btn:hover {
+            background: var(--border);
+            color: var(--text-dark);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+        }
+
+        #calendar-days { display: contents; }
+
+        .calendar-day-header {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s var(--ease-out);
+        }
+
+        .calendar-day:hover { background: var(--bg-muted); }
+        .calendar-day.other-month { color: var(--text-dim); }
+        .calendar-day.in-range { background: #e0f2f1; border-radius: 0; }
+        .calendar-day.range-start,
+        .calendar-day.range-end { background: var(--accent-teal); color: white; }
+        .calendar-day.range-start { border-radius: 8px 0 0 8px; }
+        .calendar-day.range-end { border-radius: 0 8px 8px 0; }
+        .calendar-day.range-start.range-end { border-radius: 8px; }
+
+        .calendar-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--bg-muted);
+        }
+
+        .calendar-actions button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s var(--ease-out);
+        }
+
+        .btn-cancel {
+            background: var(--bg-muted);
+            border: none;
+            color: var(--text-muted);
+        }
+
+        .btn-cancel:hover { background: var(--border); color: var(--text-dark); }
+
+        .btn-apply {
+            background: var(--accent-teal);
+            border: none;
+            color: white;
+        }
+
+        .btn-apply:hover { background: #0b7c73; }
+
         /* ========================================
            INTRO
            ======================================== */
@@ -1051,6 +1223,37 @@
                 <button class="date-preset">30D</button>
                 <button class="date-preset">90D</button>
             </div>
+            <div class="date-picker-wrapper">
+                <button class="date-picker-btn" onclick="toggleCalendar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span id="date-display">Feb 11 – 24, 2026</span>
+                </button>
+                <div class="calendar-dropdown" id="calendar">
+                    <div class="calendar-header">
+                        <span class="calendar-month" id="calendar-month">February 2026</span>
+                        <div class="calendar-nav">
+                            <button class="calendar-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+                            <button class="calendar-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">Su</div>
+                        <div class="calendar-day-header">Mo</div>
+                        <div class="calendar-day-header">Tu</div>
+                        <div class="calendar-day-header">We</div>
+                        <div class="calendar-day-header">Th</div>
+                        <div class="calendar-day-header">Fr</div>
+                        <div class="calendar-day-header">Sa</div>
+                        <div id="calendar-days"></div>
+                    </div>
+                    <div class="calendar-actions">
+                        <button class="btn-cancel" onclick="toggleCalendar()">Cancel</button>
+                        <button class="btn-apply" onclick="applyDates()">Apply</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -1555,13 +1758,133 @@
         observer.observe(el);
     });
 
+    // Calendar functionality
+    let currentMonth = 1; // February (0-indexed)
+    let currentYear = 2026;
+    let startDate = new Date(2026, 1, 11);
+    let endDate = new Date(2026, 1, 24);
+    let selectingStart = true;
+
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function toggleCalendar() {
+        const cal = document.getElementById('calendar');
+        cal.classList.toggle('open');
+        if (cal.classList.contains('open')) {
+            renderCalendar();
+        }
+    }
+
+    function changeMonth(delta) {
+        currentMonth += delta;
+        if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+        if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+        renderCalendar();
+    }
+
+    function renderCalendar() {
+        document.getElementById('calendar-month').textContent = `${months[currentMonth]} ${currentYear}`;
+
+        const daysContainer = document.getElementById('calendar-days');
+        daysContainer.innerHTML = '';
+
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+        // Previous month days
+        for (let i = firstDay - 1; i >= 0; i--) {
+            const day = daysInPrevMonth - i;
+            const div = document.createElement('div');
+            div.className = 'calendar-day other-month';
+            div.textContent = day;
+            daysContainer.appendChild(div);
+        }
+
+        // Current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const div = document.createElement('div');
+            div.className = 'calendar-day';
+            div.textContent = day;
+
+            const thisDate = new Date(currentYear, currentMonth, day);
+            if (startDate && endDate) {
+                if (thisDate.getTime() === startDate.getTime()) {
+                    div.classList.add('range-start');
+                    if (thisDate.getTime() === endDate.getTime()) {
+                        div.classList.add('range-end');
+                    }
+                }
+                if (thisDate.getTime() === endDate.getTime()) div.classList.add('range-end');
+                if (thisDate > startDate && thisDate < endDate) div.classList.add('in-range');
+            }
+
+            div.onclick = () => selectDate(day);
+            daysContainer.appendChild(div);
+        }
+
+        // Next month days
+        const totalCells = firstDay + daysInMonth;
+        const remaining = 42 - totalCells;
+        for (let day = 1; day <= remaining; day++) {
+            const div = document.createElement('div');
+            div.className = 'calendar-day other-month';
+            div.textContent = day;
+            daysContainer.appendChild(div);
+        }
+    }
+
+    function selectDate(day) {
+        const selected = new Date(currentYear, currentMonth, day);
+        if (selectingStart) {
+            startDate = selected;
+            endDate = null;
+            selectingStart = false;
+        } else {
+            if (selected < startDate) {
+                endDate = startDate;
+                startDate = selected;
+            } else {
+                endDate = selected;
+            }
+            selectingStart = true;
+        }
+        renderCalendar();
+    }
+
+    function applyDates() {
+        if (startDate && endDate) {
+            const fmt = d => `${months[d.getMonth()].slice(0,3)} ${d.getDate()}`;
+            document.getElementById('date-display').textContent =
+                `${fmt(startDate)} – ${fmt(endDate)}, ${endDate.getFullYear()}`;
+            showToast('Date range updated');
+        }
+        toggleCalendar();
+    }
+
     // Date presets
     document.querySelectorAll('.date-preset').forEach(btn => {
         btn.onclick = function() {
             document.querySelectorAll('.date-preset').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            showToast(`Showing last ${this.textContent}`);
+            const days = parseInt(this.textContent);
+            endDate = new Date(2026, 1, 24);
+            startDate = new Date(endDate);
+            startDate.setDate(startDate.getDate() - days);
+            const fmt = d => `${months[d.getMonth()].slice(0,3)} ${d.getDate()}`;
+            document.getElementById('date-display').textContent =
+                `${fmt(startDate)} – ${fmt(endDate)}, ${endDate.getFullYear()}`;
+            showToast(`Showing last ${days} days`);
         };
+    });
+
+    // Close calendar on outside click
+    document.addEventListener('click', e => {
+        const wrapper = document.querySelector('.date-picker-wrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+            document.getElementById('calendar').classList.remove('open');
+        }
     });
 
     function showToast(message) {
