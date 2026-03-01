@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PelviCore Pro - Feb 28 Analysis</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .section:first-of-type {
+            margin-top: 1.5rem;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .callout {
+            background: #FFFDE7;
+            border: 1px solid #e0d68a;
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .callout-teal {
+            background: #E0F7F3;
+            border: 1px solid #53DBC9;
+        }
+
+        .callout-purple {
+            background: #F3E8FF;
+            border: 1px solid #9D4EDD;
+        }
+
+        .callout-green {
+            background: #dcfce7;
+            border: 1px solid #22c55e;
+        }
+
+        .callout-yellow {
+            background: #fef9c3;
+            border: 1px solid #eab308;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9375rem;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+        }
+
+        .metric-value {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .metric-value.highlight {
+            color: var(--accent-purple);
+            font-size: 1.125rem;
+        }
+
+        .metric-value.green {
+            color: var(--accent-green);
+        }
+
+        .metric-value.red {
+            color: var(--accent-red);
+        }
+
+        .metric-value.yellow {
+            color: var(--accent-yellow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.625rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag-red {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .tag-yellow {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .principle {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-purple);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .principle-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .principle p {
+            margin-bottom: 0;
+            font-size: 0.9375rem;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.5rem 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="icon">📊</div>
+        <h1>Feb 28 Performance Review</h1>
+        <p class="subtitle">Yesterday's snapshot + what to do next</p>
+        <p class="date">March 1, 2026</p>
+
+        <!-- YESTERDAY'S NUMBERS -->
+        <div class="section">
+            <h2>Yesterday's Numbers</h2>
+
+            <div class="callout callout-teal">
+                <div class="metric-row">
+                    <span class="metric-label">Gross Sales</span>
+                    <span class="metric-value">₪18,355</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Orders</span>
+                    <span class="metric-value">40</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">AOV</span>
+                    <span class="metric-value">₪408</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Meta Spend</span>
+                    <span class="metric-value">₪10,648</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Blended ROAS</span>
+                    <span class="metric-value highlight">1.72x</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Contribution Margin</span>
+                    <span class="metric-value yellow">₪2,050 (11%)</span>
+                </div>
+            </div>
+
+            <p>You're above the 1.5x target, but tighter than last week's 1.98x / 14% CM. That's normal day-to-day variance — don't overcorrect.</p>
+        </div>
+
+        <!-- CAMPAIGN BREAKDOWN -->
+        <div class="section">
+            <h2>Campaign Breakdown</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campaign</th>
+                        <th>Spend</th>
+                        <th>Purchases</th>
+                        <th>CPA</th>
+                        <th>ROAS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ViroCore (HEBREW) CBO 23.2</td>
+                        <td>₪6,415</td>
+                        <td>23</td>
+                        <td>₪279</td>
+                        <td><span class="tag tag-green">1.51x</span></td>
+                    </tr>
+                    <tr>
+                        <td>PelvicCore (HEBREW) CBO 14.2</td>
+                        <td>₪4,802</td>
+                        <td>9</td>
+                        <td>₪534</td>
+                        <td><span class="tag tag-red">0.79x</span></td>
+                    </tr>
+                    <tr>
+                        <td>ViroCore (HEBREW) ROAS 26.2</td>
+                        <td>₪3,399</td>
+                        <td>12</td>
+                        <td>₪283</td>
+                        <td><span class="tag tag-green">1.52x</span></td>
+                    </tr>
+                    <tr>
+                        <td>ViroCore (Leaks) ISR 25.2</td>
+                        <td>₪447</td>
+                        <td>2</td>
+                        <td>₪224</td>
+                        <td><span class="tag tag-green">1.78x</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>ViroCore (men's) is carrying the account. The PelvicCore (HEBREW) campaign at 0.79x is dragging you down — but don't kill it (more on that below).</p>
+        </div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="section">
+            <h2>My Take</h2>
+
+            <div class="callout callout-green">
+                <strong>Raise budgets on your top 3 campaigns to ₪10,000/day.</strong><br><br>
+                Right now you're spending past your campaign budgets — that means there's volume left on the table. Give the algorithm room to find it.
+            </div>
+
+            <p>If those campaigns don't hit ₪10K during weekdays, that's fine. Set them high enough so weekends can flex up — that happens and it's not uncommon.</p>
+        </div>
+
+        <!-- PRINCIPLES -->
+        <div class="section">
+            <h2>Principles to Keep in Mind</h2>
+
+            <div class="principle">
+                <div class="principle-title">Avoid Overcorrecting</div>
+                <p>Today's spend (or lack of spend) impacts sales the next 10-14 days. If your CM yesterday was 11%, it's possible that spend is setting you up for some days in the coming week to hit 25%. Don't go hard on overcorrections.</p>
+            </div>
+
+            <div class="principle">
+                <div class="principle-title">Budget Is the First Lever</div>
+                <p>Since you're spending past your campaign budgets, it means volume is being left on the table. That's the first variable to manipulate — raise budgets to unlock more profitable spend.</p>
+            </div>
+
+            <div class="principle">
+                <div class="principle-title">Tighten Underperformers, Don't Kill Them</div>
+                <p>To get closer to your 20% rolling 7-day average CM target, look at ad sets below target and tighten by about 15%. Let them keep running. They may be helping fill the funnel for other ads.</p>
+            </div>
+
+            <div class="principle">
+                <div class="principle-title">Be a Surgeon</div>
+                <p>Large overcorrections can make the next few days look really good, then cause things to die out. Small, precise adjustments. Don't swing the axe.</p>
+            </div>
+        </div>
+
+        <!-- ACTION ITEMS -->
+        <div class="section">
+            <h2>Action Items</h2>
+
+            <div class="callout callout-purple">
+                <strong>1. Raise top 3 campaign budgets to ₪10,000/day</strong><br>
+                • ViroCore (HEBREW) CBO 23.2 — currently ₪6,000<br>
+                • PelvicCore (HEBREW) CBO 14.2 — currently ₪5,000<br>
+                • ViroCore (HEBREW) ROAS 26.2 — currently ₪4,000<br><br>
+
+                <strong>2. Tighten underperforming ad sets by ~15%</strong><br>
+                Look at last 7 days, find ad sets below your target CPA, reduce cost caps by 15%. Don't turn them off.<br><br>
+
+                <strong>3. Watch and wait</strong><br>
+                Give it a few days. Don't react to single-day swings. Evaluate on 7-day rolling averages.
+            </div>
+        </div>
+
+        <!-- TREND -->
+        <div class="section">
+            <h2>Trend (Last 7 Days)</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>ROAS</th>
+                        <th>CM %</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feb 22</td>
+                        <td>1.33x</td>
+                        <td>—</td>
+                        <td><span class="tag tag-red">Below breakeven</span></td>
+                    </tr>
+                    <tr>
+                        <td>Feb 27</td>
+                        <td>1.98x</td>
+                        <td>14%</td>
+                        <td><span class="tag tag-green">Profitable</span></td>
+                    </tr>
+                    <tr>
+                        <td>Feb 28</td>
+                        <td>1.72x</td>
+                        <td>11%</td>
+                        <td><span class="tag tag-yellow">Profitable (tighter)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>You're on a positive trajectory. One tighter day doesn't reverse a week of improvement. Stay the course, make small adjustments, and let the data accumulate.</p>
+        </div>
+
+    </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
+</body>
+</html>
