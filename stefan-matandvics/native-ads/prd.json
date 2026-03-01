@@ -1,0 +1,147 @@
+{
+  "projectName": "Native Image Ads — Mat & Vic's",
+  "description": "10 belief-violation native image ads driving to '5 Reasons You Shouldn't Buy Premium Wool or Alpaca Socks'. Fully autonomous production using the Native Image Ad Production Process methodology. Heavy on contradiction-based images. All images sock-visible for Meta targeting.",
+  "adCount": 10,
+  "methodology": "/Users/andrew/Dropbox/july2025/methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+  "checklist": "/Users/andrew/Dropbox/july2025/methodologies/ad-creative/violation-opener-checklist.md",
+  "funnel": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/sample-funnel/presell/index.html",
+  "productResearch": "/Users/andrew/Dropbox/july2025/clients/stefan-illwitzer-matandvics/strategy_thesis-based-positioning.md",
+  "brandName": "Mat & Vic's",
+  "brandDomain": "matandvics.com",
+  "brandColorHex": "#108474",
+  "funnelHeadline": "5 reasons you shouldn't buy premium wool or alpaca socks",
+  "outputDir": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads",
+  "env": {
+    "OPENAI_API_KEY": "Required for US-005 image generation. Must be exported before launching Ralph."
+  },
+  "imageDirection": {
+    "style": "Heavy on contradiction-based images — pattern interrupt visuals that make people stop scrolling",
+    "requirement": "All images must be sock-related so Meta's algorithm serves to people in-market for socks",
+    "mandatoryImage": "1 of 10 images MUST be: Attractive 35-year-old woman, polished appearance (blazer, nice dress), but camera reveals her feet: dingy, pilled, hole-ridden socks that don't match. She's looking down at them with mild embarrassment.",
+    "contradictionTypes": "Object in Wrong Context, Quantity That Feels Wrong, Evidence of Failure, 'Wait What?' Detail"
+  },
+  "expressionBank": {
+    "file": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/expression-bank.md",
+    "description": "Master list of 40 opener expressions organized by 10 angles. Each expression attacks the ONE belief: 'Natural fibers are better than engineered blends.' All expressions are congruent with the funnel's core frame.",
+    "usage": "US-002 MUST pull openers from this bank instead of brainstorming from scratch. For 10 ads: select 10 expressions — 1 per angle. Used expression numbers are tracked in batch-history.md."
+  },
+  "batchHistory": {
+    "file": "/Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/batch-history.md",
+    "description": "Tracks which expression numbers, evidence sections, and image concepts have been used across all batches. Updated after each batch completes.",
+    "usage": "US-002 checks it to avoid reusing expressions. US-004 checks it to avoid reusing image concepts."
+  },
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Ingest funnel and write context brief",
+      "description": "Read the full funnel HTML and product research. Infer the argument structure. Write the context brief with all components. Run the funnel inference self-check.",
+      "acceptanceCriteria": [
+        "Load methodology file: /Users/andrew/Dropbox/july2025/methodologies/ad-creative/Native-Image-Ad-Production-Process.md",
+        "Load violation checklist: /Users/andrew/Dropbox/july2025/methodologies/ad-creative/violation-opener-checklist.md",
+        "Read the ENTIRE funnel HTML — not first 200 lines, the FULL document",
+        "Read all product research files",
+        "Write context brief to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/context-brief.md",
+        "Run funnel inference self-check",
+        "Context brief is written to file, not just held in memory"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "Pre-completed during prep-native-ads skill run. Context brief already exists at artifacts/context-brief.md with full funnel analysis, R1-R5 evidence mapping, visual world, and Andrew's image direction."
+    },
+    {
+      "id": "US-002",
+      "title": "Select 10 expressions from bank and evaluate",
+      "description": "Select 10 expressions from expression-bank.md (1 per angle). Run mandatory self-check on each. Ensure evidence pairing diversity.",
+      "acceptanceCriteria": [
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/context-brief.md for beliefs and funnel context",
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/expression-bank.md for the 40 pre-written expressions",
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/batch-history.md to confirm no prior usage",
+        "Select 10 expressions — 1 per angle across all 10 angles",
+        "Ensure at least 4 different evidence pairings (R1-R5) are represented",
+        "Run mandatory self-check on each selected expression: OPENER, TARGET, READER REACTION, GOLD STANDARD, FUCK YOU TEST, TURN TEST, FAIL PATTERN, VERDICT",
+        "All 10 selected openers pass all 3 tests",
+        "All 10 openers attack the ONE belief: 'Natural fibers are better than engineered blends'",
+        "Save full evaluations to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/opener-evaluations.md"
+      ],
+      "priority": 2,
+      "passes": true,
+      "notes": "Selected expressions: 2, 7, 11, 13, 17, 21, 26, 30, 35, 38 (1 per angle). Evidence diversity: R1(3), R2(2), R3(1), R4(3), R5(1) = 5 pairings. All 10 passed all 3 tests. Evaluations saved to artifacts/opener-evaluations.md."
+    },
+    {
+      "id": "US-003",
+      "title": "Write 10 ad copy drafts",
+      "description": "Write full body copy for all 10 ads following the 7-part architecture. Run mandatory body copy self-check on each.",
+      "acceptanceCriteria": [
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/opener-evaluations.md for the final 10 openers",
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/context-brief.md for funnel evidence",
+        "Write 10 complete ad drafts following 7-part architecture",
+        "Each ad's body copy draws from its expression's evidence pairing (R1-R5)",
+        "ALL 10 ads end with identical bridge: '5 reasons you shouldn't buy premium wool or alpaca socks: {url}'",
+        "ZERO product names, brand names, or selling language",
+        "Run mandatory body copy self-check on EACH draft",
+        "Process in sub-batches of 5 to maintain quality",
+        "Save all 10 drafts to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/ad-copy-drafts.md"
+      ],
+      "priority": 3,
+      "passes": true,
+      "notes": "All 10 ad drafts written following 7-part architecture. Processed in 2 sub-batches of 5. All draw from assigned evidence pairings (R1-R5). All end with identical bridge line. All passed mandatory body copy self-check (selling, congruence, structure, rules, open loop). Saved to artifacts/ad-copy-drafts.md."
+    },
+    {
+      "id": "US-004",
+      "title": "Design 10 image concepts and write prompts",
+      "description": "Design 10 image concepts with subtle contradictions. One MUST be the polished woman with dingy socks. Run mandatory self-check. Write generation prompts.",
+      "acceptanceCriteria": [
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/ad-copy-drafts.md for openers",
+        "Read imageDirection in prd.json for Andrew's creative direction",
+        "Design 10 image concepts — each with a SUBTLE CONTRADICTION",
+        "1 of 10 MUST be: polished 35yo woman with dingy mismatched socks, looking down with mild embarrassment",
+        "All images must be sock-visible (Meta algorithm targeting)",
+        "Heavy on contradiction-based visuals",
+        "Run mandatory image concept self-check on EACH: concept name, description, contradiction type, 3 layers, opener match, stock check, verdict",
+        "At least 3 different contradiction categories across 10",
+        "Process in sub-batches of 5",
+        "Write prompts using V3 raw iPhone UGC template with SPECIFIC ugly",
+        "Save to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/image-concepts.md"
+      ],
+      "priority": 4,
+      "passes": true,
+      "notes": "Designed 10 image concepts with subtle contradictions. Mandatory polished woman concept assigned to #7. Contradiction types: 2× Wrong Context, 1× Quantity Wrong, 4× Evidence of Failure, 3× Wait What Detail. All 10 passed 3-layer native test + stock check. 10 distinct settings (no repeats). V3 prompts with specific ugly written for all 10. Saved to artifacts/image-concepts.md."
+    },
+    {
+      "id": "US-005",
+      "title": "Generate images and build HTML mockup",
+      "description": "Generate 10 images with gpt-image-1.5 high quality. Run post-generation review. Build Facebook feed mockup HTML with base64 embedded images.",
+      "acceptanceCriteria": [
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/image-concepts.md for prompts",
+        "Read /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/ad-copy-drafts.md for copy",
+        "Create generate_stefan_images.py using maggie template",
+        "Set model to gpt-image-1.5, quality to high",
+        "Generate all 10 images in sub-batches of 5",
+        "Run mandatory post-generation review on EACH image",
+        "Build ad-mockups.html with base64 embedded images",
+        "Customize: brand color #108474, 'M' avatar, 'Mat & Vic's' brand name, matandvics.com domain",
+        "Save reviews to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/image-review.md"
+      ],
+      "priority": 5,
+      "passes": true,
+      "notes": "Generated 10 images with gpt-image-1.5 high quality. All 10 embedded as base64 in ad-mockups.html (21.5MB). Images saved to generated_ad_images/ with timestamps. Script: generate_stefan_images.py. Cost: ~$2.40."
+    },
+    {
+      "id": "US-006",
+      "title": "Final set review and batch history update",
+      "description": "Run final set review across all 10 ads. Update batch-history.md with used expressions and image concepts.",
+      "acceptanceCriteria": [
+        "Read all artifact files",
+        "Run mandatory final set review: angle diversity, evidence diversity, image diversity, tone consistency, no-sell scan, bridge consistency",
+        "All 7 boxes checked",
+        "Save review to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/artifacts/final-set-review.md",
+        "Append batch to /Users/andrew/Dropbox/july2025/clients/accelerator-site/stefan-matandvics/native-ads/batch-history.md: expression numbers, evidence sections, image concepts",
+        "Update Available Expression Numbers list to remove used numbers",
+        "Final deliverables: ad-mockups.html, generate_stefan_images.py, generated_ad_images/ with 10 images"
+      ],
+      "priority": 6,
+      "passes": true,
+      "notes": "Batch 1 complete. Used expressions: 2, 7, 11, 13, 17, 21, 26, 30, 35, 38. batch-history.md updated. 30 expressions remain for future batches."
+    }
+  ]
+}
