@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idan — Response Overview Mar 6, 2026</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --accent-orange: #f97316;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .callout {
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .callout-teal { background: #E0F7F3; border: 1px solid var(--accent-teal); }
+        .callout-purple { background: #F3E8FF; border: 1px solid var(--accent-purple); }
+        .callout-green { background: #dcfce7; border: 1px solid var(--accent-green); }
+        .callout-yellow { background: #fef9c3; border: 1px solid var(--accent-yellow); }
+        .callout-orange { background: #fff7ed; border: 1px solid var(--accent-orange); }
+
+        .tag {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag-green { background: #dcfce7; color: #166534; }
+        .tag-red { background: #fee2e2; color: #991b1b; }
+        .tag-yellow { background: #fef9c3; color: #854d0e; }
+        .tag-purple { background: #F3E8FF; color: #6b21a8; }
+
+        .principle {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-purple);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .principle-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .principle p { margin-bottom: 0; font-size: 0.9375rem; }
+
+        .q-block {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .q-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .q-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .q-number {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .q-question {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-black);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .q-source {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .response-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header card -->
+    <div class="card">
+        <div class="icon">📋</div>
+        <h1>Response to Idan</h1>
+        <p class="subtitle">7 questions + prior commitments — everything ready to send</p>
+        <p class="date">March 6, 2026</p>
+
+        <div class="callout callout-teal">
+            143 orders on Mar 5 — his biggest day on record. PE angle is the winning pitch. This response is about playing the next few innings right.
+        </div>
+    </div>
+
+    <!-- Questions card -->
+    <div class="card">
+        <div class="icon">❓</div>
+        <h1>Idan's 7 Questions</h1>
+        <p class="date">Asked Mar 4–5, 2026</p>
+
+        <!-- Q1 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q1</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 4, 10:35am</span>
+            </div>
+            <div class="q-question">"Would love to hear more about upsells. 12% take rate feels like a missed opportunity."</div>
+            <div class="response-label">Response</div>
+            <p>The offer is fine — 50% off second unit is strong. The take rate problem is a copy problem, not a pricing problem. The current popup uses a generic discount frame ("special offer"). Men buying a PE device aren't thinking about a backup for travel. They're thinking about who they're becoming.</p>
+            <p>Phase 1: Rewrote the popup around a transformation arc. New headline: <em>"Here's How You Can Go From Lasting 60 Seconds To 60 Minutes."</em> Body copy built around the archetype — the man who doesn't leave anything to chance. Decline link with identity cost: <em>"No thanks, 60 seconds is fine for now."</em></p>
+
+            <div class="principle">
+                <div class="principle-title">Phase 2 — The Bundle</div>
+                <p>Bundle the second ViroCore with the <strong>From 60 Seconds to 60 Minutes Transformation Program</strong> — a 60-day daily email program. ₪400 value, free with the second device. Starts the moment he orders — no waiting for the device. Days 1–20: understand what's been happening in your body. Days 21–40: use ViroCore alongside daily protocols. Days 41–60: go the distance, consistently, every time.</p>
+            </div>
+
+            <div class="callout callout-purple">
+                <strong>Artifacts ready:</strong> <a href="../upsell-popup-comparison/" style="color: var(--accent-purple); font-weight: 600;">View full popup comparison →</a> (Original → v2 copy rewrite → v3 + program bundle, with annotations)
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q2</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 10:35am</span>
+            </div>
+            <div class="q-question">"Should I use 3–4 Hebrew UGC creators for product demonstrations?"</div>
+            <div class="response-label">Response</div>
+            <p>Not yet. Don't burn mental RAM on 30–60s UGC. There's a long runway left in static images turned into short motion clips (6–10 seconds) via <strong>Kling Motion Control</strong>. Same format, just in motion with text overlays. You haven't milked this yet.</p>
+            <p>Look at <strong>Airmoto's Facebook Ad Library</strong>. $10M/month and basically their entire library is the same format — static-style images with motion, over and over, slightly different wrapping. That's the template. Stay in it.</p>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q3</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 10:35am</span>
+            </div>
+            <div class="q-question">"Product arrives in a plain box. Should I create an instruction/usage plan insert?"</div>
+            <div class="response-label">Response</div>
+            <p>Yes. Keep it simple — one page, first 30 days, clear protocol. It's a compliance tool. Most people use a device like this inconsistently, and inconsistency kills results. A plan in the box sets expectations, drives follow-through, and reduces refunds.</p>
+        </div>
+
+        <!-- Q4 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q4</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 10:35am</span>
+            </div>
+            <div class="q-question">"When does bulk ordering, Shopify Plus, white labelling become relevant?"</div>
+            <div class="response-label">Response</div>
+            <p>Once you're consistently above 80 orders/day with strong ROAS. Bulk ordering first (cash flow + shipping times), then Shopify Plus if you're hitting plan limitations. White labelling is a later conversation.</p>
+            <p>Don't let infrastructure work crowd out the marketing work driving growth right now. You're in a hitting streak — stay in the batter's box.</p>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q5</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 2:03pm</span>
+            </div>
+            <div class="q-question">"PE gets a lot of spend but not enough sales today — raise budget or leave it?"</div>
+            <div class="response-label">Response</div>
+            <p>Leave it. One bad day isn't a signal. Attribution is mostly art, not science — what's happening in the background may not show up until tomorrow or the day after.</p>
+            <p>Separate deliberate move: tighten cost controls <strong>10% across the board</strong> — not as a reaction to this day, but as a strategic efficiency nudge. Watch over 3–5 days, not one.</p>
+        </div>
+
+        <!-- Q6 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q6</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 2:03pm</span>
+            </div>
+            <div class="q-question">"My goal is to reach an overall ROAS of 2 and be steady around it."</div>
+            <div class="response-label">Response</div>
+            <p>Right direction. Technically, 20% contribution margin (VAT-inclusive) requires ~<strong>2.16x gross ROAS</strong> at your scale. The 10% tighten gets you part of the way there. Watch 7–10 days. If volume holds, tighten another 10%. Slow and intentional over a big swing.</p>
+        </div>
+
+        <!-- Q7 -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">Q7</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Mar 5, 2:04pm</span>
+            </div>
+            <div class="q-question">"For PE — test multiple LPs for different personas, or test lots of ads to the current LP?"</div>
+            <div class="response-label">Response</div>
+            <p>Test ads, not LPs — for now. Your LP is working. The variable to isolate is creative. Once you've exhausted the creative space across different ages, looks, and emotional angles and found clear winners, then test LPs — one per persona. You're not there yet.</p>
+        </div>
+
+    </div>
+
+    <!-- Prior commitments card -->
+    <div class="card">
+        <div class="icon">🤝</div>
+        <h1>Prior Commitments</h1>
+        <p class="date">Things Andrew committed to earlier in the thread</p>
+
+        <!-- Commitment A -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">A</span>
+                <span class="tag tag-red">Not yet</span>
+                <span class="q-source">Andrew, Mar 5, 2:51am</span>
+            </div>
+            <div class="q-question">"Once Claude Code resets I can work more on ad ideas and examples to share with you."</div>
+            <div class="response-label">Status</div>
+            <p>Ralph native ads loop is ready to run — 6 PE native ad concepts haven't been generated yet. Infrastructure at <code>clients/idan-zeyna/virocore-pe-ads/</code>. This is the outstanding deliverable.</p>
+        </div>
+
+        <!-- Commitment B -->
+        <div class="q-block">
+            <div class="q-meta">
+                <span class="q-number">B</span>
+                <span class="tag tag-green">Ready</span>
+                <span class="q-source">Andrew, Mar 5, 2:37am</span>
+            </div>
+            <div class="q-question">"I can elaborate on the digital upsell concept with examples — just need time to refine it."</div>
+            <div class="response-label">Status</div>
+            <p>Covered in Q1. The "From 60 Seconds to 60 Minutes Transformation Program" is the elaboration — 60-day daily email program, starts immediately on order, ₪400 value bundled free with second ViroCore. Popup mock built and ready to share.</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Prepared by Andrew · The Prompted Accelerator · Mar 6, 2026
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViroCore Upsell Popup — Version Comparison</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --accent-orange: #f97316;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 860px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .callout {
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .callout-teal { background: #E0F7F3; border: 1px solid var(--accent-teal); }
+        .callout-purple { background: #F3E8FF; border: 1px solid var(--accent-purple); }
+        .callout-green { background: #dcfce7; border: 1px solid var(--accent-green); }
+        .callout-yellow { background: #fef9c3; border: 1px solid var(--accent-yellow); }
+        .callout-orange { background: #fff7ed; border: 1px solid var(--accent-orange); }
+
+        .tag {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag-green { background: #dcfce7; color: #166534; }
+        .tag-teal { background: #E0F7F3; color: #0d7e6e; }
+        .tag-purple { background: #F3E8FF; color: #6b21a8; }
+        .tag-yellow { background: #fef9c3; color: #854d0e; }
+
+        .principle {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-purple);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .principle-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .principle p { margin-bottom: 0; font-size: 0.9375rem; }
+
+        .version-block {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: var(--border);
+        }
+
+        .version-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .version-number {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        .version-title {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .annotation-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        /* Popup embed wrapper */
+        .popup-embed {
+            background: #1a1a2e;
+            border: var(--border);
+            padding: 2rem;
+            margin: 1.25rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Original screenshot */
+        .original-img {
+            max-width: 420px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ─── Popup component styles (scoped via .popup-v) ─────────────── */
+        .popup-v {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .popup-v .popup {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .popup-v .popup-header {
+            background: #E8631A;
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .popup-v .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+
+        .popup-v .popup-inner {
+            position: relative;
+        }
+
+        .popup-v .popup-body {
+            padding: 24px 24px 20px;
+            text-align: center;
+        }
+
+        .popup-v .headline {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a1a2e;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .popup-v .headline span { color: #E8631A; }
+
+        .popup-v .body-copy {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.65;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .popup-v .body-copy p { margin-bottom: 10px; }
+        .popup-v .body-copy p:last-child { margin-bottom: 0; }
+        .popup-v .body-copy strong { color: #1a1a2e; }
+
+        .popup-v .divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 18px 0;
+        }
+
+        .popup-v .price-box {
+            background: #f8f9fa;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .popup-v .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .popup-v .price-row.total {
+            border-top: 1.5px solid #ddd;
+            margin-top: 6px;
+            padding-top: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #1a1a2e;
+        }
+
+        .popup-v .price-row .label { font-weight: 500; }
+        .popup-v .price-row .amount { font-weight: 600; color: #1a1a2e; }
+
+        .popup-v .price-row .amount .strikethrough {
+            text-decoration: line-through;
+            color: #aaa;
+            font-weight: 400;
+            margin-left: 4px;
+            font-size: 12px;
+        }
+
+        .popup-v .price-row .amount.free { color: #2ecc71; }
+
+        .popup-v .badge-off {
+            background: #E8631A;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 20px;
+            margin-left: 6px;
+        }
+
+        .popup-v .badge-free {
+            background: #2ecc71;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 20px;
+            margin-left: 6px;
+        }
+
+        .popup-v .cta-btn {
+            display: block;
+            width: 100%;
+            background: #2ecc71;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .popup-v .cta-btn .sub {
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .popup-v .decline {
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            text-decoration: underline;
+            cursor: pointer;
+            padding-bottom: 4px;
+        }
+
+        .popup-v .scarcity {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .popup-v .scarcity strong { color: #E8631A; }
+
+        /* Program box (v3 only) */
+        .popup-v .program-box {
+            background: #1a1a2e;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .popup-v .program-eyebrow {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #E8631A;
+            margin-bottom: 6px;
+        }
+
+        .popup-v .program-name {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .popup-v .program-name span { color: #E8631A; }
+
+        .popup-v .program-desc {
+            font-size: 13px;
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .popup-v .program-desc strong { color: #fff; }
+
+        .popup-v .program-details {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .popup-v .program-pill {
+            background: rgba(232,99,26,0.15);
+            border: 1px solid rgba(232,99,26,0.3);
+            color: #E8631A;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .popup-v .program-value {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .popup-v .program-value strong {
+            color: #fff;
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .popup-v .program-free {
+            color: #2ecc71;
+            font-weight: 700;
+        }
+
+        .change-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .change-list li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            padding: 0.5rem 0;
+            font-size: 0.9375rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .change-list li:last-child { border-bottom: none; }
+
+        .change-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+            .popup-embed { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="card">
+        <div class="icon">🔄</div>
+        <h1>Upsell Popup — Version Comparison</h1>
+        <p class="subtitle">Original → v2 (copy rewrite) → v3 (+ program bundle)</p>
+        <p class="date">March 6, 2026</p>
+
+        <div class="callout callout-teal">
+            Current take rate: 12%. The offer is fine — 50% off a second unit is strong. The variable is copy. This comparison walks through Phase 1 (copy rewrite) and Phase 2 (digital bundle add-on) in sequence.
+        </div>
+    </div>
+
+    <!-- Versions card -->
+    <div class="card">
+        <div class="icon">📋</div>
+        <h1>Three Versions</h1>
+
+        <!-- ─── ORIGINAL ─────────────────────────────────── -->
+        <div class="version-block">
+            <div class="version-header">
+                <span class="version-number">Original</span>
+                <span class="version-title">Current live popup</span>
+                <span class="tag tag-yellow">12% take rate</span>
+            </div>
+
+            <div class="annotation-label">What it looks like</div>
+            <div class="popup-embed">
+                <img src="original-popup.png" alt="Idan's original upsell popup" class="original-img">
+            </div>
+
+            <div class="annotation-label">The problem</div>
+            <ul class="change-list">
+                <li>
+                    <span class="change-icon">⚠️</span>
+                    <span><strong>Generic discount frame.</strong> "Special offer — get a second ViroCore at 50% off." Practical. Doesn't pull. The man buying a PE device isn't thinking about a backup for travel.</span>
+                </li>
+                <li>
+                    <span class="change-icon">⚠️</span>
+                    <span><strong>Neutral decline link.</strong> "No thanks, continue with one unit." Zero identity cost. Men scroll past it without feeling anything.</span>
+                </li>
+                <li>
+                    <span class="change-icon">⚠️</span>
+                    <span><strong>Copy speaks to logistics, not identity.</strong> The man buying ViroCore is thinking about who he's becoming. The popup speaks to his calendar, not his character.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ─── V2 ─────────────────────────────────────────── -->
+        <div class="version-block">
+            <div class="version-header">
+                <span class="version-number">v2</span>
+                <span class="version-title">Phase 1 — Copy rewrite only</span>
+                <span class="tag tag-teal">Same offer, new frame</span>
+            </div>
+
+            <div class="annotation-label">What changed</div>
+            <ul class="change-list">
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>New headline — transformation arc.</strong> "Here's How You Can Go From Lasting 60 Seconds To 60 Minutes." From X to Y, specific and concrete. Speaks directly to why he bought in the first place.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Body copy built around an archetype.</strong> The man who doesn't leave anything to chance. He controls his environment the same way he controls himself. The second ViroCore isn't a backup — it's a statement.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>"She will know the difference."</strong> Short. Final. Her lens. She's in the back of his mind for everything, even when the copy is speaking directly to him.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Identity-cost decline link.</strong> "No thanks, 60 seconds is fine for now." Most decline links are invisible. This one lands.</span>
+                </li>
+                <li>
+                    <span class="change-icon">—</span>
+                    <span><strong>Nothing changed:</strong> The offer (₪200 / 50% off), price box, layout. Phase 1 is always copy. Test this first before adding complexity.</span>
+                </li>
+            </ul>
+
+            <div class="annotation-label">Live preview</div>
+            <div class="popup-embed">
+                <div class="popup-v">
+                    <div class="popup">
+                        <div class="popup-header">🔥 Limited offer</div>
+                        <div class="popup-inner">
+                            <button class="close-btn">✕</button>
+                            <div class="popup-body">
+                                <div class="headline">
+                                    Here's How You Can Go From Lasting <span>60 Seconds</span> To <span>60 Minutes</span>
+                                </div>
+                                <div class="body-copy">
+                                    <p>The man who lasts doesn't leave anything to chance.</p>
+                                    <p>He doesn't hope the ViroCore is charged. He doesn't skip a session because it's at home and he's at the office. He doesn't let a dead battery be the reason he's back to square one.</p>
+                                    <p><strong>He controls his environment the same way he controls himself.</strong> Completely.</p>
+                                    <p>That's the man his woman never has to worry about. The man who shows up — in every room, every night, every time. Firm. Ready. Consistent.</p>
+                                    <p>The second ViroCore isn't a backup. It's a statement.</p>
+                                    <p>It's the difference between the man who's working on it and the man who's done the work.</p>
+                                    <p><strong>She will know the difference.</strong></p>
+                                </div>
+                                <hr class="divider">
+                                <div class="price-box">
+                                    <div class="price-row">
+                                        <span class="label">First ViroCore</span>
+                                        <span class="amount">₪399</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span class="label">Second ViroCore <span class="badge-off">50% OFF</span></span>
+                                        <span class="amount">₪200 <span class="strikethrough">₪399</span></span>
+                                    </div>
+                                    <div class="price-row total">
+                                        <span class="label">Total for 2 ViroCores</span>
+                                        <span class="amount">₪599</span>
+                                    </div>
+                                </div>
+                                <div class="scarcity"><strong>3 ViroCores left</strong> at this price</div>
+                                <button class="cta-btn">
+                                    Add a second ViroCore → ₪200<br>
+                                    <span class="sub">(2 ViroCores for ₪599 — one-time offer)</span>
+                                </button>
+                                <a class="decline">No thanks, 60 seconds is fine for now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── V3 ─────────────────────────────────────────── -->
+        <div class="version-block">
+            <div class="version-header">
+                <span class="version-number">v3</span>
+                <span class="version-title">Phase 2 — + Program bundle</span>
+                <span class="tag tag-purple">After v2 proves out</span>
+            </div>
+
+            <div class="callout callout-purple">
+                <strong>When to deploy:</strong> Once v2 shows a meaningful lift in take rate, add the digital program as a bundle. It changes the value perception of the upsell completely — without discounting the device further.
+            </div>
+
+            <div class="annotation-label">What's added</div>
+            <ul class="change-list">
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>The From 60 Seconds to 60 Minutes Transformation Program.</strong> 60-day daily email program, bundled free with the second ViroCore. ₪400 value anchor.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Starts immediately on order.</strong> No waiting for device. Day 1 begins the moment he clicks. The shift that needs to happen first is mental, not physical.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Phase timeline (customer-facing).</strong> Days 1–20: understand what's been happening in your body. Days 21–40: use ViroCore + daily protocols. Days 41–60: go the distance, consistently.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Program as line item in price box.</strong> ₪400 strikethrough → FREE. Visually anchors the bundle value without changing the device price.</span>
+                </li>
+                <li>
+                    <span class="change-icon">✦</span>
+                    <span><strong>Updated CTA.</strong> "2 ViroCores + 60-Day Program, ₪400 value — one-time offer." The value stack is visible in the button itself.</span>
+                </li>
+                <li>
+                    <span class="change-icon">—</span>
+                    <span><strong>Body copy identical to v2.</strong> The transformation arc copy is kept intact. The program block is inserted between body copy and price box.</span>
+                </li>
+            </ul>
+
+            <div class="annotation-label">Live preview</div>
+            <div class="popup-embed">
+                <div class="popup-v">
+                    <div class="popup">
+                        <div class="popup-header">🔥 Limited offer</div>
+                        <div class="popup-inner">
+                            <button class="close-btn">✕</button>
+                            <div class="popup-body">
+                                <div class="headline">
+                                    Here's How You Can Go From Lasting <span>60 Seconds</span> To <span>60 Minutes</span>
+                                </div>
+                                <div class="body-copy">
+                                    <p>The man who lasts doesn't leave anything to chance.</p>
+                                    <p>He doesn't hope the ViroCore is charged. He doesn't skip a session because it's at home and he's at the office. He doesn't let a dead battery be the reason he's back to square one.</p>
+                                    <p><strong>He controls his environment the same way he controls himself.</strong> Completely.</p>
+                                    <p>That's the man his woman never has to worry about. The man who shows up — in every room, every night, every time. Firm. Ready. Consistent.</p>
+                                    <p>The second ViroCore isn't a backup. It's a statement.</p>
+                                    <p>It's the difference between the man who's working on it and the man who's done the work.</p>
+                                    <p><strong>She will know the difference.</strong></p>
+                                </div>
+                                <hr class="divider">
+                                <!-- Program block -->
+                                <div class="program-box">
+                                    <div class="program-eyebrow">Included free with your second ViroCore</div>
+                                    <div class="program-name">The <span>From 60 Seconds to 60 Minutes</span> Transformation Program</div>
+                                    <div class="program-desc">
+                                        <strong>Every day, an email lands in your inbox.</strong> One focused idea. One action. Building the man who lasts — before the device even arrives.<br><br>
+                                        The moment you order, Day 1 begins. No waiting. The shift that needs to happen first isn't physical. It's mental. When your ViroCore arrives, it plugs into the work you've already started.
+                                    </div>
+                                    <div style="margin-bottom:12px;">
+                                        <div style="font-size:11px;font-weight:700;color:#E8631A;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Inside the program</div>
+                                        <div style="font-size:12px;color:#bbb;line-height:1.7;">
+                                            <div style="display:flex;gap:8px;margin-bottom:4px;"><span style="color:#E8631A;font-weight:700;min-width:72px;">Days 1–20</span><span>Learn exactly what's been happening in your body — and how to take back control of it.</span></div>
+                                            <div style="display:flex;gap:8px;margin-bottom:4px;"><span style="color:#E8631A;font-weight:700;min-width:72px;">Days 21–40</span><span>Use ViroCore alongside daily protocols that accelerate your results.</span></div>
+                                            <div style="display:flex;gap:8px;"><span style="color:#E8631A;font-weight:700;min-width:72px;">Days 41–60</span><span>Go the distance. Consistently. Every time.</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="program-details">
+                                        <span class="program-pill">60-day program</span>
+                                        <span class="program-pill">Starts immediately</span>
+                                        <span class="program-pill">Daily email</span>
+                                    </div>
+                                    <div class="program-value">A ₪400 program — yours <span class="program-free">FREE</span> with your second ViroCore</div>
+                                </div>
+                                <div class="price-box">
+                                    <div class="price-row">
+                                        <span class="label">First ViroCore</span>
+                                        <span class="amount">₪399</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span class="label">Second ViroCore <span class="badge-off">50% OFF</span></span>
+                                        <span class="amount">₪200 <span class="strikethrough">₪399</span></span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span class="label">60s→60min Transformation Program <span class="badge-free">FREE</span></span>
+                                        <span class="amount free">₪0 <span class="strikethrough">₪400</span></span>
+                                    </div>
+                                    <div class="price-row total">
+                                        <span class="label">Total</span>
+                                        <span class="amount">₪599</span>
+                                    </div>
+                                </div>
+                                <div class="scarcity"><strong>3 ViroCores left</strong> at this price</div>
+                                <button class="cta-btn">
+                                    Add a second ViroCore + the Program → ₪200<br>
+                                    <span class="sub">(2 ViroCores + 60-Day Program, ₪400 value — one-time offer)</span>
+                                </button>
+                                <a class="decline">No thanks, 60 seconds is fine for now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end card -->
+
+    <div class="footer">
+        Prepared by Andrew · The Prompted Accelerator · Mar 6, 2026
+    </div>
+
+</div>
+
+</body>
+</html>
