@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Token Troubleshooting — For Alfred</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-teal-bg: #E0F7F3;
+            --accent-teal-dark: #0d9488;
+            --accent-purple: #9D4EDD;
+            --accent-purple-bg: #F3E8FF;
+            --accent-purple-dark: #6b21a8;
+            --accent-red: #ef4444;
+            --accent-red-bg: #fef2f2;
+            --accent-red-dark: #b91c1c;
+            --accent-green: #22c55e;
+            --accent-green-bg: #dcfce7;
+            --accent-green-dark: #166534;
+            --accent-amber: #f59e0b;
+            --accent-amber-bg: #fffbeb;
+            --accent-amber-dark: #b45309;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tldr {
+            background: #FAFAF5;
+            border: 2px solid var(--text-black);
+            border-top: 6px solid var(--text-black);
+        }
+
+        .card-context {
+            background: var(--bg-white);
+            border: 1px solid #d1d5db;
+            box-shadow: none;
+        }
+
+        .card-summary {
+            background: var(--text-dark);
+            color: #e5e5e5;
+            border: none;
+            box-shadow: none;
+        }
+
+        .card-summary h2, .card-summary h3, .card-summary strong { color: #ffffff; }
+        .card-summary p { color: #d1d5db; }
+
+        .card-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .card-label-light { color: rgba(255,255,255,0.4); }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-red);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .subtitle { color: var(--text-muted); margin-bottom: 0.5rem; }
+        .date { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0; }
+
+        p { margin-bottom: 1rem; }
+
+        .inner-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .inner-section:first-of-type, .inner-section.no-border {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .section-header-red {
+            border-left: 5px solid var(--accent-red);
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header-amber {
+            border-left: 5px solid var(--accent-amber);
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header-teal {
+            border-left: 5px solid var(--accent-teal);
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header-red h2, .section-header-red h3,
+        .section-header-amber h2, .section-header-amber h3,
+        .section-header-teal h2, .section-header-teal h3 {
+            margin-bottom: 0.25rem;
+            margin-top: 0;
+        }
+
+        .section-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-header-red .section-label { color: var(--accent-red-dark); }
+        .section-header-amber .section-label { color: var(--accent-amber-dark); }
+        .section-header-teal .section-label { color: var(--accent-teal-dark); }
+
+        .callout {
+            padding: 1rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .callout-red {
+            background: var(--accent-red-bg);
+            border: 1px solid var(--accent-red);
+        }
+
+        .callout-amber {
+            background: var(--accent-amber-bg);
+            border: 1px solid var(--accent-amber);
+        }
+
+        .callout-teal {
+            background: var(--accent-teal-bg);
+            border: 1px solid var(--accent-teal);
+        }
+
+        .callout-green {
+            background: var(--accent-green-bg);
+            border: 1px solid var(--accent-green);
+        }
+
+        code {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            padding: 0.125rem 0.375rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.8125rem;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #e5e5e5;
+            padding: 1rem 1.25rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .code-block .comment { color: #6b7280; }
+        .code-block .string { color: #a5d6ff; }
+        .code-block .error { color: #fca5a5; }
+
+        .error-box {
+            background: #1a1a1a;
+            border-left: 4px solid var(--accent-red);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.8125rem;
+            color: #fca5a5;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        th, td {
+            padding: 0.625rem 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #f8f9fa;
+        }
+
+        td {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .tag {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        .tag-red { background: var(--accent-red-bg); color: var(--accent-red-dark); }
+        .tag-green { background: var(--accent-green-bg); color: var(--accent-green-dark); }
+        .tag-amber { background: var(--accent-amber-bg); color: var(--accent-amber-dark); }
+
+        ul, ol { margin-left: 1.25rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.9375rem; }
+
+        .checklist { list-style: none; margin: 0; padding: 0; }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.625rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.9375rem;
+            margin-bottom: 0;
+        }
+
+        .checklist li:last-child { border-bottom: none; }
+
+        .checklist .check-icon {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #d1d5db;
+            border-radius: 3px;
+            margin-top: 0.2rem;
+        }
+
+        .checklist .check-icon-amber { border-color: var(--accent-amber); }
+        .checklist .check-icon-teal { border-color: var(--accent-teal); }
+
+        .card-summary .checklist li { border-bottom-color: rgba(255,255,255,0.08); color: #e5e5e5; }
+        .card-summary .checklist .check-icon { border-color: rgba(255,255,255,0.25); }
+        .card-summary .checklist .check-icon-amber { border-color: var(--accent-amber); }
+
+        .summary-ask-block {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .summary-ask-block-amber { border-left: 4px solid var(--accent-amber); }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.375rem; }
+            .code-block { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- CARD 1: HEADER -->
+    <div class="card">
+        <div class="icon">🔧</div>
+        <h1>Facebook Token Issue</h1>
+        <p class="subtitle">BB organic posting — token exists but posts fail</p>
+        <p class="date">March 12, 2026</p>
+    </div>
+
+    <!-- CARD 2: TL;DR -->
+    <div class="card card-tldr">
+        <div class="card-label">TL;DR</div>
+        <h2>The token you sent works, but posts fail with a permissions error</h2>
+
+        <p>Tried to schedule the first BB Facebook post today. The token is valid (correct format, doesn't throw "invalid token" errors), but every post attempt returns:</p>
+
+        <div class="error-box">
+            "requires both pages_read_engagement and pages_manage_posts as an admin with <strong>sufficient administrative permission</strong>"
+        </div>
+
+        <p>That last part — "sufficient administrative permission" — suggests the issue isn't the token's permission scopes, but the <strong>role of the user/system user</strong> that generated the token on the BB page itself.</p>
+
+        <div class="callout callout-amber">
+            <strong>Most likely fix:</strong> The system user (or your user account) that generated this token needs <strong>Admin</strong> role on the Brooke and Belle Facebook page — not just Editor or Analyst.
+        </div>
+
+        <p>If that's not it, the other possibilities are listed below.</p>
+    </div>
+
+    <!-- CARD 3: WHAT WE TRIED -->
+    <div class="card card-context">
+        <div class="card-label">DEBUGGING LOG</div>
+
+        <div class="inner-section no-border">
+            <div class="section-header-red">
+                <div class="section-label">The Error</div>
+                <h2>Consistent failure across all attempts</h2>
+            </div>
+
+            <p>Every POST to <code>/{page_id}/feed</code> returns the same error:</p>
+
+            <div class="code-block">
+<span class="comment">// API Response</span>
+{
+  "error": {
+    "message": "(#200) If posting to a page, requires both
+      pages_read_engagement and pages_manage_posts as an admin
+      with <span class="error">sufficient administrative permission</span>",
+    "type": "OAuthException",
+    "code": 200
+  }
+}
+            </div>
+
+            <p>Code 200 with OAuthException means: "Your token is real, but you don't have permission to do this action."</p>
+        </div>
+
+        <div class="inner-section">
+            <div class="section-header-amber">
+                <div class="section-label">What We Tried</div>
+                <h2>7 different approaches, same result</h2>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Attempt</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Standard POST with form data (<code>-d</code>)</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>POST with JSON body + Content-Type header</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>POST with multipart form (<code>-F</code>)</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>Authorization: Bearer header instead of query param</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>Immediate post (no scheduling)</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>Older API version (v19.0)</td>
+                    <td><span class="tag tag-red">Same error</span></td>
+                </tr>
+                <tr>
+                    <td>Debug token endpoint</td>
+                    <td><span class="tag tag-amber">Endpoint failed</span></td>
+                </tr>
+            </table>
+
+            <h3>Token validation</h3>
+
+            <table>
+                <tr>
+                    <th>Check</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Token length</td>
+                    <td><span class="tag tag-green">239 chars</span> (normal)</td>
+                </tr>
+                <tr>
+                    <td>Token prefix</td>
+                    <td><span class="tag tag-green">EAA...</span> (correct format)</td>
+                </tr>
+                <tr>
+                    <td>Whitespace/corruption</td>
+                    <td><span class="tag tag-green">None detected</span></td>
+                </tr>
+                <tr>
+                    <td>Matches credentials doc exactly</td>
+                    <td><span class="tag tag-green">Yes</span></td>
+                </tr>
+                <tr>
+                    <td>Token type (bearer)</td>
+                    <td><span class="tag tag-green">Confirmed</span></td>
+                </tr>
+            </table>
+
+            <p>The token itself is valid. The issue is what it's allowed to do.</p>
+        </div>
+
+        <div class="inner-section">
+            <div class="section-header-teal">
+                <div class="section-label">Possible Causes</div>
+                <h2>Three theories, ranked by likelihood</h2>
+            </div>
+
+            <h3>1. Page role insufficient (most likely)</h3>
+            <p>The system user or account that generated the token has <strong>Editor</strong> or <strong>Analyst</strong> role on the BB page, not <strong>Admin</strong>. The error specifically says "sufficient administrative permission" — which is Facebook's way of saying the underlying account doesn't have a high enough role.</p>
+
+            <div class="callout callout-teal">
+                <strong>Fix:</strong> In Business Manager → Pages → Brooke and Belle → Page Access, make sure the system user (or your account) has <strong>Admin</strong> or <strong>Full Control</strong> role.
+            </div>
+
+            <h3>2. App not in Live mode</h3>
+            <p>If the Facebook App is still in <strong>Development</strong> mode, it can only be used by accounts that have a role on the app itself. Since I'm calling the API from my machine, it might be blocked.</p>
+
+            <div class="callout callout-teal">
+                <strong>Fix:</strong> In the Facebook App Dashboard → App Review → switch to <strong>Live</strong> mode (if it's still in Development).
+            </div>
+
+            <h3>3. Token is User token, not Page token</h3>
+            <p>If this is a User Access Token rather than a Page Access Token, we'd need to exchange it for a Page token first. However, the <code>/me/accounts</code> endpoint (which would do this exchange) also fails — which suggests this <em>is</em> already a Page token.</p>
+
+            <div class="callout callout-teal">
+                <strong>Check:</strong> When you generated the token, did you select the <strong>Page</strong> in the dropdown, or was it generated at the User/Business level?
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 4: WHAT WE NEED -->
+    <div class="card card-summary">
+        <div class="card-label card-label-light">THE ASK</div>
+        <h2>Can you check these three things?</h2>
+
+        <div class="summary-ask-block summary-ask-block-amber">
+            <ul class="checklist">
+                <li>
+                    <span class="check-icon check-icon-amber"></span>
+                    <span><strong>Page role:</strong> Does the system user / your account have <strong>Admin</strong> role on the Brooke and Belle page? (Business Manager → Pages → BB → Page Access)</span>
+                </li>
+                <li>
+                    <span class="check-icon check-icon-amber"></span>
+                    <span><strong>App mode:</strong> Is the Facebook App in <strong>Live</strong> mode or still in Development?</span>
+                </li>
+                <li>
+                    <span class="check-icon check-icon-amber"></span>
+                    <span><strong>Token type:</strong> When generating, was the <strong>Page</strong> selected (not just User/Business)?</span>
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 1.5rem;">If one of these is the issue and you regenerate the token, I can test immediately. The 1,440 posts are ready to go — just need a working token to start scheduling.</p>
+
+        <p>Also totally fine to hop on a quick call if easier to debug together.</p>
+    </div>
+
+    <!-- CARD 5: REFERENCE -->
+    <div class="card card-context">
+        <div class="card-label">REFERENCE</div>
+        <h2>Current credentials (unchanged)</h2>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Page ID</td>
+                <td><code>[PAGE_ID]</code></td>
+                <td><span class="tag tag-green">Saved</span></td>
+            </tr>
+            <tr>
+                <td>Page Token</td>
+                <td><code>[REDACTED]</code> (239 chars)</td>
+                <td><span class="tag tag-amber">Permission issue</span></td>
+            </tr>
+            <tr>
+                <td>Token expiry</td>
+                <td>~May 9, 2026</td>
+                <td><span class="tag tag-green">Valid</span></td>
+            </tr>
+            <tr>
+                <td>Generated from</td>
+                <td>Purposefill BM</td>
+                <td>—</td>
+            </tr>
+        </table>
+
+        <h3>The API call that fails</h3>
+
+        <div class="code-block">
+curl -X POST "https://graph.facebook.com/v22.0/[PAGE_ID]/feed" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "No dog deserves to be abandoned in freezing weather. Ever.",
+    "published": false,
+    "scheduled_publish_time": 1741870800,
+    "access_token": "[REDACTED]"
+  }'
+        </div>
+
+        <h3>Facebook docs confirm this is correct</h3>
+        <p>Verified against current Graph API documentation (March 2026):</p>
+        <ul>
+            <li>Endpoint: <code>POST /{page-id}/feed</code> ✓</li>
+            <li>Parameters: <code>message</code>, <code>published</code>, <code>scheduled_publish_time</code> ✓</li>
+            <li>Required permissions: <code>pages_manage_posts</code> + <code>pages_read_engagement</code> ✓</li>
+            <li>Scheduling window: 10 min to 30 days ✓</li>
+        </ul>
+    </div>
+
+    <p class="footer">Prepared March 12, 2026 — Claude Code debugging session</p>
+
+</div>
+
+</body>
+</html>
