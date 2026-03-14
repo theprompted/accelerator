@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mat & Vic's LP01 Ad Drafts - Facebook Feed Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F8F8F7;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .feed-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .grid-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-row {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            background: #1a1a1a;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+        }
+
+        .page-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .page-header p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .draft-label {
+            background: #dc2626;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .draft-label .angle {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .fb-post {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-header {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .page-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: #050505;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .verified {
+            width: 12px;
+            height: 12px;
+            background: #1877f2;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+        }
+
+        .sponsored {
+            font-size: 11px;
+            color: #65676b;
+        }
+
+        .more-btn {
+            color: #65676b;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .post-text {
+            padding: 0 12px 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #050505;
+            white-space: pre-line;
+        }
+
+        .post-text.collapsed {
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-text.collapsed::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, white);
+        }
+
+        .post-text.expanded {
+            max-height: none;
+        }
+
+        .post-text.expanded::after {
+            display: none;
+        }
+
+        .see-more-btn {
+            padding: 0 12px 10px;
+            color: #65676b;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .see-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+            background: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .placeholder-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #65676b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .placeholder-image .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .placeholder-image .concept {
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 8px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .link-preview {
+            background: #f0f2f5;
+            padding: 10px 12px;
+            border-top: 1px solid #dddfe2;
+        }
+
+        .link-preview .domain {
+            font-size: 11px;
+            color: #65676b;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .link-preview .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #050505;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .link-preview .description {
+            font-size: 12px;
+            color: #65676b;
+            line-height: 1.3;
+        }
+
+        .cta-row {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #dddfe2;
+            margin-top: auto;
+        }
+
+        .cta-button {
+            background: #1877f2;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .reactions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #65676b;
+        }
+
+        .section-header {
+            background: #000;
+            padding: 12px 20px;
+            margin: 0 0 20px;
+            border-radius: 4px;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: #999;
+            border: 2px solid #000;
+            box-shadow: -.25rem .25rem 0 0 #383838;
+        }
+
+        /* Prompt Overlay */
+        .prompt-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .prompt-icon:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .prompt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            flex-direction: column;
+            padding: 16px;
+            overflow-y: auto;
+            z-index: 5;
+        }
+
+        .prompt-overlay.open {
+            display: flex;
+        }
+
+        .prompt-overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .prompt-overlay-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prompt-overlay-close {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: 1px solid #666;
+            border-radius: 4px;
+            color: #999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .prompt-overlay-close:hover {
+            border-color: #999;
+            color: #fff;
+        }
+
+        .prompt-overlay-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .page-footer {
+            background: transparent;
+            border-top: 2px solid #e5e5e5;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .page-footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .page-footer .powered-by {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .page-footer .powered-by strong {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Mat & Vic's LP01 Ad Drafts</h1>
+            <p>20 belief-violation native image ads for Facebook | Leads to: "Warum die weichsten Socken die schlechtesten fur deine Fusse sind"</p>
+        </div>
+
+        <!-- SECTION: Batch 1 (Drafts 1-6) -->
+        <div class="section-header">
+            BATCH 1 — Redefine Best & Attack Their Effort
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 1 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 1 · Redefine Best (Expr 1)
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-1">Soft socks are the most uncomfortable socks.
+
+That's the opposite of what you'd expect.
+
+You've spent years squeezing socks in stores.
+
+The softest ones always went in the cart.
+
+They felt like the right choice.
+
+Plush in the morning. Warm on the drive to work.
+
+But soft fibers absorb moisture and hold it.
+
+Your feet produce sweat all day — roughly a cup's worth.
+
+That plush sock is now a damp towel wrapped around your toes.
+
+By 3pm you're adjusting, pulling, wondering why your feet feel wrong.
+
+It's not your feet.
+
+It's the sock design.
+
+Softness was optimized for the 3 seconds you touch it.
+
+Not for the 8 hours you wear it.
+
+So you blamed circulation. Blamed the shoes. Blamed your feet.
+
+But your feet were fine.
+
+They were just swimming in trapped sweat all day.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(1)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_01.png" alt="The 3pm Sock" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🧦</div>
+                            <div>The 3pm Sock</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(1)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-1">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(1)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. POV looking down at my own feet under a desk at work — one sock is pulled halfway off, bunched around the ankle, clearly damp with visible sweat marks on the sock fabric. Single fluorescent tube overhead making everything yellow-green and slightly overexposed. The background has desk chair wheel, crumpled receipt, power strip with cables. This is NOT a content photo — this is 'my feet are killing me' energy. Autofocus locked on the desk edge so the sock is slightly soft, shot one-handed while sitting, desk edge cutting into frame. Bad angle, authentic 3pm office misery captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 2 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 2 · Redefine Best (Expr 2)
+                    <span class="angle">R4: First-Touch vs All-Day</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-2">The softest socks are the least comfortable.
+
+I know that sounds backwards.
+
+You've been trained to squeeze socks in stores.
+
+The plush ones feel expensive.
+
+The thin ones feel cheap.
+
+But comfort isn't what you feel for 3 seconds in an aisle.
+
+Comfort is what happens over 8 hours on your feet.
+
+First-touch softness is a single variable.
+
+All-day comfort is a system.
+
+Temperature regulation. Moisture management. Structure that holds shape.
+
+The sock that wins in the store is optimized for your hand.
+
+The sock that wins on your feet is optimized for your life.
+
+They're almost never the same sock.
+
+You didn't make bad choices.
+
+You made 3-second choices.
+
+The store only showed you 3 seconds.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(2)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_02.png" alt="The Squeeze Test" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🤏</div>
+                            <div>The Squeeze Test</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(2)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-2">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(2)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A hand squeezing a pair of packaged socks in a store aisle — the plastic packaging crinkling under the squeeze, price tags dangling, harsh fluorescent store lighting blowing out the whites. The sock wall behind has dozens of options in different colors and packages. This is NOT a content photo — this is 'doing the test we all do' energy. Slightly tilted, motion blur from quick grab, thumb pressing into the soft package, store floor tiles visible at bottom. Shot one-handed while shopping, capturing the universal sock-shopping ritual.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.8K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 3 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 3 · Redefine Best (Expr 3)
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-3">Soft socks are uncomfortable socks.
+
+That's not a typo.
+
+You reach for the plush ones because they feel like comfort.
+
+But soft fibers have a problem.
+
+They're sponges.
+
+Your feet sweat every hour you're standing, walking, sitting.
+
+And soft fibers absorb every drop.
+
+They don't release it. They hold it.
+
+By noon, you're wearing wet fabric pressed against your skin.
+
+The Germans have a phrase for it: "schmoren im eigenen Saft."
+
+Stewing in your own juices.
+
+That's what your feet do in soft socks.
+
+Not because your feet are weird.
+
+Because the sock was designed for the store, not for your life.
+
+The softness you felt in the aisle became the swamp you feel at 3pm.
+
+Nobody warned you.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(3)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_03.png" alt="The Damp Towel Comparison" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🧺</div>
+                            <div>The Damp Towel Comparison</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(3)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-3">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(3)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A soft sock and a damp hand towel lying side by side on a bathroom counter — both slightly crumpled, both looking used and wrinkled. Bathroom vanity light overexposing one side, water spots visible on the counter, toothbrush and soap bottle at the edge of frame. This is NOT a content photo — this is 'realized something gross' energy. Off-angle shot, one item slightly out of focus, casual phone snap capturing the comparison that just clicked. The visual parallel between sock and damp towel is unmistakable.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.4K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 4 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 4 · Redefine Best (Expr 4)
+                    <span class="angle">R4: First-Touch vs All-Day</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-4">The most comfortable socks don't feel soft.
+
+You've been lied to.
+
+Not by anyone malicious.
+
+By your own hand.
+
+You squeeze socks in stores because that's how you test quality.
+
+Plush means premium. Soft means comfort.
+
+Except it doesn't.
+
+Comfort is what happens hour after hour.
+
+It's your foot not overheating.
+
+It's your sock not sliding down.
+
+It's the fabric feeling the same at 5pm as it did at 7am.
+
+Softness is none of those things.
+
+Softness is a first impression.
+
+And first impressions don't tell you about hour eight.
+
+The socks that feel "meh" in your hand often feel incredible on your feet.
+
+The ones that feel amazing in your hand often fail by lunch.
+
+You just never connected the two because the store only gave you 3 seconds.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(4)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_04.png" alt="The Stretched Elastic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">😮‍💨</div>
+                            <div>The Stretched Elastic</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(4)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-4">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(4)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Close-up of a sock's elastic band completely stretched out and loose around a calf — the once-snug cuff is now saggy and falling down, unable to grip. Natural indoor light from a window, slightly dim. My hand is visible at the edge trying to pull the sock up, but the elastic has given up. This is NOT a content photo — this is 'seriously?' energy. Awkward downward angle, bare leg visible, floor or carpet in background. The elastic is dead. Authentic sock failure captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.6K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 5 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 5 · Redefine Best (Expr 5)
+                    <span class="angle">R3: Durability/Holes</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-5">The softest sock is the worst sock.
+
+Not the cheapest. The softest.
+
+You know the ones.
+
+They felt incredible in the store.
+
+Plush and thick and premium.
+
+Three weeks later, you found a hole in the heel.
+
+That's not bad luck.
+
+That's how soft fibers work.
+
+The fibers that feel luxurious are structurally weak.
+
+They break down faster under pressure.
+
+Your heel strikes the ground thousands of times a day.
+
+Soft fibers don't survive that.
+
+So the softest sock in your drawer is also the shortest-lived sock in your drawer.
+
+And you keep replacing them, thinking you got a bad batch.
+
+You didn't get a bad batch.
+
+You got soft socks.
+
+That's what they do.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(5)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_05.png" alt="The Heel Hole" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🕳️</div>
+                            <div>The Heel Hole</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(5)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-5">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(5)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A single sock held up by one hand, showing a clear hole worn through the heel — the hole is obvious, you can see through it. Natural indoor light from a window making harsh shadows. Background is a laundry pile or unmade bed. This is NOT a content photo — this is 'another pair done' energy. One-handed grip visible, thumb near the hole, sock slightly wrinkled, background messy with clothes. Shot to document yet another sock failure. Bad angle, authentic resignation captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 6 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 6 · Attack Their Effort (Expr 6)
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-6">Soft socks make your feet miserable.
+
+You didn't mean for that to happen.
+
+You bought them because you wanted to take care of your feet.
+
+Treat yourself. Get the good ones. The ones that feel like clouds.
+
+But soft fibers absorb moisture and hold it against your skin.
+
+Hour after hour.
+
+By mid-afternoon, your feet are wrapped in damp fabric.
+
+The temperature rises. The friction increases.
+
+That itchy, clammy, trapped feeling at the end of the day.
+
+That's not your feet being weird.
+
+That's the soft socks you chose to treat yourself with.
+
+They weren't defective.
+
+They were doing exactly what soft fibers do.
+
+You tried to be kind to your feet.
+
+The sock industry didn't return the favor.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(6)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_06.png" alt="The Sweaty Shoe Interior" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">👟</div>
+                            <div>The Sweaty Shoe Interior</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(6)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-6">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(6)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Looking down into an empty shoe after wearing all day — visible moisture marks and slight discoloration on the insole where sweat accumulated. Harsh overhead indoor lighting. The other shoe is visible at the edge, floor clutter around. This is NOT a content photo — this is 'look what my socks did' energy. Slightly out of focus, shot from above, one shoe removed hastily. The moisture evidence of soft socks failing to wick. Authentic foot-related disgust captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.9K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Batch 2 (Drafts 7-12) -->
+        <div class="section-header">
+            BATCH 2 — Flip Value & Attack Their Research
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 7 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 7 · Flip Value (Expr 7)
+                    <span class="angle">R4: First-Touch vs All-Day</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-7">The softer the sock, the worse it feels.
+
+I don't mean in the store.
+
+I mean after you've been wearing it for 8 hours.
+
+In the store, soft socks win every comparison.
+
+They feel better than everything next to them.
+
+That's by design.
+
+But the feel-test was engineered for your hand, not your foot.
+
+Your hand touches for 3 seconds and moves on.
+
+Your foot lives inside that fabric all day.
+
+And soft at 7am becomes something else by 3pm.
+
+The softness that impressed your hand traps heat against your foot.
+
+The plushness that felt luxurious becomes a weighted blanket you can't take off.
+
+The socks that felt best at the store often feel worst by dinner.
+
+You just never connected them because the store is designed for first impressions.
+
+Not eighth-hour impressions.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(7)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_07.png" alt="The Before/After Sock" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🔄</div>
+                            <div>The Before/After Sock</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(7)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-7">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(7)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Two socks from the same pair laid side by side — one still looks new and fresh, the other is clearly worn out with stretched elastic, faded color, and pilling. Natural indoor light, laid on an unmade bed or wrinkled fabric. This is NOT a content photo — this is 'can you believe this' energy. Casual placement, slight shadow, one sock slightly overlapping the other. The degradation difference is stark. Shot to document the wear comparison. Authentic realization captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.7K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 8 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 8 · Attack Their Research (Expr 8)
+                    <span class="angle">R1: 3-Second Trick</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-8">Uncomfortable socks always start soft.
+
+Think about the last pair that disappointed you.
+
+They felt good in the store.
+
+They felt good when you first put them on.
+
+Then something changed.
+
+The softness you fell for was the setup.
+
+Stores don't let you wear socks for 8 hours before buying.
+
+They give you 3 seconds.
+
+And in 3 seconds, soft wins.
+
+It's designed to win.
+
+The sock industry optimized for that moment — the moment your hand touches the fabric.
+
+Not the moment your foot is sweating inside it 4 hours later.
+
+You didn't misjudge.
+
+You were given the wrong test.
+
+The feel-test only measures the beginning of the experience.
+
+The uncomfortable part comes later, where nobody's watching.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(8)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_08.png" alt="The Sock Aisle Hand" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">👋</div>
+                            <div>The Sock Aisle Hand</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(8)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-8">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(8)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A hand reaching into a wall of sock packaging in a store — overwhelming rows of different socks, all packaged, the hand touching one package to feel it. Harsh store fluorescent lights slightly blowing out. Price tags visible, store shelves receding into background. This is NOT a content photo — this is 'this is how I've always done it' energy. Tilted angle, motion blur from reaching, the ritual of touching socks to test them. Authentic sock shopping behavior captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.5K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 9 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 9 · Attack Self-Diagnosis (Expr 9)
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-9">Soft is what makes socks uncomfortable.
+
+Not "can be."
+
+Is.
+
+The discomfort you feel by mid-afternoon — the dampness, the heat, the need to adjust — that's not random.
+
+That's causation.
+
+Soft fibers hold onto moisture instead of releasing it.
+
+Every hour, the moisture builds.
+
+Your feet keep sweating. The socks keep absorbing. Nothing escapes.
+
+By 3pm you're not wearing socks anymore.
+
+You're wearing warm, wet fabric sealed against your skin.
+
+And you've been blaming your shoes.
+
+Blaming your feet.
+
+Blaming the brand.
+
+But the brand wasn't the variable.
+
+The softness was.
+
+Every soft sock does this.
+
+It's physics, not quality control.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(9)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_09.png" alt="The 3pm Adjustment" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🖐️</div>
+                            <div>The 3pm Adjustment</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(9)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-9">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(9)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A hand reaching down toward a sock-covered foot under a desk — about to pull up or adjust the sock that's slipping down. Office fluorescent lighting, slightly dim under the desk. Cables, desk legs, shoes visible. This is NOT a content photo — this is 'fixing my sock again' energy. Under-desk perspective, awkward angle, the universal mid-afternoon sock adjustment. Shot one-handed while reaching. Authentic office sock frustration captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.3K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 10 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 10 · Attack Their Research (Expr 10)
+                    <span class="angle">R3: Durability/Holes</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-10">The sock that feels best is the sock that wears worst.
+
+You tested it in the store.
+
+Soft, plush, thick.
+
+Felt expensive. Felt premium.
+
+But 3 weeks later, you found the thinning heel.
+
+Then the hole.
+
+Then the drawer full of socks that don't last.
+
+That "premium" feel wasn't quality.
+
+It was weakness.
+
+The fibers that feel luxurious to your hand are the first to break down under your foot.
+
+Your heel strikes the ground thousands of times a day.
+
+Soft fibers can't survive that.
+
+The sock that felt best wasn't built for how you actually use socks.
+
+It was built for how you buy socks — in a store, for 3 seconds, with your hand.
+
+That's a different test for a different purpose.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(10)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_10.png" alt="The Drawer Graveyard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">📦</div>
+                            <div>The Drawer Graveyard</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(10)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-10">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(10)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. An open sock drawer filled with worn-out, mismatched, stretched, and sad-looking socks — a graveyard of soft sock failures. Natural indoor light, overhead angle looking down into the drawer. Other drawers visible at edges, bedroom clutter in background. This is NOT a content photo — this is 'I need new socks again' energy. Some socks overlapping, varied colors and wear levels, no matching pairs visible. The accumulated evidence of soft sock failures. Authentic drawer frustration captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.7K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 11 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 11 · Attack Their Research (Expr 11)
+                    <span class="angle">R5: Industry Exploitation</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-11">Soft socks are lying to you.
+
+Not metaphorically.
+
+Literally.
+
+When you touch a soft sock, your brain says "this will be comfortable."
+
+That's instinct.
+
+And the sock industry knows it.
+
+They engineer socks for that exact moment — the 3 seconds your hand touches the fabric.
+
+The softness signals quality.
+
+It signals comfort.
+
+It signals premium.
+
+But none of those signals are true.
+
+Softness holds moisture. Softness breaks down faster. Softness fails over 8 hours.
+
+The plush feel is the sock saying "trust me."
+
+Your feet are saying "don't."
+
+The industry didn't accidentally make soft socks.
+
+They made socks that sell in 3 seconds.
+
+What happens after that isn't their problem.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(11)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_11.png" alt="The Soft Label Close-up" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🏷️</div>
+                            <div>The Soft Label Close-up</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(11)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-11">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(11)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Close-up of a sock package showing 'ULTRA SOFT' marketing text prominently, with the actual worn/pilled sock visible in the same frame next to it. Indoor lighting, counter or table surface. This is NOT a content photo — this is 'look at this lie' energy. Slightly out of focus on one element, the promise (label) versus the reality (worn sock) visible together. Casual angle, shot to document the marketing irony. Authentic frustration at false advertising captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.2K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 12 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 12 · Attack Their Method (Expr 17)
+                    <span class="angle">R1: 3-Second Trick</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-12">Touch is the worst way to buy socks.
+
+It's also the only way stores let you.
+
+You walk into the aisle.
+
+You pick up a pack.
+
+You squeeze.
+
+Soft wins. Firm loses.
+
+You just made a decision about 8 hours of wear based on 3 seconds of touch.
+
+And you did it with the wrong body part.
+
+Your hand doesn't live in socks.
+
+Your hand doesn't sweat inside socks.
+
+Your hand doesn't walk 10,000 steps in socks.
+
+Your hand has no idea what makes a good sock.
+
+But stores only give you your hand.
+
+So you trusted it.
+
+And it got you the same sweaty, disappointing, hole-in-the-heel socks every time.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(12)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_12.png" alt="The Wrong Body Part" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">✋</div>
+                            <div>The Wrong Body Part</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(12)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-12">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(12)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A hand touching and feeling a sock fabric in the foreground, with bare feet or feet in worn socks visible in the background — showing the disconnect between test method and actual use. Natural indoor light, floor visible. This is NOT a content photo — this is 'wait, this doesn't make sense' energy. Split focus trying to get both in frame, the hand testing what the feet will suffer. Awkward angle capturing both elements. Authentic realization of wrong method captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.0K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Batch 3 (Drafts 13-17) -->
+        <div class="section-header">
+            BATCH 3 — Attack Their Effort & Self-Diagnosis
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 13 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 13 · Attack Their Effort (Expr 18)
+                    <span class="angle">R1: 3-Second Trick</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-13">The softest sock wins in the aisle.
+
+It loses on your feet.
+
+You spent time comparing.
+
+You squeezed multiple packs.
+
+You picked the one that felt best.
+
+You put in the effort.
+
+And the softest sock rewarded your effort by winning the shelf test.
+
+Then failing the life test.
+
+The aisle test takes 3 seconds.
+
+The life test takes 8 hours.
+
+They measure different things.
+
+The sock that wins on softness is optimized for your hand, not your day.
+
+Stores don't sell socks that feel best after 8 hours.
+
+They sell socks that feel best after 3 seconds.
+
+You made the smart choice with the information you were given.
+
+The information was designed to mislead you.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(13)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_13.png" alt="The Winning Display" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🏆</div>
+                            <div>The Winning Display</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(13)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-13">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(13)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A prominent display in a sock aisle featuring the plush/soft option — maybe with a 'bestseller' or 'popular' marker. Store fluorescent lighting. Other products visible around, typical retail clutter. This is NOT a content photo — this is 'they put these here on purpose' energy. Slightly tilted, store floor visible at bottom, the deliberate eye-level placement of soft socks. Shot to document the retail strategy. Authentic skepticism captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.4K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 14 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 14 · Attack Their Research (Expr 19)
+                    <span class="angle">R5: Industry Exploitation</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-14">You've been choosing the wrong socks your entire life.
+
+Not wrong as in bad taste.
+
+Wrong as in: nobody told you the rules were rigged.
+
+Every sock you've ever chosen was chosen the same way.
+
+Walk into a store. Touch the fabric. Soft wins.
+
+That method has been consistent.
+
+And consistently wrong.
+
+Because the sock industry designed socks to win that test — not to serve your feet.
+
+They optimized for your hand's 3-second judgment.
+
+They ignored your foot's 8-hour experience.
+
+And you never knew because nobody told you.
+
+Every disappointing sock. Every sweaty afternoon. Every hole after 3 weeks.
+
+That wasn't random.
+
+That was the system working as designed.
+
+Against you.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(14)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_14.png" alt="The Lifetime Pattern" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">📊</div>
+                            <div>The Lifetime Pattern</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(14)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-14">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(14)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Multiple pairs of worn-out socks in different styles and colors laid out together — stretched elastic, holes, pilling, fading across all of them. Natural indoor light, laid on floor or bed. This is NOT a content photo — this is 'every pair I've bought' energy. Casual arrangement, some overlapping, representing years of the same soft-sock mistake. The quantity tells the story of repeated failure. Authentic pattern recognition captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.8K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 15 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 15 · Attack Self-Diagnosis (Expr 20)
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-15">Your feet hate soft socks.
+
+You thought they loved them.
+
+They feel so good when you first put them on.
+
+Plush. Warm. Like a hug.
+
+But that's your hand talking.
+
+Your feet have a different opinion.
+
+Your feet spend the whole day inside those socks.
+
+Your feet produce moisture all day — and soft fibers trap every drop.
+
+Your feet overheat because soft fibers don't breathe.
+
+Your feet ache because soft fibers lose structure and bunch and slip.
+
+Your feet have been complaining for years.
+
+You just blamed something else.
+
+Circulation. Shoes. Bad luck.
+
+It was the socks.
+
+The ones that felt like a hug at 7am felt like a trap by 3pm.
+
+Your feet knew. You didn't.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(15)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_15.png" alt="The Feet vs Hand" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🦶</div>
+                            <div>The Feet vs Hand</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(15)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-15">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(15)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A hand holding a soft, plush sock in the foreground looking satisfied, while uncomfortable bare feet are visible in the background — just escaped from socks. Natural indoor light. This is NOT a content photo — this is 'my hand loves this, my feet hate it' energy. Split focus, trying to capture both perspectives, the conflict between hand's opinion and feet's experience. Awkward angle. Authentic realization captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.9K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 16 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 16 · Redefine Best (Expr 21)
+                    <span class="angle">R3: Durability/Holes</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-16">Soft socks are the enemy of your feet.
+
+The thing you thought was treating them well is actually working against them.
+
+Soft fibers feel gentle.
+
+But gentle fibers are weak fibers.
+
+They stretch. They thin. They tear.
+
+The softer the sock, the faster it loses its shape.
+
+That bunching at the heel after a few wears?
+
+That's the structure failing.
+
+That hole you found after a month?
+
+That's the fibers surrendering.
+
+Your feet deserve socks that can survive your life.
+
+Soft socks can't.
+
+They weren't built for 10,000 steps a day.
+
+They were built for 3 seconds in a store.
+
+Your feet figured this out before you did.
+
+Every time you adjusted. Every time you pulled them up. Every time you threw a pair away.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(16)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_16.png" alt="The Bunched Heel" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">👠</div>
+                            <div>The Bunched Heel</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(16)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-16">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(16)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Close-up looking inside a shoe that's been pulled back slightly — showing the sock bunched and wrinkled inside, unable to maintain position. Indoor light, slightly dim. Finger pulling back the shoe heel to reveal the problem. This is NOT a content photo — this is 'every single day' energy. Awkward angle peering into shoe, the sock fabric bunched up and uncomfortable-looking. Authentic daily sock frustration captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.2K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 17 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 17 · Attack Self-Diagnosis (Expr 22)
+                    <span class="angle">R4: First-Touch vs All-Day</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-17">You don't want soft socks.
+
+You want comfortable socks.
+
+You've been told they're the same thing.
+
+They're not.
+
+Softness is a sensation you feel for 3 seconds when you put them on.
+
+Comfort is a condition you feel for 8 hours while you wear them.
+
+Softness is a single variable: how the fabric feels to your hand.
+
+Comfort is a system: moisture control, temperature regulation, structure, fit.
+
+You can have one without the other.
+
+And most soft socks give you softness without the system.
+
+That's why they feel great at 7am and wrong by 2pm.
+
+You knew what you wanted.
+
+You just used the wrong word.
+
+Soft. You said soft.
+
+You meant comfortable.
+
+The industry heard soft and gave you exactly that — and nothing else.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(17)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_17.png" alt="The Vocabulary Confusion" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">❓</div>
+                            <div>The Vocabulary Confusion</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(17)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-17">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(17)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. Two sock packages side by side — one prominently labeled 'SOFT,' one labeled 'COMFORT' or 'ALL-DAY' — both packages look nearly identical otherwise. Store or home lighting. This is NOT a content photo — this is 'wait, these mean different things?' energy. One package slightly overlapping, background clutter visible. The vocabulary confusion consumers face. Casual angle. Authentic confusion captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.6K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder for symmetry -->
+            <div class="grid-item"></div>
+        </div>
+
+        <!-- SECTION: Batch 4 (Drafts 18-20) -->
+        <div class="section-header">
+            BATCH 4 — Attack Their Effort & Method
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 18 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 18 · Attack Their Effort (Expr 23)
+                    <span class="angle">R3: Durability/Holes</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-18">Every soft sock in your drawer is failing you.
+
+Not just the cheap ones.
+
+All of them.
+
+You spent money on soft socks because soft felt premium.
+
+You curated a drawer full of plush, comfortable-feeling socks.
+
+But open that drawer.
+
+How many pairs are stretched out?
+
+How many have thinning heels?
+
+How many are waiting for the hole that's already forming?
+
+Softness and durability are inversely correlated.
+
+The softer the fiber, the weaker the structure.
+
+You didn't buy bad socks.
+
+You bought soft socks.
+
+And soft socks do exactly what soft socks are built to do:
+
+Feel good in your hand.
+
+Fall apart on your feet.
+
+That drawer isn't proof you can't pick socks.
+
+It's proof no one told you what soft actually means.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(18)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_18.png" alt="The Failing Drawer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🗃️</div>
+                            <div>The Failing Drawer</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(18)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-18">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(18)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. POV looking down into an open sock drawer, my hand visible rifling through — every single pair visible has some issue (stretched, faded, pilled, mismatched). Bedroom overhead light making harsh shadows. This is NOT a content photo — this is 'trying to find one good pair' energy. Hand in motion, drawer partially pulled out, room visible at edges. Every option is compromised. Authentic morning sock-search frustration captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.5K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 19 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 19 · Attack Their Research (Expr 24)
+                    <span class="angle">R5: Industry Exploitation</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-19">Soft socks are a trap.
+
+Not an accident.
+
+A trap.
+
+Set by an industry that knows exactly how you buy.
+
+You walk into a store.
+
+You touch.
+
+Soft wins.
+
+That behavior is predictable.
+
+The sock industry built products around it.
+
+They didn't ask: "What makes feet comfortable for 8 hours?"
+
+They asked: "What makes hands buy in 3 seconds?"
+
+The answer was softness.
+
+So they gave you softness.
+
+Moisture retention. Structural weakness. Short lifespan.
+
+All packaged in a plush, premium feel.
+
+The trap isn't that you fell for it.
+
+The trap is that falling for it was the entire point.
+
+You were supposed to squeeze. You were supposed to buy. You were supposed to come back when they wore out.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(19)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_19.png" alt="The Trap Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🪤</div>
+                            <div>The Trap Setup</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(19)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-19">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(19)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A soft sock package positioned prominently at eye level on a store shelf, while other options are on bottom shelves below. Store fluorescent lighting, price tags visible, store floor at bottom of frame. This is NOT a content photo — this is 'they put these at eye level for a reason' energy. Slightly crooked shelves, retail environment. The deliberate placement visible. Authentic 'seeing the system' captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 4.5K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 20 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    Draft 20 · Attack Their Method (Expr 25)
+                    <span class="angle">R1: 3-Second Trick</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Mat & Vic's
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-20">You keep buying the wrong socks.
+
+Over and over.
+
+Not because you don't know what comfort feels like.
+
+Because the store only lets you test 3 seconds of it.
+
+You squeeze.
+
+Soft wins.
+
+You buy.
+
+And then you live with those socks for 8 hours.
+
+By hour 3, something feels off.
+
+By hour 6, your feet are uncomfortable.
+
+By week 3, there's a hole in the heel.
+
+You go back to the store.
+
+You squeeze.
+
+Soft wins.
+
+You buy.
+
+The cycle repeats because the test never changes.
+
+And the test was never designed to help you.
+
+It was designed to sell socks.
+
+You don't need to try harder.
+
+You need a different test.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(20)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/draft_20.png" alt="The Repeat Cycle" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="placeholder-image" style="display:none">
+                            <div class="icon">🔁</div>
+                            <div>The Repeat Cycle</div>
+                            <div class="concept">Run generate_lp01_images.py to create</div>
+                        </div>
+                        <div class="prompt-icon" onclick="togglePrompt(20)">🎨</div>
+                        <div class="prompt-overlay" id="prompt-20">
+                            <div class="prompt-overlay-header">
+                                <span class="prompt-overlay-label">nanobanana2 Prompt</span>
+                                <button class="prompt-overlay-close" onclick="togglePrompt(20)">✕</button>
+                            </div>
+                            <div class="prompt-overlay-text">Raw iPhone photo taken to show a friend. A shopping bag with new sock packages inside, sitting on the floor next to a trash can with old worn-out socks visible inside it. Indoor overhead light. This is NOT a content photo — this is 'doing this again' energy. Floor clutter visible, both items slightly cut off at edges, the replacement cycle captured in one frame — buying new socks while throwing out the same thing. Authentic cycle recognition captured.</div>
+                        </div>
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.9K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p>Mat & Vic's LP01 Native Ad Batch 1 | 20 ads | Generated by Ralph</p>
+            <p class="powered-by">Powered by <strong>fal.ai nanobanana2</strong> | Images pending FAL_KEY configuration</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleText(id) {
+            const textEl = document.getElementById('text-' + id);
+            const btnEl = textEl.nextElementSibling;
+
+            if (textEl.classList.contains('collapsed')) {
+                textEl.classList.remove('collapsed');
+                textEl.classList.add('expanded');
+                btnEl.textContent = 'See less';
+            } else {
+                textEl.classList.remove('expanded');
+
+        <!-- SECTION: Stretch Batch -->
+        <div class="section-header" style="background: #7c3aed;">
+            STRETCH BATCH — Gymshark Influencers (Toe Touch, Sock Bottoms Visible)
+        </div>
+
+        <div class="grid-row">
+            <!-- Stretch 1 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 1 · Hole in Heel
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-21">Soft socks are the most uncomfortable socks.
+
+That's the opposite of what you'd expect.
+
+You've spent years squeezing socks in stores.
+
+The softest ones always went in the cart.
+
+They felt like the right choice.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(21)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_01.png" alt="Stretch 1">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 2 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 2 · Worn Through Sole
+                    <span class="angle">R4: First-Touch</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-22">The softest socks are the least comfortable.
+
+I know that sounds backwards.
+
+You've been trained to squeeze socks in stores.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(22)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_02.png" alt="Stretch 2">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 3 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 3 · Pilled Bottom
+                    <span class="angle">R2: Moisture/Sweat</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-23">Soft socks are uncomfortable socks.
+
+That's not a typo.
+
+You reach for the plush ones because they feel like comfort.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(23)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_03.png" alt="Stretch 3">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Stretch 4 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 4 · Stained Soles
+                    <span class="angle">R4: First-Touch</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-24">The most comfortable socks don't feel soft.
+
+Read that again.
+
+You've been selecting socks by one test.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(24)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_04.png" alt="Stretch 4">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 5 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 5 · Double Holes
+                    <span class="angle">R3: Durability</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-25">The softest sock is the worst sock.
+
+Here's why that's true.
+
+Soft fibers feel good because they're delicate.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(25)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_05.png" alt="Stretch 5">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 6 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 6 · Threadbare Heel
+                    <span class="angle">R2: Moisture</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-26">Soft socks make your feet miserable.
+
+Not at 9am.
+
+At 3pm.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(26)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_06.png" alt="Stretch 6">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Stretch 7 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 7 · Dirty Grey
+                    <span class="angle">R4: First-Touch</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-27">The softer the sock, the worse it feels.
+
+After 8 hours.
+
+That's the trick nobody tells you.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(27)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_07.png" alt="Stretch 7">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 8 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 8 · Bunched and Torn
+                    <span class="angle">R1: 3-Second Trick</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-28">Uncomfortable socks always start soft.
+
+Think about it.
+
+Every sock you've thrown away started in the store feeling perfect.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(28)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_08.png" alt="Stretch 8">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch 9 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 9 · Worn Thin Toe
+                    <span class="angle">R2: Moisture</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-29">Soft is what makes socks uncomfortable.
+
+You've been blaming the wrong thing.
+
+You blamed cheap brands. Blamed your feet.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(29)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_09.png" alt="Stretch 9">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Stretch 10 -->
+            <div class="grid-item">
+                <div class="draft-label" style="background: #7c3aed;">
+                    Stretch 10 · Complete Blowout
+                    <span class="angle">R3: Durability</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="page-name">Mat & Vic's<span class="verified">✓</span></div>
+                            <div class="sponsored">Sponsored</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-30">The sock that feels best is the sock that wears worst.
+
+You've proven this yourself.
+
+Look at your drawer.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</div>
+                    <div class="see-more-btn" onclick="toggleText(30)">See more</div>
+                    <div class="post-image">
+                        <img src="generated_ad_images/stretch_10.png" alt="Stretch 10">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="title">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function toggleText(id) {
+            const textEl = document.getElementById('text-' + id);
+            const btnEl = textEl.nextElementSibling;
+            if (textEl.classList.contains('collapsed')) {
+                textEl.classList.remove('collapsed');
+                btnEl.textContent = 'See less';
+            } else {
+                textEl.classList.add('collapsed');
+                btnEl.textContent = 'See more';
+            }
+        }
+
+        function togglePrompt(id) {
+            const overlay = document.getElementById('prompt-' + id);
+            overlay.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

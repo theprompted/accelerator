@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mat & Vic's LP01 — Toe Touch Stretch Batch</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #F8F8F7;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .feed-container { max-width: 1400px; margin: 0 auto; }
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 1200px) { .grid-row { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 800px) { .grid-row { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 20px; } }
+        .page-header {
+            background: #1a1a1a;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+        }
+        .page-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .page-header p {
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+        }
+        .draft-label {
+            background: #7c3aed;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .draft-label .angle { font-size: 11px; opacity: 0.9; }
+        .fb-post {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            gap: 10px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .post-meta .name { font-weight: 600; font-size: 14px; color: #050505; }
+        .post-meta .time { font-size: 12px; color: #65676B; }
+        .post-copy {
+            padding: 0 16px 12px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #050505;
+            white-space: pre-line;
+        }
+        .see-more {
+            color: #65676B;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .full-copy { display: none; }
+        .post-copy.expanded .full-copy { display: inline; }
+        .post-copy.expanded .see-more { display: none; }
+        .post-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+        .link-preview {
+            border-top: 1px solid #ddd;
+            padding: 12px 16px;
+            background: #f0f2f5;
+        }
+        .link-preview .domain { font-size: 12px; color: #65676B; text-transform: uppercase; }
+        .link-preview .headline { font-size: 16px; font-weight: 600; color: #050505; margin-top: 4px; }
+        .cta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-top: 1px solid #ddd;
+        }
+        .learn-more {
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .concept-tag {
+            font-size: 11px;
+            color: #65676B;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <div class="page-header">
+            <h1>Mat & Vic's LP01 — Toe Touch Stretch Batch</h1>
+            <p>10 ads | German women (25ish) | Aesthetic vs Disaster Socks | nano-banana-2</p>
+        </div>
+
+        <div class="grid-row">
+            <!-- Selfie 01 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 01</span>
+                    <span class="angle">Hole in Heel</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">Soft socks are the most uncomfortable socks.
+
+That's the opposite of what you'd expect.
+
+You've spent years squeezing socks in stores.<span class="see-more">... See more</span><span class="full-copy">
+
+The softest ones always went in the cart.
+
+They felt like the right choice.
+
+Plush in the morning. Warm on the drive to work.
+
+But soft fibers absorb moisture and hold it.
+
+Your feet produce sweat all day — roughly a cup's worth.
+
+That plush sock is now a damp towel wrapped around your toes.
+
+By 3pm you're adjusting, pulling, wondering why your feet feel wrong.
+
+It's not your feet.
+
+It's the sock design.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_01.png" alt="Hole in Heel">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Mirror selfie, heel hole visible</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 02 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 02</span>
+                    <span class="angle">Bunched Ankle</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">The softest socks are the least comfortable.
+
+I know that sounds backwards.
+
+You've been trained to squeeze socks in stores.<span class="see-more">... See more</span><span class="full-copy">
+
+The plush ones feel expensive.
+
+The thin ones feel cheap.
+
+But comfort isn't what you feel for 3 seconds in an aisle.
+
+Comfort is what happens over 8 hours on your feet.
+
+First-touch softness is a single variable.
+
+All-day comfort is a system.
+
+The sock that wins in the store is optimized for your hand.
+
+The sock that wins on your feet is optimized for your life.
+
+You didn't make bad choices.
+
+You made 3-second choices.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_02.png" alt="Bunched Ankle">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Bathroom selfie, one sock bunched</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 03 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 03</span>
+                    <span class="angle">Sweat Stained</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">Soft socks are uncomfortable socks.
+
+That's not a typo.
+
+You reach for the plush ones because they feel like comfort.<span class="see-more">... See more</span><span class="full-copy">
+
+But soft fibers have a problem.
+
+They're sponges.
+
+Your feet sweat every hour you're standing, walking, sitting.
+
+And soft fibers absorb every drop.
+
+They don't release it. They hold it.
+
+By noon, you're wearing wet fabric pressed against your skin.
+
+The Germans have a phrase for it: "schmoren im eigenen Saft."
+
+Stewing in your own juices.
+
+That's what your feet do in soft socks.
+
+Nobody warned you.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_03.png" alt="Sweat Stained">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Gym locker room, visible sweat stains</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Selfie 04 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 04</span>
+                    <span class="angle">Pilled and Worn</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">The most comfortable socks don't feel soft.
+
+Read that again.
+
+You've been selecting socks by one test: how they feel in your hand.<span class="see-more">... See more</span><span class="full-copy">
+
+Soft means the fibers are loose. Fuzzy. Pleasant to touch.
+
+But loose fibers compress under weight.
+
+They flatten within weeks.
+
+What started plush becomes matted and thin.
+
+The sock that felt like a cloud in the store now feels like cardboard.
+
+Meanwhile, socks that feel firm at first — the ones you passed over — have fibers that hold structure.
+
+They don't win the hand test.
+
+They win the 8-hour test.
+
+You've been running the wrong test.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_04.png" alt="Pilled and Worn">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Closet selfie, pilled fuzzy socks</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 05 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 05</span>
+                    <span class="angle">Elastic Gone</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">The softest sock is the worst sock.
+
+Here's why that's true.
+
+Soft fibers feel good because they're delicate.<span class="see-more">... See more</span><span class="full-copy">
+
+Delicate fibers break faster.
+
+First at the heel where your weight lands.
+
+Then at the toe where your shoe rubs.
+
+Within 3 weeks, that plush sock has holes.
+
+You've seen this happen. You keep buying replacements.
+
+Not because you're hard on socks.
+
+Because soft socks are engineered to fail.
+
+They're designed for the purchase, not the wear.
+
+You keep throwing money at the same mistake.
+
+The soft ones in your drawer are proof.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_05.png" alt="Elastic Gone">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Hotel selfie, droopy elastic</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 06 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 06</span>
+                    <span class="angle">Toe Hole</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">Soft socks make your feet miserable.
+
+Not at 9am.
+
+At 3pm.<span class="see-more">... See more</span><span class="full-copy">
+
+That's when the softness turns against you.
+
+Soft fibers trap heat.
+
+Your feet can't breathe.
+
+The sweat builds and has nowhere to go.
+
+By mid-afternoon, you're shifting in your chair.
+
+Pulling at your socks.
+
+Wondering why your feet feel wrong.
+
+It's not the shoes. It's not your circulation.
+
+It's the sock working exactly as designed.
+
+Designed for the shelf. Not for your life.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_06.png" alt="Toe Hole">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Hallway selfie, toe poking through</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Selfie 07 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 07</span>
+                    <span class="angle">Mismatched Disasters</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">The softer the sock, the worse it feels.
+
+After 8 hours.
+
+That's the trick nobody tells you.<span class="see-more">... See more</span><span class="full-copy">
+
+Soft socks feel amazing in the morning.
+
+Plush against your feet.
+
+But softness comes from loose fibers.
+
+Loose fibers absorb moisture.
+
+Absorbed moisture has nowhere to go.
+
+By afternoon, you're wearing a wet blanket on each foot.
+
+The weighted blanket feeling isn't comfort.
+
+It's trapped sweat making your socks heavy.
+
+You thought you chose wrong socks.
+
+You chose wrong timing.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_07.png" alt="Mismatched Disasters">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Bedroom selfie, two different disaster socks</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 08 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 08</span>
+                    <span class="angle">Stretched Out</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">Uncomfortable socks always start soft.
+
+Think about it.
+
+Every sock you've thrown away started in the store feeling perfect.<span class="see-more">... See more</span><span class="full-copy">
+
+You squeezed it. Soft.
+
+You bought it. Wore it.
+
+Within weeks: holes, stretched elastic, matted fabric.
+
+The softness was the warning sign.
+
+Soft fibers are weak fibers.
+
+They compress under weight.
+
+They tear under friction.
+
+They absorb sweat and hold it against your skin.
+
+The store gave you the wrong test.
+
+Touch isn't how you evaluate something you wear on your feet all day.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_08.png" alt="Stretched Out">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Office bathroom, baggy stretched socks</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selfie 09 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 09</span>
+                    <span class="angle">Faded and Thin</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">Soft is what makes socks uncomfortable.
+
+You've been blaming the wrong thing.
+
+You blamed cheap brands. Blamed your feet.<span class="see-more">... See more</span><span class="full-copy">
+
+But it was never about price or your body.
+
+It's causation, not correlation.
+
+Soft fibers feel nice to touch because they're loose.
+
+Loose fibers create air pockets.
+
+Air pockets trap sweat.
+
+Trapped sweat creates friction.
+
+Friction creates the clammy, bunchy, wrong feeling you get by 3pm.
+
+It's not random discomfort.
+
+It's physics.
+
+The same softness that won you over in the store is exactly what makes your feet miserable later.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_09.png" alt="Faded and Thin">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Apartment bathroom, grey faded socks</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <!-- Selfie 10 -->
+            <div class="grid-item">
+                <div class="draft-label">
+                    <span>Selfie 10</span>
+                    <span class="angle">Multiple Holes</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">M</div>
+                        <div class="post-meta">
+                            <div class="name">Mat & Vic's</div>
+                            <div class="time">Sponsored</div>
+                        </div>
+                    </div>
+                    <div class="post-copy" onclick="this.classList.toggle('expanded')">The sock that feels best is the sock that wears worst.
+
+You've proven this yourself.
+
+Look at your drawer.<span class="see-more">... See more</span><span class="full-copy">
+
+Every pair with holes started soft.
+
+Every pair you keep replacing felt amazing in the store.
+
+Soft fibers aren't built for 8 hours of friction.
+
+They're built for 3 seconds of buying.
+
+The sock industry knows this.
+
+They optimize for the purchase, not the wear.
+
+You keep returning because soft socks keep failing.
+
+That's not a bug.
+
+That's the business model.
+
+Warum die weichsten Socken die schlechtesten für deine Füße sind: matandvics.com/pages/lp01</span></div>
+                    <img class="post-image" src="generated_ad_images/stretch_10.png" alt="Multiple Holes">
+                    <div class="link-preview">
+                        <div class="domain">matandvics.com</div>
+                        <div class="headline">Warum die weichsten Socken die schlechtesten für deine Füße sind</div>
+                    </div>
+                    <div class="cta-row">
+                        <span class="concept-tag">Dorm room selfie, multiple holes visible</span>
+                        <a href="https://matandvics.com/pages/lp01" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
