@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Danieling — The Process</title>
+    <style>
+        /* PromptedOS Design System */
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.25rem; margin-bottom: 1.25rem; }
+        h3 { font-size: 1rem; margin-bottom: 1rem; }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .card-content {
+            padding: 1.75rem;
+        }
+
+        p { margin-bottom: 1.25rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .prompt-box {
+            background: var(--text-dark);
+            color: #fff;
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .prompt-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .response-box {
+            background: var(--bg-green);
+            border: var(--border);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .response-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .callout {
+            background: var(--bg-yellow);
+            border: 1px solid #e0d68a;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-purple {
+            background: var(--bg-purple);
+            border: 1px solid #c9a7eb;
+        }
+
+        .philosophy-box {
+            background: var(--text-black);
+            color: #fff;
+            border: var(--border);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .philosophy-box h3 {
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-box p {
+            color: #e5e5e5;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .tool-tag {
+            display: inline-block;
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.25rem 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li { margin-bottom: 0.75rem; line-height: 1.7; }
+
+        a {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 1.5rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-content { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="card">
+        <div class="card-content">
+            <div style="width:3rem;height:3rem;background:var(--accent-teal);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">🎯</div>
+            <h1>Deep Danieling</h1>
+            <p style="color:var(--text-muted);margin-top:0.5rem;margin-bottom:0;">How I use what's already working to create more of what works</p>
+        </div>
+    </div>
+
+    <!-- THE CONTRAST -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Two Characters We Can Play</h2>
+        </div>
+        <div class="card-content">
+            <p>There's a contrast I think about a lot when it comes to how we operate as media buyers and marketers.</p>
+
+            <p>We can play one of two characters.</p>
+
+            <p><strong>Novelty Nick</strong> is always looking outside for answers.</p>
+
+            <p>New formats. New angles. New tactics. He thinks the solution is something he hasn't found yet.</p>
+
+            <p>He's always hunting for the next thing.</p>
+
+            <p><strong>Deep Daniel</strong> is different.</p>
+
+            <p>He's always looking at what's in front of him already.</p>
+
+            <p>What's making sales in Shopify.</p>
+
+            <p>What's getting spend inside the ad account.</p>
+
+            <p>Who's buying — inferred from the ads that are working and the landing pages that convert.</p>
+
+            <div class="callout">
+                <p style="margin:0;"><strong>Deep Danieling</strong> means taking on the identity of someone who looks inward at what's already working — not outward for something new.</p>
+            </div>
+
+            <p>It doesn't mean focusing on a guy named Daniel.</p>
+
+            <p>It's just an identity we can take on.</p>
+
+            <p>And working through this process over the last few days has allowed me to clarify it into something simpler than I expected.</p>
+
+            <p>It's more simple than it is complex. And it's easier to replicate than you might think.</p>
+        </div>
+    </div>
+
+    <!-- THE PHILOSOPHY -->
+    <div class="card">
+        <div class="card-header">
+            <h2>The Philosophy</h2>
+        </div>
+        <div class="card-content">
+            <div class="philosophy-box">
+                <h3>Scale your understanding, not your spend</h3>
+                <p>It's not about scaling your ad account.</p>
+                <p>It's about scaling your understanding of the consumer.</p>
+                <p>When you do that, the ad account scales as a consequence.</p>
+            </div>
+
+            <p>You can't really survey customers for this.</p>
+
+            <p>They tell you answers to questions that they <em>think</em> are the answers — but those answers might not actually be true.</p>
+
+            <p>But you can do it with AI through inference.</p>
+
+            <p>By looking at what is getting traffic.</p>
+
+            <p>Looking at what is getting conversions.</p>
+
+            <p>And then from there, talking with Claude about who we think this person is.</p>
+
+            <p>You can focus a lot on scaling your tactics.</p>
+
+            <p>What ad format am I going to use? What copy am I going to write? What images am I going to use?</p>
+
+            <p>But all of that comes <em>after</em> you have a better understanding of the customer.</p>
+
+            <p>That's why I'm really big on this distinction: focus less on scaling your ads and more on scaling your understanding of your consumer.</p>
+        </div>
+    </div>
+
+    <!-- THE PROCESS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>The Process</h2>
+        </div>
+        <div class="card-content">
+            <p>My process is quite simple.</p>
+
+            <p>I do it all in Claude Code. And most of the work is just having conversations.</p>
+
+            <h3>Step 1: Pull the top 10 ads from the last 7 days</h3>
+
+            <p>What I like to do is look in the ad account.</p>
+
+            <p>Look at the last seven days of ad spend.</p>
+
+            <p>Sort by whatever is getting the most amount of spend.</p>
+
+            <p>And then look at the ads and the landing pages that have gotten the most spend.</p>
+
+            <p>In your case, I did exactly that. I narrowed down to the top 10 ads getting the most spend. And that revealed that two landing pages were getting traffic based on those ads.</p>
+
+            <p style="color:var(--text-muted);">My focus is not to make the process as many steps as possible. It's to make it as few steps as possible. Which is why I focus only on ads that have gotten the most spend. I don't care about ads that aren't really getting a lot of spend.</p>
+
+            <p style="color:var(--text-muted);">I make the constraint that if an ad is getting spend, Meta thinks that there is performance to be had there. Whether that's true or not, or to what degree that's true, we don't really know. But it's a constraint that keeps me from overanalyzing things.</p>
+
+            <h3>Step 2: Save everything locally</h3>
+
+            <p>From there, I saved screenshots of the ad images.</p>
+
+            <p>Including the ad text. Including the creative. Including the headline.</p>
+
+            <p>Saved all 10 of them to my downloads folder.</p>
+
+            <p>Got the two landing pages — the URLs of them.</p>
+
+            <h3>Step 3: Load it into Claude Code</h3>
+
+            <p>Then I told Claude Code: "Hey, just ingest context into these ads and load context into the landing pages. Don't do anything from there."</p>
+
+            <p>That's it. No fancy prompts. Just loading in the context.</p>
+
+            <p>This is the foundation. Claude now has everything it needs to have a useful conversation.</p>
+
+            <h3>Step 4: Have a conversation</h3>
+
+            <p>And then I start having a conversation with Claude about it.</p>
+
+            <p>This is something I want to highlight: a lot of the prompting I do these days is often just having conversations with Claude while giving Claude context.</p>
+
+            <p>It's not complex prompting. It's talking.</p>
+
+            <p>I tend to do a lot of this with speech-to-text using a tool called SuperWhisper. It's something like $9 a month. And I use it for virtually 90% of the work I do. So it's very worth it.</p>
+
+            <p>Here's one of the prompts that came up after loading in context:</p>
+
+            <div class="prompt-box">
+                <div class="prompt-label">What I said to Claude</div>
+                "I have a much simpler approach. I just want to know what is causing people to click the ads to go to the landing page. Tell me about the man who is stopping to pay attention before even clicking. What's going on in his life? Why is Meta serving him these ads? What's happened recently in his life and what does he hope to happen?"
+            </div>
+
+            <p>And Claude gave me a response to understand this consumer even more:</p>
+
+            <div class="response-box">
+                <div class="response-label">Claude's Response</div>
+
+                <p><strong>He's 45-60, Israeli, married 15-25 years.</strong></p>
+
+                <p><strong>What just happened:</strong> Last night, it happened again. He finished too fast, or couldn't stay hard, or both. His wife said nothing — which was worse than if she'd said something. He rolled over, pretended to fall asleep, and stared at the ceiling.</p>
+
+                <p>This morning he woke up without a morning erection. Again. He can't remember the last time he had one.</p>
+
+                <p><strong>Why Meta is showing him this:</strong> He's searched before. Quietly. Incognito mode. "premature ejaculation solutions" or "why can't I stay hard" or "Viagra alternatives Israel." He's looked at pharmacy delivery apps. He's read forums. He clicked on something once and now the algorithm knows.</p>
+
+                <p><strong>What's going on in his head:</strong></p>
+                <ul style="margin:0.75rem 0 1rem 1.25rem;">
+                    <li><strong>Shame.</strong> He doesn't talk about this. Not with friends. Not with his doctor. Maybe not even with his wife directly — they've developed a silent language around it.</li>
+                    <li><strong>Resignation.</strong> He half-believes this is just aging. "I'm not 25 anymore." He's accepted a diminished version of himself.</li>
+                    <li><strong>Secret hope.</strong> He still wants to fix it. Every time he sees something that might work, a small part of him pays attention — even though he's been disappointed before.</li>
+                    <li><strong>Fear of Viagra.</strong> He's heard the side effects. The headaches, the dependency, the embarrassment of needing a pill to perform.</li>
+                </ul>
+
+                <p><strong>What he hopes will happen:</strong> He wants to feel like himself again. Not a superhero — just normal. He wants to initiate with his wife without the anxiety. He wants to stop avoiding intimacy because he's afraid of failure.</p>
+
+                <p><strong>Why he clicks:</strong> The ad gives him two things — an explanation that removes shame (it's physical, not mental) and a path that doesn't require admitting the problem to anyone.</p>
+            </div>
+
+            <p>Then I followed up with another question:</p>
+
+            <div class="prompt-box">
+                <div class="prompt-label">What I said to Claude</div>
+                "What language is resonating with him? Not made up — draw from the ads that are actually being shown."
+            </div>
+
+            <p>And I said specifically: not made up language, but draw from the ads that are actually being shown.</p>
+
+            <div class="response-box">
+                <div class="response-label">Claude's Response</div>
+
+                <p><strong>The reframe (appears in ALL ads):</strong></p>
+                <p><em>"It's not in the head. That's a muscle."</em></p>
+                <p>This is the core. Everything else supports it.</p>
+
+                <hr>
+
+                <p><strong>The Viagra attack:</strong></p>
+                <p><em>"Taking Viagra for an early spill is like pushing the gas when you need a brake."</em></p>
+                <p>Makes Viagra sound stupid, not just ineffective.</p>
+
+                <hr>
+
+                <p><strong>The clinical proof:</strong></p>
+                <p><em>"40 men trained this muscle for 12 weeks. Average jumped from 32 seconds to 146 seconds. 82.5% gained complete control. Results stayed even 5 years later."</em></p>
+                <p>Specific. Measurable. "5 years later" — it's not temporary.</p>
+
+                <hr>
+
+                <p><strong>The wife testimonial:</strong></p>
+                <p><em>"I bought this for my husband. He didn't know. After a month he said 'why didn't you buy this 10 years ago?'"</em></p>
+                <p>"Why didn't you buy this 10 years ago" — that's the line that lands. It's regret for waiting, not a sales pitch.</p>
+
+                <hr>
+
+                <p><strong>The Pattern:</strong></p>
+                <ol style="margin:0.75rem 0 0 1.25rem;">
+                    <li>Name the shameful thing plainly</li>
+                    <li>Reframe from character flaw to physical problem</li>
+                    <li>Attack the alternatives he's considered</li>
+                    <li>Proof with specifics</li>
+                    <li>Permission through third party</li>
+                </ol>
+            </div>
+
+            <p>That gave me a lot of fire to work with.</p>
+
+            <p>That was to me the most useful thing I could get out of that day of working on understanding the consumer more.</p>
+
+            <div class="callout">
+                <p style="margin:0;"><strong>This is the X factor.</strong></p>
+                <p style="margin-top:0.75rem;margin-bottom:0;">These responses give you a deep understanding of who he is. And that understanding becomes fuel for everything else.</p>
+            </div>
+
+            <p>Every time you see an ad performing, it creates a feedback loop.</p>
+
+            <p>You get more clues about who's buying.</p>
+
+            <p>With those clues, you make more ads.</p>
+
+            <p>The ads that work give you even more clues.</p>
+
+            <p>And you can feed all of this back into Claude to generate more concepts that are grounded in reality, not guesswork.</p>
+
+            <h3>Step 5: Create new ads from the understanding</h3>
+
+            <p>Once I had that understanding, the next thing I did was take it and have Claude work with ConceptEngine.</p>
+
+            <p>ConceptEngine is a skill you can use in Claude Code.</p>
+
+            <p>A skill is like a recipe card you hand to Claude. It tells Claude exactly how to do a specific task — what inputs to gather, what steps to follow, what format to output.</p>
+
+            <p>You don't have to explain the process every time. You just say "use this skill" and Claude knows what to do.</p>
+
+            <p>ConceptEngine is my skill for turning consumer understanding into ad concepts.</p>
+
+            <p>It uses the information we learn from asking those questions to then make new ads that fit ad formats we've standardized by looking at lots of examples saved to a swipe file.</p>
+
+            <p>So the messaging is handled through the nuanced questions we've asked — through the Deep Daniel process.</p>
+
+            <p>And the production is handled through the expression of that messaging through different ad formats.</p>
+
+            <p>That's essentially the process.</p>
+
+            <p>And you can scale that out as much as you want by asking more questions to better understand the consumer.</p>
+
+            <p>I created 10 sample ads this way. You could scale it to 100.</p>
+        </div>
+    </div>
+
+    <!-- WHY IT WORKS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Why This Works</h2>
+        </div>
+        <div class="card-content">
+            <p>By doing this, we stick to just a manageable amount of information.</p>
+
+            <p>The top 10 ads from the last seven days. That's it.</p>
+
+            <p>We stick to meaningful questions, but not a lot of them — which can create a lot of noise.</p>
+
+            <p>And then we use that information to scale out production using the swipe file.</p>
+
+            <p>The messaging comes from Deep Danieling.</p>
+
+            <p>The production comes from proven formats.</p>
+        </div>
+    </div>
+
+    <!-- FROM UNDERSTANDING TO ADS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>From Understanding to Ads</h2>
+        </div>
+        <div class="card-content">
+            <p>So that's the understanding side.</p>
+
+            <p>But understanding by itself doesn't make ads.</p>
+
+            <p>You need a way to take that understanding and turn it into actual creative.</p>
+
+            <p>That's where ConceptEngine comes in.</p>
+
+            <p>ConceptEngine is a skill I built for Claude Code. It takes everything we learned from the Deep Daniel process — who the person is, what language resonates with him, what patterns are working — and combines it with a library of proven ad formats.</p>
+
+            <p>The skill has access to a swipe file with over 100 indexed ad examples. Each one is broken down by format type, layout, copy structure, and what makes it work.</p>
+
+            <p>So when you run ConceptEngine, it's not guessing.</p>
+
+            <p>It's matching your consumer understanding to formats that have already worked for other products.</p>
+
+            <p>And it outputs ready-to-use image prompts and copy that you can generate immediately.</p>
+
+            <hr>
+
+            <p>Here's what came out of running this process for you:</p>
+
+            <p><strong><a href="https://theprompted.github.io/idan-ad-concepts/" target="_blank">Ad Concepts →</a></strong></p>
+
+            <p>These are the image prompts and copy that ConceptEngine generated. Each one is matched to a specific format from the swipe file. You can paste them directly into an image generator and get the visual.</p>
+
+            <p><strong><a href="https://theprompted.github.io/accelerator/idan-zeyna/virocore-ads/" target="_blank">Generated Ads →</a></strong></p>
+
+            <p>These are 10 actual ads I created from those concepts. The full creative — image and copy together — ready to test.</p>
+
+            <p>You could take this same process and scale it to 50 or 100 ads.</p>
+
+            <p>The understanding stays the same. The formats multiply it.</p>
+
+            <hr>
+
+            <p>I'm sharing ConceptEngine with you so you can use it yourself.</p>
+
+            <p><a href="https://theprompted.github.io/promptedos-concept-engine/" target="_blank">Get ConceptEngine →</a></p>
+        </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Tools I Use</h2>
+        </div>
+        <div class="card-content">
+            <p style="margin-bottom:1.25rem;">
+                <span class="tool-tag">Claude Code</span>
+                <span class="tool-tag">SuperWhisper</span>
+            </p>
+
+            <p><strong>Claude Code</strong> — Where all the work happens. I load context and have conversations.</p>
+
+            <p><strong>SuperWhisper</strong> — Speech-to-text, around $9/month. I use it for 90% of my work. Most of my "prompts" are just me talking.</p>
+        </div>
+    </div>
+
+    <!-- WHAT'S TO COME -->
+    <div class="card">
+        <div class="card-header">
+            <h2>What's To Come</h2>
+        </div>
+        <div class="card-content">
+            <p>A couple things on the roadmap.</p>
+
+            <h3>This process will live inside PromptedOS</h3>
+
+            <p>Deep Danieling and ConceptEngine will eventually be integrated into PromptedOS.</p>
+
+            <p>So instead of running this in Claude Code manually, you'll be able to do it directly inside the platform.</p>
+
+            <p>That's in the planning for what's coming next.</p>
+
+            <h3>ConceptEngine will evolve to generate the actual images</h3>
+
+            <p>Right now, ConceptEngine outputs prompts that you then take and generate yourself.</p>
+
+            <p>It's very possible — and very capable — of jumping straight to generating the images for you.</p>
+
+            <p>But I've consciously chosen not to do that yet.</p>
+
+            <p>Here's why.</p>
+
+            <p>If it generates every image automatically, you burn through credits quickly. We've done that before.</p>
+
+            <p>By stopping at the prompt stage, you get to choose which ones you actually generate.</p>
+
+            <p>You have the optionality to decide how many you want to create.</p>
+
+            <p>That way you aren't locked into spending $5, $10, $20, $30 every time you run this.</p>
+
+            <p>You control how much you're using up when it comes to credits — with more autonomy.</p>
+
+            <p>If you've got a big budget and you want to go straight to generating everything, that option will be there.</p>
+
+            <p>But for now, I've preferred keeping it at the prompt stage so you have that control.</p>
+        </div>
+    </div>
+
+    <!-- THE POINT -->
+    <div class="card">
+        <div class="card-content">
+            <div class="callout-purple callout">
+                <p style="margin:0;"><strong>The point:</strong> You don't need more tactics. You need more understanding of the person who's already buying. The tactics follow from that.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        The Prompted — March 2026
+    </div>
+
+</div>
+
+</body>
+</html>
