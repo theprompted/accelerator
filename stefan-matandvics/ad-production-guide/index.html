@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Ads That Convert | Mat & Vic's</title>
+    <style>
+        /* PromptedOS Design System */
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.25rem; margin-bottom: 1.25rem; }
+        h3 { font-size: 1rem; margin-bottom: 1rem; margin-top: 1.5rem; }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .card-content {
+            padding: 1.75rem;
+        }
+
+        p { margin-bottom: 1.25rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .callout {
+            background: var(--bg-yellow);
+            border: 1px solid #e0d68a;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-purple {
+            background: var(--bg-purple);
+            border: 1px solid #c9a7eb;
+        }
+
+        .callout-green {
+            background: var(--bg-green);
+            border: 1px solid #a5d6a7;
+        }
+
+        .philosophy-box {
+            background: var(--text-black);
+            color: #fff;
+            border: var(--border);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .philosophy-box h3 {
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .philosophy-box p {
+            color: #e5e5e5;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .example-box {
+            background: var(--bg-blue);
+            border: var(--border);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .example-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .bad-example {
+            background: #FFF0F0;
+            border-color: #ffcdd2;
+        }
+
+        .good-example {
+            background: var(--bg-green);
+            border-color: #a5d6a7;
+        }
+
+        ul, ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li { margin-bottom: 0.75rem; line-height: 1.7; }
+
+        a {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 1.5rem 0;
+        }
+
+        .link-card {
+            display: block;
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.1s ease;
+        }
+
+        .link-card:hover {
+            transform: translate(2px, -2px);
+            box-shadow: -0.4rem 0.4rem 0 0 #383838;
+        }
+
+        .link-card h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            margin-bottom: 0.5rem;
+            color: var(--text-black);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.25rem 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-content { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="card">
+        <div class="card-content">
+            <div style="width:3rem;height:3rem;background:var(--accent-teal);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">🧦</div>
+            <h1>Creating Ads That Convert</h1>
+            <p style="color:var(--text-muted);margin-top:0.5rem;margin-bottom:0;">A guide on scaling ad production without losing what makes them work</p>
+        </div>
+    </div>
+
+    <!-- THE QUESTION -->
+    <div class="card">
+        <div class="card-header">
+            <h2>The Question You Asked</h2>
+        </div>
+        <div class="card-content">
+            <p>You asked me how to create more ads at volume.</p>
+
+            <p>How to make the process more automated.</p>
+
+            <p>How to scale production without needing to do everything manually.</p>
+
+            <p>That's a fair question. And there is a way to do it.</p>
+
+            <p>But before I show you the process, I want to explain something that I think is more important than the process itself.</p>
+
+            <p>Because the process only works if you understand what makes ads convert in the first place.</p>
+
+            <p>And that understanding is something most people skip over when they try to scale.</p>
+        </div>
+    </div>
+
+    <!-- WHAT HAPPENED WITH NADJA -->
+    <div class="card">
+        <div class="card-header">
+            <h2>What Happened When Nadja Asked ChatGPT</h2>
+        </div>
+        <div class="card-content">
+            <p>Nadja gave ChatGPT your LP01 landing page URL and asked for ad angles.</p>
+
+            <p>She used the same prompt across Gemini, ChatGPT, and Claude.</p>
+
+            <p>And she got 20 ideas back.</p>
+
+            <p>Some of them were good. Most of them, actually. About 15 out of 20 were on-strategy or could be adapted.</p>
+
+            <p>But a few of them had a problem.</p>
+
+            <p>They sounded good in isolation. They were compelling as concepts. But they promised things that the landing page doesn't actually deliver.</p>
+
+            <div class="example-box bad-example">
+                <div class="example-label">Examples of off-strategy angles</div>
+                <p><strong>The "Anti-Hole" Guarantee</strong> — The landing page doesn't mention a guarantee. If someone clicks expecting a guarantee and doesn't find one, that's a disconnect.</p>
+                <p><strong>The 30-Pair Strategy</strong> — The landing page doesn't sell bundles as a "buy once a year" strategy. This angle creates an expectation the page doesn't support.</p>
+                <p><strong>The Diabetic Angle</strong> — There's one testimonial that mentions sensitive feet, but it's not a core positioning. Building an entire ad around this makes a promise the page doesn't reinforce.</p>
+                <p style="margin-bottom:0;"><strong>The Math Shock (€5 vs €19)</strong> — The landing page doesn't use this specific math. The consumer arrives expecting to see the calculation and it's not there.</p>
+            </div>
+
+            <p>This is the problem with giving an LLM a URL and asking for ad ideas.</p>
+
+            <p>The LLM will generate ideas that sound good. That's what it's trained to do.</p>
+
+            <p>But it doesn't know whether those ideas are actually supported by what the landing page says.</p>
+
+            <p>And when an ad promises one thing and the landing page delivers something different, that's a bait-and-switch.</p>
+
+            <p>The person clicked because of a specific hook. They arrive at the page and don't find what they expected. Conversion drops.</p>
+
+            <div class="callout">
+                <p style="margin:0;"><strong>Before using any angle, ask:</strong> Does the landing page actually talk about this? If the answer is no, the angle is off-strategy — no matter how compelling it sounds.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY THIS HAPPENS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Why This Happens</h2>
+        </div>
+        <div class="card-content">
+            <p>The issue isn't that ChatGPT is bad at generating ideas.</p>
+
+            <p>The issue is the input.</p>
+
+            <p>When you give an LLM just a URL and ask for "10 themes/angles for new ads," you're asking it to do two things at once.</p>
+
+            <p>You're asking it to understand who the customer is.</p>
+
+            <p>And you're asking it to generate creative ideas for that customer.</p>
+
+            <p>But a landing page is a summary. It's the output of understanding — not the understanding itself.</p>
+
+            <p>The landing page tells you what the brand decided to say. It doesn't tell you why they decided to say it. It doesn't tell you what the customer is actually feeling. It doesn't tell you the specific moments in their life where the problem is most acute.</p>
+
+            <p>So the LLM fills in the gaps with guesses.</p>
+
+            <p>And some of those guesses are wrong.</p>
+
+            <div class="philosophy-box">
+                <h3>The upstream work matters more than the output</h3>
+                <p>Understanding the consumer is the foundation.</p>
+                <p>If you get that right, the ads almost write themselves.</p>
+                <p>If you skip it, you're just generating content and hoping something sticks.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE SHIFT -->
+    <div class="card">
+        <div class="card-header">
+            <h2>The Shift</h2>
+        </div>
+        <div class="card-content">
+            <p>Here's the shift I want to propose.</p>
+
+            <p>Instead of asking an LLM for ad ideas directly, you first build an understanding of the consumer.</p>
+
+            <p>Not a summary. Not a brief. Not bullet points.</p>
+
+            <p>An actual deep understanding of who this person is, what they're experiencing, what language resonates with them, and what transformation they're actually buying.</p>
+
+            <p>Then you use that understanding to generate ads.</p>
+
+            <p>The difference is subtle but important.</p>
+
+            <p>In the first approach, the LLM is guessing about who the customer is based on a landing page.</p>
+
+            <p>In the second approach, you've already done that work. The LLM is just expressing what you already know in different formats.</p>
+
+            <p>That's why the ads we created for you feel different from the generic angles.</p>
+
+            <p>They're not guesses. They're expressions of a specific understanding.</p>
+
+            <div class="philosophy-box">
+                <h3>Scale your understanding, not your spend</h3>
+                <p>You can focus a lot on scaling your tactics. What ad format should I use? What copy should I write? What images should I use?</p>
+                <p>But all of that comes after you have a better understanding of the customer.</p>
+                <p>Focus less on scaling your ads and more on scaling your understanding of your consumer. When you do that, the ads scale as a consequence.</p>
+            </div>
+
+            <p>And here's the thing about understanding: it compounds.</p>
+
+            <p>Once you start running ads, every ad that performs gives you more clues about who's buying.</p>
+
+            <p>With those clues, you make more ads.</p>
+
+            <p>The ads that work give you even more clues.</p>
+
+            <p>You can feed all of this back in and generate more concepts that are grounded in reality, not guesswork.</p>
+
+            <p>Right now, you're at the beginning of that loop. You don't have performance data yet. So we built the consumer understanding from scratch — by reading the funnel and inferring who this person is.</p>
+
+            <p>As you run these ads and see what performs, you'll get signal. And that signal feeds back into the understanding.</p>
+        </div>
+    </div>
+
+    <!-- CONSUMER MAPPING -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Building the Consumer Map</h2>
+        </div>
+        <div class="card-content">
+            <p>Before we generated any ads for Mat & Vic's, we built what I call a consumer mapping.</p>
+
+            <p>This is a document that answers seven specific questions about who the customer is.</p>
+
+            <p>It's not derived from a brief or a positioning statement. It's built fresh by actually reading the funnel and inferring who this person is based on what's being said to them.</p>
+
+            <p>Here are the seven questions:</p>
+
+            <ol>
+                <li><strong>What's going on in their minds at this stage?</strong><br>
+                Not "they want socks." What specific frustration are they experiencing right now?</li>
+
+                <li><strong>What do they want permission to believe?</strong><br>
+                What hope are they holding onto that previous purchases haven't delivered?</li>
+
+                <li><strong>What imagery catches their attention?</strong><br>
+                What visual patterns stop their scroll?</li>
+
+                <li><strong>What phrases catch their attention?</strong><br>
+                What language names their problem better than they can?</li>
+
+                <li><strong>Describe their life recently — what brought them here?</strong><br>
+                The acute moment, not the chronic condition.</li>
+
+                <li><strong>What's Heaven Island imagery?</strong><br>
+                The transformation they're actually buying. The after state.</li>
+
+                <li><strong>What are symptomatic moments around the most critical times?</strong><br>
+                The 3pm office moment. The post-wash disappointment. The hole discovery.</li>
+            </ol>
+
+            <p>When you answer these questions, you end up with something much richer than a landing page can give you.</p>
+
+            <p>You end up with what I call Hell Island — the specific problems, not generic ones.</p>
+
+            <p>You end up with Heaven Island — the transformation they're buying.</p>
+
+            <p>You end up with copy ammunition — exact phrases that name the problem.</p>
+
+            <p>And you end up with failed attempts — what they've tried that didn't work.</p>
+
+            <div class="example-box good-example">
+                <div class="example-label">What consumer mapping reveals for Mat & Vic's</div>
+                <p><strong>Hell Island:</strong> The drawer full of socks that look fine but feel terrible. The alpaca socks that felted after one wash. The €50 merino that lost its shape. The feeling of being fooled by softness in the store that disappeared after three hours of wear.</p>
+                <p><strong>Heaven Island:</strong> Grabbing any pair from the drawer and knowing it'll work. 5pm feet that feel like 9am feet. Laundry day being a non-event instead of a countdown to disappointment.</p>
+                <p style="margin-bottom:0;"><strong>Copy ammunition:</strong> "The sock that feels soft for three seconds and terrible after three hours." "78% nature, 22% tech." "Engineered for humans, not borrowed from animals."</p>
+            </div>
+
+            <p>A perspective I hold: this consumer mapping happens fast. AI can respond in ten seconds, maybe a minute.</p>
+
+            <p>It's easy to trivialize outputs that arrive quickly. But that's conflating time and value — and they're not the same thing.</p>
+
+            <p>Gathering these insights would take a human hours, if not days, if not weeks. I know how hard it is to answer these questions to a high standard. I've been very happy with how AI answers them.</p>
+
+            <p>Even without extra research or web browsing, it has a lot of information it's trained on. What it produces in ten seconds might take ten weeks to assemble manually.</p>
+
+            <p>I remind myself often not to trivialize what comes out of these outputs just because they happen quickly.</p>
+
+            <p>This is what makes German market positioning work.</p>
+
+            <p>Germans value hard facts and engineering. But the way to use that isn't to inform them — it's to attack their rational self-image.</p>
+
+            <p>The 78/22 Formula works because it's not "premium." It's not "luxury." It's anti-premium.</p>
+
+            <p>It says: you've been tricked by socks that prioritize first-touch softness over actual performance. Here's the engineered solution.</p>
+
+            <p>That positioning came from understanding the consumer — not from asking an LLM for ad ideas.</p>
+        </div>
+    </div>
+
+    <!-- MODEL, DON'T INVENT -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Model, Don't Invent</h2>
+        </div>
+        <div class="card-content">
+            <p>Once you have the consumer understanding, the next question is: how do you turn that into actual ads?</p>
+
+            <p>This is where most people go wrong.</p>
+
+            <p>They ask the LLM to "create an ad" or "write copy in native advertorial style."</p>
+
+            <p>And the LLM generates something generic.</p>
+
+            <p>Here's a different approach.</p>
+
+            <p>Instead of asking the LLM to invent an ad from scratch, you give it a specific reference ad to model.</p>
+
+            <p>I have a swipe file of over 150 image ads. Each one is analyzed and broken down — the format, the layout, the psychological mechanics, the visual style, what makes it work.</p>
+
+            <p>When we create ads for you, we're not inventing formats. We're selecting specific reference ads from this swipe file and saying: "Keep this structure. Swap in Mat & Vic's copy from the consumer mapping."</p>
+
+            <p>The result is an ad that looks like something that actually works — because it's modeled on something that actually works.</p>
+
+            <div class="callout">
+                <p style="margin:0;">The structure comes from proven formats. The message comes from consumer understanding. You're not guessing on either front.</p>
+            </div>
+
+            <p>This is why the ads we generated for you have a specific look and feel.</p>
+
+            <p>They're not generic "native ad" outputs. They're modeled on specific references.</p>
+
+            <p>A timeline transformation format. A testimonial with product hold. An apologetic brand manifesto. A social proof collection.</p>
+
+            <p>Each format has its own structure. And each structure gets filled with copy that comes from your consumer mapping.</p>
+        </div>
+    </div>
+
+    <!-- THE PROCESS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>The Process</h2>
+        </div>
+        <div class="card-content">
+            <p>So here's the actual process we used.</p>
+
+            <h3>Step 1: Build the consumer mapping</h3>
+
+            <p>We read the full LP01 funnel. Not just skimmed it — actually read it.</p>
+
+            <p>Then we answered the seven questions. We built Hell Island and Heaven Island from scratch.</p>
+
+            <p>This took one full session. It's not fast work. But it only needs to be done once.</p>
+
+            <p>Once you have the consumer mapping, you can generate dozens of ads from it without redoing the foundational work.</p>
+
+            <h3>Step 2: Select reference ads to model</h3>
+
+            <p>From the swipe file, we selected 30 specific reference ads that fit your consumer.</p>
+
+            <p>Not "30 native ad formats." Thirty specific images with specific layouts and psychological mechanics.</p>
+
+            <p>We chose formats that match what the sock consumer responds to: problem-agitation, timeline transformation, testimonial, comparison, social proof.</p>
+
+            <h3>Step 3: Generate structured prompts</h3>
+
+            <p>For each reference ad, we generated a structured prompt.</p>
+
+            <p>The prompt preserves the exact layout and mechanics of the reference. But it swaps in Mat & Vic's copy from the consumer mapping.</p>
+
+            <p>The output is a JSON object that tells an image generator exactly what to create.</p>
+
+            <p>You might wonder why we use JSON instead of Prose-Based Prompts — the kind where you write out a paragraph describing what you want. The answer is empirical: image generators produce better outputs when given structured JSON. For whatever reason, the models respond better to key-value pairs than flowing sentences. We tested both. JSON wins.</p>
+
+            <p>Not a vague description. Specific instructions for layout, text placement, visual style, color story, and what to exclude.</p>
+
+            <h3>Step 4: Generate the images</h3>
+
+            <p>We took those prompts and fed them to image generators.</p>
+
+            <p>The result is the 30 ads you now have.</p>
+
+            <p>Each one is grounded in consumer understanding. Each one is modeled on a format that works. Each one is congruent with what your landing page says.</p>
+        </div>
+    </div>
+
+    <!-- WHAT IT LOOKS LIKE IN ACTION -->
+    <div class="card">
+        <div class="card-header">
+            <h2>What It Looks Like In Action</h2>
+        </div>
+        <div class="card-content">
+            <p>So that's the process. Here's what actually happened when we ran it for Mat & Vic's.</p>
+
+            <p>We started by reading the full LP01 funnel and building the consumer mapping from scratch. We answered all seven questions, built out Hell Island and Heaven Island, and extracted the copy ammunition — the specific phrases that name the problem better than the customer can.</p>
+
+            <p>From that understanding, we created native image ads.</p>
+
+            <p>Some of them used a specific tactic: contradictory imagery. There's a batch of ads showing an attractive woman doing a forward fold stretch — yoga pose, fit body, nice lighting. But if you look closely, her socks are not attractive at all. They're the cheap, worn-out kind.</p>
+
+            <p>That contradiction is the hook. Your eye goes to the person first, then notices something off. It creates a scroll-stop moment.</p>
+
+            <p>That's one expression of the consumer understanding. The person who's been buying socks that look fine in the store but fail in real life. The disconnect between expectation and reality. We're showing that disconnect visually.</p>
+
+            <h3>Iteration as a scaling tactic</h3>
+
+            <p>Those stretch ads also demonstrate another way to scale: iteration.</p>
+
+            <p>We didn't just create one woman doing a forward fold. We created several variations. Different hair colors. Different environments. Different looks.</p>
+
+            <p>People conflate volume with variety — they think scaling means coming up with entirely new concepts every time.</p>
+
+            <p>But iteration is a valid scaling tactic. Each variation has a slight tweak that lets Meta serve it to someone a little bit different.</p>
+
+            <p>A blonde in a bright studio might stop one person's scroll. A brunette in a moodier setting might stop someone else's. Same concept, same message — but the visual nuances give the algorithm more surface area to find the right match.</p>
+
+            <p>That's one of the tactics for getting more ads through the door: not just net new concepts, but iterative variations on concepts that work.</p>
+
+            <p>Then we ran ConceptEngine — the skill that takes consumer understanding and expresses it through different ad formats from the swipe file.</p>
+
+            <p>We selected 30 reference ads. Timeline transformations, testimonials, problem-agitation formats, social proof collections. Each one has a specific structure — where the text goes, what the imagery shows, what iconography gets used, how the layout draws the eye.</p>
+
+            <p>ConceptEngine preserved those structures while swapping in Mat & Vic's copy from the consumer mapping. The 78/22 Formula positioning. The anti-premium angle. The German market language.</p>
+
+            <p>The result was 39 ads.</p>
+
+            <p>People conflate formats and messaging. They think the ad format is the magic key — the right layout, the right style, the right placement of text.</p>
+
+            <p>But formats are just expression mechanisms. They're vehicles. The messaging is the foundation.</p>
+
+            <p>Once you nail the messaging and understand the consumer, you can scale that out through different formats. Where the text is shown, what's in the imagery, where words are placed, what iconography you use — all of that is expression. The understanding is what makes it work.</p>
+
+            <p>Here's the output:</p>
+
+            <a href="https://theprompted.github.io/accelerator/stefan-matandvics/lp01-ads/" target="_blank" class="link-card">
+                <h4>39 Image Ads</h4>
+                <p style="color:var(--text-muted);margin-bottom:0.5rem;">Native ad style and ecom style. German copy. Each one has a Copy Text button and Download button.</p>
+                <span class="tag">VIEW ADS →</span>
+            </a>
+
+            <a href="https://theprompted.github.io/stefan-ad-concepts/" target="_blank" class="link-card">
+                <h4>JSON Ad Prompts</h4>
+                <p style="color:var(--text-muted);margin-bottom:0.5rem;">The structured prompts from ConceptEngine. You can copy any prompt and paste it into an image generator to create variations.</p>
+                <span class="tag">VIEW PROMPTS →</span>
+            </a>
+
+            <p>The prompts mean you're not stuck with what's already been generated. You can take any prompt, tweak the copy, and generate a new variation. Or you can take a different reference from the swipe file and run the same process again.</p>
+
+            <p>The understanding stays the same. The expressions multiply.</p>
+        </div>
+    </div>
+
+    <!-- HOW TO CREATE MORE -->
+    <div class="card">
+        <div class="card-header">
+            <h2>How To Create More</h2>
+        </div>
+        <div class="card-content">
+            <p>When you want to scale production, here's the workflow.</p>
+
+            <p>Start with the consumer mapping. Pull a specific Hell Island moment or Heaven Island image you want to target.</p>
+
+            <p>Go to the swipe file and pick a reference format that fits that angle. Maybe you want a timeline transformation. Maybe you want a testimonial with product hold. Maybe you want an apologetic brand manifesto.</p>
+
+            <p>Use ConceptEngine to combine the reference structure with your consumer copy. The skill handles the translation — it knows how to preserve the format while swapping in your specifics.</p>
+
+            <p>Generate the image from the prompt.</p>
+
+            <p>That's it.</p>
+
+            <p>The reason this scales is because the hard work — the consumer understanding — is already done.</p>
+
+            <p>You're not starting from scratch each time. You're just expressing the same understanding in different formats.</p>
+
+            <p>Ten ads, fifty ads, a hundred ads. The understanding stays the same. The formats multiply it.</p>
+        </div>
+    </div>
+
+    <!-- NADJA'S ANGLES WEREN'T WRONG -->
+    <div class="card">
+        <div class="card-header">
+            <h2>About Nadja's Work</h2>
+        </div>
+        <div class="card-content">
+            <p>I want to be clear about something.</p>
+
+            <p>Nadja's 20 angles weren't wrong. Most of them were actually good.</p>
+
+            <p>Fifteen of the twenty were on-strategy or could be adapted with minor changes.</p>
+
+            <p>The issue was more subtle than "ChatGPT gave bad ideas."</p>
+
+            <p>The prompt was generic. "Suggest 10 themes/angles for new ads" gives the LLM no guardrails.</p>
+
+            <p>Only the landing page was provided. The LP is a summary — it doesn't have the raw emotional texture that a consumer mapping has.</p>
+
+            <p>And there were no reference ads. Without a visual template, the LLM can only describe concepts. It can't produce something you can actually generate.</p>
+
+            <p>The fix isn't to stop using LLMs. The fix is to give them better inputs.</p>
+
+            <div class="callout-purple callout">
+                <p style="margin:0;">The quality of your ad ideas depends on the quality of your consumer understanding. Feed the LLM the mapping, not just the URL.</p>
+            </div>
+
+            <p>And here's something else worth noting.</p>
+
+            <p>Twelve of Nadja's on-strategy angles aren't in the current ads we made. They're valid angles that haven't been expressed yet.</p>
+
+            <p>That's not a gap — that's an opportunity. You could take those angles, run them through ConceptEngine with the consumer mapping, and generate a whole new batch of ads.</p>
+
+            <p>The foundation is there. The angles are there. It's just a matter of expression.</p>
+        </div>
+    </div>
+
+    <!-- WHAT'S COMING -->
+    <div class="card">
+        <div class="card-header">
+            <h2>What's Coming</h2>
+        </div>
+        <div class="card-content">
+            <p>A couple things on the roadmap.</p>
+
+            <h3>ConceptEngine inside PromptedOS</h3>
+
+            <p>Right now, this process lives in Claude Code sessions. You work with me to generate the prompts.</p>
+
+            <p>What's coming is full integration into PromptedOS.</p>
+
+            <p>So instead of running this manually, you'll be able to do it directly inside the platform. Consumer mapping, reference selection, prompt generation — all in one place.</p>
+
+            <h3>Image generation in one step</h3>
+
+            <p>Right now, ConceptEngine outputs prompts. You then take those prompts and generate images yourself.</p>
+
+            <p>It's very capable of going straight to generating the images for you. But I've consciously chosen not to do that yet.</p>
+
+            <p>Here's why.</p>
+
+            <p>If it generates every image automatically, you burn through credits quickly. By stopping at the prompt stage, you get to choose which ones you actually want to generate.</p>
+
+            <p>You have the optionality. You control how much you're spending.</p>
+
+            <p>If you've got a big budget and want to generate everything at once, that option will be there.</p>
+
+            <p>But for now, the prompt stage gives you that control.</p>
+        </div>
+    </div>
+
+    <!-- THE POINT -->
+    <div class="card">
+        <div class="card-content">
+            <div class="philosophy-box">
+                <h3>The point</h3>
+                <p>You can scale ad production. The process exists.</p>
+                <p>But it only works if the foundation is right.</p>
+                <p>Understand the consumer first. Model formats that work. Express the understanding in different ways.</p>
+                <p>That's how you create ads at volume without losing what makes them convert.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        The Prompted — March 2026
+    </div>
+
+</div>
+
+</body>
+</html>
