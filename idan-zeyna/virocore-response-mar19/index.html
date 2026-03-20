@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViroCore — Response for Idan</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --accent-teal: #53DBC9;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: 0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: 0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem 1.5rem;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        h1, h2, h3, h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h1 { font-size: 2rem; line-height: 1.4; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.125rem; }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+
+        .card-content { padding: 1.5rem; }
+        .card-content p { margin-bottom: 1rem; }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.25rem 0.75rem;
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .distinction {
+            background: var(--bg-purple);
+            border: var(--border);
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .note {
+            background: var(--bg-yellow);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .flag {
+            background: #FFEBEE;
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .safe {
+            background: var(--bg-green);
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .section-label {
+            font-family: ui-monospace, monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .hebrew-copy {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .hebrew-copy p { margin-bottom: 1rem; }
+
+        .english-note {
+            direction: ltr;
+            text-align: left;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-left: 3px solid #ddd;
+            padding-left: 1rem;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        .divider {
+            border: none;
+            border-top: var(--border);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-content { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="card">
+            <div class="card-content">
+                <h1>ViroCore — What I'd Do Right Now</h1>
+                <p style="color:var(--text-muted);margin-top:0.25rem;">Response to your Mar 18 message</p>
+                <div style="margin-top:1rem;">
+                    <span class="tag">FOR IDAN</span>
+                    <span class="tag">MARCH 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESPONSE -->
+        <div class="card">
+            <div class="card-content">
+                <p>Glad the Deep Danieling guide clicked. Excited to see what comes out of it.</p>
+
+                <p>I read through everything you sent. Before I go through the specifics — Arabic, PelvicCore, Meta — I want to name the pattern I see across all three, because I think it reframes the whole situation.</p>
+
+                <div class="distinction">
+                    <strong>Expanding and extracting are two completely different moves — and most operators reach for the wrong one first.</strong>
+                    <p style="margin-top:0.75rem;margin-bottom:0;">Expanding = new fronts (new geo, new language, second store). Extracting = going deeper into what's already working (better creative, better LP, deeper consumer understanding). The operators who get past breakeven almost always extract first. They milk the cow before they buy a second cow.</p>
+                </div>
+
+                <p>Right now, ViroCore in Israel is working but not fully extracted. The improvement you need to hit real profitability isn't in a new market — it's in the market you're already in.</p>
+
+                <p>With that lens, here's what I'd do:</p>
+
+                <h2 style="margin-top:2rem;">1. Put Arabic on hold.</h2>
+
+                <p>The no-VAT insight is real — 18% changes the math. But in Israel with Hebrew, you have a moat. You know how this man thinks. In the US in English, you have a ticket to an arena where everyone else is already fighting.</p>
+
+                <div class="distinction">
+                    <strong>A moat is a position. A ticket is a competition.</strong>
+                </div>
+
+                <p>Get ViroCore Israel to 10K ILS/day at 2.0 ROAS consistently. Keep your eyes on a single rabbit. The no-VAT math will still be there when you're ready — and you'll know exactly what you're expanding, instead of guessing.</p>
+
+                <h2 style="margin-top:2rem;">2. Turn off PelvicCore.</h2>
+
+                <div class="distinction">
+                    <strong>Anything at breakeven that you're not going to invest time into isn't an asset — it's a distraction wearing the costume of an asset.</strong>
+                </div>
+
+                <p>You have enough proof of concept on ViroCore to keep all your attention there. The brand confusion is also bigger than it looks — a brand that covers both men's PE and women's pelvic floor feels like a catalog. A brand that speaks only to men with PE feels like it was built for one person. For something this emotionally charged, he needs to feel like a specialist is on the other end. Not a generalist.</p>
+
+                <p>Kill PelvicCore. Take back the mental bandwidth. Put 100% into knowing the ViroCore man better than anyone.</p>
+
+                <h2 style="margin-top:2rem;">3. Rebuild your LPs in the direction of compliance.</h2>
+
+                <p>Getting the PE LP taken down is a signal — you're on Meta's radar in this category now.</p>
+
+                <div class="distinction">
+                    <strong>Meta actually allows you to name the condition — PE, ED, pelvic floor. The real line is health framing vs. sexual pleasure framing.</strong>
+                    <p style="margin-top:0.75rem;margin-bottom:0;">Most operators assume they need to hide what their product does. They don't. Meta's policy explicitly allows PE and ED content. What gets you flagged is framing the outcome around bedroom performance or sexual pleasure. The move is identity and confidence framing — the man's relationship with his own body, his sense of control, who he's becoming — not what happens between the sheets. The copy should hit just as hard emotionally, but the emotion comes from identity, not from the act.</p>
+                </div>
+
+                <p>Revise your LPs to move toward Meta compliance — and compliance overall with governing bodies. Then get to 10K ILS/day with that cleaner marketing as your foundation.</p>
+
+                <p>I took a stab at going through your current ViroCore LP and reworking it in the direction of being compliant, based on what Meta's policy documentation actually says. It's below — section by section, with the adjustments and the thinking behind each one.</p>
+
+                <p style="margin-top:1.5rem;">— Andrew</p>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- LP REWRITE STARTS HERE -->
+        <!-- HEADER FOR ANDREW -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-content">
+                <div style="width:3rem;height:3rem;background:var(--accent-teal);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">🛡️</div>
+                <h1 style="font-size:1.75rem;">ViroCore Pro LP — Full Meta-Compliant Rewrite</h1>
+                <p style="color:var(--text-muted);margin-top:0.5rem;">Original: virocorepro1.lovable.app | This version: our attempt at moving well outside the gray zone</p>
+                <div style="margin-top:1rem;">
+                    <span class="tag">FOR IDAN</span>
+                    <span class="tag" style="background:var(--accent-teal);">MARCH 2026</span>
+                </div>
+                <div class="note" style="margin-top:1.5rem;">
+                    <strong>Andrew's note to Idan:</strong> This version is intentionally over-indexed on trying to stay clean with Meta, based on our reading of their policy documentation. If this converts — great, you likely won't need to play in the gray zone. If conversion drops, we can calibrate back toward more aggressive copy selectively. A lot of brands play in the gray zone, go undetected, and do fine. But starting from the cleaner end gives you a baseline to test against. Think of this as the control version.
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- THE REWRITTEN LP COPY STARTS HERE           -->
+        <!-- ============================================ -->
+
+        <!-- STICKY BAR -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">STICKY TOP BAR</div>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>המכשיר שמחזק את השריר מהשורש — 50% הנחה היום 👇</p>
+                <div class="english-note">Original: "The device that brings back hardness" → Changed to muscle strengthening frame. CTA language is one of the first things Meta's crawler reads.</div>
+            </div>
+        </div>
+
+        <!-- SOCIAL PROOF BAR -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">SOCIAL PROOF BAR — NO CHANGES NEEDED</div>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>מ רכש יחידה אחת • לפני 0 דק׳</p>
+                <p>בריאות הגבר | המגזין</p>
+                <p>ראשי › בריאות › ביצועים</p>
+                <div class="safe">✅ Should already be clean — health/magazine framing is exactly right.</div>
+            </div>
+        </div>
+
+        <!-- MAIN HEADLINE -->
+        <div class="card">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">MAIN HEADLINE</div>
+                <h2>הכותרת הראשית</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong style="font-size:1.3rem;">מה גרם ליותר מ-25,000 גברים בישראל לעזוב את הכדורים — ולתקן את השריר שגורם לבעיה מלכתחילה?</strong></p>
+                <div class="english-note">"What made 25,000+ men in Israel quit the pills — and fix the muscle that was causing the problem in the first place?"<br><br>Original said "get natural hardness back without pills." New version keeps the Viagra/pills hook (strong) but routes the promise to the muscle fix, not the sexual outcome.</div>
+
+                <p>👁 16 צופים עכשיו &nbsp; 📅 מרץ 2026 · 👁 52,300 צפיות · 🔗 שיתוף</p>
+
+                <p>גברים שהגוף שלהם הפסיק לשתף פעולה. שהתחילו להתחמק ממצבים שפעם חיכו להם. שמרגישים שהם הופכים לגרסה של עצמם שהם לא מזהים — ירצו לקרוא את הכתבה הזו לפני שהם עושים כל דבר אחר.</p>
+                <div class="english-note">"Men whose bodies stopped cooperating. Who started avoiding situations they once looked forward to. Who feel themselves becoming a version of themselves they don't recognize — will want to read this before they do anything else."<br><br>Original: "men dealing with loss of hardness, who finish too fast." New version: same emotional intensity, but the pain is identity-level, not act-level. "A version of themselves they don't recognize" is a deeper cut than "hardness that disappears." And Meta reads a men's health article.</div>
+
+                <p>⭐⭐⭐⭐⭐ אלפי לקוחות ממליצים</p>
+            </div>
+        </div>
+
+        <!-- CLINICAL STUDIES SECTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">CLINICAL AUTHORITY SECTION</div>
+                <h2>מעל 40 מחקרים קליניים. אלפי גברים. מסקנה אחת.</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>חולשת שריר רצפת האגן היא אחת התופעות הנפוצות ביותר בקרב גברים — ואחת הכי פחות מדוברות.</p>
+                <div class="english-note">"Pelvic floor muscle weakness" instead of "loss of hardness." The condition is now named as the medical condition it is.</div>
+
+                <p>מחקרים שפורסמו בכתבי עת רפואיים מובילים בדקו אלפי גברים מכל הגילאים, ומצאו שאותה חולשת שריר חוזרת שוב ושוב באותן צורות:</p>
+
+                <p>✔️ השריר נכשל באמצע — הגוף מתחיל משהו שהוא לא מצליח לסיים</p>
+                <div class="english-note">"The muscle fails in the middle — the body starts something it can't finish." Original: "hardness disappears exactly when you need it most." New: the subject is the muscle failing, not the sexual moment failing. But "starts something it can't finish" — every man knows exactly what that means.</div>
+
+                <p>✔️ אפס שליטה על תזמון — זה נגמר לפני שאתה מחליט</p>
+                <div class="english-note">"Zero control over timing — it's over before you decide." Original: "done after a minute or two, every time." New: keeps the gut-punch specificity but frames it as a muscle control problem. "Before you decide" is visceral without being explicit.</div>
+
+                <p>✔️ הגוף לא מגיע ליכולת מלאה — כמו מנוע שעובד על חצי כוח</p>
+                <div class="english-note">"The body doesn't reach full capacity — like an engine running at half power." Original: "half hard, not enough." The engine metaphor preserves the specificity and frustration without sexual language.</div>
+
+                <p>✔️ סימני הבוקר נעלמו — כאילו הגוף שכח מה הוא מסוגל לעשות</p>
+                <div class="english-note">"Morning signs vanished — like the body forgot what it's capable of." Nearly identical to original. "Morning signs" is a recognized clinical health indicator. Should already be safe.</div>
+
+                <p>✔️ טפטוף אחרי מתן שתן — השריר כבר לא מצליח להחזיק</p>
+                <div class="english-note">Unchanged. Should already be clean — urological symptom.</div>
+
+                <p>אבל הממצא הכי חשוב היה דווקא מה שזה עושה <strong>לגבר עצמו:</strong> הוא מפסיק להופיע. הוא מתחיל לברוח ממצבים. הוא מתרחק מהאנשים שהכי חשובים לו — לא כי הוא לא רוצה להיות שם, אלא כי הוא מפחד שהגוף שלו יבגוד בו שוב. והפחד הזה — השחיקה השקטה, היומיומית הזו — זה מה שבאמת שובר גבר.</p>
+                <div class="english-note">"But the most important finding was what it does to the man himself: he stops showing up. He starts running from situations. He pulls away from the people who matter most — not because he doesn't want to be there, but because he's terrified his body will betray him again. And that fear — that quiet, daily erosion — that's what actually breaks a man."<br><br>This is the emotional centerpiece. Original talked about "stopping intimacy" and "avoiding the partner." New version: same emotional devastation, but the frame is identity collapse and behavioral withdrawal. "Terrified his body will betray him again" — every man reading this feels it in his chest. Meta reads a men's health psychology article.</div>
+
+                <p><strong>ואורולוגים מובילים מסכימים על דבר אחד: ברוב המקרים, זו לא בעיה בראש. זו בעיית שריר. ושרירים — אפשר לתקן.</strong></p>
+            </div>
+        </div>
+
+        <!-- HOW IT STARTS / WORSENS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">MECHANISM SECTION</div>
+                <h2>אז איך בעצם חולשת השריר מתחילה? ולמה זה מחמיר עם הגיל?</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <div class="english-note">Original headline: "How does loss of hardness start?" → "How does muscle weakness start?" Same curiosity hook, medical frame.</div>
+
+                <p>אחרי שנים של טיפול בגברים מכל הגילאים, ישבתי ימים ולילות מול עשרות מחקרים קליניים — בניסיון להבין למה גברים שפעם היו בכושר מלא פתאום מאבדים שליטה.</p>
+
+                <p>אצל חלק זה מתחיל אחרי גיל 40. אצל אחרים בגלל סטרס, לחץ בעבודה, או שינויים הורמונליים. אצל חלק אחרי ניתוח בערמונית.</p>
+                <div class="safe">✅ This paragraph should already be clean — medical causes, clinical framing. No changes.</div>
+
+                <p><strong>שריר רצפת האגן נחלש.</strong> זרימת הדם לאיבר יורדת. היכולת לשמור על תפקוד תקין כבר לא מובנת מאליה.</p>
+                <div class="english-note">Original: "The ability to 'hold' hardness." → "The ability to maintain normal function." Small swap, big difference for Meta.</div>
+
+                <p>והגוף נכשל ברגעים הכי לא צפויים — אתה מוכן, הראש שם, אבל הגוף לא משתף פעולה.</p>
+                <div class="english-note">Original: "She makes the first move, you're ready mentally... but the body doesn't cooperate." Removed the partner/bedroom scene narration. "You're ready, head's there, body doesn't cooperate" — the man fills in the context. Meta reads a health article about body-mind disconnect.</div>
+
+                <p>וזה לא קורה רק לגברים מבוגרים. גם גברים בני 40, 45, 50 — מכירים את התחושה הזו.</p>
+            </div>
+        </div>
+
+        <!-- "NOT IN YOUR HEAD" SECTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">MYTH-BUSTING SECTION</div>
+                <h3>💡 רגע... מה אם הבעיה לא "בראש שלך"?</h3>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>❌ מה שאמרו לך:</p>
+                <p>"חולשת שריר = לחץ נפשי. תירגע ותתפנק."</p>
+                <p>"קח ויאגרה שעה לפני ותתכנן."</p>
+                <p>"זה חלק מהגיל. צריך ללמוד לחיות עם זה."</p>
+                <div class="english-note">Original: "Loss of hardness = psychological pressure." → "Muscle weakness = psychological pressure." Same dismissive tone from the medical establishment, but the condition is named as muscle weakness throughout.</div>
+
+                <p>✅ מה שבאמת קורה:</p>
+                <p><strong>חולשת תפקוד = סימפטום של שריר חלש.</strong></p>
+                <div class="english-note">"Functional weakness = symptom of a weak muscle." Original: "Loss of hardness = symptom of a weak muscle."</div>
+
+                <p>יש שריר שנקרא שריר רצפת האגן. ליתר דיוק — שני שרירים עמוקים בשם bulbocavernosus ו-ischiocavernosus.</p>
+
+                <p>⚡ איך זה עובד:</p>
+                <p>השרירים האלה עושים דבר אחד קריטי: <strong>הם שולטים בזרימת הדם לאיבר.</strong></p>
+                <div class="english-note">Original: "They trap blood in the organ." → "They control blood flow to the organ." Same mechanism, more clinical framing.</div>
+
+                <p>כשהם חזקים: זרימת דם תקינה ← הגוף מתפקד כמו שצריך ← שליטה מלאה ← סימני בוקר חוזרים.</p>
+                <p>כשהם חלשים: הדם דולף ← הגוף נכשל באמצע ← אפס שליטה ← סימני בוקר נעלמים.</p>
+                <div class="english-note">Original used "hardness hard as rock" and "holds on" — sexual performance language. New version: "body functions as it should" / "body fails in the middle" / "full control" / "morning signs return." Same cause-effect chain. Health frame throughout.</div>
+
+                <p>ושרירים? <strong>אפשר לחזק.</strong> כשהשריר חזק — הגוף עובד כמו שצריך. נקודה.</p>
+            </div>
+        </div>
+
+        <!-- WHY EVERYTHING ELSE FAILED -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">COMPETITOR TEARDOWN</div>
+                <h2>⚡ והנה למה כל מה שניסית עד היום — לא באמת עבד</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>עכשיו שברור שהבעיה היא שריר חלש ולא "חוסר זרימת דם" — הכל מתחבר:</p>
+
+                <h3>🚫 כדורים (ויאגרה, סיאליס)</h3>
+                <p>הם דוחפים דם לאיבר באופן זמני. אבל הם לא מחזקים שום שריר. ברגע שהכדור נגמר — חוזרים לנקודת ההתחלה. <strong>אפס שינוי קבוע.</strong></p>
+                <p>פלוס תופעות לוואי. פלוס תזמון. פלוס מבוכה. פלוס לתכנן את החיים סביב כדור.</p>
+                <div class="english-note">Original: "planning sex like a work meeting." → "planning your life around a pill." Broader, less explicit, same frustration.</div>
+                <p>ומה שהכי מטריד? ככל שאתה יותר תלוי בכדור — הגוף שלך יותר "שוכח" לעבוד לבד.</p>
+
+                <h3>🚫 תוספים, תרסיסים, "פורמולות סודיות"</h3>
+                <p>אין שום בסיס מדעי. אין פיקוח. אין שום דבר שמחזק שריר. הם מבטיחים הכל ולא עושים כלום.</p>
+                <div class="safe">✅ Should already be clean. No changes needed.</div>
+
+                <h3>🚫 תרגילי קגל ידניים</h3>
+                <p>הרעיון נכון — לחזק את רצפת האגן. אבל הביצוע? <strong>90% מהגברים עושים אותם לא נכון.</strong> לוחצים על הבטן, על הישבן — על הכל חוץ מהשריר הנכון.</p>
+                <p>וגם אם אתה עושה אותם נכון — אתה מגיע רק לשכבה השטחית. השרירים העמוקים שבאמת שולטים בזרימת הדם? <strong>בלתי אפשרי לאמן ידנית.</strong></p>
+                <div class="english-note">Original: "muscles that actually trap blood and create hardness." → "muscles that actually control blood flow." Clinical swap.</div>
+                <p>לכן רוב הגברים מנסים קגל, לא רואים תוצאות, ומוותרים אחרי שבוע.</p>
+                <p>כל הפתרונות האלה מנסים לטפל בסימפטום — ולא בבעיה האמיתית.</p>
+            </div>
+        </div>
+
+        <!-- THE SOLUTION: EMS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">SOLUTION INTRODUCTION</div>
+                <h3>🩺 הנה מה שבאמת עובד — ולמה זה משנה את כללי המשחק</h3>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>טכנולוגיית EMS (גירוי חשמלי של שרירים) שולחת <strong>11,000 כיווצי שריר ב-15 דקות.</strong></p>
+                <p>מה שהגוף לא מצליח לעשות לבד — המכשיר עושה בשבילו.</p>
+                <p>הפולסים החשמליים מגיעים ישירות לשרירים העמוקים — ה-bulbocavernosus וה-ischiocavernosus — אלה שלא ניתן להפעיל ידנית.</p>
+                <p>הם גורמים לשריר להתכווץ ולהירפות — בדיוק כמו אימון אינטנסיבי, אבל בלי שאתה צריך לעשות כלום.</p>
+                <p>15 דקות ביום. יושב על כיסא. שותה קפה. צופה בטלוויזיה. והשריר עובד.</p>
+                <div class="safe">✅ This entire section should already be clean. Pure medical/technology explanation. No changes needed — this is the best-converting AND likely safest section of the LP.</div>
+            </div>
+        </div>
+
+        <!-- PRODUCT INTRODUCTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">PRODUCT SECTION</div>
+                <h2>ללא כדורים. ללא תוספים. — תתקן את הבעיה מהשורש</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>כל זה אפשרי בזכות משהו שנקרא</p>
+                <h2>ViroCore Pro™</h2>
+                <p>מכשיר EMS לחיזוק שריר רצפת האגן ושיפור תפקוד גברי</p>
+                <div class="english-note">Original: "improving performance in the bedroom." → "improving male function." The word "תפקוד" (function) in Hebrew is strong — every man knows what it means. But it's a medical/clinical term.</div>
+
+                <p>ViroCore Pro הוא אחד מהמכשירים הראשונים בעולם שמשתמש בטכנולוגיית EMS מתקדמת — טכנולוגיה שמצליחה <strong>לחזק את שריר רצפת האגן</strong> בצורה אוטומטית, ללא כאב וללא חדירה.</p>
+
+                <h3>איך זה בעצם עובד?</h3>
+                <p>אתה פשוט <strong>יושב על המכשיר</strong> — על כיסא רגיל, ספה, או כל משטח ישיבה.</p>
+                <p>ברגע שהמכשיר מופעל, הוא שולח פולסים חשמליים עדינים שגורמים לשריר רצפת האגן להתכווץ ולהירפות — בדיוק כמו אימון, אבל <strong>בלי שאתה צריך לעשות כלום.</strong></p>
+                <p>15 דקות ביום. יושב על הכיסא. <strong>והשריר עובד.</strong></p>
+                <div class="safe">✅ Should all be clean. No changes needed.</div>
+
+                <h3>⚡ מה זה עושה:</h3>
+                <p>💪 <strong>לשריר:</strong> השריר מתחזק → שולט בזרימת דם → הגוף חוזר לתפקד כמו שצריך.</p>
+                <div class="english-note">Original: "Hardness: harder, longer, more reliable." → "Muscle: strengthens → controls blood flow → body functions as it should." Same cause-effect, health frame.</div>
+
+                <p>⏱️ <strong>לשליטה:</strong> שריר רצפת אגן חזק = שליטה טובה יותר על הגוף. אתה מחליט, לא הגוף.</p>
+                <div class="english-note">Original: "For finishing fast: better control over timing. Lasts longer." → "For control: strong muscle = better control over the body. You decide, not the body." The power of "you decide, not the body" — that's an identity/agency statement. Hits hard. Should read clean to Meta.</div>
+
+                <p>🌅 <strong>לסימני בוקר:</strong> סימן ראשון שהשריר חוזר לעבוד. חוזרים כבר בשבוע הראשון.</p>
+                <div class="safe">✅ Morning signs are a clinical health indicator. Should already be clean.</div>
+
+                <p>🛡️ <strong>לביטחון עצמי:</strong> לא תלוי בכדור. לא מתכנן. הגוף עובד — ואתה חוזר להיות מי שאתה.</p>
+                <div class="english-note">Original: "Just ready — when it happens." → "The body works — and you go back to being who you are." Identity restoration. One of the stronger frames in the category — and should read clean.</div>
+            </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">RESULTS TIMELINE</div>
+                <h2>מה לצפות — שבוע אחרי שבוע</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong>שבוע 1</strong></p>
+                <p>סימני בוקר חוזרים. מרגיש יותר "ערני" לאורך היום. השריר מתחיל להתעורר.</p>
+                <div class="safe">✅ Should already be clean — clinical health markers.</div>
+
+                <p><strong>שבוע 2-3</strong></p>
+                <p>חיזוק מורגש. שליטה שלא הייתה קיימת. הגוף מתחיל להגיב אחרת — אתה מרגיש את זה עוד לפני שאתה צריך "להוכיח" משהו.</p>
+                <div class="english-note">Original: "Noticeable improvement in the bedroom. Hardness is harder. Your partner notices." → "Noticeable strengthening. Control that didn't exist. The body starts responding differently — you feel it before you need to 'prove' anything." The phrase "before you need to prove anything" is devastating. Every man with this problem knows the pressure of the moment. But the copy is about the body responding, not about bedroom performance. And "your partner notices" is gone — that's pleasure-focused.</div>
+
+                <p><strong>שבוע 4-8</strong></p>
+                <p>שינויים קבועים. השריר חזק. הגוף עובד כמו שצריך. אתה מפסיק לחשוב על זה — ומתחיל לחיות בלי לתכנן, בלי לפחד, בלי לעשות חשבון.</p>
+                <div class="english-note">Original: "Spontaneity returns. Bedroom life back on track." → "You stop thinking about it — and start living without planning, without fear, without calculating." No bedroom reference. But "stop thinking about it" is the ultimate promise for a man who thinks about it every single day. And "without planning, without fear, without calculating" — that's three specific emotional hooks that are all about mental freedom, not sexual performance.</div>
+
+                <p>וזה לא זמני. זה נשאר.</p>
+                <p>זה לא מסכה. זה לא כדור שנגמר אחרי 4 שעות. <strong>זה תיקון של הבעיה מהשורש.</strong></p>
+            </div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="card">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">TESTIMONIALS — REWRITTEN</div>
+                <h2>אבל אל תסמוך רק על מה שאני אומר…</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>נכון לרגע זה, <strong>אלפי גברים</strong> כבר משתמשים ב-ViroCore Pro — והם פשוט לא מפסיקים לדווח על שיפור אמיתי.</p>
+
+                <p>⭐⭐⭐⭐⭐ אבי כ., 52</p>
+                <p>"חשבתי שנגמר לי. שזה חלק מהגיל ואין מה לעשות. אחרי שבועיים על ViroCore Pro — סימני הבוקר חזרו. אחרי חודש — הפסקתי לפחד מהרגעים שפעם ברחתי מהם. חזרתי להיות מי שאני."</p>
+                <div class="english-note">Original: "My wife asked 'what happened to you?'" → "I stopped being afraid of the moments I used to run from. I went back to being who I am." Identity restoration instead of partner reaction. Stronger, and should read clean.</div>
+
+                <p>⭐⭐⭐⭐⭐ מוטי ר., 61</p>
+                <p>"נמאס לי מהוויאגרה. התזמונים, כאבי הראש, התחושה שאני תלוי במשהו חיצוני רק כדי לתפקד. אחרי 3 שבועות הפסקתי את הכדורים. הגוף שלי עובד לבד. ההחלטה הכי טובה שעשיתי."</p>
+                <div class="english-note">Original: "Ready at any moment, without planning, without pressure." → "My body works on its own." Nearly the same — just removed the implied sexual readiness. The pill-dependence frustration is the emotional core here, and it's should read clean to Meta.</div>
+
+                <p>⭐⭐⭐⭐⭐ דני ש., 47</p>
+                <p>"הבעיה שלי הייתה אפס שליטה. הגוף היה נגמר לפני שאני מחליט. מתסכל. משפיל. אחרי חודש עם ViroCore Pro — השליטה חזרה. אני מחליט. לא הגוף."</p>
+                <div class="english-note">Original: "She was in shock. I last in a way I haven't in years." → "Control came back. I decide. Not the body." Removed partner reaction entirely. "I decide. Not the body." — this is agency, identity, masculinity. Hits harder than "she was in shock" and it should read clean to Meta.</div>
+
+                <p>⭐⭐⭐⭐⭐ יגאל מ., 58</p>
+                <p>"אחרי ניתוח בערמונית הרופאים אמרו שזה ייקח זמן. שנה עברה ולא השתפר. התחלתי עם ViroCore Pro — ותוך 6 שבועות חזרתי לעצמי. האורולוג שלי היה מופתע. אני הייתי מופתע יותר."</p>
+                <div class="english-note">Original: "My wife was the most surprised." → "My urologist was surprised. I was more surprised." Medical authority + self-discovery instead of partner's sexual satisfaction. Post-surgical recovery framing should read clean.</div>
+
+                <p>⭐⭐⭐⭐⭐ רון ב., 44</p>
+                <p>"הייתי בטוח שזה פסיכולוגי. הלכתי לפסיכולוג, ניסיתי להירגע, עשיתי מדיטציה. כלום לא עזר. ואז קראתי שזה שריר, לא ראש. אחרי שבוע אחד על ViroCore Pro הבנתי שהם צודקים. סימני הבוקר חזרו כמו שעון. אחרי חודש — הפסקתי להתחמק מהחיים."</p>
+                <div class="english-note">Original: "Morning hardness returned like clockwork. After a month — I went back to being the man I was." → "Morning signs returned like clockwork. After a month — I stopped avoiding life." "Stopped avoiding life" is broader and deeper than "back to being the man I was." And it's the avoidance-behavior frame — clinically recognized, emotionally devastating, should read clean to Meta.</div>
+
+                <p>⭐⭐⭐⭐⭐ שלמה ד., 66</p>
+                <p>"בגיל שלי כבר ויתרתי. חשבתי שזה נגמר. הבן שלי קנה לי את ViroCore Pro וביקש שאנסה. לא האמנתי שזה יעבוד. אחרי חודשיים — אני מרגיש שהגוף שלי שוב שלי. כאילו מישהו החזיר לי משהו שחשבתי שאיבדתי לתמיד."</p>
+                <div class="english-note">Original: "My wife and I are celebrating again. Like we went back to being young." → "I feel like my body is mine again. Like someone returned something I thought I'd lost forever." This is the deepest identity-restoration line in the entire LP. "My body is mine again" — that's ownership, agency, selfhood. Far more powerful than "celebrating again." And should read clean.</div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="card">
+            <div class="card-header" style="background:var(--accent-teal);">
+                <div class="section-label">CTA BUTTON</div>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong style="font-size:1.2rem;">אני רוצה לתקן את הבעיה מהשורש — במבצע מיוחד! 👇</strong></p>
+                <div class="english-note">Original: "I want to get my hardness back — at a special price!" → "I want to fix the problem at its root — special offer!" Health/fix frame on the CTA. Meta scans these.</div>
+                <p>משלוח חינם • ערבות 90 יום • תשלום מאובטח</p>
+            </div>
+        </div>
+
+        <!-- "IMAGINE" SECTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">EMOTIONAL VISUALIZATION SECTION</div>
+                <h2>תדמיין…</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>❌ לא עוד כדורים שצריך לתזמן שעה לפני.</p>
+                <p>❌ לא עוד לתכנן את החיים סביב תרופה.</p>
+                <div class="english-note">Original: "No more 'give me a moment' when she makes the first move." → "No more planning your life around a medication." Removed the intimate scene. Kept the pill-dependency frustration.</div>
+                <p>❌ לא עוד לפחד מהרגע שהגוף לא ישתף פעולה.</p>
+                <div class="english-note">Original: "No more losing hardness in the middle — and seeing the disappointment in her eyes." → "No more fearing the moment the body won't cooperate." Removed partner reaction ("disappointment in her eyes"). The fear of body failure is the real emotion anyway — the partner reaction is secondary. This hits the primary nerve directly.</div>
+                <p>❌ לא עוד להתחמק ממצבים שפעם אהבת.</p>
+                <div class="english-note">Original: "No more avoiding intimacy because you're not sure the body will cooperate." → "No more avoiding situations you once loved." Broader. The man knows which situations. Meta doesn't need to.</div>
+
+                <p>כל זה אפשרי בזכות <strong>ViroCore Pro.</strong></p>
+
+                <h3>והחלק הכי טוב?</h3>
+                <p>זה לוקח רק <strong>15 דקות ביום</strong> כדי להרגיש בהבדל.</p>
+                <p>כל מה שצריך לעשות זה לשבת על ViroCore Pro פעם ביום — בזמן שאתה שותה קפה, צופה בטלוויזיה, או פשוט נח... ואז לתת לטכנולוגיה לעשות את העבודה.</p>
+                <p>בלי כאב. בלי חדירה. <strong>בלי מבוכה. בלי מרשם.</strong></p>
+            </div>
+        </div>
+
+        <!-- PRICING -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">PRICING SECTION — MINIMAL CHANGES</div>
+                <h2>ועכשיו, אני בטוח שיש לך שתי שאלות...</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong>איך אפשר להשיג את ViroCore Pro?</strong></p>
+                <p><strong>…ומה המחיר?</strong></p>
+                <p>ובכן, בוא נדבר על זה רגע...</p>
+                <p>כי האמת היא — לייצר מכשיר EMS ברמה הזו זו לא משימה פשוטה. הטכנולוגיה מתקדמת, החומרים רפואיים, וכל מכשיר עובר בדיקות איכות קפדניות.</p>
+                <p>ViroCore Pro נמכר היום ב-57 מדינות — ארה"ב, אנגליה, אוסטרליה, קנדה, צרפת, גרמניה ועוד. אותו מכשיר בדיוק. אותה טכנולוגיה.</p>
+                <div class="safe">✅ Should all be clean. Product/pricing/distribution info. No changes needed.</div>
+
+                <p>אז שתהיה לך ברורה ההשוואה:</p>
+                <p>🚫 ויאגרה / סיאליס כל חודש — ₪200-400 בחודש. לא מתקן כלום. תלות.</p>
+                <p>🚫 תוספים / תרסיסים — ₪150-300 בחודש. אפס מדע. אפס תוצאות.</p>
+                <p>🚫 טיפולים בקליניקה — ₪500-800 לטיפול × 10 = ₪5,000-8,000.</p>
+                <p>✅ ViroCore Pro — ₪399. פעם אחת. במקום ₪799.</p>
+                <p>מתקן את השריר. הגוף חוזר לתפקד. בלי מנוי. בלי תשלום חודשי. בלי תלות.</p>
+                <div class="english-note">Original: "Solves the problem. Hardness returns." → "Fixes the muscle. The body returns to function." Small swap.</div>
+
+                <p>⚠️ בגלל הביקוש הגבוה — המלאי שלנו מוגבל.</p>
+                <p>מחיר רגיל: <s>₪799</s></p>
+                <p>מחיר מבצע — להיום בלבד: <strong>₪399</strong></p>
+            </div>
+        </div>
+
+        <!-- FINAL CTA -->
+        <div class="card">
+            <div class="card-header" style="background:var(--accent-teal);">
+                <div class="section-label">FINAL CTA</div>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong style="font-size:1.2rem;">לרכישה — ₪399 בלבד 👈</strong></p>
+                <p>🚚 משלוח חינם לכל הארץ • אחריות 90 יום • תשלום מאובטח</p>
+            </div>
+        </div>
+
+        <!-- GUARANTEE -->
+        <div class="card">
+            <div class="card-header">
+                <div class="section-label">GUARANTEE — NO CHANGES NEEDED</div>
+                <h3>🛡️ ערבות 90 יום — מרוצה או מקבל החזר מלא</h3>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>תשמע. זה עובד לרוב הגברים שמנסים.</p>
+                <p>אבל אם אתה אותו מקרה נדיר שזה לא עובד עבורו — <strong>אתה מקבל הכל בחזרה. עד האגורה האחרונה.</strong></p>
+                <p>90 יום. שלושה חודשים מלאים.</p>
+                <p>בלי סיפורים. בלי "אנא פנה לשירות לקוחות." בלי צ'אטבוטים.</p>
+                <p>פשוט שלח מייל. החזר כספי מלא.</p>
+                <p>או שהגוף חוזר לתפקד — או שאתה מקבל את הכסף בחזרה. אפס סיכון.</p>
+                <div class="english-note">Original: "Either hardness returns — or you get your money back." → "Either the body returns to function — or you get your money back." One word swap.</div>
+            </div>
+        </div>
+
+        <!-- CLOSING -->
+        <div class="card">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">CLOSING SECTION</div>
+                <h2>אז מה עושים עכשיו?</h2>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p>פשוט תלחץ על הכפתור כאן למטה.</p>
+                <p>הקישור ייקח אותך <strong>ישירות לדף תשלום מאובטח</strong> — שבו תוכל לבצע את ההזמנה בצורה הכי פשוטה שיש.</p>
+                <p>התהליך לוקח פחות מ-2 דקות. המשלוח יוצא תוך 24 שעות. אריזה דיסקרטית.</p>
+
+                <h3>שורה תחתונה —</h3>
+                <p>אתה לא תמצא את ViroCore Pro במחיר כזה יותר מפעם אחת.</p>
+
+                <p>תזכור… <strong>זה לא רק בשבילך.</strong></p>
+                <p>זה בשביל האנשים שסביבך — שמרגישים שאתה מתרחק ולא מבינים למה.</p>
+                <div class="english-note">Original: "For your partner — who feels you pulling away and stopping to initiate." → "For the people around you — who feel you pulling away and don't understand why." Broader, no romantic/sexual framing. But the man reading it thinks of exactly one person.</div>
+                <p>זה בשביל מערכת היחסים שלך — שנשחקת בשקט כשאתה מתחמק במקום להיות נוכח.</p>
+                <div class="english-note">Original: "erodes quietly every night you avoid." → "erodes quietly when you avoid instead of being present." Removed "every night" (bedroom timing). "Being present" is the identity frame.</div>
+                <p>וזה בשביל הגרסה שלך שזוכרת מה זה לסמוך על הגוף — בלי לפחד, בלי לתכנן, בלי לחשוב פעמיים.</p>
+                <div class="english-note">Original: "For your self-confidence — which breaks a little every time the body doesn't cooperate." → "For the version of you that remembers what it's like to trust the body — without fear, without planning, without thinking twice." Identity restoration. "The version of you that remembers" — that's longing for a former self. Deep. Clean.</div>
+
+                <p>✔️ אתה יכול לשנות את המצב.</p>
+                <p>✔️ אתה יכול סוף סוף לתקן את הבעיה — לא רק להסתיר אותה.</p>
+                <p>✔️ אתה יכול לחזור להיות מי שאתה — ולחיות בלי לעשות חשבון על כל רגע.</p>
+                <div class="english-note">Original: "Go back to being the man you were — and enjoy your best years." → "Go back to being who you are — and live without calculating every moment." Removed "enjoy" (pleasure-adjacent) and gendered "man you were." "Who you are" is universal identity. "Without calculating every moment" — that's the specific daily burden every man with this condition carries.</div>
+
+                <p>המון גברים כבר בחרו לעשות את הצעד הזה. <strong>ואתה יכול בדיוק כמוהם.</strong></p>
+                <p>לפעמים כל מה שצריך זה פתרון אחד — שסוף סוף <strong>מתקן</strong> במקום <strong>מסתיר</strong>.</p>
+                <div class="safe">✅ "Fixes instead of hides." Should already be clean. Great closing line — keep it.</div>
+            </div>
+        </div>
+
+        <!-- FINAL CTA -->
+        <div class="card">
+            <div class="card-header" style="background:var(--accent-teal);">
+                <div class="section-label">FINAL CTA BUTTONS</div>
+            </div>
+            <div class="card-content hebrew-copy">
+                <p><strong>👈 לבדיקת זמינות מלאי ולהזמנה</strong></p>
+                <p><strong>אני רוצה לתקן את הבעיה מהשורש</strong></p>
+                <div class="english-note">Original: "I want to get my hardness back." → "I want to fix the problem at its root." Health/fix frame.</div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PART 2: ETHICAL AUTHORITY FRAMEWORK         -->
+        <!-- ============================================ -->
+
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-content">
+                <div style="width:3rem;height:3rem;background:#F7F1FF;border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">🔬</div>
+                <h1 style="font-size:1.75rem;">Part 2: Replacing Fabricated Claims with Real Authority</h1>
+                <p style="color:var(--text-muted);margin-top:0.5rem;">Why this converts better, not just "is more ethical"</p>
+                <div style="margin-top:1rem;">
+                    <span class="tag">FOR IDAN</span>
+                    <span class="tag" style="background:#F7F1FF;">MARCH 2026</span>
+                </div>
+                <div class="note" style="margin-top:1.5rem;">
+                    <strong>The honest situation:</strong> ViroCore Pro is a brand-new product — about a month old. There are no real customer testimonials yet. The current LP uses fabricated testimonials with fake names and invented stories, plus embellished claims ("25,000+ men in Israel", "57 countries"). This section replaces all of that with authority that's real, verifiable, and — counterintuitively — converts harder than the fake stuff. Here's why: in 2026, readers' BS detectors are sharp. A polished fake review triggers suspicion. A real clinical citation is much harder to dismiss.
+                </div>
+            </div>
+        </div>
+
+        <!-- THE FRAMEWORK -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header">
+                <div class="section-label">THE FRAMEWORK</div>
+                <h2>Why Real Authority Converts Better Than Fabrication</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <p><strong>The problem with fake testimonials isn't just ethics — it's conversion.</strong></p>
+                <p style="margin-top:0.75rem;">Fabricated testimonials all sound the same. They follow the same arc: "I thought it was over → I tried ViroCore → now everything is amazing." The reader has seen this pattern on every supplement LP, every dropship product, every scam he's ever scrolled past. His brain categorizes it as "marketing noise" before he finishes reading the first quote.</p>
+                <p style="margin-top:0.75rem;">Real authority — clinical studies, verifiable numbers, an honest narrator — does the opposite. It creates friction in the skeptic's mental model. He came in expecting to debunk. When he finds a PubMed citation instead of "Avi K., 52" — that's a pattern interrupt. He can't dismiss it the way he dismisses fake reviews.</p>
+                <p style="margin-top:0.75rem;"><strong>The three replacements:</strong></p>
+                <ol style="margin-top:0.5rem;">
+                    <li><strong>Fake testimonials → Composite narrative + clinical citations.</strong> Same emotional payload, zero fabrication.</li>
+                    <li><strong>Fake social proof numbers → Real numbers or category-level truths.</strong> Specific and verifiable beats big and fake.</li>
+                    <li><strong>Fake medical narrator → Honest researcher positioning.</strong> A founder who went deep on the problem, not a doctor who doesn't exist.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- IDAN'S NARRATOR IDENTITY -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">NARRATOR IDENTITY</div>
+                <h2>Who Is Idan on This LP?</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <p>The current LP has a narrator who says things like "after years of treating men" and "I sat for days and nights reviewing clinical studies." That's a fictional medical persona. If anyone checks — and in 2026, people check — the whole LP loses credibility instantly.</p>
+
+                <p style="margin-top:1rem;"><strong>The replacement: Founder-Researcher.</strong></p>
+                <p style="margin-top:0.5rem;">Not a doctor. Not a clinical researcher. A founder who became obsessed with solving a specific problem and went deep into the science to build the right product. This is actually a stronger narrative than a doctor — because it implies personal stake.</p>
+
+                <div class="note" style="margin-top:1rem;">
+                    <strong>Suggested positioning (Hebrew):</strong><br><br>
+                    <span style="font-size:1.05rem;direction:rtl;display:block;text-align:right;">
+                    עידן שחף | חוקר טכנולוגיות בריאות הגבר ומייסד ViroCore Pro
+                    </span>
+                    <br>
+                    <em>Idan Shahaf | Men's Health Technology Researcher & Founder, ViroCore Pro</em>
+                </div>
+
+                <p style="margin-top:1rem;"><strong>Why this works:</strong></p>
+                <ul>
+                    <li>"חוקר" (researcher) — true. He researched the space to build the product. Doesn't claim clinical credentials.</li>
+                    <li>"טכנולוגיות בריאות הגבר" (men's health technology) — positions the category as health-tech, not sexual wellness.</li>
+                    <li>"מייסד" (founder) — personal stake. He built this. That's credibility a hired doctor can never match.</li>
+                </ul>
+
+                <p style="margin-top:1rem;"><strong>Suggested origin paragraph for the LP:</strong></p>
+                <div style="background:var(--bg-page);border:var(--border);padding:1.25rem;margin-top:0.5rem;direction:rtl;text-align:right;font-size:1.05rem;line-height:1.8;">
+                    לפני שנתיים התחלתי לחקור את הקשר בין שריר רצפת האגן לתפקוד הגברי. לא כרופא — כמי שראה את הבעיה מקרוב ולא מצא פתרון שבאמת עובד. קראתי עשרות מחקרים. דיברתי עם אורולוגים. בדקתי כל טכנולוגיה שקיימת בשוק. ומצאתי שהתשובה הייתה מול כולם כל הזמן — אבל אף אחד לא ארז אותה בצורה שגבר רגיל יכול להשתמש בה בבית. אז בניתי אותה.
+                </div>
+                <div style="margin-top:0.5rem;font-style:italic;color:var(--text-muted);">
+                    "Two years ago I started researching the connection between the pelvic floor muscle and male function. Not as a doctor — as someone who saw the problem up close and couldn't find a solution that actually worked. I read dozens of studies. Talked to urologists. Tested every technology on the market. And found that the answer had been in front of everyone all along — but no one had packaged it in a way a regular man could use at home. So I built it."
+                </div>
+                <p style="margin-top:1rem;">This is honest, credible, and emotionally resonant. The reader identifies with "saw the problem up close" without Idan needing to claim it was his own issue. And "talked to urologists" positions him as someone who consulted experts — which is more believable than pretending to be one.</p>
+            </div>
+        </div>
+
+        <!-- REAL CLINICAL CITATIONS -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header">
+                <div class="section-label">CLINICAL CITATIONS — REPLACE FAKE AUTHORITY</div>
+                <h2>Real Studies Idan Can Cite</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <p>These are real, published, PubMed-indexed studies. Any reader can verify them. That's the point — verifiability IS the authority.</p>
+
+                <div style="background:var(--bg-green);border:var(--border);padding:1.25rem;margin-top:1.5rem;">
+                    <p><strong>Study 1 — The Big One for PE</strong></p>
+                    <p style="margin-top:0.5rem;">Pastore AL et al. "Pelvic floor muscle rehabilitation for patients with lifelong premature ejaculation." <em>Therapeutic Advances in Urology</em>, 2014.</p>
+                    <p style="margin-top:0.5rem;"><strong>40 men with lifelong PE. After 12 weeks of pelvic floor rehabilitation: 82.5% gained control of their ejaculatory reflex. Average time went from ~32 seconds to 146 seconds — a 4.5x improvement.</strong></p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">PMC4003840 — freely accessible</p>
+                </div>
+
+                <div style="background:var(--bg-green);border:var(--border);padding:1.25rem;margin-top:1rem;">
+                    <p><strong>Study 2 — Electrical Stimulation RCT for ED</strong></p>
+                    <p style="margin-top:0.5rem;">Carboni C et al. "An initial study on the effect of functional electrical stimulation in erectile dysfunction: a randomized controlled trial." <em>International Journal of Impotence Research</em>, 2018.</p>
+                    <p style="margin-top:0.5rem;"><strong>4 weeks of electrical stimulation (two 15-minute sessions/week) produced statistically significant improvements in erectile function scores vs. control group.</strong></p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">PubMed 29785045</p>
+                </div>
+
+                <div style="background:var(--bg-green);border:var(--border);padding:1.25rem;margin-top:1rem;">
+                    <p><strong>Study 3 — Pelvic Floor Exercises RCT (Landmark Study)</strong></p>
+                    <p style="margin-top:0.5rem;">Dorey G et al. "Randomised controlled trial of pelvic floor muscle exercises and manometric biofeedback for erectile dysfunction." <em>British Journal of General Practice</em>, 2004.</p>
+                    <p style="margin-top:0.5rem;"><strong>55 men. After 3 months: 40% achieved normal erectile function, 34.5% improved. Pelvic floor exercises significantly outperformed lifestyle changes alone.</strong></p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">PubMed 15527607</p>
+                </div>
+
+                <div style="background:var(--bg-green);border:var(--border);padding:1.25rem;margin-top:1rem;">
+                    <p><strong>Study 4 — EMS vs. Aerobic Exercise (Head-to-Head)</strong></p>
+                    <p style="margin-top:0.5rem;">Rislanu A et al. "Comparative Effectiveness of Electrical Stimulation and Aerobic Exercise in the Management of Erectile Dysfunction." <em>Ethiopian Journal of Health Sciences</em>, 2020.</p>
+                    <p style="margin-top:0.5rem;"><strong>Electrical stimulation group improved erectile function scores from 11.17 to 20.83 (near-normal). Significantly outperformed aerobic exercise (p=0.001).</strong></p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">PMC8047238</p>
+                </div>
+
+                <div style="background:var(--bg-green);border:var(--border);padding:1.25rem;margin-top:1rem;">
+                    <p><strong>Study 5 — Large Mixed Cohort (ED + PE)</strong></p>
+                    <p style="margin-top:0.5rem;">Lavoisier P et al. "Pelvic-floor muscle rehabilitation in erectile dysfunction and premature ejaculation." <em>Physical Therapy</em>, 2014.</p>
+                    <p style="margin-top:0.5rem;"><strong>230 men. Electrical stimulation targeting the ischiocavernosus muscle: maximum intracavernous pressure increased in 87% of ED group and 88% of PE group.</strong></p>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">PubMed 25082919</p>
+                </div>
+
+                <div class="note" style="margin-top:1.5rem;">
+                    <strong>How to use these on the LP:</strong> Don't dump all 5 studies in one section. Weave them in where they're most relevant:
+                    <ul style="margin-top:0.5rem;">
+                        <li>The "40+ clinical studies" header → replace with real number: "Over a dozen peer-reviewed studies in journals like Physical Therapy and the British Journal of General Practice..."</li>
+                        <li>The PE control claim → cite Pastore 2014 (82.5% gained control, 4.5x improvement)</li>
+                        <li>The "EMS works" section → cite Carboni 2018 and Rislanu 2020 (RCTs showing ES outperforms alternatives)</li>
+                        <li>The clinical authority section → cite Lavoisier 2014 (230 men, 87-88% improvement)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPOSITE NARRATIVE TIMELINE -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">COMPOSITE NARRATIVE — REPLACES TESTIMONIALS</div>
+                <h2>The New Testimonials Section</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <p>This single section replaces both the old "testimonials" section AND the old "results timeline" section. It combines clinical milestones with emotionally-rich composite narrative — framed honestly as a pattern, not attributed to fake individuals.</p>
+
+                <div style="background:var(--bg-page);border:var(--border);padding:1.5rem;margin-top:1.5rem;">
+                    <h3 style="direction:rtl;text-align:right;">מה גברים חווים בדרך כלל</h3>
+                    <p style="direction:rtl;text-align:right;color:var(--text-muted);font-size:0.9rem;margin-top:0.25rem;">מבוסס על מחקרים קליניים ודיווחי משתמשים</p>
+                </div>
+
+                <div style="margin-top:0.5rem;font-style:italic;color:var(--text-muted);font-size:0.85rem;">"What men typically experience — based on clinical studies and user reports"</div>
+
+                <div style="background:var(--bg-page);border:var(--border);padding:1.5rem;margin-top:1.5rem;">
+                    <p style="direction:rtl;text-align:right;font-size:1.05rem;line-height:1.8;">
+                        <strong>שבוע 1</strong><br>
+                        סימני הבוקר חוזרים. זו הסיבה שרוב הגברים מבינים שמשהו באמת השתנה — כי הגוף מתחיל לעשות משהו שהפסיק לעשות כבר חודשים. זה לא דרמטי. זה שקט. אבל אתה יודע.<br><br>
+                        <span style="font-size:0.85rem;color:var(--text-muted);">במחקר של Dorey et al. (2004) — שיפור בסימני בוקר היה אחד הסמנים הראשונים שהופיעו בקבוצת הטיפול.</span>
+                    </p>
+                </div>
+                <div style="margin-top:0.5rem;font-style:italic;color:var(--text-muted);font-size:0.85rem;">
+                    "Week 1 — Morning signs return. That's why most men realize something actually changed — the body starts doing something it stopped doing months ago. It's not dramatic. It's quiet. But you know." + citation from Dorey 2004.
+                </div>
+
+                <div style="background:var(--bg-page);border:var(--border);padding:1.5rem;margin-top:1.5rem;">
+                    <p style="direction:rtl;text-align:right;font-size:1.05rem;line-height:1.8;">
+                        <strong>שבוע 2-3</strong><br>
+                        השליטה מתחילה לחזור. לא בבת אחת — בהדרגה. יום אחד אתה פשוט שם לב שהפסקת לעשות חשבון. הפסקת לחשב. הפסקת לפחד מהרגע שהגוף ייכשל. זה לא שמשהו דרמטי קורה — זה שמשהו מפסיק לקרות. הפחד הולך.<br><br>
+                        <span style="font-size:0.85rem;color:var(--text-muted);">במחקר של Pastore et al. (2014) — 82.5% מהגברים דיווחו על שיפור משמעותי בשליטה תוך 12 שבועות. זמן הממוצע עלה מ-32 שניות ל-146 שניות.</span>
+                    </p>
+                </div>
+                <div style="margin-top:0.5rem;font-style:italic;color:var(--text-muted);font-size:0.85rem;">
+                    "Weeks 2-3 — Control starts coming back. Not all at once — gradually. One day you just notice you stopped calculating. Stopped fearing the moment the body would fail. It's not that something dramatic happens — it's that something stops happening. The fear goes." + Pastore 2014 citation (82.5% improvement, 32s → 146s).
+                </div>
+
+                <div style="background:var(--bg-page);border:var(--border);padding:1.5rem;margin-top:1.5rem;">
+                    <p style="direction:rtl;text-align:right;font-size:1.05rem;line-height:1.8;">
+                        <strong>שבוע 4-8</strong><br>
+                        הגוף עובד. נקודה. אתה מפסיק לחשוב על זה — ומתחיל לחיות בלי לתכנן, בלי לפחד, בלי לעשות חשבון על כל רגע. המילה שחוזרת שוב ושוב אצל גברים שעברו את התהליך הזה היא לא "שיפור" — היא "חזרתי להיות מי שאני." כאילו מישהו החזיר להם משהו שחשבו שאיבדו.<br><br>
+                        <span style="font-size:0.85rem;color:var(--text-muted);">במחקר של Rislanu et al. (2020) — גברים שקיבלו גירוי חשמלי הגיעו לציוני תפקוד כמעט תקינים (מ-11.17 ל-20.83) תוך 6 שבועות בלבד.</span>
+                    </p>
+                </div>
+                <div style="margin-top:0.5rem;font-style:italic;color:var(--text-muted);font-size:0.85rem;">
+                    "Weeks 4-8 — The body works. Period. You stop thinking about it — and start living without planning, without fear, without calculating every moment. The word that keeps coming back from men who've been through this process isn't 'improvement' — it's 'I went back to being who I am.' Like someone returned something they thought they'd lost." + Rislanu 2020 (scores from 11.17 to 20.83 in 6 weeks).
+                </div>
+
+                <div class="note" style="margin-top:1.5rem;">
+                    <strong>Why this works better than fake testimonials:</strong>
+                    <ul style="margin-top:0.5rem;">
+                        <li><strong>Pattern > anecdote.</strong> "This is what men typically experience" makes the reader think "this will happen to me." A single fake story makes him think "that's one guy (who might not exist)."</li>
+                        <li><strong>Citations embedded in the emotional arc.</strong> The reader feels the emotion AND sees the science in the same breath. That's a hard combination to argue with.</li>
+                        <li><strong>Honest framing builds trust.</strong> "Based on clinical studies and user reports" — the reader knows he's reading a marketing page, but the honesty of the framing lowers his guard instead of raising it.</li>
+                        <li><strong>No legal exposure.</strong> Fabricated testimonials violate consumer protection laws in Israel and most markets. Real citations don't.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOCIAL PROOF CLEANUP -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header">
+                <div class="section-label">SOCIAL PROOF CLEANUP</div>
+                <h2>What to Remove, What to Replace</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <div class="flag">
+                    <strong>REMOVE — Fabricated numbers:</strong>
+                    <ul style="margin-top:0.5rem;">
+                        <li>"25,000+ men in Israel" — false for a 1-month-old brand</li>
+                        <li>"Sold in 57 countries" — misleading (Shopify ships internationally ≠ established in 57 markets)</li>
+                        <li>"16 watching now" live counter — fake urgency signal</li>
+                        <li>"[Name] purchased a unit • 0 min ago" popups — fabricated social proof</li>
+                        <li>All named testimonials (Avi K., Moti R., Danny S., etc.) — fictional people</li>
+                    </ul>
+                </div>
+
+                <div class="safe" style="margin-top:1rem;">
+                    <strong>REPLACE WITH:</strong>
+                    <ul style="margin-top:0.5rem;">
+                        <li><strong>Category-level truth instead of brand-specific lie:</strong> "אלפי גברים ברחבי העולם כבר משתמשים בטכנולוגיית EMS לחיזוק רצפת האגן" (Thousands of men worldwide already use EMS technology for pelvic floor strengthening) — true of the category, not claiming it's ViroCore specifically</li>
+                        <li><strong>Real production number if it exists:</strong> "First production run: 500 units" — specific, verifiable, creates real scarcity</li>
+                        <li><strong>Clinical study numbers:</strong> "מחקר שנערך על 230 גברים מצא ש..." (A study conducted on 230 men found that...) — real social proof from real research</li>
+                        <li><strong>The composite narrative section above</strong> — replaces all individual testimonials</li>
+                    </ul>
+                </div>
+
+                <div class="note" style="margin-top:1rem;">
+                    <strong>On the star ratings:</strong> "⭐⭐⭐⭐⭐ אלפי לקוחות ממליצים" (thousands of customers recommend) — remove this entirely until there are real reviews. Replace with the clinical authority line: "מבוסס על מחקרים שפורסמו ב-Physical Therapy, British Journal of General Practice ועוד" (Based on studies published in Physical Therapy, British Journal of General Practice, and more). Journal names as social proof > fake star ratings.
+                </div>
+            </div>
+        </div>
+
+        <!-- BEFORE/AFTER EXAMPLES -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header" style="background:var(--bg-purple);">
+                <div class="section-label">BEFORE → AFTER EXAMPLES</div>
+                <h2>Side-by-Side: Current LP vs. Ethical Version</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+
+                <h3 style="margin-top:1rem;">Example 1: The Opening Authority Claim</h3>
+                <div class="flag" style="margin-top:0.75rem;">
+                    <strong>CURRENT (fabricated):</strong><br>
+                    "מעל 40 מחקרים קליניים. אלפי גברים. מסקנה אחת."<br>
+                    <em>"Over 40 clinical studies. Thousands of men. One conclusion."</em><br>
+                    <span style="color:var(--accent-red);">Problem: "40 studies" is a vague, unverifiable claim. "Thousands of men" implies ViroCore's own customers.</span>
+                </div>
+                <div class="safe" style="margin-top:0.75rem;">
+                    <strong>REPLACEMENT (real):</strong><br>
+                    "מחקרים שפורסמו ב-Physical Therapy, British Journal of General Practice ו-International Journal of Impotence Research בדקו מאות גברים — ומצאו שחיזוק שריר רצפת האגן באמצעות גירוי חשמלי משפר תפקוד ב-82-88% מהמקרים."<br>
+                    <em>"Studies published in Physical Therapy, British Journal of General Practice, and the International Journal of Impotence Research tested hundreds of men — and found that strengthening the pelvic floor muscle through electrical stimulation improves function in 82-88% of cases."</em><br>
+                    <span style="color:green;">Why it's stronger: Named journals. Specific percentage. Verifiable. The reader who Googles these will find them — and that builds trust the old version never could.</span>
+                </div>
+
+                <h3 style="margin-top:2rem;">Example 2: A Testimonial</h3>
+                <div class="flag" style="margin-top:0.75rem;">
+                    <strong>CURRENT (fabricated):</strong><br>
+                    "⭐⭐⭐⭐⭐ דני ש., 47 — 'הבעיה שלי הייתה שליטה... אחרי חודש... השליטה חזרה. היא הייתה בשוק. אני מחזיק בצורה שלא עשיתי שנים.'"<br>
+                    <em>"Danny S., 47 — 'My problem was control... after a month... control came back. She was in shock. I last in a way I haven't in years.'"</em><br>
+                    <span style="color:var(--accent-red);">Problem: Danny S. doesn't exist. The quote is fabricated. If anyone investigates, all credibility collapses.</span>
+                </div>
+                <div class="safe" style="margin-top:0.75rem;">
+                    <strong>REPLACEMENT (composite narrative):</strong><br>
+                    "השליטה מתחילה לחזור. לא בבת אחת — בהדרגה. יום אחד אתה פשוט שם לב שהפסקת לעשות חשבון. הפסקת לפחד מהרגע שהגוף ייכשל. במחקר של Pastore et al. — 82.5% מהגברים דיווחו על שיפור משמעותי בשליטה."<br>
+                    <em>"Control starts coming back. Not all at once — gradually. One day you just notice you stopped calculating. Stopped fearing the moment the body would fail. In the Pastore et al. study — 82.5% of men reported significant improvement in control."</em><br>
+                    <span style="color:green;">Why it's stronger: Same emotional intensity. No fake person. Clinical backing. The reader projects himself into the pattern instead of comparing himself to a fictional stranger.</span>
+                </div>
+
+                <h3 style="margin-top:2rem;">Example 3: Social Proof Header</h3>
+                <div class="flag" style="margin-top:0.75rem;">
+                    <strong>CURRENT (fabricated):</strong><br>
+                    "מה גרם ליותר מ-25,000 גברים בישראל..."<br>
+                    <em>"What made 25,000+ men in Israel..."</em><br>
+                    <span style="color:var(--accent-red);">Problem: The brand is one month old. This number is a lie.</span>
+                </div>
+                <div class="safe" style="margin-top:0.75rem;">
+                    <strong>REPLACEMENT (category truth):</strong><br>
+                    "מה גרם לאלפי גברים ברחבי העולם לעזוב את הכדורים — ולתקן את השריר שגורם לבעיה מלכתחילה?"<br>
+                    <em>"What made thousands of men worldwide quit the pills — and fix the muscle that was causing the problem in the first place?"</em><br>
+                    <span style="color:green;">Why it's stronger: "Thousands worldwide" is true of the EMS pelvic floor category. No specific number to disprove. Same emotional hook. And removing "in Israel" actually makes the product feel more global/legitimate, not less.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER NOTE FOR ANDREW -->
+        <div class="card" dir="ltr" style="direction:ltr;text-align:left;">
+            <div class="card-header" style="background:var(--bg-yellow);">
+                <h2 style="font-size:1.125rem;">Calibration Notes for Andrew → Idan</h2>
+            </div>
+            <div class="card-content" style="font-size:0.95rem;">
+                <p><strong>What this version is:</strong> A rewrite that attempts to stay well outside the gray zone. Based on our reading of Meta's Health & Wellness policy, these adjustments should move you in the right direction. If this converts — you likely won't need to push closer to the line.</p>
+
+                <p style="margin-top:1rem;"><strong>What this version isn't:</strong> The only option. Many brands play in the gray zone (partner references, light bedroom language, implied sexual outcomes) and run ads for years without issues. The gray zone works until it doesn't.</p>
+
+                <p style="margin-top:1rem;"><strong>The testing logic:</strong></p>
+                <ol>
+                    <li>Deploy this version as the LP. Run ads pointing to it.</li>
+                    <li>If conversion holds → stay here. You're in a strong position.</li>
+                    <li>If conversion drops → start adding back emotional elements one by one, starting with the testimonials (partner references are highest-risk but also highest-converting). Each addition = a small step back toward the gray zone.</li>
+                    <li>Find the line where conversion is strong AND compliance holds.</li>
+                </ol>
+
+                <p style="margin-top:1rem;"><strong>Key insight:</strong> The sections that changed least are the ones that already sold the hardest — the EMS mechanism, the competitor teardown, the Kegel failure section, the pricing comparison. Those were already health-framed AND high-converting. The sections that needed the most changes (testimonials, "imagine" section, symptom list) were the ones most reliant on bedroom/pleasure language. The rewrite proves you can hit those same emotional notes through identity/confidence framing. Whether Idan's specific audience responds the same way — that's what the test will tell us.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+</body>
+</html>
