@@ -1403,8 +1403,27 @@ https://learn.greenvalleynutrition.com/why-natural-minded-parents-avoid-adhd-med
         }
         function downloadImage(btn) {
             const img = btn.closest('.grid-item').querySelector('.post-image img');
-            window.open(img.getAttribute('src'), '_blank');
-            showToast('Image opened — right-click to save');
+            const imgSrc = img.getAttribute('src');
+            const draftLabel = btn.closest('.grid-item').querySelector('.draft-label').textContent;
+            const adNum = draftLabel.match(/Ad (\d+)/)?.[1] || '00';
+            const filename = 'gvn-adhd-ad-' + adNum.padStart(2, '0') + '.png';
+            fetch(imgSrc)
+                .then(res => res.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    showToast('Downloaded ' + filename);
+                })
+                .catch(() => {
+                    window.open(imgSrc, '_blank');
+                    showToast('Download failed — opened in new tab');
+                });
         }
         function showToast(message) {
             let toast = document.getElementById('toast');
