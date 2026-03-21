@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GVN Unit Economics</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --bg-red: #FFF0F0;
+            --accent-teal: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem 1.5rem;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1, h2, h3, h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.125rem; }
+        h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-gray);
+        }
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+        }
+        .card-content { padding: 1.5rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            text-align: left;
+            padding: 0.75rem 0.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+            color: var(--text-gray);
+        }
+        td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:last-child td { border-bottom: none; }
+        .num-right { text-align: right; font-variant-numeric: tabular-nums; }
+        .row-total {
+            font-weight: 700;
+            border-top: var(--border);
+            background: var(--bg-page);
+        }
+        .row-total td { padding: 0.75rem 0.5rem; }
+        .tag {
+            display: inline-block;
+            border: var(--border);
+            padding: 0.25rem 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .tag-red { background: #FFCDD2; }
+        .tag-yellow { background: var(--accent-yellow); }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .metric-box {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .metric-box h4 { margin-bottom: 0.25rem; }
+        .metric-value {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        .metric-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        .note {
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            box-shadow: var(--shadow-sm);
+            background: var(--bg-yellow);
+            border-left: 6px solid #F9A825;
+            font-size: 0.9rem;
+        }
+        .waterfall { margin: 1.5rem 0; }
+        .wf-row {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .wf-label { flex: 1; font-size: 0.9rem; }
+        .wf-amount {
+            width: 120px;
+            text-align: right;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .wf-total {
+            border-top: var(--border);
+            border-bottom: var(--border);
+            font-weight: 700;
+            padding: 0.75rem 0;
+        }
+        .neg { color: var(--accent-red); }
+        .pos { color: #2E7D32; }
+        .chg { font-size: 0.75rem; margin-left: 0.25rem; }
+        strong { font-weight: 700; }
+        /* Comparison grid */
+        .cmp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border: var(--border);
+        }
+        .cmp-cell {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+        .cmp-cell-r { border-right: var(--border); }
+        .cmp-head {
+            background: var(--bg-page);
+            border-bottom: var(--border);
+            padding: 0.75rem 1rem;
+        }
+        .cmp-val {
+            text-align: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+        }
+        .cmp-bold { font-weight: 700; font-size: 1.05rem; }
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .card-content { padding: 1.25rem; }
+            .metric-grid { grid-template-columns: 1fr 1fr; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 0.5rem 0.35rem; }
+            .cmp-grid { font-size: 0.8rem; }
+            .cmp-cell { padding: 0.5rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="card">
+        <div class="card-content">
+            <div style="width:3rem;height:3rem;background:var(--accent-teal);border:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;">📊</div>
+            <h1>GVN Unit Economics</h1>
+            <p style="color:var(--text-muted);margin-top:0.5rem;">Green Valley Nutrition — 30-Day Comparison</p>
+            <p style="color:var(--text-muted);font-size:0.85rem;">Source: Shopify Analytics + Meta Ads Manager (2 accounts)</p>
+        </div>
+    </div>
+
+    <!-- Period-over-Period Comparison -->
+    <div class="card">
+        <div class="card-header section-purple" style="background:var(--bg-purple);">
+            <h2>30 Days vs. Prior 30 Days</h2>
+        </div>
+        <div class="card-content">
+            <div class="cmp-grid">
+                <div class="cmp-head cmp-cell-r"><h4 style="margin:0;">Metric</h4></div>
+                <div class="cmp-head cmp-cell-r cmp-val"><h4 style="margin:0;">Jan 17 – Feb 16</h4></div>
+                <div class="cmp-head cmp-val"><h4 style="margin:0;">Feb 17 – Mar 20</h4></div>
+
+                <div class="cmp-cell cmp-cell-r">Gross Sales</div>
+                <div class="cmp-cell cmp-cell-r cmp-val">$69,121</div>
+                <div class="cmp-cell cmp-val">$58,575 <span class="neg chg">-15%</span></div>
+
+                <div class="cmp-cell cmp-cell-r">Discounts</div>
+                <div class="cmp-cell cmp-cell-r cmp-val neg">-$17,166</div>
+                <div class="cmp-cell cmp-val neg">-$11,877 <span class="chg" style="color:var(--text-muted);">-31%</span></div>
+
+                <div class="cmp-cell cmp-cell-r">Discount Rate</div>
+                <div class="cmp-cell cmp-cell-r cmp-val">24.8%</div>
+                <div class="cmp-cell cmp-val">20.3%</div>
+
+                <div class="cmp-cell cmp-cell-r cmp-bold">Net Sales (product)</div>
+                <div class="cmp-cell cmp-cell-r cmp-val cmp-bold">$51,183</div>
+                <div class="cmp-cell cmp-val cmp-bold">$46,026 <span class="neg chg">-10%</span></div>
+
+                <div class="cmp-cell cmp-cell-r">Units Sold (incl. free)</div>
+                <div class="cmp-cell cmp-cell-r cmp-val">1,460</div>
+                <div class="cmp-cell cmp-val">1,256 <span class="neg chg">-14%</span></div>
+
+                <div class="cmp-cell cmp-cell-r cmp-bold">Ad Spend (2 accts)</div>
+                <div class="cmp-cell cmp-cell-r cmp-val cmp-bold">$36,042</div>
+                <div class="cmp-cell cmp-val cmp-bold">$29,000 <span class="pos chg">-$7K</span></div>
+
+                <div class="cmp-cell cmp-cell-r cmp-bold">Blended ROAS</div>
+                <div class="cmp-cell cmp-cell-r cmp-val cmp-bold">1.42x</div>
+                <div class="cmp-cell cmp-val cmp-bold">1.59x <span class="pos chg">+0.17x</span></div>
+
+                <div class="cmp-cell cmp-cell-r" style="border-bottom:none;">FREE Gummies Shipped</div>
+                <div class="cmp-cell cmp-cell-r cmp-val" style="border-bottom:none;">475</div>
+                <div class="cmp-cell cmp-val" style="border-bottom:none;">392</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Trends -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Product Trends — 30 vs. Prior 30</h2>
+        </div>
+        <div class="card-content" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="num-right">Units (Prev)</th>
+                        <th class="num-right">Units (Curr)</th>
+                        <th class="num-right">Chg</th>
+                        <th class="num-right">Net $ (Prev)</th>
+                        <th class="num-right">Net $ (Curr)</th>
+                        <th class="num-right">Chg</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Kids Drops 350mg</strong></td>
+                        <td class="num-right">432</td>
+                        <td class="num-right">292</td>
+                        <td class="num-right neg">-32%</td>
+                        <td class="num-right">$18,915</td>
+                        <td class="num-right">$13,484</td>
+                        <td class="num-right neg">-29%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Original Drops 1000mg</strong></td>
+                        <td class="num-right">51</td>
+                        <td class="num-right">68</td>
+                        <td class="num-right pos">+33%</td>
+                        <td class="num-right">$6,277</td>
+                        <td class="num-right">$7,984</td>
+                        <td class="num-right pos">+27%</td>
+                    </tr>
+                    <tr>
+                        <td>CBD Gummies 750mg</td>
+                        <td class="num-right">109</td>
+                        <td class="num-right">114</td>
+                        <td class="num-right pos">+5%</td>
+                        <td class="num-right">$7,279</td>
+                        <td class="num-right">$7,928</td>
+                        <td class="num-right pos">+9%</td>
+                    </tr>
+                    <tr>
+                        <td>CBN Gummies 750mg</td>
+                        <td class="num-right">77</td>
+                        <td class="num-right">63</td>
+                        <td class="num-right neg">-18%</td>
+                        <td class="num-right">$5,267</td>
+                        <td class="num-right">$4,461</td>
+                        <td class="num-right neg">-15%</td>
+                    </tr>
+                    <tr>
+                        <td>CBN Drops 1200mg</td>
+                        <td class="num-right">20</td>
+                        <td class="num-right">29</td>
+                        <td class="num-right pos">+45%</td>
+                        <td class="num-right">$2,442</td>
+                        <td class="num-right">$3,471</td>
+                        <td class="num-right pos">+42%</td>
+                    </tr>
+                    <tr>
+                        <td>CBG Drops 1200mg</td>
+                        <td class="num-right">20</td>
+                        <td class="num-right">17</td>
+                        <td class="num-right neg">-15%</td>
+                        <td class="num-right">$2,122</td>
+                        <td class="num-right">$2,128</td>
+                        <td class="num-right" style="color:var(--text-muted);">0%</td>
+                    </tr>
+                    <tr>
+                        <td>CBG Gummies 750mg</td>
+                        <td class="num-right">23</td>
+                        <td class="num-right">25</td>
+                        <td class="num-right pos">+9%</td>
+                        <td class="num-right">$1,720</td>
+                        <td class="num-right">$1,629</td>
+                        <td class="num-right neg">-5%</td>
+                    </tr>
+                    <tr>
+                        <td>Gummy Bags 100mg</td>
+                        <td class="num-right">146</td>
+                        <td class="num-right">185</td>
+                        <td class="num-right pos">+27%</td>
+                        <td class="num-right">$995</td>
+                        <td class="num-right">$1,441</td>
+                        <td class="num-right pos">+45%</td>
+                    </tr>
+                    <tr>
+                        <td>FREE Gummy 100mg <span class="tag tag-red" style="font-size:0.6rem;">LOSS LEADER</span></td>
+                        <td class="num-right">475</td>
+                        <td class="num-right">392</td>
+                        <td class="num-right">-17%</td>
+                        <td class="num-right">$0</td>
+                        <td class="num-right">$0</td>
+                        <td class="num-right">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Current Period Product Mix -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Product Mix — Current 30 Days</h2>
+        </div>
+        <div class="card-content" style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="num-right">Units</th>
+                        <th class="num-right">Gross</th>
+                        <th class="num-right">Discounts</th>
+                        <th class="num-right">Net Sales</th>
+                        <th class="num-right">Disc %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Kids Drops 350mg</strong></td>
+                        <td class="num-right">292</td>
+                        <td class="num-right">$18,740</td>
+                        <td class="num-right neg">-$5,028</td>
+                        <td class="num-right">$13,484</td>
+                        <td class="num-right">27%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CBD Gummies 750mg</strong></td>
+                        <td class="num-right">114</td>
+                        <td class="num-right">$9,628</td>
+                        <td class="num-right neg">-$1,633</td>
+                        <td class="num-right">$7,928</td>
+                        <td class="num-right">17%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Original Drops 1000mg</strong></td>
+                        <td class="num-right">68</td>
+                        <td class="num-right">$9,401</td>
+                        <td class="num-right neg">-$1,297</td>
+                        <td class="num-right">$7,984</td>
+                        <td class="num-right">14%</td>
+                    </tr>
+                    <tr>
+                        <td>CBN Gummies 750mg</td>
+                        <td class="num-right">63</td>
+                        <td class="num-right">$5,602</td>
+                        <td class="num-right neg">-$1,141</td>
+                        <td class="num-right">$4,461</td>
+                        <td class="num-right">20%</td>
+                    </tr>
+                    <tr>
+                        <td>CBN Oil Drops 1200mg</td>
+                        <td class="num-right">29</td>
+                        <td class="num-right">$4,080</td>
+                        <td class="num-right neg">-$609</td>
+                        <td class="num-right">$3,471</td>
+                        <td class="num-right">15%</td>
+                    </tr>
+                    <tr>
+                        <td>CBG Oil Drops 1200mg</td>
+                        <td class="num-right">17</td>
+                        <td class="num-right">$2,488</td>
+                        <td class="num-right neg">-$360</td>
+                        <td class="num-right">$2,128</td>
+                        <td class="num-right">14%</td>
+                    </tr>
+                    <tr>
+                        <td>CBG Gummies 750mg</td>
+                        <td class="num-right">25</td>
+                        <td class="num-right">$2,164</td>
+                        <td class="num-right neg">-$535</td>
+                        <td class="num-right">$1,629</td>
+                        <td class="num-right">25%</td>
+                    </tr>
+                    <tr>
+                        <td>Gummy Bags 100mg</td>
+                        <td class="num-right">185</td>
+                        <td class="num-right">$1,765</td>
+                        <td class="num-right neg">-$314</td>
+                        <td class="num-right">$1,441</td>
+                        <td class="num-right">18%</td>
+                    </tr>
+                    <tr>
+                        <td>FREE Gummy 100mg <span class="tag tag-red" style="font-size:0.6rem;">$0 REV</span></td>
+                        <td class="num-right">392</td>
+                        <td class="num-right">$0</td>
+                        <td class="num-right">$0</td>
+                        <td class="num-right">$0</td>
+                        <td class="num-right">—</td>
+                    </tr>
+                    <tr>
+                        <td>Other products</td>
+                        <td class="num-right">45</td>
+                        <td class="num-right">$2,633</td>
+                        <td class="num-right neg">-$696</td>
+                        <td class="num-right">$1,874</td>
+                        <td class="num-right">26%</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td>TOTAL</td>
+                        <td class="num-right">1,256</td>
+                        <td class="num-right">$58,575</td>
+                        <td class="num-right neg">-$11,877</td>
+                        <td class="num-right">$46,026</td>
+                        <td class="num-right">20.3%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Per-Unit Economics -->
+    <div class="card">
+        <div class="card-header" style="background:var(--bg-blue);">
+            <h2>Per-Unit Economics</h2>
+        </div>
+        <div class="card-content" style="overflow-x:auto;">
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">Source: Ethan's unit economics CSV. Assumes full-price, single-unit sales.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="num-right">Price</th>
+                        <th class="num-right">COGS</th>
+                        <th class="num-right">Fulfill</th>
+                        <th class="num-right">Gross Margin</th>
+                        <th class="num-right">GM%</th>
+                        <th class="num-right">BE CPA</th>
+                        <th class="num-right">BE ROAS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kids Drops 350mg</td>
+                        <td class="num-right">$69.99</td>
+                        <td class="num-right">$6.40</td>
+                        <td class="num-right">$8.44</td>
+                        <td class="num-right">$50.95</td>
+                        <td class="num-right">72.8%</td>
+                        <td class="num-right">$42.55</td>
+                        <td class="num-right">1.64x</td>
+                    </tr>
+                    <tr>
+                        <td>CBD Gummies 750mg</td>
+                        <td class="num-right">$89.99</td>
+                        <td class="num-right">$8.30</td>
+                        <td class="num-right">$8.44</td>
+                        <td class="num-right">$67.85</td>
+                        <td class="num-right">75.4%</td>
+                        <td class="num-right">$57.05</td>
+                        <td class="num-right">1.58x</td>
+                    </tr>
+                    <tr>
+                        <td>Original Drops 1000mg</td>
+                        <td class="num-right">$159.99</td>
+                        <td class="num-right">$8.40</td>
+                        <td class="num-right">$8.44</td>
+                        <td class="num-right">$133.55</td>
+                        <td class="num-right">83.5%</td>
+                        <td class="num-right">$114.35</td>
+                        <td class="num-right">1.40x</td>
+                    </tr>
+                    <tr>
+                        <td>CBG Gummies 750mg</td>
+                        <td class="num-right">$89.99</td>
+                        <td class="num-right">$8.40</td>
+                        <td class="num-right">$8.44</td>
+                        <td class="num-right">$67.75</td>
+                        <td class="num-right">75.3%</td>
+                        <td class="num-right">$56.95</td>
+                        <td class="num-right">1.58x</td>
+                    </tr>
+                    <tr>
+                        <td>CBN Gummies 750mg</td>
+                        <td class="num-right">$89.99</td>
+                        <td class="num-right">$8.60</td>
+                        <td class="num-right">$8.44</td>
+                        <td class="num-right">$67.55</td>
+                        <td class="num-right">75.1%</td>
+                        <td class="num-right">$56.75</td>
+                        <td class="num-right">1.59x</td>
+                    </tr>
+                    <tr>
+                        <td>FREE Gummy Bag 100mg</td>
+                        <td class="num-right">$6.95</td>
+                        <td class="num-right">$1.00</td>
+                        <td class="num-right">$7.40</td>
+                        <td class="num-right neg">-$1.45</td>
+                        <td class="num-right">—</td>
+                        <td class="num-right">—</td>
+                        <td class="num-right">—</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note" style="margin-top:1.25rem;">
+                <strong>Assumption — BOGO:</strong> With BOGO offers, COGS and fulfillment costs apply to 2 units while revenue stays at 1-unit price. This reduces gross margins by 15-20 points depending on the product.
+            </div>
+        </div>
+    </div>
+
+    <!-- Contribution Margin Comparison -->
+    <div class="card">
+        <div class="card-header" style="background:var(--bg-purple);">
+            <h2>Contribution Margin — 30 vs. Prior 30</h2>
+        </div>
+        <div class="card-content">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+
+                <!-- Prior Period -->
+                <div style="border:var(--border);box-shadow:var(--shadow-sm);">
+                    <div style="background:var(--bg-page);padding:0.75rem 1rem;border-bottom:var(--border);">
+                        <h3>Jan 17 – Feb 16</h3>
+                    </div>
+                    <div style="padding:1rem;">
+                        <div class="waterfall">
+                            <div class="wf-row">
+                                <span class="wf-label">Net Sales (product)</span>
+                                <span class="wf-amount">$51,183</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Shipping Revenue (free gummy)</span>
+                                <span class="wf-amount">$3,301</span>
+                            </div>
+                            <div class="wf-row" style="border-top:1px solid #999;font-weight:600;">
+                                <span class="wf-label">Total Revenue</span>
+                                <span class="wf-amount">$54,484</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">COGS</span>
+                                <span class="wf-amount neg">-$6,568</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Fulfillment (ceiling est.)</span>
+                                <span class="wf-amount neg">-$11,828</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Transaction Fees (~3%)</span>
+                                <span class="wf-amount neg">-$1,635</span>
+                            </div>
+                            <div class="wf-row" style="border-top:var(--border);font-weight:700;">
+                                <span class="wf-label">Gross Profit</span>
+                                <span class="wf-amount">$34,453</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Ad Spend (2 accts)</span>
+                                <span class="wf-amount neg">-$36,042</span>
+                            </div>
+                            <div class="wf-row wf-total">
+                                <span class="wf-label">Contribution Margin</span>
+                                <span class="wf-amount neg" style="font-size:1.1rem;">-$1,589</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Period -->
+                <div style="border:var(--border);box-shadow:var(--shadow-sm);">
+                    <div style="background:var(--bg-page);padding:0.75rem 1rem;border-bottom:var(--border);">
+                        <h3>Feb 17 – Mar 20</h3>
+                    </div>
+                    <div style="padding:1rem;">
+                        <div class="waterfall">
+                            <div class="wf-row">
+                                <span class="wf-label">Net Sales (product)</span>
+                                <span class="wf-amount">$46,026</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Shipping Revenue (free gummy)</span>
+                                <span class="wf-amount">$2,724</span>
+                            </div>
+                            <div class="wf-row" style="border-top:1px solid #999;font-weight:600;">
+                                <span class="wf-label">Total Revenue</span>
+                                <span class="wf-amount">$48,750</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">COGS</span>
+                                <span class="wf-amount neg">-$5,498</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Fulfillment (ceiling est.)</span>
+                                <span class="wf-amount neg">-$10,193</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Transaction Fees (~3%)</span>
+                                <span class="wf-amount neg">-$1,463</span>
+                            </div>
+                            <div class="wf-row" style="border-top:var(--border);font-weight:700;">
+                                <span class="wf-label">Gross Profit</span>
+                                <span class="wf-amount">$31,597</span>
+                            </div>
+                            <div class="wf-row">
+                                <span class="wf-label">Ad Spend (2 accts)</span>
+                                <span class="wf-amount neg">-$29,000</span>
+                            </div>
+                            <div class="wf-row wf-total">
+                                <span class="wf-label">Contribution Margin</span>
+                                <span class="wf-amount pos" style="font-size:1.1rem;">+$2,597</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="note" style="margin-top:1.5rem;">
+                <strong>Assumption — Fulfillment (ceiling estimate):</strong> Uses $8.44 per paid unit (864 current / 985 prior) and $7.40 per free gummy unit (392 current / 475 prior), both from Ethan's CSV. This is a ceiling — multi-unit orders ship in the same box, so additional units cost less (likely $1-3 pick/pack only). Actual fulfillment is lower than shown, which means actual contribution margin is higher.
+            </div>
+
+            <div class="note">
+                <strong>Assumption — Shipping Revenue:</strong> Free gummy customers pay $6.95 shipping (conservative — actual may be higher depending on location). This doesn't appear in Shopify's "Net Sales" so it's added separately.
+            </div>
+
+            <div class="note">
+                <strong>Assumption — COGS:</strong> Uses per-unit costs from Ethan's CSV where available (6 products). Remaining products estimated from similar items. COGS for known products = 86% of total; estimated = 14%. BOGO orders would double COGS per order — Shopify's discount column captures the revenue reduction but not the doubled COGS.
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:2rem 0 1rem;color:var(--text-muted);font-size:0.8rem;">
+        <p>GVN Unit Economics — March 20, 2026</p>
+        <p>Shopify: Feb 17 – Mar 20 vs Jan 17 – Feb 16 &nbsp;|&nbsp; Meta: same periods, 2 accounts combined</p>
+    </div>
+
+</div>
+</body>
+</html>
