@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Safer, Gentle Alternative to Melatonin for Kids | Green Valley Nutrition</title>
+
+    <!-- Google Fonts (matching GHL page) -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1f2555;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #555555;
+            --link: #0E93C0;
+            --border: #000000;
+            --accent: #2B6CB0;
+            --success: #3C9E5C;
+            --gold: #C8A55E;
+            --bg-light: #f8f9fa;
+            --max-width: 720px;
+        }
+
+        body {
+            background: var(--white);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page-wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            background: var(--white);
+            border-left: 2px solid var(--border);
+            border-right: 2px solid var(--border);
+            min-height: 100vh;
+        }
+
+        .content-section {
+            padding: 40px 32px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .content-section:last-child { border-bottom: none; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Ubuntu', sans-serif;
+            color: var(--text);
+            line-height: 1.35;
+        }
+
+        h1 { font-size: 1.875rem; font-weight: 700; text-align: center; margin-bottom: 24px; }
+        h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
+        h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; }
+        h4 { font-size: 1.125rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+
+        p { margin-bottom: 14px; line-height: 1.7; }
+        strong { font-weight: 700; }
+        em { font-style: italic; }
+        a { color: var(--link); text-decoration: underline; }
+        ul { margin: 16px 0 20px 24px; line-height: 1.7; }
+        ul li { margin-bottom: 8px; }
+
+        /* Product images */
+        .product-hero-img { width: 100%; max-width: 360px; display: block; margin: 24px auto; border-radius: 8px; }
+        .product-img-full { width: 100%; display: block; margin: 24px 0; border-radius: 8px; }
+        .tier-img { width: 100%; max-width: 140px; display: block; margin: 0 auto 12px; }
+        .supplement-facts-img { width: 100%; max-width: 300px; display: block; margin: 20px auto; border-radius: 4px; border: 1px solid #E5E7EB; }
+        .img-caption { font-size: 0.8125rem; color: var(--text-light); text-align: center; margin-top: 8px; font-style: italic; }
+
+        /* Testimonial pull quote */
+        .pull-quote {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--accent);
+            text-align: center;
+            padding: 24px 32px;
+            margin: 0;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* Feature list */
+        .feature-list { list-style: none; margin: 20px 0; padding: 0; }
+        .feature-list li { padding: 8px 0 8px 36px; position: relative; font-size: 1rem; line-height: 1.6; }
+        .feature-list li::before { content: "\2713"; position: absolute; left: 8px; top: 8px; color: var(--success); font-weight: 700; font-size: 1.25rem; }
+
+        /* What to look for list */
+        .look-for-item { margin-bottom: 20px; }
+        .look-for-item strong { color: var(--accent); }
+
+        /* Comparison cards */
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+        .comparison-card { border: 2px solid #E5E7EB; border-radius: 12px; padding: 24px 20px; }
+        .comparison-card--bad { background: #FFF5F5; border-color: #FEB2B2; }
+        .comparison-card--good { background: #F0FDF4; border-color: #9AE6B4; }
+        .comparison-card h4 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .comparison-card--bad h4 { color: #C53030; }
+        .comparison-card--good h4 { color: var(--success); }
+        .comparison-card ul { margin: 0; padding: 0; list-style: none; }
+        .comparison-card ul li { padding: 4px 0; font-size: 0.9375rem; margin-bottom: 4px; }
+        .comparison-card--bad ul li::before { content: "\2717  "; color: #C53030; font-weight: 700; }
+        .comparison-card--good ul li::before { content: "\2713  "; color: var(--success); font-weight: 700; }
+
+        /* Testimonial */
+        .testimonial { background: var(--bg-light); border: 2px solid #E5E7EB; border-radius: 12px; padding: 28px 24px; margin: 24px 0; }
+        .testimonial .stars { font-size: 1.25rem; color: var(--gold); margin-bottom: 8px; }
+        .testimonial .quote { font-style: italic; line-height: 1.7; margin-bottom: 12px; }
+        .testimonial .attribution { font-weight: 700; font-size: 0.875rem; color: var(--text-light); }
+
+        /* Offer section */
+        .offer-header {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .offer-header .badge-line {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .offer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+        .offer-card { border: 2px solid #E5E7EB; border-radius: 12px; padding: 24px 16px; text-align: center; position: relative; background: var(--white); transition: all 0.2s ease; }
+        .offer-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(43, 108, 176, 0.15); }
+        .offer-card--featured { border-color: var(--accent); background: #F0F7FF; transform: scale(1.03); }
+
+        .offer-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--white); font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 0.7rem; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .offer-badge--gold { background: var(--gold); }
+
+        .offer-card .tier-name { font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 4px; margin-top: 8px; }
+        .offer-card .tier-price { font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 1.75rem; color: var(--accent); margin-bottom: 2px; }
+        .offer-card .tier-was { font-size: 0.8125rem; color: #999; text-decoration: line-through; margin-bottom: 4px; }
+        .offer-card .tier-per { font-size: 0.8125rem; color: var(--text-light); margin-bottom: 12px; }
+        .offer-card .tier-btn { display: block; background: var(--accent); color: var(--white); font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 0.8125rem; padding: 12px 12px; border-radius: 8px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease; line-height: 1.3; }
+        .offer-card .tier-btn:hover { background: #347fd2; }
+        .offer-card--featured .tier-btn { background: var(--gold); font-size: 0.875rem; padding: 14px 12px; }
+        .offer-card--featured .tier-btn:hover { background: #d7b773; }
+
+        .offer-includes {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-light);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        /* Promo banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #1a4d7f 0%, var(--accent) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 24px 0 0;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .promo-banner strong { color: var(--gold); }
+
+        /* Guarantee */
+        .guarantee { background: #F0FDF4; border: 3px solid var(--success); border-radius: 12px; padding: 32px 24px; text-align: center; margin: 24px 0; }
+        .guarantee h3 { color: var(--success); font-size: 1.375rem; margin-bottom: 12px; }
+
+        /* Origin story callout */
+        .origin-story {
+            background: var(--bg-light);
+            border-left: 4px solid var(--gold);
+            padding: 28px 24px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .origin-story h3 { color: var(--gold); }
+
+        /* CTA button */
+        .cta-btn { display: inline-block; background: var(--accent); color: var(--white); font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 1.125rem; padding: 18px 48px; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(43, 108, 176, 0.25); transition: all 0.3s ease; }
+        .cta-btn:hover { background: #347fd2; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(43, 108, 176, 0.35); }
+        .cta-btn--gold { background: var(--gold); box-shadow: 0 4px 12px rgba(200, 165, 94, 0.25); }
+        .cta-btn--gold:hover { background: #d7b773; box-shadow: 0 6px 16px rgba(200, 165, 94, 0.35); }
+        .cta-btn--large { font-size: 1.25rem; padding: 22px 56px; }
+
+        .cta-subtext {
+            font-size: 0.8125rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        /* Disclaimer */
+        .disclaimer { padding: 24px 32px; font-size: 0.75rem; color: #999; line-height: 1.6; border-top: 1px solid #E5E7EB; }
+
+        /* Footer */
+        .footer { background: var(--navy); padding: 40px 32px; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.8125rem; line-height: 1.8; }
+        .footer-logo { max-width: 180px; margin: 0 auto 16px; display: block; }
+        .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .footer a:hover { color: var(--white); }
+        .footer-links { margin: 16px 0; }
+        .footer-links a { margin: 0 12px; }
+
+        @media (max-width: 767px) {
+            .page-wrapper { border-left: none; border-right: none; }
+            .content-section { padding-left: 20px; padding-right: 20px; }
+            .pull-quote { padding-left: 20px; padding-right: 20px; font-size: 1.125rem; }
+            h1 { font-size: 1.625rem; }
+            h2 { font-size: 1.3125rem; }
+            .offer-grid { grid-template-columns: 1fr; gap: 20px; }
+            .offer-card--featured { transform: none; order: -1; }
+            .comparison { grid-template-columns: 1fr; }
+            .cta-btn, .cta-btn--large { width: 100%; padding: 16px 32px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- HEADLINE -->
+    <section class="content-section" style="text-align: center;">
+        <h1>A Safer, Gentle Alternative to Melatonin for Kids</h1>
+        <p style="color: var(--text-light); font-size: 1.0625rem;">There's something else parents are turning to that's surprisingly safe and effective.</p>
+        <!-- Hero: Mom giving kids gummies -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/66e9f932fc1da4cc7491f96d.jpeg" alt="Mother giving her children gummies" loading="eager" style="border-radius: 8px; margin-top: 20px;">
+    </section>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote">
+        "We tried every routine on the internet and this is the only thing that worked."
+    </div>
+
+    <!-- SECTION 1: CBN INTRODUCTION / OBJECTION HANDLING -->
+    <section class="content-section">
+        <p>There's something natural most parents haven't heard of yet.</p>
+        <p>And you've probably had a gut reaction &mdash; cautious, curious, maybe even conflicted.</p>
+        <p>That's not resistance. That's discernment.</p>
+        <p>Because most of what you've seen was made for adults, extremes, or edge-case conditions.</p>
+        <p>Not your child. Not your life. Not this quiet, nightly struggle to find rest.</p>
+        <p>But more and more parents are learning:</p>
+        <p>CBN isn't about sedation. It's not a shortcut to sleep. It's support &mdash; for a nervous system that's still learning how to land.</p>
+    </section>
+
+    <!-- SECTION 2: DIMMER SWITCH ANALOGY -->
+    <section class="content-section">
+        <!-- Close-up: parent handing child a gummy -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/6824c847a1908e3ef4d234aa.jpeg" alt="Parent giving child a gummy" loading="lazy" style="border-radius: 8px; margin-bottom: 24px;">
+        <p>Imagine your child's body like a lamp without a dimmer. When it's time to switch from "on" to "off," the only option is a sudden flip &mdash; and the system fights back.</p>
+        <p><strong>CBN acts like that missing dimmer switch</strong> &mdash; softening the glow, helping their body downshift gently, naturally, without a crash.</p>
+        <p>It doesn't override anything. It just makes it easier for their system to do what it's already trying to do:</p>
+        <p>Come home to calm. Stay there long enough to fall asleep. Wake up less wired, less weepy, and more ready for the day.</p>
+
+        <p style="margin-top: 24px;">You may have heard of CBD. CBN is its quieter cousin &mdash; the one compound in the hemp plant most associated with rest. While CBD does a lot of things, CBN does one thing well: it helps the body wind down. That focus is what makes it different.</p>
+    </section>
+
+    <!-- SECTION 3: YOU'RE NOT WRONG TO BE CAUTIOUS -->
+    <section class="content-section">
+        <h2>You're Not Wrong to Be Cautious</h2>
+        <p>This isn't about doing less as a parent. It's about finally having something that meets your effort &mdash; and your child's needs &mdash; halfway.</p>
+        <p>You're not wrong to be cautious. You've seen CBD everywhere &mdash; in headlines, in gas stations, in gummies for grown-ups. And it's only natural to wonder: &ldquo;Is this really something I want to give my child?&rdquo;</p>
+        <p>That question doesn't make you hesitant. It makes you wise.</p>
+        <p>Because most of the CBD world isn't made for kids. It's murky, unregulated, and often built for extremes &mdash; not gentle, everyday support.</p>
+
+        <!-- No cannabis icon -->
+        <div style="text-align: center; margin-top: 24px;">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_320/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/6846f021afd03062bfc5b5a6.png" alt="No marijuana — 0% THC" style="width: 80px; opacity: 0.7;" loading="lazy">
+        </div>
+    </section>
+
+    <!-- SECTION 4: MECHANISM -->
+    <section class="content-section">
+        <p>But here's what the research (and real parents) are starting to show:</p>
+        <p>CBN isn't a sleep drug. It doesn't knock them out or change who they are. It helps calm the system that can't turn off &mdash; even when everything around them says it's time for bed.</p>
+        <p>Your child's ability to sleep, focus, and regulate emotions all traces back to one thing: <strong>the endocannabinoid system</strong> &mdash; a network in the body that helps balance stress, mood, and rest.</p>
+        <p>CBN supports that system. Not by overpowering it &mdash; but by nudging it back toward equilibrium.</p>
+        <p>Think of it like noise-canceling headphones for their nerves. It doesn't make the world quiet. It helps their body filter the overwhelm &mdash; so they can shift from survival mode to rest mode.</p>
+        <p>And for sensitive, anxious, or dysregulated kids? That tiny shift can be the difference between an hour-long bedtime battle... and a night that finally ends in sleep.</p>
+
+        <!-- Benefits infographic (orange slice + gummies) -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/6824bd7c8e57c5cf4d5303c5.jpeg" alt="Benefits — calms anxiety, promotes cognitive function, reduces pain, supports sleep, improves focus, enhances mood" loading="lazy" style="border-radius: 8px;">
+    </section>
+
+    <!-- SECTION 5: WHAT TO LOOK FOR -->
+    <section class="content-section">
+        <h2>What to Look for in a Kids' CBN Product</h2>
+
+        <div class="look-for-item">
+            <p><strong>0.0% THC &mdash; Always:</strong> Even trace amounts of THC can impact developing brains. Choose products that are lab-tested and completely THC-free, with results you can actually read.</p>
+        </div>
+
+        <div class="look-for-item">
+            <p><strong>Single-Source CBN Isolate:</strong> This means just one plant, one process, no muddy mixtures. Isolate strips away everything but the calm &mdash; ideal for sensitive systems and clear-headed parents.</p>
+        </div>
+
+        <div class="look-for-item">
+            <p><strong>Kid-Sized Dosing Flexibility:</strong> Look for products that let you start small (like a half gummy) and gently increase only if needed. Dosing should feel adjustable &mdash; not all-or-nothing.</p>
+        </div>
+
+        <div class="look-for-item">
+            <p><strong>Solvent-Free, Clean Extraction:</strong> High-quality CBN uses CO2 extraction to avoid chemicals, then distills the result to be virtually tasteless &mdash; so even picky eaters don't push back.</p>
+        </div>
+
+        <div class="look-for-item">
+            <p><strong>Third-Party Lab Verified:</strong> Trust what's in the bottle. The best brands offer full Certificates of Analysis for potency, purity, and safety &mdash; the kind you can bring to your child's doctor, proudly.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 6: PRODUCT INTRODUCTION -->
+    <section class="content-section">
+        <h2>Meet the CBN Made for Bedtime Battles</h2>
+
+        <img class="product-hero-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/CBN_Gummies_mockup.jpg?v=1691498454" alt="Sleepy Night CBN Gummies 25mg — 30 Vegan Fruit Gummies by Green Valley Nutrition" loading="lazy">
+
+        <p>Introducing Green Valley Nutrition's <strong>Sleepy Night&trade; CBN Gummies</strong> &mdash; a gentle, plant-based formula designed to help sensitive, overwhelmed, or overtired kids shift out of stress and into sleep.</p>
+        <p>Made with simple, organic ingredients you can pronounce &mdash; this is a bedtime ally that works with your child's system, not against it.</p>
+
+        <ul class="feature-list">
+            <li>THC-free and third-party lab verified</li>
+            <li>Single-source, batch-consistent calm</li>
+            <li>Solvent-free, double-distilled, and virtually tasteless</li>
+            <li>Designed for flexible dosing &mdash; starting small and adjusting gently</li>
+            <li>Safe enough for everyday use, clear enough for any pediatrician's desk</li>
+        </ul>
+
+        <p>It's not medicine. It's not magic. It's just the right kind of support &mdash; finally made simple, safe, and actually doable.</p>
+        <p>Because the goal isn't just sleep. It's a smoother evening, a quieter body, and a better morning &mdash; for both of you.</p>
+    </section>
+
+    <!-- SECTION 7: HOW IT WORKS -->
+    <section class="content-section">
+        <h2>How It Works</h2>
+
+        <p>Green Valley's Sleepy Night CBN Gummies aren't just any CBN. They're made from single-source CBN isolate, filtered twice and free from anything that might trigger sensitivity or guesswork. That means absolutely no THC. No plant compounds that act like sedatives. Just pure, plant-based calm &mdash; designed for developing nervous systems.</p>
+
+        <p><strong>It filters the noise, not the personality.</strong> Our CBN isolate works like noise-canceling for their nerves &mdash; helping the brain process stimulation without shutting it down. The result? More calm, fewer meltdowns, and a body that can finally hear the signal to rest.</p>
+
+        <p><strong>It supports rest by signaling safety.</strong> This formula doesn't sedate. It helps reduce cortisol and other stress signals that keep the brain on high alert &mdash; so the body can move out of "fight or flight" and into "okay to sleep."</p>
+
+        <p><strong>It builds balance, dose by dose.</strong> Because this is a low-strength, all-natural gummy, you can start small and build gently &mdash; with no rollercoaster crashes, no resistance, and no fog the next day.</p>
+
+        <p>It's regulation you can see &mdash; in bedtime routines, school mornings, and those moments that used to spiral. This isn't about forcing rest. It's about giving their system a way to get there &mdash; softly, steadily, and in sync with how they're wired.</p>
+
+        <!-- Ingredients infographic -->
+        <img class="product-img-full" src="https://www.greenvalleynutrition.com/cdn/shop/files/GreenValley_CBNGummies.1.jpg?v=1740527707" alt="All-Natural Superfood Ingredients — Zero THC, No Artificials, Vegan Friendly, Lab Tested" loading="lazy">
+    </section>
+
+    <!-- SECTION 8: WHAT YOU GET -->
+    <section class="content-section">
+        <h2>What You Get</h2>
+
+        <ul>
+            <li>&#x1F33F; <strong>Superfood Ingredients:</strong> Colored with superfoods like spirulina and beet root juice. No dyes, no GMOs, no preservatives, no synthetic flavors. Clean enough to show your pediatrician.</li>
+            <li>&#x1F4AA; <strong>750mg Total CBN (Low &amp; Steady Strength):</strong> That's 25mg per gummy &mdash; ideal for starting small and adjusting gently. Perfect for sensitive, moody, or easily overstimulated kids.</li>
+            <li>&#x1F60B; <strong>Kid-Friendly Delivery:</strong> Delicious fruit flavor kids love. No bitterness. No pills, no powders, no battles.</li>
+            <li>&#x1F50D; <strong>Third-Party Lab Tested:</strong> Every batch is tested for purity, potency, and 0.0% THC &mdash; with lab results linked right on the product page.</li>
+            <li>&#x1F4C5; <strong>30-Day Supply per Jar:</strong> Just a half to full gummy daily. One jar = one month of calm support, built for consistency without overwhelm.</li>
+        </ul>
+
+        <p>Because when something becomes part of your daily rhythm, it shouldn't feel like a workaround. It should feel like a quiet win.</p>
+
+        <!-- Supplement facts -->
+        <img class="supplement-facts-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/Screenshot_2025-07-15_at_4.14.24_PM.png?v=1752610527" alt="Supplement Facts — 25mg Hemp Derived CBN Isolate per gummy, 30 servings per container" loading="lazy">
+        <p class="img-caption">25mg CBN Isolate per gummy &bull; 30 servings per jar &bull; Vegan &bull; All-natural colors and flavors</p>
+    </section>
+
+    <!-- SECTION 9: HOW IT STACKS UP -->
+    <section class="content-section">
+        <h2>How It Stacks Up</h2>
+
+        <!-- Original comparison chart image -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/6824d3b48e57c5d246539249.png" alt="Comparison chart — Green Valley Gummies vs Melatonin vs Other CBD brands" loading="lazy">
+    </section>
+
+    <!-- SECTION 10: ORIGIN STORY -->
+    <section class="content-section">
+        <div class="origin-story">
+            <!-- Panda logo -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_320/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/bb5d2165-6056-4ebf-88c9-7d0353aff464.png" alt="Green Valley Nutrition panda logo" style="width: 100px;" loading="lazy">
+            </div>
+            <h3>When It's Personal, You Build Differently</h3>
+            <p>We didn't start this company because we wanted to sell CBD. We started it because we had to find answers for someone we love.</p>
+            <p>Our story begins when Ethan, a 13-year-old baseball player and cowlick tamer, got sick. Suddenly, he began having debilitating tics, repetitive movements, and intense anxiety &mdash; an inflammatory brain disorder called PANDAS, the reason for the panda in our logo.</p>
+            <p>Life changed overnight. His parents tried everything. Doctors prescribed one pharmaceutical after another, but the side effects often outweighed the benefits.</p>
+            <p>After a painful 10-year journey, Ethan realized he had to take responsibility for his own health. That's when he found CBD.</p>
+            <p>For the first time, he experienced real relief &mdash; his tics became less frequent and intense, his anxiety calmed, and he could finally relax and refocus. He wasn't numbed or sedated. He just felt more like himself again.</p>
+            <p>CBD didn't magically solve everything &mdash; but it helped enough that he could step back into life.</p>
+            <p><strong>That's why we make this product. Not as a quick fix. Not as a trendy solution. But as honest medicine &mdash; formulated for families who want better answers.</strong></p>
+        </div>
+    </section>
+
+    <!-- SECTION 11: FAQ -->
+    <section class="content-section">
+        <!-- Kid excited about gummy -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_640/u_https://storage.googleapis.com/msgsndr/NPdQJDdU4mLMzzlGSkoo/media/6824c8479cd8fb0a0299b786.jpeg" alt="Child excitedly holding up a gummy" style="max-width: 300px; border-radius: 8px;" loading="lazy">
+        </div>
+        <h4 style="margin-top: 24px;">Will this make my child drowsy or "out of it"?</h4>
+        <p>No. This isn't a sedative. Our CBN isolate gently supports the nervous system &mdash; helping your child feel safe enough to rest, without altering their personality or causing grogginess the next day.</p>
+
+        <h4 style="margin-top: 24px;">Can my child take this every night?</h4>
+        <p>Yes. Our CBN gummies are third-party lab tested, contains 0.0% THC, and are made with all-natural superfood ingredients. It's designed to be safe for daily support &mdash; with no risk of dependency or buildup.</p>
+
+        <h4 style="margin-top: 24px;">How soon will we see results?</h4>
+        <p>Some parents notice changes in mood, focus, or sleep within a few days. For others, it may take 1&ndash;2 weeks of consistent use. Every child's system is different &mdash; but gentle, steady support builds over time.</p>
+
+        <h4 style="margin-top: 24px;">What if they're super sensitive to supplements?</h4>
+        <p>That's exactly who this is for. Our formula is low-dose, THC-free, and free from dyes, preservatives, or added flavors. Just CBN + organic coconut oil. Nothing else.</p>
+
+        <h4 style="margin-top: 24px;">Can this be used with other medications?</h4>
+        <p>It's always a good idea to check with your child's doctor, especially if they're taking prescriptions that affect the nervous system.</p>
+
+        <h4 style="margin-top: 24px;">Will this show up on a drug test?</h4>
+        <p>No. Our product contains 0.0% THC, verified by third-party lab testing. There's no risk of a failed test or psychoactive effect.</p>
+    </section>
+
+    <!-- SECTION 12: TESTIMONIALS -->
+    <section class="content-section">
+        <!-- Social proof collage -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://storage.googleapis.com/msgsndr/NPdQJDdU4mLMzzlGSkoo/media/68364e9800e9307dab707537.webp" alt="Loved by our customers — 4.9 stars based on 4,500+ reviews" loading="lazy" style="border-radius: 8px; margin-bottom: 24px;">
+
+        <!-- Dad and son with gummy -->
+        <img class="product-img-full" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://storage.googleapis.com/msgsndr/NPdQJDdU4mLMzzlGSkoo/media/6824c84820806f6cb6ed5f5b.jpeg" alt="Father and son holding a gummy together" loading="lazy" style="border-radius: 8px; margin-bottom: 24px;">
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="quote">"My daughter used to take over an hour to fall asleep. Now she's out in 20 minutes &mdash; no drama, no fuss, and she's herself."</div>
+            <div class="attribution">&mdash; Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="quote">"I showed the ingredients and lab test to our pediatrician and they said, 'If you're going to try CBD, this is the cleanest one I've seen.'"</div>
+            <div class="attribution">&mdash; Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="quote">"It helped my son feel more at ease after school without knocking him out. I finally feel good about something in our routine."</div>
+            <div class="attribution">&mdash; Verified Buyer</div>
+        </div>
+    </section>
+
+    <!-- SECTION 13: GUARANTEE -->
+    <section class="content-section">
+        <div class="guarantee">
+            <h3>Our Guarantee: Calm Without a Countdown</h3>
+            <p><strong>365-day money-back guarantee.</strong></p>
+            <p>If at any point in the next year you feel this isn't the right fit &mdash; for your child, your routine, or your values &mdash; we'll refund you. No hard feelings. No hassle.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 14: FINAL CTA -->
+    <section class="content-section" style="text-align: center;">
+        <h2>Create What Fits Your Child &mdash; and You</h2>
+
+        <img class="product-hero-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/Green-Valley-Nutrition_r2_CBN-Gummy-Grab.gif?v=1755310687" alt="Hand grabbing a Sleepy Night CBN Gummy" loading="lazy">
+
+        <p>Green Valley Sleepy Night CBN Gummies were made for that space between "trying everything" and "finally seeing ease."</p>
+
+        <div style="margin-top: 24px;">
+            <a href="#offer" class="cta-btn cta-btn--gold cta-btn--large">Order Now 100% Risk-Free &rarr;</a>
+        </div>
+        <p class="cta-subtext">No monthly subscription. No strings attached.</p>
+        <p style="font-size: 0.9375rem; color: var(--text); margin-top: 16px; font-style: italic;">Calmer nights. Brighter mornings. One smile at a time.</p>
+    </section>
+
+    <!-- PROMO BANNER -->
+    <section class="content-section" style="padding-top: 0; border-bottom: 2px solid var(--border);">
+        <div class="promo-banner">
+            <p><strong>Plus, get FREE Sleepy Night CBN Gummies during our Stock Up &amp; Save sale!</strong></p>
+            <p>Hurry, this offer won't last long. Choose the "Buy 3 Get 3" package below for maximum savings.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 15: OFFER -->
+    <section class="content-section" style="background: var(--bg-light);" id="offer">
+        <div class="offer-header">
+            <p style="font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); margin-bottom: 4px;">THE #1 PEDIATRICIAN-RECOMMENDED CBN</p>
+            <h2>Sleepy Night&trade; CBN Gummies &mdash; 25mg</h2>
+            <div class="badge-line">&#9733; 4.9/5 "Outstanding" | 5,000+ Verified Reviews &#9733;</div>
+        </div>
+
+        <div class="offer-grid">
+            <!-- BUY 1 GET 1 FREE -->
+            <div class="offer-card">
+                <img class="tier-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/CBN_Gummies_mockup.jpg?v=1691498454" alt="1 Jar Sleepy Night CBN Gummies" loading="lazy">
+                <div class="tier-name">Buy 1 Get 1 Free</div>
+                <div class="tier-price">$89.99</div>
+                <div class="tier-was">$179.99</div>
+                <div class="tier-per">30 gummies per bottle &bull; Free shipping</div>
+                <a href="https://www.greenvalleynutrition.com/cart/46820171694261:1" class="tier-btn">Claim Your 1 Free Jar</a>
+            </div>
+
+            <!-- BUY 2 GET 2 FREE -->
+            <div class="offer-card offer-card--featured">
+                <div class="offer-badge">Most Popular</div>
+                <img class="tier-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/CBN_Gummies_mockup2.jpg?v=1752610527" alt="2 Jars Sleepy Night CBN Gummies" loading="lazy">
+                <div class="tier-name">Buy 2 Get 2 Free</div>
+                <div class="tier-price">$164.00</div>
+                <div class="tier-was">$359.99</div>
+                <div class="tier-per">$82/jar &bull; 60-night supply &bull; Free shipping</div>
+                <a href="https://www.greenvalleynutrition.com/cart/46820171727029:1" class="tier-btn">Claim Your 2 Free Jars</a>
+            </div>
+
+            <!-- BUY 3 GET 3 FREE -->
+            <div class="offer-card">
+                <div class="offer-badge offer-badge--gold">Best Value</div>
+                <img class="tier-img" src="https://www.greenvalleynutrition.com/cdn/shop/files/CBN_Gummies_mockup3.jpg?v=1752610527" alt="3 Jars Sleepy Night CBN Gummies" loading="lazy">
+                <div class="tier-name">Buy 3 Get 3 Free</div>
+                <div class="tier-price">$237.00</div>
+                <div class="tier-was">$539.99</div>
+                <div class="tier-per">$79/jar &bull; 90-night supply &bull; Free shipping</div>
+                <a href="https://www.greenvalleynutrition.com/cart/46820171759797:1" class="tier-btn">Claim Your 3 Free Jars</a>
+            </div>
+        </div>
+
+        <p class="offer-includes">All packages include: 30 gummies per bottle &bull; 25mg CBN per gummy &bull; Free shipping &bull; 100% risk-free &mdash; 365-day money-back guarantee</p>
+
+        <!-- Trust badges -->
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_320/u_https://assets.cdn.filesafe.space/NPdQJDdU4mLMzzlGSkoo/media/68503fbe4a13d53056243c65.jpeg" alt="100% Money Back Guarantee" style="width: 80px; margin-right: 16px; vertical-align: middle;" loading="lazy">
+            <img src="https://assets.cdn.filesafe.space/75x6oVRlEkU7gyLcePUE/media/05907988-b0bc-4b02-b3b0-19648154fd2d.png" alt="Visa, Mastercard, American Express, Discover accepted" style="width: 200px; vertical-align: middle;" loading="lazy">
+        </div>
+    </section>
+
+    <!-- FLOATING GUMMIES VISUAL -->
+    <section style="padding: 0; border-bottom: 2px solid var(--border);">
+        <img src="https://www.greenvalleynutrition.com/cdn/shop/files/shutterstock_2323101099_c68d0667-b024-4073-9b63-18360439099f.jpg?v=1752610527" alt="Colorful fruit gummies" style="width: 100%; display: block;" loading="lazy">
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer">
+        <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. This content is for informational purposes only and is not a substitute for professional medical advice. Always seek the guidance of your physician or other qualified health professional with any questions you may have regarding your health or a medical condition.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <img class="footer-logo" src="https://storage.googleapis.com/msgsndr/NPdQJDdU4mLMzzlGSkoo/media/bb5d2165-6056-4ebf-88c9-7d0353aff464.png" alt="Green Valley Nutrition">
+        <p>&copy; 2026 Green Valley Nutrition</p>
+        <p>PO Box 6245 Charlottesville, VA 22906</p>
+        <p>1-434-207-8577</p>
+        <div class="footer-links">
+            <a href="https://www.greenvalleynutrition.com/pages/our-story">About Us</a>
+            <a href="https://www.greenvalleynutrition.com/pages/return-policy">Refund Policy</a>
+            <a href="https://www.greenvalleynutrition.com/pages/privacy-policy">Privacy Policy</a>
+            <a href="https://www.greenvalleynutrition.com/policies/terms-of-service">Terms</a>
+            <a href="https://www.greenvalleynutrition.com/pages/contact">Contact Us</a>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
