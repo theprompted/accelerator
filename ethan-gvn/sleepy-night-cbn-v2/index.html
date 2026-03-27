@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleepy Night CBN Gummies — V2 Funnel | Ethan (GVN)</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .note {
+            background: #FFFDE7;
+            border: 1px solid #e0d68a;
+            padding: 0.875rem 1rem;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .context {
+            margin-bottom: 1.5rem;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .context p {
+            margin-bottom: 0.75rem;
+        }
+
+        .divider {
+            border: none;
+            border-top: 2px dashed #ccc;
+            margin: 0.5rem 0;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: block;
+            padding: 1.25rem 1.5rem;
+            border: var(--border);
+            text-decoration: none;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            box-shadow: -4px 4px 0 0 #383838;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -2px 2px 0 0 #383838;
+        }
+
+        .btn:active {
+            transform: translate(-4px, 4px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-teal);
+            color: var(--text-black);
+        }
+
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--text-black);
+        }
+
+        .btn-download {
+            background: #2D5A27;
+            color: white;
+        }
+
+        .btn-label {
+            display: block;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .btn-title {
+            display: block;
+        }
+
+        .btn-desc {
+            display: block;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .instructions {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .instructions h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .instruction-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: var(--accent-teal);
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .step-content {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .step-content strong {
+            color: var(--text-black);
+        }
+
+        .changes {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .changes h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .changes ul {
+            margin: 0 0 0 1.25rem;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .changes li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="icon">&#127769;</div>
+        <h1>Sleepy Night CBN Gummies</h1>
+        <p class="subtitle">V2 Funnel &mdash; Full Rewrite for Ethan (GVN)</p>
+
+        <p class="note">This is the complete V2 funnel &mdash; both Page 1 (education) and Page 2 (offer). Built from the ground up with new consumer research, scientific backing, and 12 custom illustrations. This replaces the previous 1:1 CBD&rarr;CBN swap.</p>
+
+        <div class="context">
+            <p><strong>What this is:</strong> A 2-page funnel for Sleepy Night CBN Gummies. Page 1 educates on why kids can't sleep (endocannabinoid system, not melatonin). Page 2 reveals CBN as the solution, presents the product, and closes with BOGO offers.</p>
+            <p><strong>What's new vs. the previous version:</strong></p>
+        </div>
+
+        <div class="changes" style="border: none; padding: 0; margin: 0 0 1.5rem 0;">
+            <ul>
+                <li><strong>Completely new copy</strong> &mdash; researched and written from scratch, not a product swap</li>
+                <li><strong>Scientific backing</strong> &mdash; citations from JAMA, AAP, and a 1,020-person CBN clinical trial</li>
+                <li><strong>12 custom illustrations</strong> &mdash; soft editorial style in your brand's purple palette, placed under each section headline</li>
+                <li><strong>Real testimonials</strong> &mdash; pulled from your actual product page reviews (Amanda, Tiffany S., Marvin S., Jennifer B.)</li>
+                <li><strong>Founder photo</strong> &mdash; Ethan's photo from your About Us page replaces the panda logo in the founder section</li>
+                <li><strong>Page 1 is Meta-compliant</strong> &mdash; zero product mentions, functions as a standalone education article</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+            <a href="page-1.html" class="btn btn-primary">
+                <span class="btn-label">Preview</span>
+                <span class="btn-title">Page 1 &mdash; Education Page</span>
+                <span class="btn-desc">The "5 reasons your child can't sleep" article. No product mentions. Links to Page 2 at the end.</span>
+            </a>
+
+            <a href="page-2/" class="btn btn-secondary">
+                <span class="btn-label">Preview</span>
+                <span class="btn-title">Page 2 &mdash; Offer Page</span>
+                <span class="btn-desc">The full offer page with product reveal, testimonials, comparison chart, FAQ, and BOGO pricing.</span>
+            </a>
+
+            <hr class="divider">
+
+            <a href="sleepy-night-cbn-v2.zip" class="btn btn-download" download>
+                <span class="btn-label">Download</span>
+                <span class="btn-title">Complete Funnel (.zip)</span>
+                <span class="btn-desc">Both HTML pages + 12 illustrations. Upload the entire folder to your hosting &mdash; images are local, not CDN-hosted.</span>
+            </a>
+        </div>
+
+        <div class="instructions">
+            <h2>How to Deploy This</h2>
+
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <strong>Preview both pages above</strong> &mdash; scroll through to check copy, images, illustrations, and offer structure on both pages.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <strong>Download the zip</strong> &mdash; it contains both HTML files and the 12 illustration images. The folder structure must stay intact for images to load.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <strong>Upload to GoHighLevel</strong> &mdash; create two funnel pages. Page 1 goes in a Custom Code element on the education page. Page 2 goes on the offer page. Upload the <code>images/</code> folder to your media library or host them on your CDN.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <strong>Update image paths</strong> &mdash; once images are hosted, find-and-replace the relative image paths (<code>images/illust_...</code>) with your hosted URLs in both HTML files.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">5</span>
+                <div class="step-content">
+                    <strong>Verify cart links</strong> &mdash; the buy buttons link to your Shopify cart with variant IDs for CBN Gummies. Test each BOGO tier to make sure the correct product and quantity load.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">6</span>
+                <div class="step-content">
+                    <strong>Link Page 1 &rarr; Page 2</strong> &mdash; update the CTA button at the bottom of Page 1 to point to your new Page 2 URL.
+                </div>
+            </div>
+
+            <div class="instruction-step">
+                <span class="step-number">7</span>
+                <div class="step-content">
+                    <strong>Go live</strong> &mdash; publish both pages and update your ad URLs to point to Page 1.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
+</body>
+</html>

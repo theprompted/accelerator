@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Reasons Your Kid Is Exhausted but Wide Awake at Bedtime</title>
+    <meta name="description" content="Your kid isn't awake because they're not tired enough. They're awake because they're too tired. Here are 5 reasons why — and what their body actually needs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* GVN Brand Colors — Sleepy Night Purple */
+            --font-primary: 'Montserrat', 'Questrial', Arial, sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-bold: 700;
+            --font-weight-extra-bold: 800;
+            --color-text-primary: #2e2e2e;
+            --color-text-headline: #0e1b4d;
+            --color-text-secondary: #1f2555;
+            --color-text-muted: #666666;
+            --color-accent-purple: #7B5EA7;
+            --color-accent-purple-light: #E8DFF0;
+            --color-header-purple: #5E4580;
+            --color-midnight: #0e1b4d;
+            --color-midnight-light: #1f2555;
+            --color-cta-start: #7B5EA7;
+            --color-cta-end: #5E4580;
+            --color-cta-hover: #4A3366;
+            --color-success: #7B5EA7;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #f8f8f8;
+            --color-bg-navy: #0e1b4d;
+            --color-gold: #f9dc4b;
+            --shadow-card: 15px 15px 15px 0 rgba(93, 93, 93, 0.15);
+            --shadow-button: 0 4px 15px rgba(123, 94, 167, 0.25);
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.8rem;
+            --radius-pill: 40px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.3125rem;
+            line-height: 1.65;
+            color: var(--color-text-primary);
+            background: var(--color-bg-white);
+        }
+
+        .container {
+            max-width: 60rem;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-headline);
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--color-accent-purple);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            color: var(--color-text-headline);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        p { margin-bottom: 1.125rem; }
+        strong { font-weight: 700; color: var(--color-text-secondary); }
+        em { font-style: italic; }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(180deg, #f0e8f5 0%, #FFFFFF 100%);
+            margin: -2.5rem -1.5rem 0;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: var(--radius-md);
+            display: block;
+            margin: 0 auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-midnight) 0%, var(--color-accent-purple) 50%, var(--color-midnight-light) 100%);
+            margin: 3rem 0;
+            border-radius: 3px;
+        }
+
+        /* Reason Headers */
+        .reason-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reason-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            min-width: 3.5rem;
+            background: linear-gradient(135deg, var(--color-accent-purple-light) 0%, var(--color-accent-purple) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .reason-header h2 { margin-bottom: 0; }
+        .reason-number { color: var(--color-accent-purple); font-weight: 800; }
+
+        /* Benefit / Metaphor Box */
+        .benefit-box {
+            background: var(--color-bg-light);
+            border-left: 4px solid var(--color-accent-purple);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .benefit-box p { margin-bottom: 0; font-weight: 500; }
+
+        /* Bridge Section */
+        .bridge-section {
+            background: linear-gradient(135deg, #f0e8f5 0%, #FFFFFF 100%);
+            margin: 0 -1.5rem;
+            padding: 3rem;
+            border-top: 3px solid var(--color-accent-purple-light);
+            border-bottom: 3px solid var(--color-accent-purple-light);
+        }
+
+        .bridge-section h2 {
+            color: var(--color-accent-purple);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Recap List */
+        .recap-list {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-card);
+            list-style: none;
+        }
+
+        .recap-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .recap-list li:last-child {
+            border-bottom: none;
+        }
+
+        .recap-list li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent-purple);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* CTA Button */
+        .cta-button-big {
+            display: inline-block;
+            background: linear-gradient(180deg, var(--color-cta-start) 0%, var(--color-cta-end) 100%);
+            color: #fff;
+            font-family: var(--font-primary);
+            font-size: 1.375rem;
+            font-weight: 700;
+            padding: 1.375rem 3rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(123, 94, 167, 0.4);
+        }
+
+        .cta-button-big:hover {
+            background: linear-gradient(180deg, var(--color-cta-end) 0%, var(--color-cta-hover) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(94, 69, 128, 0.5);
+        }
+
+        .cta-final-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        /* Checkmark Lists */
+        ul { list-style: none; margin: 1.25rem 0; }
+
+        ul li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        ul li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* References */
+        .references-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .references-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .references-section ul {
+            margin: 0;
+        }
+
+        .references-section ul li {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+            padding-left: 0;
+        }
+
+        .references-section ul li::before {
+            display: none;
+        }
+
+        .references-section ul li a {
+            color: var(--color-accent-purple);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .references-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Disclaimer */
+        .disclaimer-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .disclaimer-section p {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 180px;
+            margin: 0 auto 1.25rem;
+            display: block;
+        }
+
+        .footer-section p {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.375rem;
+        }
+
+        .footer-links {
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-accent-purple);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links span {
+            color: var(--color-text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .reason-header { flex-direction: column; align-items: flex-start; }
+            .bridge-section { padding: 2rem 1.5rem; margin: 0 -1.5rem; }
+            .cta-button-big {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 1.375rem 1.5rem;
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <div class="hero-section">
+            <h1>5 Reasons Your Kid Is Exhausted but Wide Awake at Bedtime</h1>
+            <div style="margin: 2rem 0;">
+                <img src="images/illust_01_hero_exhausted_but_awake.png"
+                     alt="Illustration: child lying in bed wide awake at night"
+                     style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+
+        <!-- INTRO -->
+        <p>Your kid isn't awake because they're not tired enough. They're awake because they're too tired.</p>
+
+        <p>Tomorrow night the yawning starts before the second page.</p>
+
+        <p>Eyes close on their own — not because something kicked in, but because their body finally figured out how to slow down.</p>
+
+        <p>No getting back up at 10. No little feet in the hallway. No "I can't sleep."</p>
+
+        <p>Morning without a meltdown. Shoes found. No text from the teacher.</p>
+
+        <p>Not by giving more melatonin. Not by adding one more thing to the routine.</p>
+
+        <p>And not by trying harder at everything you've already tried.</p>
+
+        <p>Here are 5 reasons your exhausted kid is still wide awake at bedtime — and what their body actually needs to slow down.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 1 -->
+        <div class="reason-header">
+            <div class="reason-icon">1</div>
+            <h2><span class="reason-number">Reason #1:</span> Exhaustion Is Supposed to Mean Sleep — for Some Kids It Means the Opposite</h2>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/illust_02_r1_exhaustion_opposite.png"
+                 alt="Illustration: exhausted child yawning vs same child wide awake in bed"
+                 style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <p>It's 9pm. They've been going since 6:30 this morning.</p>
+
+        <p>Gym class. Recess. Two hours at the park after school.</p>
+
+        <p>Their eyes are heavy. Their body is done.</p>
+
+        <p>And they're wider awake than they were at noon.</p>
+
+        <p>This makes no sense — until you see what happens inside a child's body when it gets too tired.</p>
+
+        <p>When a kid hits a certain level of tired, something is supposed to happen. The brain is supposed to get the message: slow down, rest, power off.</p>
+
+        <p>But for some kids, the message gets scrambled.</p>
+
+        <p>Instead of "time to rest," the brain hears "something is wrong — stay alert."</p>
+
+        <p>The tiredness itself sets off the alarm.</p>
+
+        <p>Their body pumps out stress chemicals — the same ones that jolt you awake when a car alarm goes off outside your window at 3am.</p>
+
+        <p>Not because they're worried. Not because they're scared. Because their body read "exhausted" as "danger."</p>
+
+        <p>Exhaustion is supposed to be a sleep signal. But for some kids, it's an alarm signal.</p>
+
+        <p>Same feeling. Opposite result.</p>
+
+        <p>It's like a lamp with no dimmer.</p>
+
+        <p>The only options are full brightness or off. Nothing in between.</p>
+
+        <p>So when it's time to go from "on" to "off," the body doesn't know how to get there slowly. It just stays on.</p>
+
+        <p>You can see it in the bed. Their body is still. Their eyes are wide open. They're not fighting you. They're not being difficult.</p>
+
+        <p>Their brain is stuck at full brightness and there's no way to turn it down.</p>
+
+        <p>The weighted blanket doesn't help. The dark room doesn't help. The routine doesn't help.</p>
+
+        <p>Those things change the room. They don't change what's going on inside.</p>
+
+        <div class="benefit-box">
+            <p>They're not fighting sleep. Their body is stuck in the wrong gear. The tiredness you see isn't a sign they need more activity. It's a sign their body needs help getting from "on" to "off."</p>
+        </div>
+
+        <p>But it gets worse. Because the thing most parents reach for next doesn't turn the light down — it just flips a different switch.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 2 -->
+        <div class="reason-header">
+            <div class="reason-icon">2</div>
+            <h2><span class="reason-number">Reason #2:</span> Melatonin Tells the Body When to Sleep — It Can't Teach It How</h2>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/illust_03_r2_signal_not_teaching.png"
+                 alt="Illustration: clock sending sleep signal but body standing stiff"
+                 style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <p>She started with half a milligram.</p>
+
+        <p>It worked. For about three weeks.</p>
+
+        <p>Then it stopped.</p>
+
+        <p>She went up to one milligram. Then two. Then three.</p>
+
+        <p>Now she's standing in the kitchen at 11pm, holding a gummy bottle, wondering if she should try five.</p>
+
+        <p>Here's what's really going on.</p>
+
+        <p>Melatonin is a hormone. Your child's body already makes it every night when the sun goes down.</p>
+
+        <p>When you give them a gummy, you're adding more of something their body already has.</p>
+
+        <p>It's not turning the dimmer down. It's flipping a switch.</p>
+
+        <p>"Feel tired. Now."</p>
+
+        <p>And for a few weeks, the switch works. The body gets the message and shuts down.</p>
+
+        <p>But the body catches on. It notices the extra hormone showing up from outside. So it starts making less of its own.</p>
+
+        <p>That's why the dose keeps climbing. She's not imagining it. The pattern is real.</p>
+
+        <p>Half a milligram worked. Then one worked. Then three. Then nothing.</p>
+
+        <p>The body adjusted. It stopped making what the gummy was doing for it.</p>
+
+        <p>A big study in 2024 — 1,020 people — tested this. Melatonin helped people fall asleep. But it didn't change what happened after.</p>
+
+        <p>It didn't help them stay asleep. It didn't make their sleep deeper or better. And it didn't touch the real problem — a body that can't slow down on its own.</p>
+
+        <p>Melatonin tells the body when to sleep. It can't teach the body how.</p>
+
+        <p>For kids lying in bed with wide eyes at 10pm — they already know it's nighttime.</p>
+
+        <p>They don't need a signal. They need help slowing down. Gradually. Not with a flip.</p>
+
+        <p>And then there's the label problem.</p>
+
+        <p>In 2023, researchers tested 25 melatonin gummy brands from store shelves. 22 of them — 88% — had a different amount than what the label said.</p>
+
+        <p>Some had three times the listed dose. One had no melatonin at all.</p>
+
+        <p>She doesn't even know how much she's giving.</p>
+
+        <div class="benefit-box">
+            <p>You weren't wrong to try melatonin. It does what it says — it sends a sleep signal. But a sleep signal can't fix a body that doesn't know how to slow down. And the longer the gummy does the job the body is supposed to do, the less the body does it on its own.</p>
+        </div>
+
+        <p>But the melatonin problem goes deeper than the dose. Because when most parents see it's not working, they do the one thing that makes everything harder.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 3 -->
+        <div class="reason-header">
+            <div class="reason-icon">3</div>
+            <h2><span class="reason-number">Reason #3:</span> A Perfect Bedtime Fixes the Bedroom — Not the Body</h2>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/illust_04_r3_perfect_bedroom.png"
+                 alt="Illustration: perfect bedroom with child sitting up wide awake"
+                 style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <p>Teeth brushed. Book read. Lights dimmed. Sound machine on. Weighted blanket tucked.</p>
+
+        <p>Every single night. Same order. Same time. Same voice.</p>
+
+        <p>She followed the sleep consultant's plan. She read the books. She cut screens at 5pm. She bought the blackout curtains, the seamless pajamas, the lavender diffuser.</p>
+
+        <p>She built a bedroom that could be on the cover of a parenting magazine.</p>
+
+        <p>And every single night, the door creaks open 45 minutes later. Little feet on the hardwood. "I can't sleep."</p>
+
+        <p>The routine isn't broken. It never was.</p>
+
+        <p>Every item on that list does exactly what it should. Dark room cuts down on things that keep the brain busy. White noise blocks sounds that wake them up. Same time every night helps the body know what's coming.</p>
+
+        <p>All of those things help a body that's ready to sleep actually fall asleep.</p>
+
+        <p>But none of them can make a body ready.</p>
+
+        <p>A routine sets the stage. It can't change the actor.</p>
+
+        <p>It's like soundproofing a room with a fire alarm going off inside.</p>
+
+        <p>The room gets quieter. The alarm doesn't stop.</p>
+
+        <p>A routine changes what's around the body. It doesn't change what's going on inside it.</p>
+
+        <p>If the body is stuck on "go," a perfect bedroom just means a quiet room with a wide-awake kid in it.</p>
+
+        <p>The sleep consultant said "be more consistent." She's been consistent for six months. Bedtime starts at 7:30. By 9:45 she's sitting on the floor next to the bed, hand on their back, feeling the restless buzz through the pajama shirt.</p>
+
+        <p>It's not defiance. It's not games. It's not a routine problem.</p>
+
+        <p>Their body can't slow down. And everything she's tried only changes what's around the body — not what's going on inside.</p>
+
+        <div class="benefit-box">
+            <p>The routine was never wrong. You were never doing it wrong. A perfect bedtime can't fix what's happening inside the body. The room was always fine. The engine is the problem.</p>
+        </div>
+
+        <p>So if the body can't slow down, the sleep signal doesn't work, and the routine only changes the room — what's actually keeping them awake?</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 4 -->
+        <div class="reason-header">
+            <div class="reason-icon">4</div>
+            <h2><span class="reason-number">Reason #4:</span> The Body Knows How to Slow Down — It Just Can't Do It Alone Right Now</h2>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/illust_05_r4_cant_reach_dimmer.png"
+                 alt="Illustration: child reaching for dimmer switch just out of reach"
+                 style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <p>Every tip she's ever gotten about bedtime goes after the same thing.</p>
+
+        <p>The behavior. The room. The timing. The gummy.</p>
+
+        <p>None of it talks about what's underneath.</p>
+
+        <p>Her child's body has a built-in system that's supposed to handle the shift from "go" to "slow." It manages stress. It manages mood. It manages how the body moves from wide awake to winding down.</p>
+
+        <p>When this system is working, the body doesn't need a perfect routine or a hormone gummy or a weighted blanket. It just slows down on its own — the way it used to when they were a baby and fell asleep on the living room floor in the middle of the afternoon.</p>
+
+        <p>Think of it like a thermostat.</p>
+
+        <p>When the room gets too hot, the thermostat kicks on the AC. You don't have to walk over and open a window. You don't have to fan yourself. The system handles it.</p>
+
+        <p>That's what this system does for sleep. When the body is ready to rest, the system turns the temperature down on its own. No gummies. No routine. No effort.</p>
+
+        <p>But when the thermostat isn't working, you're stuck opening windows, turning on fans, and piling on ice packs. It helps — a little, for a while. But you're doing the thermostat's job by hand.</p>
+
+        <p>That's what she's been doing every night. Every gummy, every blanket, every routine step — it's all manual temperature control because the thermostat isn't getting what it needs.</p>
+
+        <p>This system is real. It's been studied for decades. It's in every human body.</p>
+
+        <p>And it explains the thing that's been making her crazy.</p>
+
+        <p>Two kids in the same house. Same routine. Same bedtime. One falls asleep in ten minutes. The other is up until 10.</p>
+
+        <p>Same room. Same parenting. Same gummies.</p>
+
+        <p>One child's system is working. The other's needs support.</p>
+
+        <p>Every tip she's ever gotten tries to force the body to rest. This system lets it.</p>
+
+        <p>When this system has what it needs, the body shifts from alert to rest without a fight. No tricks. No signals. It just... sleeps.</p>
+
+        <p>When it doesn't — the body stays stuck on alert. And no amount of dark rooms, white noise, or milligrams can do what this system was built to do.</p>
+
+        <div class="benefit-box">
+            <p>There was never anything wrong with your child. Their body has a system built for exactly this — the shift from awake to asleep, from alert to rest. Nobody told you it existed — or that it might need help.</p>
+        </div>
+
+        <p>And that leads to the part that makes this urgent. Because the longer this system runs without support, the deeper the hole gets.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 5 -->
+        <div class="reason-header">
+            <div class="reason-icon">5</div>
+            <h2><span class="reason-number">Reason #5:</span> Every Fix Wears Off Because It Works Around the Body — Not With It</h2>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <img src="images/illust_06_r5_fixes_fading.png"
+                 alt="Illustration: row of sleep aids with fading checkmarks"
+                 style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <p>The melatonin worked for three weeks. Then it stopped.</p>
+
+        <p>The weighted blanket worked for one week. Then it stopped.</p>
+
+        <p>The lavender diffuser worked for two nights. Then it stopped.</p>
+
+        <p>The no-screens rule didn't change bedtime by a single minute.</p>
+
+        <p>She's not imagining the pattern. Everything works, then everything stops.</p>
+
+        <p>And every time it stops, the thought gets louder: "Maybe it's me. Maybe I'm the problem."</p>
+
+        <p>She's not.</p>
+
+        <p>Every single thing she tried was built to change the signal, the room, or the timing.</p>
+
+        <p>None of them were built to support the system underneath — the one from Reason 4 that actually controls whether the body can slow down.</p>
+
+        <p>It's like putting band-aids on a leaky pipe.</p>
+
+        <p>The first band-aid holds for a while. Then it soaks through. She adds another. That one holds for less time. She adds a third. Now she's got a pile of wet band-aids and the pipe is still leaking.</p>
+
+        <p>The band-aids aren't the problem. The approach is.</p>
+
+        <p>Melatonin sent a timing signal. The body got used to it and stopped listening.</p>
+
+        <p>The weighted blanket added pressure. The body got used to it and stopped noticing.</p>
+
+        <p>The routine added structure. But structure can't reach a body that's stuck on "go."</p>
+
+        <p>Every tool she tried treated bedtime like a behavior problem. It was always a body problem.</p>
+
+        <p>This is why the pattern keeps repeating. It's not that she picks the wrong things. It's that every option she can find does the same thing — it works around the body instead of helping what's inside.</p>
+
+        <p>And the longer this goes on, the harder something else gets. Something harder to measure than sleep.</p>
+
+        <p>Her belief that she can fix this.</p>
+
+        <p>The 11pm kitchen. Phone open. Another article about another supplement. She reads the reviews. She screenshots the ingredients. She closes the tab. She opens it again three nights later.</p>
+
+        <p>She's not slow to decide. She's been let down enough times that trying feels scary.</p>
+
+        <p>But here's what the pattern actually shows.</p>
+
+        <p>Her gut feeling to keep looking wasn't stubbornness. The fact that everything stopped working isn't proof she failed — it's proof the approach was wrong.</p>
+
+        <p>Every one of those things went after the symptom. Not the system.</p>
+
+        <p>The body already has what it needs to slow down. The system just needs support — not another signal, not another blanket, not another gummy that works for three weeks and then doesn't.</p>
+
+        <div class="benefit-box">
+            <p>You were never failing. The tools were. Every product she tried did exactly what it was made to do. The problem is that none of them were made for the actual problem — a body that needs support, not a bedroom that needs fixing.</p>
+        </div>
+
+        <p>There is something built for exactly this. Something that helps the system instead of working around it. Something tested in a study with 1,020 people — where it matched the most common sleep aid without the dose climbing, without the groggy mornings, without the three-week expiration date.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- BRIDGE + CTA -->
+        <div class="bridge-section">
+            <h2>Your Kid's Body Has Been Stuck on "Go" Long Enough</h2>
+
+            <div style="margin: 2rem 0; text-align: center;">
+                <img src="images/illust_07_bridge_stuck_on_go.png"
+                     alt="Illustration: light switch jammed in ON position"
+                     style="width: 100%; border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+            </div>
+
+            <p>Now you know the truth.</p>
+
+            <p>The exhaustion wasn't the problem. It was the alarm.</p>
+
+            <p>The melatonin wasn't fixing anything. It was faking a signal.</p>
+
+            <p>The routine was never broken. It was just built for the bedroom — not the body.</p>
+
+            <p>And inside your child's body, there's a system that was designed to handle all of this. A system that's supposed to take them from wide awake to winding down — on its own, without a gummy, without a fight.</p>
+
+            <p>That system needs something. And it's not another supplement that works for three weeks.</p>
+
+            <p>On the next page, you'll see what cautious parents are quietly choosing instead — and why it's not what you'd expect.</p>
+
+            <div class="cta-final-section">
+                <a href="page-2/index.html" class="cta-button-big">Show Me What Actually Works &rarr;</a>
+            </div>
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="references-section">
+            <h3>References</h3>
+            <ul>
+                <li>Mayo Clinic — Melatonin: <a href="https://www.mayoclinic.org/drugs-supplements-melatonin/art-20363071" target="_blank">https://www.mayoclinic.org/drugs-supplements-melatonin/art-20363071</a></li>
+                <li>The Bump — Melatonin Poisonings in Kids: <a href="https://www.thebump.com/news/melatonin-poisonings-kids" target="_blank">https://www.thebump.com/news/melatonin-poisonings-kids</a></li>
+                <li>Doctors Hospital — 4 Reasons to Be Cautious About Melatonin: <a href="https://doctors-hospital.net/blog/entry/4-reasons-to-be-cautious-about-melatonin" target="_blank">https://doctors-hospital.net/blog/entry/4-reasons-to-be-cautious-about-melatonin</a></li>
+                <li>JAMA — Melatonin Research: <a href="https://jamanetwork.com/journals/jama/fullarticle/2804077" target="_blank">https://jamanetwork.com/journals/jama/fullarticle/2804077</a></li>
+                <li>UC Davis Health — Melatonin Safety: <a href="https://health.ucdavis.edu/blog/cultivating-health/melatonin-and-your-sleep-is-it-safe-what-are-the-side-effects-and-how-does-it-work/2025/02" target="_blank">https://health.ucdavis.edu/blog/cultivating-health/melatonin-and-your-sleep-is-it-safe-what-are-the-side-effects-and-how-does-it-work/2025/02</a></li>
+            </ul>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer-section">
+            <p><em>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. This content is for informational purposes only and is not a substitute for professional medical advice. Always seek the guidance of your physician or other qualified health professional with any questions you may have regarding your health or a medical condition.</em></p>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-section">
+            <img
+                class="footer-logo"
+                src="https://storage.googleapis.com/msgsndr/NPdQJDdU4mLMzzlGSkoo/media/bb5d2165-6056-4ebf-88c9-7d0353aff464.png"
+                alt="Green Valley Nutrition"
+            >
+            <p>&copy; 2026 Green Valley Nutrition</p>
+            <p>PO Box 6245 Charlottesville, VA 22906</p>
+            <p>1-434-207-8577</p>
+            <div class="footer-links">
+                <a href="https://greenvalleynutrition.com/pages/about-us" target="_blank">About Us</a>
+                <span>|</span>
+                <a href="https://greenvalleynutrition.com/pages/refund-policy" target="_blank">Refund Policy</a>
+                <span>|</span>
+                <a href="https://greenvalleynutrition.com/pages/privacy-policy" target="_blank">Privacy Policy</a>
+                <span>|</span>
+                <a href="https://greenvalleynutrition.com/pages/terms-of-service" target="_blank">Terms</a>
+                <span>|</span>
+                <a href="https://greenvalleynutrition.com/pages/contact" target="_blank">Contact Us</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
