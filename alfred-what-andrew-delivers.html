@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Andrew Delivers — Raw Evidence</title>
+<style>
+    :root {
+        --bg-page: #F8F8F7;
+        --bg-white: #ffffff;
+        --bg-blue: #EBF9FF;
+        --bg-purple: #F7F1FF;
+        --bg-yellow: #FFFDE7;
+        --bg-green: #E8F5E9;
+        --accent-teal: #53DBC9;
+        --accent-yellow: #FFDE00;
+        --accent-purple: #9D4EDD;
+        --accent-red: #E53935;
+        --text-black: #000000;
+        --text-dark: #1a1a1a;
+        --text-gray: #4a4a4a;
+        --text-muted: #6b6b6b;
+        --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+        --border: 2px solid black;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-dark);
+        background: var(--bg-page);
+        padding: 2rem 1.5rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1, h2, h3, h4 {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-weight: 700;
+        color: var(--text-black);
+    }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.125rem; }
+    h4 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-gray);
+    }
+    .card {
+        background: var(--bg-white);
+        border: var(--border);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 2rem;
+    }
+    .card-header {
+        padding: 1rem 1.5rem;
+        border-bottom: var(--border);
+        background: var(--bg-page);
+    }
+    .card-content { padding: 1.5rem; }
+    .section-blue { background: var(--bg-blue); }
+    .section-purple { background: var(--bg-purple); }
+    .section-yellow { background: var(--bg-yellow); }
+    .section-green { background: var(--bg-green); }
+    code {
+        background: var(--bg-white);
+        border: 1px solid #ccc;
+        padding: 0.125rem 0.5rem;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+    }
+    .tag {
+        display: inline-block;
+        background: var(--accent-teal);
+        border: var(--border);
+        padding: 0.25rem 0.75rem;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    .tag-purple { background: var(--accent-purple); color: white; }
+    .tag-yellow { background: var(--accent-yellow); }
+    .num-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background: var(--accent-teal);
+        border: var(--border);
+        border-radius: 50%;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin-bottom: 0.75rem; }
+    a { color: var(--text-dark); }
+    .step {
+        background: var(--bg-blue);
+        border: var(--border);
+        padding: 1.25rem 1.5rem;
+        margin: 1rem 0;
+        box-shadow: var(--shadow-sm);
+    }
+    .step-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    .step-title {
+        font-family: ui-monospace, monospace;
+        font-weight: 700;
+    }
+    .judgment {
+        background: var(--bg-yellow);
+        border-left: 4px solid var(--accent-yellow);
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+    .judgment::before {
+        content: "Judgment call: ";
+        font-weight: 700;
+        font-family: ui-monospace, monospace;
+        font-size: 0.8rem;
+    }
+    .mechanical {
+        background: var(--bg-green);
+        border-left: 4px solid #4CAF50;
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+    .mechanical::before {
+        content: "Mechanical: ";
+        font-weight: 700;
+        font-family: ui-monospace, monospace;
+        font-size: 0.8rem;
+    }
+    .link-out {
+        display: inline-block;
+        background: var(--bg-white);
+        border: var(--border);
+        padding: 0.5rem 1rem;
+        font-family: ui-monospace, monospace;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: var(--shadow-sm);
+        margin: 0.25rem 0;
+        transition: transform 0.1s ease;
+    }
+    .link-out:hover {
+        transform: translate(2px, -2px);
+        box-shadow: -0.4rem 0.4rem 0 0 #383838;
+    }
+    .flow-arrow {
+        text-align: center;
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        margin: 0.5rem 0;
+    }
+    .repeat-marker {
+        display: inline-block;
+        background: var(--accent-teal);
+        border: var(--border);
+        padding: 0.15rem 0.5rem;
+        font-family: ui-monospace, monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+    }
+    @media (max-width: 600px) {
+        body { padding: 1rem; }
+        h1 { font-size: 1.75rem; }
+        .card-content { padding: 1.25rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="card">
+    <div class="card-content">
+        <h4>April 2026</h4>
+        <h1>What Andrew Delivers</h1>
+        <p style="color:var(--text-muted);margin-top:0.5rem;">Raw evidence from 3 engagements — what clients got, how it was made, and what repeated. Claude went through 6 months of files. Nothing here is interpreted or prescriptive — it's what actually happened.</p>
+    </div>
+</div>
+
+<!-- HOW TO READ THIS -->
+<div class="card">
+    <div class="card-header section-blue">
+        <h2>How to Read This</h2>
+    </div>
+    <div class="card-content">
+        <p>Each client section shows the <strong>timeline of deliverables</strong> with links to the actual outputs where they're live. For each stage:</p>
+        <ul>
+            <li><span class="judgment" style="display:inline;padding:0.2rem 0.5rem;margin:0;">...</span> = Andrew made a call that shaped the output. This is where his read on the market, the buyer, or the data drove the direction.</li>
+            <li><span class="mechanical" style="display:inline;padding:0.2rem 0.5rem;margin:0;">...</span> = Repeatable process. A skill, a script, or a methodology produced the output given the right inputs.</li>
+        </ul>
+        <p style="margin-top:1rem;"><span class="repeat-marker">REPEATS</span> marks deliverables that appear across multiple clients.</p>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- CLIENT 1: IDAN -->
+<!-- ============================== -->
+<div class="card section-purple" style="padding:1rem 1.5rem;margin-bottom:0.5rem;">
+    <h2>Client 1: Idan Zeyna / ViroCore</h2>
+    <p style="color:var(--text-gray);font-size:0.9rem;">EMS pelvic floor device. Israel market, Hebrew. July 2025 — present. 60+ sessions.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 1: Consumer Research & Thesis <span class="repeat-marker">REPEATS</span></h3>
+        <h4>July — November 2025</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">1</span>
+                <div>
+                    <span class="step-title">Kick-off questionnaire</span>
+                    <p>7 foundational questions: goals, current activities, unit economics, best personas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">2</span>
+                <div>
+                    <span class="step-title">Reddit consumer research — glute growth market</span>
+                    <p>Deep mining of r/StrongCurves, r/xxfitness, r/gym, r/fitness. 100+ posts, 500+ comments analyzed.</p>
+                    <div class="judgment">Found that the real customer problem is mind-muscle connection, not glute size. Quad dominance prevents glute activation. This reframed the entire positioning.</div>
+                    <div class="mechanical">Reddit research methodology — search target subreddits, extract language patterns, map pain points to product capabilities.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">3</span>
+                <div>
+                    <span class="step-title">Thesis development</span>
+                    <p>Central thesis: "It's not about GLUTE SIZE, it's about GLUTE SHAPE." Women optimizing for size (glute maximus via heavy hip thrusts) when they need shape (glute medius via EMS).</p>
+                    <div class="judgment">Chose to attack the mainstream approach (heavy lifting for glutes) rather than sell the device directly. This shaped every piece of copy downstream.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">4</span>
+                <div>
+                    <span class="step-title">Back pain repositioning (second angle)</span>
+                    <p>Mined r/backpain, r/sciatica, r/ChronicPain — 150+ posts, 800+ comments. New thesis: "Your back pain isn't a back problem — it's a glute problem."</p>
+                    <div class="judgment">Identified back pain as a bigger addressable market than glute growth. Same product, different buyer, different emotional entry point. Led to two parallel landing page tracks.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">5</span>
+                <div>
+                    <span class="step-title">Hell/Heaven Island consumer mapping</span>
+                    <p>Mapped emotional journey by age bracket for PE/ED positioning (later pivot). Universal and age-specific emotional mapping.</p>
+                    <div class="mechanical">Hell/Heaven Island framework — 7-question consumer mapping process applied to each audience segment.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 2: Landing Pages & Ad Portfolios <span class="repeat-marker">REPEATS</span></h3>
+        <h4>November 2025 — January 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">6</span>
+                <div>
+                    <span class="step-title">Identity design system</span>
+                    <p>Coined terms, frameworks, messaging hierarchy. Archetype-based positioning (Survivor, Skeptic, Desk-Bound Professional).</p>
+                    <div class="mechanical">Identity design system methodology — archetype identification, coined terms, messaging hierarchy.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">7</span>
+                <div>
+                    <span class="step-title">5 landing page versions</span>
+                    <p>Glute growth LP, back pain LP, desk-bound professional LP — each 3,000-5,700 words. MiamiMD 4-Act, 18-Section structure.</p>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/pricing-stack-proposal/" class="link-out" target="_blank">View: Pricing Stack Proposal</a>
+                    <div class="judgment">Built 3 different angles for the same product to test which emotional entry point converts best. The desk-bound professional angle was a net-new audience nobody was targeting.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">8</span>
+                <div>
+                    <span class="step-title">24 ad portfolio specifications</span>
+                    <p>12 back pain ads + 12 glute growth ads. Full specs with copy, hooks, angles, formats.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">9</span>
+                <div>
+                    <span class="step-title">Unit economics + pricing strategy</span>
+                    <p>399 NIS front-end, 40 NIS COGS ($12 USD), 200 NIS upsell, 80% gross margin. Pricing strategy recommendations.</p>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/pelvicore-analysis-mar-2026/" class="link-out" target="_blank">View: PelviCore Analysis</a>
+                    <div class="mechanical">Unit economics framework — COGS, shipping, processing, margin targets, breakeven CPA calculation.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 3: Pivot to ViroCore PE + Scaling</h3>
+        <h4>February — March 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">10</span>
+                <div>
+                    <span class="step-title">Strategic pivot to PE/ED vertical</span>
+                    <p>Idan's ViroCore Pro (men's pelvic floor for PE/ED) was 30% of orders but the hot growth angle. Pivoted focus entirely.</p>
+                    <div class="judgment">"Milk the cow before buying a second cow" — recognized the PE/ED angle was scaling faster with less competition. Recommended killing PelviCore women's marketing focus and going all-in on ViroCore men's.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">11</span>
+                <div>
+                    <span class="step-title">ViroCore consumer research + mapping</span>
+                    <p>Reddit mining (r/PrematureEjaculation, r/relationships), PMC studies, patient stories. Hell/Heaven Island mapping by age bracket for Israeli men 45-60.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">12</span>
+                <div>
+                    <span class="step-title">34+ sessions of ad ideation + format development</span>
+                    <p>New ad concepts for ViroCore, format-matched to top performers. 10 ad mockups deployed to GitHub Pages.</p>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/pe-ad-mockups/" class="link-out" target="_blank">View: PE Ad Mockups</a>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/virocore-ads/" class="link-out" target="_blank">View: ViroCore Ads</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">13</span>
+                <div>
+                    <span class="step-title">Deep Danieling methodology — documented for Idan</span>
+                    <p>Andrew's process for how he reads ad data and forms creative strategy, written up so Idan can follow it independently.</p>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/deep-danieling/" class="link-out" target="_blank">View: Deep Danieling Guide</a>
+                    <div class="judgment">This is the closest thing to "how Andrew thinks" documented as a transferable process. Steps: look at last 7 days of ad spend → narrow to top 10 → save screenshots of ads + LPs → load everything into Claude → have a conversation about who the buyer is and why these ads are working.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">14</span>
+                <div>
+                    <span class="step-title">Scaling to $10-20K/day</span>
+                    <p>Hit 143 orders on March 5 (record day). Scaling strategy framework: Leverage &rarr; Optimize &rarr; Expand &rarr; Innovate.</p>
+                    <a href="https://theprompted.github.io/accelerator/idan-zeyna/virocore-response-mar30/" class="link-out" target="_blank">View: Latest Response</a>
+                    <div class="judgment">Recognized Idan was hovering around breakeven at scale and needed to shift from "more ads" to "more coverage of addressable market segments." Purposeful iteration for coverage, not volume.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- CLIENT 2: STEFAN -->
+<!-- ============================== -->
+<div class="card section-purple" style="padding:1rem 1.5rem;margin-bottom:0.5rem;margin-top:3rem;">
+    <h2>Client 2: Stefan Illwitzer / Mat & Vic's</h2>
+    <p style="color:var(--text-gray);font-size:0.9rem;">Premium cotton socks. ~1M EUR/year on Amazon Germany/Austria, building DTC. January 2026 — present.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 1: Brand Audit & Positioning <span class="repeat-marker">REPEATS</span></h3>
+        <h4>January 5-6, 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">1</span>
+                <div>
+                    <span class="step-title">Competitive analysis — Hollow Socks</span>
+                    <p>Deep-dive into HollowSocks (premium alpaca competitor). Material composition detective work across Amazon DACH sites.</p>
+                    <div class="mechanical">Competitive analysis methodology — website review, pricing analysis, positioning gaps, material/ingredient comparison.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">2</span>
+                <div>
+                    <span class="step-title">Thesis development — "The 78/20 Formula"</span>
+                    <p>5 narrative positioning options evaluated. Winner: "Human-Engineered Comfort" built on the material composition (78% cotton, 20% polyamide, 2% elastane). Coined terms: The Drawer Reset, All-Wash Construction, Performance Polyamide, 360-Day Engineering.</p>
+                    <div class="judgment">Chose to attack premium wool/alpaca socks rather than compete on "quality" generically. The 78/20 material composition became the entire brand story — turns a boring spec into a positioning weapon.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 2: Roadmap + Unit Economics <span class="repeat-marker">REPEATS</span></h3>
+        <h4>January 6-7, 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">3</span>
+                <div>
+                    <span class="step-title">6-Week DTC launch plan</span>
+                    <p>Complete roadmap: shop audit, Meta ads strategy, Google Shopping, video creation, CPA targets. Path to &euro;15K/month, &gt;&euro;55 AOV, &lt;&euro;20 CPA.</p>
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/2026-01-6-week-plan/" class="link-out" target="_blank">View: 6-Week Plan</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">4</span>
+                <div>
+                    <span class="step-title">Unit economics reference</span>
+                    <p>Classic Socks &euro;27.99 revenue, &euro;6.10 COGS. 49% gross margin. &euro;20 CPA only works at &euro;80+ AOV — must push bundles.</p>
+                    <div class="judgment">Identified that Stefan's single-pair pricing can't support paid acquisition. Bundle strategy became mandatory, not optional. This shaped every funnel and offer decision.</div>
+                    <div class="mechanical">Unit economics framework — same structure used for every client.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 3: Funnels & Landing Pages <span class="repeat-marker">REPEATS</span></h3>
+        <h4>January — February 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">5</span>
+                <div>
+                    <span class="step-title">Advertorial presell page</span>
+                    <p>"5 Reasons You Shouldn't Buy Premium Wool or Alpaca Socks" — attacks the competitor category while positioning Mat & Vic's material science.</p>
+                    <div class="judgment">Chose "violate & elevate" structure — attack what the buyer currently believes (wool/alpaca = premium) to create an opening for the 78/20 thesis.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">6</span>
+                <div>
+                    <span class="step-title">Offer page — 3-tier bundles</span>
+                    <p>Tier 1: &euro;69.99 (classic), Tier 2: &euro;79.99 (extras), Tier 3: &euro;84.99+ (sustainability). Designed to hit AOV targets from unit economics.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">7</span>
+                <div>
+                    <span class="step-title">LP01 analysis + CVR feedback</span>
+                    <p>Deep analysis of Stefan's live landing page with specific conversion rate recommendations.</p>
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/feb-10-feedback/" class="link-out" target="_blank">View: LP01 Feedback</a>
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/lp01-copy-upgrades/" class="link-out" target="_blank">View: LP01 Copy Upgrades</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 4: Ad Creative Production <span class="repeat-marker">REPEATS</span></h3>
+        <h4>January — March 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">8</span>
+                <div>
+                    <span class="step-title">Consumer Hell/Heaven Island mapping</span>
+                    <p>Built fresh from the funnel, not derived from existing context brief. Hell Island: drawer full of ruined socks, 3-second touch test lie, cycle of disappointment. Heaven Island: socks that never need attention, survive the washing machine.</p>
+                    <div class="mechanical">Hell/Heaven Island framework — same 7-question process used for Idan, BB, and every other client.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">9</span>
+                <div>
+                    <span class="step-title">Expression bank — 40 openers across 10 angles</span>
+                    <p>Each expression attacks one belief about socks with evidence pairing from the funnel. Organized by angle for batch production.</p>
+                    <div class="mechanical">Expression bank methodology — 40 openers, 10 angles, each mapped to funnel evidence sections. Same structure used for Maggie, BB, Simar.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">10</span>
+                <div>
+                    <span class="step-title">16 native image ads via Ralph loop (8 sessions)</span>
+                    <p>Autonomous production: consumer mapping + expression bank + context brief fed into Ralph PRD. 6 user stories, Ralph executes autonomously.</p>
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/ad-mockups/" class="link-out" target="_blank">View: Ad Mockups (30+ ads)</a>
+                    <div class="mechanical">Ralph autonomous loop — PRD with 6 stories, each producing ~3 ads. Consumer mapping and expression bank are the inputs. Ralph handles copy drafting, image concept design, prompt writing, image generation, HTML mockup assembly.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">11</span>
+                <div>
+                    <span class="step-title">Ad production guide for Stefan's team</span>
+                    <p>Step-by-step guide so Stefan and his creative manager (Nadja) can produce ads independently.</p>
+                    <a href="https://theprompted.github.io/accelerator/stefan-matandvics/ad-production-guide/" class="link-out" target="_blank">View: Ad Production Guide</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Phase 5: Performance + Handoff</h3>
+        <h4>March 2026</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">12</span>
+                <div>
+                    <span class="step-title">Campaign performance analysis</span>
+                    <p>First Meta campaign: &euro;293 gross sales, 4 orders, &euro;52.92 AOV (just below &euro;55 target), 0.71x ROAS. Early stage — small sample, need continued testing.</p>
+                    <div class="judgment">Assessed that the early ROAS is expected for a brand new DTC launch with no pixel data. Recommended continued testing rather than panic optimization.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">13</span>
+                <div>
+                    <span class="step-title">Playbook for Alfred</span>
+                    <p>330-line master reference with everything Alfred needs to support Stefan: client overview, unit economics, positioning thesis, customer personas, assets delivered, communication style.</p>
+                    <div class="judgment">This deliverable is interesting — it's Andrew packaging his understanding of a client into a format someone else can pick up. The same transfer problem that "scale Andrew" is trying to solve.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- CLIENT 3: BB -->
+<!-- ============================== -->
+<div class="card section-purple" style="padding:1rem 1.5rem;margin-bottom:0.5rem;margin-top:3rem;">
+    <h2>Brooke & Belle (Own Brand)</h2>
+    <p style="color:var(--text-gray);font-size:0.9rem;">DTC printwear. Andrew's own brand — not a client engagement. This shows the same thinking applied as recurring operations, not project delivery.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>The Operational Loop</h3>
+    </div>
+    <div class="card-content">
+        <p>BB is different from the accelerator clients. The same consumer research &rarr; creative &rarr; performance cycle runs, but it's continuous and operational — not a project with a handoff. Three interlocking cycles:</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header section-blue">
+        <h3>Cycle 1: Consumer Research &rarr; Creative <span class="repeat-marker">REPEATS</span></h3>
+        <h4>Quarterly / per new collection</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">1</span>
+                <div>
+                    <span class="step-title">Demographic audit from Meta + Shopify</span>
+                    <p>Pull age/gender breakdown from Meta Insights (365 days), cross-reference with Shopify order data.</p>
+                    <div class="judgment">March 2026 discovery: 92.2% of purchases are women 55+, but ALL creative was written for women 48-55. This one finding changed the direction of every new creative batch.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">2</span>
+                <div>
+                    <span class="step-title">Consumer mapping per collection</span>
+                    <p>Hell/Heaven Island for each design collection: WTF Wine Tasting Friends (women 50+ whose friend groups scattered), Oh Sip Girls Trip, Kindness Duo, etc.</p>
+                    <div class="mechanical">Same Hell/Heaven Island framework used for accelerator clients.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">3</span>
+                <div>
+                    <span class="step-title">Batch creative production</span>
+                    <p>Ad copy variations + image generation for each collection. Multiple frameworks applied per batch (Sarah Levinger's process one day, Original Grain's process the next). 20 ads per day at ~$2/day in generation costs.</p>
+                    <div class="mechanical">ConceptEngine skill (swipe file &rarr; schema matching &rarr; prompt generation) or prep-native-ads skill (expression bank &rarr; context brief &rarr; Ralph PRD).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header section-green">
+        <h3>Cycle 2: Publishing &rarr; Monitoring</h3>
+        <h4>Weekly launches / daily checks</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">4</span>
+                <div>
+                    <span class="step-title">Ad publishing via Meta API</span>
+                    <p>Campaigns, ad sets, ads created via CLI. Flexible Ad Format with multiple text/image variations per ad. Cost caps set by design category based on real order economics.</p>
+                    <div class="mechanical">bb-ad-publish skill — creates campaigns with correct targeting, attribution, UTM tags, and cost caps. Handles image upload, creative assembly, Meta compliance pass.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">5</span>
+                <div>
+                    <span class="step-title">Cost caps by design buy tendency</span>
+                    <p>Derived from 693 real March 2026 Shopify orders at 20% CM target. Group Buy designs: $34 CAD. Kindness: $31. Dog: $28. Attitude: $24. Retired: $22.</p>
+                    <div class="judgment">Recognized that different design categories have different AOVs because of who buys them (group buy = higher cart, retired = lower cart). Built design-specific cost caps instead of one-size-fits-all.</div>
+                    <div class="mechanical">Cost cap calculation methodology — pull orders by design, calculate AOV, apply CM target, derive max CPA.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">6</span>
+                <div>
+                    <span class="step-title">P&L monitoring — 15-minute snapshots</span>
+                    <p>Cron job pulls Shopify orders + Meta spend every 15 minutes. Real contribution margin with actual COGS by product/size, shipping by weight, processing fees. Logged to JSONL with per-ad data (88+ ads per snapshot).</p>
+                    <div class="mechanical">bb-daily-pnl skill + cron infrastructure. Sends to Telegram, Slack, updates HTML dashboard.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header section-yellow">
+        <h3>Cycle 3: Diagnosis &rarr; Decisions</h3>
+        <h4>Triggered by performance drops</h4>
+    </div>
+    <div class="card-content">
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">7</span>
+                <div>
+                    <span class="step-title">Cluster ROAS analysis</span>
+                    <p>Cross-references all spend on related designs (e.g., all kindness products) against Shopify orders containing any kindness product. Captures halo effect that per-ad ROAS misses. Kindness cluster: 2.82x full-order ROAS vs per-ad showing 1.6x.</p>
+                    <div class="judgment">Realized per-ad ROAS was misleading — a Scatter Kindness ad drives purchases of Bee Kind and Choose Happy in the same cart. Cluster ROAS became the real decision metric for whether to scale or cut.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">8</span>
+                <div>
+                    <span class="step-title">7-day bleeder validation</span>
+                    <p>Before pausing any ad set, pull 7-day purchase history. March 28 example: 6 ad sets flagged as bleeders. 7-day check showed 4 of 6 were streaky converters having a normal cold day. Only 2 were true zombies.</p>
+                    <div class="judgment">Pushed back on the instinct to pause everything that had a bad day. Realized most "bleeders" are actually streaky performers in cost-cap campaigns. Required multi-day validation before any pause decision.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-row">
+                <span class="num-badge">9</span>
+                <div>
+                    <span class="step-title">Intraday pacing analysis</span>
+                    <p>Using 15-minute JSONL snapshots to see how individual ads pace throughout the day. SK Unboxing ad: aggressive spend 11 AM-5 PM, throttled to pennies after 6 PM (cost cap working as intended).</p>
+                    <div class="judgment">Recognized that evening spend throttling isn't a problem — it's the cost cap saving budget for tomorrow's high-conversion morning window. Changed how we interpret pacing data.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- RALPH SECTION -->
+<!-- ============================== -->
+<div class="card section-purple" style="padding:1rem 1.5rem;margin-bottom:0.5rem;margin-top:3rem;">
+    <h2>The Ralph System</h2>
+    <p style="color:var(--text-gray);font-size:0.9rem;">How batch production works autonomously — the boundary between judgment and automation.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>What Ralph Is</h3>
+    </div>
+    <div class="card-content">
+        <p>Ralph is a bash script that spawns fresh Claude Code instances in a loop. Each instance reads a PRD (project requirements document), picks the next incomplete story, implements it, updates state files, and exits. The next instance picks up where it left off.</p>
+        <p style="margin-top:1rem;">Memory persists through files only — <code>prd.json</code> (story status), <code>progress.txt</code> (accumulated learnings), and <code>artifacts/</code> (work products). No conversation context carries between iterations.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>What Ralph Needs Before It Can Run</h3>
+        <h4>This is the judgment-heavy part</h4>
+    </div>
+    <div class="card-content">
+        <p>Every input below is created by Andrew (with Claude) before Ralph touches anything:</p>
+
+        <div class="step" style="background:var(--bg-yellow);">
+            <div class="step-row">
+                <span class="num-badge">1</span>
+                <div>
+                    <span class="step-title">Consumer mapping (Hell/Heaven Island)</span>
+                    <p>Who the buyer is, what they believe, what language they use, what emotional state they're in. 7-question framework.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" style="background:var(--bg-yellow);">
+            <div class="step-row">
+                <span class="num-badge">2</span>
+                <div>
+                    <span class="step-title">Locked decisions</span>
+                    <p>5 strategic decisions already made, not up for debate: awareness level, problem to target, opening violation (headline), metaphor system, framing approach.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" style="background:var(--bg-yellow);">
+            <div class="step-row">
+                <span class="num-badge">3</span>
+                <div>
+                    <span class="step-title">Identity decode</span>
+                    <p>Audience archetype: timing triggers, limiting beliefs, private shame, current workarounds, aspirational vs avoidance identity, language patterns in their exact words.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" style="background:var(--bg-yellow);">
+            <div class="step-row">
+                <span class="num-badge">4</span>
+                <div>
+                    <span class="step-title">Expression bank (for native ads)</span>
+                    <p>40 openers organized by 10 angles, each with evidence pairing from the funnel. Each expression attacks one belief.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step" style="background:var(--bg-yellow);">
+            <div class="step-row">
+                <span class="num-badge">5</span>
+                <div>
+                    <span class="step-title">PRD with acceptance criteria</span>
+                    <p>6-9 user stories with specific pass/fail criteria, file dependencies, and execution order.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">↓</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>What Ralph Produces</h3>
+        <h4>This is the mechanical part</h4>
+    </div>
+    <div class="card-content">
+        <p>Given the inputs above, Ralph runs autonomously and outputs:</p>
+
+        <div class="step" style="background:var(--bg-green);">
+            <strong>For native image ads (6-story PRD):</strong>
+            <ul style="margin-top:0.5rem;">
+                <li>Context brief (funnel analysis, audience, belief structure)</li>
+                <li>6 evaluated openers pulled from expression bank</li>
+                <li>6 full ad copy drafts (200-350 words each)</li>
+                <li>6 image concepts with generation prompts</li>
+                <li>6 generated images</li>
+                <li>HTML mockup showing all ads in Facebook feed format</li>
+                <li>Final set review across all 6 as a unit</li>
+            </ul>
+        </div>
+
+        <div class="step" style="background:var(--bg-green);">
+            <strong>For advertorial funnels (9-story PRD):</strong>
+            <ul style="margin-top:0.5rem;">
+                <li>Research brief with source URLs</li>
+                <li>10-15 first line candidates tested against 3-gate filter</li>
+                <li>Intro sequence (future pace, close doors, bridge)</li>
+                <li>5 Reasons body copy with metaphor threading</li>
+                <li>Complete education page (Step 1) — production HTML</li>
+                <li>Complete offer page (Step 2) — production HTML</li>
+                <li>Congruence QA across both pages</li>
+            </ul>
+        </div>
+
+        <p style="margin-top:1rem;"><strong>Used for:</strong> Idan/ViroCore, Stefan/Mat&Vic's (8 sessions), Simar/PresaPan, Ethan/GVN, Maggie (13 sessions), BB (multiple collections).</p>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- WHAT REPEATS -->
+<!-- ============================== -->
+<div class="card" style="margin-top:3rem;">
+    <div class="card-header" style="background:var(--accent-teal);">
+        <h2>What Repeats Across All Three</h2>
+    </div>
+    <div class="card-content">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+            <thead>
+                <tr style="border-bottom:var(--border);text-align:left;">
+                    <th style="padding:0.75rem;font-family:ui-monospace,monospace;">Deliverable</th>
+                    <th style="padding:0.75rem;text-align:center;">Idan</th>
+                    <th style="padding:0.75rem;text-align:center;">Stefan</th>
+                    <th style="padding:0.75rem;text-align:center;">BB</th>
+                    <th style="padding:0.75rem;font-family:ui-monospace,monospace;font-size:0.8rem;">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Consumer research / Reddit mining</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">JUDGMENT</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Hell/Heaven Island consumer mapping</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">BOTH</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Thesis / positioning development</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">per collection</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">JUDGMENT</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Unit economics / margin analysis</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">BOTH</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Landing pages / funnels</td>
+                    <td style="padding:0.75rem;text-align:center;">5 versions</td>
+                    <td style="padding:0.75rem;text-align:center;">presell + offer</td>
+                    <td style="padding:0.75rem;text-align:center;">Shopify pages</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">BOTH</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Expression bank (40 openers / 10 angles)</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">BOTH</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Batch ad creative via Ralph</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;text-align:center;">16 ads</td>
+                    <td style="padding:0.75rem;text-align:center;">ongoing</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">MECHANICAL</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Ad publishing to Meta</td>
+                    <td style="padding:0.75rem;text-align:center;">—</td>
+                    <td style="padding:0.75rem;text-align:center;">—</td>
+                    <td style="padding:0.75rem;text-align:center;">&#10004;</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">MECHANICAL</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Performance diagnosis / optimization</td>
+                    <td style="padding:0.75rem;text-align:center;">scaling strategy</td>
+                    <td style="padding:0.75rem;text-align:center;">early analysis</td>
+                    <td style="padding:0.75rem;text-align:center;">daily loop</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">JUDGMENT</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td style="padding:0.75rem;">Competitive teardowns</td>
+                    <td style="padding:0.75rem;text-align:center;">market analysis</td>
+                    <td style="padding:0.75rem;text-align:center;">Hollow Socks</td>
+                    <td style="padding:0.75rem;text-align:center;">—</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">JUDGMENT</span></td>
+                </tr>
+                <tr>
+                    <td style="padding:0.75rem;">Methodology documentation / handoff</td>
+                    <td style="padding:0.75rem;text-align:center;">Deep Danieling</td>
+                    <td style="padding:0.75rem;text-align:center;">Alfred Playbook</td>
+                    <td style="padding:0.75rem;text-align:center;">skills</td>
+                    <td style="padding:0.75rem;"><span class="tag" style="font-size:0.65rem;">JUDGMENT</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- SKILLS & MACHINERY -->
+<!-- ============================== -->
+<div class="card" style="margin-top:2rem;">
+    <div class="card-header">
+        <h2>The Machinery Behind It</h2>
+        <h4>110 skills, 249 methodology docs. Here are the ones that produce the deliverables above.</h4>
+    </div>
+    <div class="card-content">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="background:var(--bg-yellow);border:var(--border);padding:1rem;">
+                <h4 style="margin-bottom:0.5rem;">Consumer Research</h4>
+                <ul style="font-size:0.9rem;padding-left:1.25rem;">
+                    <li>Hell/Heaven Island framework</li>
+                    <li>Consumer mapping questions (7-question)</li>
+                    <li>Reddit research methodology</li>
+                    <li>Identity decode template</li>
+                </ul>
+            </div>
+            <div style="background:var(--bg-yellow);border:var(--border);padding:1rem;">
+                <h4 style="margin-bottom:0.5rem;">Creative Production</h4>
+                <ul style="font-size:0.9rem;padding-left:1.25rem;">
+                    <li>prep-native-ads (expression bank &rarr; context brief &rarr; PRD)</li>
+                    <li>ConceptEngine (swipe file &rarr; schema matching &rarr; prompts)</li>
+                    <li>Ralph (autonomous loop execution)</li>
+                    <li>NanoBanana2 (batch image generation)</li>
+                </ul>
+            </div>
+            <div style="background:var(--bg-yellow);border:var(--border);padding:1rem;">
+                <h4 style="margin-bottom:0.5rem;">Publishing & Ops</h4>
+                <ul style="font-size:0.9rem;padding-left:1.25rem;">
+                    <li>bb-ad-publish (Meta API: campaigns, ad sets, ads)</li>
+                    <li>bb-morning-ads (2-min operational check)</li>
+                    <li>bb-daily-pnl (Shopify + Meta combined P&L)</li>
+                    <li>ad-performance-diagnosis (7-step diagnostic)</li>
+                </ul>
+            </div>
+            <div style="background:var(--bg-yellow);border:var(--border);padding:1rem;">
+                <h4 style="margin-bottom:0.5rem;">Strategy & Analysis</h4>
+                <ul style="font-size:0.9rem;padding-left:1.25rem;">
+                    <li>Thesis-based positioning methodology</li>
+                    <li>Unit economics framework</li>
+                    <li>Advertorial build methodology</li>
+                    <li>Cluster ROAS calculation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div style="margin-top:3rem;padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.85rem;">
+    <p>Generated from Andrew's actual files — April 2026. Links go to live deliverables on GitHub Pages.</p>
+</div>
+
+</div>
+</body>
+</html>
