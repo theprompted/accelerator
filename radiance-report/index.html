@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radiance Report</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-page: #F8F8F7;
@@ -19,56 +19,45 @@
             --text-muted: #6b7280;
             --text-dim: #9ca3af;
             --border: #e5e7eb;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
             --shadow: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
             --fb-blue: #1877f2;
             --fb-gray: #65676b;
-            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-page);
             color: var(--text-dark);
             min-height: 100vh;
             padding: 2rem;
-            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; }
-
-        @keyframes fadeSlideIn {
-            to { opacity: 1; transform: translateY(0); }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        /* ========================================
-           HEADER
-           ======================================== */
-
+        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(-10px);
-            animation: fadeSlideIn 0.5s var(--ease-out) 0.1s forwards;
         }
 
-        .logo-block { display: flex; flex-direction: column; gap: 2px; }
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
         .logo {
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-dark);
-            letter-spacing: -0.02em;
         }
 
         .tagline {
@@ -76,215 +65,196 @@
             color: var(--text-muted);
         }
 
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* ========================================
-           COMPARISON TOGGLE
-           ======================================== */
-
-        .compare-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
+        .intro {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s var(--ease-out);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .compare-toggle:hover {
-            border-color: var(--accent-teal);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
             box-shadow: var(--shadow);
         }
 
-        .compare-toggle.active {
-            background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-            border-color: var(--accent-teal);
-        }
-
-        .compare-toggle-label {
-            font-size: 0.8125rem;
-            font-weight: 500;
+        .intro p {
+            font-size: 0.875rem;
+            line-height: 1.6;
             color: var(--text-dark);
+            margin-bottom: 0.75rem;
         }
 
-        .compare-toggle-switch {
-            width: 36px;
-            height: 20px;
-            background: var(--border);
-            border-radius: 10px;
-            position: relative;
-            transition: background 0.2s;
-        }
-
-        .compare-toggle.active .compare-toggle-switch {
-            background: var(--accent-teal);
-        }
-
-        .compare-toggle-switch::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 16px;
-            height: 16px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            transition: transform 0.2s var(--ease-spring);
-        }
-
-        .compare-toggle.active .compare-toggle-switch::after {
-            transform: translateX(16px);
-        }
-
-        /* Date presets */
-        .date-presets {
-            display: flex;
-            gap: 4px;
-            background: var(--bg-muted);
-            padding: 3px;
-            border-radius: 8px;
-        }
-
-        .date-preset {
-            padding: 7px 12px;
-            background: transparent;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
+        .intro p:last-child {
+            margin-bottom: 0;
             color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s var(--ease-out);
+            font-style: italic;
         }
 
-        .date-preset:hover { color: var(--text-dark); }
-        .date-preset:active { transform: scale(0.95); }
+        /* Insights */
+        .insights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
 
-        .date-preset.active {
+        .insight {
             background: var(--bg-card);
-            color: var(--text-black);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-teal);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.25rem;
+            box-shadow: var(--shadow);
         }
 
-        /* Date picker */
-        .date-picker-wrapper {
-            position: relative;
+        .insight-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-teal);
+            margin-bottom: 0.375rem;
+        }
+
+        .insight-title {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-body {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .date-range {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .date-picker-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 9px 14px;
+            gap: 6px;
+            padding: 8px 12px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 0.875rem;
-            font-weight: 500;
             color: var(--text-dark);
-            transition: all 0.2s var(--ease-out);
-            box-shadow: var(--shadow-sm);
+            transition: all 0.15s;
         }
 
         .date-picker-btn:hover {
-            border-color: var(--text-dim);
-            box-shadow: var(--shadow);
-        }
-
-        .date-picker-btn:active {
-            transform: scale(0.98);
+            border-color: var(--text-muted);
         }
 
         .date-picker-btn svg {
-            width: 15px;
-            height: 15px;
+            width: 14px;
+            height: 14px;
             color: var(--text-muted);
         }
 
+        .date-presets {
+            display: flex;
+            gap: 4px;
+        }
+
+        .date-preset {
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .date-preset:hover {
+            background: var(--bg-muted);
+        }
+
+        .date-preset.active {
+            background: var(--text-black);
+            color: white;
+            border-color: var(--text-black);
+        }
+
+        /* Calendar Dropdown */
+        .date-picker-wrapper {
+            position: relative;
+        }
+
         .calendar-dropdown {
+            display: none;
             position: absolute;
             top: calc(100% + 8px);
             right: 0;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: var(--shadow-lg);
-            padding: 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 16px;
             z-index: 100;
-            min-width: 300px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px) scale(0.96);
-            transition: all 0.25s var(--ease-spring);
-            transform-origin: top right;
+            min-width: 280px;
         }
 
         .calendar-dropdown.open {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
+            display: block;
         }
 
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--bg-muted);
+            margin-bottom: 12px;
         }
 
         .calendar-month {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-dark);
         }
 
         .calendar-nav {
             display: flex;
-            gap: 6px;
+            gap: 4px;
         }
 
         .calendar-nav-btn {
-            width: 30px;
-            height: 30px;
-            border: none;
-            background: var(--bg-muted);
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            border-radius: 4px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
             font-size: 16px;
-            transition: all 0.15s var(--ease-out);
         }
 
         .calendar-nav-btn:hover {
-            background: var(--border);
-            color: var(--text-dark);
+            background: var(--bg-muted);
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 3px;
+            gap: 2px;
         }
 
-        #calendar-days { display: contents; }
+        #calendar-days {
+            display: contents;
+        }
 
         .calendar-day-header {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-dim);
             text-align: center;
@@ -296,48 +266,60 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
             color: var(--text-dark);
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.15s var(--ease-out);
+            transition: all 0.1s;
         }
 
-        .calendar-day:hover { background: var(--bg-muted); }
-        .calendar-day.other-month { color: var(--text-dim); }
-        .calendar-day.in-range { background: #e0f2f1; border-radius: 0; }
+        .calendar-day:hover {
+            background: var(--bg-muted);
+        }
+
+        .calendar-day.other-month {
+            color: var(--text-dim);
+        }
+
+        .calendar-day.in-range {
+            background: #e0f2f1;
+        }
+
         .calendar-day.range-start,
-        .calendar-day.range-end { background: var(--accent-teal); color: white; }
-        .calendar-day.range-start { border-radius: 8px 0 0 8px; }
-        .calendar-day.range-end { border-radius: 0 8px 8px 0; }
-        .calendar-day.range-start.range-end { border-radius: 8px; }
+        .calendar-day.range-end {
+            background: var(--accent-teal);
+            color: white;
+        }
+
+        .calendar-day.range-start {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .calendar-day.range-end {
+            border-radius: 0 4px 4px 0;
+        }
 
         .calendar-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid var(--bg-muted);
+            gap: 8px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
         }
 
         .calendar-actions button {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
             cursor: pointer;
-            transition: all 0.15s var(--ease-out);
         }
 
         .btn-cancel {
-            background: var(--bg-muted);
-            border: none;
+            background: transparent;
+            border: 1px solid var(--border);
             color: var(--text-muted);
         }
-
-        .btn-cancel:hover { background: var(--border); color: var(--text-dark); }
 
         .btn-apply {
             background: var(--accent-teal);
@@ -345,130 +327,16 @@
             color: white;
         }
 
-        .btn-apply:hover { background: #0b7c73; }
-
-        /* ========================================
-           INTRO
-           ======================================== */
-
-        .intro {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem 1.75rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeSlideIn 0.5s var(--ease-out) 0.2s forwards;
-            transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
-        }
-
-        .intro:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-1px);
-        }
-
-        .intro p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
-        }
-
-        .intro p:last-child {
-            margin-bottom: 0;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* ========================================
-           PERIOD COMPARISON BANNER
-           ======================================== */
-
-        .comparison-banner {
-            display: none;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 1px solid #bbf7d0;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s var(--ease-out);
-        }
-
-        .comparison-banner.visible {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .comparison-banner-text {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .comparison-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--accent-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-        }
-
-        .comparison-label {
-            font-size: 0.875rem;
-            color: var(--text-dark);
-        }
-
-        .comparison-label strong {
-            color: var(--accent-green);
-        }
-
-        .comparison-periods {
-            display: flex;
-            gap: 8px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .period-badge {
-            padding: 4px 10px;
-            background: white;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        .period-badge.current {
-            background: var(--accent-teal);
-            color: white;
-        }
-
-        /* ========================================
-           METRICS GRID
-           ======================================== */
-
+        /* Metrics Grid */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1px;
             background: var(--border);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeSlideIn 0.6s var(--ease-out) 0.3s forwards;
         }
 
         @media (max-width: 800px) {
@@ -477,274 +345,41 @@
 
         .metric {
             background: var(--bg-card);
-            padding: 1.75rem 1.5rem;
+            padding: 1.5rem;
             text-align: center;
-            transition: background 0.2s var(--ease-out);
-            position: relative;
-            overflow: hidden;
         }
-
-        .metric::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(13, 148, 136, 0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .metric:hover::after { opacity: 1; }
 
         .metric-label {
             font-size: 0.6875rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 0.625rem;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
         .metric-value {
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 1.875rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--text-black);
-            letter-spacing: -0.02em;
-            transition: transform 0.2s var(--ease-out);
         }
-
-        .metric:hover .metric-value { transform: scale(1.02); }
 
         .metric-value.green { color: var(--accent-green); }
         .metric-value.amber { color: var(--accent-amber); }
         .metric-value.red { color: var(--accent-red); }
         .metric-value.teal { color: var(--accent-teal); }
 
-        /* ========================================
-           PERIOD DELTA INDICATORS
-           ======================================== */
-
-        .metric-delta {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            margin-top: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            opacity: 0;
-            transform: translateY(5px);
-            transition: all 0.3s var(--ease-out);
-        }
-
-        .metric-delta.visible {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .metric-delta.positive {
-            color: var(--accent-green);
-        }
-
-        .metric-delta.negative {
-            color: var(--accent-red);
-        }
-
-        .metric-delta.neutral {
-            color: var(--text-muted);
-        }
-
-        .delta-arrow {
-            font-size: 0.875rem;
-        }
-
-        .delta-value {
-            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-        }
-
-        .delta-label {
-            color: var(--text-dim);
-            font-weight: 400;
-            margin-left: 2px;
-        }
-
-        /* Previous period value (smaller, muted) */
-        .metric-prev {
-            display: none;
-            font-size: 0.6875rem;
-            color: var(--text-dim);
-            margin-top: 4px;
-            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-        }
-
-        .metric-prev.visible {
-            display: block;
-        }
-
-        /* ========================================
-           SECTION TITLES
-           ======================================== */
-
+        /* Section Title */
         .section-title {
             font-size: 0.8125rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             margin-bottom: 1.25rem;
             font-weight: 600;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s, transform 0.5s var(--ease-out);
         }
 
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========================================
-           PERIOD FEEDBACK SECTION
-           ======================================== */
-
-        .period-feedback {
-            display: none;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .period-feedback.visible {
-            display: block;
-            animation: fadeSlideIn 0.5s var(--ease-out) forwards;
-            opacity: 0;
-            transform: translateY(15px);
-        }
-
-        .feedback-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.25rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--bg-muted);
-        }
-
-        .feedback-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .feedback-icon.positive {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-        }
-
-        .feedback-icon.negative {
-            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-        }
-
-        .feedback-icon.neutral {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-        }
-
-        .feedback-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--text-black);
-        }
-
-        .feedback-subtitle {
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-        }
-
-        .feedback-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 700px) {
-            .feedback-grid { grid-template-columns: 1fr; }
-        }
-
-        .feedback-item {
-            padding: 1rem;
-            background: var(--bg-muted);
-            border-radius: 12px;
-            transition: all 0.2s var(--ease-out);
-        }
-
-        .feedback-item:hover {
-            background: var(--border);
-            transform: translateY(-2px);
-        }
-
-        .feedback-item-label {
-            font-size: 0.6875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-dim);
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
-        .feedback-item-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-        }
-
-        .feedback-item-value.positive { color: var(--accent-green); }
-        .feedback-item-value.negative { color: var(--accent-red); }
-        .feedback-item-value.neutral { color: var(--text-dark); }
-
-        .feedback-item-context {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .feedback-summary {
-            margin-top: 1.5rem;
-            padding: 1rem 1.25rem;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-green);
-        }
-
-        .feedback-summary.negative {
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border-left-color: var(--accent-red);
-        }
-
-        .feedback-summary.neutral {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            border-left-color: var(--accent-amber);
-        }
-
-        .feedback-summary-text {
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        .feedback-summary-text strong {
-            font-weight: 600;
-        }
-
-        /* ========================================
-           TOP ADS GRID
-           ======================================== */
-
+        /* Top Ads Grid */
         .ads-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -760,148 +395,100 @@
             .ads-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        .fb-card-wrapper {
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s var(--ease-out);
-        }
-
-        .fb-card-wrapper.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fb-card-wrapper:nth-child(1) { transition-delay: 0.05s; }
-        .fb-card-wrapper:nth-child(2) { transition-delay: 0.1s; }
-        .fb-card-wrapper:nth-child(3) { transition-delay: 0.15s; }
-        .fb-card-wrapper:nth-child(4) { transition-delay: 0.2s; }
-        .fb-card-wrapper:nth-child(5) { transition-delay: 0.25s; }
-
+        /* Meta Ad Card */
         .fb-card {
             background: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s var(--ease-out);
         }
 
-        .fb-card-wrapper:hover .fb-card {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
+        /* Rank Badge - Outside the card */
+        .fb-card-wrapper {
+            position: relative;
         }
 
         .fb-rank {
             position: absolute;
-            top: -8px;
-            left: -8px;
+            top: -6px;
+            left: -6px;
             background: var(--text-black);
             color: white;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
             z-index: 10;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-            transition: transform 0.3s var(--ease-spring);
-        }
-
-        /* Ad rank change indicator */
-        .fb-rank-delta {
-            position: absolute;
-            top: -8px;
-            left: 14px;
-            font-size: 9px;
-            font-weight: 700;
-            padding: 2px 5px;
-            border-radius: 4px;
-            display: none;
-            z-index: 11;
-        }
-
-        .fb-rank-delta.visible {
-            display: block;
-        }
-
-        .fb-rank-delta.up {
-            background: var(--accent-green);
-            color: white;
-        }
-
-        .fb-rank-delta.down {
-            background: var(--accent-red);
-            color: white;
-        }
-
-        .fb-rank-delta.new {
-            background: var(--accent-teal);
-            color: white;
-        }
-
-        .fb-card-wrapper:hover .fb-rank {
-            transform: scale(1.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .fb-header {
-            padding: 12px 14px;
+            padding: 10px 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .fb-avatar {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: linear-gradient(135deg, #0d9488 0%, #065f5b 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             color: white;
             font-weight: 600;
             flex-shrink: 0;
         }
 
-        .fb-meta { flex: 1; min-width: 0; }
+        .fb-meta {
+            flex: 1;
+            min-width: 0;
+        }
 
         .fb-page-name {
+            font-family: 'Roboto', sans-serif;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 11px;
             color: #050505;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .fb-verified {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background: var(--fb-blue);
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 7px;
+            font-size: 6px;
             color: white;
+            flex-shrink: 0;
         }
 
         .fb-sponsored {
-            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 9px;
             color: var(--fb-gray);
         }
 
         .fb-text {
-            padding: 0 14px 6px;
-            font-size: 12px;
-            line-height: 1.4;
+            padding: 0 12px 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            line-height: 1.35;
             color: #050505;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -910,10 +497,15 @@
         }
 
         .fb-see-more {
-            padding: 0 14px 10px;
-            font-size: 12px;
+            padding: 0 12px 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
             color: var(--fb-gray);
             cursor: pointer;
+        }
+
+        .fb-see-more:hover {
+            text-decoration: underline;
         }
 
         .fb-image {
@@ -927,35 +519,34 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s var(--ease-out);
-        }
-
-        .fb-card-wrapper:hover .fb-image img {
-            transform: scale(1.05);
         }
 
         .fb-link-preview {
             background: #f0f2f5;
-            padding: 10px 14px;
+            padding: 8px 12px;
         }
 
         .fb-domain {
-            font-size: 9px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 8px;
             color: var(--fb-gray);
             text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 3px;
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
         }
 
         .fb-headline {
-            font-size: 11px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 10px;
             font-weight: 600;
             color: #050505;
+            line-height: 1.3;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
+        /* Stats Bar - Clean horizontal layout */
         .fb-stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -964,26 +555,26 @@
         }
 
         .fb-stat {
-            padding: 10px 6px;
+            padding: 8px 6px;
             text-align: center;
             border-right: 1px solid var(--border);
-            position: relative;
         }
 
-        .fb-stat:last-child { border-right: none; }
+        .fb-stat:last-child {
+            border-right: none;
+        }
 
         .fb-stat-label {
-            font-size: 9px;
+            font-size: 8px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--text-dim);
-            margin-bottom: 3px;
-            font-weight: 500;
+            margin-bottom: 2px;
         }
 
         .fb-stat-value {
             font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-black);
         }
@@ -991,214 +582,96 @@
         .fb-stat-value.good { color: var(--accent-green); }
         .fb-stat-value.bad { color: var(--accent-red); }
 
-        /* Ad stat delta */
-        .fb-stat-delta {
-            display: none;
-            font-size: 8px;
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        .fb-stat-delta.visible {
-            display: block;
-        }
-
-        .fb-stat-delta.positive { color: var(--accent-green); }
-        .fb-stat-delta.negative { color: var(--accent-red); }
-
+        /* View Ad Button */
         .fb-view-btn {
             display: block;
             text-align: center;
-            padding: 12px 14px;
+            padding: 10px 12px;
             background: var(--fb-blue);
             color: white;
-            font-size: 12px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s var(--ease-out);
+            transition: background 0.15s;
         }
 
-        .fb-view-btn:hover { background: #1565c0; }
-        .fb-view-btn:active { transform: scale(0.98); }
-
-        /* ========================================
-           INSIGHTS
-           ======================================== */
-
-        .insights {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+        .fb-view-btn:hover {
+            background: #1565c0;
         }
 
-        .insight {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent-teal);
-            border-radius: 0 12px 12px 0;
-            padding: 1.25rem 1.5rem;
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.4s var(--ease-out);
-        }
-
-        .insight.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .insight:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateX(4px);
-            border-left-width: 6px;
-        }
-
-        .insight-label {
-            font-size: 0.625rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent-teal);
-            margin-bottom: 0.5rem;
-        }
-
-        .insight-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-black);
-            margin-bottom: 0.625rem;
-        }
-
-        .insight-body {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-        }
-
-        /* ========================================
-           RECOMMENDATIONS
-           ======================================== */
-
+        /* Recommendations */
         .recommendations {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s var(--ease-out);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
         }
 
-        .recommendations.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .rec-list {
+            list-style: none;
         }
-
-        .rec-list { list-style: none; }
 
         .rec-item {
             display: flex;
             gap: 1rem;
-            padding: 1.125rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--bg-muted);
             align-items: flex-start;
-            transition: all 0.2s var(--ease-out);
-            border-radius: 8px;
-            margin: 0 -0.75rem;
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
         }
 
-        .rec-item:hover { background: var(--bg-muted); }
-        .rec-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .rec-item:first-child { padding-top: 0; }
+        .rec-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .rec-item:first-child {
+            padding-top: 0;
+        }
 
         .rec-priority {
             flex-shrink: 0;
-            width: 1.625rem;
-            height: 1.625rem;
+            width: 1.5rem;
+            height: 1.5rem;
             background: var(--accent-teal);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             font-weight: 700;
         }
 
-        .rec-content { flex: 1; }
+        .rec-content {
+            flex: 1;
+        }
 
         .rec-title {
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.375rem;
+            margin-bottom: 0.25rem;
         }
 
         .rec-desc {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            line-height: 1.5;
         }
 
-        /* ========================================
-           FOOTER
-           ======================================== */
-
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+            margin-top: 2.5rem;
             color: var(--text-dim);
-            font-size: 0.8125rem;
-            opacity: 0;
-            animation: fadeSlideIn 0.5s var(--ease-out) 0.8s forwards;
+            font-size: 0.75rem;
         }
 
         .footer a {
             color: var(--accent-teal);
             text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--text-black);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.3s var(--ease-spring);
-            pointer-events: none;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s var(--ease-out);
-        }
-
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -1212,11 +685,7 @@
             <div class="logo">Radiance Report</div>
             <div class="tagline">Illuminating where your ad dollars actually go</div>
         </div>
-        <div class="header-controls">
-            <div class="compare-toggle active" id="compareToggle" onclick="toggleComparison()">
-                <span class="compare-toggle-label">Compare Periods</span>
-                <div class="compare-toggle-switch"></div>
-            </div>
+        <div class="date-range">
             <div class="date-presets">
                 <button class="date-preset">7D</button>
                 <button class="date-preset active">14D</button>
@@ -1228,15 +697,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span id="date-display">Feb 11 – 24, 2026</span>
+                    <span id="date-display">Feb 11 – 16, 2026</span>
                 </button>
                 <div class="calendar-dropdown" id="calendar">
                     <div class="calendar-header">
+                        <button class="calendar-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
                         <span class="calendar-month" id="calendar-month">February 2026</span>
-                        <div class="calendar-nav">
-                            <button class="calendar-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
-                            <button class="calendar-nav-btn" onclick="changeMonth(1)">&#8250;</button>
-                        </div>
+                        <button class="calendar-nav-btn" onclick="changeMonth(1)">&#8250;</button>
                     </div>
                     <div class="calendar-grid">
                         <div class="calendar-day-header">Su</div>
@@ -1257,21 +724,6 @@
         </div>
     </header>
 
-    <!-- Comparison Banner -->
-    <div class="comparison-banner visible" id="comparisonBanner">
-        <div class="comparison-banner-text">
-            <div class="comparison-icon">⚡</div>
-            <div class="comparison-label">
-                Comparing performance: <strong>+18.4% overall improvement</strong>
-            </div>
-        </div>
-        <div class="comparison-periods">
-            <span class="period-badge">Jan 28 – Feb 10</span>
-            <span>vs</span>
-            <span class="period-badge current">Feb 11 – Feb 24</span>
-        </div>
-    </div>
-
     <!-- Intro -->
     <div class="intro">
         <p>Most dashboards show you 47 metrics and leave you more confused than when you started. Radiance cuts through. Eight numbers. Your top spenders. What to do next.</p>
@@ -1283,137 +735,53 @@
         <div class="metric">
             <div class="metric-label">Spend</div>
             <div class="metric-value">$3,760</div>
-            <div class="metric-delta positive visible" data-delta="+12.3%">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+12.3%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: $3,348</div>
         </div>
         <div class="metric">
             <div class="metric-label">Sales</div>
             <div class="metric-value">$9,857</div>
-            <div class="metric-delta positive visible" data-delta="+23.1%">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+23.1%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: $8,008</div>
         </div>
         <div class="metric">
             <div class="metric-label">Cost of Delivery</div>
             <div class="metric-value">$3,976</div>
-            <div class="metric-delta negative visible" data-delta="+8.2%">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+8.2%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: $3,674</div>
         </div>
         <div class="metric">
             <div class="metric-label">ROAS</div>
             <div class="metric-value green">2.62x</div>
-            <div class="metric-delta positive visible" data-delta="+9.6%">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+9.6%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: 2.39x</div>
         </div>
         <div class="metric">
             <div class="metric-label">CPA</div>
             <div class="metric-value">$40.87</div>
-            <div class="metric-delta positive visible" data-delta="-6.4%">
-                <span class="delta-arrow">↓</span>
-                <span class="delta-value">-6.4%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: $43.67</div>
         </div>
         <div class="metric">
             <div class="metric-label">ACOS</div>
             <div class="metric-value">38.1%</div>
-            <div class="metric-delta positive visible" data-delta="-4.2%">
-                <span class="delta-arrow">↓</span>
-                <span class="delta-value">-4.2%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: 39.8%</div>
         </div>
         <div class="metric">
-            <div class="metric-label">Contribution Margin %</div>
+            <div class="metric-label">CM %</div>
             <div class="metric-value teal">21.5%</div>
-            <div class="metric-delta positive visible" data-delta="+2.8pp">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+2.8pp</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: 18.7%</div>
         </div>
         <div class="metric">
-            <div class="metric-label">Contribution Margin $</div>
+            <div class="metric-label">CM $</div>
             <div class="metric-value teal">$2,121</div>
-            <div class="metric-delta positive visible" data-delta="+41.6%">
-                <span class="delta-arrow">↑</span>
-                <span class="delta-value">+41.6%</span>
-                <span class="delta-label">vs prev</span>
-            </div>
-            <div class="metric-prev visible">prev: $1,498</div>
         </div>
     </div>
 
-    <!-- Period Feedback Section -->
-    <div class="period-feedback visible" id="periodFeedback">
-        <div class="feedback-header">
-            <div class="feedback-icon positive">📈</div>
-            <div>
-                <div class="feedback-title">Strong Growth Period</div>
-                <div class="feedback-subtitle">Feb 11 – 24 vs Jan 28 – Feb 10</div>
-            </div>
-        </div>
-        <div class="feedback-grid">
-            <div class="feedback-item">
-                <div class="feedback-item-label">Efficiency Gain</div>
-                <div class="feedback-item-value positive">+$623</div>
-                <div class="feedback-item-context">More margin on similar spend</div>
-            </div>
-            <div class="feedback-item">
-                <div class="feedback-item-label">Best Improvement</div>
-                <div class="feedback-item-value positive">CM$ +41.6%</div>
-                <div class="feedback-item-context">Your winners scaled well</div>
-            </div>
-            <div class="feedback-item">
-                <div class="feedback-item-label">Watch Area</div>
-                <div class="feedback-item-value neutral">CoD +8.2%</div>
-                <div class="feedback-item-context">Fulfillment costs rising</div>
-            </div>
-        </div>
-        <div class="feedback-summary">
-            <div class="feedback-summary-text">
-                <strong>Bottom line:</strong> You spent 12% more but earned 41% more margin. That's compounding.
-                The ROAS improvement (+9.6%) shows your creative optimization is working.
-                CPA dropped $2.80 — that's ~$257 saved across 92 conversions.
-                Keep scaling the winners you identified last period.
-            </div>
-        </div>
-    </div>
-
-    <!-- Top 5 Spending Ads (condensed for demo) -->
-    <div class="section-title scroll-reveal">Top 5 Spending Ads</div>
+    <!-- Top 10 Spending Ads -->
+    <div class="section-title">Top 10 Spending Ads</div>
     <div class="ads-grid">
         <!-- Ad 1 -->
         <div class="fb-card-wrapper">
             <span class="fb-rank">1</span>
-            <span class="fb-rank-delta up visible">↑2</span>
             <div class="fb-card">
                 <div class="fb-header">
                     <div class="fb-avatar">B</div>
                     <div class="fb-meta">
-                        <div class="fb-page-name">Brand <span class="fb-verified">✓</span></div>
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
                         <div class="fb-sponsored">Sponsored</div>
                     </div>
                 </div>
                 <div class="fb-text">Your dog's anxiety isn't about exercise. Here's what actually works...</div>
+                <div class="fb-see-more">See more</div>
                 <div class="fb-see-more">See more</div>
                 <div class="fb-image">
                     <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop" alt="">
@@ -1426,41 +794,37 @@
                     <div class="fb-stat">
                         <div class="fb-stat-label">Spend</div>
                         <div class="fb-stat-value">$412</div>
-                        <div class="fb-stat-delta positive visible">+18%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">Sales</div>
                         <div class="fb-stat-value">$1,154</div>
-                        <div class="fb-stat-delta positive visible">+31%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">ROAS</div>
                         <div class="fb-stat-value good">2.8x</div>
-                        <div class="fb-stat-delta positive visible">+11%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">CPA</div>
                         <div class="fb-stat-value">$36</div>
-                        <div class="fb-stat-delta positive visible">-8%</div>
                     </div>
                 </div>
-                <a href="#" class="fb-view-btn">View in Ads Manager</a>
+                <a href="https://www.facebook.com/ads/library/?id=123456789001" target="_blank" class="fb-view-btn">View in Ads Manager</a>
             </div>
         </div>
 
         <!-- Ad 2 -->
         <div class="fb-card-wrapper">
             <span class="fb-rank">2</span>
-            <span class="fb-rank-delta down visible">↓1</span>
             <div class="fb-card">
                 <div class="fb-header">
                     <div class="fb-avatar">B</div>
                     <div class="fb-meta">
-                        <div class="fb-page-name">Brand <span class="fb-verified">✓</span></div>
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
                         <div class="fb-sponsored">Sponsored</div>
                     </div>
                 </div>
                 <div class="fb-text">Vets don't want you to know this about calming supplements...</div>
+                <div class="fb-see-more">See more</div>
                 <div class="fb-see-more">See more</div>
                 <div class="fb-image">
                     <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&h=400&fit=crop" alt="">
@@ -1473,84 +837,74 @@
                     <div class="fb-stat">
                         <div class="fb-stat-label">Spend</div>
                         <div class="fb-stat-value">$389</div>
-                        <div class="fb-stat-delta negative visible">-5%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">Sales</div>
                         <div class="fb-stat-value">$1,206</div>
-                        <div class="fb-stat-delta positive visible">+8%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">ROAS</div>
                         <div class="fb-stat-value good">3.1x</div>
-                        <div class="fb-stat-delta positive visible">+14%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">CPA</div>
                         <div class="fb-stat-value">$32</div>
-                        <div class="fb-stat-delta positive visible">-12%</div>
                     </div>
                 </div>
-                <a href="#" class="fb-view-btn">View in Ads Manager</a>
+                <a href="https://www.facebook.com/ads/library/?id=123456789002" target="_blank" class="fb-view-btn">View in Ads Manager</a>
             </div>
         </div>
 
         <!-- Ad 3 -->
         <div class="fb-card-wrapper">
             <span class="fb-rank">3</span>
-            <span class="fb-rank-delta new visible">NEW</span>
             <div class="fb-card">
                 <div class="fb-header">
                     <div class="fb-avatar">B</div>
                     <div class="fb-meta">
-                        <div class="fb-page-name">Brand <span class="fb-verified">✓</span></div>
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
                         <div class="fb-sponsored">Sponsored</div>
                     </div>
                 </div>
-                <div class="fb-text">After 6 months of failed solutions, this finally worked...</div>
+                <div class="fb-text">I spent $2,000 on trainers before discovering this simple fix...</div>
                 <div class="fb-see-more">See more</div>
                 <div class="fb-image">
                     <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" alt="">
                 </div>
                 <div class="fb-link-preview">
                     <div class="fb-domain">YOURSTORE.COM</div>
-                    <div class="fb-headline">Separation Anxiety: A Solution</div>
+                    <div class="fb-headline">Why Training Wasn't The Answer</div>
                 </div>
                 <div class="fb-stats-bar">
                     <div class="fb-stat">
                         <div class="fb-stat-label">Spend</div>
                         <div class="fb-stat-value">$356</div>
-                        <div class="fb-stat-delta neutral visible">—</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">Sales</div>
-                        <div class="fb-stat-value">$1,211</div>
-                        <div class="fb-stat-delta neutral visible">—</div>
+                        <div class="fb-stat-value">$498</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">ROAS</div>
-                        <div class="fb-stat-value good">3.4x</div>
-                        <div class="fb-stat-delta neutral visible">—</div>
+                        <div class="fb-stat-value bad">1.4x</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">CPA</div>
-                        <div class="fb-stat-value">$29</div>
-                        <div class="fb-stat-delta neutral visible">—</div>
+                        <div class="fb-stat-value">$71</div>
                     </div>
                 </div>
-                <a href="#" class="fb-view-btn">View in Ads Manager</a>
+                <a href="https://www.facebook.com/ads/library/?id=123456789003" target="_blank" class="fb-view-btn">View in Ads Manager</a>
             </div>
         </div>
 
         <!-- Ad 4 -->
         <div class="fb-card-wrapper">
             <span class="fb-rank">4</span>
-            <span class="fb-rank-delta up visible">↑3</span>
             <div class="fb-card">
                 <div class="fb-header">
                     <div class="fb-avatar">B</div>
                     <div class="fb-meta">
-                        <div class="fb-page-name">Brand <span class="fb-verified">✓</span></div>
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
                         <div class="fb-sponsored">Sponsored</div>
                     </div>
                 </div>
@@ -1567,37 +921,32 @@
                     <div class="fb-stat">
                         <div class="fb-stat-label">Spend</div>
                         <div class="fb-stat-value">$298</div>
-                        <div class="fb-stat-delta positive visible">+45%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">Sales</div>
                         <div class="fb-stat-value">$864</div>
-                        <div class="fb-stat-delta positive visible">+67%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">ROAS</div>
                         <div class="fb-stat-value good">2.9x</div>
-                        <div class="fb-stat-delta positive visible">+15%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">CPA</div>
                         <div class="fb-stat-value">$37</div>
-                        <div class="fb-stat-delta positive visible">-13%</div>
                     </div>
                 </div>
-                <a href="#" class="fb-view-btn">View in Ads Manager</a>
+                <a href="https://www.facebook.com/ads/library/?id=123456789004" target="_blank" class="fb-view-btn">View in Ads Manager</a>
             </div>
         </div>
 
         <!-- Ad 5 -->
         <div class="fb-card-wrapper">
             <span class="fb-rank">5</span>
-            <span class="fb-rank-delta down visible">↓2</span>
             <div class="fb-card">
                 <div class="fb-header">
                     <div class="fb-avatar">B</div>
                     <div class="fb-meta">
-                        <div class="fb-page-name">Brand <span class="fb-verified">✓</span></div>
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
                         <div class="fb-sponsored">Sponsored</div>
                     </div>
                 </div>
@@ -1614,84 +963,309 @@
                     <div class="fb-stat">
                         <div class="fb-stat-label">Spend</div>
                         <div class="fb-stat-value">$276</div>
-                        <div class="fb-stat-delta negative visible">-22%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">Sales</div>
                         <div class="fb-stat-value">$662</div>
-                        <div class="fb-stat-delta negative visible">-18%</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">ROAS</div>
-                        <div class="fb-stat-value">2.4x</div>
-                        <div class="fb-stat-delta positive visible">+5%</div>
+                        <div class="fb-stat-value good">2.4x</div>
                     </div>
                     <div class="fb-stat">
                         <div class="fb-stat-label">CPA</div>
                         <div class="fb-stat-value">$44</div>
-                        <div class="fb-stat-delta negative visible">+8%</div>
                     </div>
                 </div>
-                <a href="#" class="fb-view-btn">View in Ads Manager</a>
+                <a href="https://www.facebook.com/ads/library/?id=123456789005" target="_blank" class="fb-view-btn">View in Ads Manager</a>
+            </div>
+        </div>
+
+        <!-- Ad 6 -->
+        <div class="fb-card-wrapper">
+            <span class="fb-rank">6</span>
+            <div class="fb-card">
+                <div class="fb-header">
+                    <div class="fb-avatar">B</div>
+                    <div class="fb-meta">
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
+                        <div class="fb-sponsored">Sponsored</div>
+                    </div>
+                </div>
+                <div class="fb-text">The vet said "just exercise him more." She was wrong...</div>
+                <div class="fb-see-more">See more</div>
+                <div class="fb-image">
+                    <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=400&h=400&fit=crop" alt="">
+                </div>
+                <div class="fb-link-preview">
+                    <div class="fb-domain">YOURSTORE.COM</div>
+                    <div class="fb-headline">Why Vet Advice Isn't Working</div>
+                </div>
+                <div class="fb-stats-bar">
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Spend</div>
+                        <div class="fb-stat-value">$254</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Sales</div>
+                        <div class="fb-stat-value">$686</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">ROAS</div>
+                        <div class="fb-stat-value good">2.7x</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">CPA</div>
+                        <div class="fb-stat-value">$39</div>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ads/library/?id=123456789006" target="_blank" class="fb-view-btn">View in Ads Manager</a>
+            </div>
+        </div>
+
+        <!-- Ad 7 -->
+        <div class="fb-card-wrapper">
+            <span class="fb-rank">7</span>
+            <div class="fb-card">
+                <div class="fb-header">
+                    <div class="fb-avatar">B</div>
+                    <div class="fb-meta">
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
+                        <div class="fb-sponsored">Sponsored</div>
+                    </div>
+                </div>
+                <div class="fb-text">3 signs your dog's anxiety is worse than you think...</div>
+                <div class="fb-see-more">See more</div>
+                <div class="fb-image">
+                    <img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400&h=400&fit=crop" alt="">
+                </div>
+                <div class="fb-link-preview">
+                    <div class="fb-domain">YOURSTORE.COM</div>
+                    <div class="fb-headline">Hidden Signs of Dog Anxiety</div>
+                </div>
+                <div class="fb-stats-bar">
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Spend</div>
+                        <div class="fb-stat-value">$231</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Sales</div>
+                        <div class="fb-stat-value">$485</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">ROAS</div>
+                        <div class="fb-stat-value">2.1x</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">CPA</div>
+                        <div class="fb-stat-value">$50</div>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ads/library/?id=123456789007" target="_blank" class="fb-view-btn">View in Ads Manager</a>
+            </div>
+        </div>
+
+        <!-- Ad 8 -->
+        <div class="fb-card-wrapper">
+            <span class="fb-rank">8</span>
+            <div class="fb-card">
+                <div class="fb-header">
+                    <div class="fb-avatar">B</div>
+                    <div class="fb-meta">
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
+                        <div class="fb-sponsored">Sponsored</div>
+                    </div>
+                </div>
+                <div class="fb-text">Tired dogs aren't calm dogs. Here's what research shows...</div>
+                <div class="fb-see-more">See more</div>
+                <div class="fb-image">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop" alt="">
+                </div>
+                <div class="fb-link-preview">
+                    <div class="fb-domain">YOURSTORE.COM</div>
+                    <div class="fb-headline">The Science Behind Dog Calm</div>
+                </div>
+                <div class="fb-stats-bar">
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Spend</div>
+                        <div class="fb-stat-value">$198</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Sales</div>
+                        <div class="fb-stat-value">$317</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">ROAS</div>
+                        <div class="fb-stat-value bad">1.6x</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">CPA</div>
+                        <div class="fb-stat-value">$66</div>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ads/library/?id=123456789008" target="_blank" class="fb-view-btn">View in Ads Manager</a>
+            </div>
+        </div>
+
+        <!-- Ad 9 -->
+        <div class="fb-card-wrapper">
+            <span class="fb-rank">9</span>
+            <div class="fb-card">
+                <div class="fb-header">
+                    <div class="fb-avatar">B</div>
+                    <div class="fb-meta">
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
+                        <div class="fb-sponsored">Sponsored</div>
+                    </div>
+                </div>
+                <div class="fb-text">After 6 months of failed solutions, this finally worked...</div>
+                <div class="fb-see-more">See more</div>
+                <div class="fb-image">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&h=400&fit=crop" alt="">
+                </div>
+                <div class="fb-link-preview">
+                    <div class="fb-domain">YOURSTORE.COM</div>
+                    <div class="fb-headline">Separation Anxiety: A Solution</div>
+                </div>
+                <div class="fb-stats-bar">
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Spend</div>
+                        <div class="fb-stat-value">$187</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Sales</div>
+                        <div class="fb-stat-value">$636</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">ROAS</div>
+                        <div class="fb-stat-value good">3.4x</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">CPA</div>
+                        <div class="fb-stat-value">$29</div>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ads/library/?id=123456789009" target="_blank" class="fb-view-btn">View in Ads Manager</a>
+            </div>
+        </div>
+
+        <!-- Ad 10 -->
+        <div class="fb-card-wrapper">
+            <span class="fb-rank">10</span>
+            <div class="fb-card">
+                <div class="fb-header">
+                    <div class="fb-avatar">B</div>
+                    <div class="fb-meta">
+                        <div class="fb-page-name">Brand <span class="fb-verified">&#10003;</span></div>
+                        <div class="fb-sponsored">Sponsored</div>
+                    </div>
+                </div>
+                <div class="fb-text">Most calming treats are glorified cookies. Here's why...</div>
+                <div class="fb-see-more">See more</div>
+                <div class="fb-image">
+                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" alt="">
+                </div>
+                <div class="fb-link-preview">
+                    <div class="fb-domain">YOURSTORE.COM</div>
+                    <div class="fb-headline">The Problem With Calming Treats</div>
+                </div>
+                <div class="fb-stats-bar">
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Spend</div>
+                        <div class="fb-stat-value">$159</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">Sales</div>
+                        <div class="fb-stat-value">$318</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">ROAS</div>
+                        <div class="fb-stat-value">2.0x</div>
+                    </div>
+                    <div class="fb-stat">
+                        <div class="fb-stat-label">CPA</div>
+                        <div class="fb-stat-value">$53</div>
+                    </div>
+                </div>
+                <a href="https://www.facebook.com/ads/library/?id=123456789010" target="_blank" class="fb-view-btn">View in Ads Manager</a>
             </div>
         </div>
     </div>
 
     <!-- Insights -->
-    <div class="section-title scroll-reveal">Period-Over-Period Insights</div>
+    <div class="section-title">Insights</div>
     <div class="insights">
         <div class="insight">
-            <div class="insight-label">Biggest Winner</div>
-            <div class="insight-title">Ad #4 (Cortisol Connection) scaled 45% with improving efficiency</div>
-            <div class="insight-body">This ad went from #7 to #4 in spend ranking while improving ROAS from 2.5x to 2.9x. The combination of increased spend AND improved efficiency is rare. This is your clearest signal to keep scaling — budget hasn't saturated the audience yet.</div>
+            <div class="insight-label">Pattern Detected</div>
+            <div class="insight-title">Your "vet authority" angle is outperforming by 2.1x</div>
+            <div class="insight-body">Ads #2, #6, and #9 all reference vets or professional advice — combined 3.1x ROAS vs 1.9x for all other angles. Consider doubling down on this positioning. Your audience trusts (or distrusts) authority figures more than personal testimonials.</div>
         </div>
         <div class="insight">
-            <div class="insight-label">New Entrant Alert</div>
-            <div class="insight-title">Ad #3 (Separation Anxiety) is your new best performer</div>
-            <div class="insight-body">Launched this period with 3.4x ROAS and $29 CPA — better than any existing ad. Early data suggests this angle resonates strongly. Scale carefully: new ads can regress to mean as they exit learning phase. Monitor closely for next 5 days.</div>
+            <div class="insight-label">Anomaly</div>
+            <div class="insight-title">Ad #3 has 47% higher CTR but worst ROAS</div>
+            <div class="insight-body">People are clicking but not buying. The ad is attracting curiosity-clickers, not buyers. The headline promises something the landing page doesn't deliver. Check if the offer matches the hook — this is a funnel disconnect, not an ad problem.</div>
         </div>
         <div class="insight">
-            <div class="insight-label">Concern</div>
-            <div class="insight-title">Ad #5 (Storm Anxiety) is fatiguing — spend down 22%</div>
-            <div class="insight-body">Facebook is naturally throttling this ad. Spend dropped but CPA rose — classic fatigue pattern. The ad isn't necessarily bad, just exhausted its audience. Options: refresh the creative, narrow the audience, or let it rest for 2 weeks.</div>
+            <div class="insight-label">Hidden Opportunity</div>
+            <div class="insight-title">$636 in sales from $187 spend on Ad #9 — but it's capped</div>
+            <div class="insight-body">This ad hit its daily budget limit 4 of the last 5 days. You're leaving money on the table. If it maintained performance at 2x the budget, that's an extra $636/week in sales for $187 in spend. Low-risk scale opportunity.</div>
         </div>
         <div class="insight">
-            <div class="insight-label">Efficiency Trend</div>
-            <div class="insight-title">Your average CPA improved $2.80 period-over-period</div>
-            <div class="insight-body">This isn't luck — your creative testing is working. The new ad (#3) is pulling the average down, and your scaled ads (#1, #4) are maintaining efficiency. You've found a repeatable pattern. Document what's working about the "anxiety isn't about X" angle.</div>
+            <div class="insight-label">Trend</div>
+            <div class="insight-title">Weekend CPA is 23% higher than weekday</div>
+            <div class="insight-body">Saturday and Sunday are dragging down your blended numbers. Consider reducing weekend budgets by 30% or pausing entirely. Your audience makes purchase decisions during the work week — probably researching while procrastinating at their desk.</div>
+        </div>
+        <div class="insight">
+            <div class="insight-label">Correlation</div>
+            <div class="insight-title">Dog images outperform product shots by 1.8x</div>
+            <div class="insight-body">Ads featuring actual dogs (not product packaging) have 1.8x higher ROAS. Emotional connection beats product education at the top of funnel. Save product shots for retargeting — lead with the dog.</div>
         </div>
     </div>
 
     <!-- Recommendations -->
-    <div class="section-title scroll-reveal">Recommendations</div>
-    <div class="recommendations scroll-reveal">
+    <div class="section-title">Recommendations</div>
+    <div class="recommendations">
         <ul class="rec-list">
             <li class="rec-item">
                 <span class="rec-priority">1</span>
                 <div class="rec-content">
-                    <div class="rec-title">Scale Ad #3 carefully — it's your new best performer</div>
-                    <div class="rec-desc">3.4x ROAS at $29 CPA is outstanding. Increase budget 20% every 48 hours. Watch for CPA creep as it exits learning phase. If CPA holds under $35, you've found a winner.</div>
+                    <div class="rec-title">Scale Ad #9 — best ROAS at 3.4x</div>
+                    <div class="rec-desc">Only $187 spend but highest efficiency. Increase budget to $50/day and monitor for 48 hours. This ad is doing the heavy lifting — let it work harder.</div>
                 </div>
             </li>
             <li class="rec-item">
                 <span class="rec-priority">2</span>
                 <div class="rec-content">
-                    <div class="rec-title">Keep pushing Ad #4 — it's proving scalable</div>
-                    <div class="rec-desc">+45% spend with +15% ROAS improvement is the holy grail. This ad has headroom. Double the budget over the next week in 25% increments.</div>
+                    <div class="rec-title">Kill or fix Ad #3 — bleeding $356 at 1.4x ROAS</div>
+                    <div class="rec-desc">Third highest spend but below break-even. You're paying to lose money. Either cut to $20/day for 24 hours or pause entirely. The creative isn't resonating.</div>
                 </div>
             </li>
             <li class="rec-item">
                 <span class="rec-priority">3</span>
                 <div class="rec-content">
-                    <div class="rec-title">Refresh or rest Ad #5 — it's fatiguing</div>
-                    <div class="rec-desc">Facebook is naturally reducing spend. Either create a new version with fresh imagery, or pause for 2 weeks. Don't force spend on a fatigued ad.</div>
+                    <div class="rec-title">Ad #8 is also underwater — 1.6x ROAS, $66 CPA</div>
+                    <div class="rec-desc">Same story as #3. Two underperformers are dragging down your blended metrics. Pause both and reallocate that $554 to your winners.</div>
                 </div>
             </li>
             <li class="rec-item">
                 <span class="rec-priority">4</span>
                 <div class="rec-content">
-                    <div class="rec-title">Document your winning angle</div>
-                    <div class="rec-desc">The "anxiety isn't about X" framework is working across multiple ads. Create 2-3 more variations: "anxiety isn't about training," "anxiety isn't about breed," etc.</div>
+                    <div class="rec-title">Your winners are starving — #2 and #9 need more budget</div>
+                    <div class="rec-desc">3.1x and 3.4x ROAS respectively, but only $576 combined spend. These should be getting 3x the budget. Scale in 20% increments every 48 hours.</div>
+                </div>
+            </li>
+            <li class="rec-item">
+                <span class="rec-priority">5</span>
+                <div class="rec-content">
+                    <div class="rec-title">21.5% CM is healthy but not great — target 25%+</div>
+                    <div class="rec-desc">You're keeping $2,121 on $9,857 in sales. Killing the two losers would push this closer to 25%. That's an extra $345/week in your pocket.</div>
+                </div>
+            </li>
+            <li class="rec-item">
+                <span class="rec-priority">6</span>
+                <div class="rec-content">
+                    <div class="rec-title">ACOS at 38% gives you room to push</div>
+                    <div class="rec-desc">Target ceiling is 40%. You have 2 percentage points of headroom. If you scale winners and kill losers, you could push total spend 20% higher without hurting margin.</div>
                 </div>
             </li>
         </ul>
@@ -1703,66 +1277,12 @@
 
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
-    let comparisonEnabled = true;
-
-    function toggleComparison() {
-        comparisonEnabled = !comparisonEnabled;
-        const toggle = document.getElementById('compareToggle');
-        const banner = document.getElementById('comparisonBanner');
-        const feedback = document.getElementById('periodFeedback');
-        const deltas = document.querySelectorAll('.metric-delta');
-        const prevs = document.querySelectorAll('.metric-prev');
-        const rankDeltas = document.querySelectorAll('.fb-rank-delta');
-        const statDeltas = document.querySelectorAll('.fb-stat-delta');
-
-        if (comparisonEnabled) {
-            toggle.classList.add('active');
-            banner.classList.add('visible');
-            feedback.classList.add('visible');
-            deltas.forEach(d => d.classList.add('visible'));
-            prevs.forEach(p => p.classList.add('visible'));
-            rankDeltas.forEach(r => r.classList.add('visible'));
-            statDeltas.forEach(s => s.classList.add('visible'));
-            showToast('Period comparison enabled');
-        } else {
-            toggle.classList.remove('active');
-            banner.classList.remove('visible');
-            feedback.classList.remove('visible');
-            deltas.forEach(d => d.classList.remove('visible'));
-            prevs.forEach(p => p.classList.remove('visible'));
-            rankDeltas.forEach(r => r.classList.remove('visible'));
-            statDeltas.forEach(s => s.classList.remove('visible'));
-            showToast('Period comparison disabled');
-        }
-    }
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.scroll-reveal, .fb-card-wrapper, .insight, .recommendations').forEach(el => {
-        observer.observe(el);
-    });
-
-    document.querySelectorAll('.section-title').forEach(el => {
-        el.classList.add('scroll-reveal');
-        observer.observe(el);
-    });
-
-    // Calendar functionality
+    // Calendar state
     let currentMonth = 1; // February (0-indexed)
     let currentYear = 2026;
     let startDate = new Date(2026, 1, 11);
-    let endDate = new Date(2026, 1, 24);
+    let endDate = new Date(2026, 1, 16);
     let selectingStart = true;
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -1810,12 +1330,7 @@
 
             const thisDate = new Date(currentYear, currentMonth, day);
             if (startDate && endDate) {
-                if (thisDate.getTime() === startDate.getTime()) {
-                    div.classList.add('range-start');
-                    if (thisDate.getTime() === endDate.getTime()) {
-                        div.classList.add('range-end');
-                    }
-                }
+                if (thisDate.getTime() === startDate.getTime()) div.classList.add('range-start');
                 if (thisDate.getTime() === endDate.getTime()) div.classList.add('range-end');
                 if (thisDate > startDate && thisDate < endDate) div.classList.add('in-range');
             }
@@ -1858,41 +1373,32 @@
             const fmt = d => `${months[d.getMonth()].slice(0,3)} ${d.getDate()}`;
             document.getElementById('date-display').textContent =
                 `${fmt(startDate)} – ${fmt(endDate)}, ${endDate.getFullYear()}`;
-            showToast('Date range updated');
         }
         toggleCalendar();
     }
 
-    // Date presets
+    // Preset buttons
     document.querySelectorAll('.date-preset').forEach(btn => {
         btn.onclick = function() {
             document.querySelectorAll('.date-preset').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             const days = parseInt(this.textContent);
-            endDate = new Date(2026, 1, 24);
+            endDate = new Date(2026, 1, 16);
             startDate = new Date(endDate);
             startDate.setDate(startDate.getDate() - days);
             const fmt = d => `${months[d.getMonth()].slice(0,3)} ${d.getDate()}`;
             document.getElementById('date-display').textContent =
                 `${fmt(startDate)} – ${fmt(endDate)}, ${endDate.getFullYear()}`;
-            showToast(`Showing last ${days} days`);
         };
     });
 
     // Close calendar on outside click
     document.addEventListener('click', e => {
         const wrapper = document.querySelector('.date-picker-wrapper');
-        if (wrapper && !wrapper.contains(e.target)) {
+        if (!wrapper.contains(e.target)) {
             document.getElementById('calendar').classList.remove('open');
         }
     });
-
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-    }
 </script>
 </body>
 </html>
