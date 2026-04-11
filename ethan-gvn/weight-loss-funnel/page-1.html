@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Reasons Eating Less Is Making You Gain Weight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Typography */
+            --font-primary: 'Poppins', Arial, sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-bold: 700;
+            --font-weight-extra-bold: 800;
+
+            /* Colors - Text */
+            --color-text-primary: #2e2e2e;
+            --color-text-headline: #0e1b4d;
+            --color-text-secondary: #1f2555;
+            --color-text-muted: #737373;
+
+            /* Colors - Brand */
+            --color-accent-purple: #1f2555;
+            --color-accent-purple-light: #e8ecf5;
+            --color-header-purple: #0e1b4d;
+
+            /* Colors - CTA */
+            --color-cta-start: #FFB71E;
+            --color-cta-end: #FF9900;
+            --color-cta-hover: #005E0D;
+
+            /* Colors - Status */
+            --color-success: #2E854B;
+            --color-urgency: #AE0C13;
+
+            /* Colors - Backgrounds */
+            --color-bg-white: #FFFFFF;
+            --color-bg-beige: #f5f2ef;
+            --color-bg-navy: #0e1b4d;
+
+            /* Shadows */
+            --shadow-card: 15px 15px 15px 0 rgba(93, 93, 93, 0.25);
+            --shadow-button: 0 4px 15px rgba(93, 93, 93, 0.25);
+
+            /* Border Radius */
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 2rem;
+            --radius-pill: 2.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.3125rem;
+            line-height: 1.65;
+            color: var(--color-text-primary);
+            background: var(--color-bg-white);
+        }
+
+        .container {
+            max-width: 60rem;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-headline);
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--color-accent-purple);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            color: var(--color-text-headline);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--color-accent-purple);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 1.125rem;
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--color-text-secondary);
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Hero Section with gradient */
+        .hero-section {
+            background: linear-gradient(180deg, #F8F4FA 0%, #FFFFFF 100%);
+            margin: -2.5rem -1.5rem 0;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        /* Author byline with photo */
+        .byline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--color-accent-purple-light);
+        }
+
+        .byline-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent-purple-light), var(--color-accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .byline-text {
+            text-align: left;
+        }
+
+        .byline .name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .byline .credentials {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Problem sections with icons */
+        .problem-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            min-width: 3.5rem;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFCCCC 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .problem-header h2 {
+            margin-bottom: 0;
+        }
+
+        .problem-number {
+            color: var(--color-urgency);
+            font-weight: 800;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin: 1.25rem 0;
+        }
+
+        ul li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        ul li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* Key benefit box / blockquote */
+        .benefit-box {
+            background: var(--color-bg-beige);
+            border-left: 4px solid var(--color-accent-purple);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .benefit-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        blockquote {
+            background: var(--color-bg-beige);
+            border-left: 4px solid var(--color-accent-purple);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-style: italic;
+            color: var(--color-text-secondary);
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+        }
+
+        /* Section divider - enhanced */
+        .section-divider {
+            height: 6px;
+            background: linear-gradient(90deg, #6B46C1 0%, #9F7AEA 50%, #B794F4 100%);
+            margin: 3rem 0;
+            border-radius: 3px;
+        }
+
+        /* Bridge section */
+        .bridge-section {
+            padding: 0;
+            margin: 0;
+        }
+
+        .bridge-section h2 {
+            margin-top: 2rem;
+        }
+
+        /* Testimonials with photos */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent-purple-light), var(--color-accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            border: 2px solid var(--color-accent-purple);
+        }
+
+        .testimonial-info .name {
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .testimonial-stars {
+            color: #FFB71E;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            background: #E8F5E9;
+            color: var(--color-success);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.0625rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+        }
+
+        /* Placeholder warning box */
+        .placeholder-warning {
+            background: #FFF3CD;
+            border: 2px dashed #FFA500;
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #856404;
+            text-align: center;
+        }
+
+        /* CTA Button - enhanced */
+        .cta-wrapper {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(180deg, var(--color-cta-start) 0%, var(--color-cta-end) 100%);
+            color: #fff;
+            font-family: var(--font-primary);
+            font-size: 1.375rem;
+            font-weight: 700;
+            padding: 1.375rem 3rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(180deg, var(--color-cta-hover) 0%, #004A0A 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 94, 13, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-subtext {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-badge-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-bg-beige);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid var(--color-accent-purple-light);
+        }
+
+        .trust-badge-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-align: center;
+        }
+
+        /* Product intro in bridge section */
+        .product-intro {
+            font-size: 1.375rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .product-intro .nickname {
+            display: block;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 1.25rem 0;
+            color: var(--color-text-headline);
+        }
+
+        /* === Final CTA Section === */
+        .cta-final-section {
+            margin: 3rem 0 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .cta-button-big {
+            display: block;
+            background: #22c55e;
+            color: #ffffff;
+            font-family: var(--font-primary);
+            font-size: 2.25rem;
+            font-weight: 800;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .cta-button-big:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* All content images */
+        .container img {
+            max-width: 90%;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            display: block;
+            margin: 2rem auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.625rem;
+            }
+
+            body {
+                font-size: 1.25rem;
+                line-height: 1.7;
+            }
+
+            .container {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .hero-section {
+                margin: -1.5rem -1.25rem 0;
+                padding: 2rem 1.25rem;
+            }
+
+            .byline {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .byline-text {
+                text-align: center;
+            }
+
+            .problem-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: block;
+                width: 100%;
+                font-size: 1.125rem;
+                padding: 1.125rem 1.5rem;
+            }
+
+            .cta-button-big {
+                font-size: 1.375rem;
+                padding: 1.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HERO with gradient background -->
+        <div class="hero-section">
+            <h1>5 Reasons Eating Less Is Making You <em>Gain Weight</em></h1>
+
+            <div class="byline">
+                <div class="byline-photo">GV</div>
+                <div class="byline-text">
+                    <p class="name">Green Valley Nutrition</p>
+                    <p class="credentials">Trusted by 47,000+ families</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRO -->
+        <p>The less you eat during the day, the more you eat at night.</p>
+
+        <p>You already know you're not supposed to be standing there.</p>
+        <p>You already know what you ate today and what you swore you wouldn't do tonight.</p>
+        <p>But there you are &mdash; 9pm, kids finally asleep, kitchen quiet &mdash; and the negotiation starts.</p>
+
+        <p>You give yourself five minutes.</p>
+        <p>You say you'll just have one thing.</p>
+        <p>You know how this ends before it starts.</p>
+
+        <p>You wake up the next morning and the first thing you do is run the math.</p>
+        <p>If you're strict today, you can undo last night.</p>
+        <p>Start over. White-knuckle it until dinner.</p>
+        <p>And by 9pm, you're back in the kitchen.</p>
+
+        <p>You've stopped telling people about this.</p>
+        <p>You've learned that "just eat less" is what people say when they don't understand what's actually happening.</p>
+        <p>You've tried eating less.</p>
+        <p>Eating less is what starts the whole thing.</p>
+
+        <p>You could walk past that kitchen.</p>
+        <p>Not because you starved yourself through it.</p>
+        <p>Not because you found a supplement that killed your appetite &mdash; you have a cabinet full of those.</p>
+        <p>Because the thing driving the cravings got quieter, and the negotiation just... stopped.</p>
+
+        <p>Here are 5 reasons eating less is making you gain weight &mdash; and what actually breaks the cycle.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 1 -->
+        <div class="problem-header">
+            <h2><span class="problem-number">Reason 1:</span> The Meal You Skipped Became the Fat You Gained</h2>
+        </div>
+
+        <h3>"Your body didn't see discipline. It saw a famine."</h3>
+
+        <p>You've done this.</p>
+
+        <p>Skipped breakfast. Felt good about it at 10am. Virtuous at noon. Slightly dizzy by 2pm, but still holding.</p>
+
+        <p>By 6pm you're eating whatever's in the fridge, and by 9pm the cravings aren't a preference &mdash; they're a physical force you're actively fighting.</p>
+
+        <p>You assumed that was weakness.</p>
+        <p>It wasn't. It was your body responding to a threat the way it has for 200,000 years.</p>
+
+        <p>The moment you skipped that breakfast, your cortisol spiked. Cortisol is your stress hormone. One of its oldest jobs is responding to food scarcity by telling your body to store fat &mdash; specifically, to convert your next meal into stored energy as efficiently as possible. Because the body that survived a famine was the body that held on to everything.</p>
+
+        <p>Your body doesn't know you're dieting. It knows food stopped coming, and it responded accordingly.</p>
+
+        <p>Here's what that looks like in practice: researchers found that eating the same number of calories in one large meal &mdash; the way most people eat when they're trying to lose weight &mdash; produced significantly more body fat than spreading those same calories across the day. Same calories. Different hormonal response. More fat stored.</p>
+
+        <p>The meal you skipped didn't save you anything. It triggered a chain reaction that made sure your body held onto the next one.</p>
+
+        <p>This is why skipping never works the way it should on paper. It's not a math problem. It's a cortisol problem. And cortisol doesn't respond to good intentions.</p>
+
+        <blockquote><p>You weren't losing control at night. Your body was collecting what it was owed &mdash; with interest &mdash; for every meal you withheld from it that day.</p></blockquote>
+
+        <p>But that cortisol spike doesn't just affect how your body stores fat. It sets up something worse for 9pm.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 2 -->
+        <div class="problem-header">
+            <h2><span class="problem-number">Reason 2:</span> The Less You Ate During the Day, the More Your Body Demanded at Night</h2>
+        </div>
+
+        <h3>"The 9pm pantry isn't a willpower problem. It's a biological invoice."</h3>
+
+        <p>This is the one nobody explains honestly.</p>
+
+        <p>You ate carefully all day. Logged everything. Kept it clean. And at 9pm, something that doesn't quite feel like hunger &mdash; something louder, more urgent, more physical than that &mdash; walked you to the kitchen anyway.</p>
+
+        <p>That wasn't you failing.</p>
+        <p>That was ghrelin &mdash; your hunger hormone &mdash; doing exactly what it's designed to do.</p>
+
+        <p>Ghrelin rises the more you cut back. The deeper the restriction, the louder the signal. The more you try to override it, the harder it pushes back. Your body isn't passive about eating less. It fights you for it &mdash; hormonally, proportionally, every single day.</p>
+
+        <p>And ghrelin isn't alone at 9pm.</p>
+
+        <p>Eating less all day is itself a stress on your body. That stress drains the part of your brain that handles self-control &mdash; not as a character failing, but as a physical fact. By evening, after a full day of holding yourself back, the signal that says "you don't need that" is running on empty. The signal that says "eat something, now" has been building pressure since breakfast.</p>
+
+        <p>So what hits you at 9pm isn't one thing. It's three things landing at once: hunger hormones that have been building all day, a brain that's been working overtime since breakfast, and a cortisol pattern stuck in emergency mode since the meal you skipped that morning.</p>
+
+        <p>You were never losing the battle with yourself.</p>
+        <p>You were losing a battle that was three systems deep &mdash; all of them triggered by the same thing: eating less.</p>
+
+        <p>The pantry isn't the problem.</p>
+        <p>The pantry is just where the invoice gets delivered.</p>
+
+        <blockquote><p>You didn't break at 9pm because you're weak. You broke because your body had been building a case against your restriction all day &mdash; and by 9pm, it had won.</p></blockquote>
+
+        <p>And the next morning, you restricted harder to compensate. Which means the invoice for tomorrow night was already being written before you finished breakfast.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 3 -->
+        <div class="problem-header">
+            <h2><span class="problem-number">Reason 3:</span> Your Metabolism Stopped Counting Calories Two Diets Ago</h2>
+        </div>
+
+        <h3>"The calculator you're using assumes a body you no longer have."</h3>
+
+        <p>You've probably noticed that diets stop working the way they used to.</p>
+
+        <p>The approach that took 15 pounds off in 2019 barely moved the scale in 2022. Same discipline. Same foods. Same effort. A fraction of the result.</p>
+
+        <p>You assumed you were doing something wrong.</p>
+        <p>You weren't. Your body changed the rules.</p>
+
+        <p>When you eat less for long enough, your metabolism slows down to match. This isn't a bug &mdash; it's the system working exactly as designed. Your body is trying to keep you alive on less. It gets better at storing fat, more careful about burning it, and it resets what it thinks normal is &mdash; lower.</p>
+
+        <p>The troubling part: it doesn't fully come back.</p>
+
+        <p>Researchers followed contestants from the Biggest Loser six years after the show ended. Their metabolisms were still suppressed &mdash; burning nearly 500 fewer calories per day than expected for people of their size. Six years later. Their bodies had adjusted to the restriction and never came back to where they started.</p>
+
+        <p>Think of it this way: every diet is a calibration event. Your body reads the inputs, adjusts the settings, and saves the new configuration. When you go back to eating normally, the settings don't automatically reset. You're running on the settings from every diet you've ever finished.</p>
+
+        <p>This is why the math stops working. Any calorie calculator you use assumes a metabolism that hasn't been through what yours has been through. The deficit you think you're creating is smaller than you think &mdash; possibly gone entirely &mdash; because your body already adjusted.</p>
+
+        <p>You're eating less than you ever have. And the scale isn't moving. Both are true at the same time, and neither one is your fault.</p>
+
+        <blockquote><p>The diet didn't stop working because you got lazy. Your body got better at surviving on less &mdash; and "better" means storing more fat from the same food than it ever did before.</p></blockquote>
+
+        <p>But one diet changing your metabolism is only part of the problem. Because each diet didn't start from where the last one left off.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 4 -->
+        <div class="problem-header">
+            <h2><span class="problem-number">Reason 4:</span> Every Diet You Finished Made the Next One Harder to Survive</h2>
+        </div>
+
+        <h3>"Your body kept notes. And what it wrote down was: store more, burn less, resist harder."</h3>
+
+        <p>Every time you diet, your body treats it as a famine event &mdash; and it remembers.</p>
+
+        <p>After the first diet, your body adjusts: slightly slower metabolism, slightly better at storing fat, slightly more sensitive to hunger. When you go back to normal eating, most of that adjusts back. But not all of it. The next diet starts from a baseline that's already shifted.</p>
+
+        <p>After the second diet, the response is more aggressive. After the third, more aggressive still. Your body isn't slow to learn. It gets faster every time.</p>
+
+        <p>Women who've done this more than once already feel this in their bodies &mdash; and the research confirms it. Each diet is associated with more fat gained back and more muscle lost, independent of how many calories were consumed. The weight comes back faster. The shape changes even when the number on the scale is the same.</p>
+
+        <p>You've felt this progression.</p>
+
+        <p>The diet that worked in 2018 stopped working by the third time you tried it. The pounds that used to take six months to lose started coming back in ten weeks. You're doing the same work for less result &mdash; and then less, and then less.</p>
+
+        <p>This isn't age.</p>
+        <p>It's not "everyone's metabolism slows in their 30s."</p>
+        <p>It's the price of every diet your body treated as a threat and prepared harder against the next time.</p>
+
+        <blockquote><p>You weren't failing more. Your body was defending itself better. And it got better at defending because you kept giving it something to defend against.</p></blockquote>
+
+        <p>That alone would be enough to explain why nothing has worked. But there's one more thing happening underneath all of this &mdash; and it's the reason the things in your cabinet couldn't fix it even when they temporarily worked.</p>
+
+        <div class="section-divider"></div>
+
+        <!-- REASON 5 -->
+        <div class="problem-header">
+            <h2><span class="problem-number">Reason 5:</span> After Years of Override, Your Hunger Signals Don't Work Anymore</h2>
+        </div>
+
+        <h3>"You're not hungry. You're not full. The instrument that was supposed to tell you the difference got broken."</h3>
+
+        <p>You know what it feels like to not trust your own body.</p>
+
+        <p>You eat a full dinner and twenty minutes later wonder if you actually ate. You're not sure if what you're feeling at 3pm is hunger, or boredom, or stress &mdash; or just the familiar chaos of a day where you did everything right and then didn't. You've been overriding your body's signals for so long that the signals themselves stopped making sense.</p>
+
+        <p>This isn't in your head. It's in your hormones.</p>
+
+        <p>After months of eating less, two things happen. Your hunger hormone &mdash; ghrelin &mdash; stays high. Your body keeps its foot on the accelerator even after the diet ends. At the same time, your fullness hormone &mdash; leptin &mdash; drops. The signal that says "you've had enough" gets quieter. And your brain becomes less and less responsive to even what little is left.</p>
+
+        <p>Research published in the <em>New England Journal of Medicine</em> tracked people a full year after they'd finished a diet. Ghrelin was still high. Leptin was still low. The hunger-and-fullness system hadn't reset. It was still running the diet's settings twelve months later.</p>
+
+        <p>Dieting already threw your hunger signals off. Time alone didn't fix them.</p>
+
+        <p>This is why the cravings feel like they come from somewhere outside you. Why a normal meal doesn't satisfy the way it should. Why you can't tell if you're actually hungry or if something else is driving you toward food.</p>
+
+        <p>Your hunger signal is like a smoke detector that's been going off so long you've stopped being sure there's a fire. You can't trust the alarm. You can't ignore it either. So you just live in the noise &mdash; and every night at 9pm, the noise gets loud enough to act on.</p>
+
+        <p>Years of trying to override that signal didn't fix it. The signal doesn't respond to willpower. It responds to what broke it.</p>
+
+        <blockquote><p>The cravings you've been fighting for years were never a character flaw. They were a broken signal &mdash; and no amount of willpower repairs a signal. You'd need to address what broke it in the first place.</p></blockquote>
+
+        <p>So what broke it?</p>
+
+        <div class="section-divider"></div>
+
+        <!-- BRIDGE -->
+        <div class="bridge-section">
+            <h2>So If Eating Less Is the Problem &mdash; What's Left?</h2>
+
+            <p>Let's put all five together, because the full picture is worse than any single piece suggests.</p>
+
+            <p>You skipped a meal and your cortisol told your body to store the next one as fat.</p>
+            <p>You ate carefully all day and your body built a hunger debt that came due at 9pm.</p>
+            <p>You dieted long enough that your metabolism adjusted downward and never came back.</p>
+            <p>Every diet taught your body to store more, burn less, resist harder next time.</p>
+            <p>And after years of overriding hunger and fullness signals, you can no longer trust what your body is telling you.</p>
+
+            <p>None of this is about discipline.</p>
+            <p>None of this responds to trying harder.</p>
+            <p>Not one piece of it is fixed by eating less.</p>
+
+            <p>The thing that's been working against you isn't your appetite.</p>
+            <p>It's the stress response running quietly underneath every diet you've ever tried.</p>
+
+            <p>Specifically: cortisol.</p>
+
+            <p>Every diet you tried attacked the appetite &mdash; the symptom.</p>
+            <p>None of them asked why your appetite was screaming.</p>
+
+            <p>Cortisol told your body to store the meals you skipped.</p>
+            <p>Cortisol built the 9pm cravings you couldn't override.</p>
+            <p>Cortisol suppressed your metabolism and kept it suppressed.</p>
+            <p>Cortisol made each diet more effective at storing fat than the last.</p>
+            <p>Cortisol scrambled the hunger and fullness signals you've been trying to interpret for years.</p>
+
+            <p>One system. Running quietly underneath everything.</p>
+
+            <p>The question isn't why eating less didn't work.</p>
+            <p>The question is: what addresses cortisol?</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- EARLY CTA -->
+        <div class="cta-final-section">
+            <p style="font-size: 1.125rem; margin-bottom: 1rem; text-align: center;">47,000 families found something that addresses the cortisol response &mdash; not the appetite it creates. Most of them weren't looking for a weight loss solution.</p>
+
+            <a href="ready.html" class="cta-button-big">See What They Found &rarr;</a>
+
+            <p style="text-align:center; margin-top:1rem; font-size:0.9rem; color:var(--color-text-muted);">(No subscription. 365-day money-back guarantee.)</p>
+        </div>
+
+        <!-- SCIENTIFIC REFERENCES -->
+        <div style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #e8ecf5; font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.7;">
+            <p><strong>SCIENTIFIC REFERENCES:</strong></p>
+            <p>1. Joslin PM, et al. "Obese mice on a high-fat diet with restricted feeding show increased body fat." <em>Journal of Nutritional Biochemistry</em>, 2015.</p>
+            <p>2. Fothergill E, et al. "Persistent metabolic adaptation 6 years after 'The Biggest Loser' competition." <em>Obesity</em>, 2016. doi:10.1002/oby.21538</p>
+            <p>3. Sumithran P, et al. "Long-term persistence of hormonal adaptations to weight loss." <em>New England Journal of Medicine</em>, 2011. doi:10.1056/NEJMoa1105816</p>
+            <p>4. Strohacker K, et al. "Consequences of weight cycling: an increase in disease risk?" <em>Medical Hypotheses</em>, 2018.</p>
+        </div>
+
+        <!-- FOOTER / DISCLAIMER -->
+        <div style="margin-top: 2rem; padding: 2rem 0; border-top: 1px solid #e8ecf5; font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.7;">
+            <p>*This content is for informational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Consult your healthcare provider before starting any new supplement regimen.</p>
+            <p style="margin-top: 1rem;">&copy; 2026 Green Valley Nutrition. All rights reserved.</p>
+        </div>
+
+    </div>
+</body>
+</html>

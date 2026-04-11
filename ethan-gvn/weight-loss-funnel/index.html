@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBD Weight Loss Funnel - Ethan (GVN)</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-navy: #0e1b4d;
+            --accent-navy-mid: #1f2555;
+            --accent-purple: #9D4EDD;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent-navy);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .note {
+            background: #e8ecf5;
+            border: 1px solid #b0bde0;
+            padding: 0.875rem 1rem;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .note strong {
+            color: var(--accent-navy);
+        }
+
+        .divider {
+            border: none;
+            border-top: 2px dashed #ccc;
+            margin: 0.5rem 0;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: var(--border);
+            margin: 2rem 0;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border: var(--border);
+            text-decoration: none;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            box-shadow: -4px 4px 0 0 #383838;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, 2px);
+            box-shadow: -2px 2px 0 0 #383838;
+        }
+
+        .btn:active {
+            transform: translate(-4px, 4px);
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-navy);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f0f2f8;
+            color: var(--text-black);
+        }
+
+        .btn-arrow {
+            flex-shrink: 0;
+            font-size: 1.25rem;
+            line-height: 1;
+            margin-top: 0.125rem;
+            opacity: 0.6;
+        }
+
+        .btn-content {
+            flex: 1;
+        }
+
+        .btn-label {
+            display: block;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .btn-title {
+            display: block;
+        }
+
+        .btn-desc {
+            display: block;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Pending section */
+        .pending-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.875rem;
+            align-items: flex-start;
+        }
+
+        .pending-dot {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: #FFF9C4;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.1rem;
+        }
+
+        .pending-content {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .pending-content strong {
+            color: var(--text-black);
+        }
+
+        .pending-content span {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Pricing table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+        }
+
+        th {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-page);
+            border: 1px solid #ddd;
+            color: var(--text-muted);
+        }
+
+        td {
+            padding: 0.625rem 0.75rem;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .strike { text-decoration: line-through; color: var(--text-muted); font-size: 0.875rem; }
+        .per-bottle { color: var(--text-muted); font-size: 0.8125rem; }
+        .savings { color: #2e7d32; font-size: 0.8125rem; font-weight: 600; }
+
+        /* Avatar section styles */
+        .avatar-card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-card h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin-bottom: 1.25rem;
+        }
+
+        .avatar-card h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--accent-navy);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.375rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .avatar-card p {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .avatar-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .emotion-block {
+            background: #f5f7fb;
+            border-left: 3px solid var(--accent-navy);
+            padding: 0.875rem 1rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .emotion-block strong {
+            display: block;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            color: var(--accent-navy);
+            margin-bottom: 0.375rem;
+        }
+
+        .emotion-block p {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .emotion-block .example {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            margin-top: 0.375rem;
+        }
+
+        .hell-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 0.875rem;
+        }
+
+        @media (max-width: 500px) {
+            .hell-grid { grid-template-columns: 1fr; }
+        }
+
+        .hell-item {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            padding: 0.75rem;
+        }
+
+        .hell-item strong {
+            display: block;
+            font-size: 0.8125rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            color: var(--text-black);
+            margin-bottom: 0.25rem;
+        }
+
+        .hell-item p {
+            font-size: 0.8125rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .heaven-block {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            border-left: 3px solid #2e7d32;
+            padding: 0.875rem 1rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .heaven-block p {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .dont-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .dont-table th {
+            font-size: 0.75rem;
+            background: #fff3e0;
+            color: #bf360c;
+            border-color: #ffcc80;
+        }
+
+        .dont-table td {
+            font-size: 0.8125rem;
+            line-height: 1.4;
+            padding: 0.5rem 0.625rem;
+            vertical-align: top;
+        }
+
+        .dont-table tr:nth-child(even) td {
+            background: #fffde7;
+        }
+
+        .avatar-rationale-block {
+            background: #f5f7fb;
+            border: 1px solid #b0bde0;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .avatar-rationale-block strong {
+            display: block;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.8125rem;
+            color: var(--accent-navy);
+            margin-bottom: 0.375rem;
+        }
+
+        .avatar-rationale-block p {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .rejected-tag {
+            display: inline-block;
+            background: #fce4ec;
+            border: 1px solid #f48fb1;
+            font-size: 0.6875rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            padding: 0.125rem 0.375rem;
+            color: #c62828;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .winner-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            font-size: 0.6875rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            padding: 0.125rem 0.375rem;
+            color: #1b5e20;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .quote-block {
+            border-left: 3px solid #ccc;
+            padding: 0.5rem 0.875rem;
+            margin: 0.75rem 0;
+            font-style: italic;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--accent-navy-mid);
+            text-decoration: none;
+        }
+
+        .footer a:hover { text-decoration: underline; }
+
+        .section-h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ── CARD 1: FUNNEL NAVIGATION ── -->
+    <div class="card">
+        <div class="icon">&#129382;</div>
+        <h1>CBD Weight Loss Funnel</h1>
+        <p class="subtitle">For Ethan &mdash; Green Valley Nutrition &mdash; April 2026</p>
+
+        <div class="note">
+            <strong>Meta-compliant 2-page funnel.</strong> Page 1 is CBD-free &mdash; safe for paid traffic. Page 2 reveals the product, addresses skepticism, and presents the BOGO offer stack. Pricing modeled on 65% GM floor with meaningful per-bottle savings at each tier.
+        </div>
+
+        <p class="section-label" style="margin-bottom:0.75rem;">Click to preview each page</p>
+        <div class="buttons">
+            <a href="page-1.html" class="btn btn-primary">
+                <div class="btn-content">
+                    <span class="btn-label">Page 1 &mdash; Advertorial</span>
+                    <span class="btn-title">5 Reasons Eating Less Is Making You Gain Weight</span>
+                    <span class="btn-desc">CBD-free education page. Cortisol as the villain. Ends with a single CTA to Page 2. Safe for Meta.</span>
+                </div>
+                <span class="btn-arrow">&#8594;</span>
+            </a>
+
+            <a href="page-2.html" class="btn btn-secondary">
+                <div class="btn-content">
+                    <span class="btn-label">Page 2 &mdash; Offer Page</span>
+                    <span class="btn-title">Solution Reveal + BOGO Bundle Stack</span>
+                    <span class="btn-desc">CBD reveal, skepticism disarm, mechanism, testimonials, and 3-tier BOGO pricing. Visitors arrive here ready to buy.</span>
+                </div>
+                <span class="btn-arrow">&#8594;</span>
+            </a>
+
+            <hr class="divider">
+
+            <a href="gvn-weight-loss-funnel.zip" class="btn" style="background:#1a1a1a;color:white;" download>
+                <div class="btn-content">
+                    <span class="btn-label">Download</span>
+                    <span class="btn-title">GVN Weight Loss Funnel (.zip)</span>
+                    <span class="btn-desc">Both HTML files + all product images. Ready to upload to Shopify or GHL.</span>
+                </div>
+                <span class="btn-arrow">&#8595;</span>
+            </a>
+        </div>
+
+        <!-- Pending from Ethan -->
+        <hr class="section-divider">
+        <h2 class="section-h2">Needs From Ethan Before Launch</h2>
+
+        <div class="pending-item">
+            <span class="pending-dot">1</span>
+            <div class="pending-content">
+                <strong>Checkout URLs</strong><br>
+                <span>Shopify checkout links for each BOGO tier. Currently all CTAs link to <code>#</code>.</span>
+            </div>
+        </div>
+
+        <div class="pending-item">
+            <span class="pending-dot">2</span>
+            <div class="pending-content">
+                <strong>Mg per serving</strong><br>
+                <span>From product label &mdash; for the ingredients section on Page 2. (1000mg &divide; 30 servings = ~33mg/dropper, but needs label confirmation.)</span>
+            </div>
+        </div>
+
+        <div class="pending-item">
+            <span class="pending-dot">3</span>
+            <div class="pending-content">
+                <strong>COA link</strong><br>
+                <span>greenvalleynutrition.com/pages/coa was returning 503 during build. Need working URL.</span>
+            </div>
+        </div>
+
+        <div class="pending-item" style="opacity:0.5;">
+            <span class="pending-dot" style="background:#e8f5e9;border-color:#a5d6a7;">&#10003;</span>
+            <div class="pending-content">
+                <strong>Testimonials</strong> &mdash; real GVN verified customers (Anne T., Jordan C., Marcella)<br>
+                <span>Sourced from greenvalleynutrition.com. Stress/anxiety/calm angle. Fits the accidental discovery framing. Optional: swap for any weight-specific customer stories Ethan has.</span>
+            </div>
+        </div>
+
+        <div class="pending-item" style="opacity:0.5;">
+            <span class="pending-dot" style="background:#e8f5e9;border-color:#a5d6a7;">&#10003;</span>
+            <div class="pending-content">
+                <strong>Scientific citation</strong> &mdash; PMC9525229 (Pinto &amp; Martel, 2022) wired inline on Page 2<br>
+                <span>Cited as: "Effects of Cannabidiol on Appetite and Body Weight," <em>Clinical Drug Investigation</em>. 10/11 RCTs showed appetite/weight reduction.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CARD 2: WHO WE'RE TALKING TO ── -->
+    <div class="avatar-card">
+        <div class="section-label">The Avatar</div>
+        <h2>Who This Copy Speaks To</h2>
+
+        <p>Every word in this funnel was written for one specific woman. She is not a demographic. She is a psychology. If you hand this funnel to someone without this context, the copy will look strange &mdash; too honest, too slow, not nearly excited enough. That's intentional. Here's why.</p>
+
+        <h3>Who She Is</h3>
+        <p>She's 32&ndash;42, Millennial. She has tried everything &mdash; calorie counting, keto, intermittent fasting, macro tracking, gym memberships, garcinia cambogia, green tea extract, berberine. Her bathroom cabinet is a museum of failed supplements.</p>
+        <p>She is <strong>not lazy. She is not undisciplined.</strong> She is intelligent, resourceful, and competent in every other area of her life. Weight is the one domain where her effort yields nothing &mdash; and that gap between "I'm a capable person" and "I can't control my own body" is the core wound.</p>
+        <p>She's stopped talking about it. She's past the "I hate myself" stage and into the <strong>"I might be done trying" stage.</strong> She doesn't want another diet. She wants an explanation.</p>
+        <p>Her name: <strong>The Exhausted Complier.</strong></p>
+
+        <h3>Her Three Emotions (what the copy is targeting)</h3>
+
+        <div class="emotion-block">
+            <strong>1. Exhausted Compliance (Primary)</strong>
+            <p>The specific exhaustion of someone who obeyed every rule and the system still failed her. She's not frustrated (too active). She's not resigned (too passive). She's the specific tired of a good student who got an F.</p>
+            <p class="example">"You tracked every calorie. You fasted. You exercised. And every night, the cravings came back." — This lands because it names exactly what she lived.</p>
+        </div>
+
+        <div class="emotion-block">
+            <strong>2. Hijacked Body (Secondary)</strong>
+            <p>The acute feeling that her body is acting against her will. "Food noise" — the term that unlocked everything. The cravings don't feel like desire. They feel like an intrusion. She loses authorship over her own actions.</p>
+            <p class="example">"You're not hungry. You know you're not hungry. But the thought won't stop." — This lands because it names the experience honestly, without spin. No competitor is here.</p>
+        </div>
+
+        <div class="emotion-block">
+            <strong>3. Accidental Relief (Tertiary)</strong>
+            <p>The surprise of receiving a benefit she'd stopped expecting. She wasn't trying to lose weight &mdash; she was addressing stress. The appetite shift arrived as a side effect, not a goal. Emotional signature: gentle amazement.</p>
+            <p class="example">"She started taking CBD for stress. Nobody told her the cravings would get quieter." — This is the brand differentiator. No weight loss brand can credibly claim this.</p>
+        </div>
+
+        <h3>Her Hell Islands (scenes she recognizes instantly)</h3>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.875rem;">These create the scroll-stop in ads. She sees herself in these scenes before she reads a word of copy.</p>
+
+        <div class="hell-grid">
+            <div class="hell-item">
+                <strong>The Supplement Graveyard</strong>
+                <p>Bathroom cabinet full of garcinia, green tea, fat burners, berberine. A museum of hope that became a museum of wasted money. She doesn't throw them away.</p>
+            </div>
+            <div class="hell-item">
+                <strong>The 9pm Pantry</strong>
+                <p>Kids in bed. Long day done. Standing in the kitchen, knowing she shouldn't, knowing she will. The negotiation she loses every single night.</p>
+            </div>
+            <div class="hell-item">
+                <strong>The Morning-After Math</strong>
+                <p>She ate the thing last night. Now she's recalculating, punishing, restricting harder today. "I was doing so well and then I ruined it last night."</p>
+            </div>
+            <div class="hell-item">
+                <strong>The CICO Argument</strong>
+                <p>Someone tells her to "just eat less." She knows it's more complicated. The gap between the simple math and her lived experience feels like proof she's broken.</p>
+            </div>
+            <div class="hell-item">
+                <strong>The "What Am I Doing Wrong" Search</strong>
+                <p>11pm. Incognito. "Why can't I stop eating when I'm not hungry." She's researching her own body like a problem to solve.</p>
+            </div>
+            <div class="hell-item">
+                <strong>The Scale Plateau</strong>
+                <p>Weeks of compliance. The number won't move. The scale as daily judgment on her effort and her worth.</p>
+            </div>
+        </div>
+
+        <h3>Her Heaven Island (what resolution feels like)</h3>
+
+        <div class="heaven-block">
+            <p><strong>It is not transformation. It is explanation + quiet.</strong></p>
+            <p>She doesn't say "I look amazing." She says: "Oh &mdash; so <em>that's</em> why nothing worked. It was cortisol the whole time." She says: "I went through an entire afternoon without thinking about food. I don't remember the last time that happened." She says: "I'm not fighting my cravings anymore. They're just&hellip; quieter."</p>
+            <p>Heaven is: <strong>the war ends.</strong> Not victory &mdash; armistice. Her body and her mind stop fighting each other. The cravings don't disappear. They lose their volume. And she feels like a capable person again, because the evidence now supports that she always was.</p>
+            <p>The resolution emotion is <strong>vindication</strong>: "I was right. It wasn't my fault. And now there's an explanation."</p>
+        </div>
+
+        <h3>What NOT to Write for Her</h3>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.75rem;">These are the patterns that kill conversion with this avatar. Every competitor does these. That's the opening.</p>
+
+        <table class="dont-table">
+            <thead>
+                <tr>
+                    <th>Don't</th>
+                    <th>Why It Fails</th>
+                    <th>Do Instead</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>"Lose X pounds"</td>
+                    <td>She's been promised pounds before. #1 trigger for distrust.</td>
+                    <td>Promise quiet: "What if the cravings got quieter?"</td>
+                </tr>
+                <tr>
+                    <td>"The new you" / transformation</td>
+                    <td>Every failed supplement promised transformation. She's numb.</td>
+                    <td>Explanation: "Here's WHY nothing worked before."</td>
+                </tr>
+                <tr>
+                    <td>Calm, positive, aspirational tone throughout</td>
+                    <td>Every competitor is there. She scrolls past "feel better naturally."</td>
+                    <td>Acknowledge the exhaustion first, then resolve to hope. That arc is the entire differentiator.</td>
+                </tr>
+                <tr>
+                    <td>Enthusiasm / hype / breakthrough energy</td>
+                    <td>She distrusts excitement. She's been burned by "this time it's different."</td>
+                    <td>Quiet, factual, slightly clinical. Matter-of-fact.</td>
+                </tr>
+                <tr>
+                    <td>"Appetite suppressant" framing</td>
+                    <td>That's what every supplement in her graveyard claimed. Instant skepticism.</td>
+                    <td>"Addresses the stress response that's <em>driving</em> the appetite."</td>
+                </tr>
+                <tr>
+                    <td>"Nature's Ozempic" or GLP-1 comparison</td>
+                    <td>Invites unfavorable efficacy comparison. Regulatory risk.</td>
+                    <td>Draft off "food noise" concept without claiming the drug's territory.</td>
+                </tr>
+                <tr>
+                    <td>Shame language ("you should stop stress eating")</td>
+                    <td>She already blames herself. Shame causes withdrawal.</td>
+                    <td>Externalize to biology: "It's not willpower. It's cortisol."</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ── CARD 3: HOW WE LANDED HERE ── -->
+    <div class="avatar-card">
+        <div class="section-label">Research Process</div>
+        <h2>How We Landed on This Avatar</h2>
+
+        <p>This is not a persona we invented. It's a psychology we found by reading thousands of words from real women in the target demographic &mdash; Reddit threads, supplement reviews, stress-eating forums, CBD testimonials &mdash; and then mapped against a formal framework.</p>
+
+        <h3>The Framework: Our Avatar Selection Process</h3>
+        <p>Our process identifies an avatar by answering four questions before writing a word:</p>
+        <ol style="font-size:0.9375rem;padding-left:1.25rem;margin-bottom:0.75rem;">
+            <li style="margin-bottom:0.5rem;"><strong>Which Self?</strong> Actual Self (validate current experience) vs. Ideal Self (aspirational). Wrong self = wrong message.</li>
+            <li style="margin-bottom:0.5rem;"><strong>What tone does she trust?</strong> Aspirational and positive, or honest and tired? The answer determines every word.</li>
+            <li style="margin-bottom:0.5rem;"><strong>What is the primary emotion</strong> underneath the problem? Not the symptom &mdash; the specific felt experience driving the behavior.</li>
+            <li style="margin-bottom:0.5rem;"><strong>What is the competitive whitespace?</strong> Where are competitors NOT? That's where you go.</li>
+        </ol>
+
+        <h3>The Three Avatars We Considered</h3>
+
+        <div class="avatar-rationale-block">
+            <strong>Avatar A: The Exhausted Complier <span class="winner-tag">Selected</span></strong>
+            <p>32&ndash;42, Millennial. Done everything right, scale won't move. Core wound: "I'm a capable person but I can't control my own body." She's moved from "I need willpower" to "something must be wrong with me." She wants an EXPLANATION, not a diet. CBD's cortisol mechanism story bypasses her supplement skepticism because it addresses the root cause, not the symptom.</p>
+        </div>
+
+        <div class="avatar-rationale-block">
+            <strong>Avatar B: The Night Eater <span class="rejected-tag">Not Selected</span></strong>
+            <p>Narrower psychological profile. Strong overlap with Avatar A &mdash; the night eating is a symptom of the same stress response. But "night eater" as a primary identity risks shame spiral and narrows creative. Avatar A captures this woman <em>and</em> the broader population.</p>
+        </div>
+
+        <div class="avatar-rationale-block">
+            <strong>Avatar C: The PCOS / Hormonal Woman <span class="rejected-tag">Not Selected</span></strong>
+            <p>Real and underserved, but requires specific medical claims CBD cannot support. Invites GLP-1 / metformin comparison territory. Higher regulatory risk. Better served by a different funnel built specifically for hormonal weight loss &mdash; this funnel's cortisol framing doesn't map cleanly onto PCOS physiology.</p>
+        </div>
+
+        <h3>Why Avatar A Won: The Competitive Whitespace Argument</h3>
+        <p>Every CBD weight loss competitor &mdash; and most mainstream weight loss brands &mdash; runs aspirational, positive copy:</p>
+        <ul style="font-size:0.9375rem;padding-left:1.25rem;margin-bottom:0.75rem;">
+            <li style="margin-bottom:0.375rem;">Sunmed Trim: "Clinically proven" / achievement energy</li>
+            <li style="margin-bottom:0.375rem;">Diamond CBD: "Control food noise" / calm and upbeat</li>
+            <li style="margin-bottom:0.375rem;">Rare Cannabinoid: "Uplift" / premium positivity</li>
+            <li style="margin-bottom:0.375rem;">Everyone else: "Feel better, lose weight, the new you"</li>
+        </ul>
+        <p>She has been hearing that tone for years. It doesn't stop her scroll &mdash; she's been sold that energy by every product in her supplement graveyard.</p>
+
+        <div class="quote-block">
+            "The creative that opens with 'You tracked every calorie. You fasted. You exercised. And every night, the cravings came back.' has zero competition in the ad auction."
+        </div>
+
+        <p>Honest, tired, validation-first copy is <strong>completely empty</strong> in this category. Nobody is acknowledging her exhaustion before selling to her. Nobody is saying "you were right, it wasn't your discipline." That's why this copy reads differently than everything else she's seen. That's the entire bet.</p>
+
+        <h3>The Self Classification: Actual Self (not Ideal Self)</h3>
+        <p>Most supplement advertising speaks to the Ideal Self: "the new you," "who you want to become," "unlock your potential." This avatar has been sold Ideal Self messaging by every product in her supplement graveyard. She is numb to it.</p>
+        <p>This funnel speaks to her <strong>Actual Self</strong> &mdash; the one who did everything right and got nothing. The message is confirmational, not aspirational: <em>"You did everything right. The problem was never your discipline."</em></p>
+        <p>That shift alone is the differentiation. Same product. Same mechanism. Different self. The copy feels like vindication instead of another pitch.</p>
+
+        <h3>The Accidental Discovery Framing</h3>
+        <p>The funnel does not claim CBD causes weight loss. That claim is both legally risky and strategically weak &mdash; every failed supplement in her graveyard made exactly that claim. Instead, the funnel positions the appetite shift as an <em>unsolicited discovery by real women</em> who took CBD for stress.</p>
+        <p>This bypasses her supplement skepticism entirely because it's not a weight loss product making a weight loss claim. It's a stress product with a side effect she didn't expect. The mechanism (cortisol drives appetite) is scientifically grounded and explained. She's a researcher &mdash; she will verify it. That's why the citations are there.</p>
+    </div>
+
+    <p class="footer">Built by <a href="https://theprompted.com" target="_blank">The Prompted</a></p>
+</div>
+
+</body>
+</html>
