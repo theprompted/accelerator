@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make the Safer Switch | Strawesome Glass Straws</title>
+    <meta name="description" content="Handmade glass straws from Michigan since 2009. Lifetime warranty. Free shipping $49+. The last straw you'll ever need to buy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Strawesome Brand Colors */
+            --color-primary: #FF6700;
+            --color-primary-light: #FF8533;
+            --color-primary-dark: #E55A00;
+            --color-bg-cream: #FDF9F7;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #FAF7F5;
+            --color-text-primary: #2E2A39;
+            --color-text-secondary: #4A4654;
+            --color-text-muted: #6B6777;
+            --color-accent-teal: #1A7D65;
+            --color-accent-teal-light: #E8F5F1;
+            --color-success: #1A7D65;
+            --color-gold: #F5A623;
+            --color-danger: #D64545;
+
+            /* Typography */
+            --font-primary: 'Poppins', Arial, sans-serif;
+
+            /* Shadows & Radius */
+            --shadow-card: 0 4px 20px rgba(46, 42, 57, 0.08);
+            --shadow-card-hover: 0 8px 30px rgba(46, 42, 57, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-pill: 50px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background: var(--color-bg-cream);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Sticky Promo Banner */
+        .promo-banner {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--color-text-primary) 0%, #3D3850 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        .promo-banner span {
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--color-bg-white) 0%, var(--color-bg-cream) 100%);
+            padding: 3rem 1.5rem 2.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+        }
+
+        .hero h1 em {
+            color: var(--color-primary);
+            font-style: normal;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Trust Strip */
+        .trust-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            border-top: 2px solid var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 103, 0, 0.25);
+        }
+
+        .trust-item-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            line-height: 1;
+        }
+
+        .trust-item-label {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Credibility Grid */
+        .credibility-section {
+            background: var(--color-accent-teal);
+            padding: 2.5rem 1.5rem;
+            color: white;
+        }
+
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .credibility-card {
+            text-align: center;
+        }
+
+        .credibility-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--color-gold);
+        }
+
+        .credibility-item {
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        /* Who This Is For */
+        .who-section {
+            padding: 3rem 1.5rem;
+            background: var(--color-bg-white);
+        }
+
+        .who-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--color-bg-cream);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .who-check {
+            color: var(--color-success);
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .who-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.0625rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Collections Section */
+        .collections-section {
+            background: var(--color-bg-light);
+            padding: 2.5rem 1.5rem 3rem;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .collection-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-card .description {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .collection-table {
+            width: 100%;
+            font-size: 0.875rem;
+        }
+
+        .collection-table tr {
+            border-bottom: 1px solid rgba(46, 42, 57, 0.1);
+        }
+
+        .collection-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .collection-table td {
+            padding: 0.625rem 0;
+        }
+
+        .collection-table td:first-child {
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .collection-table td:last-child {
+            text-align: right;
+            color: var(--color-success);
+            font-weight: 600;
+        }
+
+        .collection-note {
+            margin-top: 1rem;
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Bundle Section */
+        .bundles-section {
+            background: var(--color-bg-white);
+            padding: 3rem 1.5rem;
+        }
+
+        .bundles-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .bundles-intro p {
+            margin-bottom: 0.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+
+        .bundle-card {
+            background: var(--color-bg-white);
+            border: 2px solid #E0E0E0;
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bundle-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .bundle-card.featured {
+            border-color: var(--color-primary);
+            border-width: 3px;
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.375rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .bundle-badge.best-value {
+            background: linear-gradient(135deg, var(--color-success) 0%, #156B55 100%);
+        }
+
+        .bundle-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .bundle-tagline {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .bundle-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-savings {
+            font-size: 0.8125rem;
+            color: var(--color-success);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .bundle-contents {
+            text-align: left;
+            background: var(--color-bg-cream);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.8125rem;
+        }
+
+        .bundle-contents p {
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bundle-contents li {
+            padding: 0.25rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            color: var(--color-text-secondary);
+        }
+
+        .bundle-contents li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .bundle-best-for {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .bundle-cta {
+            display: block;
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 0.9375rem;
+            font-weight: 700;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
+        }
+
+        .bundle-cta:hover {
+            background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 103, 0, 0.4);
+        }
+
+        /* Additional Bundles Row */
+        .bundles-secondary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: var(--color-bg-light);
+            padding: 3rem 1.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            font-size: 0.875rem;
+        }
+
+        .comparison-table thead {
+            background: var(--color-text-primary);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1rem 0.75rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            background: var(--color-bg-white);
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background: var(--color-bg-light);
+        }
+
+        .comparison-table .strawesome-col {
+            background: rgba(26, 125, 101, 0.1) !important;
+            font-weight: 600;
+            color: var(--color-success);
+        }
+
+        .comparison-table .check {
+            color: var(--color-success);
+            font-size: 1.125rem;
+        }
+
+        .comparison-table .cross {
+            color: var(--color-danger);
+            font-size: 1.125rem;
+        }
+
+        .comparison-table .partial {
+            color: var(--color-gold);
+            font-size: 0.8125rem;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--color-accent-teal-light) 0%, #D4EDE6 100%);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .guarantee-badge {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, var(--color-success) 0%, #156B55 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 6px 20px rgba(26, 125, 101, 0.4);
+            border: 4px solid var(--color-gold);
+        }
+
+        .guarantee-badge .text {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .guarantee-badge .main {
+            font-size: 1.125rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .guarantee-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-section p {
+            max-width: 600px;
+            margin: 0 auto 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        .guarantee-highlight {
+            font-weight: 600;
+            color: var(--color-success);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            background: var(--color-bg-white);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-bg-cream);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--color-bg-light);
+            padding: 3rem 1.5rem;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .testimonial-stars {
+            color: var(--color-gold);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .testimonial-quote {
+            font-size: 0.9375rem;
+            font-style: italic;
+            color: var(--color-text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Final Push */
+        .final-push {
+            background: linear-gradient(135deg, var(--color-text-primary) 0%, #3D3850 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .final-push h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-push p {
+            max-width: 600px;
+            margin: 0 auto 0.75rem;
+            opacity: 0.9;
+        }
+
+        .final-push strong {
+            color: var(--color-gold);
+        }
+
+        /* Final CTA */
+        .final-cta-section {
+            background: var(--color-bg-white);
+            padding: 3rem 1.5rem;
+        }
+
+        .final-cta-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .final-bundles-summary {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .summary-table th {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .summary-table th:nth-child(2) {
+            text-align: center;
+        }
+
+        .summary-table th:last-child {
+            text-align: right;
+        }
+
+        .summary-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: var(--color-bg-white);
+        }
+
+        .summary-table td:first-child {
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .summary-table td:nth-child(2) {
+            text-align: center;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .summary-table td:last-child {
+            text-align: right;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        .summary-table tr:hover td {
+            background: var(--color-bg-cream);
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 103, 0, 0.35);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 103, 0, 0.45);
+        }
+
+        .cta-button.secondary {
+            background: var(--color-bg-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            box-shadow: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Final Trust Badges */
+        .final-trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(46, 42, 57, 0.1);
+        }
+
+        .trust-badge {
+            text-align: center;
+        }
+
+        .trust-badge-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--color-accent-teal);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.375rem;
+            color: white;
+        }
+
+        .trust-badge-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-text-primary);
+            color: rgba(255,255,255,0.85);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer strong {
+            color: white;
+        }
+
+        .footer .tagline {
+            font-style: italic;
+            color: var(--color-primary-light);
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bundles-grid { grid-template-columns: repeat(2, 1fr); }
+            .bundles-secondary { grid-template-columns: 1fr; max-width: 350px; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+
+            .trust-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .credibility-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .who-grid { grid-template-columns: 1fr; }
+            .collections-grid { grid-template-columns: 1fr; }
+            .bundles-grid { grid-template-columns: 1fr; max-width: 350px; margin: 0 auto 2rem; }
+
+            .bundle-card.featured { order: -1; }
+
+            .comparison-table { font-size: 0.75rem; }
+            .comparison-table th,
+            .comparison-table td { padding: 0.5rem 0.375rem; }
+
+            .faq-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .final-cta-buttons { flex-direction: column; }
+            .cta-button { width: 100%; text-align: center; }
+
+            .final-trust-badges { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY PROMO BANNER -->
+    <div class="promo-banner">
+        <span>SPECIAL OFFER:</span> Free USA Shipping on Orders $49+ | Lifetime Warranty Included
+    </div>
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Make the <em>Safer Switch</em> to Strawesome</h1>
+            <p class="hero-subtitle">Handmade in Michigan since 2009. Backed by a lifetime warranty. Trusted by thousands who finally stopped settling for metal.</p>
+
+            <div class="trust-strip">
+                <div class="trust-item">
+                    <div class="trust-item-icon">&#128197;</div>
+                    <div class="trust-item-number">16</div>
+                    <div class="trust-item-label">Years Pioneering Glass</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">&#128200;</div>
+                    <div class="trust-item-number">1.5%</div>
+                    <div class="trust-item-label">Replacement Rate</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">&#128274;</div>
+                    <div class="trust-item-number">Lifetime</div>
+                    <div class="trust-item-label">Warranty</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">&#127482;&#127480;</div>
+                    <div class="trust-item-number">USA</div>
+                    <div class="trust-item-label">Handmade in Michigan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: CREDIBILITY GRID -->
+    <section class="credibility-section">
+        <div class="container">
+            <div class="credibility-grid">
+                <div class="credibility-card">
+                    <div class="credibility-title">The Original</div>
+                    <p class="credibility-item">Longest-running glass straw maker in the world</p>
+                    <p class="credibility-item">Family-owned since 2009</p>
+                    <p class="credibility-item">Handmade by Daedra in Michigan</p>
+                </div>
+                <div class="credibility-card">
+                    <div class="credibility-title">The Proof</div>
+                    <p class="credibility-item">1.5% replacement rate over 16 years</p>
+                    <p class="credibility-item">Thousands of 5-star reviews</p>
+                    <p class="credibility-item">98.5% of straws still in use</p>
+                </div>
+                <div class="credibility-card">
+                    <div class="credibility-title">The Promise</div>
+                    <p class="credibility-item">Lifetime warranty on every straw</p>
+                    <p class="credibility-item">Free shipping on orders $49+</p>
+                    <p class="credibility-item">If it breaks, we replace it</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: WHO THIS IS FOR -->
+    <section class="who-section">
+        <div class="container">
+            <h2>Strawesome Is Perfect For You If...</h2>
+            <div class="who-grid">
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You switched to metal straws but hate the metallic taste</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You're tired of wondering if your straw is actually clean</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You want a reusable straw that works with hot AND cold drinks</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You've chipped a tooth (or worried about it) with metal</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You own a Stanley, YETI, Hydro Flask, or Owala and want a better straw</div>
+                </div>
+                <div class="who-item">
+                    <div class="who-check">&#10003;</div>
+                    <div class="who-text">You care about sustainability but refuse to sacrifice safety</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: COLLECTIONS -->
+    <section class="collections-section">
+        <div class="section-header">
+            <h2>Choose Your Style</h2>
+            <p>We make glass straws for every drink and every tumbler.</p>
+        </div>
+        <div class="container">
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <h3>Plain Glass Straws</h3>
+                    <p class="description">For everyday sipping, smoothies, boba, and everything in between.</p>
+                    <table class="collection-table">
+                        <tr>
+                            <td>Skinny Glass Straws</td>
+                            <td>From $7</td>
+                        </tr>
+                        <tr>
+                            <td>Regular Glass Straws</td>
+                            <td>From $8</td>
+                        </tr>
+                        <tr>
+                            <td>Smoothie Glass Straws</td>
+                            <td>From $11</td>
+                        </tr>
+                        <tr>
+                            <td>Boba Tea Glass Straws</td>
+                            <td>From $12</td>
+                        </tr>
+                    </table>
+                    <p class="collection-note">Available in multiple lengths, widths, and colors.</p>
+                </div>
+                <div class="collection-card">
+                    <h3>Tumbler Replacement Straws</h3>
+                    <p class="description">Replace the plastic straw that came with your favorite tumbler.</p>
+                    <table class="collection-table">
+                        <tr>
+                            <td>Stanley Replacement</td>
+                            <td>See sizes</td>
+                        </tr>
+                        <tr>
+                            <td>YETI Replacement</td>
+                            <td>See sizes</td>
+                        </tr>
+                        <tr>
+                            <td>Hydro Flask Replacement</td>
+                            <td>See sizes</td>
+                        </tr>
+                        <tr>
+                            <td>Owala Replacement</td>
+                            <td>See sizes</td>
+                        </tr>
+                    </table>
+                    <p class="collection-note">Glass straws sized specifically for your tumbler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BUNDLES -->
+    <section class="bundles-section" id="bundles">
+        <div class="section-header">
+            <h2>Stock Up and Save</h2>
+            <p>The more you order, the more you save. Plus: Free shipping on all orders $49+.</p>
+        </div>
+        <div class="container">
+            <div class="bundles-grid">
+                <!-- Starter Set -->
+                <div class="bundle-card">
+                    <div class="bundle-name">Starter Set</div>
+                    <div class="bundle-tagline">Perfect for Trying Glass</div>
+                    <div class="bundle-price">$22</div>
+                    <div class="bundle-savings">&nbsp;</div>
+                    <div class="bundle-contents">
+                        <p>What's Included:</p>
+                        <ul>
+                            <li>2 Regular Glass Straws (your choice of color)</li>
+                            <li>1 Cleaning Brush</li>
+                        </ul>
+                    </div>
+                    <p class="bundle-best-for">Best for first-time switchers who want to test the difference.</p>
+                    <a href="#" class="bundle-cta">Add to Cart</a>
+                </div>
+
+                <!-- Everyday Set - Featured -->
+                <div class="bundle-card featured">
+                    <div class="bundle-badge">Most Popular</div>
+                    <div class="bundle-name">Everyday Set</div>
+                    <div class="bundle-tagline">For the Daily Drinker</div>
+                    <div class="bundle-price">$45</div>
+                    <div class="bundle-savings">Save $12 vs. buying separately</div>
+                    <div class="bundle-contents">
+                        <p>What's Included:</p>
+                        <ul>
+                            <li>2 Skinny Glass Straws (for water/juice)</li>
+                            <li>2 Regular Glass Straws (for coffee/everyday)</li>
+                            <li>1 Smoothie Straw (for thick drinks)</li>
+                            <li>1 Cleaning Brush</li>
+                            <li>1 Travel Pouch</li>
+                        </ul>
+                    </div>
+                    <p class="bundle-best-for">Best for daily drinkers who want options for any beverage.</p>
+                    <a href="#" class="bundle-cta">Add to Cart</a>
+                </div>
+
+                <!-- Ultimate Collection -->
+                <div class="bundle-card">
+                    <div class="bundle-badge best-value">Best Value</div>
+                    <div class="bundle-name">Ultimate Collection</div>
+                    <div class="bundle-tagline">The Whole Lineup</div>
+                    <div class="bundle-price">$115</div>
+                    <div class="bundle-savings">Save $45 vs. buying separately</div>
+                    <div class="bundle-contents">
+                        <p>What's Included:</p>
+                        <ul>
+                            <li>2 Skinny + 4 Regular + 2 Smoothie + 2 Boba</li>
+                            <li>2 Stanley-Compatible Straws</li>
+                            <li>2 Cleaning Brushes + 2 Travel Pouches</li>
+                            <li>1 Cotton Storage Bag</li>
+                        </ul>
+                    </div>
+                    <p class="bundle-best-for">Best for gift-givers or anyone who never wants to think about straws again.</p>
+                    <a href="#" class="bundle-cta">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: COMPARISON TABLE -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <h2>Why Strawesome vs. The Alternatives</h2>
+        </div>
+        <div class="container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="strawesome-col">Strawesome</th>
+                        <th>Metal Straws</th>
+                        <th>Amazon Glass</th>
+                        <th>Silicone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Temperature Safe</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> Burns/Freezes</td>
+                        <td><span class="partial">Maybe</span></td>
+                        <td><span class="check">&#10003;</span> Yes</td>
+                    </tr>
+                    <tr>
+                        <td>See-Through</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> No</td>
+                        <td><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> No</td>
+                    </tr>
+                    <tr>
+                        <td>Tooth Safe</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> Chips enamel</td>
+                        <td><span class="partial">Maybe</span></td>
+                        <td><span class="check">&#10003;</span> Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Non-Reactive</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> Leaches metals</td>
+                        <td><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> Absorbs flavors</td>
+                    </tr>
+                    <tr>
+                        <td>Handmade USA</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> No</td>
+                        <td><span class="cross">&#10007;</span> No</td>
+                        <td><span class="cross">&#10007;</span> No</td>
+                    </tr>
+                    <tr>
+                        <td>Lifetime Warranty</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td><span class="cross">&#10007;</span> Rarely</td>
+                        <td><span class="cross">&#10007;</span> Never</td>
+                        <td><span class="partial">Sometimes</span></td>
+                    </tr>
+                    <tr>
+                        <td>16 Years Proven</td>
+                        <td class="strawesome-col"><span class="check">&#10003;</span> Yes</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 7: GUARANTEE -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-badge">
+                <div class="text">Backed By</div>
+                <div class="main">Lifetime<br>Warranty</div>
+            </div>
+            <h2>Our Lifetime Warranty Is Real</h2>
+            <p><strong>If your Strawesome straw ever breaks — for any reason — we replace it.</strong></p>
+            <p>No time limits. No fine print. No hassle.</p>
+            <p>We've been making glass straws for 16 years with a 1.5% replacement rate.</p>
+            <p>We know our glass. We trust our process. And we want you to trust it too.</p>
+            <p class="guarantee-highlight">This isn't a marketing gimmick. It's our track record.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 8: FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How do I clean my glass straw?</div>
+                    <div class="faq-answer">Every Strawesome set comes with a cleaning brush designed for your straw. Quick rinse after use keeps things fresh. For deeper cleaning, run it through the dishwasher — our straws are fully dishwasher safe. The best part: you can SEE when it's clean.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will it really not break?</div>
+                    <div class="faq-answer">Our glass is properly annealed — slowly cooled in a kiln to remove internal stress. This is what cheap glass skips. The result: a 1.5% replacement rate over 16 years. And if yours ever does break, our lifetime warranty covers it.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use it with hot drinks?</div>
+                    <div class="faq-answer">Yes. Glass doesn't conduct heat like metal. Your lips touch the glass, not the temperature of your drink. Hot coffee, iced tea, room temperature water — all comfortable.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if it doesn't fit my tumbler?</div>
+                    <div class="faq-answer">We make straws specifically sized for Stanley, YETI, Hydro Flask, and Owala tumblers. Check our Tumbler Replacement collection for your exact fit. If you're not sure, reach out — we're happy to help you find the right size.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How is this different from cheap glass straws on Amazon?</div>
+                    <div class="faq-answer">Three things: (1) Annealing — we properly anneal every straw in a kiln. Cheap glass skips this step. (2) Handmade — Daedra makes every straw by hand in Michigan. (3) Lifetime Warranty — we back every straw forever. Amazon glass comes with no warranty.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you ship internationally?</div>
+                    <div class="faq-answer">Yes. We ship worldwide. Free USA shipping on orders $49+. International shipping rates calculated at checkout.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Customers Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"They somehow make my water seem fresher and colder."</div>
+                    <div class="testimonial-author">— Verified Customer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"Thicker than Amazon ones so these are the ones I trust."</div>
+                    <div class="testimonial-author">— Verified Customer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"We are hooked — donating all of our copper and silicone straws and going all glass!"</div>
+                    <div class="testimonial-author">— David</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"I can finally have the Stanley cup I want without the plastic."</div>
+                    <div class="testimonial-author">— Sarah</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"Thank you for saving the turtles. I have been buying your products for years for everyone I know."</div>
+                    <div class="testimonial-author">— Jennifer</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote">"The glass straws are easy to clean and definitely feel better on your teeth than metal straws do."</div>
+                    <div class="testimonial-author">— David</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FINAL PUSH -->
+    <section class="final-push">
+        <div class="container">
+            <h2>Ready to Make the Safer Switch?</h2>
+            <p>You've seen the research. Metal straws have problems nobody talks about.</p>
+            <p>Glass — when made right — solves every single one.</p>
+            <p>Strawesome has been making glass straws the right way since 2009.</p>
+            <p>Handmade in Michigan. Properly annealed. Backed by a lifetime warranty. Trusted by thousands.</p>
+            <p><strong>The last straw you'll ever need to buy.</strong></p>
+        </div>
+    </section>
+
+    <!-- SECTION 11: FINAL CTA -->
+    <section class="final-cta-section">
+        <div class="container">
+            <h2>Choose Your Set</h2>
+
+            <div class="final-bundles-summary">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Set</th>
+                            <th>Price</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Starter Set</td>
+                            <td>$22</td>
+                            <td>Trying glass for the first time</td>
+                        </tr>
+                        <tr>
+                            <td>Everyday Set</td>
+                            <td>$45</td>
+                            <td>Daily drinkers who want variety</td>
+                        </tr>
+                        <tr>
+                            <td>Ultimate Collection</td>
+                            <td>$115</td>
+                            <td>Never think about straws again</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="final-cta-buttons">
+                <a href="#bundles" class="cta-button">Shop Bundles</a>
+                <a href="#" class="cta-button secondary">Shop All Straws</a>
+                <a href="#" class="cta-button secondary">Shop Tumbler Straws</a>
+            </div>
+
+            <div class="final-trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">&#128274;</div>
+                    <div class="trust-badge-text">Lifetime<br>Warranty</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">&#128666;</div>
+                    <div class="trust-badge-text">Free Shipping<br>$49+</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">&#128274;</div>
+                    <div class="trust-badge-text">Secure<br>Checkout</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon">&#127482;&#127480;</div>
+                    <div class="trust-badge-text">Made in<br>USA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p><strong>Strawesome</strong></p>
+        <p>Family-owned since 2009. The longest-running dedicated glass straw maker in the world.</p>
+        <p>Handcrafted in Michigan. Lifetime warranty on every straw.</p>
+        <p class="tagline">"Reusable Should Mean Forever"</p>
+    </footer>
+
+</body>
+</html>

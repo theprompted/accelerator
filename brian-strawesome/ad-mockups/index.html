@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strawesome Ads - Facebook Feed Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F8F8F7;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .feed-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .grid-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-row {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            background: #FF6700;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+        }
+
+        .page-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .page-header p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .draft-label {
+            background: #1877f2;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .draft-label .angle {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .draft-label.violation-draft {
+            background: #dc2626;
+        }
+
+        .fb-post {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-header {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1A7D65 0%, #0d4d3d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .page-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: #050505;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .verified {
+            width: 12px;
+            height: 12px;
+            background: #1877f2;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+        }
+
+        .sponsored {
+            font-size: 11px;
+            color: #65676b;
+        }
+
+        .more-btn {
+            color: #65676b;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .post-text {
+            padding: 0 12px 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #050505;
+            white-space: pre-line;
+        }
+
+        .post-text.collapsed {
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-text.collapsed::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, white);
+        }
+
+        .post-text.expanded {
+            max-height: none;
+        }
+
+        .post-text.expanded::after {
+            display: none;
+        }
+
+        .see-more-btn {
+            padding: 0 12px 10px;
+            color: #65676b;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .see-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+            background: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .placeholder-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #65676b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .placeholder-image .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .link-preview {
+            background: #f0f2f5;
+            padding: 10px 12px;
+            border-top: 1px solid #dddfe2;
+        }
+
+        .link-preview .domain {
+            font-size: 11px;
+            color: #65676b;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .link-preview .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #050505;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .link-preview .description {
+            font-size: 12px;
+            color: #65676b;
+            line-height: 1.3;
+        }
+
+        .cta-row {
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #dddfe2;
+            margin-top: auto;
+        }
+
+        .cta-button {
+            background: #1877f2;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .reactions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #65676b;
+        }
+
+        .section-header {
+            background: #000;
+            padding: 12px 20px;
+            margin: 0 0 20px;
+            border-radius: 4px;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: #FF6700;
+            border: 2px solid #000;
+            box-shadow: -.25rem .25rem 0 0 #383838;
+        }
+
+        .word-count {
+            font-size: 10px;
+            color: #65676b;
+            padding: 2px 12px;
+            text-align: right;
+        }
+
+        .page-footer {
+            background: transparent;
+            border-top: 2px solid #e5e5e5;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .page-footer .powered-by {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .page-footer .powered-by strong {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Strawesome Ad Drafts</h1>
+            <p>3 belief-contradiction ads for Facebook | Leads to: "5 Reasons You Shouldn't Use Metal Straws"</p>
+        </div>
+
+        <!-- SECTION -->
+        <div class="section-header">
+            BELIEF CONTRADICTIONS — Session 10 Approved Violations
+        </div>
+
+        <div class="grid-row">
+            <!-- Draft 1: Glass straws are safer than metal -->
+            <div class="grid-item">
+                <div class="draft-label violation-draft">
+                    Draft 1 · Flip Safety
+                    <span class="angle">Contradict: "Metal is safer"</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">S</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Strawesome
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌍</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-1">Glass straws are safer than metal.
+
+Not what you expected to hear.
+
+You've been told the opposite your whole life.
+
+Glass is fragile. Glass breaks. Glass is a liability.
+
+Metal is solid. Metal is sturdy. Metal is the responsible choice.
+
+But here's what nobody mentions:
+
+Metal conducts heat. Burns your lips on hot coffee. Freezes them on iced drinks.
+
+Metal harbors bacteria in seams you can't see and can't clean.
+
+Metal chips teeth. Starbucks recalled 2.5 million metal straws after children were lacerated.
+
+Metal leaches chromium and nickel into acidic drinks. That metallic taste isn't neutral.
+
+In 2018, a woman in England fell while holding a jar with a metal straw.
+
+The straw didn't bend. Didn't give.
+
+It pierced her brain.
+
+The coroner's warning: metal straws should not be used with lids that hold them in place.
+
+"Unbreakable" was never the same as "safe."
+
+The danger was never the glass.
+
+The danger was the rigid, opaque tube you've been putting in your mouth because it "can't break."
+
+5 reasons you shouldn't use metal straws: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(1)">See more</div>
+                    <div class="post-image">
+                        <img src="ad-1.png" alt="Strawesome Ad 1 - Glass straws are safer than metal">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">strawesome.com</div>
+                        <div class="title">5 Reasons You Shouldn't Use Metal Straws</div>
+                        <div class="description">What the metal straw industry won't tell you</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.4K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 2: Metal straws are a dangerous choice -->
+            <div class="grid-item">
+                <div class="draft-label violation-draft">
+                    Draft 2 · Attack Decision
+                    <span class="angle">Contradict: "I made the safe choice"</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">S</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Strawesome
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌍</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-2">Metal straws are a dangerous choice.
+
+Not because they're poorly made.
+
+Because "unbreakable" was never the same as "safe."
+
+You picked metal because it seemed solid.
+
+Sturdy. The opposite of fragile.
+
+That made sense.
+
+But solid means rigid. And rigid means no give on impact.
+
+Think about highway guardrails.
+
+They flex when a car hits them. The guardrail bends — absorbing energy.
+
+The car takes damage. The passengers survive.
+
+Now imagine a concrete wall.
+
+Same impact. Zero flex.
+
+All the energy goes straight into the car.
+
+Metal straws are concrete walls for your mouth.
+
+One accidental bite. Chipped tooth.
+
+One fall while drinking. Puncture wound.
+
+One toddler running with a cup. The straw doesn't move.
+
+In 2016, Starbucks recalled 2.5 million metal straws after reports of children with mouth lacerations.
+
+In 2018, a UK coroner issued a warning after a woman died from a metal straw piercing her brain.
+
+"Unbreakable" sounds like a feature.
+
+Until you realize it just means something else breaks instead.
+
+The safest materials aren't the hardest.
+
+They're the ones that fail safely.
+
+5 reasons you shouldn't use metal straws: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(2)">See more</div>
+                    <div class="post-image">
+                        <img src="ad-2.png" alt="Strawesome Ad 2 - Metal straws are a dangerous choice">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">strawesome.com</div>
+                        <div class="title">5 Reasons You Shouldn't Use Metal Straws</div>
+                        <div class="description">The "safe" choice isn't what you think</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 3.1K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft 3: Glass straws are stronger than metal straws -->
+            <div class="grid-item">
+                <div class="draft-label violation-draft">
+                    Draft 3 · Flip Strength
+                    <span class="angle">Contradict: "Metal is stronger"</span>
+                </div>
+                <div class="fb-post">
+                    <div class="post-header">
+                        <div class="avatar">S</div>
+                        <div class="post-meta">
+                            <div class="page-name">
+                                Strawesome
+                                <span class="verified">✓</span>
+                            </div>
+                            <div class="sponsored">Sponsored · 🌍</div>
+                        </div>
+                        <div class="more-btn">···</div>
+                    </div>
+                    <div class="post-text collapsed" id="text-3">Glass straws are stronger than metal straws.
+
+That sounds backwards.
+
+You've been taught that metal is the strong choice and glass is the fragile one.
+
+But strength isn't about surviving a single impact.
+
+Strength is about lasting.
+
+Metal corrodes over time.
+
+Metal develops micro-scratches that harbor bacteria.
+
+Metal leaches chromium and nickel into your acidic drinks — coffee, juice, smoothies.
+
+Metal conducts temperature extremes that stress the material with every use.
+
+That "indestructible" straw is degrading every time you drink through it.
+
+Glass doesn't corrode.
+
+Glass doesn't scratch.
+
+Glass doesn't leach.
+
+Glass doesn't conduct.
+
+Glass stays exactly the same on day one thousand as it was on day one.
+
+Metal straws survive drops.
+
+Glass straws survive decades.
+
+One is impact strength.
+
+The other is real strength.
+
+The kind that means you buy once and never buy again.
+
+5 reasons you shouldn't use metal straws: {url}</div>
+                    <div class="see-more-btn" onclick="toggleText(3)">See more</div>
+                    <div class="post-image">
+                        <img src="ad-3.png" alt="Strawesome Ad 3 - Glass straws are stronger than metal">
+                    </div>
+                    <div class="link-preview">
+                        <div class="domain">strawesome.com</div>
+                        <div class="title">5 Reasons You Shouldn't Use Metal Straws</div>
+                        <div class="description">Real strength isn't what you think</div>
+                    </div>
+                    <div class="cta-row">
+                        <div class="reactions">👍 ❤️ 2.7K</div>
+                        <button class="cta-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Footer -->
+        <div class="page-footer">
+            <p>Updated: January 9, 2026 | Session 10 - Belief Contradiction Drafts</p>
+            <p>Landing Page: <a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/" target="_blank">5 Reasons You Shouldn't Use Metal Straws</a></p>
+            <p class="powered-by">Powered by <strong>PromptedOS</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleText(id) {
+            const text = document.getElementById('text-' + id);
+            const btn = text.nextElementSibling;
+            if (text.classList.contains('collapsed')) {
+                text.classList.remove('collapsed');
+                text.classList.add('expanded');
+                btn.textContent = 'See less';
+            } else {
+                text.classList.remove('expanded');
+                text.classList.add('collapsed');
+                btn.textContent = 'See more';
+            }
+        }
+    </script>
+</body>
+</html>

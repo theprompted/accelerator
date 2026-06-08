@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 23: Collections Grid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FAF7F5;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #2E2A39;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.0625rem;
+            color: #6B6777;
+            margin-bottom: 2rem;
+        }
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .collection-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(46, 42, 57, 0.08);
+        }
+        .collection-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #FF6700;
+            margin-bottom: 0.5rem;
+        }
+        .collection-card .description {
+            font-size: 0.9375rem;
+            color: #6B6777;
+            margin-bottom: 1.5rem;
+        }
+        .collection-table {
+            width: 100%;
+            font-size: 0.875rem;
+        }
+        .collection-table tr {
+            border-bottom: 1px solid rgba(46, 42, 57, 0.1);
+        }
+        .collection-table tr:last-child { border-bottom: none; }
+        .collection-table td {
+            padding: 0.625rem 0;
+        }
+        .collection-table td:first-child {
+            font-weight: 500;
+            color: #4A4654;
+        }
+        .collection-table td:last-child {
+            text-align: right;
+            color: #1A7D65;
+            font-weight: 600;
+        }
+        @media (max-width: 640px) {
+            .collections-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Choose Your Style</h2>
+    <p class="subtitle">We make glass straws for every drink and every tumbler.</p>
+    <div class="collections-grid">
+        <div class="collection-card">
+            <h3>Plain Glass Straws</h3>
+            <p class="description">For everyday sipping, smoothies, boba, and everything in between.</p>
+            <table class="collection-table">
+                <tr><td>Skinny Glass Straws</td><td>From $7</td></tr>
+                <tr><td>Regular Glass Straws</td><td>From $8</td></tr>
+                <tr><td>Smoothie Glass Straws</td><td>From $11</td></tr>
+                <tr><td>Boba Tea Glass Straws</td><td>From $12</td></tr>
+            </table>
+        </div>
+        <div class="collection-card">
+            <h3>Tumbler Replacement Straws</h3>
+            <p class="description">Replace the plastic straw that came with your favorite tumbler.</p>
+            <table class="collection-table">
+                <tr><td>Stanley Replacement</td><td>See sizes</td></tr>
+                <tr><td>YETI Replacement</td><td>See sizes</td></tr>
+                <tr><td>Hydro Flask Replacement</td><td>See sizes</td></tr>
+                <tr><td>Owala Replacement</td><td>See sizes</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

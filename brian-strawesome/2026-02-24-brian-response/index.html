@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Steps for Brian - Week of Feb 23 2026 | The Prompted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F8F8F7;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+        }
+
+        .header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+
+        .header .label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .header p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            box-shadow: -0.31rem 0.31rem 0 0 #383838;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 2px solid black;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-header.yellow {
+            background: #FFDE00;
+        }
+
+        .card-header.green {
+            background: #C8E6C9;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .step-num {
+            width: 2rem;
+            height: 2rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .card-header.yellow .step-num,
+        .card-header.green .step-num {
+            background: white;
+        }
+
+        .callout {
+            padding: 1.25rem;
+            border: 2px solid black;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .callout-yellow {
+            background: #FFFDE7;
+        }
+
+        .callout-green {
+            background: #E8F5E9;
+        }
+
+        .callout-gray {
+            background: #FAFAFA;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #0066cc;
+        }
+
+        .url-display {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            background: #1a1a1a;
+            color: #53DBC9;
+            padding: 0.75rem 1rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .url-display a {
+            color: #53DBC9;
+            text-decoration: underline;
+        }
+
+        .url-display a:hover {
+            color: #7FFFEF;
+        }
+
+        .url-display .open-link {
+            background: #FFDE00;
+            color: #1a1a1a;
+            padding: 0.35rem 0.75rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .url-display .open-link:hover {
+            background: #FFE94D;
+        }
+
+        .section-label {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid black;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .asset-card {
+            background: #FAFAFA;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .asset-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .asset-title {
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .asset-description {
+            font-size: 0.875rem;
+            color: #444;
+            margin-bottom: 0.75rem;
+        }
+
+        .task-item {
+            background: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .task-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-num {
+            width: 1.75rem;
+            height: 1.75rem;
+            background: #FFDE00;
+            border: 2px solid black;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SF Mono', monospace;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-detail {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .card-body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="label">The Prompted &rarr; Brian</span>
+            <h1>Next Steps for Brian</h1>
+            <p>Week of Feb 23, 2026</p>
+        </div>
+
+        <!-- Funnel Flow Diagram -->
+        <img src="funnel-flow.png" alt="Funnel flow: Ad → Presell → Offer → PDP/Collection" style="width: 100%; max-width: 850px; display: block; margin: 0 auto 2rem; border-radius: 8px;">
+
+        <!-- SECTION 1: 7-Day Plan -->
+        <div class="card">
+            <div class="card-header green">
+                <div class="step-num">1</div>
+                <h2>7-Day Plan</h2>
+            </div>
+            <div class="card-body">
+                <div class="task-item">
+                    <div class="task-num">1</div>
+                    <div class="task-content">
+                        <div class="task-title">Review and refine the presell page</div>
+                        <div class="task-detail">Go through section by section. Adjust the copy so it matches your voice and what you actually want to say about glass straws. The structure stays — the words become yours. You can use a Google Doc for this, or paste the copy into Shopify Pages and edit there.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">2</div>
+                    <div class="task-content">
+                        <div class="task-title">Review and refine the offer page</div>
+                        <div class="task-detail">Same process. Make sure product names, prices, bundle details, and testimonials reflect what you're actually selling.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">3</div>
+                    <div class="task-content">
+                        <div class="task-title">Build both pages in Shopify</div>
+                        <div class="task-detail">Once the copy is finalized, recreate them in Shopify Pages. Connect CTAs to your collection pages or PDPs.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">4</div>
+                    <div class="task-content">
+                        <div class="task-title">Ensure your Meta Pixel is set up on Shopify</div>
+                        <div class="task-detail"></div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">5</div>
+                    <div class="task-content">
+                        <div class="task-title">I'll create 20 ads for you</div>
+                        <div class="task-detail">While you're building in Shopify, I'll generate 20 ads you can load into your ad account over the next 2-3 weeks.</div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-num">6</div>
+                    <div class="task-content">
+                        <div class="task-title">Launch using Risk-Reduced Bidding</div>
+                        <div class="task-detail">Once pages are live and ads are loaded, follow this methodology: <a href="https://www.skool.com/the-prompted/classroom/ccbc460d?md=024b3eca65aa4778ba91f2634756549d" target="_blank">Risk-Reduced Bidding →</a></div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem; margin-bottom: 0;">Send me a message when the pages are live — I'll review before you turn on ads.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Your Pages -->
+        <div class="card">
+            <div class="card-header yellow">
+                <div class="step-num">2</div>
+                <h2>Your Pages</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="asset-card">
+                    <div class="asset-title">Presell Page (Draft)</div>
+                    <div class="asset-description">Structure and flow are done. Review the copy and refine it so it sounds like you.</div>
+                    <div class="url-display"><span>theprompted.github.io/.../presell/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/presell/" target="_blank" class="open-link">Open →</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Offer Page (Draft)</div>
+                    <div class="asset-description">Products, bundles, comparison, testimonials. Update to match your actual products and pricing.</div>
+                    <div class="url-display"><span>theprompted.github.io/.../offer/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel/offer/" target="_blank" class="open-link">Open →</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Ad Mockups</div>
+                    <div class="asset-description">Currently 3 ad concepts for you to see the ad type. I can draft 17 more so you have diversity.</div>
+                    <div class="url-display"><span>theprompted.github.io/.../ad-mockups/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/ad-mockups/" target="_blank" class="open-link">Open →</a></div>
+                </div>
+
+                <div class="asset-card">
+                    <div class="asset-title">Funnel Breakdown</div>
+                    <div class="asset-description">Section-by-section analysis — reference when you want to understand why each part works.</div>
+                    <div class="url-display"><span>theprompted.github.io/.../funnel-breakdown/</span><a href="https://theprompted.github.io/accelerator/brian-strawesome/funnel-breakdown/" target="_blank" class="open-link">Open →</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Answers -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">3</div>
+                <h2>Your Questions</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Are we setting up landing pages that aren't linked on the website?</strong><br>
+                Nah. It's usually hosted on a subdomain using a landing page builder. But so you can get up and running faster, you can use Shopify Pages to build it out, and it still lives on your website.</p>
+
+                <p><strong>Once that proves viable, we put up additional for different audiences?</strong><br>
+                Yup. My recommendation is to pop up 2-4 funnels per month, and to test 200 ads per funnel.</p>
+
+                <p style="margin-bottom: 0;"><strong>Does any of this eventually get to the website and product pages?</strong><br>
+                Yeah — in your case you can build directly in Shopify Pages. And the CTA buttons on the offer page can go to your PDPs or Collection Pages. And from another angle, what you learn from testing these funnels can be transferred over to the PDPs and non-funnel pages — copy that's working, headlines that are working, images that are working. So it "makes it over" in more than one way.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Coming Soon -->
+        <div class="card">
+            <div class="card-header">
+                <div class="step-num">4</div>
+                <h2>Coming Soon</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Landing page builder in PromptedOS (~2-3 weeks)</strong><br>
+                Alfred and I are building a tool that hosts pages on your domain automatically. No Shopify Pages needed. Once it's live, getting pages up will be snappy and easy, along with editing them.</p>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>The Prompted &bull; February 2026</p>
+        </div>
+    </div>
+</body>
+</html>

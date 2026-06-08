@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 22: Who This Is For</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2E2A39;
+            margin-bottom: 2rem;
+        }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: #FDF9F7;
+            border-radius: 8px;
+            border-left: 4px solid #FF6700;
+        }
+        .who-check {
+            color: #1A7D65;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        .who-text {
+            font-size: 0.9375rem;
+            color: #4A4654;
+        }
+        @media (max-width: 640px) {
+            .who-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Strawesome Is Perfect For You If...</h2>
+    <div class="who-grid">
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You switched to metal straws but hate the metallic taste</div>
+        </div>
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You're tired of wondering if your straw is actually clean</div>
+        </div>
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You want a reusable straw that works with hot AND cold drinks</div>
+        </div>
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You've chipped a tooth (or worried about it) with metal</div>
+        </div>
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You own a Stanley, YETI, Hydro Flask, or Owala and want a better straw</div>
+        </div>
+        <div class="who-item">
+            <div class="who-check">✓</div>
+            <div class="who-text">You care about sustainability but refuse to sacrifice safety</div>
+        </div>
+    </div>
+</body>
+</html>
