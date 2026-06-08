@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 25: Comparison Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FAF7F5;
+            padding: 2.5rem 1rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(46, 42, 57, 0.08);
+            font-size: 0.8125rem;
+        }
+        .comparison-table thead {
+            background: #2E2A39;
+            color: white;
+        }
+        .comparison-table th {
+            padding: 0.875rem 0.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .comparison-table th:first-child { text-align: left; padding-left: 1rem; }
+        .comparison-table td {
+            padding: 0.625rem 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            background: #FFFFFF;
+        }
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #4A4654;
+            padding-left: 1rem;
+        }
+        .comparison-table tr:nth-child(even) td { background: #FAF7F5; }
+        .comparison-table .strawesome-col {
+            background: rgba(26, 125, 101, 0.1) !important;
+            font-weight: 600;
+            color: #1A7D65;
+        }
+        .check { color: #1A7D65; font-size: 1rem; }
+        .cross { color: #D64545; font-size: 1rem; }
+        .partial { color: #F5A623; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+    <h2>Why Strawesome vs. The Alternatives</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="strawesome-col">Strawesome</th>
+                <th>Metal Straws</th>
+                <th>Amazon Glass</th>
+                <th>Silicone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Temperature Safe</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> Burns/Freezes</td>
+                <td><span class="partial">Maybe</span></td>
+                <td><span class="check">✓</span> Yes</td>
+            </tr>
+            <tr>
+                <td>See-Through</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> No</td>
+                <td><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> No</td>
+            </tr>
+            <tr>
+                <td>Tooth Safe</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> Chips enamel</td>
+                <td><span class="partial">Maybe</span></td>
+                <td><span class="check">✓</span> Yes</td>
+            </tr>
+            <tr>
+                <td>Non-Reactive</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> Leaches metals</td>
+                <td><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> Absorbs flavors</td>
+            </tr>
+            <tr>
+                <td>Handmade USA</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> No</td>
+                <td><span class="cross">✗</span> No</td>
+                <td><span class="cross">✗</span> No</td>
+            </tr>
+            <tr>
+                <td>Lifetime Warranty</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td><span class="cross">✗</span> Rarely</td>
+                <td><span class="cross">✗</span> Never</td>
+                <td><span class="partial">Sometimes</span></td>
+            </tr>
+            <tr>
+                <td>16 Years Proven</td>
+                <td class="strawesome-col"><span class="check">✓</span> Yes</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

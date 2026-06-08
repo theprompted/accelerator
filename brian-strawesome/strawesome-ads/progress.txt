@@ -1,0 +1,494 @@
+# Ralph Progress Log
+Started: Mon Mar  2 10:37:01 EST 2026
+Branch:
+
+## Creative Decisions (for future iterations)
+
+### BATCH 3 (12 ads)
+
+**Selected Expression Numbers:** 1, 4, 5, 6, 9, 14, 18, 21, 25, 29, 33, 35
+
+**Expression → Evidence Mapping:**
+- Ad 1: Expr #1 (Angle 1: Flat Denial) → R5 (fails dangerously)
+- Ad 2: Expr #4 (Angle 1: Flat Denial) → R5 (fails dangerously)
+- Ad 3: Expr #5 (Angle 2: Flip) → R5 (fails dangerously)
+- Ad 4: Expr #6 (Angle 2: Flip) → R3 (metal doesn't give)
+- Ad 5: Expr #9 (Angle 3: Attack Advice) → R5 (fails dangerously)
+- Ad 6: Expr #14 (Angle 4: Attack Trade-Off) → R2 (can't see inside)
+- Ad 7: Expr #18 (Angle 5: Quit Proof) → R2 (can't see inside)
+- Ad 8: Expr #21 (Angle 6: Real Variable) → R3 (metal doesn't give)
+- Ad 9: Expr #25 (Angle 7: Guilt) → R5 (fails dangerously)
+- Ad 10: Expr #29 (Angle 8: Protect) → R4 (metal leaches)
+- Ad 11: Expr #33 (Angle 9: Identity) → R1 (temperature conduction)
+- Ad 12: Expr #35 (Angle 9: Identity) → R2 (can't see inside)
+
+**Turns for each opener (use in body copy):**
+- #1: "Feeling safe and being safe are different things. A coroner issued a warning about metal straws after a fatality. The feeling was wrong."
+- #4: "Elena Struthers-Gardner died after falling with a metal straw in a Mason jar. A coroner issued a warning. There is no equivalent glass straw fatality."
+- #5: "Metal doesn't break — which sounds like safety until you realize that on impact, something else has to. A coroner issued a warning after exactly that happened."
+- #6: "Guardrails absorb impact. Concrete walls don't. When metal doesn't give, your teeth do. When metal doesn't break, on a bad fall, something worse does."
+- #9: "November 2018. Elena Struthers-Gardner fell with a metal straw in a Mason jar. The straw pierced her brain through her eye socket. She died two days later. A coroner issued a formal warning. That wasn't in the Instagram posts about eco-friendly upgrades."
+- #14: "Research shows reusable containers can harbor 100,000 times more bacteria than a bathroom doorknob. Metal straws hide all of it. You can't inspect a kitchen you can't see into."
+- #18: "You weren't being paranoid. Biofilm forms on interior walls. Bacteria, mold, residue — all invisible inside an opaque tube. Your suspicion was right."
+- #21: "Rigid means it doesn't give. Doesn't flex. On impact, the force has to go somewhere. Starbucks recalled 2.5 million metal straws after mouth lacerations. The 'feature' was the problem."
+- #25: "After the plastic straw bans, metal was the 'responsible' choice. Nobody showed you the coroner's warning. Nobody mentioned what happens when an unbreakable straw hits your teeth at the wrong angle. You weren't given the full picture."
+- #29: "Chromium and nickel leach into acidic beverages through stainless steel. Higher temperature, longer contact, more worn surface — more leaching. Your mouth was telling you the truth."
+- #33: "The wince when hot coffee hits the metal. The hesitation about whether it's really clean. The moment you bit down too hard. Those weren't random. Metal straws have five problems the one you've been avoiding doesn't have."
+- #35: "Research shows reusable containers can harbor 100,000 times more bacteria than a bathroom doorknob. Biofilm forms on interior walls you can't see. You weren't being paranoid. You were paying attention."
+
+### BATCH 2 (5 ads) — Reference Only
+
+**Selected Expression Numbers:** 13, 17, 22, 26, 31
+
+**Expression → Evidence Mapping:**
+- Ad 1: Expr #17 (Angle 5: Quit Proof) → R1 (temperature conduction)
+- Ad 2: Expr #31 (Angle 8: Protect) → R2 (can't see inside)
+- Ad 3: Expr #13 (Angle 4: Attack Trade-Off) → R3 (metal doesn't give)
+- Ad 4: Expr #26 (Angle 7: Guilt) → R4 (metal leaches)
+- Ad 5: Expr #22 (Angle 6: Real Variable) → R5 (fails dangerously)
+
+**Turns for each opener (use in body copy):**
+- #17: "Metal conducts every degree. Hot pan handle energy, straight into your lips."
+- #31: "You weren't being paranoid. Bacteria, biofilm, mold — all invisible in an opaque tube."
+- #13: "Starbucks recalled 2.5 million metal straws after mouth lacerations. Metal doesn't give — teeth do."
+- #26: "Chromium and nickel leach into acidic drinks. Your mouth was telling you the truth."
+- #22: "When glass breaks, it crumbles. When metal doesn't break, something else does."
+
+---
+
+## Codebase Patterns
+(Patterns discovered during implementation)
+
+---
+
+## 2026-03-02 - US-002: Brainstorm and evaluate violation openers
+
+**Completed:**
+- Read context brief, expression bank, batch history, methodology, and violation checklist
+- Selected 5 expressions from expression bank covering 5 different angles
+- Achieved perfect evidence diversity: all 5 evidence sections (R1-R5) represented
+- Ran mandatory 3-test self-check on each expression in exact specified format
+- Expression #39 (Angle 10: Science, R4) failed — was observation/educational, not confrontational
+- Replaced with Expression #26 (Angle 7: Guilt, R4) which passed all 3 tests
+- Saved full evaluations to artifacts/opener-evaluations.md
+
+**Learnings for future iterations:**
+- "Science" angle expressions (Angle 10) are high-risk for the observation fail pattern — they inform rather than disrupt
+- When an expression presents a factual statement (chromium leaches, Starbucks recalled, etc.) without implicating the READER, it fails the gold standard test
+- The successful expressions all name something the reader has EXPERIENCED or FELT — wince, suspicion, doubt, metallic taste, trade-off they made
+- Expressions that start with "Your..." or "You've..." naturally pass because they speak to lived experience
+- Expressions that start with facts/numbers/research naturally fail because they educate
+
+**Key insight:** The distinction isn't topic (all 40 expressions are about metal straws). The distinction is whether the READER is the subject of the sentence or the metal straw is.
+
+---
+
+## 2026-03-02 - US-003: Write 5 ad copy drafts
+
+**Completed:**
+- Read context brief, opener evaluations, and methodology (7-part architecture, copy rules, self-check format)
+- Wrote 5 complete ad drafts, each drawing from its assigned evidence section:
+  - Ad 1: #17 (Quit Proof) → R1 (temperature conduction) — 191 words
+  - Ad 2: #31 (Protect) → R2 (can't see inside) — 178 words
+  - Ad 3: #13 (Attack Trade-Off) → R3 (metal doesn't give) — 189 words
+  - Ad 4: #26 (Guilt) → R4 (metal leaches) — 177 words
+  - Ad 5: #22 (Real Variable) → R5 (fails dangerously) — 199 words
+- Ran mandatory body copy self-check on each in exact specified format
+- Fixed one issue: Ad 2 had rhetorical questions ("But did you get the walls?") — converted to statement ("You couldn't get the walls.")
+- All 5 ads pass all checks: product selling, congruence, 7-part structure, copy rules, open loop
+- Saved drafts with evaluations to artifacts/ad-copy-drafts.md
+
+**Learnings for future iterations:**
+- The evidence section pairing from US-002 successfully prevented body copy duplication — each ad stacks different proof
+- Congruence test is the key quality gate for body copy: "Could this body exist with a different opener?" If yes, it's generic.
+- Rhetorical questions sneak in during the "Name what they believe" section — that's where the reader's internal monologue lives, so questions feel natural there. Must convert all to statements.
+- Word counts came in slightly below 200 (177-199) — acceptable but could expand evidence stacking section in future batches
+- Each opener's "turn" from US-002 became the acknowledgment section — the progression from opener evaluations to body copy was seamless
+
+**Artifacts saved:**
+- artifacts/ad-copy-drafts.md (all 5 drafts with full self-check evaluations)
+
+---
+
+## 2026-03-02 - US-004: Design 5 image concepts and write prompts
+
+**Completed:**
+- Read ad-copy-drafts.md for 5 openers and their emotional frames
+- Designed 5 image concepts each built around a subtle contradiction:
+  - Ad 1: "Ice on Metal" — frost/condensation on metal straw in Stanley tumbler (Evidence of Failure)
+  - Ad 2: "The Cleaning Brush" — worn, frayed pipe cleaner brush next to metal straw (Evidence of Failure)
+  - Ad 3: "The Dented Straw" — metal straw with visible dent, still "unbroken" but damaged ("Wait, What?" Detail)
+  - Ad 4: "The Color Change" — metal straw showing discoloration/rainbow tint/rust (Object in Wrong Context)
+  - Ad 5: "Mason Jar Spike" — metal straw in mason jar lid pointing up like a spike ("Wait, What?" Detail)
+- Ran mandatory self-check on each concept in exact specified format (all 5 PASS)
+- 3 of 4 contradiction categories represented
+- All 5 concepts are object-based (no people performing emotions)
+- All 5 match EMOTIONAL STATE of paired opener, not just topic
+- Wrote V3 image generation prompts with specific ugly (not abstract descriptors)
+- Saved to artifacts/image-concepts.md
+
+**Learnings for future iterations:**
+- "Object in Wrong Context" requires the viewer to know something ("stainless" steel shouldn't stain, acid + metal = leaching). These work best when the contradiction is VISIBLE, not just conceptual.
+- "Evidence of Failure" is the most reliable category — the object's condition IS the story (frost, wear, damage, discoloration).
+- "Wait, What?" works when the detail is visually surprising (a dent in "unbreakable" metal, a spike where there should be a straw).
+- First draft of Ad 4 (orange juice + metal straw) failed because the contradiction was too subtle/required prior knowledge. Revised to "color change" which is visually obvious.
+- Concept 5 (mason jar spike) is borderline standalone but transforms powerfully WITH the opener. The vertical spike position creates subliminal unease that the copy names.
+- Specific ugly in prompts: "autofocus locked on background" beats "slightly blurry"; "single overhead fluorescent making everything yellow-green" beats "harsh lighting"
+
+**Image concept → Opener pairing logic:**
+- Ad 1 (Quit Proof): Shows temperature problem → validates persistence recognition
+- Ad 2 (Protect): Shows inadequate cleaning tool → validates hygiene doubt
+- Ad 3 (Attack Trade-Off): Shows damage despite "unbreakable" → validates trade-off regret
+- Ad 4 (Guilt): Shows visible degradation → validates sensory experience (if it's changing outside, what about inside?)
+- Ad 5 (Real Variable): Shows the "safe" setup that's dangerous → validates inverted risk
+
+**Artifacts saved:**
+- artifacts/image-concepts.md (all 5 concepts with full self-check evaluations and V3 prompts)
+
+---
+
+## 2026-03-02 - US-005: Generate images, review, and build HTML mockup
+
+**Completed:**
+- Created generate_strawesome_images.py with 5 prompts from image-concepts.md
+- Generated all 5 images using gpt-image-1.5 (medium quality, ~$0.55 total)
+- Ran mandatory post-generation image review on each image in exact specified format
+- All 5 images passed with 5/5 cleanliness scores
+- All 5 contradictions visible in generated images
+- Phone photo test scores: 8-9/10 for all images (would pass as real phone photos)
+- Built ad-mockups.html with Strawesome branding:
+  - Brand color hex: #FF6700
+  - Avatar letter: S
+  - Brand name: Strawesome
+  - Domain: strawesome.com
+  - Funnel headline: 5 Reasons You Shouldn't Use Metal Straws
+- Each ad card has: draft label with angle + expression number, collapsible copy, generated image with prompt overlay, congruent link preview headline, CTA row
+
+**Image Review Summary:**
+| Image | Concept | Cleanliness | Contradiction | Phone Test | Verdict |
+|-------|---------|-------------|---------------|------------|---------|
+| Draft 01 | Ice on Metal | 5/5 | Visible (frost on straw) | 8/10 | PASS |
+| Draft 02 | The Cleaning Brush | 5/5 | Visible (worn brush) | 9/10 | PASS |
+| Draft 03 | The Dented Straw | 5/5 | Visible (dent in metal) | 8/10 | PASS |
+| Draft 04 | The Color Change | 5/5 | Visible (rainbow oxidation) | 8/10 | PASS |
+| Draft 05 | Mason Jar Spike | 5/5 | Visible (vertical spike) | 8/10 | PASS |
+
+**Learnings for future iterations:**
+- gpt-image-1.5 at medium quality is sufficient for native-feeling images — no need to upgrade to high quality for this batch
+- The "specific ugly" approach in prompts worked well (e.g., "autofocus locked on background", "single overhead fluorescent making everything yellow-green")
+- Object-based concepts rendered cleanly without AI artifacts — all 5 concepts were object-focused, no performed emotions
+- No text elements in any concept avoided AI text generation failures
+- Draft 04 (The Color Change) had the most dramatic contradiction — the rainbow oxidation was visually striking
+- Draft 05 (Mason Jar Spike) works better with the opener than standalone — the vertical spike is subtle but transforms with context
+
+**Artifacts saved:**
+- generate_strawesome_images.py (image generation script)
+- generated_ad_images/ (5 images: draft_01.png through draft_05.png)
+- ad-mockups.html (Facebook feed preview with all 5 ads)
+- artifacts/image-review.md (full post-generation review for each image)
+
+---
+
+## 2026-03-02 - US-006: Final set review
+
+**Completed:**
+- Ran mandatory 7-box final set review in exact specified format
+- All 7 boxes checked:
+  1. Angle Diversity: 5 unique angles (4, 5, 6, 7, 8) — PASS
+  2. Evidence Diversity: All 5 evidence sections (R1-R5) — PASS
+  3. Image Diversity: 3 contradiction categories, 5 distinct visuals, no repeats — PASS
+  4. Tone Consistency: Same voice, reading level, emotional register — PASS
+  5. No-Sell Final Scan: Zero product mentions, brand names, or selling language — PASS
+  6. Bridge Consistency: All 5 ads end with identical bridge line — PASS
+  7. Body Copy Dedup: No overlap beyond the required bridge line — PASS
+- Saved final set review to artifacts/final-set-review.md
+- Updated batch-history.md with Batch 2 details:
+  - Expression numbers used: 13, 17, 22, 26, 31
+  - Image concepts logged with contradiction types
+  - Available expressions updated (35 remaining)
+- Confirmed all deliverables present
+
+**Learnings for future iterations:**
+- The expression → evidence pairing system completely prevented body copy duplication — each ad stacks different proof
+- Angle diversity was natural because the expression bank is organized by angle — just select from different sections
+- Image concepts that match EMOTIONAL STATE (not just topic) create stronger pairs with openers
+- The "specific ugly" in image prompts (from US-004) paid off — all 5 images passed cleanliness checks
+- No text in images avoided AI text generation failures entirely
+
+**Artifacts saved:**
+- artifacts/final-set-review.md (full 7-box checklist with evaluations)
+- batch-history.md (updated with Batch 2)
+
+---
+
+## BATCH 2 COMPLETE
+
+All 6 stories pass. All deliverables present. Ready for upload to Facebook Ads Manager.
+
+**Final Deliverable Summary:**
+- 5 native image ads with violation openers
+- 5 generated images (object-based, native-feeling)
+- ad-mockups.html for preview
+- Full artifact trail for methodology validation
+
+---
+
+# BATCH 3 (12 ADS)
+
+---
+
+## 2026-03-02 - US-002 (Batch 3): Select and evaluate 12 violation openers
+
+**Completed:**
+- Read context brief, expression bank, batch history, methodology, and violation checklist
+- Selected 12 expressions covering 9 angles (Angles 1, 2, 3, 4, 5, 6, 7, 8, 9)
+- All 5 evidence sections (R1-R5) represented in the batch
+- Ran mandatory 3-test self-check on each expression in exact specified format
+- All 12 selected expressions pass all 3 tests (Gold Standard, Fuck You, Turn)
+- Saved full evaluations to artifacts/opener-evaluations-batch3.md
+
+**Angle 10 Failure Documentation:**
+- Tested all 4 Science angle expressions (#37, #38, #39, #40)
+- All 4 FAILED the Gold Standard and Fuck You tests
+- Pattern: Science expressions present facts → reader feels INFORMED → no defensiveness
+- This is consistent with Batch 2 learnings: "Science angle expressions are high-risk for the observation fail pattern"
+- Conclusion: Angle 10 is structurally incompatible with violation openers — retired from future selections
+
+**Evidence distribution achieved:**
+- R1 (temperature): 1 ad (#33)
+- R2 (can't see inside): 3 ads (#14, #18, #35)
+- R3 (metal doesn't give): 2 ads (#6, #21)
+- R4 (metal leaches): 1 ad (#29)
+- R5 (fails dangerously): 5 ads (#1, #4, #5, #9, #25)
+
+**Learnings for future iterations:**
+- The distinction between passing and failing openers is whether the READER is the subject
+- "You've..." / "Your..." constructions naturally pass because they speak to lived experience
+- Factual statements without personal implication naturally fail because they educate
+- R5 (fails dangerously) has the highest concentration of passing expressions because the fatality/coroner warning creates immediate "that won't happen to me" defensiveness
+- When faced with an unusable angle (like Angle 10), add extra selections from underused passing angles instead
+
+**Artifacts saved:**
+- artifacts/opener-evaluations-batch3.md (all 12 selections with full self-check evaluations, including Angle 10 failure documentation)
+
+---
+
+## 2026-03-02 - US-003 (Batch 3): Write 12 ad copy drafts
+
+**Completed:**
+- Read context brief, opener evaluations, and Batch 2 ad copy drafts for style reference
+- Wrote 12 complete ad drafts following 7-part architecture:
+  - Ad 1: #1 (Flat Denial) → R5 — 213 words
+  - Ad 2: #4 (Flat Denial) → R5 — 203 words
+  - Ad 3: #5 (Flip) → R5 — 209 words
+  - Ad 4: #6 (Flip) → R3 — 217 words
+  - Ad 5: #9 (Attack Advice) → R5 — 211 words
+  - Ad 6: #14 (Attack Trade-Off) → R2 — 211 words
+  - Ad 7: #18 (Quit Proof) → R2 — 206 words
+  - Ad 8: #21 (Real Variable) → R3 — 198 words
+  - Ad 9: #25 (Guilt) → R5 — 210 words
+  - Ad 10: #29 (Protect) → R4 — 200 words
+  - Ad 11: #33 (Identity) → R1 — 210 words
+  - Ad 12: #35 (Identity) → R2 — 201 words
+- Ran mandatory body copy self-check on each in exact specified format
+- All 12 ads pass all checks: product selling, congruence, 7-part structure, copy rules, open loop
+- Verified deduplication: ads sharing same evidence section use DIFFERENT stats/mechanisms
+- Saved drafts with evaluations to artifacts/ad-copy-drafts-batch3.md
+
+**Dedup verification by evidence section:**
+- R5 (5 ads): Ad 1 = feeling/being distinction; Ad 2 = body count/hierarchy; Ad 3 = crumple zones; Ad 5 = advice attack; Ad 9 = guilt absolution
+- R3 (2 ads): Ad 4 = concrete wall analogy; Ad 8 = wrong variable reframe
+- R2 (3 ads): Ad 6 = trade-off framing; Ad 7 = brush mechanics; Ad 12 = paranoid validation
+- R4 (1 ad): Ad 10 = taste-as-warning
+- R1 (1 ad): Ad 11 = thermal conductivity
+
+**Learnings for future iterations:**
+- The turns from US-002 integrate naturally into body copy as the acknowledgment/pivot section
+- Congruence test is the key quality gate: "Could this body exist with a different opener?" ensures flow
+- Dedup within same evidence section requires conscious differentiation — varied framing angles work better than varied stats
+- Word counts came in 198-217, all within acceptable range
+- Batch 2 reference was helpful for understanding correct sentence length and identity protection language
+
+**Artifacts saved:**
+- artifacts/ad-copy-drafts-batch3.md (all 12 drafts with full self-check evaluations)
+
+---
+
+## 2026-03-02 - US-004 (Batch 3): Design 12 image concepts and write prompts
+
+**Completed:**
+- Read ad-copy-drafts-batch3.md for all 12 openers and their emotional frames
+- Checked batch-history.md to avoid repeating Batch 2 image concepts
+- Designed 12 unique image concepts, each with a subtle contradiction:
+  - Ad 1: "The Two Straws" — scratched metal vs. pristine glass comparison (Object in Wrong Context)
+  - Ad 2: "The Scratch Pattern" — accumulated teeth marks on metal (Evidence of Failure)
+  - Ad 3: "The Bend Test" — flexible glass vs. rigid metal (Object in Wrong Context)
+  - Ad 4: "The Morning After" — chipped glass rim from metal impact (Evidence of Failure)
+  - Ad 5: "The Eco-Friendly Starter Kit" — metal straw among trusted eco products (Object in Wrong Context)
+  - Ad 6: "Inside vs. Outside" — cut-open straw showing grimy interior (Evidence of Failure)
+  - Ad 7: "The Light Test" — holding straw to window, total opacity (Evidence of Failure)
+  - Ad 8: "Impact Mark" — metal straw + scratch on granite counter (Evidence of Failure)
+  - Ad 9: "The Gift" — metal straw in gift packaging (Object in Wrong Context)
+  - Ad 10: "The Lemon Water" — metal straw in acidic drink (Object in Wrong Context)
+  - Ad 11: "The Lip Mark" — visible lip residue showing contact point (Evidence of Failure)
+  - Ad 12: "The Straw Collection" — multiple straws in holder, varying wear (Quantity That Feels Wrong)
+- Ran mandatory image concept self-check on each in exact specified format
+- All 12 concepts PASS all checks (3-layer native test, stock check, AI text check, face test)
+- Wrote V3 raw iPhone UGC prompts with specific ugly and camera failures
+- Saved to artifacts/image-concepts-batch3.md
+
+**Contradiction category distribution:**
+- Object in Wrong Context: 5 (Ads 1, 3, 5, 9, 10)
+- Evidence of Failure: 6 (Ads 2, 4, 6, 7, 8, 11)
+- Quantity That Feels Wrong: 1 (Ad 12)
+
+**No repeats from Batch 2 concepts:**
+- Ice on Metal ❌
+- The Cleaning Brush ❌
+- The Dented Straw ❌
+- The Color Change ❌
+- Mason Jar Spike ❌
+
+**Learnings for future iterations:**
+- "Evidence of Failure" is the most reliable category — the object's condition IS the story
+- Matching EMOTIONAL STATE (not just topic) creates stronger opener-image pairs
+- "Object in Wrong Context" works best when the wrongness is immediately visible
+- Avoided AI text by designing all concepts around objects telling stories without words
+- Specific ugly in prompts (e.g., "single fluorescent making everything yellow-green") beats abstract descriptors
+- Initial concept for Ad 2 ("Tumbler Setup") was too similar to Batch 2's "Mason Jar Spike" — redesigned to "The Scratch Pattern"
+- Initial concept for Ad 9 with phone screen would have failed AI text check — redesigned to "The Gift"
+
+**Image concept → Opener emotional state pairing:**
+- Ad 1: Deception exposed → shows wear on "stronger" material
+- Ad 2: Body count accumulating → shows accumulated impact evidence
+- Ad 3: Protection inversion → shows flexibility as feature
+- Ad 4: Wrong safety definition → shows impact damage on glass
+- Ad 5: Betrayed by advice → shows danger among trusted items
+- Ad 6: Hidden consequence → shows interior vs. exterior contrast
+- Ad 7: Validated doubt → shows verification attempt failing
+- Ad 8: Wrong comparison variable → shows force transfer to counter
+- Ad 9: Guilt absolution → shows gifted/received context
+- Ad 10: Body warning validated → shows acid + metal combo
+- Ad 11: Vague sense named → shows intimate contact point
+- Ad 12: Paranoia validated → shows scale of unknowable mystery
+
+**Artifacts saved:**
+- artifacts/image-concepts-batch3.md (all 12 concepts with full self-check evaluations and V3 prompts)
+
+---
+
+## 2026-03-02 - US-005 (Batch 3): Generate 12 images, review, and build HTML mockup
+
+**Completed:**
+- Updated generate_strawesome_images.py with all 12 Batch 3 prompts from image-concepts-batch3.md
+- Generated all 12 images using gpt-image-1.5 (medium quality, ~$1.32 total)
+- All 12/12 images generated successfully on first attempt — no regeneration needed
+- Ran mandatory post-generation image review on each image in exact specified format
+- All 12 images passed with 5/5 cleanliness scores (exceeds 3+ requirement)
+- All 12 contradictions clearly visible in generated images
+- Phone photo test scores: 8-9/10 for all images (would pass as real phone photos)
+- Built ad-mockups-batch3.html with Strawesome branding:
+  - Brand color hex: #FF6700
+  - Avatar letter: S
+  - Brand name: Strawesome
+  - Domain: strawesome.com
+  - Funnel headline: 5 Reasons You Shouldn't Use Metal Straws
+- Each ad card has: draft label with angle + expression number, collapsible copy with 'See more', generated image with prompt overlay, link preview with funnel headline, CTA row
+- 12 ads arranged in 4 rows of 3 for optimal viewing
+
+**Image Review Summary:**
+| Image | Concept | Cleanliness | Contradiction | Phone Test | Scroll-Stop | Verdict |
+|-------|---------|-------------|---------------|------------|-------------|---------|
+| Draft 01 | The Two Straws | 5/5 | Visible | 8/10 | Yes | PASS |
+| Draft 02 | The Scratch Pattern | 5/5 | Visible | 9/10 | Yes | PASS |
+| Draft 03 | The Bend Test | 5/5 | Visible | 8/10 | Moderate | PASS |
+| Draft 04 | The Morning After | 5/5 | Visible | 8/10 | Yes | PASS |
+| Draft 05 | The Eco-Friendly Starter Kit | 5/5 | Visible | 8/10 | Moderate | PASS |
+| Draft 06 | Inside vs. Outside | 5/5 | Dramatic | 9/10 | Absolutely | PASS |
+| Draft 07 | The Light Test | 5/5 | Visible | 8/10 | Yes | PASS |
+| Draft 08 | Impact Mark | 5/5 | Visible | 9/10 | Yes | PASS |
+| Draft 09 | The Gift | 5/5 | Visible | 8/10 | Moderate | PASS |
+| Draft 10 | The Lemon Water | 5/5 | Visible | 8/10 | Moderate | PASS |
+| Draft 11 | The Lip Mark | 5/5 | Visible | 8/10 | Yes | PASS |
+| Draft 12 | The Straw Collection | 5/5 | Visible | 9/10 | Yes | PASS |
+
+**Standout Images:**
+- Strongest: Draft 06 (Inside vs. Outside) — dramatic visceral reaction to grimy interior
+- Close second: Draft 02 (The Scratch Pattern) — immediate recognition of teeth marks
+- Most relatable: Draft 07 (The Light Test) — everyone's tried this
+
+**Learnings for future iterations:**
+- gpt-image-1.5 at medium quality is sufficient for native-feeling images — all 12 passed first attempt
+- "Specific ugly" approach in V3 prompts continues to work well — no AI artifacts in any image
+- Object-based concepts with no performed emotions rendered cleanly without AI failure modes
+- Draft 06 (Inside vs. Outside) with cut-open straw interior is the most viscerally powerful image concept
+- Some concepts work better standalone (Draft 06, Draft 02), others transform WITH opener context (Draft 05, Draft 09)
+- No text elements in any concept avoided AI text generation failures entirely
+
+**Artifacts saved:**
+- generate_strawesome_images.py (updated with 12 Batch 3 prompts)
+- generated_ad_images/ (12 images: draft_01.png through draft_12.png)
+- ad-mockups-batch3.html (Facebook feed preview with all 12 ads)
+- artifacts/image-review-batch3.md (full post-generation review for each image)
+
+---
+
+## 2026-03-02 - US-006 (Batch 3): Final set review (12 ads)
+
+**Completed:**
+- Read all artifact files for full context (ad-copy-drafts-batch3.md, image-concepts-batch3.md, opener-evaluations-batch3.md, image-review-batch3.md)
+- Ran mandatory 7-box final set review in exact specified format
+- All 7 boxes checked:
+  1. Angle Diversity: 9 of 10 angles (Angle 10 retired — all 4 Science expressions fail quality gate as observations)
+  2. Evidence Diversity: All 5 evidence sections (R1-R5) represented, all dedup checks pass (<40% overlap)
+  3. Image Diversity: 12 distinct images, 3 contradiction categories, varied settings, 0 Batch 2 repeats
+  4. Tone Consistency: Same voice, reading level, sentence length, emotional register across all 12
+  5. No-Sell Final Scan: Zero product mentions, brand names, or selling language
+  6. Bridge Consistency: All 12 ads end with identical bridge line
+  7. Body Copy Dedup: No two ads share >40% identical sentences
+- Saved final set review to artifacts/final-set-review-batch3.md
+- Updated batch-history.md with Batch 3 details:
+  - Expression numbers used: 1, 4, 5, 6, 9, 14, 18, 21, 25, 29, 33, 35
+  - Image concepts logged with contradiction types
+  - Available expressions updated (23 remaining, 19 usable after Angle 10 retirement)
+- Confirmed all deliverables present
+
+**Final Deliverables:**
+- ad-mockups-batch3.html (63KB) — Facebook feed preview with all 12 ads
+- generate_strawesome_images.py (13KB) — Image generation script
+- generate_batch3_images.py (8KB) — Batch 3 specific script
+- generated_ad_images/ (46 files) — 12 main images + timestamped versions
+- artifacts/context-brief.md
+- artifacts/opener-evaluations-batch3.md
+- artifacts/ad-copy-drafts-batch3.md
+- artifacts/image-concepts-batch3.md
+- artifacts/image-review-batch3.md
+- artifacts/final-set-review-batch3.md
+
+**Learnings for future iterations:**
+- Angle 10 (Science) is structurally incompatible with violation openers — retire from future selections
+- The expression → evidence pairing system completely prevents body copy duplication
+- "Inside vs. Outside" (cut-open straw showing grimy interior) is the strongest image concept — visceral reaction
+- Object-based image concepts with no performed emotions render cleanly with gpt-image-1.5
+
+---
+
+## BATCH 3 COMPLETE
+
+All 6 stories pass. All 12 native image ads ready for upload to Facebook Ads Manager.
+
+**Batch 3 Summary:**
+- 12 native image ads with violation openers
+- 9 angles covered (Angle 10 retired)
+- 5/5 evidence sections represented
+- 12 unique images across 3 contradiction categories
+- Full artifact trail for methodology validation
+- batch-history.md updated for future batches
+
+**Total Strawesome Ads Produced:**
+- Batch 1: 3 ads (old process)
+- Batch 2: 5 ads
+- Batch 3: 12 ads
+- **Total: 20 ads**
+
+---

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 21: Credibility Grid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: white;
+            background: #1A7D65;
+            padding: 2.5rem 1.5rem;
+        }
+        .credibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .credibility-card {
+            text-align: center;
+        }
+        .credibility-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #F5A623;
+        }
+        .credibility-item {
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+        @media (max-width: 640px) {
+            .credibility-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="credibility-grid">
+        <div class="credibility-card">
+            <div class="credibility-title">The Original</div>
+            <p class="credibility-item">Longest-running glass straw maker in the world</p>
+            <p class="credibility-item">Family-owned since 2009</p>
+            <p class="credibility-item">Handmade by Daedra in Michigan</p>
+        </div>
+        <div class="credibility-card">
+            <div class="credibility-title">The Proof</div>
+            <p class="credibility-item">1.5% replacement rate over 16 years</p>
+            <p class="credibility-item">Thousands of 5-star reviews</p>
+            <p class="credibility-item">98.5% of straws still in use</p>
+        </div>
+        <div class="credibility-card">
+            <div class="credibility-title">The Promise</div>
+            <p class="credibility-item">Lifetime warranty on every straw</p>
+            <p class="credibility-item">Free shipping on orders $49+</p>
+            <p class="credibility-item">If it breaks, we replace it</p>
+        </div>
+    </div>
+</body>
+</html>

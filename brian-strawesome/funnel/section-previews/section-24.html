@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 24: Bundles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #4A4654;
+            margin-bottom: 2rem;
+        }
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .bundle-card {
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 16px;
+            padding: 1.75rem;
+            text-align: center;
+            position: relative;
+        }
+        .bundle-card.featured {
+            border-color: #FF6700;
+            border-width: 3px;
+            box-shadow: 0 8px 30px rgba(46, 42, 57, 0.15);
+        }
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FF6700 0%, #E55A00 100%);
+            color: white;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            padding: 0.375rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .bundle-badge.best-value {
+            background: linear-gradient(135deg, #1A7D65 0%, #156B55 100%);
+        }
+        .bundle-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .bundle-tagline {
+            font-size: 0.8125rem;
+            color: #6B6777;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+        .bundle-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FF6700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .bundle-savings {
+            font-size: 0.8125rem;
+            color: #1A7D65;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            min-height: 1.2em;
+        }
+        .bundle-cta {
+            display: block;
+            background: linear-gradient(180deg, #FF6700 0%, #E55A00 100%);
+            color: white;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            padding: 0.875rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        @media (max-width: 900px) {
+            .bundles-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bundles-grid { grid-template-columns: 1fr; max-width: 350px; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Stock Up and Save</h2>
+    <p class="subtitle">The more you order, the more you save. Plus: Free shipping on all orders $49+.</p>
+    <div class="bundles-grid">
+        <div class="bundle-card">
+            <div class="bundle-name">Starter Set</div>
+            <div class="bundle-tagline">Perfect for Trying Glass</div>
+            <div class="bundle-price">$22</div>
+            <div class="bundle-savings">&nbsp;</div>
+            <a href="#" class="bundle-cta">Add to Cart</a>
+        </div>
+        <div class="bundle-card featured">
+            <div class="bundle-badge">Most Popular</div>
+            <div class="bundle-name">Everyday Set</div>
+            <div class="bundle-tagline">For the Daily Drinker</div>
+            <div class="bundle-price">$45</div>
+            <div class="bundle-savings">Save $12 vs. buying separately</div>
+            <a href="#" class="bundle-cta">Add to Cart</a>
+        </div>
+        <div class="bundle-card">
+            <div class="bundle-badge best-value">Best Value</div>
+            <div class="bundle-name">Ultimate Collection</div>
+            <div class="bundle-tagline">The Whole Lineup</div>
+            <div class="bundle-price">$115</div>
+            <div class="bundle-savings">Save $45 vs. buying separately</div>
+            <a href="#" class="bundle-cta">Add to Cart</a>
+        </div>
+    </div>
+</body>
+</html>

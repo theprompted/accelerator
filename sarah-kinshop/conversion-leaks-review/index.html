@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinshop Goods - Conversion Leaks Review - The Prompted</title>
+    <style>
+        /* PromptedOS Design System */
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --bg-blue: #EBF9FF;
+            --bg-purple: #F7F1FF;
+            --bg-yellow: #FFFDE7;
+            --bg-green: #E8F5E9;
+            --bg-orange: #FFF3E0;
+            --accent-teal: #53DBC9;
+            --accent-yellow: #FFDE00;
+            --accent-purple: #9D4EDD;
+            --accent-red: #E53935;
+            --accent-orange: #FF9800;
+            --text-black: #000000;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+            --shadow-sm: -0.19rem 0.19rem 0 0 #383838;
+            --border: 2px solid black;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h3 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        h4 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-gray);
+        }
+
+        /* Header Card */
+        .header-card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-meta {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: var(--border);
+        }
+
+        .meta-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .meta-label {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        /* Section number badge */
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            background: var(--accent-teal);
+            border: var(--border);
+            border-radius: 50%;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Recommendation Card */
+        .rec-card {
+            background: var(--bg-white);
+            border: var(--border);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .rec-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: var(--border);
+            background: var(--bg-page);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .rec-header h3 {
+            margin: 0;
+            flex: 1;
+        }
+
+        .rec-body {
+            padding: 1.5rem;
+        }
+
+        .rec-body p {
+            margin-bottom: 1rem;
+        }
+
+        .rec-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Two-column layout with example */
+        .rec-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .rec-content.no-phone {
+            grid-template-columns: 1fr;
+        }
+
+        .rec-content.phone-right {
+            grid-template-columns: 1fr 280px;
+        }
+
+        .rec-text {
+            min-width: 0;
+        }
+
+        .rec-text p {
+            margin-bottom: 1rem;
+        }
+
+        .rec-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Example Screenshot Container */
+        .example-container {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .example-frame {
+            border: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: #fff;
+        }
+
+        .example-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Example label under screenshot */
+        .example-label {
+            margin-top: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-yellow);
+            border: var(--border);
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        /* Desktop example for Clarity */
+        .desktop-example {
+            margin-bottom: 1.5rem;
+        }
+
+        .desktop-example .example-frame {
+            max-width: 100%;
+        }
+
+        /* Priority Tag */
+        .priority-tag {
+            display: inline-block;
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 0.25rem 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .priority-tag.urgent { background: var(--accent-red); color: white; }
+        .priority-tag.high { background: var(--accent-orange); }
+        .priority-tag.medium { background: var(--accent-yellow); }
+
+        /* Lists */
+        ul, ol { padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: var(--text-black); }
+
+        /* Callout box */
+        .callout {
+            background: var(--bg-blue);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .callout-green { background: var(--bg-green); }
+        .callout-yellow { background: var(--bg-yellow); }
+        .callout p { margin: 0; }
+
+        /* Impact Box */
+        .impact-box {
+            background: var(--bg-green);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .impact-box h4 {
+            margin-bottom: 0.75rem;
+            color: #2E7D32;
+        }
+
+        .impact-box p { margin-bottom: 0.5rem; }
+        .impact-box p:last-child { margin-bottom: 0; }
+
+        /* Implementation Box */
+        .implementation-box {
+            background: var(--bg-purple);
+            border: var(--border);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .implementation-box h4 {
+            margin-bottom: 0.75rem;
+            color: var(--accent-purple);
+        }
+
+        .implementation-box a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .implementation-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .intro-section p { margin-bottom: 1rem; }
+        .intro-section p:last-child { margin-bottom: 0; }
+
+        /* Final thoughts */
+        .final-section {
+            background: var(--accent-teal);
+            border: var(--border);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .final-section h2 { margin-bottom: 1rem; }
+        .final-section p { margin-bottom: 1rem; }
+
+        /* Side by side examples */
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-grid .example-container {
+            position: static;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rec-content {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-content.phone-right {
+                grid-template-columns: 1fr;
+            }
+
+            .example-container {
+                max-width: 280px;
+                margin: 0 auto 1.5rem auto;
+                position: static;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto 1.5rem auto;
+            }
+
+            .rec-content.phone-right .example-container {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            .rec-header { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <div class="header-icon">🔍</div>
+            <h1>Kinshop Goods</h1>
+            <p style="font-size: 1.25rem; color: var(--text-gray); margin-top: 0.5rem;">Conversion Leaks Review</p>
+            <div class="header-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Prepared by:</span>
+                    <span class="meta-value">The Prompted</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-section">
+            <p>Every brand has Conversion Leaks.</p>
+            <p>It's an always-on process of plugging them repeatedly - a Kaizen approach.</p>
+            <p>Some are small and invisible until you go looking for them. Others are sitting in plain sight, quietly draining revenue every single day.</p>
+            <p>The objective is to find the specific, high-leverage changes that will move the needle for your brand, changes that aren't just theoretical, but tied directly to how your customers shop, decide, and buy.</p>
+            <p>What follows is a series of recommendations based on how your site is currently performing, how your PDP and cart flows are structured, and where your unique advantages (materials, brand opinions) are underutilized.</p>
+            <p>They're written with just a few priority goals in mind: to improve conversion rate, average order value, and contribution margin per session.</p>
+            <p>Each recommendation is standalone. But together, they form a playbook that can strengthen your positioning, raise your conversion rate, and expand your average order value.</p>
+        </div>
+
+        <!-- Rec 1: Microsoft Clarity -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">1</span>
+                <h3>Install Microsoft Clarity Immediately to See What Customers Actually Do</h3>
+            </div>
+            <div class="rec-body">
+                <div class="desktop-example">
+                    <div class="example-frame">
+                        <img src="img-clarity.png" alt="Microsoft Clarity dashboard">
+                    </div>
+                    <div class="example-label">Example: Microsoft Clarity heatmap dashboard</div>
+                </div>
+
+                <p><strong>This is the foundation for everything else.</strong></p>
+                <p>Microsoft Clarity is free heatmap and session recording software that lets you watch actual customer behavior on your site. Not what you think they're doing. What they're actually doing.</p>
+                <p>Where they click, where they scroll, where they get stuck, where they abandon.</p>
+                <p>By default we operate without this data. You can see traffic and conversion rate in Shopify Analytics, but you can't see why people aren't converting. You can't see if they're missing your add to cart button. You can't see if they're scrolling past your "rush service" messaging without noticing it. You can't see if they're confused by your customization options.</p>
+                <p>Clarity shows you all of that. And it's not just diagnostic. It's generative.</p>
+                <p>Once you can see the friction points, you can make data-informed decisions about what to fix first, instead of guessing.</p>
+
+                <div class="implementation-box">
+                    <h4>How to implement:</h4>
+                    <ol>
+                        <li>Visit clarity.microsoft.com</li>
+                        <li>Create a free account</li>
+                        <li>Add the tracking code to your Shopify theme (theme.liquid file)</li>
+                        <li>Within 24 hours, you'll start seeing session recordings and heatmaps</li>
+                    </ol>
+                </div>
+
+                <div class="impact-box">
+                    <h4>Expected impact:</h4>
+                    <p>This doesn't directly lift conversion rate on its own. But it informs every other decision you make. It's the foundation that makes all other optimization 3-5x more effective because you're no longer guessing what to optimize.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 2: Slide Cart -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">2</span>
+                <h3>Slide Cart Functionality</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content">
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-tiered-cart.png" alt="Slide cart example">
+                        </div>
+                        <div class="example-label">Example: True Classic slide cart with tiered rewards</div>
+                    </div>
+                    <div class="rec-text">
+                        <p>Having a slide cart functionality instead of a separate cart page keeps customers on the product page, reducing friction and streamlining the shopping process.</p>
+                        <p>This convenience encourages additional purchases, minimizes disruptions, and improves the overall user experience, ultimately leading to higher conversion rates.</p>
+                        <p>And allows for the opportunity for more immediate in-cart upsell actions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 3: In-Cart Upsells -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">3</span>
+                <h3>Implement In-Cart Upsells to Boost AOV & Gross Profit</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content phone-right">
+                    <div class="rec-text">
+                        <p>The cart is one of the highest-leverage pieces of real estate on your entire site.</p>
+                        <p>It's the exact moment when customers are reviewing their order, mentally calculating total cost, and asking themselves "is this everything I need?"</p>
+                        <p>That question creates a decision window. And in that window, strategically positioned product recommendations can significantly increase average order value without requiring additional traffic or ad spend.</p>
+                        <p>In-cart upsells work because the buying decision has already been made. The customer isn't deliberating on whether to purchase. They've crossed that threshold. Adding one more item to an existing order is psychologically easier than making a separate purchase later. It feels like completion, not additional spending.</p>
+                        <p>The economics here compound in your favor. Because you're not paying customer acquisition cost on that incremental item, the margin on cart upsells is significantly higher than on the initial product.</p>
+                        <p>For Kinshop Goods specifically, the key is relevance and ease. Customers should see recommendations that feel like natural extensions of what they're already buying.</p>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-cart-upsells.png" alt="Cart upsells example">
+                        </div>
+                        <div class="example-label">Example: Original Grain in-cart product recommendations</div>
+                    </div>
+                </div>
+
+                <div class="impact-box">
+                    <h4>Expected impact:</h4>
+                    <p>10-20% of customers who interact with cart upsells will add at least one additional item. On a $100 average cart, that translates to $10-$20 incremental revenue per order with zero additional acquisition cost.</p>
+                    <p>At 1000 orders per month, that's $10,000-$20,000/month in margin expansion. Over a year, that's $100,000-$200,000 in revenue that wouldn't exist otherwise.</p>
+                </div>
+
+                <div class="implementation-box">
+                    <h4>How to implement:</h4>
+                    <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=23e298a1e5064785973932d0a82ef42e" target="_blank">See here in the Classroom →</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 4: Post-Purchase Upsell -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">4</span>
+                <h3>Add a Post-Purchase Upsell to Capture Profit After Checkout</h3>
+            </div>
+            <div class="rec-body">
+                <div class="desktop-example">
+                    <div class="example-frame">
+                        <img src="img-post-purchase.png" alt="Post-purchase upsell">
+                    </div>
+                    <div class="example-label">Example: Feastables post-purchase one-click upsell</div>
+                </div>
+
+                <p>Most brands focus all their revenue growth on the front end - trying to get more traffic, better ads, higher conversion rate on the initial purchase.</p>
+                <p>But there's a lever that adds revenue without increasing your customer acquisition cost at all: post-purchase upsells.</p>
+                <p>These are offers shown immediately after a customer completes their checkout, before they reach the thank you page. The order is already placed. The credit card information is already entered. The buying momentum is still high.</p>
+                <p>At that point, adding an extra product to the order is frictionless - often just a single click - and doesn't require re-entering payment information.</p>
+                <p>The economics here are exceptional. Because you're not paying to acquire that second (or third) product, the margin on post-purchase upsells is significantly higher than on the initial sale.</p>
+
+                <div class="callout callout-yellow">
+                    <p><strong>Our usual structure:</strong></p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Upsell #1: Complementary product at 30-50% of initial order value</li>
+                        <li>If declined → Downsell #1: Lower-priced version</li>
+                        <li>Upsell #2: Additional complementary product</li>
+                        <li>If declined → Downsell #2: Final low-cost offer</li>
+                    </ul>
+                </div>
+
+                <p>A good benchmark is 10-40% take rate on upsell #1.</p>
+
+                <p><a href="https://chatgpt.com/g/g-6835f4d07d808191b5fa17f255472d93-post-purchase-profit-forecaster" target="_blank">Use our AI post-purchase forecasting tool to model your specific numbers →</a></p>
+            </div>
+        </div>
+
+        <!-- Rec 5: Sticky ATC -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">5</span>
+                <h3>Make the Add to Cart Button Sticky to Boost Add To Cart Rate</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content phone-right">
+                    <div class="rec-text">
+                        <p>Right now, when customers scroll down your product pages to read details, see reviews, or understand customization options, your add to cart button scrolls out of view.</p>
+                        <p>That means if they decide they want to buy while reading your product description or looking at your reviews, they have to scroll back up to find the button.</p>
+                        <p>That's friction. And friction kills conversion.</p>
+                        <p>Every extra action required between "I want this" and "I'm buying this" is a chance for hesitation, distraction, or abandonment.</p>
+                        <p>The fix: make the add to cart button sticky, so it stays visible at the top or bottom of the screen as customers scroll.</p>
+                        <p>This is especially critical on mobile, where scrolling is the primary navigation method. The sticky ATC button removes that barrier. The moment they're ready, the button is right there. No hunting. No scrolling. No second-guessing.</p>
+
+                        <div class="impact-box">
+                            <h4>Expected impact:</h4>
+                            <p>5-15% increase in add-to-cart rate, especially on mobile where scrolling is more common.</p>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-sticky-atc.png" alt="Sticky add to cart">
+                        </div>
+                        <div class="example-label">Example: Simple Modern sticky ATC bar at bottom</div>
+                    </div>
+                </div>
+
+                <div class="implementation-box">
+                    <h4>How to implement:</h4>
+                    <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=83e140c90e3e4ad884b50810703e138a" target="_blank">See here in Skool Classroom →</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 6: Benefit Badges -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">6</span>
+                <h3>Add Benefit Badges to Product Images to Highlight Your Unique Advantages</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content">
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-product-badges.png" alt="Product badges example">
+                        </div>
+                        <div class="example-label">Example: Hollow Socks product with benefit badges</div>
+                    </div>
+                    <div class="rec-text">
+                        <p>Kinship Goods has several strong differentiators that can be more visually prominent:</p>
+                        <ul>
+                            <li>Made in Idaho USA (local craftsmanship)</li>
+                            <li>Handcrafted</li>
+                            <li>Quality materials</li>
+                        </ul>
+                        <p>These are meaningful advantages. But right now, customers have to read text to discover them. And many customers don't read - they scan. They look at images first, and only read if something catches their attention.</p>
+                        <p>Benefit Badges solve this problem. Badges are visual cues that draw attention to your unique selling propositions before the customer even starts reading.</p>
+                        <p>They work because they're:</p>
+                        <p><strong>Scannable:</strong> Customers process them in a fraction of a second</p>
+                        <p><strong>Trustworthy:</strong> They look like certifications or quality markers</p>
+                        <p><strong>Differentiation:</strong> They immediately signal "this isn't just another generic product"</p>
+
+                        <div class="implementation-box">
+                            <h4>How to implement:</h4>
+                            <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=dab3703cf1da4495be53c300bd2f6223" target="_blank">See here in Skool Classroom →</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 7: USP Section -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">7</span>
+                <h3>Create a USP Section on Product Pages to Make It Easy For Consumers To Choose You</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content no-phone">
+                    <div class="rec-text">
+                        <p>Right now, your product pages don't contain a section that reminds consumers of why they should buy from you, either explicitly or implicitly.</p>
+                        <p>We call this a USP section (unique selling proposition).</p>
+                        <p>Telling customers why they should buy from you specifically, rather than from Amazon or Etsy or any of the dozens of other shops selling leather and handmade goods.</p>
+                        <p>You can have a section that speaks beyond the widgets to what you believe in as a brand. This helps with de-commoditizing products while increasing conversion rate and LTV.</p>
+                        <p>Using the <a href="https://www.promptedos.com/app/tools/thesis-generator-v2" target="_blank">Thesis Architect in PromptedOS</a> can help with this.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 8: FAQ Section -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">8</span>
+                <h3>Build a Comprehensive FAQ Section on your PDPs That Sell, Not Just Answers</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content no-phone">
+                    <div class="rec-text">
+                        <p>Most product pages treat FAQs as an afterthought, if they exist at all.</p>
+                        <p>A higher-converting approach is proactive: anticipate the questions customers are already asking in their head and answer them directly on the product page in a way that builds confidence and reduces hesitation.</p>
+                        <p><strong>Consider the FAQ section a "second sales page".</strong></p>
+                        <p>A well-constructed FAQ section isn't just a support tool. It's a conversion asset. Done right, it:</p>
+                        <ul>
+                            <li>Addresses common objections before they cause drop-off</li>
+                            <li>Reduces uncertainty at key decision points</li>
+                            <li>Reinforces trust, credibility, and perceived quality</li>
+                            <li>Moves shoppers closer to completing their purchase</li>
+                        </ul>
+
+                        <div class="callout callout-yellow">
+                            <p><strong>What Your FAQ Should Actually Cover:</strong></p>
+                            <ul style="margin-top: 0.5rem;">
+                                <li><strong>Speed & Turnaround:</strong> How long does production take? What's the difference between standard and expedited processing?</li>
+                                <li><strong>Quality & Specifications:</strong> What are the materials? How durable is the product?</li>
+                                <li><strong>Fulfillment & Availability:</strong> Where is this produced or shipped from?</li>
+                                <li><strong>Shipping, Returns & Risk:</strong> When will my order ship? What's the return policy?</li>
+                            </ul>
+                        </div>
+
+                        <p>Every FAQ entry is an opportunity to answer the question clearly AND reinforce why this business is a safe, smart choice.</p>
+                        <p>In short: every unanswered question is friction. Every well-answered question is a reason to buy.</p>
+
+                        <div class="impact-box">
+                            <h4>Expected impact:</h4>
+                            <p>10-15% reduction in cart abandonment by addressing objections before they become reasons not to buy. Fewer support inquiries. Higher customer confidence leading to higher conversion rate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 9: Free Shipping Progress Bar -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">9</span>
+                <h3>Add a Free Shipping Progress Bar in the Cart to Gamify the Threshold</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content phone-right">
+                    <div class="rec-text">
+                        <p>Most carts show a subtotal and a checkout button — and that's it.</p>
+                        <p>What's missing is a visual incentive that encourages customers to add just one more item before checking out.</p>
+                        <p>One of the most effective ways to do this is by pairing a shipping incentive with a progress bar in the cart that shows customers how close they are to unlocking it.</p>
+                        <p>When customers can see a progress bar showing "$20 more for FREE SHIPPING", it transforms an abstract goal into a concrete, achievable target.</p>
+                        <p>This works because of several psychological principles:</p>
+                        <p><strong>Goal Gradient Effect:</strong> People accelerate their efforts as they get closer to a goal. Seeing "only $23 away" feels achievable.</p>
+                        <p><strong>Loss Aversion:</strong> Customers don't want to "miss out" on free shipping they're close to unlocking.</p>
+                        <p><strong>Gamification:</strong> Progress bars tap into the same dopamine response as video game progress trackers.</p>
+
+                        <div class="impact-box">
+                            <h4>Expected impact:</h4>
+                            <p>5-10% increase in average order value by encouraging customers to add items to reach the threshold.</p>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-shipping-progress.png" alt="Free shipping progress bar">
+                        </div>
+                        <div class="example-label">Example: Free shipping threshold progress indicator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 10: Offer-Driven Hero -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">10</span>
+                <h3>Make Your Homepage Hero Offer-Driven to Capture Attention Immediately</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content">
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-hero-offer.png" alt="Offer-driven hero">
+                        </div>
+                        <div class="example-label">Example: She's Birdie offer-driven homepage hero</div>
+                    </div>
+                    <div class="rec-text">
+                        <p>The homepage hero is the first thing most visitors see. It sets the tone for their entire session.</p>
+                        <p>And right now, most brand heroes focus on aesthetics or vague brand messaging instead of doing the one thing that actually drives action: making a compelling offer.</p>
+                        <p>The structure is deliberate:</p>
+                        <p><strong>Social proof line:</strong> Trust signal with star ratings ("Trusted By Over 3,000,000 Women")</p>
+                        <p><strong>Main headline:</strong> Specific offer + clear product benefit ("Save Up To 35% On Birdie Safety Alarms")</p>
+                        <p><strong>CTA:</strong> Direct action ("Shop Now")</p>
+                        <p>This isn't just design. It's conversion architecture.</p>
+                        <p>Every element is engineered to answer the visitor's immediate question: "What's in it for me right now?"</p>
+
+                        <div class="implementation-box">
+                            <h4>Implementation:</h4>
+                            <p>Reposition your hero content to be promotion-first. Test seasonal offers, new customer incentives, or urgency messaging. Use the <a href="https://www.promptedos.com/app/tools/offer-generator-v2" target="_blank">Offer Engine in PromptedOS</a> to help with ideation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 11: Risk Reversal -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">11</span>
+                <h3>Add a Strong Risk Reversal Section to the PDP</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content phone-right">
+                    <div class="rec-text">
+                        <p>A dedicated, strong, well-placed guarantee isn't just a customer service policy. It's a conversion lever.</p>
+                        <p>It takes risk off the table, removes hesitation, and gives people the confidence to buy now instead of "thinking about it."</p>
+                        <p>The example from BiOptimizers is a good reference point. It's bold, unmissable, and specific.</p>
+                        <p>It doesn't just say "we have a guarantee" - it spells out exactly what that means, how long it lasts, and what the customer needs to do to claim it.</p>
+                        <p>More importantly, it reframes the guarantee as part of the sales pitch. By highlighting that customers have up to 365 days to decide, it makes the purchase feel safe and low-pressure.</p>
+                        <p>This is especially important if your historical refund and return rates are already low. Extending a more generous guarantee often has no measurable impact on refunds, but can meaningfully lift conversion rates.</p>
+
+                        <div class="impact-box">
+                            <h4>Expected impact:</h4>
+                            <p>5-15% increase in conversion rate by removing purchase anxiety as a barrier. Particularly effective for first-time customers.</p>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-guarantee.png" alt="Risk reversal guarantee">
+                        </div>
+                        <div class="example-label">Example: BiOptimizers 365-day guarantee section</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 12: Comparison Chart -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">12</span>
+                <h3>Add a Comparison Chart to your PDPs to Highlight Your Advantages</h3>
+            </div>
+            <div class="rec-body">
+                <div class="example-grid">
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-comparison-sweetdreams.png" alt="Sweet Dreams comparison">
+                        </div>
+                        <div class="example-label">Example: Sweet Dreams comparison chart</div>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-comparison-birdie.png" alt="She's Birdie comparison">
+                        </div>
+                        <div class="example-label">Example: She's Birdie comparison chart</div>
+                    </div>
+                </div>
+
+                <p>On most product pages, customers are expected to read through descriptions and infer why one option is better than another. In reality, most visitors don't read, they scan.</p>
+                <p>Redundancy in information via different formats (text, chart) improves conversion rate.</p>
+                <p>If your key advantages aren't immediately obvious, shoppers default to easy heuristics: lowest price, fastest delivery, or the most familiar marketplace.</p>
+                <p>A comparison chart solves this by making differentiation visual and immediate. It answers the unspoken question every shopper has: "Why should I buy this here instead of somewhere else?"</p>
+
+                <div class="impact-box">
+                    <h4>Expected impact:</h4>
+                    <p>5-10% increase in conversion rate by making differentiation obvious to scanners. Reduces price sensitivity (when advantages are clear, price becomes less important).</p>
+                </div>
+
+                <div class="implementation-box">
+                    <h4>How to implement:</h4>
+                    <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=892a9bd1ffc5437697ab1a558f70e8a8" target="_blank">See here in Skool Classroom →</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 13: Navigation Images -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">13</span>
+                <h3>Add Images to Your Navigation Menu for Better Product Discovery</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content">
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-nav-images.png" alt="Navigation with images">
+                        </div>
+                        <div class="example-label">Example: Hollow Socks visual navigation menu</div>
+                    </div>
+                    <div class="rec-text">
+                        <p>Right now, your navigation menu is text-only. It works as a directory, but it doesn't help customers discover products or understand what's inside each category.</p>
+                        <p>That's a missed opportunity because the brain processes images 60,000 times faster than text.</p>
+                        <p>When customers open your navigation, they're trying to quickly understand what you sell and where to find what they're looking for. Text requires reading and interpretation. Images provide instant recognition.</p>
+                        <p>Visual navigation would help customers immediately understand your product range: cribbage boards, wallets, bags, keychains etc.</p>
+                        <p>This isn't just aesthetic. It's functional. Visual cues reduce cognitive load and help customers find what they want faster.</p>
+                        <p><strong>The offline parallel:</strong> In physical retail, endcaps and signage always feature visuals because they stop people and draw them in. Your mobile nav is the digital equivalent. Right now it's functioning as a label. With images, it becomes a lure.</p>
+
+                        <div class="impact-box">
+                            <h4>Expected impact:</h4>
+                            <p>5-10% increase in category page visits. Better product discovery. Lower bounce rate.</p>
+                        </div>
+
+                        <div class="implementation-box">
+                            <h4>How to implement:</h4>
+                            <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=958c6b19c815404da1ab42c5bc19e5f3" target="_blank">See here in Skool Classroom →</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rec 14: Tiered Cart Incentives -->
+        <div class="rec-card">
+            <div class="rec-header">
+                <span class="section-num">14</span>
+                <h3>Introduce Tiered Cart Incentives to Gamify the Purchase Experience</h3>
+            </div>
+            <div class="rec-body">
+                <div class="rec-content phone-right">
+                    <div class="rec-text">
+                        <p>Right now, your cart experience is transactional. Customers see their items, see the total, and either proceed to checkout or leave. There's no momentum. No progress. No reason to add more items beyond their initial intent.</p>
+                        <p>Tiered cart incentives change that dynamic entirely.</p>
+                        <p>Instead of a single free shipping threshold, you create multiple tiers that unlock progressively better rewards as customers add more to their cart.</p>
+                        <p>This taps into powerful psychological principles: goal gradient effect, loss aversion, and gamification.</p>
+
+                        <div class="callout callout-yellow">
+                            <p><strong>Example:</strong></p>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Tier 1: Spend $50 → Unlock X</li>
+                                <li>Tier 2: Spend $75 → Unlock Y</li>
+                                <li>Tier 3: Spend $125 → Unlock Z</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Why this works:</strong></p>
+                        <p><strong>Momentum builds:</strong> Once a customer unlocks Tier 1, they're psychologically invested.</p>
+                        <p><strong>FOMO activates:</strong> Seeing "You're $15 away from free shipping!" creates urgency.</p>
+                        <p><strong>Gamification feels fun:</strong> Progress bars are engaging. Unlocking rewards feels like winning.</p>
+                        <p><strong>Higher AOV without deep discounts:</strong> You're incentivizing larger carts through value-adds rather than percentage discounts that erode margin.</p>
+
+                        <div class="callout callout-green">
+                            <p><strong>This is one of the highest-leverage tactics in modern ecommerce.</strong> Brands that implement tiered incentives well see outsized returns because it fundamentally changes purchase psychology from transactional to goal-driven.</p>
+                        </div>
+
+                        <div class="implementation-box">
+                            <h4>How to implement:</h4>
+                            <p><a href="https://www.skool.com/the-prompted/classroom/7349116b?md=6de5933fd54945fe861d893a7519e168" target="_blank">See here in Skool Classroom →</a></p>
+                        </div>
+                    </div>
+                    <div class="example-container">
+                        <div class="example-frame">
+                            <img src="img-tiered-cart.png" alt="Tiered cart incentives">
+                        </div>
+                        <div class="example-label">Example: True Classic tiered cart rewards system</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Thoughts -->
+        <div class="final-section">
+            <h2>Final Thoughts: Contribution Margin Over Revenue</h2>
+            <p>One last note on how to think about these recommendations:</p>
+            <p>The goal isn't just to increase revenue. It's to increase contribution margin - the profit left after you subtract variable costs and ad spend.</p>
+            <p>With your business model (custom products, in-house production, variable fulfillment costs), not all revenue is created equal.</p>
+            <p><strong>As you implement these recommendations, track:</strong></p>
+            <p><strong>Not just AOV, but gross margin per order</strong> (net revenue minus COGS, fulfillment, shipping, payment processing)</p>
+            <p><strong>Not just conversion rate, but contribution margin per session</strong> (gross margin minus ad spend, divided by sessions)</p>
+            <p><strong>Not just revenue growth, but first-order profitability</strong> (can you acquire customers profitably on first order, or do you need repeat purchases to break even?)</p>
+            <p>This matters because some tactics drive AOV but reduce margin (like heavy discounting). Others drive AOV and improve margin (like post-purchase upsells, which have no additional CAC).</p>
+            <p>The recommendations in this document are designed to improve both volume and margin - not just drive more sales, but drive more profitable sales.</p>
+        </div>
+
+    </div>
+</body>
+</html>

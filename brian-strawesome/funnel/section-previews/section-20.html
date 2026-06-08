@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 20: Hero + Trust Strip</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2E2A39;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F7 100%);
+            padding: 2rem 1.5rem;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: #2E2A39;
+        }
+        h1 em { font-style: normal; color: #FF6700; }
+        .subtitle {
+            text-align: center;
+            font-size: 1.0625rem;
+            color: #4A4654;
+            margin-bottom: 2rem;
+        }
+        .trust-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            border-top: 2px solid #FF6700;
+            border-bottom: 2px solid #FF6700;
+        }
+        .trust-item {
+            text-align: center;
+        }
+        .trust-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF6700 0%, #E55A00 100%);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .trust-item-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2E2A39;
+            line-height: 1;
+        }
+        .trust-item-label {
+            font-size: 0.8125rem;
+            color: #6B6777;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .trust-strip { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Make the <em>Safer Switch</em> to Strawesome</h1>
+    <p class="subtitle">Handmade in Michigan since 2009. Backed by a lifetime warranty. Trusted by thousands who finally stopped settling for metal.</p>
+
+    <div class="trust-strip">
+        <div class="trust-item">
+            <div class="trust-item-icon">📅</div>
+            <div class="trust-item-number">16</div>
+            <div class="trust-item-label">Years Pioneering Glass</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-item-icon">📈</div>
+            <div class="trust-item-number">1.5%</div>
+            <div class="trust-item-label">Replacement Rate</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-item-icon">🔒</div>
+            <div class="trust-item-number">Lifetime</div>
+            <div class="trust-item-label">Warranty</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-item-icon">🇺🇸</div>
+            <div class="trust-item-number">USA</div>
+            <div class="trust-item-label">Handmade in Michigan</div>
+        </div>
+    </div>
+</body>
+</html>
