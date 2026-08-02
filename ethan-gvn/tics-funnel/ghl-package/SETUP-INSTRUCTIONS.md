@@ -75,15 +75,9 @@ Page loads, images show, the page-1 button lands on the right page 2, buy button
 
 The ads stay identical everywhere. The test tells you which funnel converts best.
 
-**Inside each ad set, we suggest flexible ads:** one flexible ad per angle. Meta takes up to 10 images per flexible ad and finds the winners for you.
+**Inside each ad set: 4 flexible ads.** Meta takes up to 10 images per flexible ad, so split the 39 images as 10 + 10 + 10 + 9. On each flexible ad, add the 5 copy files as your primary text options (Meta allows 5) and `link-headline.txt` as the headline. Meta finds the winning combos.
 
-| Flexible ad | Images from | Primary text | Link headline |
-|---|---|---|---|
-| 1 | `angle-a-prescriptions/` (14 - pick your 10 favorites) | `angle-a-prescriptions.txt` | `link-headline.txt` |
-| 2 | `angle-b-mid-tic/` (13 - pick your 10 favorites) | `angle-b-mid-tic.txt` | `link-headline.txt` |
-| 3 | `angle-c-what-it-cost/` (all 7) | `angle-c-what-it-cost.txt` | `link-headline.txt` |
-| 4 | `angle-d-her-records/` (all 4) | `angle-d-her-records.txt` | `link-headline.txt` |
-| 5 | `angle-e-prescription-forty/` (1 image, regular single-image ad) | `angle-e-prescription-forty.txt` | `link-headline.txt` |
+That is 12 new ads total, and 117 shots on goal (3 funnels x 39 ads).
 
 **One thing to fill in:** the last line of every copy file ends with `[your funnel link]`. Paste the live page-1 URL of whichever funnel that ad set points at. Same URL goes in the ad's website field.
 
