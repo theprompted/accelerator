@@ -67,19 +67,25 @@ Page loads, images show, the page-1 button lands on the right page 2, buy button
 
 ## Part 2: Load the ads
 
-We suggest **flexible ads**: one ad per angle. Meta takes up to 10 images per flexible ad and finds the winners for you.
+**The structure: same ads, three funnels.** Any of these 39 ads can drive traffic to any of the three funnels. So the test is simple:
 
-**The mapping. One row = one flexible ad:**
+1. Make **three ad sets**
+2. Load the **same ads** into each
+3. Point ad set 1 at Funnel 1 (v5) page 1, ad set 2 at Funnel 2 (v6) page 1, ad set 3 at Funnel 3 (v7) page 1
 
-| Ad | Images from | Primary text | Link headline | Send traffic to |
-|---|---|---|---|---|
-| 1 | `angle-a-prescriptions/` (14 - pick your 10 favorites) | `angle-a-prescriptions.txt` | `link-headline.txt` | v7 page 1 |
-| 2 | `angle-b-mid-tic/` (13 - pick your 10 favorites) | `angle-b-mid-tic.txt` | `link-headline.txt` | v5 page 1 |
-| 3 | `angle-c-what-it-cost/` (all 7) | `angle-c-what-it-cost.txt` | `link-headline.txt` | v7 page 1 |
-| 4 | `angle-d-her-records/` (all 4) | `angle-d-her-records.txt` | `link-headline.txt` | v6 page 1 |
-| 5 | `angle-e-prescription-forty/` (1 image, regular single-image ad) | `angle-e-prescription-forty.txt` | `link-headline.txt` | v7 page 1 |
+The ads stay identical everywhere. The test tells you which funnel converts best.
 
-**Important: swap the links.** The last line of every copy file, and the "Send traffic to" URL, currently point at our preview site (`theprompted.github.io/...`). Once your GoHighLevel pages are live, replace those with YOUR live URLs. One find-and-replace per copy file.
+**Inside each ad set, we suggest flexible ads:** one flexible ad per angle. Meta takes up to 10 images per flexible ad and finds the winners for you.
+
+| Flexible ad | Images from | Primary text | Link headline |
+|---|---|---|---|
+| 1 | `angle-a-prescriptions/` (14 - pick your 10 favorites) | `angle-a-prescriptions.txt` | `link-headline.txt` |
+| 2 | `angle-b-mid-tic/` (13 - pick your 10 favorites) | `angle-b-mid-tic.txt` | `link-headline.txt` |
+| 3 | `angle-c-what-it-cost/` (all 7) | `angle-c-what-it-cost.txt` | `link-headline.txt` |
+| 4 | `angle-d-her-records/` (all 4) | `angle-d-her-records.txt` | `link-headline.txt` |
+| 5 | `angle-e-prescription-forty/` (1 image, regular single-image ad) | `angle-e-prescription-forty.txt` | `link-headline.txt` |
+
+**One thing to fill in:** the last line of every copy file ends with `[your funnel link]`. Paste the live page-1 URL of whichever funnel that ad set points at. Same URL goes in the ad's website field.
 
 You can preview every ad exactly as it will look in the feed here:
 https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/ads/
