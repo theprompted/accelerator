@@ -47,6 +47,55 @@
             padding: 6px 12px;
             box-shadow: -.19rem .19rem 0 0 #383838;
         }
+        .launch-guide {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+        .launch-guide h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .launch-guide p { margin-bottom: 12px; line-height: 1.55; }
+        .zip-btn {
+            display: inline-block;
+            background: #449344;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            box-shadow: -.19rem .19rem 0 0 #383838;
+        }
+        .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+        .launch-guide table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 13px;
+        }
+        .launch-guide th, .launch-guide td {
+            border: 1px solid #ccc;
+            padding: 7px 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .launch-guide th {
+            background: #000;
+            color: #53DBC9;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+        }
         .section-header {
             background: #000;
             padding: 12px 20px;
@@ -93,7 +142,18 @@
             align-items: center;
             gap: 8px;
         }
-        .draft-label span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .draft-label > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .label-btns { display: flex; gap: 6px; flex-shrink: 0; }
+        .dl-btn {
+            background: #fff;
+            color: #1877f2;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+        }
         .copy-btn {
             background: #449344;
             color: white;
@@ -198,11 +258,31 @@
             <p>39 image ads for Facebook, shown as they would appear in the feed. Every ad leads to: "My Mom Spent $56,576 Trying to Stop My Motor Tics. Here's What Finally Worked for Me."</p>
         </div>
 
+        <div class="launch-guide">
+            <h2>How to launch these</h2>
+            <p>Grab everything in one download: the landing pages, all 39 images sorted by angle, the copy as paste-ready text files, and step-by-step GoHighLevel instructions.</p>
+            <a class="zip-btn" href="../tics-funnel-ghl.zip" download>&#11015; Download the full package (13 MB)</a>
+            <p>We suggest <strong>flexible ads</strong>: one ad per angle. Meta takes up to 10 images per flexible ad and finds the winners for you. Five angles, so five ads total:</p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Ad</th><th>Images</th><th>Copy</th><th>Send traffic to</th></tr>
+                    <tr><td>1</td><td>Angle A (14, pick your 10 favorites)</td><td>Angle A copy</td><td>version 7, page 1</td></tr>
+                    <tr><td>2</td><td>Angle B (13, pick your 10 favorites)</td><td>Angle B copy</td><td>version 5, page 1</td></tr>
+                    <tr><td>3</td><td>Angle C (all 7)</td><td>Angle C copy</td><td>version 7, page 1</td></tr>
+                    <tr><td>4</td><td>Angle D (all 4)</td><td>Angle D copy</td><td>version 6, page 1</td></tr>
+                    <tr><td>5</td><td>Angle E (1 image, regular single-image ad)</td><td>Angle E copy</td><td>version 7, page 1</td></tr>
+                </table>
+            </div>
+            <p>Every card below shows one image with its copy, so you can see exactly what goes together. "Save image" downloads that image. "Copy text" copies that angle's full primary text.</p>
+            <p><strong>One heads-up:</strong> the links in the copy point at this preview site for now. Once your pages are live in GoHighLevel, swap in your own URLs. The setup guide in the download walks through it.</p>
+            <p>This round the loading is manual because that is fastest. This week we are setting up your agent to do it for you, so next time you will not have to.</p>
+        </div>
+
         <div class="section-header">Angle A &mdash; The prescriptions (14 ads)</div>
         <div class="section-note">The objects of eleven years of medication. Pill bottles, labels, the daily routine. These link to <a href="https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v7/page-1/">version 7, page 1</a>.</div>
         <div class="grid-row">
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 1 &middot; Forty-bottle lineup</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 1 &middot; Forty-bottle lineup</span><span class="label-btns"><a class="dl-btn" href="images/a1-lineup-forty-bottles.jpg" download="a1-lineup-forty-bottles.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -245,7 +325,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 2 &middot; Seven-bottle lineup (v1)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 2 &middot; Seven-bottle lineup (v1)</span><span class="label-btns"><a class="dl-btn" href="images/a1-lineup-seven-bottles-v1.jpg" download="a1-lineup-seven-bottles-v1.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -288,7 +368,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 3 &middot; Seven-bottle lineup (v2)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 3 &middot; Seven-bottle lineup (v2)</span><span class="label-btns"><a class="dl-btn" href="images/a1-lineup-seven-bottles-v2.jpg" download="a1-lineup-seven-bottles-v2.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -331,7 +411,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 4 &middot; Pill pile (v1)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 4 &middot; Pill pile (v1)</span><span class="label-btns"><a class="dl-btn" href="images/a2-pill-pile-v1.jpg" download="a2-pill-pile-v1.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -374,7 +454,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 5 &middot; Pill pile (v2)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 5 &middot; Pill pile (v2)</span><span class="label-btns"><a class="dl-btn" href="images/a2-pill-pile-v2.jpg" download="a2-pill-pile-v2.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -417,7 +497,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 6 &middot; Pill pile (v3)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 6 &middot; Pill pile (v3)</span><span class="label-btns"><a class="dl-btn" href="images/a2-pill-pile-v3.jpg" download="a2-pill-pile-v3.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -460,7 +540,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 7 &middot; Pill pile (v4)</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 7 &middot; Pill pile (v4)</span><span class="label-btns"><a class="dl-btn" href="images/a2-pill-pile-v4.jpg" download="a2-pill-pile-v4.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -503,7 +583,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 8 &middot; Daily med cup</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 8 &middot; Daily med cup</span><span class="label-btns"><a class="dl-btn" href="images/a3-daily-med-cup-in-hand.jpg" download="a3-daily-med-cup-in-hand.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -546,7 +626,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 9 &middot; Pill organizer at breakfast</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 9 &middot; Pill organizer at breakfast</span><span class="label-btns"><a class="dl-btn" href="images/a4-pill-organizer-breakfast.jpg" download="a4-pill-organizer-breakfast.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -589,7 +669,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 10 &middot; Label, up close</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 10 &middot; Label, up close</span><span class="label-btns"><a class="dl-btn" href="images/a5-label-close-abilify.jpg" download="a5-label-close-abilify.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -632,7 +712,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 11 &middot; Medicine cabinet</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 11 &middot; Medicine cabinet</span><span class="label-btns"><a class="dl-btn" href="images/a6-medicine-cabinet.jpg" download="a6-medicine-cabinet.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -675,7 +755,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 12 &middot; Bottles and report card</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 12 &middot; Bottles and report card</span><span class="label-btns"><a class="dl-btn" href="images/a9-bottles-and-report-card.jpg" download="a9-bottles-and-report-card.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -718,7 +798,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 13 &middot; Bottles in the trash</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 13 &middot; Bottles in the trash</span><span class="label-btns"><a class="dl-btn" href="images/a10-bottles-in-trash.jpg" download="a10-bottles-in-trash.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -761,7 +841,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 14 &middot; Prescription labels spread</span><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 14 &middot; Prescription labels spread</span><span class="label-btns"><a class="dl-btn" href="images/prescription-labels-spread.jpg" download="prescription-labels-spread.jpg">Save image</a><button class="copy-btn" data-block="A" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -808,7 +888,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
         <div class="section-note">What a tic moment actually looks like. The scenes parents recognize instantly. These link to <a href="https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v5/page-1/">version 5, page 1</a>.</div>
         <div class="grid-row">
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 15 &middot; Rapid hard blinking</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 15 &middot; Rapid hard blinking</span><span class="label-btns"><a class="dl-btn" href="images/b1-rapid-hard-blinking.jpg" download="b1-rapid-hard-blinking.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -855,7 +935,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 16 &middot; Neck crank</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 16 &middot; Neck crank</span><span class="label-btns"><a class="dl-btn" href="images/b2-neck-crank.jpg" download="b2-neck-crank.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -902,7 +982,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 17 &middot; Eye roll</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 17 &middot; Eye roll</span><span class="label-btns"><a class="dl-btn" href="images/b4-eye-roll.jpg" download="b4-eye-roll.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -949,7 +1029,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 18 &middot; Mouth stretch</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 18 &middot; Mouth stretch</span><span class="label-btns"><a class="dl-btn" href="images/b5-mouth-stretch.jpg" download="b5-mouth-stretch.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -996,7 +1076,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 19 &middot; Nose scrunch and squint</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 19 &middot; Nose scrunch and squint</span><span class="label-btns"><a class="dl-btn" href="images/b6-nose-scrunch-squint.jpg" download="b6-nose-scrunch-squint.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1043,7 +1123,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 20 &middot; Arm shoot-out, spilled glass</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 20 &middot; Arm shoot-out, spilled glass</span><span class="label-btns"><a class="dl-btn" href="images/b9-arm-shoot-out-spilled-glass.jpg" download="b9-arm-shoot-out-spilled-glass.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1090,7 +1170,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 21 &middot; Finger flick</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 21 &middot; Finger flick</span><span class="label-btns"><a class="dl-btn" href="images/b10-finger-flick-blurred.jpg" download="b10-finger-flick-blurred.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1137,7 +1217,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 22 &middot; Touching the doorframe</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 22 &middot; Touching the doorframe</span><span class="label-btns"><a class="dl-btn" href="images/b14-touching-doorframe.jpg" download="b14-touching-doorframe.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1184,7 +1264,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 23 &middot; Hand over mouth, grocery store</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 23 &middot; Hand over mouth, grocery store</span><span class="label-btns"><a class="dl-btn" href="images/b16-hand-over-mouth-grocery-store.jpg" download="b16-hand-over-mouth-grocery-store.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1231,7 +1311,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 24 &middot; Asleep at his desk (v1)</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 24 &middot; Asleep at his desk (v1)</span><span class="label-btns"><a class="dl-btn" href="images/b18-sleeping-at-desk-v1.jpg" download="b18-sleeping-at-desk-v1.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1278,7 +1358,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 25 &middot; Asleep at his desk (v2)</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 25 &middot; Asleep at his desk (v2)</span><span class="label-btns"><a class="dl-btn" href="images/b18-sleeping-at-desk-v2.jpg" download="b18-sleeping-at-desk-v2.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1325,7 +1405,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 26 &middot; Gripping his own wrist</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 26 &middot; Gripping his own wrist</span><span class="label-btns"><a class="dl-btn" href="images/hand-gripping-wrist-suppression.jpg" download="hand-gripping-wrist-suppression.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1372,7 +1452,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 27 &middot; Mid-tic, hand raised</span><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 27 &middot; Mid-tic, hand raised</span><span class="label-btns"><a class="dl-btn" href="images/vocal-tic-mouth-open-hand-raised.jpg" download="vocal-tic-mouth-open-hand-raised.jpg">Save image</a><button class="copy-btn" data-block="B" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1423,7 +1503,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
         <div class="section-note">The receipts and the damage. Everything the search left behind. These link to <a href="https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v7/page-1/">version 7, page 1</a>.</div>
         <div class="grid-row">
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 28 &middot; Appointment card stack</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 28 &middot; Appointment card stack</span><span class="label-btns"><a class="dl-btn" href="images/c2-appointment-card-stack.jpg" download="c2-appointment-card-stack.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1466,7 +1546,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 29 &middot; Prior authorization denied</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 29 &middot; Prior authorization denied</span><span class="label-btns"><a class="dl-btn" href="images/c3-prior-auth-denied.jpg" download="c3-prior-auth-denied.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1509,7 +1589,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 30 &middot; Chewed shirt collar</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 30 &middot; Chewed shirt collar</span><span class="label-btns"><a class="dl-btn" href="images/c4-chewed-shirt-collar.jpg" download="c4-chewed-shirt-collar.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1552,7 +1632,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 31 &middot; Cracked night guard</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 31 &middot; Cracked night guard</span><span class="label-btns"><a class="dl-btn" href="images/c5-cracked-night-guard.jpg" download="c5-cracked-night-guard.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1595,7 +1675,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 32 &middot; Bitten nails over homework</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 32 &middot; Bitten nails over homework</span><span class="label-btns"><a class="dl-btn" href="images/c7-bitten-nails-homework.jpg" download="c7-bitten-nails-homework.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1638,7 +1718,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 33 &middot; Patched drywall holes</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 33 &middot; Patched drywall holes</span><span class="label-btns"><a class="dl-btn" href="images/c8-drywall-holes-patched.jpg" download="c8-drywall-holes-patched.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1681,7 +1761,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 34 &middot; Supplement bottles on the counter</span><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 34 &middot; Supplement bottles on the counter</span><span class="label-btns"><a class="dl-btn" href="images/supplement-bottles-countertop-headline.jpg" download="supplement-bottles-countertop-headline.jpg">Save image</a><button class="copy-btn" data-block="C" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1728,7 +1808,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
         <div class="section-note">The evidence mom kept. The list, the schedule, the videos. These link to <a href="https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v6/page-1/">version 6, page 1</a>.</div>
         <div class="grid-row">
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 35 &middot; Tic video on mom&#x27;s phone</span><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 35 &middot; Tic video on mom&#x27;s phone</span><span class="label-btns"><a class="dl-btn" href="images/d1-tic-video-on-moms-phone.jpg" download="d1-tic-video-on-moms-phone.jpg">Save image</a><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1769,7 +1849,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 36 &middot; The pill list, $56,576 total</span><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 36 &middot; The pill list, $56,576 total</span><span class="label-btns"><a class="dl-btn" href="images/d4-pill-list-total-56576.jpg" download="d4-pill-list-total-56576.jpg">Save image</a><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1810,7 +1890,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 37 &middot; Med schedule on the fridge</span><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 37 &middot; Med schedule on the fridge</span><span class="label-btns"><a class="dl-btn" href="images/d7-med-schedule-on-fridge.jpg" download="d7-med-schedule-on-fridge.jpg">Save image</a><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1851,7 +1931,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
                 </div>
             </div>
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 38 &middot; The expense list</span><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 38 &middot; The expense list</span><span class="label-btns"><a class="dl-btn" href="images/medical-expense-timeline-paper.jpg" download="medical-expense-timeline-paper.jpg">Save image</a><button class="copy-btn" data-block="D" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
@@ -1896,7 +1976,7 @@ Read more here - My Mom Spent $56,576 Trying to Stop My Motor Tics. Here&#x27;s 
         <div class="section-note">The one that ended the search. These link to <a href="https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v7/page-1/">version 7, page 1</a>.</div>
         <div class="grid-row">
             <div class="grid-item">
-                <div class="draft-label"><span>Ad 39 &middot; Prescription number forty</span><button class="copy-btn" data-block="E" onclick="copyAdText(this)">Copy text</button></div>
+                <div class="draft-label"><span>Ad 39 &middot; Prescription number forty</span><span class="label-btns"><a class="dl-btn" href="images/e3-marinol-box-schedule2-form.jpg" download="e3-marinol-box-schedule2-form.jpg">Save image</a><button class="copy-btn" data-block="E" onclick="copyAdText(this)">Copy text</button></span></div>
                 <div class="fb-post">
                     <div class="fb-header">
                         <div class="fb-avatar">G</div>
