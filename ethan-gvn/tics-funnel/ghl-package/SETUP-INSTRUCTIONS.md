@@ -1,53 +1,55 @@
-# Tics Funnel - GoHighLevel Setup Guide
+# Tics Funnel - Setup Guide
 
-## What's included
+## What's in this folder
 
-### Landing pages (in `/pages/`)
-
-Three versions of the same two-step funnel. Same headline, same offer flow. Each takes a different route through page 1, so we can test which route converts best.
-
-| Folder | What makes it unique |
+| Folder | What it is |
 |---|---|
-| `the-argument/` | The tightest version. Every subhead is a claim about the reader's child. |
-| `the-future/` | The only one that shows the destination: the ordinary bedtime scene. |
-| `the-list/` | Built on the expense list. The $56,576 record itself is the argument. |
+| `pages/` | The 3 funnels: `the-argument/`, `the-future/`, `the-list/`. Each has `page-1.html` and `page-2.html`. Your Meta pixel is already installed in every page. |
+| `page-images/` | The 5 images the landing pages use. |
+| `ad-images/` | The 39 ad images, already split into `flexible-ad-1/` through `flexible-ad-4/` (10 + 10 + 10 + 9). One folder = one flexible ad. |
+| `ad-copy/` | The primary text, ready to paste. One folder per funnel, links already filled in: `funnel-1-the-argument/`, `funnel-2-the-future/`, `funnel-3-the-list/`. Each has the same 5 copies, only the link at the end differs. `link-headline.txt` is the headline for every ad. |
 
-Each folder has `page-1.html` (the story) and `page-2.html` (the offer).
-
-**Your Meta pixel (1435777147172605) is already installed in every page.** Nothing to add there.
-
-### Page images (in `/page-images/`)
-The 5 images the landing pages use: the barn photo and the 4 product shots.
-
-### Ad images (in `/ad-images/`)
-All 39 ad images, sorted into one folder per angle. Every image in a folder uses the same ad copy.
-
-### Ad copy (in `/ad-copy/`)
-One text file per angle. This is the primary text for the ad, ready to paste. `link-headline.txt` is the headline for every ad's link preview.
+**Good to know: the funnels are already live** (the links in the copy files point at them, and they have your pixel). So you can launch ads today with zero page setup, and move the pages onto GoHighLevel whenever you want.
 
 ---
 
-## Part 1: Get the landing pages live in GoHighLevel
+## Part 1: Launch the ads (the whole thing is: build one ad set, duplicate it twice)
 
-### Step 1: Upload page images to Media Library
-1. Go to **Sites** > **Media Library**
-2. Upload the 5 images from `/page-images/`
-3. Click each image and copy its URL. You need these in Step 3.
+### Build ad set 1
 
-### Step 2: Create the funnels
-1. Go to **Sites** > **Funnels** > **+ Create New Funnel**
-2. Make three funnels (or one funnel with six pages, your call). Suggested names: `Tics - The Argument`, `Tics - The Future`, `Tics - The List`
-3. Each gets two pages: `page-1` and `page-2`
+1. New campaign. Name it `Tics - $56k Hook`.
+2. New ad set. Name it `Funnel 1 - The Argument`.
+3. Create a **flexible ad** in it:
+   - Upload every image from `ad-images/flexible-ad-1/`
+   - Primary text: paste all 5 files from `ad-copy/funnel-1-the-argument/` as 5 text options
+   - Headline: paste `link-headline.txt`
+   - Website URL: the same link that's at the end of the copy (The Argument, page 1)
+4. Repeat step 3 three more times, with `flexible-ad-2/`, `flexible-ad-3/`, `flexible-ad-4/`. Same copy, same headline, same URL every time. Only the images change.
 
-### Step 3: Paste the HTML
-For each page:
-1. Open the page in the funnel builder
-2. Delete all default elements
-3. Add a **Custom HTML/Code** element, full width
-4. Open the matching HTML file in a text editor, copy everything, paste it in
+Ad set 1 is done: 4 ads, 39 images, pointed at The Argument.
 
-### Step 4: Fix the image links
-Before pasting (easiest), use Find and Replace in your text editor:
+### Duplicate for funnels 2 and 3
+
+5. Duplicate the whole ad set. Rename it `Funnel 2 - The Future`. In each of its 4 ads, change only two things:
+   - Primary text: swap in the 5 files from `ad-copy/funnel-2-the-future/`
+   - Website URL: the link at the end of those copies (The Future, page 1)
+6. Duplicate again. Rename it `Funnel 3 - The List`. Same two swaps, using `ad-copy/funnel-3-the-list/`.
+
+That's it. 3 ad sets, 12 ads, 117 shots on goal. The images never change between ad sets - only the copy folder and the URL.
+
+You can preview every ad as it will look in the feed here:
+https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/ads/
+
+---
+
+## Part 2 (whenever you want): Move the pages onto GoHighLevel
+
+The ads work without this. Do it when you want the funnels on your own domain.
+
+1. **Media Library:** upload the 5 images from `page-images/`, copy each one's URL.
+2. **Funnels:** create three (suggested names: `Tics - The Argument`, `Tics - The Future`, `Tics - The List`), two pages each: `page-1` and `page-2`.
+3. **Each page:** delete the default elements, add a full-width **Custom HTML/Code** element, paste in the whole matching HTML file.
+4. **Before pasting, find-and-replace the image links** in the HTML:
 
 ```
 src="../../images/ethan-daughters-barn.jpg"  ->  your Media Library URL
@@ -57,37 +59,8 @@ src="../../images/kids-cbd-6bottles.png"     ->  your Media Library URL
 src="../../images/kids-cbd-bogo.png"         ->  your Media Library URL
 ```
 
-### Step 5: Fix the page-1 button
-Each page-1 has a button that links to `../page-2/`. Replace that with the real URL of that funnel's page 2.
-
-### Step 6: Test each page on your phone
-Page loads, images show, the page-1 button lands on the right page 2, buy buttons work.
-
----
-
-## Part 2: Load the ads
-
-**The structure: same ads, three funnels.** Any of these 39 ads can drive traffic to any of the three funnels. So the test is simple:
-
-1. Make **three ad sets**
-2. Load the **same ads** into each
-3. Point ad set 1 at The Argument page 1, ad set 2 at The Future page 1, ad set 3 at The List page 1
-
-The ads stay identical everywhere. The test tells you which funnel converts best.
-
-**Inside each ad set: 4 flexible ads.** Meta takes up to 10 images per flexible ad, so split the 39 images as 10 + 10 + 10 + 9. On each flexible ad, add the 5 copy files as your primary text options (Meta allows 5) and `link-headline.txt` as the headline. Meta finds the winning combos.
-
-That is 12 new ads total, and 117 shots on goal (3 funnels x 39 ads).
-
-**One thing to fill in:** the last line of every copy file ends with `[your funnel link]`. Paste the live page-1 URL of whichever funnel that ad set points at. Same URL goes in the ad's website field.
-
-You can preview every ad exactly as it will look in the feed here:
-https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/ads/
-
----
-
-## One more thing
-
-This round, loading the pages and ads is manual, because that is fastest. This week we are setting up your agent to do this loading for you, so next time you will not have to.
+5. **Each page-1** has a button linking to `../page-2/`. Point it at that funnel's real page-2 URL.
+6. **Test on your phone:** pages load, images show, page-1 button lands on page 2, buy buttons work.
+7. **Then update the ads:** in each ad set, swap the website URL and the link at the end of each copy to your new GoHighLevel URLs. One find-and-replace per copy.
 
 Questions? Contact Andrew at The Prompted.
