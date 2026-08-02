@@ -6,11 +6,11 @@
 
 Three versions of the same two-step funnel. Same headline, same offer flow. Each takes a different route through page 1, so we can test which route converts best.
 
-| Folder | Version | Page 1 route |
-|---|---|---|
-| `v5-the-argument/` | v5 | The tightest version. Every subhead is a claim about the reader's child. |
-| `v6-the-future/` | v6 | The only one that shows the destination: the ordinary bedtime scene. |
-| `v7-the-list/` | v7 | Built on the expense list. The $56,576 record itself is the argument. |
+| Folder | What makes it unique |
+|---|---|
+| `the-argument/` | The tightest version. Every subhead is a claim about the reader's child. |
+| `the-future/` | The only one that shows the destination: the ordinary bedtime scene. |
+| `the-list/` | Built on the expense list. The $56,576 record itself is the argument. |
 
 Each folder has `page-1.html` (the story) and `page-2.html` (the offer).
 
@@ -20,7 +20,7 @@ Each folder has `page-1.html` (the story) and `page-2.html` (the offer).
 The 5 images the landing pages use: the barn photo and the 4 product shots.
 
 ### Ad images (in `/ad-images/`)
-All 39 ad images, sorted into one folder per angle. Every image in a folder uses the same ad copy and points at the same landing page.
+All 39 ad images, sorted into one folder per angle. Every image in a folder uses the same ad copy.
 
 ### Ad copy (in `/ad-copy/`)
 One text file per angle. This is the primary text for the ad, ready to paste. `link-headline.txt` is the headline for every ad's link preview.
@@ -36,7 +36,7 @@ One text file per angle. This is the primary text for the ad, ready to paste. `l
 
 ### Step 2: Create the funnels
 1. Go to **Sites** > **Funnels** > **+ Create New Funnel**
-2. Make three funnels (or one funnel with six pages, your call). Suggested names: `Tics v5`, `Tics v6`, `Tics v7`
+2. Make three funnels (or one funnel with six pages, your call). Suggested names: `Tics - The Argument`, `Tics - The Future`, `Tics - The List`
 3. Each gets two pages: `page-1` and `page-2`
 
 ### Step 3: Paste the HTML
@@ -58,7 +58,7 @@ src="../../images/kids-cbd-bogo.png"         ->  your Media Library URL
 ```
 
 ### Step 5: Fix the page-1 button
-Each page-1 has a button that links to `../page-2/`. Replace that with the real URL of that version's page 2 in your funnel.
+Each page-1 has a button that links to `../page-2/`. Replace that with the real URL of that funnel's page 2.
 
 ### Step 6: Test each page on your phone
 Page loads, images show, the page-1 button lands on the right page 2, buy buttons work.
@@ -71,7 +71,7 @@ Page loads, images show, the page-1 button lands on the right page 2, buy button
 
 1. Make **three ad sets**
 2. Load the **same ads** into each
-3. Point ad set 1 at Funnel 1 (v5) page 1, ad set 2 at Funnel 2 (v6) page 1, ad set 3 at Funnel 3 (v7) page 1
+3. Point ad set 1 at The Argument page 1, ad set 2 at The Future page 1, ad set 3 at The List page 1
 
 The ads stay identical everywhere. The test tells you which funnel converts best.
 
