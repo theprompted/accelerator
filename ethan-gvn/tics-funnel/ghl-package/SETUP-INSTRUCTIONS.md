@@ -1,44 +1,40 @@
-# Tics Funnel - Setup Guide
+# $56k Funnel - Setup Guide
 
 ## What's in this folder
 
 | Folder | What it is |
 |---|---|
-| `pages/` | The 3 funnels: `the-argument/`, `the-future/`, `the-list/`. Each has `page-1.html` and `page-2.html`. Your Meta pixel is already installed in every page. |
-| `page-images/` | The 5 images the landing pages use. |
 | `ad-images/` | The 39 ad images, already split into `flexible-ad-1/` through `flexible-ad-4/` (10 + 10 + 10 + 9). One folder = one flexible ad. |
-| `ad-copy/` | The primary text, ready to paste. One folder per funnel, links already filled in: `funnel-1-the-argument/`, `funnel-2-the-future/`, `funnel-3-the-list/`. Each has the same 5 copies, only the link at the end differs. `link-headline.txt` is the headline for every ad. |
+| `ad-copy/` | The 5 primary texts (`copy-1` through `copy-5`) and the headline (`link-headline.txt`). Paste-ready. |
+| `pages/` | The 3 funnels: `the-argument/`, `the-future/`, `the-list/`. Each has `page-1.html` and `page-2.html`. Your Meta pixel is already in every page. |
+| `page-images/` | The 5 images the landing pages use. |
 
-**Good to know: the funnels are already live** (the links in the copy files point at them, and they have your pixel). So you can launch ads today with zero page setup, and move the pages onto GoHighLevel whenever you want.
+**The funnels are already live with your pixel**, so you can launch ads today with zero page setup:
+
+- The Argument: https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v5/page-1/
+- The Future: https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v6/page-1/
+- The List: https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/v7/page-1/
 
 ---
 
-## Part 1: Launch the ads (the whole thing is: build one ad set, duplicate it twice)
+## Part 1: The ads. One ad set, 12 ads, three steps.
 
-### Build ad set 1
+**Step 1 - build 4 flexible ads.**
 
-1. New campaign. Name it `Tics - $56k Hook`.
-2. New ad set. Name it `Funnel 1 - The Argument`.
-3. Create a **flexible ad** in it:
-   - Upload every image from `ad-images/flexible-ad-1/`
-   - Primary text: paste all 5 files from `ad-copy/funnel-1-the-argument/` as 5 text options
-   - Headline: paste `link-headline.txt`
-   - Website URL: the same link that's at the end of the copy (The Argument, page 1)
-4. Repeat step 3 three more times, with `flexible-ad-2/`, `flexible-ad-3/`, `flexible-ad-4/`. Same copy, same headline, same URL every time. Only the images change.
+New ad set, name it **$56k Funnel**. In it, create 4 flexible ads. Every ad gets the same text and destination - only the images differ:
 
-Ad set 1 is done: 4 ads, 39 images, pointed at The Argument.
+| Ad name | Images | Primary text (all 5 slots) | Headline | Destination |
+|---|---|---|---|---|
+| Argument - 1 | everything in `flexible-ad-1/` | `copy-1` through `copy-5` | `link-headline.txt` | The Argument, page 1 |
+| Argument - 2 | everything in `flexible-ad-2/` | same 5 | same | same |
+| Argument - 3 | everything in `flexible-ad-3/` | same 5 | same | same |
+| Argument - 4 | everything in `flexible-ad-4/` | same 5 | same | same |
 
-### Duplicate for funnels 2 and 3
+**Step 2 - duplicate those 4 ads.** Rename the copies **Future - 1, 2, 3, 4** and change exactly one thing on each: the destination URL, to The Future page 1.
 
-5. Duplicate the whole ad set. Rename it `Funnel 2 - The Future`. In each of its 4 ads, change only two things:
-   - Primary text: swap in the 5 files from `ad-copy/funnel-2-the-future/`
-   - Website URL: the link at the end of those copies (The Future, page 1)
-6. Duplicate again. Rename it `Funnel 3 - The List`. Same two swaps, using `ad-copy/funnel-3-the-list/`.
+**Step 3 - duplicate once more.** Rename **List - 1, 2, 3, 4**, destination URL to The List page 1.
 
-That's it. 3 ad sets, 12 ads, 117 shots on goal. The images never change between ad sets - only the copy folder and the URL.
-
-You can preview every ad as it will look in the feed here:
-https://theprompted.github.io/accelerator/ethan-gvn/tics-funnel/ads/
+Done: 12 ads, every funnel gets all 39 images and all 5 copies, and the ad name always tells you which funnel it feeds. 117 shots on goal.
 
 ---
 
@@ -61,6 +57,6 @@ src="../../images/kids-cbd-bogo.png"         ->  your Media Library URL
 
 5. **Each page-1** has a button linking to `../page-2/`. Point it at that funnel's real page-2 URL.
 6. **Test on your phone:** pages load, images show, page-1 button lands on page 2, buy buttons work.
-7. **Then update the ads:** in each ad set, swap the website URL and the link at the end of each copy to your new GoHighLevel URLs. One find-and-replace per copy.
+7. **Then update the ads:** swap each ad's destination URL to your new GoHighLevel URLs. The ad text needs no changes.
 
 Questions? Contact Andrew at The Prompted.
