@@ -252,8 +252,38 @@
                     <span class="num-badge">3</span>
                     <span class="step-title">Swap the placeholders on each funnel page</span>
                 </div>
-                <p>On each funnel page, find the buy buttons and replace the placeholder links with the real checkout links from Step 2.</p>
-                <p>There are two sets of three buttons per page (one mid-page, one at the bottom). Three pages total. Find and replace.</p>
+                <p>Open each funnel page in your GHL page editor. The buy buttons currently have placeholder text where the link should be. You're looking for these three:</p>
+                <table class="price-table" style="margin:0.75rem 0;">
+                    <thead>
+                        <tr>
+                            <th>Button</th>
+                            <th>Find this placeholder</th>
+                            <th>Replace with</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Bottle</td>
+                            <td class="mono" style="font-size:0.75rem;">#REPLACE-WITH-1-BOTTLE-CHECKOUT-URL</td>
+                            <td class="mono" style="font-size:0.75rem;">Your 1-bottle link from Step 2</td>
+                        </tr>
+                        <tr>
+                            <td>3 Pack</td>
+                            <td class="mono" style="font-size:0.75rem;">#REPLACE-WITH-3-BOTTLE-CHECKOUT-URL</td>
+                            <td class="mono" style="font-size:0.75rem;">Your 3-pack link from Step 2</td>
+                        </tr>
+                        <tr>
+                            <td>6 Pack</td>
+                            <td class="mono" style="font-size:0.75rem;">#REPLACE-WITH-6-BOTTLE-CHECKOUT-URL</td>
+                            <td class="mono" style="font-size:0.75rem;">Your 6-pack link from Step 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Click on each buy button in the editor, find the link/URL field, and paste in the real checkout link.</p>
+                <p>Each page has two sets of these buttons (one mid-page, one at the bottom), so 6 swaps per page, 3 pages.</p>
+                <div class="callout">
+                    <strong>Shortcut:</strong> If you're editing the raw HTML in GHL instead of the visual editor, just do Ctrl+F (or Cmd+F on Mac) and search for <strong>REPLACE-WITH</strong>. That'll jump you to each placeholder.
+                </div>
             </div>
 
             <div class="done-block">
