@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Finally Worked | Green Valley Nutrition</title>
+<meta name="description" content="It didn't make every difficult thing disappear. It did something my family had learned mattered more: it calmed me down without taking me away.">
+<link rel="icon" href="../../images/favicon.svg">
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1435777147172605');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1435777147172605&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Questrial&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-primary:'Montserrat','Questrial',Arial,sans-serif;
+  --color-text-primary:#2e2e2e;
+  --color-text-headline:#0e1b4d;
+  --color-text-secondary:#1f2555;
+  --color-text-muted:#666666;
+  --color-accent-green:#449344;
+  --color-header-green:#357535;
+  --color-midnight:#0e1b4d;
+  --color-cta-start:#449344;
+  --color-cta-end:#357535;
+  --color-cta-hover:#2a5a2a;
+  --color-urgency:#e32402;
+  --color-bg-white:#FFFFFF;
+  --color-bg-light:#f8f8f8;
+  --color-gold:#f9dc4b;
+  --shadow-button:0 4px 15px rgba(68,147,68,.25);
+  --radius-sm:.5rem;
+  --radius-md:1rem;
+  --radius-pill:40px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--font-primary);
+  font-size:1.3125rem;
+  line-height:1.65;
+  color:var(--color-text-primary);
+  background:var(--color-bg-white);
+  -webkit-font-smoothing:antialiased;
+}
+.container{--pad:1.5rem;max-width:44rem;margin:0 auto;padding:2.5rem var(--pad)}
+.hero{
+  background:linear-gradient(180deg,#e8f5e8 0%,#FFFFFF 100%);
+  margin:0 calc(var(--pad) * -1) 0;
+  padding:3rem var(--pad) 2rem;
+  text-align:center;
+}
+h1{
+  font-size:2.5rem;font-weight:800;line-height:1.2;
+  color:var(--color-text-headline);margin-bottom:1rem;
+}
+h1 em{font-style:normal;color:var(--color-accent-green)}
+h2{
+  font-size:1.75rem;font-weight:800;line-height:1.3;
+  color:var(--color-text-headline);
+  margin:3.25rem 0 1.25rem;
+}
+h3{
+  font-size:1.25rem;font-weight:700;
+  color:var(--color-text-secondary);
+  margin:2rem 0 .5rem;
+}
+p{margin-bottom:1.125rem}
+strong{font-weight:700;color:var(--color-text-secondary)}
+em{font-style:italic}
+.lead strong{color:var(--color-text-headline)}
+blockquote{
+  border-left:4px solid var(--color-accent-green);
+  background:var(--color-bg-light);
+  padding:1.25rem 1.5rem;
+  margin:1.75rem 0;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-weight:700;color:var(--color-text-secondary);
+}
+blockquote p:last-child{margin-bottom:0}
+blockquote.plain{font-weight:400;color:var(--color-text-primary)}
+.figure{margin:2rem 0;text-align:center}
+.figure img{max-width:100%;height:auto;border-radius:var(--radius-md)}
+hr.soft{border:0;border-top:1px solid #e8e8e8;margin:3rem 0}
+ul.checks{list-style:none;margin:1.5rem 0}
+ul.checks li{
+  position:relative;padding-left:2rem;margin-bottom:.75rem;
+}
+ul.checks li::before{
+  content:"✓";position:absolute;left:0;top:0;
+  color:var(--color-accent-green);font-weight:800;
+}
+.lab{
+  border:2px solid var(--color-accent-green);
+  border-radius:var(--radius-md);
+  padding:1.5rem;margin:2rem 0;background:var(--color-bg-white);
+}
+.lab h4{
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--color-accent-green);font-weight:800;margin-bottom:1rem;
+}
+.lab-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:1rem;padding:.6rem 0;border-bottom:1px solid #eee;font-size:1.05rem;
+}
+.lab-row:last-child{border-bottom:0}
+.lab-row .v{font-weight:700;color:var(--color-text-secondary);white-space:nowrap}
+.lab-row .v.good{color:var(--color-accent-green)}
+.lab-note{font-size:.95rem;color:var(--color-text-muted);margin-top:1rem;font-style:italic}
+.offer{
+  background:var(--color-bg-light);
+  border-radius:var(--radius-md);
+  padding:2rem 1.5rem;margin:2.5rem 0;text-align:center;
+}
+.offer .offer-name{
+  font-size:1.6rem;font-weight:800;color:var(--color-text-headline);
+  line-height:1.25;margin-bottom:.4rem;
+}
+.offer .offer-badge{
+  font-size:.95rem;font-weight:700;color:var(--color-accent-green);
+  margin-bottom:.5rem;
+}
+.offer .offer-stars{
+  font-size:.95rem;color:var(--color-text-muted);margin-bottom:1.5rem;
+}
+.offer .offer-lead{
+  font-size:1rem;font-weight:700;color:var(--color-text-secondary);
+  margin-bottom:.4rem;
+}
+.social-proof-head{
+  font-size:1rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--color-accent-green);margin:2rem 0 1.25rem;
+}
+.attrib{font-size:1rem;color:var(--color-text-muted);font-style:italic}
+.footer-addr{
+  font-size:.85rem;color:var(--color-text-muted);
+  margin-top:1rem;line-height:1.6;
+}
+.offer ul.checks{text-align:left;max-width:22rem;margin:1.5rem auto}
+.cta{
+  display:inline-block;width:100%;max-width:26rem;
+  background:linear-gradient(180deg,var(--color-cta-start),var(--color-cta-end));
+  color:#fff;text-decoration:none;font-weight:800;font-size:1.15rem;
+  padding:1.1rem 1.5rem;border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-button);letter-spacing:.01em;
+}
+.cta:hover{background:var(--color-cta-hover)}
+.cta-note{font-size:.9rem;color:var(--color-text-muted);margin-top:.9rem}
+.tiers{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1rem;align-items:stretch;
+  margin:1.75rem 0 .5rem;text-align:center;
+}
+.tier{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--color-bg-white);
+  border:2px solid #e0e0e0;border-radius:var(--radius-md);
+  padding:1.75rem 1rem 1.25rem;
+}
+.tier.best{
+  border-color:var(--color-accent-green);
+  box-shadow:0 4px 18px rgba(68,147,68,.18);
+}
+.tier-flag{
+  position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+  background:var(--color-accent-green);color:#fff;
+  font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  padding:.3rem .6rem;border-radius:var(--radius-pill);
+  max-width:calc(100% - .5rem);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.tier-flag.alt{
+  background:#eaeaea;color:var(--color-text-muted);
+  font-weight:700;
+}
+.tier-supply{
+  font-size:1.15rem;font-weight:800;color:var(--color-text-headline);
+  line-height:1.25;margin-bottom:.15rem;
+}
+.tier-shot{
+  height:124px;margin:.35rem 0 .7rem;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.tier-shot img{
+  max-width:100%;max-height:100%;
+  width:auto;height:auto;object-fit:contain;display:block;
+}
+.tier-bottles{font-size:.9rem;color:var(--color-text-muted);margin-bottom:.9rem}
+.tier-perbottle{
+  font-size:clamp(1.5rem,4.2vw,2rem);
+  font-weight:800;color:var(--color-accent-green);
+  line-height:1;margin-bottom:.1rem;white-space:nowrap;
+}
+.tier-perbottle span{font-size:.8rem;font-weight:700;color:var(--color-text-muted)}
+.tier-total{
+  font-size:.95rem;font-weight:700;color:var(--color-urgency);
+  margin-bottom:.5rem;min-height:1.5em;
+}
+.tier-total.muted{color:var(--color-text-muted);font-weight:400}
+.tier-save{
+  font-size:.85rem;font-weight:400;color:var(--color-text-muted);
+  line-height:1.45;padding-top:.9rem;margin-bottom:1rem;
+}
+.tier-save.none{color:var(--color-text-muted)}
+.tier-cta{
+  display:flex;width:100%;margin-top:auto;
+  background:linear-gradient(180deg,var(--color-cta-start),var(--color-cta-end));
+  color:#fff;text-decoration:none;text-align:center;
+  font-weight:800;font-size:.95rem;letter-spacing:.01em;
+  padding:.85rem 1rem;border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-button);
+  min-height:44px;
+  align-items:center;justify-content:center;
+}
+.tier-cta:hover{background:var(--color-cta-hover)}
+.tier.best .tier-cta{font-size:1rem;padding:.95rem 1rem}
+@media(min-width:601px) and (max-width:720px){
+  .tier-shot{height:96px}
+}
+@media(max-width:600px){
+  .tiers{grid-template-columns:1fr;gap:1.5rem;margin-top:2rem}
+  .tier{padding:1.6rem 1rem 1.1rem}
+  .tier-shot{height:168px}
+  .tier-perbottle{font-size:2rem}
+  .tier-total{min-height:0}
+  .tier-total.muted{display:none}
+  .tier-save{margin-top:.5rem;padding-top:.6rem;margin-bottom:.9rem}
+  .tier-cta{font-size:1.05rem;padding:1rem;min-height:48px}
+}
+details{border-bottom:1px solid #e8e8e8;padding:1.1rem 0}
+details summary{
+  cursor:pointer;font-weight:700;color:var(--color-text-secondary);
+  font-size:1.15rem;list-style:none;display:flex;justify-content:space-between;gap:1rem;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--color-accent-green);font-weight:800}
+details[open] summary::after{content:"–"}
+details p{margin:.9rem 0 0;font-size:1.15rem}
+.microcopy{font-size:1rem;color:var(--color-text-muted);font-style:italic}
+.legal{
+  font-size:.9rem;line-height:1.6;color:var(--color-text-muted);
+  border-top:1px solid #e8e8e8;margin-top:3rem;padding-top:1.5rem;
+}
+.footer-links{text-align:center;padding:1.5rem 0 3rem;font-size:.95rem}
+.footer-links a{color:var(--color-text-muted);text-decoration:none;margin:0 .6rem}
+@media(max-width:600px){
+  body{font-size:1.1875rem}
+  .container{--pad:1.25rem;padding:1.5rem var(--pad)}
+  h1{font-size:1.9rem}
+  h2{font-size:1.45rem;margin:2.5rem 0 1rem}
+  .lab-row{font-size:1rem}
+  .offer .offer-name{font-size:1.35rem}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>What finally worked for me, and why no doctor in eleven years suggested it.</h1>
+  </div>
+
+  <p>If you are here, you read the first part.</p>
+
+  <p>You know it was not Tourette&rsquo;s, that it was an infection nobody closed out, and that the thing which brings the inflammation down is the one thing a child cannot stay on.</p>
+
+  <p>So here is the part I have to tell you honestly, because it is how I got here.</p>
+  <hr class="soft">
+
+  <h2>I found what filled that gap in high school, and my parents hated it.</h2>
+
+  <p>I need to tell you this part honestly, because it is how I got here and because I think it will matter to you.</p>
+
+  <p>It was marijuana. I was in high school. I knew it was illegal.</p>
+
+  <p>My parents were completely anti-pot and it was a hard decision.</p>
+
+  <p>But for the first time, something worked.</p>
+
+  <p>My parents had stopped at nothing.</p>
+
+  <p>Countless hours, tens of thousands of dollars, the best hospitals in the country.</p>
+
+  <p>And I found relief in the back seat of a car.</p>
+
+  <p>I remember thinking: <em>wasn't this the goal? Isn't this what I was supposed to be doing, finding something that helps?</em></p>
+
+  <h2>My father caught me and proved it worked in the same sentence.</h2>
+
+  <p>They had caught me more times than I can count.</p>
+
+  <p>Pulled it out of my pants pockets in the laundry, smashed my pipes, grounded me.</p>
+
+  <p>Everything to make me stop.</p>
+
+  <p>One night I came home around bedtime and my dad turned around from the couch.</p>
+
+  <blockquote><p>"Hey, E. Were you smoking tonight?"</p></blockquote>
+
+  <p>I asked him why he was asking.</p>
+
+  <p>He said, <em>"Well, you're just so calm. You're not ticking."</em></p>
+
+  <p>A light bulb went off.</p>
+
+  <p>I said, dad, that is why I smoke.</p>
+
+  <p>You just said it yourself.</p>
+
+  <p>I'm not ticking and I'm calm.</p>
+
+  <p>They never approved.</p>
+
+  <p>But they lightened up after that night, because he had answered his own question.</p>
+
+  <p>It was obvious to me.</p>
+
+  <p>And now it was obvious to the man who most wanted it not to be true.</p>
+
+  <h2>The first doctor in eleven years who asked me what was working.</h2>
+
+  <p>Every appointment until this one had been an in-and-out.</p>
+
+  <p>He has Tourette's, he has anxiety, here is a pill to try.</p>
+
+  <p>Then I was referred to a specialist who ran a home for foster children. Nothing fazed her.</p>
+
+  <p>Sound machine going, corner office looking out over a pond.</p>
+
+  <p>She sat with me for an hour.</p>
+
+  <p>She was not in a hurry to get me out of her office.</p>
+
+  <p>And she asked me a question no doctor had asked:</p>
+
+  <blockquote><p>Is there anything you are doing right now that makes you feel better?</p></blockquote>
+
+  <p>It was the first time I ever admitted to an adult that I was smoking.</p>
+
+  <p>I braced for her to call my parents in, or reprimand me, or at minimum tell me to stop.</p>
+
+  <p>She nodded, wrote something on her pad, and said: <em>if you found something that helps you, you should probably do that.</em></p>
+
+  <p>This was Virginia, when it was completely illegal, and I had already been in trouble for it repeatedly.</p>
+
+  <p>And a medical professional we were paying to see was telling me to listen to my body.</p>
+
+  <p>You have been to all these doctors and none of it worked.</p>
+
+  <p>You found something that works.</p>
+
+  <p>For the first time I was not being judged for doing the thing that was helping me.</p>
+
+  <p>Adults in my life had told me I was going to end up in prison. That I was a bad person.</p>
+
+  <p>She told me I might be onto something.</p>
+
+  <blockquote><p>She was right about the something. She just could not tell me which part.</p></blockquote>
+
+  <h2>The calm was real. Losing the boy was the price.</h2>
+
+  <p>Because here is what it actually cost me.</p>
+
+  <p>Lethargy. No personality.</p>
+
+  <p>Falling asleep at my desk.</p>
+
+  <p>Starting every single day by getting high before I could face it.</p>
+
+  <p>I traded a boy who could not sit still for a boy who was not really there.</p>
+
+  <p>My tics were quieter and so was everything else about me.</p>
+
+  <p>That is the trade every parent is terrified of, and they are right to be.</p>
+
+  <p>It is the same trade the strongest medications offer.</p>
+
+  <p>Quieter child, less child.</p>
+
+  <p><strong>What I needed was the part of the plant that calmed me down without taking me away.</strong></p>
+
+  <p>That is CBD.</p>
+
+  <p>Same plant, and the compound responsible for the relief, without the compound responsible for the high.</p>
+
+  <h2>One part of that plant calms. A different part causes the high.</h2>
+
+  <p>After college, I moved to Colorado to work on a farm.</p>
+
+  <p>The farm did not fix me.</p>
+
+  <p>But it showed me what feeling better was supposed to be for.</p>
+
+  <p>Rows had to be finished. Plants needed water.</p>
+
+  <p>Produce needed to reach the market.</p>
+
+  <p>At the end of the day, I could point to something and say:</p>
+
+  <blockquote><p>I did that.</p></blockquote>
+
+  <p>For years, nearly all my attention had been on me. Am I going to tic? Did somebody see?</p>
+
+  <p>When can I get high again?</p>
+
+  <p>On the farm, my attention had somewhere useful to go.</p>
+
+  <p>But I was still smoking cannabis in the morning and evening.</p>
+
+  <p>I had changed my surroundings without changing the bargain.</p>
+
+  <p>The farmer's son, Kyle, knew why I used it.</p>
+
+  <p>I told him what I wished existed:</p>
+
+  <p><strong>Something that could give me the calm without requiring me to leave the day.</strong></p>
+
+  <p>Then Kyle asked: "Have you ever heard of CBD?"</p>
+
+  <p>I said no.</p>
+
+  <p>He explained that CBD came from the cannabis plant but did not produce the intoxication I associated with THC.</p>
+
+  <p>Then he told me his cousin was growing hemp nearby.</p>
+
+  <p>I had an opportunity to try it.</p>
+
+  <p>My first use was inhaled.</p>
+
+  <p>That is part of my history, not a recommendation for somebody else.</p>
+
+  <p>I remember waiting for the familiar high.</p>
+
+  <p>It never came.</p>
+
+  <p><strong>I felt calm, but I was still completely there.</strong></p>
+
+  <p>I did not feel stoned.</p>
+
+  <p>I did not feel flattened.</p>
+
+  <p>I could get up, think clearly, work, and follow through.</p>
+
+  <p>That was the combination I had spent years looking for.</p>
+
+  <blockquote><p>Not merely quieter. Calmer, and still me.</p></blockquote>
+
+  <h2>CBD lowered the alarm. He still has to do the work.</h2>
+
+  <p>CBD became a supportive part of my routine.</p>
+
+  <p>My experience does not prove that CBD treats PANDAS or motor tics.</p>
+
+  <p>It cannot predict what another person, especially a child, will experience.</p>
+
+  <p>What I can tell you is what happened to me:</p>
+
+  <p>CBD was the first thing I personally experienced as giving me meaningful calm without making me high or making me feel less like myself.</p>
+
+  <p>That did not rebuild my life for me.</p>
+
+  <p>It made rebuilding feel possible.</p>
+
+  <p>Think about trying to repair a house while a fire alarm sounds every few seconds.</p>
+
+  <p>You may know what needs fixing.</p>
+
+  <p>The tools may be sitting beside you.</p>
+
+  <p>But the alarm keeps taking over.</p>
+
+  <p>For me, CBD lowered the alarm.</p>
+
+  <p><strong>Then I had to pick up the tools.</strong></p>
+
+  <p>I changed my environment.</p>
+
+  <p>I built structure into my days. I exercised.</p>
+
+  <p>I left relationships and habits that kept pulling me backward. I returned to my faith.</p>
+
+  <p>I learned to keep commitments to people beyond myself.</p>
+
+  <p>None of that happened overnight.</p>
+
+  <p>For years, I had collected evidence that I was broken, difficult, and trapped.</p>
+
+  <p>Now I was collecting evidence that I could contribute and that somebody could depend on me.</p>
+
+  <p>That is how my identity came back.</p>
+
+  <h2>Why a child can stay on CBD for months, and not on steroids.</h2>
+
+  <p>I call it nature's most powerful anti-inflammatory.</p>
+
+  <p>Natural plant extract, virtually zero downside, no toxicity, not addictive.</p>
+
+  <p>And this is the part that matters most to a mother in that corner: <strong>it can be taken long-term without risk.</strong> It is not a thirty-day tool.</p>
+
+  <p>That is precisely what steroids cannot offer.</p>
+
+  <p>It is not a marijuana product.</p>
+
+  <p>It does not get your child high.</p>
+
+  <p>It does not override their natural development.</p>
+
+  <p>What it does is work like a signal.</p>
+
+  <p>A whisper to the nervous system that it is safe to settle.</p>
+
+  <blockquote><p>Not a sedative. Not a knockout punch. A dimmer switch that gently turns down the static.</p></blockquote>
+
+  <p>Instead of flipping things on or off, it helps your child find the quieter middle. Not sedated. Not agitated. Just regulated.</p>
+
+  <p>There is a system it works through, and it is worth knowing the name.</p>
+
+  <p>Every child has an endocannabinoid system, a signaling network that holds the body in balance.</p>
+
+  <p>Think of it as the internal thermostat for mood, movement, focus, and stress.</p>
+
+  <p>When the brain is inflamed, that thermostat cannot keep up.</p>
+
+  <blockquote><p>It is like trying to cool a house when the thermostat's sensor is glitching. The signal to turn down the heat never fully lands.</p></blockquote>
+
+  <p>The goal is not to override your child's system.</p>
+
+  <p>It is to help it do the job it was built for.</p>
+
+  <ul class="checks">
+    <li><strong>Reduce excess inflammation</strong> in the brain and nervous system</li>
+    <li><strong>Support steadier moods</strong> and calmer responses</li>
+    <li><strong>Ease muscle tension and help regulate movement</strong>, which can reduce how intense and frequent tics are</li>
+    <li><strong>Promote deeper sleep and clearer focus</strong>, because rest is where healing happens</li>
+  </ul>
+
+  <p class="microcopy">Shannon et al. (2019) found 79% of patients reported decreased anxiety scores within the first month of CBD use. The World Health Organization (2018) described CBD as generally well tolerated with a good safety profile, and non-addictive.</p>
+
+  <h2>Here is the catch, because you are right to look for one.</h2>
+
+  <p>There is no miracle pill.</p>
+
+  <p>Doctors and parents keep hoping for one and it does not exist.</p>
+
+  <p>Healing took work.</p>
+
+  <p>Retraining how my brain answered the triggers that set me off. Changing habits.</p>
+
+  <p>Unglamorous daily things nobody sells in a bottle.</p>
+
+  <p>What CBD did was lower the alarm enough that I could finally pick up the tools.</p>
+
+  <blockquote><p>The drops are not the plan. They are what makes the plan possible.</p></blockquote>
+
+  <p>The proof is small and it is not on a chart.</p>
+
+  <p>I had given up reading for years, because I would tear the pages, pound my fist into the book, read the same sentence over and over.</p>
+
+  <p>Once the alarm came down, I picked books back up.</p>
+
+  <p>Now I start my mornings with one.</p>
+
+  <p>I used to start them by getting high.</p>
+
+  <hr class="soft">
+
+  <h2>Most CBD on the shelf is not safe to give a five-year-old.</h2>
+
+  <p>The supplement industry is largely unregulated.</p>
+
+  <p>That sentence sounds boring until you are the one measuring drops for a five-year-old.</p>
+
+  <p>Here is what it means in practice.</p>
+
+  <p>I tried products along the way that did nothing at all.</p>
+
+  <p>Not because CBD does not work, I knew by then that it did, but because of what was actually in the bottle.</p>
+
+  <p>Some were inferior quality.</p>
+
+  <p>Some simply did not contain enough CBD to do anything.</p>
+
+  <p>If a label says 25mg per serving and the bottle holds half that, you are not running a failed experiment on your child.</p>
+
+  <p>You are running no experiment at all, and you will conclude the wrong thing and stop.</p>
+
+  <p>Then there is the part almost nobody explains to parents.</p>
+
+  <h2>The bottle you buy in March is not the bottle you buy in September.</h2>
+
+  <p>Most CBD on the shelf is a whole-plant extract.</p>
+
+  <p>What is in it shifts with the crop, the harvest, how it was stored, how it was extracted.</p>
+
+  <p>Which means the bottle you buy in March and the bottle you buy in September are not quite the same product.</p>
+
+  <p>Nobody is being dishonest about it.</p>
+
+  <p>It is genuinely impossible to hold a plant extract steady.</p>
+
+  <p>For most adults, that is fine.</p>
+
+  <p>For a child whose symptoms already come and go on their own, it is a real problem.</p>
+
+  <p>If something changes this month, you will not know whether it was your child or the bottle.</p>
+
+  <p>The alternative is an isolate.</p>
+
+  <p>One compound, nothing else riding along, the same every time.</p>
+
+  <p>When you are watching your kid this closely, the formula has to be the thing that does not move.</p>
+
+  <p>By the end of that search I had a list.</p>
+
+  <p>Six questions, and I could not find a single product that answered all of them.</p>
+
+  <ul class="checks">
+    <li><strong>Can I verify what is in it?</strong> A third-party lab report for the batch in your hand, published where you can read it, showing that the potency on the label is the potency in the bottle.</li>
+    <li><strong>Will it be the same next time?</strong> Consistent batch to batch, so the only variable you are tracking is your child.</li>
+    <li><strong>Is there any THC at all?</strong> Not "low." Not "compliant." None, verified, so intoxication is never a question and neither is a drug screening.</li>
+    <li><strong>Can my child stay on it for months?</strong> The whole reason we are here is that the inflammation has to come down and stay down. Anything that is only safe for thirty days does not solve the problem my mother had.</li>
+    <li><strong>Is it clean enough to give my child every day?</strong> A short ingredient list you can actually read. No dyes, no syrups, nothing added to trick a kid into swallowing it.</li>
+    <li><strong>Will my child actually take it?</strong> The best formula in the world loses to a nightly fight.</li>
+  </ul>
+
+  <p>That list is not complicated.</p>
+
+  <p>It was just nobody's job to hand it to my mother.</p>
+
+  <hr class="soft">
+
+  <h2>I could not find one clean enough for my own mother to give me.</h2>
+
+  <p>When I came back to Virginia, you could not even find this stuff.</p>
+
+  <p>That is hard to imagine now.</p>
+
+  <p>But at the time, if you said CBD, people heard marijuana, and the conversation was over.</p>
+
+  <p>The thing that had given me my life back was something I could not reliably buy, and could not mention without watching someone's face change.</p>
+
+  <p>So I started looking for a version I could trust, and that turned out to be its own search.</p>
+
+  <p>Some products did nothing at all.</p>
+
+  <p>Others had ingredient lists as long as my arm, or testing I could not verify, or no honest way to know what was actually in the bottle.</p>
+
+  <p>My mother had already been handed enough bottles that promised things.</p>
+
+  <p>I kept thinking about what it would have meant if someone had put a clean one in her hands in year three instead of year eleven. Not a miracle.</p>
+
+  <p>Just something she could read the label of and understand, that she could give me every day without a new thing to worry about.</p>
+
+  <p>Nobody was making that for families like mine.</p>
+
+  <p>The people who needed it most were the ones nobody wanted to sell to, because kids with PANDAS and autism and ADHD are exactly the customers you get criticized for having.</p>
+
+  <p>I understand the criticism.</p>
+
+  <p>I would rather be criticized than watch another mother spend eleven years the way mine did.</p>
+
+  <p><strong>So I built the one I could not find. That is why Green Valley Nutrition exists.</strong></p>
+
+  <h2>So I built the one she never got handed.</h2>
+
+  <ul class="checks">
+    <li><strong>Targets the root, not the smoke.</strong> Inflammation and safety signaling, not symptom masking.</li>
+    <li><strong>Gentle enough for daily use.</strong> Months, not thirty days.</li>
+    <li><strong>THC-free, always.</strong> Even trace amounts can act unpredictably in a child.</li>
+    <li><strong>Third-party lab tested, every batch,</strong> with results published where you can read them.</li>
+    <li><strong>Built for children specifically,</strong> not just marketed as natural.</li>
+    <li><strong>Clean and sensory-friendly.</strong> No dyes, no synthetic flavors, no syrups.</li>
+    <li><strong>A format he will actually take,</strong> or it becomes a fight every night.</li>
+  </ul>
+
+  <h2>Two ingredients. You can read the whole label in four seconds.</h2>
+
+  <div class="figure">
+    <img src="../../images/kids-cbd-bogo.png" alt="Green Valley Nutrition Kids 350mg CBD Oil Drops">
+  </div>
+
+  <p><strong>Organic CBD isolate and organic MCT coconut oil.</strong> That is the whole formula.</p>
+
+  <ul class="checks">
+    <li>Double-distilled for clarity</li>
+    <li>Virtually tasteless, so it blends into the routine you already have</li>
+    <li>Dosed for sensitive systems at roughly 12mg per dropper</li>
+    <li>350mg per 15mL bottle, about 30 servings</li>
+    <li>Always 100% THC-free</li>
+  </ul>
+
+  <p>No cartoon packaging. No candy flavoring.</p>
+
+  <p>This was not made to trick your kid into taking it.</p>
+
+  <h2>Do not take my word for what is in the bottle. Read the lab report.</h2>
+
+  <div class="lab">
+    <h4>Independent lab result &middot; Kids 350mg CBD Oil Drops</h4>
+    <div class="lab-row"><span>CBD found in 15mL sample</span><span class="v good">361.5mg</span></div>
+    <div class="lab-row"><span>Bottle states</span><span class="v">350mg</span></div>
+    <div class="lab-row"><span>Delta-9 THC</span><span class="v">Not detected</span></div>
+    <div class="lab-row"><span>THCA</span><span class="v">Not detected</span></div>
+    <div class="lab-row"><span>Total THC</span><span class="v">Not detected</span></div>
+    <div class="lab-row"><span>Delta-8 THC</span><span class="v">Not detected</span></div>
+    <p class="lab-note">Before using a bottle, compare its batch information with the certificate on our site. If they do not match, ask us for the correct report.</p>
+  </div>
+
+  <p>When your child is already struggling, the last thing you need is another mystery variable.</p>
+
+  <hr class="soft">
+
+  <h2>My mother would never touch cannabis. It is on her nightstand now.</h2>
+
+  <p>My mom is the last person on earth who would ever try cannabis.</p>
+
+  <p>She does not want to be high.</p>
+
+  <p>She was never going anywhere near it.</p>
+
+  <p>She takes our CBN formula now, for sleep.</p>
+
+  <p>So does my mother-in-law.</p>
+
+  <p>My dad uses our pain cream for his back.</p>
+
+  <p>She did not come around because her son sells it.</p>
+
+  <p>She came around because she finally understood the difference between the plant and the high, and because she will not touch the sleep medications once she knows the risks.</p>
+
+  <blockquote><p>The woman who spent eleven years and $56,576 looking for something safe enough for her son now keeps it on her own nightstand.</p></blockquote>
+
+  <h2>What other mothers noticed first.</h2>
+
+  <p>It does not work like a light switch. It works like a ripple.</p>
+
+  <p>You may not notice everything at once, but over time you look around and realize your home feels different.</p>
+
+  <p class="social-proof-head">Backed by real families</p>
+
+  <blockquote class="plain"><p>"Our 11 year old son has PANDAS with significant flareups occurring 3-4 times a year. Symptoms can last for weeks on end. Within 4 days of starting the CBD Oil, his motor tics became barely noticeable. After two months of taking the Drops he's more relaxed, sleeping deeply through the night, better appetite, and clearer skin."</p></blockquote>
+
+  <blockquote class="plain"><p>"I have two kids with PANDAS. We're still attempting to get treatment. By some miracle 4 people suggested CBD. Then I found Ethan's story and I felt like I needed to try. It's definitely calming things down. I would say the symptoms are tamped down 85-95% for the most part which feels like a miracle!"</p></blockquote>
+
+  <blockquote class="plain"><p>"My child has ADHD and tics and was on medication with all kind of side effects, decided to give these drops a try. Within 3 days he is more focused and back to himself!"</p></blockquote>
+
+  <blockquote class="plain"><p>"So thankful I found Green Valley Nutrition! The CBD oil has made a huge difference in my sons PANS/PANDAS flare. I cannot thank you guys enough!"<br><span class="attrib">— Julie M., United States</span></p></blockquote>
+
+  <p class="microcopy">These are individual customer experiences, not a guarantee of what another child will experience. Results vary.</p>
+
+  <hr class="soft">
+
+  <h2>You are not gambling on him. You are starting somewhere.</h2>
+
+  <p>You are not the kind of mother who rushes decisions. You read labels. You ask questions.</p>
+
+  <p>You cross-reference everything with your gut, because the last forty things did not work and you are the one who has to look at him in the morning.</p>
+
+  <blockquote><p>Cautious parenting does not mean doing nothing. It means doing the right thing, when the time is right.</p></blockquote>
+
+  <div class="offer" id="offer">
+    <p class="offer-name">CBD Oil Drops for Kids</p>
+    <p class="offer-badge">The #1 Pediatrician-Recommended CBD</p>
+    <p class="offer-stars">&starf;&starf;&starf;&starf;&starf; &nbsp;4.9/5 "Outstanding" &middot; 5,000+ verified reviews</p>
+    <p class="offer-lead">Here's what you get:</p>
+    <ul class="checks">
+      <li>30 servings per bottle, designed to last a full month of daily use</li>
+      <li>12mg CBD isolate per serving</li>
+      <li>0.0% THC, always</li>
+      <li>Simple, organic ingredients</li>
+      <li>Free shipping &middot; one-time purchase, no subscription</li>
+    </ul>
+
+    <p class="offer-lead">Choose how long you want to give it:</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <span class="tier-flag alt">Curious</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-1bottle.png" alt="One bottle of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">1 Month</p>
+        <p class="tier-bottles">1 bottle</p>
+        <p class="tier-perbottle">$69</p>
+        <p class="tier-total muted">&nbsp;</p>
+        <p class="tier-save none">Try it and see.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-1-BOTTLE-CHECKOUT-URL">Get 1 Month</a>
+      </div>
+      <div class="tier best">
+        <span class="tier-flag">Most Families</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-3bottles.png" alt="Three bottles of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">3 Months</p>
+        <p class="tier-bottles">3 bottles</p>
+        <p class="tier-perbottle">$149</p>
+        <p class="tier-total">Save $58</p>
+        <p class="tier-save">Long enough to actually tell.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-3-BOTTLE-CHECKOUT-URL">Get 3 Months</a>
+      </div>
+      <div class="tier">
+        <span class="tier-flag alt">Best Value</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-6bottles.png" alt="Six bottles of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">6 Months</p>
+        <p class="tier-bottles">6 bottles</p>
+        <p class="tier-perbottle">$269</p>
+        <p class="tier-total">Save $145</p>
+        <p class="tier-save">So you never run out in the middle of something that is working.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-6-BOTTLE-CHECKOUT-URL">Get 6 Months</a>
+      </div>
+    </div>
+
+    <p class="cta-note">100% risk free &middot; 60-day money-back guarantee on your first order<br>No monthly subscription. No strings attached.</p>
+  </div>
+
+  <h2>You have 60 days to decide it was not worth it.</h2>
+
+  <p>Your first order is backed by our <strong>60-day money-back guarantee</strong>.</p>
+
+  <p>If in your first 60 days you feel this is not the right fit, for your child, your routine, or your values, we will refund you. No hard feelings. No hassle.</p>
+
+  <blockquote><p>Because finding out should not cost you anything.</p></blockquote>
+
+  <h2>What mothers ask me before they try it.</h2>
+
+  <details><summary>Will this make my child feel high?</summary><p>No.</p>
+  <p>It contains 0.0% THC, third-party verified, so there is no psychoactive effect, ever.</p>
+  <p>The lab report currently published for the Kids 350mg Oil Drops lists delta-9 THC, THCA, total THC, and delta-8 THC as not detected.</p>
+  <p>Read the report for the batch you receive.</p></details>
+  <details><summary>Do we still need to see a doctor about the infection?</summary><p>Yes.</p>
+  <p>Clearing the underlying infection is the first prong and it belongs with your physician, usually with antibiotics.</p>
+  <p>The drops are for the second prong, the inflammation that drives the symptoms.</p>
+  <p>One does not replace the other.</p></details>
+  <details><summary>How much should I give my child?</summary><p>Start with half a dropper, roughly 6mg, once daily.</p>
+  <p>You can increase to a full dropper, roughly 12mg, if needed.</p>
+  <p>Always start low and go slow, and speak with a healthcare professional who knows your child.</p></details>
+  <details><summary>Is it safe for daily use?</summary><p>Yes.</p>
+  <p>It is formulated to be safe for nightly or daily use, which is the point.</p>
+  <p>Unlike anti-inflammatory steroids, it is not a thirty-day tool.</p>
+  <p>As always, consult your pediatrician for guidance specific to your child.</p></details>
+  <details><summary>What age is it best for?</summary><p>Most parents begin using this with kids age 5 and up, though every child is different.</p>
+  <p>More and more physicians are recommending our products for children, so ask your healthcare provider first.</p></details>
+  <details><summary>What is actually in the bottle?</summary><p>Organic CBD isolate and organic MCT coconut oil. Two ingredients.</p></details>
+  <details><summary>Can this be used alongside other therapies or routines?</summary><p>Yes.</p>
+  <p>It is designed to complement, not replace, your routines, supports, and therapeutic tools.</p>
+  <p>It is what made the rest of my own work possible.</p></details>
+  <details><summary>How long does it take?</summary><p>Experiences vary.</p>
+  <p>Some reviews describe changes within days, others describe using it consistently for longer.</p></details>
+  <details><summary>What if it doesn't work for my child?</summary><p>We offer a 60-day money-back guarantee on your first order.</p>
+  <p>If it is not a fit, we will make it right.</p></details>
+  <details><summary>Is this a subscription?</summary><p>No.</p>
+  <p>This two-bottle offer is a one-time purchase, with no monthly commitment.</p></details>
+
+  <hr class="soft">
+
+  <h2>My mother was never searching for a quieter house.</h2>
+
+  <p>The people around me had a question back then.</p>
+
+  <p>My dad, my girlfriend at the time, the ones who knew what I was capable of.</p>
+
+  <p>They would say it out loud:</p>
+
+  <blockquote><p>Where's Ethan gone? Get Ethan back.</p></blockquote>
+
+  <p>My mom never asked it.</p>
+
+  <p>She just refused to stop looking.</p>
+
+  <p>Years drug by, I gave up hope, and she kept reading.</p>
+
+  <p>That is what the $56,576 actually bought: eleven years of a woman who would not accept that this was the new Ethan.</p>
+
+  <p>I was still there.</p>
+
+  <p>What I needed was enough quiet to reach myself.</p>
+
+  <p>CBD gave me that, and it did not cost me the day.</p>
+
+  <p>Then I used that calm to work, exercise, repair relationships, return to my faith, and become someone my family could depend on.</p>
+
+  <p>Today, the boy who could not put down his toothbrush helps his daughters brush their teeth.</p>
+
+  <p>If you are the one still reading at 2am, you are not doing nothing.</p>
+
+  <p>You are doing what she did.</p>
+
+  <p><strong>Start somewhere.</strong></p>
+
+  <div class="offer">
+    <p class="offer-name">CBD Oil Drops for Kids</p>
+    <div class="tiers">
+      <div class="tier">
+        <span class="tier-flag alt">Curious</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-1bottle.png" alt="One bottle of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">1 Month</p>
+        <p class="tier-bottles">1 bottle</p>
+        <p class="tier-perbottle">$69</p>
+        <p class="tier-total muted">&nbsp;</p>
+        <p class="tier-save none">Try it and see.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-1-BOTTLE-CHECKOUT-URL">Get 1 Month</a>
+      </div>
+      <div class="tier best">
+        <span class="tier-flag">Most Families</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-3bottles.png" alt="Three bottles of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">3 Months</p>
+        <p class="tier-bottles">3 bottles</p>
+        <p class="tier-perbottle">$149</p>
+        <p class="tier-total">Save $58</p>
+        <p class="tier-save">Long enough to actually tell.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-3-BOTTLE-CHECKOUT-URL">Get 3 Months</a>
+      </div>
+      <div class="tier">
+        <span class="tier-flag alt">Best Value</span>
+        <div class="tier-shot"><img src="../../images/kids-cbd-6bottles.png" alt="Six bottles of Green Valley Kids 350mg CBD Oil Drops" loading="lazy"></div>
+        <p class="tier-supply">6 Months</p>
+        <p class="tier-bottles">6 bottles</p>
+        <p class="tier-perbottle">$269</p>
+        <p class="tier-total">Save $145</p>
+        <p class="tier-save">So you never run out in the middle of something that is working.</p>
+        <a class="tier-cta" href="#REPLACE-WITH-6-BOTTLE-CHECKOUT-URL">Get 6 Months</a>
+      </div>
+    </div>
+    <p class="cta-note">Secure checkout &middot; Free shipping &middot; No monthly commitment</p>
+  </div>
+
+  <p class="legal">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. This page describes Ethan Pompeo's personal experience and does not predict another person's results. PANDAS and PANS require medical diagnosis and treatment of the underlying infection by a qualified physician. Consult an appropriately qualified healthcare professional before giving a child CBD, particularly if the child takes medication or has a medical condition.</p>
+
+</div>
+
+<div class="footer-links">
+  <a href="https://www.greenvalleynutrition.com/pages/lab-results">Lab Reports</a> &middot;
+  <a href="https://www.greenvalleynutrition.com/pages/contact-us">Contact</a> &middot;
+  <a href="https://www.greenvalleynutrition.com/policies/privacy-policy">Privacy</a> &middot;
+  <a href="https://www.greenvalleynutrition.com/policies/terms-of-service">Terms</a>
+  <p class="footer-addr">&copy; 2026 Green Valley Nutrition &middot; PO Box 6245, Charlottesville, VA 22906 &middot; 1-434-207-8577</p>
+</div>
+
+</body>
+</html>
