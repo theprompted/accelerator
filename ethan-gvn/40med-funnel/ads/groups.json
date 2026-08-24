@@ -1,0 +1,50 @@
+{
+ "1": [
+  "v3-01-boy-head-tic-dinner",
+  "v3-03-wrist-grip-school-desk",
+  "v3-05-neck-mid-twitch",
+  "v3-11-fist-slam-homework",
+  "v3-15-homework-hidden-fist",
+  "v3-04-split-asleep-drums",
+  "parent-attention-02-homework-erased-through-the-paper",
+  "parent-attention-04-shoes-moving-under-the-table",
+  "parent-attention-08-the-chewed-pencil-collection",
+  "parent-attention-09-the-worn-hoodie-cuff"
+ ],
+ "2": [
+  "v3-06-bottles-fill-frame",
+  "v3-10-doctor-prescription-pad",
+  "v3-14-breakfast-pills",
+  "v3-08-bedside-bottles-stuffed-animal",
+  "v3-16-label-patient-age",
+  "v3-19-nightstand-2am",
+  "v3-18-boy-waiting-room",
+  "parent-attention-21-the-medicine-alarm",
+  "parent-attention-07-it-didnt-happen-at-the-appointment",
+  "parent-attention-12-the-waiting-room-shoes"
+ ],
+ "3": [
+  "v3-02-mom-phone-2am",
+  "v3-17-shoebox-pharmacy-papers",
+  "v3-12-mom-bathroom-floor",
+  "v3-07-mother-holding-son",
+  "parent-attention-06-the-video-folder",
+  "parent-attention-19-the-symptom-notebook-beside-laundry",
+  "parent-attention-20-the-overnight-search",
+  "parent-attention-28-the-two-column-notebook",
+  "parent-attention-22-the-questions-for-the-doctor",
+  "parent-attention-27-the-parent-finally-being-heard"
+ ],
+ "4": [
+  "parent-attention-01-the-paused-family-movie",
+  "parent-attention-03-the-school-pickup-mirror",
+  "parent-attention-05-the-bedtime-reset",
+  "parent-attention-14-the-unused-soccer-cleats",
+  "parent-attention-17-the-family-photo-retake",
+  "parent-attention-18-the-restaurant-booth",
+  "parent-attention-23-the-sibling-who-understands",
+  "parent-attention-25-the-birthday-candle-pause",
+  "parent-attention-26-the-activity-he-still-loves",
+  "v3-20-ethan-daughters"
+ ]
+}

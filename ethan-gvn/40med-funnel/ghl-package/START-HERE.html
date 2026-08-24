@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Medications Funnel - Start Here</title>
+    <style>
+        :root {
+            --bg-page: #F8F8F7;
+            --bg-white: #ffffff;
+            --accent-teal: #53DBC9;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: 2px solid black;
+            --shadow-lg: -0.31rem 0.31rem 0 0 #383838;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-page);
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 700px; margin: 0 auto; }
+        .card {
+            background: var(--bg-white);
+            border: var(--border);
+            padding: 2rem 1.75rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 1.15rem;
+            margin: 1.5rem 0 .75rem;
+        }
+        p { margin-bottom: .9rem; }
+        ol, ul { margin: 0 0 1rem 1.4rem; }
+        li { margin-bottom: .55rem; }
+        code {
+            background: #f0f0ee;
+            border: 1px solid #ddd;
+            padding: .1rem .35rem;
+            font-size: .88em;
+            word-break: break-all;
+        }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; font-size: .92rem; }
+        th, td { border: 1px solid #ccc; padding: .5rem .6rem; text-align: left; vertical-align: top; }
+        th { background: #f0f0ee; }
+        .table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+        .callout {
+            background: #fffbe8;
+            border: var(--border);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .footer { text-align: center; color: var(--text-muted); font-size: .85rem; }
+        a { color: var(--text-dark); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>40 Medications Funnel - Start Here</h1>
+
+            <p>This download has everything for the 40 Medications funnel launch. Two parts, in order: Part 1 puts the pages on GoHighLevel. Part 2 builds the ads and points them at your new pages.</p>
+
+            <h2>What's in this folder</h2>
+            <ul>
+                <li><code>ad-images/</code> - the 40 ad images, already sorted into <code>flexible-ad-1</code> through <code>flexible-ad-4</code>. One folder = one ad.</li>
+                <li><code>ad-copy/</code> - the 5 ad texts (<code>copy-1</code> through <code>copy-5</code>) and the headline (<code>link-headline.txt</code>). Open each file, copy, paste. Nothing to edit.</li>
+                <li><code>pages/</code> - the 3 funnels: <code>the-ladder</code>, <code>the-fog</code>, <code>the-prescription</code>. Two pages each. Your Meta pixel is already inside every page and carries over when you paste.</li>
+                <li><code>page-images/</code> - the 5 images the funnel pages use.</li>
+            </ul>
+
+            <div class="callout">
+                <strong>Want to read the funnels before you set anything up?</strong> Preview them here. These preview links are for reading only - your ads will point at the GoHighLevel pages you set up in Part 1.
+                <ul style="margin-top:.6rem; margin-bottom:0;">
+                    <li>The Ladder: <code>https://theprompted.github.io/accelerator/ethan-gvn/40med-funnel/v8/page-1/</code></li>
+                    <li>The Fog: <code>https://theprompted.github.io/accelerator/ethan-gvn/40med-funnel/v9/page-1/</code></li>
+                    <li>The Prescription: <code>https://theprompted.github.io/accelerator/ethan-gvn/40med-funnel/v10/page-1/</code></li>
+                </ul>
+            </div>
+
+            <h2>Part 1: Put the pages on GoHighLevel</h2>
+            <ol>
+                <li>In GoHighLevel, open <strong>Media Library</strong>. Upload the 5 images from <code>page-images/</code>. After each upload, copy the image's URL and keep it somewhere handy.</li>
+                <li>Create three funnels (suggested names: <code>Tics 2 - The Ladder</code>, <code>Tics 2 - The Fog</code>, <code>Tics 2 - The Prescription</code>), two pages each: <code>page-1</code> and <code>page-2</code>.</li>
+                <li>On each page: delete the default elements, add one full-width <strong>Custom HTML/Code</strong> element, and paste in the entire matching HTML file from <code>pages/</code>. Open the file in any text editor, select all, copy, paste.</li>
+                <li>Before pasting, swap the image links in the HTML. Search for each line on the left, replace with your Media Library URL:
+                    <div class="table-wrap"><table>
+                        <tr><th>Find this in the HTML</th><th>Replace with</th></tr>
+                        <tr><td><code>src="../../images/ethan-daughters-barn.jpg"</code></td><td>your Media Library URL</td></tr>
+                        <tr><td><code>src="../../images/kids-cbd-1bottle.png"</code></td><td>your Media Library URL</td></tr>
+                        <tr><td><code>src="../../images/kids-cbd-3bottles.png"</code></td><td>your Media Library URL</td></tr>
+                        <tr><td><code>src="../../images/kids-cbd-6bottles.png"</code></td><td>your Media Library URL</td></tr>
+                        <tr><td><code>src="../../images/kids-cbd-bogo.png"</code></td><td>your Media Library URL</td></tr>
+                    </table></div>
+                </li>
+                <li>Each page-1 has a button that links to <code>../page-2/</code>. Point it at that funnel's real page-2 URL in GoHighLevel.</li>
+                <li>Test on your phone: pages load, images show, the page-1 button lands on page 2, the buy buttons work.</li>
+            </ol>
+            <p><strong>When you finish you will have three page-1 URLs, one per funnel. Write them down - they are your ad destinations in Part 2.</strong></p>
+
+            <h2>Part 2: Build the ads</h2>
+
+            <p>You are going to make <strong>12 ads in one new ad set</strong>. You only build 4 of them from scratch. The other 8 are duplicates where you change a single link. About an hour of work.</p>
+
+            <p><strong>Step 1 - build the first 4 ads. This is the only real work.</strong></p>
+            <ol>
+                <li>In Ads Manager, create a new ad set. Name it <strong>40 Medications Funnel</strong>.</li>
+                <li>Create a new ad inside it. Name it <strong>Ladder - 1</strong>.</li>
+                <li>Images: add <strong>every image</strong> from <code>ad-images/flexible-ad-1</code> (there are 10). Adding multiple images makes it a flexible ad, which means Meta rotates all of them and finds the winners for you.</li>
+                <li>Primary text: under the text box, click <strong>Add text option</strong> until you have 5 boxes. Paste one copy file into each (<code>copy-1</code> through <code>copy-5</code>).</li>
+                <li>Headline: paste the line from <code>link-headline.txt</code>.</li>
+                <li>Website URL: <strong>your GoHighLevel page-1 URL for The Ladder</strong>.</li>
+                <li>Build 3 more ads exactly like it: <strong>Ladder - 2</strong> (images from <code>flexible-ad-2</code>), <strong>Ladder - 3</strong> (<code>flexible-ad-3</code>), <strong>Ladder - 4</strong> (<code>flexible-ad-4</code>). Same 5 texts, same headline, same URL every time.</li>
+            </ol>
+
+            <p><strong>Step 2 - duplicate those 4 ads.</strong> Rename the copies <strong>Fog - 1, 2, 3, 4</strong> and change one thing only: the website URL becomes your page-1 URL for <strong>The Fog</strong>.</p>
+
+            <p><strong>Step 3 - duplicate once more.</strong> Rename them <strong>Prescription - 1, 2, 3, 4</strong> and the website URL becomes your page-1 URL for <strong>The Prescription</strong>.</p>
+
+            <p>Done: 12 ads, every funnel gets all 40 images and all 5 copies tested against it, and the ad name always tells you which funnel it feeds.</p>
+
+            <p>Questions? Message Andrew.</p>
+        </div>
+        <p class="footer">Built by The Prompted</p>
+    </div>
+</body>
+</html>

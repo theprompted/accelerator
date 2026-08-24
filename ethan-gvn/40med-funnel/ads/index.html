@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Medications: The 40 Ads - Facebook Feed Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #F8F8F7;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .feed-container { max-width: 1400px; margin: 0 auto; }
+        .page-header {
+            background: #449344;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+        }
+        .page-header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .page-header p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .back-link {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #1a1a1a;
+            text-decoration: none;
+            margin-bottom: 16px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 6px 12px;
+            box-shadow: -.19rem .19rem 0 0 #383838;
+        }
+        .preview-note {
+            background: #fffbe8;
+            border: 2px solid #000;
+            box-shadow: -4px 4px 0 0 #383838;
+            padding: 18px 20px;
+            margin: 28px 0 8px;
+        }
+        .preview-note h2 {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .preview-note p { margin: 0; line-height: 1.55; }
+        .launch-guide ol { margin: 0 0 1rem 1.4rem; }
+        .launch-guide ol li { margin-bottom: .55rem; }
+        .launch-guide {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: -.31rem .31rem 0 0 #383838;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+        .launch-guide h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .launch-guide p { margin-bottom: 12px; line-height: 1.55; }
+        .zip-btn {
+            display: inline-block;
+            background: #449344;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid #000;
+            border-radius: 4px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            box-shadow: -.19rem .19rem 0 0 #383838;
+        }
+        .launch-guide code {
+            background: #f0f2f5;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 1px 5px;
+            font-size: 12px;
+            word-break: break-all;
+        }
+        .section-header {
+            background: #000;
+            padding: 12px 20px;
+            margin: 32px 0 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: #53DBC9;
+            border: 2px solid #000;
+            box-shadow: -.25rem .25rem 0 0 #383838;
+        }
+        .section-note {
+            background: #EBF9FF;
+            border-left: 3px solid #53DBC9;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 1200px) { .grid-row { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 800px) {
+            body { padding: 16px 10px; }
+            .grid-row { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+        }
+        .grid-item { display: flex; flex-direction: column; }
+        .draft-label {
+            background: #1877f2;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .draft-label > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .fb-post {
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.4;
+        }
+        .fb-header { display: flex; align-items: center; padding: 12px; }
+        .fb-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, #4a7c4e, #6fa86f);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fb-meta { margin-left: 8px; flex: 1; }
+        .fb-page-name { font-size: 13px; font-weight: 600; color: #050505; }
+        .sponsored { font-size: 11px; color: #65676b; }
+        .fb-more { color: #65676b; padding: 0 8px; font-size: 16px; }
+        .fb-body {
+            padding: 0 12px 12px;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #050505;
+        }
+        .fb-image { width: 100%; height: auto; display: block; background: #f0f2f5; }
+        .fb-link-card {
+            background: #e4e6eb;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .fb-link-info { flex: 1; min-width: 0; }
+        .fb-link-domain { font-size: 10px; color: #65676b; text-transform: uppercase; }
+        .fb-link-headline {
+            font-size: 13px;
+            font-weight: 600;
+            color: #050505;
+            line-height: 1.25;
+            margin-top: 2px;
+        }
+        .fb-cta {
+            background: #dadde1;
+            color: #050505;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .fb-actions {
+            display: flex;
+            border-top: 1px solid #dadde1;
+            padding: 4px 0;
+        }
+        .fb-action {
+            flex: 1;
+            padding: 7px;
+            text-align: center;
+            color: #65676b;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <a class="back-link" href="../">&larr; Back to the funnel hub</a>
+        <div class="page-header">
+            <h1>40 Medications: The 40 Ads</h1>
+            <p>40 image ads for Facebook, shown as they would appear in the feed. Every ad leads to: "I Took 40 Medications for My Motor Tics. Here's What Finally Stopped Them."</p>
+        </div>
+
+        <div class="launch-guide">
+            <h2>How to launch these</h2>
+            <p>Same playbook as the $56k funnel. The funnel links on this site are previews for reading, not ad destinations - your ads point at the GoHighLevel pages you set up (or at the live preview pages, which already carry your Meta pixel).</p>
+            <p>First, download the package. It has the 40 ad images already sorted into 4 folders, the 5 ad texts as ready-to-paste files, the landing pages, and step-by-step instructions.</p>
+            <a class="zip-btn" href="../40med-funnel-ghl.zip" download>&#11015; Download the full package</a>
+            <p><strong>Part 1 - put the pages on GoHighLevel.</strong> Open <code>START-HERE.html</code> from the download and follow it: three funnels, two pages each, paste the HTML, swap the image links, test on your phone. Your Meta pixel is already inside every page and carries over when you paste. When you finish you will have three page-1 URLs - one per funnel. Those are your ad destinations. If you already built the 3-Pack and 6-Pack products for the $56k funnel, the offer pages reuse those same two checkout URLs.</p>
+            <p><strong>Part 2 - build the ads. 12 ads in one new ad set. You only build 4 from scratch; the other 8 are duplicates where you change a single link.</strong></p>
+            <ol>
+                <li>In Ads Manager, create a new ad set. Name it <strong>40 Medications Funnel</strong>.</li>
+                <li>Create a new ad inside it. Name it <strong>Ladder - 1</strong>.</li>
+                <li>Images: add <strong>every image</strong> from the download folder <code>ad-images/flexible-ad-1</code> (there are 10). Adding multiple images makes it a flexible ad, which means Meta rotates all of them and finds the winners for you.</li>
+                <li>Primary text: under the text box, click <strong>Add text option</strong> until you have 5 boxes. Paste one copy into each. The 5 copies are in <code>ad-copy/</code> in the download.</li>
+                <li>Headline: <em>I Took 40 Medications for My Motor Tics. Here's What Finally Stopped Them.</em></li>
+                <li>Website URL: <strong>your page-1 URL for The Ladder</strong>.</li>
+                <li>Build 3 more ads exactly like it: <strong>Ladder - 2</strong> (images from <code>flexible-ad-2</code>), <strong>Ladder - 3</strong> (<code>flexible-ad-3</code>), <strong>Ladder - 4</strong> (<code>flexible-ad-4</code>). Same 5 texts, same headline, same URL every time.</li>
+            </ol>
+            <p><strong>Then duplicate those 4 ads.</strong> Rename the copies <strong>Fog - 1, 2, 3, 4</strong> and change one thing only: the website URL becomes your page-1 URL for <strong>The Fog</strong>.</p>
+            <p><strong>Duplicate once more.</strong> Rename them <strong>Prescription - 1, 2, 3, 4</strong> and the website URL becomes your page-1 URL for <strong>The Prescription</strong>.</p>
+            <p>That's it. 12 ads, and every funnel gets all 40 images and all 5 copies tested against it. The ad name always tells you which funnel it feeds.</p>
+        </div>
+
+        <div class="preview-note">
+            <h2>&#128071; Everything below is a PREVIEW</h2>
+            <p>The 40 ads, shown the way they will look in the Facebook feed. Each group below is one flexible ad's image folder, previewed with one of the 5 copies - in the real ads, every ad carries all 5 copies as text options. Nothing to do here one by one: every image and every copy is already packed in the download above.</p>
+        </div>
+
+        <div class="section-header">Flexible ad group &mdash; Mid-tic - the moments she recognizes (10 images, previewed with copy 4)</div>
+        <div class="section-note">What a tic moment actually looks like from outside the house.</div>
+        <div class="grid-row">
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 1 &middot; Head tic at dinner</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-01-boy-head-tic-dinner.jpg" alt="Head tic at dinner" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 2 &middot; Wrist grip, school desk</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-03-wrist-grip-school-desk.jpg" alt="Wrist grip, school desk" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 3 &middot; Neck, mid-twitch</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-05-neck-mid-twitch.jpg" alt="Neck, mid-twitch" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 4 &middot; Fist slam over homework</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-11-fist-slam-homework.jpg" alt="Fist slam over homework" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 5 &middot; Hidden fist at homework</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-15-homework-hidden-fist.jpg" alt="Hidden fist at homework" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 6 &middot; Asleep in class / alive at the drums</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-04-split-asleep-drums.jpg" alt="Asleep in class / alive at the drums" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 7 &middot; Erased through the paper</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-02-homework-erased-through-the-paper.jpg" alt="Erased through the paper" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 8 &middot; Shoes moving under the table</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-04-shoes-moving-under-the-table.jpg" alt="Shoes moving under the table" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 9 &middot; The chewed pencil collection</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-08-the-chewed-pencil-collection.jpg" alt="The chewed pencil collection" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 10 &middot; The worn hoodie cuff</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">My motor tics were not something I could stop if I tried.
+
+I know, because nobody tried harder than me.
+
+At thirteen I stood at the bathroom counter trying to put my toothbrush down, and could not do it.
+
+I picked it up and put it down, again and again, until toothpaste hit the mirror.
+
+My dad thought it was a tantrum.
+
+Inside I was asking his exact question: why can&#x27;t I just put it down?
+
+If someone has told you your son is choosing this, he is not.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-09-the-worn-hoodie-cuff.jpg" alt="The worn hoodie cuff" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-header">Flexible ad group &mdash; The prescriptions (10 images, previewed with copy 1)</div>
+        <div class="section-note">The bottles, the doses, the system that only ever adds.</div>
+        <div class="grid-row">
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 11 &middot; Bottles fill the frame</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-06-bottles-fill-frame.jpg" alt="Bottles fill the frame" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 12 &middot; The prescription pad</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-10-doctor-prescription-pad.jpg" alt="The prescription pad" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 13 &middot; Pills at breakfast</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-14-breakfast-pills.jpg" alt="Pills at breakfast" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 14 &middot; Bottles on the nightstand</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-08-bedside-bottles-stuffed-animal.jpg" alt="Bottles on the nightstand" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 15 &middot; Patient age: 13</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-16-label-patient-age.jpg" alt="Patient age: 13" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 16 &middot; Nightstand, 2:17 AM</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-19-nightstand-2am.jpg" alt="Nightstand, 2:17 AM" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 17 &middot; Boy in the waiting room</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-18-boy-waiting-room.jpg" alt="Boy in the waiting room" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 18 &middot; The medicine alarm</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-21-the-medicine-alarm.jpg" alt="The medicine alarm" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 19 &middot; It didn&#x27;t happen at the appointment</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-07-it-didnt-happen-at-the-appointment.jpg" alt="It didn&#x27;t happen at the appointment" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 20 &middot; Waiting room shoes</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">In eleven years on forty medications for my motor tics, not one dose ever came down.
+
+Fluoxetine started at ten milligrams.
+
+Twenty by March.
+
+Thirty by May.
+
+Sertraline started at twenty-five.
+
+Then fifty.
+
+Abilify went five, ten, twenty.
+
+Then my mom wrote what no doctor had written: there are no improvements with increased dosage.
+
+She stopped the Abilify herself.
+
+That was the first time anyone stopped anything.
+
+The logic never changed.
+
+It is not working yet, so he needs more.
+
+Every one of those prescriptions was aimed at the tics everyone could see.
+
+None of them were aimed at what was causing them.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-12-the-waiting-room-shoes.jpg" alt="Waiting room shoes" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-header">Flexible ad group &mdash; Her search (10 images, previewed with copy 5)</div>
+        <div class="section-note">The record she kept and the nights she spent keeping it.</div>
+        <div class="grid-row">
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 21 &middot; Mom&#x27;s phone, 2am</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-02-mom-phone-2am.jpg" alt="Mom&#x27;s phone, 2am" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 22 &middot; Shoebox of pharmacy papers</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-17-shoebox-pharmacy-papers.jpg" alt="Shoebox of pharmacy papers" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 23 &middot; Bathroom floor</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-12-mom-bathroom-floor.jpg" alt="Bathroom floor" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 24 &middot; Mother holding son</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-07-mother-holding-son.jpg" alt="Mother holding son" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 25 &middot; The video folder</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-06-the-video-folder.jpg" alt="The video folder" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 26 &middot; The symptom notebook</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-19-the-symptom-notebook-beside-laundry.jpg" alt="The symptom notebook" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 27 &middot; The overnight search</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-20-the-overnight-search.jpg" alt="The overnight search" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 28 &middot; The two-column notebook</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-28-the-two-column-notebook.jpg" alt="The two-column notebook" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 29 &middot; Questions for the doctor</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-22-the-questions-for-the-doctor.jpg" alt="Questions for the doctor" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 30 &middot; Finally being heard</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">What finally stopped my motor tics was something no doctor in eleven years would have prescribed.
+
+My mom did everything they told her.
+
+New prescription, higher dose, next referral.
+
+Forty medications, nineteen doctors, and the tics were still running my life.
+
+If you feel like you are running out of road, my family was on that road for eleven years.
+
+The answer was never at appointment number twenty.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-27-the-parent-finally-being-heard.jpg" alt="Finally being heard" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-header">Flexible ad group &mdash; The kid underneath (10 images, previewed with copy 2)</div>
+        <div class="section-note">Family life carrying it - and the kid still in there.</div>
+        <div class="grid-row">
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 31 &middot; The paused family movie</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-01-the-paused-family-movie.jpg" alt="The paused family movie" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 32 &middot; The school pickup mirror</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-03-the-school-pickup-mirror.jpg" alt="The school pickup mirror" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 33 &middot; The bedtime reset</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-05-the-bedtime-reset.jpg" alt="The bedtime reset" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 34 &middot; The unused soccer cleats</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-14-the-unused-soccer-cleats.jpg" alt="The unused soccer cleats" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 35 &middot; The family photo retake</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-17-the-family-photo-retake.jpg" alt="The family photo retake" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 36 &middot; The restaurant booth</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-18-the-restaurant-booth.jpg" alt="The restaurant booth" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 37 &middot; The sibling who understands</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-23-the-sibling-who-understands.jpg" alt="The sibling who understands" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 38 &middot; The birthday candle pause</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-25-the-birthday-candle-pause.jpg" alt="The birthday candle pause" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 39 &middot; The activity he still loves</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/parent-attention-26-the-activity-he-still-loves.jpg" alt="The activity he still loves" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="draft-label"><span>Ad 40 &middot; Ethan and his daughters (real photo)</span></div>
+                <div class="fb-post">
+                    <div class="fb-header">
+                        <div class="fb-avatar">G</div>
+                        <div class="fb-meta">
+                            <div class="fb-page-name">Green Valley Nutrition</div>
+                            <div class="sponsored">Sponsored &middot; &#127760;</div>
+                        </div>
+                        <div class="fb-more">&middot;&middot;&middot;</div>
+                    </div>
+                    <div class="fb-body">A quieter kid is not the same as a better kid.
+
+It took my family years to see the difference.
+
+On my medications I was calmer at school and calmer at the dinner table, and my motor tics were still there.
+
+In tenth grade a teacher found me asleep at my desk and thought I was on drugs.
+
+That night I told my dad the truth: I can feel my personality fading.
+
+Forty medications made me easier to manage.
+
+None of them stopped the tics.
+
+Read more here - I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                    <img class="fb-image" src="images/v3-20-ethan-daughters.jpg" alt="Ethan and his daughters (real photo)" loading="lazy">
+                    <div class="fb-link-card">
+                        <div class="fb-link-info">
+                            <div class="fb-link-domain">LEARN.GREENVALLEYNUTRITION.COM</div>
+                            <div class="fb-link-headline">I Took 40 Medications for My Motor Tics. Here&#x27;s What Finally Stopped Them.</div>
+                        </div>
+                        <button class="fb-cta">Learn more</button>
+                    </div>
+                    <div class="fb-actions">
+                        <div class="fb-action">&#128077; Like</div>
+                        <div class="fb-action">&#128172; Comment</div>
+                        <div class="fb-action">&#8618; Share</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
